@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:clickable="true">
+
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:src="@mipmap/back"
+                android:scaleType="fitXY"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_25sdp"/>
+
+
+        <ImageView
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:src="@mipmap/logo"
+                android:scaleType="fitXY"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_60sdp"/>
+
+        <TextView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="#000"
+                android:fontFamily="@font/bree_serif"
+                android:text="Welcome"
+                android:textSize="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:fontFamily="@font/bree_serif"
+                android:text="Register to continue as"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp">
+            <TextView android:layout_width="@dimen/_80sdp"
+                    android:text="@string/customer"
+
+                      android:fontFamily="@font/bree_serif"
+
+                    android:id="@+id/btn_customer_inactive"
+                    android:textSize="@dimen/_10sdp"
+                    android:paddingLeft="@dimen/_5sdp"
+                      android:gravity="center"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:background="@drawable/rounded_corner_gray"
+                    android:drawableLeft="@mipmap/customer_inactive_m"
+                    android:layout_height="@dimen/_30sdp"/>
+            <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/btn_customer_active"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="wrap_content">
+
+            <TextView android:layout_width="wrap_content"
+                      android:text="@string/customer"
+                      android:fontFamily="@font/bree_serif"
+
+                      android:textSize="@dimen/_10sdp"
+                      android:gravity="center"
+                      android:paddingLeft="@dimen/_5sdp"
+                      android:paddingRight="@dimen/_5sdp"
+                      android:drawablePadding="@dimen/_5sdp"
+                      android:background="@drawable/shadow"
+                      android:drawableLeft="@mipmap/customer_active"
+                      android:layout_height="@dimen/_30sdp"/>
+            <ImageView
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/check"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"/>
+        </RelativeLayout>
+
+        <TextView android:layout_width="@dimen/_80sdp"
+                android:text="@string/agent"
+                  android:gravity="center"
+                android:id="@+id/btn_agent_inactive"
+                android:textSize="@dimen/_10sdp"
+                  android:fontFamily="@font/bree_serif"
+
+                  android:paddingLeft="@dimen/_5sdp"
+                android:drawableLeft="@mipmap/agent_inactive_m"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@drawable/rounded_corner_gray"
+                android:layout_height="@dimen/_30sdp"/>
+
+
+            <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/btn_agent_active"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:gravity="center"
+                        android:layout_width="@dimen/_70sdp"
+                        android:text="@string/agent"
+                        android:textSize="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:fontFamily="@font/bree_serif"
+
+                        android:drawableLeft="@mipmap/agent_active"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@drawable/shadow"
+                        android:layout_height="@dimen/_30sdp"/>
+                <ImageView
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/check"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"/>
+            </RelativeLayout>
+
+
+
+        <TextView android:layout_width="@dimen/_90sdp"
+                android:text="@string/merchant"
+                  android:gravity="center"
+                  android:fontFamily="@font/bree_serif"
+
+                  android:id="@+id/btn_merchant_inactive"
+                android:drawablePadding="@dimen/_5sdp"
+                android:textSize="@dimen/_10sdp"
+                android:drawableLeft="@mipmap/merchant_inactive_m"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
+                android:background="@drawable/rounded_corner_gray"
+                android:layout_height="@dimen/_30sdp"/>
+
+            <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/btn_merchant_active"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content">
+
+                <TextView android:layout_width="wrap_content"
+                        android:text="@string/merchant"
+                          android:gravity="center"
+                          android:fontFamily="@font/bree_serif"
+
+                          android:drawablePadding="@dimen/_5sdp"
+                        android:textSize="@dimen/_10sdp"
+                        android:drawableLeft="@mipmap/merchant_active"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:background="@drawable/shadow"
+                        android:layout_height="@dimen/_30sdp"/>
+
+                <ImageView
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/check"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"/>
+            </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:hint="Full Name"
+                android:textColor="#000"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+
+                android:textColorHint="@color/cardview_shadow_start_color"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/ed_full_name"
+                    android:inputType="text"
+                    android:fontFamily="@font/bree_serif"
+                    android:layout_height="@dimen/_40sdp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:hint="Email/PhoneNumber"
+                android:textColor="#000"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+
+                android:textColorHint="@color/cardview_shadow_start_color"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/ed_email_phone"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/bree_serif"
+                    android:layout_height="@dimen/_40sdp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="Password"
+                android:textColor="#000"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                android:textColorHint="@color/cardview_shadow_start_color"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:inputType="textPassword"
+                    android:id="@+id/ed_password"
+                    android:fontFamily="@font/bree_serif"
+                    android:layout_height="@dimen/_40sdp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:orientation="horizontal"
+                      android:gravity="top"
+                      android:layout_height="@dimen/_40sdp">
+        <CheckBox android:layout_width="@dimen/_20sdp"
+                  android:textColor="#000"
+                  android:layout_marginTop="@dimen/_5sdp"
+                  android:fontFamily="@font/bree_serif"
+                  android:textSize="@dimen/_15sdp"
+                  android:background="@drawable/custom_checkbox"
+                  android:button="@null"
+                  android:layout_height="@dimen/_20sdp"/>
+
+            <TextView
+                    android:fontFamily="@font/bree_serif"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_15sdp"
+                      android:text="@string/gdpr_rights"
+                      android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <Button android:layout_width="match_parent"
+                android:text="@string/register"
+                android:textColor="#fff"
+                android:fontFamily="@font/bree_serif"
+                android:id="@+id/btn_register"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/button_gradient"
+                android:layout_height="@dimen/_40sdp"/>
+
+
+        <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:textSize="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="Already have an account?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>
+        </ScrollView>
