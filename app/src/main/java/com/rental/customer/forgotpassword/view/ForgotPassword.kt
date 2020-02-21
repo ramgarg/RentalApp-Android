@@ -39,5 +39,13 @@ class ForgotPassword :AppCompatActivity(), ForgotPasswordInterface {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
     }
 
+    override fun onSuccess() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onFailed() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 
 }

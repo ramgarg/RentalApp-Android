@@ -14,12 +14,19 @@ class ForgotPasswordActivityPresenter(forgotPasswordInterface: ForgotPasswordInt
         forgotPasswordResponse= ForgotPasswordResponse(forgotPasswordInterface)
     }
 
-
     fun forgotPasswordAPI(email:String){
         if(checkValidation(email)){
-            forgotPasswordResponse.forgotPasswordAPI()
+            forgotPasswordResponse.forgotPasswordAPI(this)
         }
 
+    }
+
+    fun onSuccess(){
+        forgotPasswordInterface.onSuccess()
+    }
+
+    fun onFail(){
+        forgotPasswordInterface.onFailed()
     }
 
     private fun checkValidation(email: String): Boolean {

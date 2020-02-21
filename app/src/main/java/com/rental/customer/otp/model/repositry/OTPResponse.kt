@@ -1,8 +1,7 @@
 package com.rental.customer.otp.model.repositry
 
 import com.rental.customer.otp.presenter.OTPView
-import com.rental.customer.presenter.LoginInterface
-import com.rental.customer.utils.APIServices
+import com.rental.customer.webservice.APIServices
 
 class OTPResponse(otpView: OTPView) {
 

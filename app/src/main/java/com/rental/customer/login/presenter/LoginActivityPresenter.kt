@@ -3,7 +3,6 @@ package com.rental.customer.login.presenter
 import android.widget.EditText
 import com.rental.customer.login.model.repositry.LoginResponse
 import com.rental.customer.presenter.LoginInterface
-import com.rental.customer.utils.APIServices
 import com.rental.customer.utils.Validator
 
 class LoginActivityPresenter(loginInterface: LoginInterface) {

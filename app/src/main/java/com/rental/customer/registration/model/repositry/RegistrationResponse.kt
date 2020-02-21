@@ -1,9 +1,7 @@
 package com.rental.customer.registration.model.repositry
 
-import com.rental.customer.otp.presenter.OTPView
-import com.rental.customer.presenter.LoginInterface
 import com.rental.customer.registration.presenter.RegistrationView
-import com.rental.customer.utils.APIServices
+import com.rental.customer.webservice.APIServices
 
 class RegistrationResponse(registrationView: RegistrationView) {
 

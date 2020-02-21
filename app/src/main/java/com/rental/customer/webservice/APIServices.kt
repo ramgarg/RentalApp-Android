@@ -1,11 +1,8 @@
-package com.rental.customer.utils
+package com.rental.customer.webservice
 
 import com.google.gson.JsonElement
-import com.rental.customer.utils.Constant
 import retrofit2.Call
-import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Path
 
 interface APIServices {
 

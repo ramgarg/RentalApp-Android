@@ -1,7 +1,7 @@
 package com.rental.customer.login.model.repositry
 
 import com.rental.customer.presenter.LoginInterface
-import com.rental.customer.utils.APIServices
+import com.rental.customer.webservice.APIServices
 
 class LoginResponse(loginInterface: LoginInterface) {
 

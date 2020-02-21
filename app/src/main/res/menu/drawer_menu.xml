@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".customer.dashboard.HomeActivityMainActivity">
+    <group
+            android:id="@+id/group1"
+            android:checkableBehavior="single">
+
+
+        <item
+                android:icon="@mipmap/about"
+                android:id="@+id/drawer_fav"
+                android:title="About Rental App" />
+        <item
+                android:id="@+id/drawer_notification"
+                android:icon="@mipmap/payment"
+                android:title="Payment History" />
+        <item
+                android:icon="@mipmap/my_address"
+                android:title="My Address" />
+        <item
+                android:icon="@mipmap/help_support"
+                android:title="Help &amp; Support" />
+        <item
+                android:icon="@mipmap/t_c"
+                android:title="Terms &amp; Conditions" />
+
+        <item
+                android:icon="@mipmap/logout"
+                android:title="Logout" />
+    </group>
+
+        </menu>
