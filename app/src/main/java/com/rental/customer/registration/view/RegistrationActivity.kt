@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
 import com.rental.customer.registration.presenter.RegistrationActivityPresenter
 import com.rental.customer.registration.presenter.RegistrationView
+import com.rental.customer.utils.MoveToActivity
 
 class RegistrationActivity : AppCompatActivity(), RegistrationView {
 
@@ -20,6 +21,7 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
     private lateinit var buttonRegister: Button
+    private lateinit var checkBoxTerms: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,7 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
         editTextEmail = findViewById(R.id.ed_email_phone)
         editTextUserName = findViewById(R.id.ed_full_name)
         editTextPassword = findViewById(R.id.ed_password)
+        checkBoxTerms=findViewById(R.id.checkbox_terms)
         buttonInActiveMerchant.setOnClickListener { registerAs("Merchant") }
         buttonInActiveCustomer.setOnClickListener { registerAs("Customer")  }
         buttonInActiveAgent.setOnClickListener { registerAs("Agent") }
@@ -59,6 +62,11 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
 
     override fun register() {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        registrationActivityPresenter.registerAPI(editTextUserName,editTextEmail,editTextPassword)
+        registrationActivityPresenter.registerAPI(editTextUserName,editTextEmail,editTextPassword,checkBoxTerms)
+    }
+
+    override fun moveToOtp() {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        MoveToActivity.moveToOTPActivity(this)
     }
 }

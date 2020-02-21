@@ -1,19 +1,23 @@
 package com.rental.customer.forgotpassword.presenter
 
+import com.rental.customer.forgotpassword.model.repositry.ForgotPasswordResponse
+import com.rental.customer.login.model.repositry.LoginResponse
 import com.rental.customer.presenter.ForgotPasswordInterface
 import com.rental.customer.utils.Validator
 
 class ForgotPasswordActivityPresenter(forgotPasswordInterface: ForgotPasswordInterface) {
 
     private var forgotPasswordInterface: ForgotPasswordInterface
+    var forgotPasswordResponse: ForgotPasswordResponse
     init {
         this.forgotPasswordInterface=forgotPasswordInterface
+        forgotPasswordResponse= ForgotPasswordResponse(forgotPasswordInterface)
     }
 
 
     fun forgotPasswordAPI(email:String){
         if(checkValidation(email)){
-            forgotPasswordInterface.showToast("Password reset link have been sent your email/phone number.")
+            forgotPasswordResponse.forgotPasswordAPI()
         }
 
     }

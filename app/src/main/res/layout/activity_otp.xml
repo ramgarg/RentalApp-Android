@@ -36,7 +36,7 @@
     <TextView
             android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/bree_serif"
-            android:text="@string/password_reset_instruction"
+          android:id="@+id/otp_message"
             android:textSize="@dimen/_15sdp"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
@@ -62,6 +62,7 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/ed_email"
+                    android:inputType="textEmailAddress"
                     android:fontFamily="@font/bree_serif"
                     android:layout_height="@dimen/_40sdp"/>
 
@@ -70,8 +71,8 @@
 
 
         <Button android:layout_width="match_parent"
-                android:text="@string/send"
-                android:id="@+id/btn_send"
+                android:text="@string/conti"
+                android:id="@+id/btn_continue"
                 android:textColor="#fff"
                 android:fontFamily="@font/bree_serif"
                 android:textAllCaps="false"

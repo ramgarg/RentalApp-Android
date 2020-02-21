@@ -26,6 +26,7 @@ class ForgotPassword :AppCompatActivity(), ForgotPasswordInterface {
     private fun initialize(){
         editTextEmail=findViewById(R.id.ed_email)
         buttonSend=findViewById(R.id.btn_send)
+        buttonSend.setOnClickListener { forgotPassword() }
     }
 
     override fun forgotPassword() {

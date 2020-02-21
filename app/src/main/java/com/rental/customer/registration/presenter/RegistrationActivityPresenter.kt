@@ -2,19 +2,19 @@ package com.rental.customer.registration.presenter
 
 import android.transition.Visibility
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
+import com.rental.customer.registration.model.repositry.RegistrationResponse
 import com.rental.customer.utils.Validator
 
 
 class RegistrationActivityPresenter(registrationView: RegistrationView) {
 
     private var registrationView:RegistrationView
+    var registrationResponse:RegistrationResponse
 
     init {
         this.registrationView=registrationView
+        registrationResponse= RegistrationResponse(registrationView)
     }
 
      fun registrationAs(registrationType:String, buttonInActiveAgent: TextView, buttonInActiveCustomer:
@@ -47,18 +47,19 @@ class RegistrationActivityPresenter(registrationView: RegistrationView) {
 
     }
 
-    fun registerAPI(editTextUserName: EditText,editTextEmail: EditText,editTextPassword: EditText){
-        if(checkValidation(editTextUserName,editTextEmail,editTextPassword)){
-            registrationView.showToast("Registration Successful")
+    fun registerAPI(editTextUserName: EditText,editTextEmail: EditText,editTextPassword: EditText,
+    checkBoxTerms: CheckBox){
+        if(checkValidation(editTextUserName,editTextEmail,editTextPassword,checkBoxTerms)){
+            registrationResponse.registrationAPI()
         }
 
     }
 
-    private fun checkValidation(editTextUserName: EditText,email: EditText, password: EditText): Boolean {
+    private fun checkValidation(editTextUserName: EditText,email: EditText, password: EditText,checkBoxTerms: CheckBox): Boolean {
         if (editTextUserName.text.toString().isEmpty()&&email.text.toString().isEmpty() && password.text.toString().isEmpty()) {
             registrationView.showToast("Please Enter All Field")
         }
-            else if (editTextUserName.text.toString().length>4) {
+            else if (editTextUserName.text.toString().length<4) {
                 registrationView.showToast("Please Enter Valid UserName")
         } else if (!Validator.isEmailValid(email.text.toString())) {
             registrationView.showToast("Please Enter Valid Email")
@@ -68,6 +69,8 @@ class RegistrationActivityPresenter(registrationView: RegistrationView) {
             registrationView.showToast("Please Enter Valid Password")
         } else if (!Validator.isPasswordValid(password.text.toString())) {
             registrationView.showToast("Invalid Password! minimum length 8")
+        }else if(!checkBoxTerms.isChecked){
+            registrationView.showToast("Please Check Terms and Condition")
         }else{
             return true
         }

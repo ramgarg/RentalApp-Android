@@ -13,7 +13,7 @@
     <string name="forgot_password">Forgot Password?</string>
     <string name="login">Login</string>
     <string name="login_with">Login With:</string>
-    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?Register</string>
     <string name="login_to_continue_as">Login to continue as</string>
     <string name="welcome">Welcome</string>
     <string name="otp_sent">We have sent OTP to the email address</string>
@@ -21,4 +21,10 @@
     <string name="customer">Customer</string>
     <string name="agent">Agent</string>
     <string name="merchant">Merchant</string>
+    <string name="opt_detail">We\'ve sent OTP the email address p@g.com.please enter it below to complete
+        verification
+    </string>
+    <string name="conti">Continue</string>
+    <string name="already_have_an_account">Already have an account?Login</string>
+    <string name="full_name">Full Name</string>
 </resources>
