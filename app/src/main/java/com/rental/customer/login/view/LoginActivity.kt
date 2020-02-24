@@ -1,63 +1,59 @@
 package com.rental.customer.login.view
 
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.rental.R
-import com.rental.customer.login.presenter.LoginActivityPresenter
-import com.rental.customer.presenter.LoginInterface
+import com.rental.customer.login.viewmodel.LoginViewModel
 import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.utils.Validator
+import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity :AppCompatActivity(), LoginInterface {
 
-    private lateinit var loginActivityPresenter: LoginActivityPresenter
-    private lateinit var editTextEmail:EditText
-    private lateinit var editTextPassword:EditText
-    private lateinit var buttonLogin:Button
-    private lateinit var texViewForgotPassword: TextView
-    private lateinit var textViewRegistration: TextView
+class LoginActivity :AppCompatActivity() {
+
+    lateinit var loginViewModel:LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         initialize()
-        loginActivityPresenter= LoginActivityPresenter(this)
+
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        loginViewModel.getLogin()?.observe(this , Observer {
+
+        })
     }
 
     private fun initialize(){
-        editTextEmail=findViewById(R.id.ed_email)
-        editTextPassword=findViewById(R.id.ed_password)
-        texViewForgotPassword=findViewById(R.id.tv_forgot_password)
-        textViewRegistration=findViewById(R.id.tv_registration)
-        textViewRegistration.setOnClickListener { registration() }
-        texViewForgotPassword.setOnClickListener { forgotPassword() }
-        buttonLogin=findViewById(R.id.btn_login)
-        buttonLogin.setOnClickListener { doLogin() }
-
+        tv_registration.setOnClickListener { MoveToActivity.moveToRegistrationActivity(this) }
+        tv_forgot_password.setOnClickListener { MoveToActivity.moveToForgotPasswordActivity(this) }
+        btn_login.setOnClickListener { checkValidation(ed_email,ed_password) }
     }
 
-    override fun doLogin() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        loginActivityPresenter.login(editTextEmail,editTextPassword)
+
+
+    private fun checkValidation(email: EditText, password: EditText): Boolean {
+        if (email.text.toString().isEmpty() && password.text.toString().isEmpty()) {
+//            showToast("Please Enter Email/Phone Number and Password")
+        } else if (!Validator.isEmailValid(email.text.toString())) {
+//            showToast("Please Enter Valid Email")
+            email.requestFocus()
+        } else if (password.text.toString().isEmpty()) {
+            password.requestFocus()
+//            showToast("Please Enter Valid Password")
+        } else if (!Validator.isPasswordValid(password.text.toString())) {
+//            showToast("Invalid Password! minimum length 8")
+        }else{
+            loginViewModel.onClick(email,password)
+        }
+        return false
     }
 
-    override fun showToast(message: String) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
-    }
 
-    override fun forgotPassword() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        MoveToActivity.moveToForgotPasswordActivity(this)
-    }
 
-    override fun registration() {
-//        TODO("not implemented") //To change body of created functions use File | Settings |
-        MoveToActivity.moveToRegistrationActivity(this)
-    }
 
 }

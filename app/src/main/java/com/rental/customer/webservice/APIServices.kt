@@ -1,12 +1,27 @@
 package com.rental.customer.webservice
 
-import com.google.gson.JsonElement
+import com.rental.customer.dashboard.model.modelclass.HomeResponse
+import com.rental.customer.login.model.modelclass.ForgotPasswordRequest
+import com.rental.customer.login.model.modelclass.ForgotPasswordResponse
+import com.rental.customer.forgotpassword.model.modelClass.OTPRequest
+import com.rental.customer.forgotpassword.model.modelClass.OTPResponse
+import com.rental.customer.login.model.modelclass.LoginRequest
 import retrofit2.Call
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface APIServices {
 
     @POST(Constant.LOGIN)
-    fun login():Call<JsonElement>
+    fun login(loginRequest: LoginRequest):Call<LoginRequest>
+
+    @POST(Constant.FORGOTPASSOWRD)
+    fun forgotPassword(forgotPasswordRequest: ForgotPasswordRequest):Call<ForgotPasswordResponse>
+
+    @POST(Constant.SENDOTP)
+    fun otp(otpRequest: OTPRequest):Call<OTPResponse>
+
+    @GET("")
+    fun getData():Call<HomeResponse>
 
 }

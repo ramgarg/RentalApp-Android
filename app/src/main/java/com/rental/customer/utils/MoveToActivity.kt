@@ -2,16 +2,16 @@ package com.rental.customer.utils
 
 import android.content.Context
 import android.content.Intent
-import com.rental.customer.otp.view.OTPActivity
-import com.rental.customer.forgotpassword.view.ForgotPassword
-import com.rental.customer.registration.view.RegistrationActivity
+import com.rental.customer.login.view.OTPActivity
+import com.rental.customer.login.view.ForgotPasswordActivity
+import com.rental.customer.login.view.RegistrationActivity
 
 class MoveToActivity {
 
     companion object{
 
         fun moveToForgotPasswordActivity(context: Context){
-            context.startActivity(Intent(context, ForgotPassword::class.java))
+            context.startActivity(Intent(context, ForgotPasswordActivity::class.java))
         }
 
         fun moveToRegistrationActivity(context: Context){
