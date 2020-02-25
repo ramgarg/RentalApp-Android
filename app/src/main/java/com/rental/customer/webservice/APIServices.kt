@@ -21,7 +21,7 @@ interface APIServices {
     @POST(Constant.SENDOTP)
     fun otp(otpRequest: OTPRequest):Call<OTPResponse>
 
-    @GET("")
+    @GET(Constant.DASHBOARD)
     fun getData():Call<HomeResponse>
 
 }

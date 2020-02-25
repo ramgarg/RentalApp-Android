@@ -14,6 +14,7 @@ class LoginViewModel :ViewModel(){
 
     init {
         loginRespository= LoginRespository()
+
     }
 
     fun getLogin(): MutableLiveData<LoginRequest>? {

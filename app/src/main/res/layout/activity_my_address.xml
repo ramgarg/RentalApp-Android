@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar"
+    android:id="@+id/toolbar"
+    />
+
+<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_my_address"
+       android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/add_new_address"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+</androidx.recyclerview.widget.RecyclerView>
+
+
+    <LinearLayout
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/add_new_address"
+            android:background="@drawable/button_gradient"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+                  android:orientation="horizontal"
+                  android:layout_height="wrap_content">
+
+        <ImageView android:layout_width="@dimen/_20sdp"
+                   android:src="@mipmap/add_address"
+                   android:layout_height="@dimen/_20sdp"/>
+
+    <TextView
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:text="Add New Address"
+            android:id="@+id/btn_add_new_address"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="@dimen/_15sdp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/bree_serif"
+
+
+
+            android:layout_height="@dimen/_40sdp"/>
+    </LinearLayout>
+</RelativeLayout>

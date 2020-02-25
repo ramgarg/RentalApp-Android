@@ -29,6 +29,7 @@ class RegistrationActivity : AppCompatActivity(),
         btn_customer_inactive.setOnClickListener { registerAs("Customer")  }
         btn_agent_inactive.setOnClickListener { registerAs("Agent") }
         btn_register.setOnClickListener { register() }
+        tv_skip.setOnClickListener { MoveToActivity.moveToHomeActivity(this) }
     }
 
     override fun registerAs(registartionType: String) {

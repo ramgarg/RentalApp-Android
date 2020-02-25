@@ -9,23 +9,24 @@
 
         <item
                 android:icon="@mipmap/about"
-                android:id="@+id/drawer_fav"
+                android:id="@+id/nav_about"
                 android:title="About Rental App" />
         <item
-                android:id="@+id/drawer_notification"
+                android:id="@+id/nav_payment"
                 android:icon="@mipmap/payment"
                 android:title="Payment History" />
         <item
+                android:id="@+id/nav_my_address"
                 android:icon="@mipmap/my_address"
                 android:title="My Address" />
+
         <item
-                android:icon="@mipmap/help_support"
-                android:title="Help &amp; Support" />
-        <item
+                android:id="@+id/nav_tc"
                 android:icon="@mipmap/t_c"
                 android:title="Terms &amp; Conditions" />
 
         <item
+                android:id="@+id/nav_logout"
                 android:icon="@mipmap/logout"
                 android:title="Logout" />
     </group>

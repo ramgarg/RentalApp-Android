@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
+import com.rental.customer.dashboard.model.modelclass.Data
+import com.rental.customer.dashboard.model.modelclass.HomeResponse
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.row_dashboard.view.*
 
-class DashBoardAdapter(val items:ArrayList<String>,val context: Context):
+class DashBoardAdapter(val items:List<Data>,val context: Context):
     RecyclerView.Adapter<DashBoardAdapter.ViewHolder>() {
 
 
@@ -34,7 +37,8 @@ class DashBoardAdapter(val items:ArrayList<String>,val context: Context):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-        holder.tvVeichleName?.text=items.get(position)
-
+        holder.tvVeichleName?.text=items.get(position).first_name
+        Picasso.with(context).load(items.get(position).avatar)
+            .into(holder.imgVeichle );
     }
 }

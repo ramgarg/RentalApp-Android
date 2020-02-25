@@ -2,11 +2,13 @@ package com.rental.customer.login.view
 
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.customer.login.viewmodel.OTPViewModel
+import com.rental.customer.utils.MoveToActivity
 import kotlinx.android.synthetic.main.activity_otp.*
 
 class OTPActivity :AppCompatActivity(){
@@ -18,10 +20,10 @@ class OTPActivity :AppCompatActivity(){
         setContentView(R.layout.activity_otp);
 
         initialize()
-        otpViewModel=ViewModelProviders.of(this).get(OTPViewModel::class.java)
-        otpViewModel.getOTPResponse()?.observe(this, Observer {
-
-        })
+//        otpViewModel=ViewModelProviders.of(this).get(OTPViewModel::class.java)
+//        otpViewModel.getOTPResponse()?.observe(this, Observer {
+//
+//        })
 
     }
 
@@ -33,9 +35,11 @@ class OTPActivity :AppCompatActivity(){
 
         if(editTextOTP.text.toString().isEmpty()){
 //            otpView.showToast("Please Enter Valid OTP")
+            Toast.makeText(this,"Please Enter Valid OTP",Toast.LENGTH_SHORT).show()
         }else
-            otpViewModel.otpAPI(ed_email.text.toString())
+//            otpViewModel.otpAPI(ed_email.text.toString())
 
+            MoveToActivity.moveToHomeActivity(this)
         return false
     }
 
