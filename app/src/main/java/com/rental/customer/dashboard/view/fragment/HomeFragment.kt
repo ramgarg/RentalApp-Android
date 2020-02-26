@@ -5,23 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.rental.R
+import com.rental.customer.dashboard.model.modelclass.Data
+import com.rental.customer.dashboard.view.adapter.DashBoardAdapter
+import com.rental.customer.dashboard.viewmodel.HomeViewModel
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment :Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_home, container, false)
+    val paymentHistoryList: ArrayList<Data> = ArrayList()
+    lateinit var homeViewModel:HomeViewModel
 
-    // Creates a vertical Layout Manager
-//        rec_veichle.layoutManager = LinearLayoutManager(this)
-//        // You can use GridLayoutManager if you want multiple columns. Enter the number of columns as a parameter.
-//        rec_veichle.layoutManager = GridLayoutManager(this, 3)
-//        // Access the RecyclerView Adapter and load the data into it
-//        homeViewModel=ViewModelProviders.of(this).get(HomeViewModel::class.java)
-//        homeViewModel.getArticleResponseLiveData().observe(this, Observer {
-//
-//            rec_veichle.adapter = DashBoardAdapter(veichleList, this)
-//        })
-//
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+      val view=  inflater.inflate(R.layout.fragment_home, container, false)
 
+        homeViewModel=ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        homeViewModel.getHomeResponse().observe(this, Observer {
+            rec_veichle.adapter= DashBoardAdapter(it.data,requireActivity())
+        })
+
+        return view
+    }
 }
+
+

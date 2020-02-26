@@ -2,6 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
                 android:orientation="vertical"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -19,16 +22,26 @@
                   tools:context=".customer.myaddress.view.AddNewAddressActivity" />
     </FrameLayout>
 
-
     <include layout="@layout/toolbar"
     />
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_below="@+id/frame_map"
+                android:layout_height="match_parent">
+
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+
+                  android:layout_height="match_parent">
+
 
     <LinearLayout
             android:id="@+id/layout_curret_address"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:gravity="center_vertical"
-                  android:layout_below="@+id/frame_map"
+
                   android:layout_marginTop="@dimen/_20sdp"
                   android:layout_height="wrap_content">
 
@@ -48,6 +61,7 @@
                    android:src="@mipmap/location_pick_address"
                    android:layout_height="@dimen/_20sdp"/>
     </LinearLayout>
+
     <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:id="@+id/layout_ed_address"
@@ -73,7 +87,6 @@
                 android:layout_height="@dimen/_40sdp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <RelativeLayout
             android:id="@+id/layout_address_as"
@@ -225,7 +238,20 @@
         </LinearLayout>
 
     </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
+    <Button android:layout_width="match_parent"
+            android:text="Save"
+            android:id="@+id/btn_save"
+            android:layout_alignParentBottom="true"
+            android:textColor="#fff"
+            android:fontFamily="@font/bree_serif"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_15sdp"
 
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/button_save"
+            android:layout_height="@dimen/_40sdp"/>
 
 
 </RelativeLayout>

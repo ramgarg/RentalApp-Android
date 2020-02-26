@@ -15,7 +15,9 @@ class HomeViewModel : ViewModel() {
         homeResponseLiveData = homeRepository.getVeichleList()
     }
 
-    fun getArticleResponseLiveData(): LiveData<HomeResponse> {
+
+
+    fun getHomeResponse():LiveData<HomeResponse>{
         return homeResponseLiveData
     }
 }

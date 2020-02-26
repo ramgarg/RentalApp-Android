@@ -22,6 +22,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.rental.R
+import com.rental.customer.dashboard.view.activity.BaseActivity
 import com.rental.customer.utils.ViewVisibility
 import com.rental.customer.webservice.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
 import kotlinx.android.synthetic.main.add_new_address_activity.*
@@ -29,7 +30,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
 
-class AddNewAddressActivity :AppCompatActivity(), OnMapReadyCallback {
+class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
 
     private  var mLocationPermissionGranted:Boolean=false
     lateinit var mMap:GoogleMap
@@ -111,8 +112,8 @@ class AddNewAddressActivity :AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun initView(){
-        ViewVisibility.isVisibleOrNot(img_back,img_menu,img_notification,toolbar_title,"Add New Address")
-
+        ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
+            toolbar_title,getString(R.string.add_new_address))
     }
     private fun getLocationPermission() { /*
      * Request location permission, so that we can get the location of the

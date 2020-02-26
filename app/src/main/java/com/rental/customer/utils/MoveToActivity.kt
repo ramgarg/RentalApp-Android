@@ -5,12 +5,14 @@ import android.content.Intent
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.rental.customer.dashboard.view.activity.HomeActivity
+import com.rental.customer.dashboard.view.activity.OrderSummaryActivity
 import com.rental.customer.login.view.ForgotPasswordActivity
 import com.rental.customer.login.view.OTPActivity
 import com.rental.customer.login.view.RegistrationActivity
 import com.rental.customer.myaddress.view.AddNewAddressActivity
 import com.rental.customer.myaddress.view.EditAddressActivity
 import com.rental.customer.myaddress.view.MyAddressActivity
+import com.rental.customer.notification.view.NotificationActivity
 import com.rental.customer.payment.view.PaymentHistoryActivity
 import com.rental.customer.profile.ProfileActivity
 import com.rental.customer.webpages.AboutActivity
@@ -58,9 +60,16 @@ class MoveToActivity {
         fun moveToHomeActivity(context: Context){
             context.startActivity(Intent(context, HomeActivity::class.java))
         }
+        fun moveToNotificationActivity(context: Context){
+            context.startActivity(Intent(context, NotificationActivity::class.java))
+        }
 
         fun moveToProfileActivity(context: Context){
             context.startActivity(Intent(context, ProfileActivity::class.java))
+        }
+
+        fun moveToOrderSummaryActivity(context: Context){
+            context.startActivity(Intent(context, OrderSummaryActivity::class.java))
         }
 
         fun openWebPage(webView: WebView){

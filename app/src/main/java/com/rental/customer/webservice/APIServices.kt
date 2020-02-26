@@ -6,6 +6,7 @@ import com.rental.customer.login.model.modelclass.ForgotPasswordResponse
 import com.rental.customer.forgotpassword.model.modelClass.OTPRequest
 import com.rental.customer.forgotpassword.model.modelClass.OTPResponse
 import com.rental.customer.login.model.modelclass.LoginRequest
+import com.rental.customer.notification.model.NotificationResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -24,4 +25,7 @@ interface APIServices {
     @GET(Constant.DASHBOARD)
     fun getData():Call<HomeResponse>
 
+
+    @GET(Constant.NOTIFICATION)
+    fun getNotification():Call<NotificationResponse>
 }

@@ -38,7 +38,7 @@ class DashBoardAdapter(val items:List<Data>,val context: Context):
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
         holder.tvVeichleName?.text=items.get(position).first_name
-        Picasso.with(context).load(items.get(position).avatar)
-            .into(holder.imgVeichle );
+//        Picasso.with(context).load(items.get(position).avatar)
+//            .into(holder.imgVeichle );
     }
 }

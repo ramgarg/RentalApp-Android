@@ -10,6 +10,7 @@ class Constant {
         const val BASE_URL = "https://reqres.in/api/"
         const val LOGIN = ""
         const val DASHBOARD = "users?page=2"
+        const val NOTIFICATION = "users?page=2"
         const val REGISTER = ""
         const val FORGOTPASSOWRD = ""
         const val SENDOTP = ""

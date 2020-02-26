@@ -26,8 +26,6 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class HomeActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
-    lateinit var homeViewModel: HomeViewModel
-    val veichleList: ArrayList<Data> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +36,7 @@ class HomeActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     private fun initView(){
 
-        homeViewModel=ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        homeViewModel.getArticleResponseLiveData().observe(this, Observer {
 
-            rec_veichle.adapter=DashBoardAdapter(it.data,this)
-        })
         bottom_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         bottom_view.setSelectedItemId(R.id.navigation_home);
         navigationView.setNavigationItemSelectedListener(this);
@@ -53,6 +47,7 @@ class HomeActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
             MoveToActivity.moveToProfileActivity(this)
             drawer_layout.closeDrawer(GravityCompat.START)
             }
+        img_notification.setOnClickListener { MoveToActivity.moveToNotificationActivity(this) }
     }
 
     private fun setDefaultFragment(){
