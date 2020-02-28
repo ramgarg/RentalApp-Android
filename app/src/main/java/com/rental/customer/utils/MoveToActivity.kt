@@ -4,8 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.rental.customer.dashboard.view.activity.HomeActivity
-import com.rental.customer.dashboard.view.activity.OrderSummaryActivity
+import com.rental.customer.dashboard.view.activity.*
 import com.rental.customer.login.view.ForgotPasswordActivity
 import com.rental.customer.login.view.OTPActivity
 import com.rental.customer.login.view.RegistrationActivity
@@ -70,6 +69,18 @@ class MoveToActivity {
 
         fun moveToOrderSummaryActivity(context: Context){
             context.startActivity(Intent(context, OrderSummaryActivity::class.java))
+        }
+
+
+        fun moveToPaymentActivity(context: Context){
+            context.startActivity(Intent(context, PaymentActivity::class.java))
+        }
+        fun moveToViewDetailsActivity(context: Context){
+            context.startActivity(Intent(context, ViewDetailActivity::class.java))
+        }
+
+        fun moveToBookingDetailsActivity(context: Context){
+            context.startActivity(Intent(context, BookingDetailsActivity::class.java))
         }
 
         fun openWebPage(webView: WebView){

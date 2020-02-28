@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+    <RelativeLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+
+    <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/layout_rating"
+android:gravity="center"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/button_order"
+            android:layout_height="wrap_content">
+
+        <ImageView android:layout_width="@dimen/_50sdp"
+                   android:src="@mipmap/leaf"
+                   android:layout_marginTop="@dimen/_20sdp"
+                   android:layout_height="@dimen/_50sdp"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:gravity="center"
+                  android:layout_marginTop="@dimen/_20sdp"
+                  android:layout_marginBottom="@dimen/_20sdp"
+                  android:text="@string/thank_you"
+                  android:textColor="#000"
+                  android:fontFamily="@font/bree_serif"
+                  android:textSize="@dimen/_20sdp"
+                  android:layout_height="wrap_content"/>
+
+
+
+
+
+    </LinearLayout>
+
+    <Button android:layout_width="match_parent"
+            android:text="Ok"
+            android:layout_marginRight="@dimen/_10sdp"
+
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:id="@+id/btn_ok"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="#fff"
+            android:fontFamily="@font/bree_serif"
+            android:layout_below="@+id/layout_rating"
+            android:background="@drawable/ok"
+            android:layout_height="@dimen/_40sdp"/>
+    </RelativeLayout>
+</RelativeLayout>

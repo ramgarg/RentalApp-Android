@@ -1,16 +1,21 @@
 package com.rental.customer.myaddress.view
 
 import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.rental.R
+import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.view.activity.BaseActivity
-import com.rental.customer.utils.MoveToActivity
-import com.rental.customer.utils.ViewVisibility
+import com.rental.customer.myaddress.view.adapter.MyAddressAdapter
+import com.rental.customer.myaddress.viewmodel.MyAddressViewModel
+import com.rental.customer.utils.*
 import kotlinx.android.synthetic.main.activity_my_address.*
 import kotlinx.android.synthetic.main.toolbar.*
+import org.greenrobot.eventbus.EventBus
 
-class MyAddressActivity :BaseActivity() {
+class MyAddressActivity :BaseActivity(),RecyclerViewItemClick {
+
+    private lateinit var myAddressViewModel:MyAddressViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +26,34 @@ class MyAddressActivity :BaseActivity() {
     }
 
     private fun initView(){
+
+        myAddressViewModel=ViewModelProviders.of(this).get(MyAddressViewModel::class.java)
+        myAddressViewModel.getMyAddressResponse().observe(this, Observer {
+            rec_my_address.adapter=MyAddressAdapter(it.data,this,this)
+        })
+
+
+
+
         ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
             toolbar_title,getString(R.string.my_address))
-        btn_add_new_address.setOnClickListener { MoveToActivity.moveToAddNewAddressActivity(this) }
-//        edit_address_home.setOnClickListener { MoveToActivity.moveToEditAddressActivity(this)  }
+        btn_add_new_address.setOnClickListener {
+            EventBus.getDefault().postSticky("AddNew")
+//            RxBus.publish(EventModel("AddNew"))
+
+            MoveToActivity.moveToAddNewAddressActivity(this)
+
+        }
 
     }
+
+    override fun onItemClick(item: Data) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+
+
+    }
+
+
+
 }

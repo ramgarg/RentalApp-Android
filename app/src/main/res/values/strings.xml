@@ -34,4 +34,6 @@
     <string name="support">Support</string>
     <string name="my_address">My Addresses</string>
     <string name="add_new_address">Add New Address</string>
+    <string name="booking_details">Booking Details</string>
+    <string name="thank_you">Thank You!\n Your payment has been Successfully Processed.</string>
 </resources>

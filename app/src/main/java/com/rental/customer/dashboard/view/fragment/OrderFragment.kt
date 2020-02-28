@@ -9,14 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.adapter.DashBoardAdapter
-import com.rental.customer.dashboard.view.adapter.OrderAdapter
-import com.rental.customer.dashboard.viewmodel.HomeViewModel
+import com.rental.customer.dashboard.view.adapter.OrderClosedAdapter
+import com.rental.customer.dashboard.view.adapter.OrderOpenAdapter
 import com.rental.customer.dashboard.viewmodel.OrderViewModel
 import com.rental.customer.utils.MoveToActivity
 import com.rental.customer.utils.RecyclerViewItemClick
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.rental.customer.utils.TimeDateSelector
 import kotlinx.android.synthetic.main.fragment_order.*
+import kotlinx.android.synthetic.main.fragment_order.view.*
 
 class OrderFragment : Fragment() ,RecyclerViewItemClick {
 
@@ -25,17 +25,45 @@ class OrderFragment : Fragment() ,RecyclerViewItemClick {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
        val  view=inflater.inflate(R.layout.fragment_order, container, false)
 
+        viewVisibility(view)
         orderViewModel= ViewModelProviders.of(this).get(OrderViewModel::class.java)
-        orderViewModel.getOrderResponse().observe(this, Observer {
-            rec_order.adapter= OrderAdapter(it.data,requireActivity(),this)
-        })
 
+        orderViewModel.getOrderResponse().observe(this, Observer {
+            rec_order.adapter= OrderOpenAdapter(it.data,requireActivity(),this)
+        })
 
         return  view
     }
 
     override fun onItemClick(item: Data) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates
+
     MoveToActivity.moveToOrderSummaryActivity(requireContext())
+    }
+
+    private fun viewVisibility(view: View){
+
+
+       view. layout_open_inactive.setOnClickListener { view
+            layout_close_inactive.visibility=View.VISIBLE
+            layout_open_inactive.visibility=View.GONE
+            layout_close_active.visibility=View.GONE
+            layout_open_active.visibility=View.VISIBLE
+            orderViewModel.getOrderResponse().observe(this, Observer {
+                rec_order.adapter= OrderOpenAdapter(it.data,requireActivity(),this)
+            })
+        }
+
+        view. layout_close_inactive.setOnClickListener {view
+            layout_close_inactive.visibility=View.GONE
+            layout_open_inactive.visibility=View.VISIBLE
+            layout_close_active.visibility=View.VISIBLE
+            layout_open_active.visibility=View.GONE
+            orderViewModel.getOrderResponse().observe(this, Observer {
+                rec_order.adapter= OrderClosedAdapter(it.data,requireActivity(),this)
+            })
+
+        }
+
     }
 }

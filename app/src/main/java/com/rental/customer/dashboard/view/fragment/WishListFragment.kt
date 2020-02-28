@@ -8,13 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
-import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.adapter.DashBoardAdapter
 import com.rental.customer.dashboard.view.adapter.WishListAdapter
-import com.rental.customer.dashboard.viewmodel.HomeViewModel
-import com.rental.customer.dashboard.viewmodel.OrderViewModel
 import com.rental.customer.dashboard.viewmodel.WishListViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_wish_list.*
 
 class WishListFragment :Fragment() {

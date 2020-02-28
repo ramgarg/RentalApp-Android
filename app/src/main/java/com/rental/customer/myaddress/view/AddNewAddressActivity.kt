@@ -11,7 +11,6 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -27,13 +26,17 @@ import com.rental.customer.utils.ViewVisibility
 import com.rental.customer.webservice.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
 import kotlinx.android.synthetic.main.add_new_address_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
 
 class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
 
     private  var mLocationPermissionGranted:Boolean=false
-    lateinit var mMap:GoogleMap
+    private lateinit var mMap:GoogleMap
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -45,6 +48,34 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
 
     }
 
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    fun messageReceive(customEvent: String?) {
+        if(customEvent.equals("AddNew")){
+                toolbar_title.text="Add New Address"
+                btn_save.visibility= View.VISIBLE
+                btn_delete.visibility=View.GONE
+            btn_update.visibility=View.GONE
+            }else{
+                toolbar_title.text="MyAddress"
+                btn_save.visibility=View.GONE
+            btn_delete.visibility=View.VISIBLE
+            btn_update.visibility=View.VISIBLE
+            }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        EventBus.getDefault().unregister(this)
+    }
+
+
+
     override fun onMapReady(map: GoogleMap?) {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         if (map != null) {
@@ -52,8 +83,12 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
         }
         val mapStyleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.style)
         mMap.setMapStyle(mapStyleOptions)
+
         updateLocationUI()
+
         moveCameraToCurrentLocation(mMap)
+
+        saveAddressAs()
     }
 
     @SuppressLint("MissingPermission")
@@ -158,11 +193,47 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
         }
         try {
             if (mLocationPermissionGranted) {
-                mMap.setMyLocationEnabled(true)
-                mMap.getUiSettings().setMyLocationButtonEnabled(true)
+                mMap.isMyLocationEnabled = true
+                mMap.uiSettings.isMyLocationButtonEnabled = true
             }
         } catch (e: SecurityException) {
             Log.e("Exception: %s", e.message)
         }
     }
+
+    private fun saveAddressAs(){
+        btn_home_inactive.setOnClickListener {
+            btn_home_active.visibility = View.VISIBLE
+            btn_work_active.visibility = View.GONE
+            btn_other_active.visibility = View.GONE
+
+            btn_other_inactive.visibility = View.VISIBLE
+            btn_home_inactive.visibility = View.GONE
+            btn_work_inactive.visibility = View.VISIBLE
+
+        }
+
+        btn_work_inactive.setOnClickListener {
+            btn_home_active.visibility = View.GONE
+            btn_work_active.visibility = View.VISIBLE
+            btn_other_active.visibility = View.GONE
+
+            btn_other_inactive.visibility = View.VISIBLE
+            btn_work_inactive.visibility = View.GONE
+            btn_home_inactive.visibility = View.VISIBLE
+
+        }
+
+        btn_other_inactive.setOnClickListener {
+            btn_home_active.visibility = View.GONE
+            btn_work_active.visibility = View.GONE
+            btn_other_active.visibility = View.VISIBLE
+
+            btn_other_inactive.visibility = View.GONE
+            btn_work_inactive.visibility = View.VISIBLE
+            btn_home_inactive.visibility = View.VISIBLE
+        }
+
+    }
+
 }

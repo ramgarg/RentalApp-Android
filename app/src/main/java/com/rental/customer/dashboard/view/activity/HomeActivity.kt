@@ -5,21 +5,12 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.rental.R
-import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.model.modelclass.HomeResponse
-import com.rental.customer.dashboard.view.adapter.DashBoardAdapter
 import com.rental.customer.dashboard.view.fragment.*
-import com.rental.customer.dashboard.viewmodel.HomeViewModel
 import com.rental.customer.utils.MoveToActivity
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.header.*
 import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -50,7 +41,7 @@ class HomeActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
         img_notification.setOnClickListener { MoveToActivity.moveToNotificationActivity(this) }
     }
 
-    private fun setDefaultFragment(){
+     fun setDefaultFragment(){
         val fragment = HomeFragment()
         supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.getSimpleName())
             .commit()
@@ -61,7 +52,7 @@ class HomeActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
             R.id.navigation_home -> {
                 setDefaultFragment();
-                toolbar_title.text="Home"
+                toolbar_title.text="Select Category"
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_wishlist -> {

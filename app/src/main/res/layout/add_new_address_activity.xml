@@ -6,7 +6,16 @@
                 android:focusableInTouchMode="true"
                 android:clickable="true"
                 android:layout_width="match_parent"
+
                 android:layout_height="match_parent">
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_above="@+id/layout_update"
+
+                android:layout_height="match_parent">
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
 
     <FrameLayout android:layout_width="match_parent"
                  android:id="@+id/frame_map"
@@ -22,17 +31,11 @@
                   tools:context=".customer.myaddress.view.AddNewAddressActivity" />
     </FrameLayout>
 
-    <include layout="@layout/toolbar"
-    />
-
-    <ScrollView android:layout_width="match_parent"
-                android:layout_below="@+id/frame_map"
-                android:layout_height="match_parent">
 
 
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="vertical"
-
+                  android:layout_below="@+id/frame_map"
                   android:layout_height="match_parent">
 
 
@@ -66,12 +69,12 @@
             android:layout_width="match_parent"
             android:id="@+id/layout_ed_address"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_below="@+id/layout_curret_address"
             android:hint="Address Line1"
             android:textColor="#000"
-
+            android:inputType="textMultiLine"
             app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
             android:textColorHint="@android:color/darker_gray"
             android:layout_height="wrap_content">
@@ -79,12 +82,11 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/ed_address"
-                android:maxLines="1"
-                android:lines="1"
-                android:inputType="textEmailAddress"
+
+                android:inputType="textMultiLine"
                 android:nextFocusDown="@id/ed_password"
                 android:fontFamily="@font/bree_serif"
-                android:layout_height="@dimen/_40sdp"/>
+                android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,7 +119,7 @@
 
                       android:fontFamily="@font/bree_serif"
 
-                      android:id="@+id/btn_customer_inactive"
+                      android:id="@+id/btn_home_inactive"
                       android:textSize="@dimen/_12sdp"
                       android:paddingLeft="@dimen/_5sdp"
                       android:gravity="center"
@@ -128,21 +130,21 @@
                       android:layout_height="@dimen/_30sdp"/>
             <RelativeLayout
                     android:visibility="gone"
-                    android:id="@+id/btn_customer_active"
-                    android:layout_width="@dimen/_80sdp"
+                    android:id="@+id/btn_home_active"
+                    android:layout_width="@dimen/_90sdp"
+                    android:background="@drawable/shadow"
                     android:layout_height="wrap_content">
 
                 <TextView android:layout_width="wrap_content"
                           android:text="Home"
                           android:fontFamily="@font/bree_serif"
-
-                          android:textSize="@dimen/_10sdp"
+android:layout_centerInParent="true"
+                          android:textSize="@dimen/_15sdp"
                           android:gravity="center"
                           android:paddingLeft="@dimen/_5sdp"
                           android:paddingRight="@dimen/_5sdp"
                           android:drawablePadding="@dimen/_5sdp"
-                          android:background="@drawable/shadow"
-                          android:drawableLeft="@mipmap/home_addres_ss"
+
                           android:layout_height="@dimen/_30sdp"/>
                 <ImageView
                         android:layout_alignParentRight="true"
@@ -154,7 +156,7 @@
             <TextView android:layout_width="@dimen/_80sdp"
                       android:text="Work"
                       android:gravity="center"
-                      android:id="@+id/btn_agent_inactive"
+                      android:id="@+id/btn_work_inactive"
                       android:textSize="@dimen/_13sdp"
                       android:fontFamily="@font/bree_serif"
 
@@ -166,22 +168,24 @@
 
 
             <RelativeLayout
+
+                    android:background="@drawable/shadow"
                     android:visibility="gone"
-                    android:id="@+id/btn_agent_active"
-                    android:layout_width="@dimen/_80sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:id="@+id/btn_work_active"
+                    android:layout_width="@dimen/_90sdp"
                     android:layout_height="wrap_content">
 
                 <TextView
                         android:gravity="center"
-                        android:layout_width="@dimen/_70sdp"
+                        android:layout_width="wrap_content"
                         android:text="Work"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_15sdp"
                         android:paddingLeft="@dimen/_5sdp"
                         android:fontFamily="@font/bree_serif"
-
+android:layout_centerInParent="true"
                         android:drawableLeft="@mipmap/work_address_ss"
                         android:layout_marginLeft="@dimen/_10sdp"
-                        android:background="@drawable/shadow"
                         android:layout_height="@dimen/_30sdp"/>
                 <ImageView
                         android:layout_alignParentRight="true"
@@ -197,7 +201,7 @@
                       android:gravity="center"
                       android:fontFamily="@font/bree_serif"
 
-                      android:id="@+id/btn_merchant_inactive"
+                      android:id="@+id/btn_other_inactive"
                       android:drawablePadding="@dimen/_5sdp"
                       android:textSize="@dimen/_12sdp"
                       android:drawableLeft="@mipmap/order_address_ss"
@@ -208,23 +212,25 @@
                       android:layout_height="@dimen/_30sdp"/>
 
             <RelativeLayout
+                    android:layout_marginLeft="@dimen/_10sdp"
+
+                    android:background="@drawable/shadow"
                     android:visibility="gone"
-                    android:id="@+id/btn_merchant_active"
-                    android:layout_width="@dimen/_100sdp"
+                    android:id="@+id/btn_other_active"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                 <TextView android:layout_width="wrap_content"
                           android:text="Other"
                           android:gravity="center"
                           android:fontFamily="@font/bree_serif"
-
-                          android:drawablePadding="@dimen/_5sdp"
-                          android:textSize="@dimen/_12sdp"
+android:layout_centerInParent="true"
                           android:drawableLeft="@mipmap/order_address_ss"
+                          android:drawablePadding="@dimen/_5sdp"
+                          android:textSize="@dimen/_15sdp"
                           android:layout_marginLeft="@dimen/_10sdp"
                           android:paddingLeft="@dimen/_5sdp"
                           android:paddingRight="@dimen/_5sdp"
-                          android:background="@drawable/shadow"
                           android:layout_height="@dimen/_30sdp"/>
 
                 <ImageView
@@ -239,19 +245,53 @@
 
     </RelativeLayout>
     </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
-    <Button android:layout_width="match_parent"
-            android:text="Save"
-            android:id="@+id/btn_save"
+    <include layout="@layout/toolbar"
+    />
+    <LinearLayout
+            android:id="@+id/layout_update"
+            android:weightSum="1"
             android:layout_alignParentBottom="true"
-            android:textColor="#fff"
-            android:fontFamily="@font/bree_serif"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_15sdp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="@dimen/_40sdp">
 
-            android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/button_save"
-            android:layout_height="@dimen/_40sdp"/>
+        <Button
+                android:id="@+id/btn_delete"
+                android:textColor="#fff"
+                android:fontFamily="@font/bree_serif"
+                android:textSize="@dimen/_15sdp"
+                android:background="@color/colorAccent"
+                android:textAllCaps="false"
+                android:text="Delete"
+                android:layout_weight=".5"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="match_parent"/>
+        <Button
+                android:id="@+id/btn_update"
+                android:textColor="#fff"
+                android:fontFamily="@font/bree_serif"
+                android:textSize="@dimen/_15sdp"
+                android:background="@color/colorPrimary"
+                android:text="Update"
+                android:textAllCaps="false"
+                android:layout_weight=".5"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="match_parent"/>
+        <Button android:layout_width="match_parent"
+                android:text="Save"
+                android:id="@+id/btn_save"
+                android:layout_alignParentBottom="true"
+                android:textColor="#fff"
+                android:fontFamily="@font/bree_serif"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_15sdp"
+
+                android:background="@drawable/button_save"
+                android:layout_height="@dimen/_40sdp"/>
+    </LinearLayout>
+
 
 
 </RelativeLayout>

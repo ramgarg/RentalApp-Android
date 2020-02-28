@@ -14,7 +14,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".customer.dashboard.view.activity.PaymentActivity">
+        <activity android:name=".customer.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -80,6 +80,28 @@
 
         />
         <activity android:name=".customer.dashboard.view.activity.OrderSummaryActivity"
+                  android:screenOrientation="portrait"
+
+        />
+
+        <activity android:name=".customer.dashboard.view.activity.PaymentActivity"
+                  android:screenOrientation="portrait"
+
+        />
+
+        <activity android:name=".customer.dashboard.view.activity.ViewDetailActivity"
+                  android:screenOrientation="portrait"
+
+        />
+
+
+        <activity android:name="therajanmaurya.rxbus.kotlin.MainActivity"
+                  android:screenOrientation="portrait"
+
+        />
+
+
+        <activity android:name=".customer.dashboard.view.activity.BookingDetailsActivity"
                   android:screenOrientation="portrait"
 
         />

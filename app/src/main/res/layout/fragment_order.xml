@@ -15,11 +15,12 @@
 
 
         <LinearLayout android:layout_width="@dimen/_120sdp"
+                      android:id="@+id/layout_open_active"
                       android:orientation="horizontal"
                       android:gravity="center"
                       android:paddingLeft="@dimen/_10sdp"
                       android:paddingRight="@dimen/_10sdp"
-                      android:background="@drawable/button_open_order"
+                      android:background="@drawable/shadow_order"
                       android:layout_height="@dimen/_50sdp">
 
             <ImageView android:layout_width="@dimen/_25sdp"
@@ -34,11 +35,58 @@
 
         </LinearLayout>
         <LinearLayout android:layout_width="@dimen/_120sdp"
+                      android:id="@+id/layout_open_inactive"
+                      android:visibility="gone"
+                      android:orientation="horizontal"
+                      android:gravity="center"
+                      android:paddingLeft="@dimen/_10sdp"
+                      android:paddingRight="@dimen/_10sdp"
+                      android:background="@drawable/button_closed_order"
+                      android:layout_height="@dimen/_50sdp">
+
+            <ImageView android:layout_width="@dimen/_25sdp"
+                       android:src="@mipmap/open_order_active"
+                       android:layout_height="@dimen/_25sdp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:text="Open Orders"
+                      android:textColor="#000"
+                      android:textSize="@dimen/_15sdp"
+                      android:layout_marginLeft="@dimen/_10sdp"
+                      android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+                android:layout_width="@dimen/_120sdp"
+                      android:id="@+id/layout_close_inactive"
                       android:orientation="horizontal"
                       android:gravity="center"
                     android:paddingLeft="@dimen/_10sdp"
                       android:paddingRight="@dimen/_10sdp"
                       android:background="@drawable/button_closed_order"
+                      android:layout_marginLeft="@dimen/_20sdp"
+                      android:layout_height="@dimen/_50sdp">
+
+            <ImageView android:layout_width="@dimen/_25sdp"
+                       android:src="@mipmap/close_order_active"
+                       android:layout_height="@dimen/_25sdp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:text="Closed Orders"
+                      android:textColor="#000"
+                      android:textSize="@dimen/_15sdp"
+                      android:layout_marginLeft="@dimen/_10sdp"
+                      android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout android:layout_width="@dimen/_120sdp"
+                      android:visibility="gone"
+                      android:id="@+id/layout_close_active"
+                      android:orientation="horizontal"
+                      android:gravity="center"
+                      android:paddingLeft="@dimen/_10sdp"
+                      android:paddingRight="@dimen/_10sdp"
+                      android:background="@drawable/shadow_order"
                       android:layout_marginLeft="@dimen/_20sdp"
                       android:layout_height="@dimen/_50sdp">
 

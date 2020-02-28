@@ -8,12 +8,16 @@
              android:id="@+id/toolbar"/>
 
     <ScrollView
+
             android:layout_below="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
-            android:layout_margin="@dimen/_10sdp"
 
+
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -28,16 +32,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-        <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_below="@+id/tv_order_id"
-                android:id="@+id/tv_total_price"
-                android:fontFamily="@font/bree_serif"
-                android:textColor="#000"
-                android:textSize="@dimen/_15sdp"
-                android:text="Total Price $220"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:text="Total\nPrice "
+                  android:textColor="#000"
+
+                  android:id="@+id/booking_title"
+                  android:layout_below="@+id/tv_order_id"
+                  android:textSize="@dimen/_12sdp"
+                  android:fontFamily="@font/bree_serif"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/booking_price"
+                  android:textColor="#000"
+                  android:fontFamily="@font/bree_serif"
+                  android:textSize="@dimen/_20sdp"
+                  android:text="$30"
+                  android:layout_marginLeft="@dimen/_5sdp"
+                  android:layout_toRightOf="@+id/booking_title"
+                  android:layout_below="@+id/tv_order_id"
+                  android:layout_height="wrap_content"/>
+
+
+        <TextView android:layout_width="wrap_content"
+                  android:text="Per Hour"
+                  android:layout_marginTop="@dimen/_10sdp"
+                  android:layout_marginLeft="@dimen/_5sdp"
+                  android:layout_toRightOf="@+id/booking_price"
+                  android:id="@+id/per_hour"
+                  android:layout_below="@+id/tv_order_id"
+                  android:textSize="@dimen/_12sdp"
+                  android:fontFamily="@font/bree_serif"
+                  android:layout_height="wrap_content"/>
 
         <TextView
                 android:layout_marginTop="@dimen/_10sdp"
@@ -53,8 +78,8 @@
                 android:layout_height="wrap_content"/>
 
         <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_below="@+id/tv_total_price"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_below="@+id/per_hour"
                 android:id="@+id/tv_pending_amount"
                 android:fontFamily="@font/bree_serif"
                 android:textColor="#000"
@@ -64,9 +89,9 @@
                 android:layout_height="wrap_content"/>
 
         <TextView
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_25sdp"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/tv_total_price"
+                android:layout_below="@+id/booking_price"
                 android:id="@+id/tv_pay_now"
                 android:paddingLeft="@dimen/_5sdp"
                android:paddingRight="@dimen/_5sdp"
@@ -175,7 +200,6 @@
                           android:fontFamily="@font/bree_serif"
                           android:layout_height="wrap_content"/>
                 <TextView android:layout_width="wrap_content"
-                          android:text="12 Nov 2019"
                           android:layout_marginLeft="@dimen/_10sdp"
                           android:id="@+id/tv_st_date_sel"
                           android:layout_below="@+id/tv_st_date"
@@ -213,7 +237,6 @@
                           android:fontFamily="@font/bree_serif"
                           android:layout_height="wrap_content"/>
                 <TextView android:layout_width="wrap_content"
-                          android:text="11:00am"
                           android:layout_marginLeft="@dimen/_10sdp"
                           android:id="@+id/tv_st_time_sel"
                           android:layout_below="@+id/tv_st_time"
@@ -249,7 +272,7 @@
                         android:layout_height="@dimen/_20sdp"/>
 
                 <TextView android:layout_width="wrap_content"
-                          android:text="Start Date"
+                          android:text="End Date"
 
                           android:layout_marginLeft="@dimen/_10sdp"
                           android:id="@+id/tv_end_date"
@@ -258,7 +281,6 @@
                           android:fontFamily="@font/bree_serif"
                           android:layout_height="wrap_content"/>
                 <TextView android:layout_width="wrap_content"
-                          android:text="12 Nov 2019"
                           android:layout_marginLeft="@dimen/_10sdp"
                           android:id="@+id/tv_end_date_sel"
                           android:layout_below="@+id/tv_end_date"
@@ -287,7 +309,7 @@
                         android:layout_height="@dimen/_20sdp"/>
 
                 <TextView android:layout_width="wrap_content"
-                          android:text="Start Time"
+                          android:text="End Time"
 
                           android:layout_marginLeft="@dimen/_10sdp"
                           android:id="@+id/tv_end_time"
@@ -296,7 +318,6 @@
                           android:fontFamily="@font/bree_serif"
                           android:layout_height="wrap_content"/>
                 <TextView android:layout_width="wrap_content"
-                          android:text="11:00am"
                           android:layout_marginLeft="@dimen/_10sdp"
                           android:id="@+id/tv_end_time_sel"
                           android:layout_below="@+id/tv_end_time"

@@ -8,14 +8,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rec_veichle"
-    app:spanCount="3"
+app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
   android:layout_marginTop="@dimen/_80sdp"
     android:layout_marginLeft="@dimen/_10sdp"
     android:layout_marginRight="@dimen/_10sdp"
     android:layout_width="match_parent"
-    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+
     android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
-
+    <!--app:spanCount="3"-->
+    <!--app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
 </androidx.constraintlayout.widget.ConstraintLayout>
