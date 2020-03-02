@@ -72,6 +72,14 @@ class MoveToActivity {
         }
 
 
+        fun moveToOrderReviewActivity(context: Context){
+            context.startActivity(Intent(context, OrderReviewActivity::class.java))
+        }
+
+        fun moveToNotifyAdminActivity(context: Context){
+            context.startActivity(Intent(context, NotifyToAdminActivity::class.java))
+        }
+
         fun moveToPaymentActivity(context: Context){
             context.startActivity(Intent(context, PaymentActivity::class.java))
         }
@@ -81,6 +89,10 @@ class MoveToActivity {
 
         fun moveToBookingDetailsActivity(context: Context){
             context.startActivity(Intent(context, BookingDetailsActivity::class.java))
+        }
+
+        fun moveToCategoryActivity(context: Context){
+            context.startActivity(Intent(context, CategoryActivity::class.java))
         }
 
         fun openWebPage(webView: WebView){

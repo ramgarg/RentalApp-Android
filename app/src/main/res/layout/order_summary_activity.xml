@@ -8,18 +8,18 @@
              android:id="@+id/toolbar"/>
 
     <ScrollView
-
-            android:layout_below="@+id/toolbar"
+            android:layout_marginTop="@dimen/_10sdp"
+    android:layout_below="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
 
 
-            android:layout_marginTop="@dimen/_10sdp"
+
             android:layout_marginLeft="@dimen/_15sdp"
             android:layout_marginRight="@dimen/_15sdp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
         <TextView
@@ -94,7 +94,7 @@
                 android:layout_below="@+id/booking_price"
                 android:id="@+id/tv_pay_now"
                 android:paddingLeft="@dimen/_5sdp"
-               android:paddingRight="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
                 android:fontFamily="@font/bree_serif"
                 android:textColor="#fff"
                 android:background="@drawable/button_gradient"
@@ -117,8 +117,9 @@
         <TextView android:layout_width="match_parent"
                   android:id="@+id/view_1"
                   android:layout_marginTop="@dimen/_10sdp"
+                  android:layerType="software"
+                  android:background="@drawable/dotted_line"
                   android:layout_below="@+id/tv_truck_quantity"
-                  android:background="@android:color/darker_gray"
                   android:layout_height="@dimen/_1sdp"/>
 
         <TextView

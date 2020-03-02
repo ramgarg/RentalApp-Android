@@ -6,14 +6,19 @@
             android:id="@+id/group1"
             android:checkableBehavior="single">
 
+        <item
+                android:icon="@mipmap/dashboard"
+                android:id="@+id/nav_dashboard"
+                android:title="Dashboard" />
 
         <item
                 android:icon="@mipmap/about"
                 android:id="@+id/nav_about"
-                android:title="About Rental App" />
+                android:title="About App" />
         <item
                 android:id="@+id/nav_payment"
                 android:icon="@mipmap/payment"
+                android:visible="false"
                 android:title="Payment History" />
         <item
                 android:id="@+id/nav_my_address"

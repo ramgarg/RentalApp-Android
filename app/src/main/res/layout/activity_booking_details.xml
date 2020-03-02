@@ -24,11 +24,11 @@ android:layout_marginRight="@dimen/_15sdp"
 
             <TextView
 
-                    android:id="@+id/tv_order_id"
+                    android:id="@+id/tv_vehicle_name"
                     android:fontFamily="@font/bree_serif"
                     android:textColor="#000"
                     android:textSize="@dimen/_15sdp"
-                    android:text="Order ID - 76436778787877"
+                    android:text="Volvo FH Truck"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -37,7 +37,7 @@ android:layout_marginRight="@dimen/_15sdp"
                       android:textColor="#000"
 
                       android:id="@+id/booking_title"
-                      android:layout_below="@+id/tv_order_id"
+                      android:layout_below="@+id/tv_vehicle_name"
                       android:textSize="@dimen/_12sdp"
                       android:fontFamily="@font/bree_serif"
                       android:layout_height="wrap_content"/>
@@ -49,7 +49,7 @@ android:layout_marginRight="@dimen/_15sdp"
                       android:text="$30"
                       android:layout_marginLeft="@dimen/_5sdp"
                       android:layout_toRightOf="@+id/booking_title"
-                      android:layout_below="@+id/tv_order_id"
+                      android:layout_below="@+id/tv_vehicle_name"
                       android:layout_height="wrap_content"/>
 
 
@@ -59,7 +59,7 @@ android:layout_marginRight="@dimen/_15sdp"
                       android:layout_marginLeft="@dimen/_5sdp"
                       android:layout_toRightOf="@+id/booking_price"
                       android:id="@+id/per_hour"
-                      android:layout_below="@+id/tv_order_id"
+                      android:layout_below="@+id/tv_vehicle_name"
                       android:textSize="@dimen/_12sdp"
                       android:fontFamily="@font/bree_serif"
                       android:layout_height="wrap_content"/>
@@ -276,8 +276,8 @@ android:layout_marginRight="@dimen/_15sdp"
                               android:layout_height="wrap_content">
 
                     <ImageView android:layout_width="@dimen/_25sdp"
-                               android:id="@+id/add_quantity"
-                               android:src="@mipmap/plus"
+                               android:id="@+id/minus_quantity"
+                               android:src="@mipmap/minus"
                                android:padding="@dimen/_5sdp"
                                android:background="@drawable/button_add"
                                android:layout_height="@dimen/_25sdp"/>
@@ -294,9 +294,9 @@ android:layout_marginRight="@dimen/_15sdp"
                             android:background="@drawable/itemquantity_bg"
                             android:layout_height="@dimen/_25sdp"/>
                     <ImageView android:layout_width="@dimen/_25sdp"
-                               android:src="@mipmap/minus"
+                               android:src="@mipmap/plus"
                                android:padding="@dimen/_5sdp"
-                               android:id="@+id/minus_quantity"
+                               android:id="@+id/add_quantity"
                                android:background="@drawable/button_minus"
                                android:layout_height="@dimen/_25sdp"/>
 

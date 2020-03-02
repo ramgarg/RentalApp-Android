@@ -94,6 +94,11 @@ class HomeActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
             R.id.nav_about -> {
                 MoveToActivity.moveToAboutActivity(this)
             }
+
+            R.id.nav_dashboard -> {
+                setDefaultFragment();
+                toolbar_title.text="Select Category"
+            }
             R.id.nav_logout -> {
                 Toast.makeText(this, "Under Development", Toast.LENGTH_SHORT).show()
             }

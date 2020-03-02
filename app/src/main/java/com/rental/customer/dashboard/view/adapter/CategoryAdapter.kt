@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.common.data.DataHolder
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.row_category.view.*
+
 
 class CategoryAdapter(val items:List<Data>, val context: Context,var
 recyclerViewItemClick: RecyclerViewItemClick):
@@ -52,4 +54,5 @@ recyclerViewItemClick: RecyclerViewItemClick):
 //        Picasso.with(context).load(items.get(position).avatar)
 //            .into(holder.imgVeichle );
     }
+
 }

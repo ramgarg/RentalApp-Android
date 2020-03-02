@@ -42,6 +42,7 @@
                   android:layout_centerVertical="true"
                   android:textSize="@dimen/_12sdp"
                   android:layout_marginTop="@dimen/_10sdp"
+
                   android:fontFamily="@font/bree_serif"
                   android:layout_height="wrap_content"/>
 
@@ -50,6 +51,7 @@
 
     <TextView android:layout_width="match_parent"
               android:layout_marginTop="@dimen/_10sdp"
-              android:background="@android:color/darker_gray"
-              android:layout_height="1dp"/>
+              android:layerType="software"
+              android:background="@drawable/dotted_line"
+              android:layout_height="wrap_content"/>
 </LinearLayout>

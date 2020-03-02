@@ -95,13 +95,23 @@
         />
 
 
-        <activity android:name="therajanmaurya.rxbus.kotlin.MainActivity"
+        <activity android:name=".customer.dashboard.view.activity.OrderReviewActivity"
+                  android:screenOrientation="portrait"
+
+        />
+
+        <activity android:name=".customer.dashboard.view.activity.NotifyToAdminActivity"
                   android:screenOrientation="portrait"
 
         />
 
 
+
         <activity android:name=".customer.dashboard.view.activity.BookingDetailsActivity"
+                  android:screenOrientation="portrait"
+
+        />
+        <activity android:name=".customer.dashboard.view.activity.CategoryActivity"
                   android:screenOrientation="portrait"
 
         />

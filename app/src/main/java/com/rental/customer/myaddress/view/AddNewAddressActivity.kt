@@ -114,11 +114,11 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
                 .getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
 
             tv_current_address.text=address
-            val city: String = addresses[0].getLocality()
-            val state: String = addresses[0].getAdminArea()
-            val country: String = addresses[0].getCountryName()
-            val postalCode: String = addresses[0].getPostalCode()
-            val knownName: String = addresses[0].getFeatureName()
+//            val city: String = addresses[0].getLocality()
+//            val state: String = addresses[0].getAdminArea()
+//            val country: String = addresses[0].getCountryName()
+//            val postalCode: String = addresses[0].getPostalCode()
+//            val knownName: String = addresses[0].getFeatureName()
 
 
             map!!.animateCamera(

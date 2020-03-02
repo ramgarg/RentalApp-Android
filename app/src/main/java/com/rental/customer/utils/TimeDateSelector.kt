@@ -5,7 +5,9 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.view.View
 import android.view.Window
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import com.rental.R
 import kotlinx.android.synthetic.main.activity_payment.*
@@ -76,6 +78,18 @@ class TimeDateSelector {
         private fun thankYou(dialog: Dialog){
             dialog.btn_ok.setOnClickListener { dialog.cancel() }
         }
+
+        fun hideSoftKeyBoard(context: Context, view: View) {
+            try {
+                val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm?.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+            } catch (e: Exception) {
+                // TODO: handle exception
+                e.printStackTrace()
+            }
+
+        }
     }
+
 
 }

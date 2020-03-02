@@ -2,41 +2,53 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
+
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_150sdp">
+                android:layout_height="wrap_content">
 
 
 
 
-    <RelativeLayout
-            android:background="@drawable/shadow_home"
+    <FrameLayout
             android:layout_centerHorizontal="true"
+            android:layout_width="@dimen/_250sdp"
             android:layout_marginTop="@dimen/_20sdp"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_100sdp">
+            android:layout_height="wrap_content"
 
 
-    <TextView android:layout_width="@dimen/_200sdp"
-              android:text="Truck"
+    >
+        <FrameLayout
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_100sdp">
+            <androidx.cardview.widget.CardView
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:elevation="@dimen/_5sdp"
+            android:layout_width="@dimen/_245sdp"
+            android:layout_height="@dimen/_95sdp"
 
-              android:id="@+id/vehicle_name"
-              android:textSize="@dimen/_20sdp"
-              android:textColor="#000"
-              android:fontFamily="@font/bree_serif"
-              android:paddingBottom="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_15sdp"
+            >
+            <TextView android:layout_width="match_parent"
+                      android:text="Truck"
 
-              android:gravity="bottom|center_horizontal"
-              android:layout_height="@dimen/_100sdp"/>
+                      android:id="@+id/vehicle_name"
+                      android:textSize="@dimen/_20sdp"
+                      android:textColor="#000"
+                      android:fontFamily="@font/bree_serif"
+                      android:paddingBottom="@dimen/_10sdp"
 
-    </RelativeLayout>
-
+                      android:gravity="bottom|center_horizontal"
+                      android:layout_height="@dimen/_100sdp"/>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
     <ImageView
             android:layout_gravity="center_horizontal"
             android:layout_width="@dimen/_80sdp"
             android:id="@+id/vehicle_image"
-            android:layout_margin="@dimen/_5sdp"
-            android:background="@mipmap/truck"
+            android:background="@mipmap/category_vehicle"
             android:layout_centerHorizontal="true"
             android:layout_height="@dimen/_70sdp"/>
-
-</RelativeLayout>
+</FrameLayout>
+        </RelativeLayout>

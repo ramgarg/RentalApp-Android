@@ -36,4 +36,7 @@
     <string name="add_new_address">Add New Address</string>
     <string name="booking_details">Booking Details</string>
     <string name="thank_you">Thank You!\n Your payment has been Successfully Processed.</string>
+    <string name="vehicle_not_available">The vehicle you have searched is not available.You can notify admin to add this
+        vehicle.
+    </string>
 </resources>

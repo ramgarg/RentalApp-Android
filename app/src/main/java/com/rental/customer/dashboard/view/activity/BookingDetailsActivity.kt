@@ -7,8 +7,8 @@ import com.rental.customer.utils.MoveToActivity
 import com.rental.customer.utils.TimeDateSelector
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_booking_details.*
-import kotlinx.android.synthetic.main.order_summary_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
+import org.greenrobot.eventbus.EventBus
 
 class BookingDetailsActivity :AppCompatActivity() {
     var count:Int=1
@@ -56,6 +56,11 @@ class BookingDetailsActivity :AppCompatActivity() {
                 count = count - 1
                 item_quantity.text = (count).toString()
             }
+        }
+
+        btn_next.setOnClickListener {
+            MoveToActivity.moveToOrderReviewActivity(this)
+
         }
 
     }

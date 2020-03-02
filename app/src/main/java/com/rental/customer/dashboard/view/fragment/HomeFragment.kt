@@ -11,6 +11,7 @@ import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.view.adapter.HomeAdapter
 import com.rental.customer.dashboard.viewmodel.HomeViewModel
+import com.rental.customer.utils.MoveToActivity
 import com.rental.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -33,11 +34,7 @@ class HomeFragment :Fragment() , RecyclerViewItemClick {
     override fun onItemClick(item: Data) {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-        val fragment = CategoryFragment()
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment,
-            fragment.javaClass.getSimpleName())
-            .addToBackStack(null)
-            .commit()
+        MoveToActivity.moveToCategoryActivity(requireContext())
     }
 
 
