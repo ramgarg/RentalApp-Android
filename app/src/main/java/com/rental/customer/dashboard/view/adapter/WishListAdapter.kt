@@ -54,6 +54,4 @@ class WishListAdapter(var items:List<Data>,  context: Context):
 
 
     }
-
-
 }
