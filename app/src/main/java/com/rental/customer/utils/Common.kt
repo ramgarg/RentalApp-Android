@@ -10,6 +10,7 @@ import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import com.rental.R
+import com.rental.customer.dashboard.model.modelclass.BookingDetailsModel
 import kotlinx.android.synthetic.main.activity_payment.*
 import kotlinx.android.synthetic.main.rating_review.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
@@ -21,6 +22,9 @@ import java.util.*
 class Common {
 
     companion object {
+
+        //crating an arraylist to store users using the data class user
+        val bookingDetailsModel = ArrayList<BookingDetailsModel>()
         val MONTHS =
             arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
         val c = Calendar.getInstance()
@@ -53,7 +57,7 @@ class Common {
             )
             timePickerDialog.show()
         }
-        fun showDialog(title: String,context: Activity,layout:Int) {
+        fun showDialog(title: String,msg:String,context: Activity,layout:Int) {
             val dialog = Dialog(context)
             dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
@@ -61,7 +65,7 @@ class Common {
             dialog .setContentView(layout)
 
             if(title.equals("Payment"))
-                thankYou(dialog)
+                thankYou(dialog,msg)
             else
                 rating(dialog)
 
@@ -73,8 +77,9 @@ class Common {
             dialog.img_close.setOnClickListener { dialog.cancel() }
         }
 
-        private fun thankYou(dialog: Dialog){
+        private fun thankYou(dialog: Dialog,msg: String){
             dialog.btn_ok.setOnClickListener { dialog.cancel() }
+            dialog.tv_msg.text=msg
         }
 
         fun hideSoftKeyBoard(context: Context, view: View) {

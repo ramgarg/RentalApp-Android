@@ -40,6 +40,7 @@ class VehicleDetailsAdapter(val items:List<Data>, val context: Context):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
     }

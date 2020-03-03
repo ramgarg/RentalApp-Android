@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class ViewDetailActivity :AppCompatActivity() {
     private lateinit var homeViewModel:HomeViewModel
+    private var likeUnlike:Boolean=true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,5 +32,16 @@ class ViewDetailActivity :AppCompatActivity() {
         homeViewModel.getHomeResponse().observe(this, Observer {
             rec_veichle_details.adapter= VehicleDetailsAdapter(it.data,this)
         })
+
+        img_like_unlike.setOnClickListener {
+            if(likeUnlike) {
+                likeUnlike=false
+                img_like_unlike.setImageResource(R.mipmap.like)
+            }
+            else {
+                likeUnlike=true
+                img_like_unlike.setImageResource(R.mipmap.unlike)
+            }
+        }
     }
 }

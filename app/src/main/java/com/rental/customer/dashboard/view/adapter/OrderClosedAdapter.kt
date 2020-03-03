@@ -23,7 +23,7 @@ class OrderClosedAdapter(val items:List<Data>, val context: Context, val recycle
         val tvVeichleName=view.vehicle_name
 
         val tvRating=view.tv_rate.setOnClickListener {
-            Common.showDialog("Rating", it.context as Activity,R.layout.rating_review)
+            Common.showDialog("Rating","", it.context as Activity,R.layout.rating_review)
         }
 
 

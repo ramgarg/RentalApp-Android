@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,8 +13,8 @@
                   android:orientation="vertical"
                   android:layout_above="@+id/btn_submit"
                   android:layout_marginTop="@dimen/_10sdp"
-                  android:layout_marginLeft="@dimen/_10sdp"
-                  android:layout_marginRight="@dimen/_10sdp"
+                  android:layout_marginLeft="@dimen/_15sdp"
+                  android:layout_marginRight="@dimen/_15sdp"
                   android:layout_below="@+id/toolbar"
                   android:layout_height="match_parent">
 
@@ -25,15 +25,18 @@
                   android:textColor="#000"
                   android:layout_height="wrap_content"/>
 
-        <TextView android:layout_width="match_parent"
-                  android:text="Truck"
-                  android:paddingRight="@dimen/_10sdp"
-                  android:drawableRight="@mipmap/expand"
-                  android:textSize="@dimen/_15sdp"
-                  android:layout_marginTop="@dimen/_10sdp"
-                  android:fontFamily="@font/bree_serif"
-                  android:textColor="#000"
-                  android:layout_height="@dimen/_40sdp"/>
+        <Spinner
+                android:id="@+id/vehicle_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:drawableRight="@mipmap/expand"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
         <View android:layout_width="match_parent"
               android:layout_height="1dp"
               android:background="@android:color/darker_gray"/>

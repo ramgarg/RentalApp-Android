@@ -52,5 +52,8 @@ class WishListAdapter(var items:List<Data>,  context: Context):
 
         holder.tvVeichleName?.text=items.get(position).first_name
 
+
     }
+
+
 }

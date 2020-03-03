@@ -31,6 +31,7 @@ class OrderFragment : Fragment() ,RecyclerViewItemClick {
         orderViewModel= ViewModelProviders.of(this).get(OrderViewModel::class.java)
         orderViewModel.getOrderResponse().observe(this, Observer {
             rec_order.adapter= OrderOpenAdapter(it.data,requireActivity(),this)
+            EventBus.getDefault().postSticky("OPEN_ACTIVE")
         })
         return  view
     }

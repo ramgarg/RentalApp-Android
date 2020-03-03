@@ -15,7 +15,7 @@
     <androidx.recyclerview.widget.RecyclerView
 
             android:layout_below="@+id/toolbar"
-
+android:layout_above="@+id/btn_submit"
             android:layout_width="match_parent"
             android:id="@+id/rec_order_review"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -23,5 +23,16 @@
            >
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <Button android:layout_width="match_parent"
+            android:id="@+id/btn_submit"
+            android:layout_alignParentBottom="true"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="@dimen/_15sdp"
+            android:fontFamily="@font/bree_serif"
+            android:background="@drawable/button_save"
+            android:layout_height="@dimen/_40sdp"/>
 
 </RelativeLayout>

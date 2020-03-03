@@ -20,7 +20,7 @@ class PaymentActivity : AppCompatActivity() {
             toolbar_title,getString(R.string.payment))
 
         button_submit.setOnClickListener {
-         Common.showDialog(getString(R.string.payment),this,R.layout.thank_you_pop)
+         Common.showDialog(getString(R.string.payment),getString(R.string.thank_you),this,R.layout.thank_you_pop)
         }
 
         img_cash.setOnClickListener {

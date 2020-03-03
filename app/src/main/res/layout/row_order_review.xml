@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+
+            android:layout_width="match_parent"
+            app:cardCornerRadius="@dimen/_15sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_height="wrap_content">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_height="wrap_content">
+
+
+
+
+    <RelativeLayout
+
+            android:padding="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:background="@drawable/button_order"
+            android:layout_height="wrap_content">
+
+
+        <TextView android:layout_width="match_parent"
+                  android:text="Truck"
+                  android:id="@+id/vehicle_name"
+                  android:textSize="@dimen/_15sdp"
+                  android:textColor="#000"
+                  android:fontFamily="@font/bree_serif"
+                  android:layout_height="wrap_content"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:text="Booking\nPrice "
+                  android:textColor="#000"
+
+                  android:id="@+id/booking_title"
+                  android:layout_below="@+id/vehicle_name"
+                  android:textSize="@dimen/_12sdp"
+                  android:fontFamily="@font/bree_serif"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:id="@+id/booking_price"
+                  android:textColor="#000"
+                  android:fontFamily="@font/bree_serif"
+                  android:textSize="@dimen/_20sdp"
+                  android:text="$30"
+                  android:layout_marginLeft="@dimen/_5sdp"
+                  android:layout_toRightOf="@+id/booking_title"
+                  android:layout_below="@+id/vehicle_name"
+                  android:layout_height="wrap_content"/>
+
+
+        <TextView android:layout_width="wrap_content"
+                  android:text="Per Hour"
+                  android:layout_marginTop="@dimen/_10sdp"
+                  android:layout_marginLeft="@dimen/_5sdp"
+                  android:layout_toRightOf="@+id/booking_price"
+                  android:id="@+id/per_hour"
+                  android:layout_below="@+id/vehicle_name"
+                  android:textSize="@dimen/_12sdp"
+                  android:fontFamily="@font/bree_serif"
+                  android:layout_height="wrap_content"/>
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:id="@+id/layout_truck_quantity"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_below="@+id/per_hour"
+                        android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:text="Truck Quantity"
+                      android:textSize="@dimen/_15sdp"
+                      android:textColor="#000"
+                      android:fontFamily="@font/bree_serif"
+                      android:layout_height="wrap_content"/>
+
+            <LinearLayout android:layout_width="wrap_content"
+                          android:orientation="horizontal"
+                          android:layout_alignParentRight="true"
+                          android:layout_height="wrap_content">
+
+                <ImageView android:layout_width="@dimen/_25sdp"
+                           android:id="@+id/minus_quantity"
+                           android:src="@mipmap/minus"
+                           android:padding="@dimen/_5sdp"
+                           android:background="@drawable/button_add"
+                           android:layout_height="@dimen/_25sdp"/>
+
+                <TextView
+                        android:id="@+id/item_quantity"
+                        android:text="1"
+                        android:textColor="#000"
+                        android:fontFamily="@font/bree_serif"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:paddingRight="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/itemquantity_bg"
+                        android:layout_height="@dimen/_25sdp"/>
+                <ImageView android:layout_width="@dimen/_25sdp"
+                           android:src="@mipmap/plus"
+                           android:padding="@dimen/_5sdp"
+                           android:id="@+id/add_quantity"
+                           android:background="@drawable/button_minus"
+                           android:layout_height="@dimen/_25sdp"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <TextView android:layout_width="wrap_content"
+                  android:text="14 Days"
+                  android:layout_marginTop="@dimen/_10sdp"
+                  android:layout_marginLeft="@dimen/_5sdp"
+                  android:id="@+id/tv_days"
+                  android:drawablePadding="@dimen/_15sdp"
+                  android:drawableLeft="@mipmap/calender"
+                  android:layout_below="@+id/layout_truck_quantity"
+                  android:textSize="@dimen/_15sdp"
+                  android:textColor="#000"
+                  android:fontFamily="@font/bree_serif"
+                  android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+    <LinearLayout
+
+            android:weightSum="1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+
+        <TextView
+                android:id="@+id/tv_view_detail"
+                android:gravity="center"
+                android:layout_weight=".5"
+               android:background="@drawable/button_view_details"
+                android:layout_centerInParent="true"
+                android:textColor="#fff"
+               android:text="View Details"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:layout_width="wrap_content"
+                  android:layout_height="@dimen/_40sdp"/>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_weight=".5"
+                      android:id="@+id/layout_remove"
+                      android:gravity="center"
+                      android:orientation="horizontal"
+                      android:background="@drawable/button_remove"
+                      android:layout_height="@dimen/_40sdp">
+
+            <ImageView android:layout_width="@dimen/_20sdp"
+                       android:src="@mipmap/remove"
+                       android:layout_marginTop="@dimen/_2sdp"
+                       android:layout_height="@dimen/_20sdp"/>
+        <TextView
+                android:gravity="center"
+
+                android:layout_marginLeft="@dimen/_5sdp"
+
+
+                android:textColor="#fff"
+                android:text="Remove"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
