@@ -10,30 +10,33 @@ import com.google.android.material.navigation.NavigationView
 import com.rental.R
 import com.rental.customer.dashboard.view.fragment.*
 import com.rental.customer.utils.MoveToActivity
-import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
-class HomeActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_main)
 
         initView()
     }
 
     private fun initView(){
 
-
         bottom_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        bottom_view.setSelectedItemId(R.id.navigation_home);
-        navigationView.setNavigationItemSelectedListener(this);
+        bottom_view.selectedItemId=R.id.navigation_home
+        navigationView.setNavigationItemSelectedListener(this)
+
         setDefaultFragment()
+
         img_menu.setOnClickListener {  drawer_layout.openDrawer(GravityCompat.START) }
+
         val header = navigationView.getHeaderView(0)
+
         header.edit_profile_menu.setOnClickListener {
             MoveToActivity.moveToProfileActivity(this)
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -41,9 +44,9 @@ class HomeActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
         img_notification.setOnClickListener { MoveToActivity.moveToNotificationActivity(this) }
     }
 
-     fun setDefaultFragment(){
+     private fun setDefaultFragment(){
         val fragment = HomeFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.getSimpleName())
+        supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
             .commit()
     }
 
@@ -51,36 +54,36 @@ class HomeActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
         when (menuItem.itemId) {
 
             R.id.navigation_home -> {
-                setDefaultFragment();
-                toolbar_title.text="Select Category"
+                setDefaultFragment()
+                toolbar_title.text=getString(R.string.select_category)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_wishlist -> {
                 val fragment = WishListFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.getSimpleName())
+                supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
-                toolbar_title.text="Wishlist"
+                toolbar_title.text=getString(R.string.wishlist)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_order -> {
                 val fragment = OrderFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.getSimpleName())
+                supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
-                toolbar_title.text="Order"
+                toolbar_title.text=getString(R.string.order)
                 return@OnNavigationItemSelectedListener true
             }
 
             R.id.navigation_profile -> {
                 val fragment = ProfieFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.getSimpleName())
+                supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
-                toolbar_title.text="Profile"
+                toolbar_title.text=getString(R.string.profie)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_support -> {
-                toolbar_title.text="Help & Support"
+                toolbar_title.text=getString(R.string.help)
                 val fragment = SupportFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.getSimpleName())
+                supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 return@OnNavigationItemSelectedListener true
             }
@@ -89,18 +92,16 @@ class HomeActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         when (menuItem.itemId) {
             R.id.nav_about -> {
                 MoveToActivity.moveToAboutActivity(this)
             }
-
             R.id.nav_dashboard -> {
-                setDefaultFragment();
-                toolbar_title.text="Select Category"
+                setDefaultFragment()
+                toolbar_title.text=getString(R.string.select_category)
             }
             R.id.nav_logout -> {
-                Toast.makeText(this, "Under Development", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_my_address -> {
                MoveToActivity.moveToMyAddressActivity(this)

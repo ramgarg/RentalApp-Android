@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
-import com.rental.customer.utils.TimeDateSelector
+import com.rental.customer.utils.Common
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_payment.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -17,10 +17,10 @@ class PaymentActivity : AppCompatActivity() {
         setContentView(R.layout.activity_payment)
 
         ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
-            toolbar_title,"Payment")
+            toolbar_title,getString(R.string.payment))
 
         button_submit.setOnClickListener {
-         TimeDateSelector.showDialog("Payment",this,R.layout.thank_you_pop)
+         Common.showDialog(getString(R.string.payment),this,R.layout.thank_you_pop)
         }
 
         img_cash.setOnClickListener {

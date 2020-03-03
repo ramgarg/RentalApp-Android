@@ -9,346 +9,449 @@
 
     <ScrollView
             android:layout_marginTop="@dimen/_10sdp"
-    android:layout_below="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RelativeLayout
-
-
-
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_below="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+        <RelativeLayout
 
 
-        <TextView
-
-                android:id="@+id/tv_order_id"
-                android:fontFamily="@font/bree_serif"
-                android:textColor="#000"
-                android:textSize="@dimen/_15sdp"
-                android:text="Order ID - 76436778787877"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
-        <TextView android:layout_width="wrap_content"
-                  android:text="Total\nPrice "
-                  android:textColor="#000"
-
-                  android:id="@+id/booking_title"
-                  android:layout_below="@+id/tv_order_id"
-                  android:textSize="@dimen/_12sdp"
-                  android:fontFamily="@font/bree_serif"
-                  android:layout_height="wrap_content"/>
-        <TextView android:layout_width="wrap_content"
-                  android:id="@+id/booking_price"
-                  android:textColor="#000"
-                  android:fontFamily="@font/bree_serif"
-                  android:textSize="@dimen/_20sdp"
-                  android:text="$30"
-                  android:layout_marginLeft="@dimen/_5sdp"
-                  android:layout_toRightOf="@+id/booking_title"
-                  android:layout_below="@+id/tv_order_id"
-                  android:layout_height="wrap_content"/>
-
-
-        <TextView android:layout_width="wrap_content"
-                  android:text="Per Hour"
-                  android:layout_marginTop="@dimen/_10sdp"
-                  android:layout_marginLeft="@dimen/_5sdp"
-                  android:layout_toRightOf="@+id/booking_price"
-                  android:id="@+id/per_hour"
-                  android:layout_below="@+id/tv_order_id"
-                  android:textSize="@dimen/_12sdp"
-                  android:fontFamily="@font/bree_serif"
-                  android:layout_height="wrap_content"/>
-
-        <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tv_order_id"
-                android:id="@+id/tv_view_history"
-                android:fontFamily="@font/bree_serif"
-                android:textColor="#1c7cf7"
-                android:textSize="@dimen/_15sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:text="View History"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:layout_marginTop="@dimen/_25sdp"
-                android:layout_below="@+id/per_hour"
-                android:id="@+id/tv_pending_amount"
-                android:fontFamily="@font/bree_serif"
-                android:textColor="#000"
-                android:textSize="@dimen/_15sdp"
-                android:text="Pending Amount $170"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:layout_marginTop="@dimen/_25sdp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/booking_price"
-                android:id="@+id/tv_pay_now"
-                android:paddingLeft="@dimen/_5sdp"
-                android:paddingRight="@dimen/_5sdp"
-                android:fontFamily="@font/bree_serif"
-                android:textColor="#fff"
-                android:background="@drawable/button_gradient"
-                android:textSize="@dimen/_15sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:text="Pay Now"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_below="@+id/tv_pending_amount"
-                android:id="@+id/tv_truck_quantity"
-                android:fontFamily="@font/bree_serif"
-                android:textColor="#000"
-                android:textSize="@dimen/_15sdp"
-                android:text="Truck Quantity - 2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        <TextView android:layout_width="match_parent"
-                  android:id="@+id/view_1"
-                  android:layout_marginTop="@dimen/_10sdp"
-                  android:layerType="software"
-                  android:background="@drawable/dotted_line"
-                  android:layout_below="@+id/tv_truck_quantity"
-                  android:layout_height="@dimen/_1sdp"/>
-
-        <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_below="@+id/view_1"
-                android:id="@+id/tv_mainteanance"
-                android:fontFamily="@font/bree_serif"
-                android:textColor="#000"
-                android:textSize="@dimen/_15sdp"
-                android:text="For Maintenance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rec_agent"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_below="@+id/tv_mainteanance"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_150sdp">
-        </androidx.recyclerview.widget.RecyclerView>
-        <LinearLayout android:layout_width="wrap_content"
-                      android:orientation="horizontal"
-                      android:gravity="top"
-                      android:id="@+id/layout_driver"
-                      android:layout_below="@+id/rec_agent"
-                      android:layout_marginTop="@dimen/_10sdp"
-                      android:layout_height="@dimen/_30sdp">
-            <CheckBox android:layout_width="@dimen/_20sdp"
-                      android:textColor="#000"
-                      android:id="@+id/checkbox_with_driver"
-                      android:layout_marginTop="@dimen/_5sdp"
-                      android:fontFamily="@font/bree_serif"
-                      android:textSize="@dimen/_15sdp"
-                      android:background="@drawable/custom_checkbox"
-                      android:button="@null"
-                      android:layout_height="@dimen/_20sdp"/>
 
             <TextView
+
+                    android:id="@+id/tv_vehicle_name"
                     android:fontFamily="@font/bree_serif"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_width="wrap_content"
-                    android:textSize="@dimen/_15sdp"
                     android:textColor="#000"
-                    android:text="With Driver"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="Order ID - 76436778787877"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-        </LinearLayout>
 
-        <LinearLayout android:layout_width="match_parent"
-                      android:id="@+id/layout_start"
-                      android:weightSum="1"
-                      android:orientation="horizontal"
-                      android:gravity="center_vertical"
-                      android:background="@drawable/calender_bg"
-                      android:layout_below="@+id/layout_driver"
-                      android:layout_height="@dimen/_50sdp">
+            <TextView android:layout_width="wrap_content"
+                      android:text="Total\nPrice "
+                      android:textColor="#000"
 
-            <RelativeLayout
-                    android:gravity="center"
-                    android:id="@+id/layout_st_date"
-                    android:layout_weight=".5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                      android:id="@+id/booking_title"
+                      android:layout_below="@+id/tv_vehicle_name"
+                      android:textSize="@dimen/_12sdp"
+                      android:fontFamily="@font/bree_serif"
+                      android:layout_height="wrap_content"/>
+            <TextView android:layout_width="wrap_content"
+                      android:id="@+id/booking_price"
+                      android:textColor="#000"
+                      android:fontFamily="@font/bree_serif"
+                      android:textSize="@dimen/_20sdp"
+                      android:text="$30"
+                      android:layout_marginLeft="@dimen/_5sdp"
+                      android:layout_toRightOf="@+id/booking_title"
+                      android:layout_below="@+id/tv_vehicle_name"
+                      android:layout_height="wrap_content"/>
 
 
-                <ImageView
-                        android:id="@+id/img_calender"
-                        android:layout_width="@dimen/_20sdp"
-                        android:src="@mipmap/calender"
-                        android:layout_centerVertical="true"
-                        android:layout_height="@dimen/_20sdp"/>
-
-                <TextView android:layout_width="wrap_content"
-                          android:text="Start Date"
-
-                          android:layout_marginLeft="@dimen/_10sdp"
-                          android:id="@+id/tv_st_date"
-                          android:layout_toRightOf="@+id/img_calender"
-                          android:textColor="#000"
-                          android:fontFamily="@font/bree_serif"
-                          android:layout_height="wrap_content"/>
-                <TextView android:layout_width="wrap_content"
-                          android:layout_marginLeft="@dimen/_10sdp"
-                          android:id="@+id/tv_st_date_sel"
-                          android:layout_below="@+id/tv_st_date"
-                          android:layout_toRightOf="@+id/img_calender"
-                          android:fontFamily="@font/bree_serif"
-                          android:layout_height="wrap_content"/>
-            </RelativeLayout>
-            <TextView android:layout_width="@dimen/_1sdp"
-                      android:layout_marginTop="@dimen/_5sdp"
-                      android:layout_marginBottom="@dimen/_5sdp"
-                      android:id="@+id/view_div"
-                      android:layout_toRightOf="@+id/tv_st_date_sel"
-                      android:background="@android:color/darker_gray"
-                      android:layout_height="match_parent"/>
-            <RelativeLayout
-                    android:id="@+id/layout_st_time"
-                    android:gravity="center"
-                    android:layout_weight=".5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <ImageView
-                        android:layout_centerVertical="true"
-                        android:id="@+id/img_time"
-                        android:layout_width="@dimen/_20sdp"
-                        android:src="@mipmap/time"
-                        android:layout_height="@dimen/_20sdp"/>
-
-                <TextView android:layout_width="wrap_content"
-                          android:text="Start Time"
-
-                          android:layout_marginLeft="@dimen/_10sdp"
-                          android:id="@+id/tv_st_time"
-                          android:layout_toRightOf="@+id/img_time"
-                          android:textColor="#000"
-                          android:fontFamily="@font/bree_serif"
-                          android:layout_height="wrap_content"/>
-                <TextView android:layout_width="wrap_content"
-                          android:layout_marginLeft="@dimen/_10sdp"
-                          android:id="@+id/tv_st_time_sel"
-                          android:layout_below="@+id/tv_st_time"
-                          android:layout_toRightOf="@+id/img_time"
-                          android:fontFamily="@font/bree_serif"
-                          android:layout_height="wrap_content"/>
-            </RelativeLayout>
-
-        </LinearLayout>
-        <LinearLayout android:layout_width="match_parent"
-                      android:id="@+id/layout_end"
-                      android:weightSum="1"
+            <TextView android:layout_width="wrap_content"
+                      android:text="Per Hour"
                       android:layout_marginTop="@dimen/_10sdp"
-                      android:orientation="horizontal"
-                      android:gravity="center_vertical"
-                      android:background="@drawable/calender_bg"
-                      android:layout_below="@+id/layout_start"
-                      android:layout_height="@dimen/_50sdp">
+                      android:layout_marginLeft="@dimen/_5sdp"
+                      android:layout_toRightOf="@+id/booking_price"
+                      android:id="@+id/per_hour"
+                      android:layout_below="@+id/tv_vehicle_name"
+                      android:textSize="@dimen/_12sdp"
+                      android:fontFamily="@font/bree_serif"
+                      android:layout_height="wrap_content"/>
 
-            <RelativeLayout
-                    android:gravity="center"
-                    android:id="@+id/layout_end_date"
-                    android:layout_weight=".5"
+            <TextView
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_vehicle_name"
+                    android:id="@+id/tv_view_history"
+                    android:fontFamily="@font/bree_serif"
+                    android:textColor="#1c7cf7"
+                    android:textSize="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:text="View History"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_below="@+id/per_hour"
+                    android:id="@+id/tv_pending_amount"
+                    android:fontFamily="@font/bree_serif"
+                    android:textColor="#000"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="Pending Amount $170"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/booking_price"
+                    android:id="@+id/tv_pay_now"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:fontFamily="@font/bree_serif"
+                    android:textColor="#fff"
+                    android:background="@drawable/button_gradient"
+                    android:textSize="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:text="Pay Now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_below="@+id/per_hour"
+                    android:id="@+id/tv_order_id"
+                    android:fontFamily="@font/bree_serif"
+                    android:textColor="#000"
+                    android:visibility="gone"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="Order ID - 6549985050H"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+
+            <TextView
+                    android:layout_marginTop="@dimen/_10sdp"
+
+                    android:layout_below="@+id/tv_pending_amount"
+                    android:id="@+id/tv_truck_quantity"
+                    android:fontFamily="@font/bree_serif"
+                    android:textColor="#000"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="Truck Quantity - 2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:id="@+id/tv_delver_date"
+                      android:visibility="gone"
+                      android:text="Delivered on 12 Dec 2019"
+                      android:textSize="@dimen/_15sdp"
+                      android:textColor="#1c7cf7"
+
+                      android:layout_marginTop="@dimen/_10sdp"
+                      android:fontFamily="@font/bree_serif"
+                      android:layout_below="@+id/tv_truck_quantity"
+                      android:layout_height="wrap_content"/>
+
+
+            <TextView android:layout_width="wrap_content"
+                      android:id="@+id/tv_days"
+                      android:text="14 days"
+                      android:visibility="gone"
+                      android:textSize="@dimen/_15sdp"
+                      android:textColor="#1c7cf7"
+                      android:drawableLeft="@mipmap/calender"
+            android:drawablePadding="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/bree_serif"
+            android:layout_below="@+id/tv_delver_date"
+            android:layout_height="wrap_content"/>
+
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_below="@+id/tv_days"
+                      android:layout_marginTop="@dimen/_10sdp"
+                      android:textSize="@dimen/_15sdp"
+                      android:id="@+id/tv_coupon"
+                      android:visibility="gone"
+                      android:fontFamily="@font/bree_serif"
+                      android:text="9995hh"
+                      android:drawablePadding="@dimen/_15sdp"
+                      android:drawableLeft="@mipmap/coupen"
+                      android:layout_height="wrap_content"/>
+
+            <ImageView android:layout_width="@dimen/_20sdp"
+                      android:layout_below="@+id/tv_days"
+                      android:layout_marginTop="@dimen/_10sdp"
+                     android:src="@mipmap/green_check"
+                       android:visibility="gone"
+                       android:layout_marginRight="@dimen/_20sdp"
+                      android:id="@+id/coupon_applied"
+                      android:layout_alignParentRight="true"
+
+                      android:layout_height="@dimen/_20sdp"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:id="@+id/view_1"
+                      android:layout_marginTop="@dimen/_10sdp"
+                      android:layerType="software"
+                      android:background="@drawable/dotted_line"
+                      android:layout_below="@+id/tv_coupon"
+                      android:layout_height="@dimen/_1sdp"/>
+
+            <TextView
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_below="@+id/view_1"
+                    android:id="@+id/tv_mainteanance"
+                    android:fontFamily="@font/bree_serif"
+                    android:textColor="#000"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="For Maintenance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rec_agent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_below="@+id/tv_mainteanance"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                <ImageView
-                        android:id="@+id/img_en_calender"
-                        android:layout_width="@dimen/_20sdp"
-                        android:src="@mipmap/calender"
-                        android:layout_centerVertical="true"
-                        android:layout_height="@dimen/_20sdp"/>
-
-                <TextView android:layout_width="wrap_content"
-                          android:text="End Date"
-
-                          android:layout_marginLeft="@dimen/_10sdp"
-                          android:id="@+id/tv_end_date"
-                          android:layout_toRightOf="@+id/img_en_calender"
+                    android:layout_height="@dimen/_150sdp">
+            </androidx.recyclerview.widget.RecyclerView>
+            <LinearLayout android:layout_width="wrap_content"
+                          android:orientation="horizontal"
+                          android:gravity="top"
+                          android:id="@+id/layout_driver"
+                          android:layout_below="@+id/rec_agent"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:layout_height="@dimen/_30sdp">
+                <CheckBox android:layout_width="@dimen/_20sdp"
                           android:textColor="#000"
+                          android:id="@+id/checkbox_with_driver"
+                          android:layout_marginTop="@dimen/_5sdp"
                           android:fontFamily="@font/bree_serif"
-                          android:layout_height="wrap_content"/>
-                <TextView android:layout_width="wrap_content"
-                          android:layout_marginLeft="@dimen/_10sdp"
-                          android:id="@+id/tv_end_date_sel"
-                          android:layout_below="@+id/tv_end_date"
-                          android:layout_toRightOf="@+id/img_en_calender"
-                          android:fontFamily="@font/bree_serif"
-                          android:layout_height="wrap_content"/>
-            </RelativeLayout>
-            <TextView android:layout_width="@dimen/_1sdp"
-                      android:layout_marginTop="@dimen/_5sdp"
-                      android:layout_marginBottom="@dimen/_5sdp"
-                      android:id="@+id/view_div_2"
-                      android:layout_toRightOf="@+id/tv_st_date_sel"
-                      android:background="@android:color/darker_gray"
-                      android:layout_height="match_parent"/>
-            <RelativeLayout
-                    android:id="@+id/layout_end_time"
-                    android:gravity="center"
-                    android:layout_weight=".5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <ImageView
-                        android:layout_centerVertical="true"
-                        android:id="@+id/img_end_time"
-                        android:layout_width="@dimen/_20sdp"
-                        android:src="@mipmap/time"
-                        android:layout_height="@dimen/_20sdp"/>
+                          android:textSize="@dimen/_15sdp"
+                          android:background="@drawable/custom_checkbox"
+                          android:button="@null"
+                          android:layout_height="@dimen/_20sdp"/>
 
-                <TextView android:layout_width="wrap_content"
-                          android:text="End Time"
+                <TextView
+                        android:fontFamily="@font/bree_serif"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_15sdp"
+                        android:textColor="#000"
+                        android:text="With Driver"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
 
-                          android:layout_marginLeft="@dimen/_10sdp"
-                          android:id="@+id/tv_end_time"
-                          android:layout_toRightOf="@+id/img_end_time"
-                          android:textColor="#000"
-                          android:fontFamily="@font/bree_serif"
-                          android:layout_height="wrap_content"/>
-                <TextView android:layout_width="wrap_content"
-                          android:layout_marginLeft="@dimen/_10sdp"
-                          android:id="@+id/tv_end_time_sel"
-                          android:layout_below="@+id/tv_end_time"
-                          android:layout_toRightOf="@+id/img_end_time"
-                          android:fontFamily="@font/bree_serif"
-                          android:layout_height="wrap_content"/>
-            </RelativeLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:id="@+id/layout_start"
+                          android:weightSum="1"
+                          android:orientation="horizontal"
+                          android:gravity="center_vertical"
+                          android:background="@drawable/calender_bg"
+                          android:layout_below="@+id/layout_driver"
+                          android:layout_height="@dimen/_50sdp">
+
+                <RelativeLayout
+                        android:gravity="center"
+                        android:id="@+id/layout_st_date"
+                        android:layout_weight=".5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
 
-        </LinearLayout>
+                    <ImageView
+                            android:id="@+id/img_calender"
+                            android:layout_width="@dimen/_20sdp"
+                            android:src="@mipmap/calender"
+                            android:layout_centerVertical="true"
+                            android:layout_height="@dimen/_20sdp"/>
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_below="@+id/layout_end"
-                  android:layout_marginTop="@dimen/_10sdp"
-                  android:textSize="@dimen/_15sdp"
-                  android:id="@+id/tv_work_title"
-                  android:fontFamily="@font/bree_serif"
-                  android:textColor="#000"
-                  android:text="Work Location"
-                  android:layout_height="wrap_content"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:text="Start Date"
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_below="@+id/tv_work_title"
-                  android:layout_marginTop="@dimen/_10sdp"
-                  android:textSize="@dimen/_15sdp"
-                  android:id="@+id/tv_work_location"
-                  android:fontFamily="@font/bree_serif"
-                  android:text="Work Location kjffaslakjak"
-                  android:layout_height="wrap_content"/>
+                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:id="@+id/tv_st_date"
+                              android:layout_toRightOf="@+id/img_calender"
+                              android:textColor="#000"
+                              android:fontFamily="@font/bree_serif"
+                              android:layout_height="wrap_content"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:id="@+id/tv_st_date_sel"
+                              android:layout_below="@+id/tv_st_date"
+                              android:layout_toRightOf="@+id/img_calender"
+                              android:fontFamily="@font/bree_serif"
+                              android:layout_height="wrap_content"/>
+                </RelativeLayout>
+                <TextView android:layout_width="@dimen/_1sdp"
+                          android:layout_marginTop="@dimen/_5sdp"
+                          android:layout_marginBottom="@dimen/_5sdp"
+                          android:id="@+id/view_div"
+                          android:layout_toRightOf="@+id/tv_st_date_sel"
+                          android:background="@android:color/darker_gray"
+                          android:layout_height="match_parent"/>
+                <RelativeLayout
+                        android:id="@+id/layout_st_time"
+                        android:gravity="center"
+                        android:layout_weight=".5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <ImageView
+                            android:layout_centerVertical="true"
+                            android:id="@+id/img_time"
+                            android:layout_width="@dimen/_20sdp"
+                            android:src="@mipmap/time"
+                            android:layout_height="@dimen/_20sdp"/>
 
-    </RelativeLayout>
-</ScrollView>
+                    <TextView android:layout_width="wrap_content"
+                              android:text="Start Time"
+
+                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:id="@+id/tv_st_time"
+                              android:layout_toRightOf="@+id/img_time"
+                              android:textColor="#000"
+                              android:fontFamily="@font/bree_serif"
+                              android:layout_height="wrap_content"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:id="@+id/tv_st_time_sel"
+                              android:layout_below="@+id/tv_st_time"
+                              android:layout_toRightOf="@+id/img_time"
+                              android:fontFamily="@font/bree_serif"
+                              android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:id="@+id/layout_end"
+                          android:weightSum="1"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:orientation="horizontal"
+                          android:gravity="center_vertical"
+                          android:background="@drawable/calender_bg"
+                          android:layout_below="@+id/layout_start"
+                          android:layout_height="@dimen/_50sdp">
+
+                <RelativeLayout
+                        android:gravity="center"
+                        android:id="@+id/layout_end_date"
+                        android:layout_weight=".5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                    <ImageView
+                            android:id="@+id/img_en_calender"
+                            android:layout_width="@dimen/_20sdp"
+                            android:src="@mipmap/calender"
+                            android:layout_centerVertical="true"
+                            android:layout_height="@dimen/_20sdp"/>
+
+                    <TextView android:layout_width="wrap_content"
+                              android:text="End Date"
+
+                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:id="@+id/tv_end_date"
+                              android:layout_toRightOf="@+id/img_en_calender"
+                              android:textColor="#000"
+                              android:fontFamily="@font/bree_serif"
+                              android:layout_height="wrap_content"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:id="@+id/tv_end_date_sel"
+                              android:layout_below="@+id/tv_end_date"
+                              android:layout_toRightOf="@+id/img_en_calender"
+                              android:fontFamily="@font/bree_serif"
+                              android:layout_height="wrap_content"/>
+                </RelativeLayout>
+                <TextView android:layout_width="@dimen/_1sdp"
+                          android:layout_marginTop="@dimen/_5sdp"
+                          android:layout_marginBottom="@dimen/_5sdp"
+                          android:id="@+id/view_div_2"
+                          android:layout_toRightOf="@+id/tv_st_date_sel"
+                          android:background="@android:color/darker_gray"
+                          android:layout_height="match_parent"/>
+                <RelativeLayout
+                        android:id="@+id/layout_end_time"
+                        android:gravity="center"
+                        android:layout_weight=".5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <ImageView
+                            android:layout_centerVertical="true"
+                            android:id="@+id/img_end_time"
+                            android:layout_width="@dimen/_20sdp"
+                            android:src="@mipmap/time"
+                            android:layout_height="@dimen/_20sdp"/>
+
+                    <TextView android:layout_width="wrap_content"
+                              android:text="End Time"
+
+                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:id="@+id/tv_end_time"
+                              android:layout_toRightOf="@+id/img_end_time"
+                              android:textColor="#000"
+                              android:fontFamily="@font/bree_serif"
+                              android:layout_height="wrap_content"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:id="@+id/tv_end_time_sel"
+                              android:layout_below="@+id/tv_end_time"
+                              android:layout_toRightOf="@+id/img_end_time"
+                              android:fontFamily="@font/bree_serif"
+                              android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_below="@+id/layout_end"
+                      android:layout_marginTop="@dimen/_10sdp"
+                      android:textSize="@dimen/_15sdp"
+                      android:id="@+id/tv_work_title"
+                      android:fontFamily="@font/bree_serif"
+                      android:textColor="#000"
+                      android:text="Work Location"
+                      android:layout_height="wrap_content"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_below="@+id/tv_work_title"
+                      android:layout_marginTop="@dimen/_10sdp"
+                      android:textSize="@dimen/_15sdp"
+                      android:id="@+id/tv_work_location"
+                      android:fontFamily="@font/bree_serif"
+                      android:text="Work Location kjffaslakjak"
+                      android:layout_height="wrap_content"/>
+
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_below="@+id/tv_work_location"
+                      android:layout_marginTop="@dimen/_10sdp"
+                      android:textSize="@dimen/_15sdp"
+                      android:visibility="gone"
+                      android:id="@+id/tv_happy"
+                      android:fontFamily="@font/bree_serif"
+                      android:textColor="#000"
+                      android:text="Happy with the service?"
+                      android:layout_height="wrap_content"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_below="@+id/tv_happy"
+                      android:layout_marginTop="@dimen/_10sdp"
+                      android:textSize="@dimen/_15sdp"
+                      android:visibility="gone"
+                      android:id="@+id/tv_happy_with"
+                      android:textColor="#000"
+                      android:fontFamily="@font/bree_serif"
+                      android:text="$15.00"
+                      android:layout_height="wrap_content"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_below="@+id/tv_happy"
+                      android:layout_marginTop="@dimen/_10sdp"
+                      android:textSize="@dimen/_15sdp"
+                      android:visibility="gone"
+                      android:id="@+id/tv_give_tip"
+                      android:paddingLeft="@dimen/_5sdp"
+                      android:paddingRight="@dimen/_5sdp"
+                      android:layout_alignParentRight="true"
+                      android:textColor="#fff"
+                      android:fontFamily="@font/bree_serif"
+                      android:text="Give a Tip"
+                      android:background="@drawable/payment_status"
+                      android:layout_height="wrap_content"/>
+
         </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

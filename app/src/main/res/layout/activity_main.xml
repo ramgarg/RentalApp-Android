@@ -8,6 +8,18 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
+    <!--<RelativeLayout android:layout_width="match_parent"-->
+                    <!--android:background="#90000000"-->
+                    <!--android:id="@+id/layout_loading"-->
+                    <!--android:layout_height="match_parent">-->
+        <!--<ImageView-->
+                <!--android:id="@+id/img_gif"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:layout_width="@dimen/_200sdp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_height="@dimen/_200sdp"/>-->
+    <!--</RelativeLayout>-->
+
     <RelativeLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -20,6 +32,7 @@
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:id="@+id/main_container">
+
         </FrameLayout>
 
         <include

@@ -14,8 +14,8 @@
                               android:endColor="#fff" android:startColor="#fff" />
 
                     <corners android:radius="@dimen/_5sdp" />
-                    <padding android:bottom="10dp" android:left="10dp"
-                             android:right="10dp" android:top="10dp" />
+                    <padding android:bottom="@dimen/_5sdp" android:left="10dp"
+                             android:right="10dp" android:top="@dimen/_5sdp" />
                 </shape>
             </item>
         </layer-list>

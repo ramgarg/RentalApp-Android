@@ -3,6 +3,7 @@ package com.rental.customer.login.presenter
 import android.view.View
 import android.widget.*
 import com.rental.customer.login.model.repositry.RegistrationRepository
+import com.rental.customer.utils.Common
 import com.rental.customer.utils.Validator
 
 
@@ -22,27 +23,15 @@ class RegistrationActivityPresenter(registrationView: RegistrationView) {
                         buttonActiveAgent: RelativeLayout){
 
          if(registrationType.equals("Merchant")){
-             buttonActiveMerchant.visibility=View.VISIBLE
-             buttonActiveAgent.visibility=View.GONE
-             buttonActiveCustomer.visibility=View.GONE
-             buttonInActiveMerchant.visibility=View.GONE
-             buttonInActiveCustomer.visibility=View.VISIBLE
-             buttonInActiveAgent.visibility=View.VISIBLE
+             Common.showGroupViews(buttonActiveMerchant,buttonInActiveCustomer,buttonInActiveAgent)
+             Common.hideGroupViews(buttonActiveAgent,buttonActiveCustomer,buttonInActiveMerchant)
 
          }else if(registrationType.equals("Agent")){
-             buttonActiveAgent.visibility=View.VISIBLE
-             buttonActiveMerchant.visibility=View.GONE
-             buttonActiveCustomer.visibility=View.GONE
-             buttonInActiveAgent.visibility=View.GONE
-             buttonInActiveCustomer.visibility=View.VISIBLE
-             buttonInActiveMerchant.visibility=View.VISIBLE
+             Common.showGroupViews(buttonActiveAgent,buttonInActiveCustomer,buttonInActiveMerchant)
+             Common.hideGroupViews(buttonActiveMerchant,buttonActiveCustomer,buttonInActiveAgent)
          }else if(registrationType.equals("Customer")){
-             buttonActiveCustomer.visibility=View.VISIBLE
-             buttonActiveAgent.visibility=View.GONE
-             buttonActiveMerchant.visibility=View.GONE
-             buttonInActiveCustomer.visibility=View.GONE
-             buttonInActiveMerchant.visibility=View.VISIBLE
-             buttonInActiveAgent.visibility=View.VISIBLE
+             Common.showGroupViews(buttonActiveCustomer,buttonInActiveMerchant,buttonInActiveAgent)
+             Common.hideGroupViews(buttonActiveAgent,buttonActiveMerchant,buttonInActiveCustomer)
          }
 
     }

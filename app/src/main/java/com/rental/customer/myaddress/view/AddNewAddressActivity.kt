@@ -22,6 +22,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.rental.R
 import com.rental.customer.dashboard.view.activity.BaseActivity
+import com.rental.customer.utils.Common
 import com.rental.customer.utils.ViewVisibility
 import com.rental.customer.webservice.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
 import kotlinx.android.synthetic.main.add_new_address_activity.*
@@ -32,15 +33,15 @@ import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
 
-class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
+class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
-    private  var mLocationPermissionGranted:Boolean=false
-    private lateinit var mMap:GoogleMap
+    private var mLocationPermissionGranted: Boolean = false
+    private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-       setContentView(R.layout.add_new_address_activity)
+        setContentView(R.layout.add_new_address_activity)
 
         initView()
 
@@ -50,17 +51,15 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     fun messageReceive(customEvent: String?) {
-        if(customEvent.equals("AddNew")){
-                toolbar_title.text="Add New Address"
-                btn_save.visibility= View.VISIBLE
-                btn_delete.visibility=View.GONE
-            btn_update.visibility=View.GONE
-            }else{
-                toolbar_title.text="MyAddress"
-                btn_save.visibility=View.GONE
-            btn_delete.visibility=View.VISIBLE
-            btn_update.visibility=View.VISIBLE
-            }
+        if (customEvent.equals("AddNew")) {
+            toolbar_title.text = "Add New Address"
+            btn_save.visibility = View.VISIBLE
+            Common.hideGroupViews(btn_delete, btn_update)
+        } else {
+            toolbar_title.text = "MyAddress"
+            btn_save.visibility = View.GONE
+            Common.showGroupViews(btn_delete, btn_update)
+        }
 
     }
 
@@ -73,7 +72,6 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
         super.onPause()
         EventBus.getDefault().unregister(this)
     }
-
 
 
     override fun onMapReady(map: GoogleMap?) {
@@ -92,7 +90,7 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
     }
 
     @SuppressLint("MissingPermission")
-    private fun moveCameraToCurrentLocation(map: GoogleMap?){
+    private fun moveCameraToCurrentLocation(map: GoogleMap?) {
         val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         val criteria = Criteria()
 
@@ -113,18 +111,13 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
             val address: String = addresses[0]
                 .getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
 
-            tv_current_address.text=address
-//            val city: String = addresses[0].getLocality()
-//            val state: String = addresses[0].getAdminArea()
-//            val country: String = addresses[0].getCountryName()
-//            val postalCode: String = addresses[0].getPostalCode()
-//            val knownName: String = addresses[0].getFeatureName()
-
-
+            tv_current_address.text = address
             map!!.animateCamera(
                 CameraUpdateFactory.newLatLngZoom(
                     LatLng(location.latitude, location.longitude),
-                    13f))
+                    13f
+                )
+            )
             val cameraPosition = CameraPosition.Builder()
                 .target(
                     LatLng(
@@ -140,16 +133,19 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun mapInit(){
+    private fun mapInit() {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment!!.getMapAsync(this)
     }
 
-    private fun initView(){
-        ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
-            toolbar_title,getString(R.string.add_new_address))
+    private fun initView() {
+        ViewVisibility.isVisibleOrNot(
+            this, img_back, img_menu, img_notification,
+            toolbar_title, getString(R.string.add_new_address)
+        )
     }
+
     private fun getLocationPermission() { /*
      * Request location permission, so that we can get the location of the
      * device. The result of the permission request is handled by a callback,
@@ -159,7 +155,8 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
                 this.applicationContext,
                 Manifest.permission.ACCESS_FINE_LOCATION
             )
-            == PackageManager.PERMISSION_GRANTED) {
+            == PackageManager.PERMISSION_GRANTED
+        ) {
             mLocationPermissionGranted = true
             mapInit()
         } else {
@@ -169,6 +166,7 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
             )
         }
     }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String?>,
@@ -187,6 +185,7 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
             }
         }
     }
+
     private fun updateLocationUI() {
         if (mMap == null) {
             return
@@ -201,37 +200,22 @@ class AddNewAddressActivity :BaseActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun saveAddressAs(){
+    private fun saveAddressAs() {
         btn_home_inactive.setOnClickListener {
-            btn_home_active.visibility = View.VISIBLE
-            btn_work_active.visibility = View.GONE
-            btn_other_active.visibility = View.GONE
-
-            btn_other_inactive.visibility = View.VISIBLE
-            btn_home_inactive.visibility = View.GONE
-            btn_work_inactive.visibility = View.VISIBLE
+            Common.hideGroupViews(btn_work_active, btn_other_active, btn_home_inactive)
+            Common.showGroupViews(btn_home_active, btn_other_inactive, btn_work_inactive)
 
         }
 
         btn_work_inactive.setOnClickListener {
-            btn_home_active.visibility = View.GONE
-            btn_work_active.visibility = View.VISIBLE
-            btn_other_active.visibility = View.GONE
-
-            btn_other_inactive.visibility = View.VISIBLE
-            btn_work_inactive.visibility = View.GONE
-            btn_home_inactive.visibility = View.VISIBLE
+            Common.hideGroupViews(btn_home_active, btn_other_active, btn_work_inactive)
+            Common.showGroupViews(btn_work_active, btn_other_inactive, btn_home_inactive)
 
         }
 
         btn_other_inactive.setOnClickListener {
-            btn_home_active.visibility = View.GONE
-            btn_work_active.visibility = View.GONE
-            btn_other_active.visibility = View.VISIBLE
-
-            btn_other_inactive.visibility = View.GONE
-            btn_work_inactive.visibility = View.VISIBLE
-            btn_home_inactive.visibility = View.VISIBLE
+            Common.hideGroupViews(btn_home_active, btn_work_active, btn_other_inactive)
+            Common.showGroupViews(btn_other_active, btn_work_inactive, btn_home_inactive)
         }
 
     }

@@ -14,6 +14,6 @@ class NotifyToAdminActivity :AppCompatActivity(){
 
         ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
-            toolbar_title, "Notify Admin")
+            toolbar_title, getString(R.string.notify_admin))
     }
 }

@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.RecyclerViewItemClick
-import com.rental.customer.utils.TimeDateSelector
+import com.rental.customer.utils.Common
 import kotlinx.android.synthetic.main.row_closed_order.view.*
-import kotlinx.android.synthetic.main.row_category.view.*
 import kotlinx.android.synthetic.main.row_category.view.vehicle_name
 
 
@@ -24,7 +23,7 @@ class OrderClosedAdapter(val items:List<Data>, val context: Context, val recycle
         val tvVeichleName=view.vehicle_name
 
         val tvRating=view.tv_rate.setOnClickListener {
-            TimeDateSelector.showDialog("Rating", it.context as Activity,R.layout.rating_review)
+            Common.showDialog("Rating", it.context as Activity,R.layout.rating_review)
         }
 
 

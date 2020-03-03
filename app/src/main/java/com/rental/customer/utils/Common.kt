@@ -18,15 +18,13 @@ import java.text.Format
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TimeDateSelector {
+class Common {
 
     companion object {
         val MONTHS =
             arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
         val c = Calendar.getInstance()
         fun dateSelector(context: Context,txt:TextView) {
-
-
             val datePickerDialog = DatePickerDialog(
                 context, R.style.TimePickerTheme,
                 DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -89,6 +87,24 @@ class TimeDateSelector {
             }
 
         }
+        fun hideGroupViews(vararg view: View) {
+            view.forEach {
+                it.visibility=View.GONE
+            }
+        }
+
+        fun invisibleGroupViews(vararg view: View) {
+            view.forEach {
+                it.visibility=View.INVISIBLE
+            }
+        }
+
+        fun showGroupViews(vararg view: View) {
+            view.forEach {
+                it.visibility=View.VISIBLE
+            }
+        }
+
     }
 
 

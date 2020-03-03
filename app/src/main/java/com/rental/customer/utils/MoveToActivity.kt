@@ -57,7 +57,7 @@ class MoveToActivity {
         }
 
         fun moveToHomeActivity(context: Context){
-            context.startActivity(Intent(context, HomeActivity::class.java))
+            context.startActivity(Intent(context, MainActivity::class.java))
         }
         fun moveToNotificationActivity(context: Context){
             context.startActivity(Intent(context, NotificationActivity::class.java))

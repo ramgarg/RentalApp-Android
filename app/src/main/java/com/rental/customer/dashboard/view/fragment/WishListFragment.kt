@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_wish_list.*
 
 class WishListFragment :Fragment() {
 
-    lateinit var wishListViewModel: WishListViewModel
+    private lateinit var wishListViewModel: WishListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_wish_list, container, false)

@@ -15,25 +15,22 @@ import com.rental.customer.utils.MoveToActivity
 import com.rental.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment :Fragment() , RecyclerViewItemClick {
+class HomeFragment : Fragment(), RecyclerViewItemClick {
 
-    val paymentHistoryList: ArrayList<Data> = ArrayList()
-    lateinit var homeViewModel:HomeViewModel
+    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-      val view=  inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        homeViewModel=ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         homeViewModel.getHomeResponse().observe(this, Observer {
-            rec_veichle.adapter= HomeAdapter(it.data,requireActivity(),this)
+            rec_veichle.adapter = HomeAdapter(it.data, requireActivity(), this)
         })
 
         return view
     }
 
     override fun onItemClick(item: Data) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-
         MoveToActivity.moveToCategoryActivity(requireContext())
     }
 

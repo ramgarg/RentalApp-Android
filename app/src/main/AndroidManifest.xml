@@ -67,7 +67,7 @@
                   android:screenOrientation="portrait"
 
         />
-        <activity android:name=".customer.dashboard.view.activity.HomeActivity"
+        <activity android:name=".customer.dashboard.view.activity.MainActivity"
                   android:screenOrientation="portrait"
 
         />

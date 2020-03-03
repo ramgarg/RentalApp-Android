@@ -13,7 +13,7 @@ import com.rental.customer.dashboard.view.adapter.CategoryAdapter
 import com.rental.customer.dashboard.viewmodel.HomeViewModel
 import com.rental.customer.utils.MoveToActivity
 import com.rental.customer.utils.RecyclerViewItemClick
-import com.rental.customer.utils.TimeDateSelector
+import com.rental.customer.utils.Common
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.category_activity.*
 import kotlinx.android.synthetic.main.fragment_home.rec_veichle
@@ -23,8 +23,8 @@ import kotlin.math.roundToInt
 
 class CategoryActivity :AppCompatActivity(),RecyclerViewItemClick {
 
-    lateinit var homeViewModel:HomeViewModel
-    lateinit var arrayList:ArrayList<Data>
+    private lateinit var homeViewModel:HomeViewModel
+    private lateinit var arrayList:ArrayList<Data>
      var arrayListSort:ArrayList<Data> = ArrayList()
 
 
@@ -35,7 +35,7 @@ class CategoryActivity :AppCompatActivity(),RecyclerViewItemClick {
 
         ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
-            toolbar_title, "Vehicles")
+            toolbar_title, getString(R.string.vehicle))
 
         homeViewModel=ViewModelProviders.of(this).get(HomeViewModel::class.java)
         homeViewModel.getHomeResponse().observe(this, Observer {
@@ -56,20 +56,18 @@ class CategoryActivity :AppCompatActivity(),RecyclerViewItemClick {
 
         ed_search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
-                if(s.length==0){
-                   TimeDateSelector.hideSoftKeyBoard(this@CategoryActivity,ed_search)
-                }
+                if(s.isEmpty()) Common.hideSoftKeyBoard(this@CategoryActivity,ed_search)
             }
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-               var textlength = ed_search.text.length
+               val textlength = ed_search.text.length
                 arrayListSort.clear()
                 for (i in 0 until arrayList.size) {
-                    if (textlength <= arrayList.get(i).first_name.length) {
-                        if (arrayList.get(i).first_name.toLowerCase().trim().contains(
-                                ed_search.getText().toString().toLowerCase().trim()
+                    if (textlength <= arrayList[i].first_name.length) {
+                        if (arrayList[i].first_name.toLowerCase().trim().contains(
+                                ed_search.text.toString().toLowerCase().trim()
                             )) {
-                            arrayListSort.add(arrayList.get(i))
+                            arrayListSort.add(arrayList[i])
                         }
                     }
                 }
@@ -77,7 +75,7 @@ class CategoryActivity :AppCompatActivity(),RecyclerViewItemClick {
                     this@CategoryActivity)
            if(arrayListSort.size==0){
                layout_vehicle_not_found.visibility=View.VISIBLE
-               sv.scrollTo(5, resources.getDimension(R.dimen._300sdp).roundToInt());
+               sv.scrollTo(5, resources.getDimension(R.dimen._300sdp).roundToInt())
                notify_admin.setOnClickListener {
                    MoveToActivity.moveToNotifyAdminActivity(this@CategoryActivity)
                }

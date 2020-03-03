@@ -4,14 +4,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
 import com.rental.customer.utils.MoveToActivity
-import com.rental.customer.utils.TimeDateSelector
+import com.rental.customer.utils.Common
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_booking_details.*
 import kotlinx.android.synthetic.main.toolbar.*
-import org.greenrobot.eventbus.EventBus
 
 class BookingDetailsActivity :AppCompatActivity() {
-    var count:Int=1
+    private var count:Int=1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,16 +26,16 @@ class BookingDetailsActivity :AppCompatActivity() {
 
     private fun clickListenerOnViews(){
         st_booking_date.setOnClickListener {
-          TimeDateSelector.dateSelector(this,tv_st_date_book)
+          Common.dateSelector(this,tv_st_date_book)
         }
         st_booking_time.setOnClickListener {
-            TimeDateSelector.timeSelector(this,tv_st_time_book)
+            Common.timeSelector(this,tv_st_time_book)
         }
         end_booking_date.setOnClickListener {
-            TimeDateSelector.dateSelector(this,tv_end_date_book)
+            Common.dateSelector(this,tv_end_date_book)
         }
         end_booking_time.setOnClickListener {
-            TimeDateSelector.timeSelector(this,tv_end_time_book)
+            Common.timeSelector(this,tv_end_time_book)
         }
 
         add_new_add_img.setOnClickListener {
@@ -47,13 +46,13 @@ class BookingDetailsActivity :AppCompatActivity() {
             MoveToActivity.moveToMyAddressActivity(this)
         }
         add_quantity.setOnClickListener {
-             count=count+1
+             count += 1
             item_quantity.text= (count).toString()
         }
 
         minus_quantity.setOnClickListener {
             if(count>1) {
-                count = count - 1
+                count -= 1
                 item_quantity.text = (count).toString()
             }
         }

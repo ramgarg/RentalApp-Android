@@ -15,7 +15,7 @@ class OrderReviewActivity :AppCompatActivity() {
 
         ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
-            toolbar_title, "Order Review")
+            toolbar_title, getString(R.string.order_review))
 
     }
 }
