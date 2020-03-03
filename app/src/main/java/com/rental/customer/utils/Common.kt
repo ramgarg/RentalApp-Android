@@ -5,12 +5,17 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.os.Handler
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.BookingDetailsModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_payment.*
 import kotlinx.android.synthetic.main.rating_review.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
@@ -108,6 +113,11 @@ class Common {
             view.forEach {
                 it.visibility=View.VISIBLE
             }
+        }
+
+        fun showLoading(context: Context,layout_loading:RelativeLayout,img_gif:ImageView){
+            layout_loading.visibility= View.VISIBLE
+            Glide.with(context).load(R.mipmap.loading_ic).into(img_gif)
         }
 
     }

@@ -19,6 +19,8 @@ app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
     <!--app:spanCount="3"-->
     <!--app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
 </RelativeLayout>

@@ -9,12 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
+import com.rental.customer.dashboard.view.activity.MainActivity
 import com.rental.customer.dashboard.view.adapter.OrderClosedAdapter
 import com.rental.customer.dashboard.view.adapter.OrderOpenAdapter
 import com.rental.customer.dashboard.viewmodel.OrderViewModel
 import com.rental.customer.utils.MoveToActivity
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.customer.utils.Common
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.fragment_order.view.*
 import org.greenrobot.eventbus.EventBus
@@ -32,6 +34,7 @@ class OrderFragment : Fragment() ,RecyclerViewItemClick {
         orderViewModel.getOrderResponse().observe(this, Observer {
             rec_order.adapter= OrderOpenAdapter(it.data,requireActivity(),this)
             EventBus.getDefault().postSticky("OPEN_ACTIVE")
+            (activity as MainActivity).layout_loading.visibility=View.GONE
         })
         return  view
     }

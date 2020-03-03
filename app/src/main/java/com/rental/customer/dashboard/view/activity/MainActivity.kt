@@ -2,13 +2,16 @@ package com.rental.customer.dashboard.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.rental.R
 import com.rental.customer.dashboard.view.fragment.*
+import com.rental.customer.utils.Common.Companion.showLoading
 import com.rental.customer.utils.MoveToActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header.view.*
@@ -27,6 +30,8 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     private fun initView(){
 
+
+        showLoading(this,layout_loading,img_gif)
         bottom_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         bottom_view.selectedItemId=R.id.navigation_home
         navigationView.setNavigationItemSelectedListener(this)
@@ -54,11 +59,13 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
         when (menuItem.itemId) {
 
             R.id.navigation_home -> {
+                showLoading(this,layout_loading,img_gif)
                 setDefaultFragment()
                 toolbar_title.text=getString(R.string.select_category)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_wishlist -> {
+                showLoading(this,layout_loading,img_gif)
                 val fragment = WishListFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
@@ -66,6 +73,7 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_order -> {
+                showLoading(this,layout_loading,img_gif)
                 val fragment = OrderFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
@@ -74,6 +82,7 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
             }
 
             R.id.navigation_profile -> {
+                showLoading(this,layout_loading,img_gif)
                 val fragment = ProfieFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
@@ -81,6 +90,7 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_support -> {
+                showLoading(this,layout_loading,img_gif)
                 toolbar_title.text=getString(R.string.help)
                 val fragment = SupportFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
@@ -88,6 +98,7 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 return@OnNavigationItemSelectedListener true
             }
         }
+
         false
     }
 
