@@ -380,7 +380,7 @@ android:layout_marginRight="@dimen/_15sdp"
             android:textAllCaps="false"
             android:fontFamily="@font/bree_serif"
             android:textColor="#fff"
-            android:background="@drawable/button_save"
+            android:background="@drawable/ripple"
             android:layout_alignParentBottom="true"
             android:layout_height="@dimen/_40sdp"/>
 </RelativeLayout>

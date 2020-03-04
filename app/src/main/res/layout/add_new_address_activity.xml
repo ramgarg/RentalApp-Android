@@ -288,7 +288,7 @@ android:layout_centerInParent="true"
                 android:textAllCaps="false"
                 android:textSize="@dimen/_15sdp"
 
-                android:background="@drawable/button_save"
+                android:background="@drawable/ripple"
                 android:layout_height="@dimen/_40sdp"/>
     </LinearLayout>
 

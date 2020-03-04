@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.customer.login.viewmodel.LoginViewModel
-import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.Validator
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -22,7 +20,7 @@ class LoginActivity :AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         initialize()
-
+//
 //        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 //        loginViewModel.getLogin()?.observe(this , Observer {
 //
@@ -30,10 +28,10 @@ class LoginActivity :AppCompatActivity() {
     }
 
     private fun initialize(){
-        tv_registration.setOnClickListener { MoveToActivity.moveToRegistrationActivity(this) }
-        tv_forgot_password.setOnClickListener { MoveToActivity.moveToForgotPasswordActivity(this) }
+        tv_registration.setOnClickListener { MoveToAnotherComponent.moveToRegistrationActivity(this) }
+        tv_forgot_password.setOnClickListener { MoveToAnotherComponent.moveToForgotPasswordActivity(this) }
         btn_login.setOnClickListener { checkValidation(ed_email,ed_password) }
-        tv_skip.setOnClickListener { MoveToActivity.moveToHomeActivity(this) }
+        tv_skip.setOnClickListener { MoveToAnotherComponent.moveToHomeActivity(this) }
 
     }
 
@@ -55,7 +53,7 @@ class LoginActivity :AppCompatActivity() {
 //            showToast("Invalid Password! minimum length 8")
         }else{
 //            loginViewModel.onClick(email,password)
-            MoveToActivity.moveToHomeActivity(this)
+            MoveToAnotherComponent.moveToHomeActivity(this)
         }
         return false
     }

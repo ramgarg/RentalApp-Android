@@ -13,7 +13,7 @@ import com.rental.customer.dashboard.view.activity.MainActivity
 import com.rental.customer.dashboard.view.adapter.OrderClosedAdapter
 import com.rental.customer.dashboard.view.adapter.OrderOpenAdapter
 import com.rental.customer.dashboard.viewmodel.OrderViewModel
-import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.customer.utils.Common
 import kotlinx.android.synthetic.main.activity_main.*
@@ -40,7 +40,7 @@ class OrderFragment : Fragment() ,RecyclerViewItemClick {
     }
 
     override fun onItemClick(item: Data) {
-    MoveToActivity.moveToOrderSummaryActivity(requireContext())
+    MoveToAnotherComponent.moveToOrderSummaryActivity(requireContext())
     }
 
     private fun viewVisibility(view: View){

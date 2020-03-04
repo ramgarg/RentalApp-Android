@@ -1,9 +1,10 @@
 package com.rental.customer.dashboard.view.activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
-import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_booking_details.*
@@ -39,11 +40,11 @@ class BookingDetailsActivity :AppCompatActivity() {
         }
 
         add_new_add_img.setOnClickListener {
-            MoveToActivity.moveToHomeActivity(this)
+            MoveToAnotherComponent.moveToHomeActivity(this)
         }
 
         change_add.setOnClickListener {
-            MoveToActivity.moveToMyAddressActivity(this)
+            MoveToAnotherComponent.moveToMyAddressActivity(this)
         }
         add_quantity.setOnClickListener {
              count += 1
@@ -58,7 +59,15 @@ class BookingDetailsActivity :AppCompatActivity() {
         }
 
         btn_next.setOnClickListener {
-            MoveToActivity.moveToOrderReviewActivity(this)
+           when{
+               tv_st_date_book.text.isEmpty()->Toast.makeText(this,"Please select start date",Toast.LENGTH_SHORT).show()
+               tv_st_time_book.text.isEmpty()->Toast.makeText(this,"Please select start time",Toast.LENGTH_SHORT).show()
+               tv_end_date_book.text.isEmpty()->Toast.makeText(this,"Please select end date",Toast.LENGTH_SHORT).show()
+               tv_end_time_book.text.isEmpty()->Toast.makeText(this,"Please select end time",Toast.LENGTH_SHORT).show()
+               else-> MoveToAnotherComponent.moveToOrderReviewActivity(this)
+
+           }
+
 
         }
 

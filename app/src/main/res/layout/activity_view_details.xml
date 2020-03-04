@@ -93,7 +93,7 @@ android:layerType="software"
             android:textAllCaps="false"
             android:textSize="@dimen/_15sdp"
             android:fontFamily="@font/bree_serif"
-            android:background="@drawable/button_save"
+            android:background="@drawable/ripple"
             android:layout_alignParentBottom="true"
             android:layout_height="@dimen/_40sdp"/>
 </RelativeLayout>

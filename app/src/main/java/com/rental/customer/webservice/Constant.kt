@@ -14,6 +14,7 @@ class Constant {
         const val REGISTER = ""
         const val FORGOTPASSOWRD = ""
         const val SENDOTP = ""
+        const val ORDER_SUMMARY = ""
         const val  PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=1234
 
     }

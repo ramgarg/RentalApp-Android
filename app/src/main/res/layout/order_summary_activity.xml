@@ -13,8 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <RelativeLayout
-
-
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginRight="@dimen/_15sdp"
                 android:layout_width="match_parent"
@@ -207,7 +205,7 @@
             </androidx.recyclerview.widget.RecyclerView>
             <LinearLayout android:layout_width="wrap_content"
                           android:orientation="horizontal"
-                          android:gravity="top"
+                          android:gravity="center"
                           android:id="@+id/layout_driver"
                           android:layout_below="@+id/rec_agent"
                           android:layout_marginTop="@dimen/_10sdp"
@@ -215,9 +213,9 @@
                 <CheckBox android:layout_width="@dimen/_20sdp"
                           android:textColor="#000"
                           android:id="@+id/checkbox_with_driver"
-                          android:layout_marginTop="@dimen/_5sdp"
                           android:fontFamily="@font/bree_serif"
                           android:textSize="@dimen/_15sdp"
+                          android:checked="true"
                           android:background="@drawable/custom_checkbox"
                           android:button="@null"
                           android:layout_height="@dimen/_20sdp"/>
@@ -226,6 +224,7 @@
                         android:fontFamily="@font/bree_serif"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_width="wrap_content"
+                        android:gravity="center"
                         android:textSize="@dimen/_15sdp"
                         android:textColor="#000"
                         android:text="With Driver"

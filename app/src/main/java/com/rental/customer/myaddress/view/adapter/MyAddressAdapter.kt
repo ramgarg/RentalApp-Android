@@ -4,17 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TimePicker
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.model.modelclass.HomeResponse
-import com.rental.customer.utils.EventModel
-import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
-import com.rental.customer.utils.RxBus
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.row_category.view.*
 import kotlinx.android.synthetic.main.row_my_address.view.*
 import org.greenrobot.eventbus.EventBus
 
@@ -25,7 +19,7 @@ class MyAddressAdapter(val items:List<Data>, val context: Context, val recyclerV
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val tvVeichleName=view.tv_add_type
         var imgEdit=view.img_edit.setOnClickListener {
-            MoveToActivity.moveToAddNewAddressActivity(it.context)
+            MoveToAnotherComponent.moveToAddNewAddressActivity(it.context)
 //            RxBus.publish(EventModel("EditAddress"))
             EventBus.getDefault().postSticky("EditAddress")
         }

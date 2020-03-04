@@ -11,7 +11,7 @@ import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.view.adapter.CategoryAdapter
 import com.rental.customer.dashboard.viewmodel.HomeViewModel
-import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.ViewVisibility
@@ -48,7 +48,7 @@ class CategoryActivity :AppCompatActivity(),RecyclerViewItemClick {
 
     override fun onItemClick(item: Data) {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        MoveToActivity.moveToViewDetailsActivity(this)
+        MoveToAnotherComponent.moveToViewDetailsActivity(this)
     }
 
 
@@ -77,7 +77,7 @@ class CategoryActivity :AppCompatActivity(),RecyclerViewItemClick {
                layout_vehicle_not_found.visibility=View.VISIBLE
                sv.scrollTo(5, resources.getDimension(R.dimen._300sdp).roundToInt())
                notify_admin.setOnClickListener {
-                   MoveToActivity.moveToNotifyAdminActivity(this@CategoryActivity)
+                   MoveToAnotherComponent.moveToNotifyAdminActivity(this@CategoryActivity)
                }
            }else
                layout_vehicle_not_found.visibility=View.GONE

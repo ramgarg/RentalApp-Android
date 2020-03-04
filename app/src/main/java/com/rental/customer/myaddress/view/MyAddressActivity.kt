@@ -41,7 +41,7 @@ class MyAddressActivity :BaseActivity(),RecyclerViewItemClick {
             EventBus.getDefault().postSticky("AddNew")
 //            RxBus.publish(EventModel("AddNew"))
 
-            MoveToActivity.moveToAddNewAddressActivity(this)
+            MoveToAnotherComponent.moveToAddNewAddressActivity(this)
 
         }
 

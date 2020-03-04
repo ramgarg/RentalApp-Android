@@ -1,6 +1,7 @@
 package com.rental.customer.webservice
 
 import com.rental.customer.dashboard.model.modelclass.HomeResponse
+import com.rental.customer.dashboard.model.modelclass.OrderSummaryResponseModel
 import com.rental.customer.login.model.modelclass.ForgotPasswordRequest
 import com.rental.customer.login.model.modelclass.ForgotPasswordResponse
 import com.rental.customer.forgotpassword.model.modelClass.OTPRequest
@@ -24,6 +25,9 @@ interface APIServices {
 
     @GET(Constant.DASHBOARD)
     fun getData():Call<HomeResponse>
+
+    @GET(Constant.DASHBOARD)
+    fun getOrderSummary():Call<OrderSummaryResponseModel>
 
 
     @GET(Constant.NOTIFICATION)

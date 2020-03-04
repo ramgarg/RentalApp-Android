@@ -4,15 +4,14 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
-import android.location.Address
-import android.location.Criteria
-import android.location.Geocoder
-import android.location.LocationManager
+import android.location.*
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -20,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.MarkerOptions
 import com.rental.R
 import com.rental.customer.dashboard.view.activity.BaseActivity
 import com.rental.customer.utils.Common
@@ -37,7 +37,8 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     private var mLocationPermissionGranted: Boolean = false
     private lateinit var mMap: GoogleMap
-
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var lastLocation: Location
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -91,34 +92,14 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     @SuppressLint("MissingPermission")
     private fun moveCameraToCurrentLocation(map: GoogleMap?) {
-        val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val criteria = Criteria()
+        map?.isMyLocationEnabled = true
+        fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
+            // Got last known location. In some rare situations this can be null.
+            if (location != null) {
+                lastLocation = location
+                val currentLatLng = LatLng(location.latitude, location.longitude)
 
-        val location =
-            locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false))
-        if (location != null) {
-            val geocoder: Geocoder
-            val addresses: List<Address>
-            geocoder = Geocoder(this, Locale.getDefault())
-
-            addresses = geocoder.getFromLocation(
-                location.latitude,
-                location.longitude,
-                1
-            ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-
-
-            val address: String = addresses[0]
-                .getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-
-            tv_current_address.text = address
-            map!!.animateCamera(
-                CameraUpdateFactory.newLatLngZoom(
-                    LatLng(location.latitude, location.longitude),
-                    13f
-                )
-            )
-            val cameraPosition = CameraPosition.Builder()
+                val cameraPosition = CameraPosition.Builder()
                 .target(
                     LatLng(
                         location.latitude,
@@ -129,7 +110,9 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
                 .bearing(90f) // Sets the orientation of the camera to east
                 .tilt(40f) // Sets the tilt of the camera to 30 degrees
                 .build() // Creates a CameraPosition from the builder
-            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+            map?.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+                placeMarkerOnMap(currentLatLng)
+            }
         }
     }
 
@@ -144,6 +127,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
             this, img_back, img_menu, img_notification,
             toolbar_title, getString(R.string.add_new_address)
         )
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
     private fun getLocationPermission() { /*
@@ -218,6 +202,10 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
             Common.showGroupViews(btn_other_active, btn_work_inactive, btn_home_inactive)
         }
 
+    }
+    private fun placeMarkerOnMap(location: LatLng) {
+        val markerOptions = MarkerOptions().position(location)
+        mMap.addMarker(markerOptions)
     }
 
 }

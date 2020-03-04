@@ -9,7 +9,6 @@ import com.rental.customer.login.view.ForgotPasswordActivity
 import com.rental.customer.login.view.OTPActivity
 import com.rental.customer.login.view.RegistrationActivity
 import com.rental.customer.myaddress.view.AddNewAddressActivity
-import com.rental.customer.myaddress.view.EditAddressActivity
 import com.rental.customer.myaddress.view.MyAddressActivity
 import com.rental.customer.notification.view.NotificationActivity
 import com.rental.customer.payment.view.PaymentHistoryActivity
@@ -18,7 +17,7 @@ import com.rental.customer.webpages.AboutActivity
 import com.rental.customer.webpages.TermsConditionActivity
 
 
-class MoveToActivity {
+class MoveToAnotherComponent {
 
     companion object{
 
@@ -36,10 +35,6 @@ class MoveToActivity {
 
         fun moveToMyAddressActivity(context: Context){
             context.startActivity(Intent(context, MyAddressActivity::class.java))
-        }
-
-        fun moveToEditAddressActivity(context: Context){
-            context.startActivity(Intent(context, EditAddressActivity::class.java))
         }
 
         fun moveToAddNewAddressActivity(context: Context){

@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.customer.dashboard.view.adapter.VehicleDetailsAdapter
 import com.rental.customer.dashboard.viewmodel.HomeViewModel
-import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_view_details.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -25,7 +25,7 @@ class ViewDetailActivity :AppCompatActivity() {
             toolbar_title, getString(R.string.details))
 
         btn_next.setOnClickListener {
-            MoveToActivity.moveToBookingDetailsActivity(this)
+            MoveToAnotherComponent.moveToBookingDetailsActivity(this)
         }
 
         homeViewModel= ViewModelProviders.of(this).get(HomeViewModel::class.java)

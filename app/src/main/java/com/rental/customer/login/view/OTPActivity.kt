@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.customer.login.viewmodel.OTPViewModel
-import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_otp.*
 
 class OTPActivity :AppCompatActivity(){
@@ -39,7 +37,7 @@ class OTPActivity :AppCompatActivity(){
         }else
 //            otpViewModel.otpAPI(ed_email.text.toString())
 
-            MoveToActivity.moveToHomeActivity(this)
+            MoveToAnotherComponent.moveToHomeActivity(this)
         return false
     }
 

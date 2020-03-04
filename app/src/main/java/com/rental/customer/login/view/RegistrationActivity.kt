@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
 import com.rental.customer.login.presenter.RegistrationActivityPresenter
 import com.rental.customer.login.presenter.RegistrationView
-import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class RegistrationActivity : AppCompatActivity(),
@@ -29,7 +29,7 @@ class RegistrationActivity : AppCompatActivity(),
         btn_customer_inactive.setOnClickListener { registerAs("Customer")  }
         btn_agent_inactive.setOnClickListener { registerAs("Agent") }
         btn_register.setOnClickListener { register() }
-        tv_skip.setOnClickListener { MoveToActivity.moveToHomeActivity(this) }
+        tv_skip.setOnClickListener { MoveToAnotherComponent.moveToHomeActivity(this) }
     }
 
     override fun registerAs(registartionType: String) {
@@ -50,6 +50,6 @@ class RegistrationActivity : AppCompatActivity(),
 
     override fun moveToOtp() {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        MoveToActivity.moveToOTPActivity(this)
+        MoveToAnotherComponent.moveToOTPActivity(this)
     }
 }

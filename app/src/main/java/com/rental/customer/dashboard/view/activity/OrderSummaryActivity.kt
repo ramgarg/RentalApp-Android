@@ -2,7 +2,8 @@ package com.rental.customer.dashboard.view.activity
 
 import android.os.Bundle
 import com.rental.R
-import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.dashboard.viewmodel.OrderSummaryViewModel
+import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.Common.Companion.hideGroupViews
 import com.rental.customer.utils.Common.Companion.invisibleGroupViews
@@ -17,39 +18,38 @@ import org.greenrobot.eventbus.ThreadMode
 
 class OrderSummaryActivity : BaseActivity() {
 
+    lateinit var orderSummaryViewModel :OrderSummaryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.order_summary_activity)
 
-        tv_view_history.setOnClickListener { MoveToActivity.moveToPaymentHistoryActivity(this) }
+//        orderSummaryViewModel=ViewModelProviders.of(this).get(OrderSummaryViewModel::class.java)
+//        orderSummaryViewModel.getOrderSummaryResponse().observe(this, Observer {
+//            //Here response will come form api
+        setResponseViews()
+//        })
 
-        ViewVisibility.isVisibleOrNot(
-            this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.order_summary)
-        )
-        tv_pay_now.setOnClickListener {
-            MoveToActivity.moveToPaymentActivity(
-                this
-            )
-        }
+        ViewVisibility.isVisibleOrNot(this, img_back, img_menu, img_notification,
+            toolbar_title, getString(R.string.order_summary))
 
-        layout_st_date.setOnClickListener {
-            Common.dateSelector(this, tv_st_date_sel)
-        }
+        clickListenerOnViews()
 
-        layout_st_time.setOnClickListener {
-            Common.timeSelector(this, tv_st_time_sel)
-        }
+    }
 
-        layout_end_date.setOnClickListener {
-            Common.dateSelector(this, tv_end_date_sel)
-        }
+    private fun clickListenerOnViews(){
+        tv_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
+        tv_pay_now.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
+    }
 
-        layout_end_time.setOnClickListener {
-            Common.timeSelector(this, tv_end_time_sel)
-        }
+    private fun setResponseViews(){
+        tv_st_date_sel.text="12 Jan 2020"
+        tv_st_time_sel.text="4:00pm"
+        tv_end_date_sel.text="12 Feb 2020"
+        tv_end_time_sel.text="3:00pm"
+        checkbox_with_driver.isClickable=false
+
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
@@ -67,7 +67,7 @@ class OrderSummaryActivity : BaseActivity() {
             hideGroupViews(layout_driver)
 
             tv_give_tip.setOnClickListener {
-                MoveToActivity.moveToPaymentActivity(this)
+                MoveToAnotherComponent.moveToPaymentActivity(this)
             }
         }
 

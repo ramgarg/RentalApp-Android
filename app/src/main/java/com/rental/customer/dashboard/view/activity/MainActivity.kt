@@ -2,17 +2,15 @@ package com.rental.customer.dashboard.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.rental.R
 import com.rental.customer.dashboard.view.fragment.*
 import com.rental.customer.utils.Common.Companion.showLoading
-import com.rental.customer.utils.MoveToActivity
+import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -43,10 +41,10 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
         val header = navigationView.getHeaderView(0)
 
         header.edit_profile_menu.setOnClickListener {
-            MoveToActivity.moveToProfileActivity(this)
+            MoveToAnotherComponent.moveToProfileActivity(this)
             drawer_layout.closeDrawer(GravityCompat.START)
             }
-        img_notification.setOnClickListener { MoveToActivity.moveToNotificationActivity(this) }
+        img_notification.setOnClickListener { MoveToAnotherComponent.moveToNotificationActivity(this) }
     }
 
      private fun setDefaultFragment(){
@@ -105,7 +103,7 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
             R.id.nav_about -> {
-                MoveToActivity.moveToAboutActivity(this)
+                MoveToAnotherComponent.moveToAboutActivity(this)
             }
             R.id.nav_dashboard -> {
                 setDefaultFragment()
@@ -115,13 +113,13 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_my_address -> {
-               MoveToActivity.moveToMyAddressActivity(this)
+               MoveToAnotherComponent.moveToMyAddressActivity(this)
             }
             R.id.nav_payment -> {
-                MoveToActivity.moveToPaymentHistoryActivity(this)
+                MoveToAnotherComponent.moveToPaymentHistoryActivity(this)
             }
             R.id.nav_tc -> {
-                MoveToActivity.moveToTermsActivity(this)
+                MoveToAnotherComponent.moveToTermsActivity(this)
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
