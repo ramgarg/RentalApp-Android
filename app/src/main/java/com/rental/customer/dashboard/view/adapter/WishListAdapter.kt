@@ -7,16 +7,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
+import com.rental.customer.dashboard.model.modelclass.WishListModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.row_category.view.vehicle_name
+import kotlinx.android.synthetic.main.row_order_review.view.*
 import kotlinx.android.synthetic.main.row_wishlist.view.*
+import kotlinx.android.synthetic.main.row_wishlist.view.layout_remove
+import kotlinx.android.synthetic.main.row_wishlist.view.tv_view_detail
 
-class WishListAdapter(var items:List<Data>,  context: Context):
+class WishListAdapter(var items:ArrayList<WishListModel>,  context: Context):
     RecyclerView.Adapter<WishListAdapter.ViewHolder>() {
  var context:Context
     init {
         this.context=context
-
     }
 
     class ViewHolder (view: View,context: Context) : RecyclerView.ViewHolder(view) {
@@ -46,8 +49,15 @@ class WishListAdapter(var items:List<Data>,  context: Context):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-        holder.tvVeichleName?.text=items.get(position).first_name
+//        holder.tvVeichleName?.text=items.get(position).first_name
+        holder.itemView.layout_remove.setOnClickListener {
+            removeItem(position)
+        }
 
 
+    }
+    fun removeItem(position: Int) {
+        items.removeAt(position)
+        notifyDataSetChanged()
     }
 }

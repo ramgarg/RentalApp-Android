@@ -15,6 +15,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.BookingDetailsModel
+import com.rental.customer.dashboard.model.modelclass.WishListModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_payment.*
 import kotlinx.android.synthetic.main.rating_review.*
@@ -30,6 +31,7 @@ class Common {
 
         //crating an arraylist to store users using the data class user
         val bookingDetailsModel = ArrayList<BookingDetailsModel>()
+        val wishListModel = ArrayList<WishListModel>()
         val MONTHS =
             arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
         val c = Calendar.getInstance()

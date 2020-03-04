@@ -10,7 +10,7 @@ import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.row_category.view.*
 
-class HomeAdapter(val items:List<Data>, val context: Context, val recyclerViewItemClick: RecyclerViewItemClick):
+class HomeAdapter(val items: ArrayList<Data>, val context: Context, val recyclerViewItemClick: RecyclerViewItemClick):
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
 
@@ -46,6 +46,8 @@ class HomeAdapter(val items:List<Data>, val context: Context, val recyclerViewIt
 
         holder.tvVeichleName?.text=items.get(position).first_name
         holder.bind(items.get(position),recyclerViewItemClick)
+
+
 //        Picasso.with(context).load(items.get(position).avatar)
 //            .into(holder.imgVeichle );
     }

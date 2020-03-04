@@ -28,7 +28,7 @@ class HomeFragment : Fragment(), RecyclerViewItemClick {
 
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         homeViewModel.getHomeResponse().observe(this, Observer {
-                rec_veichle.adapter = HomeAdapter(it.data, requireActivity(), this@HomeFragment)
+                rec_veichle.adapter = HomeAdapter(it.data as ArrayList<Data>, requireActivity(), this@HomeFragment)
                 (activity as MainActivity).layout_loading.visibility=View.GONE
 
         })
