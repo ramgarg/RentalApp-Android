@@ -25,92 +25,95 @@
         <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
 
         <activity android:name=".customer.login.view.LoginActivity"
-        android:screenOrientation="portrait"
+        android:screenOrientation="unspecified"
 
         />
+        <uses-library
+                android:name="org.apache.http.legacy"
+                android:required="false" />
 
 
         <activity android:name=".customer.login.view.RegistrationActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
         <activity android:name=".customer.login.view.ForgotPasswordActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
         <activity android:name=".customer.login.view.OTPActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
 
         <activity android:name=".customer.myaddress.view.MyAddressActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
 
         <activity android:name=".customer.myaddress.view.AddNewAddressActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
         <activity android:name=".customer.webpages.AboutActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
         <activity android:name=".customer.webpages.TermsConditionActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
 
         <activity android:name=".customer.payment.view.PaymentHistoryActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
         <activity android:name=".customer.dashboard.view.activity.MainActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
         <activity android:name=".customer.profile.ProfileActivity"
-                  android:screenOrientation="portrait"/>
+                  android:screenOrientation="unspecified"/>
 
         <!--/>-->
         <activity android:name=".customer.notification.view.NotificationActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
         <activity android:name=".customer.dashboard.view.activity.OrderSummaryActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
 
         <activity android:name=".customer.dashboard.view.activity.PaymentActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
 
         <activity android:name=".customer.dashboard.view.activity.ViewDetailActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
 
 
         <activity android:name=".customer.dashboard.view.activity.OrderReviewActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
 
         <activity android:name=".customer.dashboard.view.activity.NotifyToAdminActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
 
 
 
         <activity android:name=".customer.dashboard.view.activity.BookingDetailsActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
         <activity android:name=".customer.dashboard.view.activity.CategoryActivity"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="unspecified"
 
         />
         <meta-data
