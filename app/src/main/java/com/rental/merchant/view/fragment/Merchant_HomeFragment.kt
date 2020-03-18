@@ -1,4 +1,4 @@
-package com.rental.merchant
+package com.rental.merchant.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,8 @@ import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.view.adapter.HomeAdapter
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
-import kotlinx.android.synthetic.main.activity_main.*
+import com.rental.merchant.view.activity.Merchant_MainActivity
+import com.rental.merchant.viewModel.MerchantHomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.merchant_activity_main.*
 

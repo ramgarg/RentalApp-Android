@@ -64,7 +64,7 @@
 
         />
 
-        <activity android:name=".merchant.Merchant_MainActivity"
+        <activity android:name=".merchant.view.activity.Merchant_MainActivity"
                 android:screenOrientation="unspecified"
 
                 />

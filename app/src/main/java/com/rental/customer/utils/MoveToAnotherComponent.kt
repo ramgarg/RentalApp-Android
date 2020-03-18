@@ -15,7 +15,7 @@ import com.rental.customer.payment.view.PaymentHistoryActivity
 import com.rental.customer.profile.ProfileActivity
 import com.rental.customer.webpages.AboutActivity
 import com.rental.customer.webpages.TermsConditionActivity
-import com.rental.merchant.Merchant_MainActivity
+import com.rental.merchant.view.activity.Merchant_MainActivity
 
 
 class MoveToAnotherComponent {

@@ -1,4 +1,4 @@
-package com.rental.merchant
+package com.rental.merchant.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

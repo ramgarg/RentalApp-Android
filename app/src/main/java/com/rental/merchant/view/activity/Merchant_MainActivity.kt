@@ -1,4 +1,4 @@
-package com.rental.merchant
+package com.rental.merchant.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,6 +11,7 @@ import com.rental.R
 import com.rental.customer.dashboard.view.fragment.*
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
+import com.rental.merchant.view.fragment.Merchant_HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.img_gif
 import kotlinx.android.synthetic.main.header.view.*
