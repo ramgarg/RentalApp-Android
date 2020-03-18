@@ -19,6 +19,8 @@ import com.rental.customer.dashboard.model.modelclass.WishListModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_payment.*
 import kotlinx.android.synthetic.main.rating_review.*
+import kotlinx.android.synthetic.main.rating_review.img_close
+import kotlinx.android.synthetic.main.rental_dialog.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
 import java.sql.Time
 import java.text.Format
@@ -73,11 +75,34 @@ class Common {
 
             if(title.equals("Payment"))
                 thankYou(dialog,msg)
+            else if(title.equals("UserType"))
+                userDialog(context,dialog)
             else
                 rating(dialog)
 
             dialog .show()
 
+        }
+        private fun userDialog(context: Context,dialog: Dialog){
+            dialog.img_close.setOnClickListener { dialog.cancel() }
+            dialog.btn_agent_inactive.setOnClickListener {
+                dialog.btn_agent_active.visibility = View.VISIBLE
+                dialog.btn_customer_active.visibility = View.INVISIBLE
+                dialog.btn_merchant_active.visibility = View.INVISIBLE
+                MoveToAnotherComponent.moveToHomeActivity(context)
+            }
+            dialog.btn_customer_inactive.setOnClickListener {
+                dialog.btn_customer_active.visibility = View.VISIBLE
+                dialog.btn_merchant_active.visibility = View.INVISIBLE
+                dialog.btn_agent_active.visibility = View.INVISIBLE
+                MoveToAnotherComponent.moveToHomeActivity(context)
+            }
+            dialog.btn_merchant_inactive.setOnClickListener {
+                dialog.btn_merchant_active.visibility = View.VISIBLE
+                dialog.btn_agent_active.visibility = View.INVISIBLE
+                dialog.btn_customer_active.visibility = View.INVISIBLE
+                MoveToAnotherComponent.moveToHomeActivity(context)
+            }
         }
 
         private fun rating(dialog: Dialog){

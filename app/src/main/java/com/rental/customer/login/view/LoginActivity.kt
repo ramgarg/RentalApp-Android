@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
 import com.rental.customer.login.viewmodel.LoginViewModel
+import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.Validator
 import kotlinx.android.synthetic.main.activity_login.*
@@ -31,7 +32,11 @@ class LoginActivity :AppCompatActivity() {
         tv_registration.setOnClickListener { MoveToAnotherComponent.moveToRegistrationActivity(this) }
         tv_forgot_password.setOnClickListener { MoveToAnotherComponent.moveToForgotPasswordActivity(this) }
         btn_login.setOnClickListener { checkValidation(ed_email,ed_password) }
-        tv_skip.setOnClickListener { MoveToAnotherComponent.moveToHomeActivity(this) }
+        tv_skip.setOnClickListener {
+
+            Common.showDialog("UserType","",this,R.layout.rental_dialog)
+//            MoveToAnotherComponent.moveToHomeActivity(this)
+        }
 
     }
 
