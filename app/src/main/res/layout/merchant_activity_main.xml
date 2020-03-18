@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/merchnat_drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+
+    <RelativeLayout
+            android:orientation="vertical"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <FrameLayout
+                android:layout_below="@+id/toolbar_header"
+                android:layout_width="match_parent"
+                android:layout_above="@+id/bottom_view"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:id="@+id/merchant_main_container">
+
+        </FrameLayout>
+
+        <include
+
+                android:id="@+id/merchant_toolbar_header"
+                layout="@layout/toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_alignParentTop="true"
+                android:visibility="visible"/>
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="match_parent"
+                android:id="@+id/merchant_bottom_view"
+                android:layout_alignParentBottom="true"
+                app:menu="@menu/merchant_bottom_menu"
+                app:itemTextColor="@drawable/item_selector"
+                app:itemIconTint="@drawable/item_selector"
+                android:background="@drawable/bottom_navigation_gradient"
+                android:layout_height="@dimen/_60sdp">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+            android:background="#90000000"
+            android:id="@+id/merchant_layout_loading"
+            android:visibility="gone"
+            android:layout_height="match_parent">
+        <ImageView
+                android:id="@+id/img_gif"
+                android:layout_centerInParent="true"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_gravity="center"
+                android:layout_height="@dimen/_200sdp"/>
+    </RelativeLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+            android:id="@+id/merchant_navigationView"
+            android:layout_width="wrap_content"
+            android:background="@drawable/navigation_drawer"
+            android:layout_height="match_parent"
+            app:menu="@menu/drawer_menu"
+            app:headerLayout="@layout/header"
+            android:layout_gravity="start"/>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

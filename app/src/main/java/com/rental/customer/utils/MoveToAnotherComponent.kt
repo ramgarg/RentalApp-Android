@@ -15,11 +15,16 @@ import com.rental.customer.payment.view.PaymentHistoryActivity
 import com.rental.customer.profile.ProfileActivity
 import com.rental.customer.webpages.AboutActivity
 import com.rental.customer.webpages.TermsConditionActivity
+import com.rental.merchant.Merchant_MainActivity
 
 
 class MoveToAnotherComponent {
 
     companion object{
+
+        fun moveToMerchantActivity(context: Context){
+            context.startActivity(Intent(context, Merchant_MainActivity::class.java))
+        }
 
         fun moveToForgotPasswordActivity(context: Context){
             context.startActivity(Intent(context, ForgotPasswordActivity::class.java))

@@ -13,7 +13,7 @@
                android:layout_height="@dimen/_80sdp"/>
 
     <TextView
-            android:text="Fathi Asfour"
+            android:text="Bilad Al"
             android:fontFamily="@font/bree_serif"
             android:textColor="#000"
             android:id="@+id/user_name_menu"
@@ -24,7 +24,7 @@
               android:layout_below="@id/profile_img_menu"
               android:layout_height="wrap_content"/>
     <TextView
-            android:text="Customer"
+            android:text="Merchant"
 
             android:id="@+id/user_type_menu"
             android:fontFamily="@font/bree_serif"

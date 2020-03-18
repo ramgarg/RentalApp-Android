@@ -64,6 +64,11 @@
 
         />
 
+        <activity android:name=".merchant.Merchant_MainActivity"
+                android:screenOrientation="unspecified"
+
+                />
+
         <activity android:name=".customer.payment.view.PaymentHistoryActivity"
                   android:screenOrientation="unspecified"
 
