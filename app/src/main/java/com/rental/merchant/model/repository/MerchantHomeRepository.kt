@@ -1,4 +1,4 @@
-package com.rental.customer.dashboard.model.repositry
+package com.rental.merchant.model.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,29 +8,28 @@ import com.rental.customer.webservice.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Response
 
-
-class WishListRepository() {
-
+class MerchantHomeRepository {
     var apiServices: APIServices
 
     init {
         apiServices = RetrofitInstance.client.create(APIServices::class.java)
+
     }
 
-    fun getWishList():LiveData<HomeResponse> {
+    fun getVeichleList(): LiveData<HomeResponse> {
         val data: MutableLiveData<HomeResponse> = MutableLiveData<HomeResponse>()
         val call = apiServices?.getData()
         call?.enqueue(object : retrofit2.Callback<HomeResponse> {
             override fun onFailure(call: Call<HomeResponse>, t: Throwable) {
 //                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-            data.value=null
+                data.value=null
             }
 
             override fun onResponse(call: Call<HomeResponse>, response: Response<HomeResponse>) {
 //                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-         data.value=response.body()
+                data.value=response.body()
             }
 
 
@@ -38,5 +37,4 @@ class WishListRepository() {
         return data
 
     }
-
 }

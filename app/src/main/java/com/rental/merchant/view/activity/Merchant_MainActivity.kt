@@ -11,7 +11,7 @@ import com.rental.R
 import com.rental.customer.dashboard.view.fragment.*
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
-import com.rental.merchant.view.fragment.Merchant_HomeFragment
+import com.rental.merchant.view.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.img_gif
 import kotlinx.android.synthetic.main.header.view.*
@@ -61,7 +61,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             }
             R.id.merchant_navigation_dashboard -> {
                 Common.showLoading(this, merchant_layout_loading, img_gif)
-                val fragment = WishListFragment()
+                val fragment = Merchant_Dash_Fragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.wishlist)
@@ -69,7 +69,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             }
             R.id.merchant_navigation_order -> {
                 Common.showLoading(this, merchant_layout_loading, img_gif)
-                val fragment = OrderFragment()
+                val fragment = Merchant_OrderFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.order)
@@ -78,7 +78,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
             R.id.merchant_navigation_profile -> {
                 Common.showLoading(this, merchant_layout_loading, img_gif)
-                val fragment = ProfieFragment()
+                val fragment = Merchant_ProfileFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.profie)
@@ -87,7 +87,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             R.id.merchant_navigation_support -> {
                 Common.showLoading(this, merchant_layout_loading, img_gif)
                 toolbar_title.text=getString(R.string.help)
-                val fragment = SupportFragment()
+                val fragment = Merchant_Support_Fragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 return@OnNavigationItemSelectedListener true

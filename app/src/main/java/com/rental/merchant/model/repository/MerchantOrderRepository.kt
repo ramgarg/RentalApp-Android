@@ -1,4 +1,4 @@
-package com.rental.merchant.model
+package com.rental.merchant.model.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import com.rental.customer.webservice.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Response
 
-class MerchantHomeRepository {
+class MerchantOrderRepository() {
     var apiServices: APIServices
 
     init {
@@ -16,7 +16,7 @@ class MerchantHomeRepository {
 
     }
 
-    fun getVeichleList(): LiveData<HomeResponse> {
+    fun getOrderList(): LiveData<HomeResponse> {
         val data: MutableLiveData<HomeResponse> = MutableLiveData<HomeResponse>()
         val call = apiServices?.getData()
         call?.enqueue(object : retrofit2.Callback<HomeResponse> {
