@@ -60,11 +60,11 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_dashboard -> {
-                Common.showLoading(this, merchant_layout_loading, img_gif)
+                //Common.showLoading(this, merchant_layout_loading, img_gif)
                 val fragment = Merchant_Dash_Fragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
-                toolbar_title.text=getString(R.string.wishlist)
+                toolbar_title.text=getString(R.string.app_name)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_order -> {

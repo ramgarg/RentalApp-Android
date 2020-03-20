@@ -37,6 +37,13 @@
                   android:screenOrientation="unspecified"
 
         />
+
+        <activity android:name=".merchant.view.activity.Merchant_Dash_Activity"
+                android:screenOrientation="unspecified"
+
+                />
+
+
         <activity android:name=".customer.login.view.ForgotPasswordActivity"
                   android:screenOrientation="unspecified"
 
