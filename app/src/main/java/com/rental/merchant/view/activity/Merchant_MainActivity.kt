@@ -14,6 +14,7 @@ import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.merchant.view.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.img_gif
+import kotlinx.android.synthetic.main.fragment_merchant_home.*
 import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.merchant_activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -30,19 +31,14 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         Common.showLoading(this, merchant_layout_loading, img_gif)
         merchant_bottom_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         merchant_bottom_view.selectedItemId=R.id.merchant_navigation_home
-        merchant_navigationView.setNavigationItemSelectedListener(this)
 
         setDefaultFragment()
 
         img_menu.setOnClickListener {  merchnat_drawer_layout.openDrawer(GravityCompat.START) }
 
-        val header = merchant_navigationView.getHeaderView(0)
+        //merchant_add_vehicle.setOnClickListener{ MoveToAnotherComponent.moveToMerchantActivity(this) }
 
-        header.edit_profile_menu.setOnClickListener {
-            MoveToAnotherComponent.moveToProfileActivity(this)
-            drawer_layout.closeDrawer(GravityCompat.START)
-        }
-        img_notification.setOnClickListener { MoveToAnotherComponent.moveToNotificationActivity(this) }
+
     }
     private fun setDefaultFragment(){
         val fragment = Merchant_HomeFragment()
@@ -56,7 +52,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             R.id.merchant_navigation_home -> {
                 Common.showLoading(this, merchant_layout_loading, img_gif)
                 setDefaultFragment()
-                toolbar_title.text=getString(R.string.select_category)
+                toolbar_title.text=getString(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_dashboard -> {
