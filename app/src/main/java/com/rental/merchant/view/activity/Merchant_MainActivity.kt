@@ -2,6 +2,7 @@ package com.rental.merchant.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -53,14 +54,17 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 Common.showLoading(this, merchant_layout_loading, img_gif)
                 setDefaultFragment()
                 toolbar_title.text=getString(R.string.title_home)
+                merchant_toolbar_header.visibility=View.VISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_dashboard -> {
+
                 //Common.showLoading(this, merchant_layout_loading, img_gif)
                 val fragment = Merchant_Dash_Fragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
-                    .commit()
+                   .commit()
                 toolbar_title.text=getString(R.string.app_name)
+                merchant_toolbar_header.visibility=View.INVISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_order -> {
@@ -69,6 +73,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.order)
+                merchant_toolbar_header.visibility=View.VISIBLE
                 return@OnNavigationItemSelectedListener true
             }
 
@@ -78,6 +83,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.profie)
+                merchant_toolbar_header.visibility=View.VISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_support -> {
@@ -86,6 +92,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 val fragment = Merchant_Support_Fragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
+                merchant_toolbar_header.visibility=View.VISIBLE
                 return@OnNavigationItemSelectedListener true
             }
         }
