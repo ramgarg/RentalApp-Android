@@ -61,7 +61,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
                 //Common.showLoading(this, merchant_layout_loading, img_gif)
                 val fragment = Merchant_Dash_Fragment()
-                supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
+                supportFragmentManager.beginTransaction().replace(R.id.dash_content_main, fragment, fragment.javaClass.simpleName)
                    .commit()
                 toolbar_title.text=getString(R.string.app_name)
                 merchant_toolbar_header.visibility=View.INVISIBLE

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/merchant_dash_card"
+        android:autofillHints="Helo"
+        android:layout_below="@+id/merchant_dash_name"
+        app:cardCornerRadius="25dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        app:cardPreventCornerOverlap="true"
+        android:layout_marginTop="10dp">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:weightSum="100"
+                android:orientation="horizontal">
+
+            <ImageView android:layout_width="@dimen/_60sdp"
+                    android:layout_weight="20"
+                    android:id="@+id/dash_agent_img_profile"
+                    android:src="@mipmap/profile_pic"
+                    android:layout_height="@dimen/_60sdp"/>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="80"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="75dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:text="Ajeer Mohammed"
+                        android:textStyle="bold"
+                        android:textColor="@color/mdtp_transparent_black"
+                        android:id="@+id/dash_agent_user_name"
+                        android:layout_width="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_height="30dp"/>
+
+                <TextView
+                        android:text="Agent"
+                        android:textColor="@color/mdtp_transparent_black"
+                        android:layout_width="100dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="35dp"
+                        android:textSize="18sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:text="Order Id-"
+                    android:textStyle="bold"
+                    android:textColor="@color/mdtp_transparent_black"
+                    android:id="@+id/merchant_order_id"
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_height="30dp"/>
+
+            <TextView
+                    android:text="394865"
+                    android:textColor="@color/mdtp_transparent_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+            <ImageView android:layout_width="@dimen/_20sdp"
+                    android:id="@+id/mer"
+                    android:src="@drawable/check"
+                    android:layout_height="@dimen/_20sdp"/>
+
+            <TextView
+                    android:text="With Driver"
+                    android:textColor="@color/mdtp_transparent_black"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="35dp"
+                    android:textSize="18sp"/>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:text="Truck Quantity-"
+                    android:textStyle="bold"
+                    android:textColor="@color/mdtp_transparent_black"
+                    android:id="@+id/meame"
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_height="30dp"/>
+
+            <TextView
+                    android:text="2"
+                    android:textStyle="bold"
+                    android:textColor="@color/mdtp_transparent_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:textSize="18sp"/>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+            <TextView
+                    android:text="Order Date"
+                    android:textStyle="bold"
+                    android:textColor="@color/mdtp_transparent_black"
+                    android:id="@+id/agent_order_date"
+                    android:layout_width="100dp"
+                    android:textSize="18sp"
+                    android:layout_height="30dp"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_marginTop="10dp"
+                    android:weightSum="100"
+                    android:orientation="horizontal">
+                <ImageView android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:id="@+id/merchant_img_date"
+                        android:src="@mipmap/calender"
+                        android:layout_height="@dimen/_20sdp"/>
+
+                <TextView
+                        android:text="27/3/2019"
+                        android:textStyle="bold"
+                        android:textColor="@color/mdtp_transparent_black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_weight="50"
+                        android:textSize="18sp"/>
+                <ImageView android:layout_width="0dp"
+                        android:layout_weight="40"
+                        android:id="@+id/agent_call_button"
+                        android:src="@mipmap/call"
+                        android:layout_height="@dimen/_30sdp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

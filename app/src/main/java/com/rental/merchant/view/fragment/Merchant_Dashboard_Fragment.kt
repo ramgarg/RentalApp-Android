@@ -1,24 +1,27 @@
 package com.rental.merchant.view.fragment
 
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.PostsAdapter
+
 import com.rental.R
 import kotlinx.android.synthetic.main.merchant__dashboard__fragment.*
 
-class Merchant_Dash_Fragment : Fragment() {
+class Merchant_Dashboard_Fragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.merchant_fragment_dash, container, false)
-        return view
+    companion object {
+        fun newInstance() = Merchant_Dashboard_Fragment()
     }
 
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.merchant__dashboard__fragment, container, false)
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

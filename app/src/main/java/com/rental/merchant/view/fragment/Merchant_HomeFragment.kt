@@ -31,6 +31,8 @@ class Merchant_HomeFragment : Fragment(), RecyclerViewItemClick {
             merchant_rec_veichle.adapter = HomeAdapter(it.data as ArrayList<Data>, requireActivity(), this)
             (activity as Merchant_MainActivity).merchant_layout_loading.visibility= View.GONE
 
+
+
         })
 
         return view
