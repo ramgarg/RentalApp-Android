@@ -73,9 +73,59 @@
 
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec_add_veichle"
+            android:layout_below="@+id/ed_search"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/merchant_add_vcl_recycler">
+            app:spanCount="3"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:layout_height="match_parent">
+
     </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:id="@+id/layout_vehicle_not_found"
+            android:layout_below="@+id/ed_search"
+            android:layout_height="match_parent">
+
+
+        <ImageView android:layout_width="@dimen/_200sdp"
+                android:src="@mipmap/truck"
+                android:layout_height="@dimen/_200sdp"/>
+
+        <TextView android:layout_width="wrap_content"
+                android:text="No Result Found"
+                android:id="@+id/tv_no_result"
+                android:fontFamily="@font/bree_serif"
+                android:textColor="#000"
+                android:textSize="@dimen/_20sdp"
+                android:layout_height="wrap_content"/>
+
+        <TextView android:layout_width="wrap_content"
+                android:text="@string/vehicle_not_available"
+                android:fontFamily="@font/bree_serif"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textSize="@dimen/_12sdp"
+                android:layout_height="wrap_content"/>
+
+        <Button android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:id="@+id/notify_admin"
+                android:text="Notify Admin"
+                android:textColor="#fff"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:textAllCaps="false"
+                android:background="@drawable/button_save"
+                android:layout_height="@dimen/_40sdp"/>
+
+    </LinearLayout>
 </LinearLayout>
     </ScrollView>

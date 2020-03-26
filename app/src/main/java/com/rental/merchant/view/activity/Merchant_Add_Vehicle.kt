@@ -26,7 +26,7 @@ class Merchant_Add_Vehicle : AppCompatActivity(), RecyclerViewItemClick {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.category_activity)
+        setContentView(R.layout.merchant_add_vehicle)
 
         ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
@@ -34,7 +34,7 @@ class Merchant_Add_Vehicle : AppCompatActivity(), RecyclerViewItemClick {
 
         merchantViewModel= ViewModelProviders.of(this).get(HomeViewModel::class.java)
         merchantViewModel.getHomeResponse().observe(this, Observer {
-            merchant_add_vcl_recycler.adapter= CategoryAdapter(it.data,this,this)
+            rec_add_veichle.adapter= CategoryAdapter(it.data,this,this)
             arrayList= it.data as ArrayList<Data>
 
             //search(arrayList)
