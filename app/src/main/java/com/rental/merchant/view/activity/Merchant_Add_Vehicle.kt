@@ -8,6 +8,7 @@ import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.view.adapter.CategoryAdapter
 import com.rental.customer.dashboard.viewmodel.HomeViewModel
+import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.customer.utils.ViewVisibility
@@ -42,6 +43,6 @@ class Merchant_Add_Vehicle : AppCompatActivity(), RecyclerViewItemClick {
     }
 
     override fun onItemClick(item: Data) {
-        MoveToAnotherComponent.moveToCategoryActivity(this)
+        Common.showDialog("UserDay","",this,R.layout.add_vehicle_dialog)
     }
 }

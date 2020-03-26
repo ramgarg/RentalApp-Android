@@ -18,6 +18,7 @@ import com.rental.customer.dashboard.model.modelclass.BookingDetailsModel
 import com.rental.customer.dashboard.model.modelclass.WishListModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_payment.*
+import kotlinx.android.synthetic.main.add_vehicle_dialog.*
 import kotlinx.android.synthetic.main.rating_review.*
 import kotlinx.android.synthetic.main.rating_review.img_close
 import kotlinx.android.synthetic.main.rental_dialog.*
@@ -77,12 +78,23 @@ class Common {
                 thankYou(dialog,msg)
             else if(title.equals("UserType"))
                 userDialog(context,dialog)
+            else if(title.equals("UserDay"))
+                userDayDialog(context,dialog)
             else
                 rating(dialog)
 
             dialog .show()
 
         }
+
+        private fun userDayDialog(context: Activity, dialog: Dialog) {
+            dialog.img_close.setOnClickListener { dialog.cancel() }
+            dialog.btn_dialog_sun_inactive.setOnClickListener{
+                dialog.btn_dialog_sun_active.visibility = View.VISIBLE
+            }
+
+        }
+
         private fun userDialog(context: Context,dialog: Dialog){
             dialog.img_close.setOnClickListener { dialog.cancel() }
             dialog.btn_agent_inactive.setOnClickListener {
