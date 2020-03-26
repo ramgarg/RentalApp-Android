@@ -1,11 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:id="@+id/merchant_truck_scroll"
+        android:layout_below="@+id/toolbar">
+<LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <include layout="@layout/toolbar"
-            android:id="@+id/toolbar"
-            />
-</RelativeLayout>
+            android:id="@+id/toolbar" />
+
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/select_category_text"
+            android:textSize="18sp"
+            android:fontFamily="@font/bree_serif"
+            android:text="Select Category">
+
+    </TextView>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:orientation="horizontal">
+
+    <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+            android:layout_weight="90"
+            android:layout_height="30dp" />
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="10"
+                android:src="@mipmap/expand">
+
+        </ImageView>
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="18sp"
+            android:id="@+id/select_subcategory_text"
+            android:text="Select Sub Category"
+            android:fontFamily="@font/bree_serif">
+
+    </TextView>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:orientation="horizontal">
+
+    <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="0dp"
+            android:layout_weight="90"
+            android:layout_height="30dp"/>
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="10"
+                android:src="@mipmap/expand">
+        </ImageView>
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/merchant_add_vcl_recycler">
+    </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>
+    </ScrollView>

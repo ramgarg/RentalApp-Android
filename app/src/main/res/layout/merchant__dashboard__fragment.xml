@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/dash_content_main"
+        android:id="@+id/dash_content_main1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".merchant.view.fragment.Merchant_Dashboard_Fragment">

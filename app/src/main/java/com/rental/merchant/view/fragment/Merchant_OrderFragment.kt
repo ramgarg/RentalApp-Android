@@ -1,5 +1,6 @@
 package com.rental.merchant.view.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +48,7 @@ class Merchant_OrderFragment : Fragment() , RecyclerViewItemClick {
         MoveToAnotherComponent.moveToOrderSummaryActivity(requireContext())
     }
 
+    @SuppressLint("RestrictedApi")
     private fun viewVisibility(view: View){
 
 

@@ -8,16 +8,18 @@ import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.view.adapter.CategoryAdapter
 import com.rental.customer.dashboard.viewmodel.HomeViewModel
+import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.customer.utils.ViewVisibility
 import com.rental.merchant.viewModel.MerchantHomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_merchant_home.*
+import kotlinx.android.synthetic.main.merchant_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class Merchant_Add_Vehicle : AppCompatActivity(), RecyclerViewItemClick {
 
-    private lateinit var merchantViewModel: MerchantHomeViewModel
+    private lateinit var merchantViewModel: HomeViewModel
     private lateinit var arrayList:ArrayList<Data>
     var arrayListSort:ArrayList<Data> = ArrayList()
 
@@ -30,9 +32,9 @@ class Merchant_Add_Vehicle : AppCompatActivity(), RecyclerViewItemClick {
             this, img_back, img_menu, img_notification,
             toolbar_title, getString(R.string.vehicle))
 
-        merchantViewModel= ViewModelProviders.of(this).get(MerchantHomeViewModel::class.java)
-        merchantViewModel.getmerchant_HomeResponse().observe(this, Observer {
-            merchant_rec_veichle.adapter= CategoryAdapter(it.data,this,this)
+        merchantViewModel= ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        merchantViewModel.getHomeResponse().observe(this, Observer {
+            merchant_add_vcl_recycler.adapter= CategoryAdapter(it.data,this,this)
             arrayList= it.data as ArrayList<Data>
 
             //search(arrayList)
@@ -40,6 +42,6 @@ class Merchant_Add_Vehicle : AppCompatActivity(), RecyclerViewItemClick {
     }
 
     override fun onItemClick(item: Data) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        MoveToAnotherComponent.moveToCategoryActivity(this)
     }
 }

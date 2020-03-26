@@ -38,6 +38,8 @@ class Merchant_HomeFragment : Fragment(), RecyclerViewItemClick {
         return view
     }
 
+
+
     override fun onItemClick(item: Data) {
         MoveToAnotherComponent.moveToCategoryActivity(requireContext())
     }

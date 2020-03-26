@@ -1,5 +1,6 @@
 package com.rental.merchant.view.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -21,11 +22,18 @@ import kotlinx.android.synthetic.main.merchant_activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.merchant_activity_main)
 
         initView()
+
+
+
+        merchant_add_vehicle_btn.setOnClickListener{ MoveToAnotherComponent.moveToMerchantAddVehicle(this) }
+
+
     }
 
     private fun initView(){
@@ -37,7 +45,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
         img_menu.setOnClickListener {  merchnat_drawer_layout.openDrawer(GravityCompat.START) }
 
-        //merchant_add_vehicle.setOnClickListener{ MoveToAnotherComponent.moveToMerchantActivity(this) }
+
 
 
     }
@@ -47,6 +55,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             .commit()
     }
 
+    @SuppressLint("RestrictedApi")
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
         when (menuItem.itemId) {
 
@@ -55,16 +64,18 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 setDefaultFragment()
                 toolbar_title.text=getString(R.string.title_home)
                 merchant_toolbar_header.visibility=View.VISIBLE
+                merchant_add_vehicle_btn.visibility=View.VISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_dashboard -> {
 
                 //Common.showLoading(this, merchant_layout_loading, img_gif)
                 val fragment = Merchant_Dash_Fragment()
-                supportFragmentManager.beginTransaction().replace(R.id.dash_content_main, fragment, fragment.javaClass.simpleName)
+                supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                    .commit()
                 toolbar_title.text=getString(R.string.app_name)
                 merchant_toolbar_header.visibility=View.INVISIBLE
+                merchant_add_vehicle_btn.visibility=View.INVISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_order -> {
@@ -74,6 +85,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                     .commit()
                 toolbar_title.text=getString(R.string.order)
                 merchant_toolbar_header.visibility=View.VISIBLE
+                merchant_add_vehicle_btn.visibility=View.INVISIBLE
                 return@OnNavigationItemSelectedListener true
             }
 
@@ -84,6 +96,8 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                     .commit()
                 toolbar_title.text=getString(R.string.profie)
                 merchant_toolbar_header.visibility=View.VISIBLE
+
+                merchant_add_vehicle_btn.visibility=View.INVISIBLE
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_support -> {
@@ -93,6 +107,8 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 merchant_toolbar_header.visibility=View.VISIBLE
+
+                merchant_add_vehicle_btn.visibility=View.INVISIBLE
                 return@OnNavigationItemSelectedListener true
             }
         }

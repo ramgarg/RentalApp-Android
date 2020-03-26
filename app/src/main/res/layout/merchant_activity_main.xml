@@ -32,6 +32,26 @@
                 android:layout_height="@dimen/_70sdp"
                 android:layout_alignParentTop="true"
                 android:visibility="invisible"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:scaleType="center"
+                android:src="@drawable/add_green"
+                android:visibility="gone"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                app:maxImageSize="65dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="100dp"
+                android:clickable="true"
+                android:id="@+id/merchant_add_vehicle_btn"
+                app:backgroundTint="@null"
+                app:fabSize="normal">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

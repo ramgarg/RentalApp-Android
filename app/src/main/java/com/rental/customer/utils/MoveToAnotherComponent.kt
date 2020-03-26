@@ -15,12 +15,17 @@ import com.rental.customer.payment.view.PaymentHistoryActivity
 import com.rental.customer.profile.ProfileActivity
 import com.rental.customer.webpages.AboutActivity
 import com.rental.customer.webpages.TermsConditionActivity
+import com.rental.merchant.view.activity.Merchant_Add_Vehicle
 import com.rental.merchant.view.activity.Merchant_MainActivity
 
 
 class MoveToAnotherComponent {
 
     companion object{
+
+        fun moveToMerchantAddVehicle(context: Context){
+            context.startActivity(Intent(context, Merchant_Add_Vehicle::class.java))
+        }
 
         fun moveToMerchantActivity(context: Context){
             context.startActivity(Intent(context, Merchant_MainActivity::class.java))
