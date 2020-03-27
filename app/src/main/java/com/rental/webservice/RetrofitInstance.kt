@@ -1,4 +1,4 @@
-package com.rental.customer.webservice
+package com.rental.webservice
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,8 +18,6 @@ class RetrofitInstance {
            }
            return retrofit!!
        }
-
-
    }
 
 }

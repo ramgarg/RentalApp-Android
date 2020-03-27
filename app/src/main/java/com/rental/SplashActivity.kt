@@ -1,10 +1,9 @@
-package com.rental.customer
+package com.rental
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.rental.R
 import com.rental.customer.login.view.LoginActivity
 
 class SplashActivity : AppCompatActivity() {

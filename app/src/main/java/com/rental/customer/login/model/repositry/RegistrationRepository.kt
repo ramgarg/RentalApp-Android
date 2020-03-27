@@ -1,7 +1,7 @@
 package com.rental.customer.login.model.repositry
 
 import com.rental.customer.login.presenter.RegistrationView
-import com.rental.customer.webservice.APIServices
+import com.rental.webservice.APIServices
 
 class RegistrationRepository(registrationView: RegistrationView) {
 

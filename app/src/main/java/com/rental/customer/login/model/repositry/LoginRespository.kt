@@ -3,8 +3,8 @@ package com.rental.customer.login.model.repositry
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.rental.customer.login.model.modelclass.LoginRequest
-import com.rental.customer.webservice.APIServices
-import com.rental.customer.webservice.RetrofitInstance
+import com.rental.webservice.APIServices
+import com.rental.webservice.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Response
 

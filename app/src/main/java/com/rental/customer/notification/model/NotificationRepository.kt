@@ -2,9 +2,8 @@ package com.rental.customer.notification.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.rental.customer.dashboard.model.modelclass.HomeResponse
-import com.rental.customer.webservice.APIServices
-import com.rental.customer.webservice.RetrofitInstance
+import com.rental.webservice.APIServices
+import com.rental.webservice.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Response
 

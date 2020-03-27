@@ -18,9 +18,8 @@ class Merchant_Dash_Fragment : Fragment() {
         return view
     }
 
-
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+
         super.onActivityCreated(savedInstanceState)
         val posts: ArrayList<String> = ArrayList()
 

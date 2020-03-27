@@ -1,4 +1,4 @@
-package com.rental.customer.webservice
+package com.rental.webservice
 
 import com.rental.customer.dashboard.model.modelclass.HomeResponse
 import com.rental.customer.dashboard.model.modelclass.OrderSummaryResponseModel

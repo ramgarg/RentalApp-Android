@@ -1,13 +1,12 @@
-package com.rental.customer.webservice
-
-import android.content.Context
-import android.widget.Toast
+package com.rental.webservice
 
 class Constant {
 
 
     companion object {
+
         const val BASE_URL = "https://reqres.in/api/"
+
         const val LOGIN = ""
         const val DASHBOARD = "users?page=2"
         const val NOTIFICATION = "users?page=2"

@@ -2,7 +2,6 @@ package com.rental.customer.myaddress.view
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.pm.PackageManager
 import android.location.*
 import android.os.Bundle
@@ -24,13 +23,12 @@ import com.rental.R
 import com.rental.customer.dashboard.view.activity.BaseActivity
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.ViewVisibility
-import com.rental.customer.webservice.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
+import com.rental.webservice.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
 import kotlinx.android.synthetic.main.add_new_address_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.util.*
 
 
 class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {

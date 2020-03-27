@@ -11,7 +11,6 @@
 
     <RelativeLayout
             android:orientation="vertical"
-
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -26,14 +25,12 @@
         </FrameLayout>
 
         <include
-
                 android:id="@+id/toolbar_header"
                 layout="@layout/toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_70sdp"
                 android:layout_alignParentTop="true"
                 android:visibility="visible"/>
-
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:layout_width="match_parent"
@@ -47,13 +44,12 @@
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-
     </RelativeLayout>
 
     <RelativeLayout android:layout_width="match_parent"
                     android:background="#90000000"
                     android:id="@+id/layout_loading"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_height="match_parent">
         <ImageView
                 android:id="@+id/img_gif"
