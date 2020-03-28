@@ -30,6 +30,7 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
 
         showLoading(this,layout_loading,img_gif)
+
         bottom_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         bottom_view.selectedItemId=R.id.navigation_home
         navigationView.setNavigationItemSelectedListener(this)

@@ -28,8 +28,10 @@
     <string name="already_have_an_account">Already have an account?Login</string>
     <string name="full_name">Full Name</string>
     <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
     <string name="wishlist">WishList</string>
     <string name="orders">Orders</string>
+    <string name="title_notification">Notification</string>
     <string name="profile">Profile</string>
     <string name="support">Support</string>
     <string name="my_address">My Addresses</string>

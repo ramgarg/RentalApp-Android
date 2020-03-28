@@ -96,12 +96,14 @@ class Common {
         }
 
         private fun userDialog(context: Context,dialog: Dialog){
+
             dialog.img_close.setOnClickListener { dialog.cancel() }
+
             dialog.btn_agent_inactive.setOnClickListener {
                 dialog.btn_agent_active.visibility = View.VISIBLE
                 dialog.btn_customer_active.visibility = View.INVISIBLE
                 dialog.btn_merchant_active.visibility = View.INVISIBLE
-                MoveToAnotherComponent.moveToHomeActivity(context)
+                MoveToAnotherComponent.moveToAgentHomeActivity(context)
             }
             dialog.btn_customer_inactive.setOnClickListener {
                 dialog.btn_customer_active.visibility = View.VISIBLE
