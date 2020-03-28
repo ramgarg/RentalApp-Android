@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/navigation_agent"
+        app:startDestination="@id/agentDashboard">
+
+    <fragment
+            android:id="@+id/agentDashboard"
+            android:name="com.rental.agent.AgentDashboard"
+            android:label="fragment_agent_dashboard"
+            tools:layout="@layout/fragment_agent_dashboard" />
+    <fragment
+            android:id="@+id/agentOrderFragment"
+            android:name="com.rental.agent.AgentOrderFragment"
+            android:label="fragment_agent_order"
+            tools:layout="@layout/fragment_agent_order" />
+</navigation>
