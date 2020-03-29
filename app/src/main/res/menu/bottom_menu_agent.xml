@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
             android:id="@+id/navigation_order"
             android:icon="@mipmap/order_inactive"
-            android:title="@string/orders" />
-
+            android:title="@string/orders"
+            />
     <item
             android:id="@+id/navigation_notification"
             android:icon="@mipmap/dashboard"
-            android:title="@string/title_no"
-
-            />
-
-
+            android:title="@string/title_notification"/>
     <item
             android:id="@+id/navigation_home"
             android:icon="@mipmap/home_inactive"
             android:title="@string/title_home" />
-
-
     <item
             android:id="@+id/navigation_profile"
             android:icon="@mipmap/profile_inactive"
@@ -28,6 +23,5 @@
             android:id="@+id/navigation_support"
             android:icon="@mipmap/support_inactive"
             android:title="@string/support" />
-
 </menu>
 

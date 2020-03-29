@@ -13,13 +13,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <include
+        <!--<include
                 android:id="@+id/toolbar_header"
                 layout="@layout/toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_70sdp"
                 android:layout_alignParentTop="true"
-                android:visibility="visible"/>
+                android:visibility="visible"/>-->
 
         <FrameLayout
                android:layout_below="@+id/toolbar_header"
@@ -35,9 +35,9 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:layout_width="match_parent"
-                android:id="@+id/bottom_view"
+                android:id="@+id/bottom_navigation_view_agent"
                 android:layout_alignParentBottom="true"
-                app:menu="@menu/bottom_menu"
+                app:menu="@menu/bottom_menu_agent"
                 app:itemTextColor="@drawable/item_selector"
                 app:itemIconTint="@drawable/item_selector"
                 android:background="@drawable/bottom_navigation_gradient"

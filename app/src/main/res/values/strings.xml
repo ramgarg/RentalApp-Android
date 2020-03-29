@@ -55,6 +55,9 @@
     <string name="order_submit">Thank you for submitting your order.Our agent will call you shortly.</string>
     <string name="truck">Truck</string>
 
+    <!--agent value-->
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -45,12 +45,12 @@ open class BottomNavigationActivity : AppCompatActivity() {
                 }
             }
 
-            Common.showLoading(this, layout_loading, img_gif)
+           // Common.showLoading(this, layout_loading, img_gif)
 //            toolbar_title.text=getString(R.string.help)
             supportFragmentManager.beginTransaction()
                 .replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                 .commit()
-            return@OnNavigationItemSelectedListener false
+            return@OnNavigationItemSelectedListener true
 
         }
 }
