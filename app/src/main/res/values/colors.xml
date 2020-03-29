@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-
     <color name="white">#FFFFFF</color>
-
     <color name="green">#00B34c</color>
-
     <color name="megenta">#FF004c</color>
-
     <color name="black">#000000</color>
-
+    <color name="blue">#1773B9</color>
+    <color name="blue_light">#00B293</color>
 
 </resources>
