@@ -89,7 +89,7 @@
             android:background="@drawable/navigation_drawer"
             android:layout_height="match_parent"
             app:menu="@menu/drawer_menu"
-            app:headerLayout="@layout/header"
+            app:headerLayout="@layout/merchant_header"
             android:layout_gravity="start"/>
 
 
