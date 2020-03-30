@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.merchant_activity_main.*
 class Merchant_Support_Fragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater.inflate(R.layout.merchant_fragment_profile, container, false)
+        val view = inflater.inflate(R.layout.merchant_help_support, container, false)
         (activity as Merchant_MainActivity).merchant_layout_loading.visibility= View.GONE
         return view
     }

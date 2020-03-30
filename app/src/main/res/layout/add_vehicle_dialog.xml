@@ -423,6 +423,7 @@
                 android:layout_height="@dimen/_70sdp"
                 android:background="@drawable/ok"
                 android:layout_marginTop="10dp"
+                android:id="@+id/merchant_upload_btn"
                 android:textSize="20dp"
                 android:text="Upload"
                 android:fontFamily="@font/bree_serif">
