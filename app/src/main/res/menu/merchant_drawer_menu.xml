@@ -7,21 +7,14 @@
             android:checkableBehavior="single">
 
         <item
-                android:icon="@mipmap/dashboard"
-                android:id="@+id/merchant_nav_dashboard"
-                android:title="Dashboard" />
-
-
-
-        <item
-                android:id="@+id/merchant_nav_my_address"
+                android:id="@+id/merchant_nav_about"
                 android:icon="@mipmap/my_address"
-                android:title="My Address" />
+                android:title="About Rental App" />
 
         <item
                 android:icon="@mipmap/about"
-                android:id="@+id/merchant_nav_about"
-                android:title="About App" />
+                android:id="@+id/merchant_nav_my_address"
+                android:title="My Addresses" />
 
         <item
                 android:id="@+id/merchant_nav_tc"
@@ -29,9 +22,9 @@
                 android:title="Terms &amp; Conditions" />
 
         <item
-                android:id="@+id/merchant_nav_logout"
+                android:id="@+id/merchant_nav_help"
                 android:icon="@mipmap/logout"
-                android:title="Logout" />
+                android:title="Help &amp; Support" />
     </group>
 
 </menu>
