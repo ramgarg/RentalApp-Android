@@ -1,5 +1,6 @@
 package com.rental.webservice
 
+import com.rental.common.model.modelclass.OrderListing
 import com.rental.customer.dashboard.model.modelclass.HomeResponse
 import com.rental.customer.dashboard.model.modelclass.OrderSummaryResponseModel
 import com.rental.customer.login.model.modelclass.ForgotPasswordRequest
@@ -32,4 +33,8 @@ interface APIServices {
 
     @GET(Constant.NOTIFICATION)
     fun getNotification():Call<NotificationResponse>
+
+    //
+    @GET(Constant.ORDER_LISTING)
+    fun getOrderListing():Call<OrderListing>
 }

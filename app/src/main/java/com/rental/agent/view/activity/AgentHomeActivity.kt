@@ -18,7 +18,7 @@ class AgentHomeActivity :AgentBaseActivity(){
 
         bottom_navigation_view_agent.selectedItemId = R.id.navigation_home
 
-        setDefaultFragment()
+//        setDefaultFragment()
 
     }
 

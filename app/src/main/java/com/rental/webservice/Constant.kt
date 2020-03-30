@@ -16,5 +16,9 @@ class Constant {
         const val ORDER_SUMMARY = ""
         const val  PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=1234
 
+        //agent module
+        const val ORDER_LISTING = "order_lisitng"
+
+
     }
 }

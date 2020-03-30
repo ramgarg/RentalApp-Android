@@ -5,6 +5,52 @@
         android:layout_height="match_parent"
         android:background="@drawable/agent_home_bg_blue_grd"
         >
+    <TextView
+            android:id="@+id/tv_agent_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi,Ajeer"
+            style="@style/AgentBoldTextCard"
 
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+
+            />
+    <TextView
+            android:id="@+id/tv_agent_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agent_message"
+            style="@style/AgentSmallTextCard"
+
+            app:layout_constraintTop_toBottomOf="@+id/tv_agent_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_agent_name"
+
+            android:layout_marginTop="@dimen/_6sdp"
+
+            />
+    <ImageView
+             android:id="@+id/img_agent_profile_pic"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@mipmap/profile_pic"
+
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+
+            />
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_view_agent_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_agent_message"
+            app:layout_constraintStart_toStartOf="@+id/tv_agent_message"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
