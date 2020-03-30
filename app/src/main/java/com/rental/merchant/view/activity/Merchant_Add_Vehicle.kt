@@ -9,12 +9,8 @@ import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.view.adapter.CategoryAdapter
 import com.rental.customer.dashboard.viewmodel.HomeViewModel
 import com.rental.customer.utils.Common
-import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.customer.utils.ViewVisibility
-import com.rental.merchant.viewModel.MerchantHomeViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_merchant_home.*
 import kotlinx.android.synthetic.main.merchant_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 

@@ -1,6 +1,7 @@
 package com.rental.merchant.view.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -10,14 +11,11 @@ import androidx.core.view.GravityCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.rental.R
-import com.rental.customer.dashboard.view.fragment.*
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.merchant.view.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.img_gif
-import kotlinx.android.synthetic.main.fragment_merchant_home.*
-import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.merchant_activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -70,9 +68,8 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             R.id.merchant_navigation_dashboard -> {
 
                 //Common.showLoading(this, merchant_layout_loading, img_gif)
-                val fragment = Merchant_Dash_Fragment()
-                supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
-                   .commit()
+                val intent = Intent(this, Merchant_Dash_Activity::class.java)
+                startActivity(intent)
                 toolbar_title.text=getString(R.string.app_name)
                 merchant_toolbar_header.visibility=View.INVISIBLE
                 merchant_add_vehicle_btn.visibility=View.INVISIBLE
@@ -120,11 +117,9 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             R.id.merchant_nav_about -> {
                 MoveToAnotherComponent.moveToAboutActivity(this)
             }
-            R.id.merchant_nav_dashboard -> {
-                setDefaultFragment()
-                toolbar_title.text=getString(R.string.select_category)
-            }
-            R.id.merchant_nav_logout -> {
+
+            R.id.merchant_nav_help -> {
+
                 Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
             R.id.merchant_nav_my_address -> {

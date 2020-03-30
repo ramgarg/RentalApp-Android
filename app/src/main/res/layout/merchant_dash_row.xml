@@ -5,7 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/merchant_dash_card"
-        android:autofillHints="Helo"
         android:layout_below="@+id/merchant_dash_name"
         app:cardCornerRadius="25dp"
         android:layout_marginRight="15dp"
@@ -144,7 +143,7 @@
                     android:layout_height="30dp"/>
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:weightSum="100"
                     android:orientation="horizontal">
