@@ -38,7 +38,6 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         Common.showLoading(this, merchant_layout_loading, img_gif)
         merchant_bottom_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         merchant_bottom_view.selectedItemId=R.id.merchant_navigation_home
-        navigationView.setNavigationItemSelectedListener(this)
 
         setDefaultFragment()
 
