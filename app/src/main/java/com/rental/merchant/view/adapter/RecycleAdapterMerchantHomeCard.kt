@@ -25,8 +25,7 @@ class RecycleAdapterMerchantHomeCard (val orderListing: MutableList<Order_listin
         val order_listing_obj =  orderListing.get(position)
 
         //customer details
-        holder?.tv_agent_
-        name.text = order_listing_obj.customer_detail.full_name
+        holder?.tv_agent_name.text = order_listing_obj.customer_detail.full_name
         holder?.tv_agent_type.text = order_listing_obj.customer_detail.mobile_number
 
         // prodect details
