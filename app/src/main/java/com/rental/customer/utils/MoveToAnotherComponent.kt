@@ -16,6 +16,7 @@ import com.rental.customer.payment.view.PaymentHistoryActivity
 import com.rental.customer.profile.ProfileActivity
 import com.rental.customer.webpages.AboutActivity
 import com.rental.customer.webpages.TermsConditionActivity
+import com.rental.merchant.view.activity.MerchantProfileActivity
 import com.rental.merchant.view.activity.Merchant_Add_Vehicle
 import com.rental.merchant.view.activity.Merchant_MainActivity
 
@@ -72,6 +73,10 @@ class MoveToAnotherComponent {
 
         fun moveToNotificationActivity(context: Context){
             context.startActivity(Intent(context, NotificationActivity::class.java))
+        }
+
+        fun moveToMerchantProfileActivity(context: Context){
+            context.startActivity(Intent(context, MerchantProfileActivity::class.java))
         }
 
         fun moveToProfileActivity(context: Context){
