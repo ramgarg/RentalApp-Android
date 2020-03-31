@@ -1,17 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/rootView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/merchant_dash_back"
-        android:orientation="vertical">
-    <FrameLayout
-            android:layout_width="200dp"
-            android:layout_above="@+id/bottom_view"
-            android:layout_height="200dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:id="@+id/merchant_main_container1">
+        android:background="@drawable/agent_home_bg_blue_grd"
+        >
+    <TextView
+            android:id="@+id/tv_merchant_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi,Ajeer"
+            style="@style/AgentBoldTextCard"
 
-    </FrameLayout>
-</RelativeLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+
+            />
+    <TextView
+            android:id="@+id/tv_merchant_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agent_message"
+            style="@style/AgentSmallTextCard"
+
+            app:layout_constraintTop_toBottomOf="@+id/tv_merchant_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_merchant_name"
+
+            android:layout_marginTop="@dimen/_6sdp"
+
+            />
+    <ImageView
+            android:id="@+id/img_merchant_profile_pic"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@mipmap/profile_pic"
+
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+
+            />
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_view_merchant_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_merchant_message"
+            app:layout_constraintStart_toStartOf="@+id/tv_merchant_message"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

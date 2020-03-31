@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/merchant_truck_scroll"
+        android:layout_below="@+id/toolbar">
+    <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <include layout="@layout/toolbar"
+                android:id="@+id/toolbar" />
+
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="30dp"
+                android:id="@+id/select_category_text"
+                android:textSize="18sp"
+                android:fontFamily="@font/bree_serif"
+                android:text="Select Category">
+
+        </TextView>
+            <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="0dp"
+                    android:layout_weight="90"
+                    android:layout_height="30dp" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="18sp"
+                android:id="@+id/select_subcategory_text"
+                android:text="Select Sub Category"
+                android:fontFamily="@font/bree_serif">
+
+        </TextView>
+            <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="0dp"
+                    android:layout_weight="90"
+                    android:layout_height="30dp"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="18sp"
+                android:text="Truck Name"
+                android:fontFamily="@font/bree_serif">
+
+        </TextView>
+        <EditText
+                android:layout_width="match_parent"
+                android:fontFamily="@font/bree_serif"
+                android:id="@+id/merchant_add_truck_name"
+                android:hint="Volvo FH Truck"
+                android:layout_height="wrap_content">
+
+        </EditText>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="18sp"
+                android:text="Truck Capacity"
+                android:fontFamily="@font/bree_serif">
+
+        </TextView>
+        <EditText
+                android:layout_width="match_parent"
+                android:fontFamily="@font/bree_serif"
+                android:id="@+id/merchant_add_truck_quantity"
+                android:hint="NA"
+                android:layout_height="wrap_content">
+
+        </EditText>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="18sp"
+                android:text="Full Power"
+                android:fontFamily="@font/bree_serif">
+
+        </TextView>
+        <EditText
+                android:layout_width="match_parent"
+                android:hint="125kw(170)@2500rpm"
+                android:fontFamily="@font/bree_serif"
+                android:id="@+id/merchant_add_truck_power"
+                android:layout_height="wrap_content">
+
+        </EditText>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="18sp"
+                android:text="Price"
+                android:fontFamily="@font/bree_serif">
+
+        </TextView>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="$20"
+                android:fontFamily="@font/bree_serif"
+                android:id="@+id/merchant_add_truck_price">
+
+        </EditText>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="18sp"
+                android:text="Fuel Type"
+                android:fontFamily="@font/bree_serif">
+
+        </TextView>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Petrol"
+                android:fontFamily="@font/bree_serif"
+                android:id="@+id/merchant_add_fuel_type">
+
+        </EditText>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="18sp"
+                android:text="Description"
+                android:fontFamily="@font/bree_serif">
+
+        </TextView>
+        <EditText
+                android:layout_width="match_parent"
+                android:fontFamily="@font/bree_serif"
+                android:hint="Write any other details \n  \n"
+                android:layout_height="100dp">
+
+        </EditText>
+        <Button
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bree_serif"
+                android:background="@drawable/button_gradient"
+                android:text="Notify Admin">
+
+        </Button>
+
+    </LinearLayout>
+</ScrollView>

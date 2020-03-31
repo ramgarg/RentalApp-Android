@@ -38,10 +38,11 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         Common.showLoading(this, merchant_layout_loading, img_gif)
         merchant_bottom_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         merchant_bottom_view.selectedItemId=R.id.merchant_navigation_home
+        navigationView.setNavigationItemSelectedListener(this)
 
         setDefaultFragment()
 
-        img_menu.setOnClickListener {  merchnat_drawer_layout.openDrawer(GravityCompat.START) }
+        img_menu.setOnClickListener {  merchant_drawer_layout.openDrawer(GravityCompat.START) }
 
 
 
@@ -58,8 +59,9 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         when (menuItem.itemId) {
 
             R.id.merchant_navigation_home -> {
-                Common.showLoading(this, merchant_layout_loading, img_gif)
-                setDefaultFragment()
+                val fragment = Merchant_HomeFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
+                    .commit()
                 toolbar_title.text=getString(R.string.title_home)
                 merchant_toolbar_header.visibility=View.VISIBLE
                 merchant_add_vehicle_btn.visibility=View.VISIBLE
@@ -68,8 +70,9 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             R.id.merchant_navigation_dashboard -> {
 
                 //Common.showLoading(this, merchant_layout_loading, img_gif)
-                val intent = Intent(this, Merchant_Dash_Activity::class.java)
-                startActivity(intent)
+                val fragment = Merchant_Dash_Fragment()
+                supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
+                    .commit()
                 toolbar_title.text=getString(R.string.app_name)
                 merchant_toolbar_header.visibility=View.INVISIBLE
                 merchant_add_vehicle_btn.visibility=View.INVISIBLE

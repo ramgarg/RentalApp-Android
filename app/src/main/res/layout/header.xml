@@ -24,7 +24,7 @@
               android:layout_below="@id/profile_img_menu"
               android:layout_height="wrap_content"/>
     <TextView
-            android:text="Merchant"
+            android:text="Customer"
 
             android:id="@+id/user_type_menu"
             android:fontFamily="@font/bree_serif"

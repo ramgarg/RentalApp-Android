@@ -2,7 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/merchnat_drawer_layout"
+        android:id="@+id/merchant_drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
@@ -88,8 +88,8 @@
             android:layout_width="wrap_content"
             android:background="@drawable/navigation_drawer"
             android:layout_height="match_parent"
-            app:menu="@menu/drawer_menu"
-            app:headerLayout="@layout/header"
+            app:menu="@menu/merchant_drawer_menu"
+            app:headerLayout="@layout/merchant_header"
             android:layout_gravity="start"/>
 
 
