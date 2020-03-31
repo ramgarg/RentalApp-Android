@@ -9,7 +9,7 @@ import com.rental.R
 class CustomShap{
 
     fun getRactangleShap(activity: FragmentActivity){
-        val  gradientDrawable :GradientDrawable = activity.getDrawable(R.drawable.rectangle_shap_grren) as GradientDrawable
+        val  gradientDrawable :GradientDrawable = activity.getDrawable(R.drawable.shap_rectangle_grren) as GradientDrawable
 //        drawer.setBounds()
 //       drawer.
 

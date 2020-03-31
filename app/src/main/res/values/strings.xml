@@ -59,6 +59,12 @@
     <string name="accept">Accept</string>
     <string name="decline">Decline</string>
     <string name="agent_message">Let\'s get work done!</string>
+    <string name="view_all">View All</string>
+    <string name="total_booking">Total Bookings</string>
+    <string name="complete">Completed</string>
+    <string name="in_progress">In Progress</string>
+    <string name="rejected">Rejected</string>
+    <!---->
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

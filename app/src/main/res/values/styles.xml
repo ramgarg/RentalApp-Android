@@ -35,6 +35,8 @@
         <item name="ratingBarStyle">@style/MyRatingBar</item>
     </style>
 
+    <!--agent module-->
+
     <style name="AgentBoldTextCard" parent="android:Widget.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
@@ -56,4 +58,34 @@
         <item name="fontFamily">serif</item>
     </style>
 
+    <!--agent home bottom below-->
+    <style name="AgentOrderStatusNum" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/_1sdp</item>
+    </style>
+
+    <style name="AgentOrderStatusTop" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:layout_gravity">top|center</item>
+        <item name="android:layout_marginBottom">@dimen/_8sdp</item>
+    </style>
+
+    <!--Linear layout style-->
+    <!--<style name="AgentOrderStatusLayout" parent="ViewGroup">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:layout_gravity">top|center</item>
+        <item name="android:layout_marginTop">@dimen/_5sdp</item>
+    </style>-->
+
+<!---->
 </resources>
