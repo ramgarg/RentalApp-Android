@@ -8,18 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.PostsAdapter
 import com.rental.R
-import com.rental.agent.view.adapter.RecyleAdapterAgentHomeCard
 import com.rental.common.model.modelclass.Order_listing
 import com.rental.common.viewModel.MerchantHomeViewModel
-import com.rental.common.viewmodel.AgentHomeViewModel
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
-import kotlinx.android.synthetic.main.fragment_agent_dashboard.*
-import kotlinx.android.synthetic.main.merchant_dash_activity.*
+import com.rental.merchant.view.adapter.RecycleAdapterMerchantHomeCard
 import kotlinx.android.synthetic.main.merchant_fragment_dash.*
 
 class Merchant_Dash_Fragment : Fragment(), RecyclerViewItemClick {
@@ -42,12 +37,12 @@ class Merchant_Dash_Fragment : Fragment(), RecyclerViewItemClick {
                 1
             )
 
-            val recyleAdapterAgentHomeCard = RecyleAdapterAgentHomeCard(
+            val recycleAdapterMerchantHomeCard = RecycleAdapterMerchantHomeCard(
                 it.order_listing as MutableList<Order_listing>,
                 requireActivity()
             )
 
-            recycle_view_agent_home.adapter = recyleAdapterAgentHomeCard
+            recycle_view_merchant_home.adapter = recycleAdapterMerchantHomeCard
 
         })
 

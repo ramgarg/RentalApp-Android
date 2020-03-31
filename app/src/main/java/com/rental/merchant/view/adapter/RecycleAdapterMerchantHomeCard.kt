@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
-import com.rental.agent.view.adapter.RecyleAdapterAgentHomeCard
 import com.rental.common.model.modelclass.Order_listing
 import kotlinx.android.synthetic.main.card_view_orders.view.*
 
-class RecycleAdapterMerchantHomeCard (val orderListing: MutableList<Order_listing>, val context: Context) : RecyclerView.Adapter<RecyleAdapterAgentHomeCard.CardViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyleAdapterAgentHomeCard.CardViewHolder {
-        val card_view = RecyleAdapterAgentHomeCard.CardViewHolder(LayoutInflater.from(context).inflate(R.layout.card_view_orders, parent, false))
+class RecycleAdapterMerchantHomeCard (val orderListing: MutableList<Order_listing>, val context: Context) : RecyclerView.Adapter<RecycleAdapterMerchantHomeCard.CardViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
+        val card_view = CardViewHolder(LayoutInflater.from(context).inflate(R.layout.card_view_orders, parent, false))
         return card_view
     }
 
@@ -20,7 +19,7 @@ class RecycleAdapterMerchantHomeCard (val orderListing: MutableList<Order_listin
         return orderListing.size
     }
 
-    override fun onBindViewHolder(holder: RecyleAdapterAgentHomeCard.CardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecycleAdapterMerchantHomeCard.CardViewHolder, position: Int) {
 
         val order_listing_obj =  orderListing.get(position)
 
@@ -45,4 +44,5 @@ class RecycleAdapterMerchantHomeCard (val orderListing: MutableList<Order_listin
         val btn_agent_decline = view.btn_agent_decline
 
     }
+
 }

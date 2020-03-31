@@ -58,8 +58,9 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         when (menuItem.itemId) {
 
             R.id.merchant_navigation_home -> {
-                Common.showLoading(this, merchant_layout_loading, img_gif)
-                setDefaultFragment()
+                val fragment = Merchant_HomeFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
+                    .commit()
                 toolbar_title.text=getString(R.string.title_home)
                 merchant_toolbar_header.visibility=View.VISIBLE
                 merchant_add_vehicle_btn.visibility=View.VISIBLE
