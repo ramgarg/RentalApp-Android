@@ -9,7 +9,7 @@ import com.rental.R
 import com.rental.customer.dashboard.view.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class ProfieFragment : Fragment() {
+open class ProfieFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
