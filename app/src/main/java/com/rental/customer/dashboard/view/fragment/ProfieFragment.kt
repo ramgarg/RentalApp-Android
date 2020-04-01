@@ -6,16 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.rental.R
-import com.rental.customer.dashboard.view.activity.MainActivity
-import com.rental.merchant.view.activity.Merchant_MainActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
-class ProfieFragment : Fragment() {
+open class ProfieFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
     val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        (activity as MainActivity).layout_loading.visibility=View.GONE
+//        (activity as MainActivity).layout_loading.visibility=View.GONE
         return view
 
 }

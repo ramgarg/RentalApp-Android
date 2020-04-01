@@ -1,74 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<androidx.drawerlayout.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/drawer_layout_agent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:fitsSystemWindows="true">
 
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-        <!--<include
-                android:id="@+id/toolbar_header"
-                layout="@layout/toolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_70sdp"
-                android:layout_alignParentTop="true"
-                android:visibility="visible"/>-->
-
+<!--fragment layout-->
         <FrameLayout
-               android:layout_below="@+id/toolbar_header"
+                android:id="@+id/main_container"
                 android:layout_width="match_parent"
-                android:layout_above="@+id/bottom_view"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                android:id="@+id/main_container">
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
 
         </FrameLayout>
-
-
-
+<!--top tool barr header-->
+        <include
+                android:id="@+id/toolbar_header_agent"
+                layout="@layout/toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_60sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="visible"
+                />
+<!-- Bottom navigation bar-->
         <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:layout_width="match_parent"
                 android:id="@+id/bottom_navigation_view_agent"
-                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
                 app:menu="@menu/bottom_menu_agent"
                 app:itemTextColor="@drawable/item_selector"
                 app:itemIconTint="@drawable/item_selector"
                 android:background="@drawable/bottom_navigation_gradient"
-                android:layout_height="@dimen/_60sdp">
-
+                app:labelVisibilityMode="labeled"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                >
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    </RelativeLayout>
-
-    <!--<RelativeLayout android:layout_width="match_parent"
-                    android:background="#90000000"
-                    android:id="@+id/layout_loading"
-                    android:visibility="visible"
-                    android:layout_height="match_parent">
-        <ImageView
-                android:id="@+id/img_gif"
-                android:layout_centerInParent="true"
-                android:layout_width="@dimen/_200sdp"
-                android:layout_gravity="center"
-                android:layout_height="@dimen/_200sdp"/>
-    </RelativeLayout>-->
-
-
-    <!--<com.google.android.material.navigation.NavigationView
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--drawer layout naviagtion view left side-->
+    <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationView"
             android:layout_width="wrap_content"
-            android:background="@drawable/navigation_drawer"
             android:layout_height="match_parent"
+            android:background="@drawable/navigation_drawer"
             app:menu="@menu/drawer_menu"
             app:headerLayout="@layout/header"
-            android:layout_gravity="start"/>-->
+            android:layout_gravity="start"
+            />
 
-
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

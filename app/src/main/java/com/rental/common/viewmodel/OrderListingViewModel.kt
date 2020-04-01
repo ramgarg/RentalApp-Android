@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.rental.common.model.modelclass.OrderListing
 import com.rental.common.model.repositry.OrderListingRepository
 
-class AgentHomeViewModel :ViewModel() {
+class OrderListingViewModel :ViewModel() {
    var orderListingRepository:OrderListingRepository
 
     var agentHomeResponseLiveData: LiveData<OrderListing>

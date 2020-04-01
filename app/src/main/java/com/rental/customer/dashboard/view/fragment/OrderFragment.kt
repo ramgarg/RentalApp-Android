@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.fragment_order.view.*
 import org.greenrobot.eventbus.EventBus
 
-class OrderFragment : Fragment() ,RecyclerViewItemClick {
+open class OrderFragment : Fragment() ,RecyclerViewItemClick {
 
    private lateinit var orderViewModel: OrderViewModel
 
@@ -34,7 +34,7 @@ class OrderFragment : Fragment() ,RecyclerViewItemClick {
         orderViewModel.getOrderResponse().observe(this, Observer {
             rec_order.adapter= OrderOpenAdapter(it.data,requireActivity(),this)
             EventBus.getDefault().postSticky("OPEN_ACTIVE")
-            (activity as MainActivity).layout_loading.visibility=View.GONE
+//            (activity as MainActivity).layout_loading.visibility=View.GONE
         })
         return  view
     }
