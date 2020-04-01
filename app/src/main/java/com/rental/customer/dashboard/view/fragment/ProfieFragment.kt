@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.rental.R
 import com.rental.customer.dashboard.view.activity.MainActivity
-import com.rental.merchant.view.activity.Merchant_MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class ProfieFragment : Fragment() {

@@ -23,10 +23,9 @@
 
     <TextView
             android:layout_marginTop="@dimen/_10sdp"
-
             android:textColor="#000"
             android:fontFamily="@font/bree_serif"
-            android:text="Authentication Required"
+            android:text="@string/authentication_required"
             android:textSize="@dimen/_20sdp"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"

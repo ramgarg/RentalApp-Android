@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.merchant_activity_main.*
 import kotlinx.android.synthetic.main.merchant_header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MerchantMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.merchant_activity_main)
@@ -54,7 +54,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     }
     private fun setDefaultFragment(){
-        val fragment = Merchant_HomeFragment()
+        val fragment = MerchantHomeFragment()
         supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
             .commit()
     }
@@ -73,7 +73,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             R.id.merchant_navigation_dashboard -> {
 
                 //Common.showLoading(this, merchant_layout_loading, img_gif)
-                val fragment = Merchant_Dash_Fragment()
+                val fragment = MerchantDashFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.app_name)
@@ -83,7 +83,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             }
             R.id.merchant_navigation_order -> {
                 showLoading(this, merchant_layout_loading, img_gif)
-                val fragment = Merchant_OrderFragment()
+                val fragment = MerchantOrderFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.order)
@@ -94,7 +94,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
             R.id.merchant_navigation_profile -> {
                 showLoading(this, merchant_layout_loading, img_gif)
-                val fragment = Merchant_ProfileFragment()
+                val fragment = MerchantProfileFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.profie)
@@ -106,7 +106,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             R.id.merchant_navigation_support -> {
                 showLoading(this, merchant_layout_loading, img_gif)
                 toolbar_title.text=getString(R.string.help)
-                val fragment = Merchant_Support_Fragment()
+                val fragment = MerchantSupportFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 merchant_toolbar_header.visibility=View.VISIBLE

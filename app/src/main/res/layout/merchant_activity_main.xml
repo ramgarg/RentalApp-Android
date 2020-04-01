@@ -7,10 +7,8 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-
     <RelativeLayout
             android:orientation="vertical"
-
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -25,7 +23,6 @@
         </FrameLayout>
 
         <include
-
                 android:id="@+id/merchant_toolbar_header"
                 layout="@layout/toolbar"
                 android:layout_width="wrap_content"
@@ -41,11 +38,11 @@
                 android:scaleType="center"
                 android:src="@drawable/add_green"
                 android:visibility="gone"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                app:maxImageSize="65dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="100dp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:maxImageSize="@dimen/_65sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_100sdp"
                 android:clickable="true"
                 android:id="@+id/merchant_add_vehicle_btn"
                 app:backgroundTint="@null"
@@ -71,7 +68,7 @@
     </RelativeLayout>
 
     <RelativeLayout android:layout_width="match_parent"
-            android:background="#90000000"
+            android:background="@color/dark_grey"
             android:id="@+id/merchant_layout_loading"
             android:visibility="gone"
             android:layout_height="match_parent">

@@ -13,11 +13,11 @@ import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.view.adapter.HomeAdapter
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
-import com.rental.merchant.view.activity.Merchant_MainActivity
+import com.rental.merchant.view.activity.MerchantMainActivity
 import kotlinx.android.synthetic.main.fragment_merchant_home.*
 import kotlinx.android.synthetic.main.merchant_activity_main.*
 
-class Merchant_HomeFragment : Fragment(), RecyclerViewItemClick {
+class MerchantHomeFragment : Fragment(), RecyclerViewItemClick {
     private lateinit var merchant_homeViewModel: MerchantHomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -28,7 +28,7 @@ class Merchant_HomeFragment : Fragment(), RecyclerViewItemClick {
         merchant_homeViewModel = ViewModelProviders.of(this).get(MerchantHomeViewModel::class.java)
         merchant_homeViewModel.getmerchant_HomeResponse().observe(this, Observer {
             merchant_rec_veichle.adapter = HomeAdapter(it.data as ArrayList<Data>, requireActivity(), this)
-            (activity as Merchant_MainActivity).merchant_layout_loading.visibility= View.GONE
+            (activity as MerchantMainActivity).merchant_layout_loading.visibility= View.GONE
 
 
 

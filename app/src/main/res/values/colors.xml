@@ -10,5 +10,9 @@
     <color name="black">#000000</color>
     <color name="blue">#1773B9</color>
     <color name="blue_light">#00B293</color>
+    <color name="text_green">#0f7e31</color>
+    <color name="textblack">#000</color>
+    <color name="dark_grey">#90000000</color>
+    <color name="text_blue">#1c7cf7</color>
 
 </resources>

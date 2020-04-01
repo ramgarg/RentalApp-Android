@@ -41,10 +41,10 @@
         <TextView
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_width="wrap_content"
-                android:text="Add New Address"
+                android:text="@string/add_new_address"
                 android:id="@+id/merchant_btn_add_new_address"
                 android:gravity="center"
-                android:textColor="#fff"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_15sdp"
                 android:textAllCaps="false"
                 android:fontFamily="@font/bree_serif"

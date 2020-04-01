@@ -24,7 +24,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_width="match_parent"
-            android:hint="Search Vehicles..."
+            android:hint="@string/search_vehicles"
             android:paddingRight="@dimen/_10sdp"
             android:drawableRight="@mipmap/search"
             android:background="@drawable/search"
@@ -59,10 +59,10 @@
                    android:layout_height="@dimen/_200sdp"/>
 
         <TextView android:layout_width="wrap_content"
-                  android:text="No Result Found"
+                  android:text="@string/no_result_found"
                   android:id="@+id/tv_no_result"
                   android:fontFamily="@font/bree_serif"
-                  android:textColor="#000"
+                  android:textColor="@color/black"
                   android:textSize="@dimen/_20sdp"
                   android:layout_height="wrap_content"/>
 
@@ -77,8 +77,8 @@
         <Button android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:id="@+id/notify_admin"
-                android:text="Notify Admin"
-                android:textColor="#fff"
+                android:text="@string/notify_admin"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_15sdp"
                 android:fontFamily="@font/bree_serif"
                 android:textAllCaps="false"

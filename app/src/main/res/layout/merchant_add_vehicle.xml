@@ -17,64 +17,37 @@
 
     <TextView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/_30sdp"
             android:id="@+id/select_category_text"
-            android:textSize="18sp"
+            android:textSize="@dimen/_18sdp"
             android:fontFamily="@font/bree_serif"
-            android:text="Select Category">
+            android:text="@string/select_category">
 
     </TextView>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="100"
-            android:orientation="horizontal">
 
     <Spinner
             android:id="@+id/spinner"
-            android:layout_width="0dp"
-            android:layout_weight="90"
-            android:layout_height="30dp" />
-        <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="10"
-                android:src="@mipmap/expand">
-
-        </ImageView>
-    </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp" />
 
     <TextView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textSize="18sp"
+            android:layout_height="@dimen/_30sdp"
+            android:textSize="@dimen/_18sdp"
             android:id="@+id/select_subcategory_text"
-            android:text="Select Sub Category"
+            android:text="@string/select_sub_category"
             android:fontFamily="@font/bree_serif">
 
     </TextView>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="100"
-            android:orientation="horizontal">
 
     <Spinner
             android:id="@+id/spinner2"
-            android:layout_width="0dp"
-            android:layout_weight="90"
-            android:layout_height="30dp"/>
-        <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="10"
-                android:src="@mipmap/expand">
-        </ImageView>
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"/>
 
-    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_add_veichle"
-            android:layout_below="@+id/ed_search"
+            android:layout_below="@+id/spinner2"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
@@ -91,7 +64,7 @@
             android:layout_marginLeft="@dimen/_15sdp"
             android:layout_marginRight="@dimen/_15sdp"
             android:id="@+id/layout_vehicle_not_found"
-            android:layout_below="@+id/ed_search"
+            android:layout_below="@+id/spinner2"
             android:layout_height="match_parent">
 
 
@@ -100,10 +73,10 @@
                 android:layout_height="@dimen/_200sdp"/>
 
         <TextView android:layout_width="wrap_content"
-                android:text="No Result Found"
+                android:text="@string/no_result_found"
                 android:id="@+id/tv_no_result"
                 android:fontFamily="@font/bree_serif"
-                android:textColor="#000"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_20sdp"
                 android:layout_height="wrap_content"/>
 
@@ -118,8 +91,8 @@
         <Button android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:id="@+id/notify_admin"
-                android:text="Notify Admin"
-                android:textColor="#fff"
+                android:text="@string/notify_admin"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_15sdp"
                 android:fontFamily="@font/bree_serif"
                 android:textAllCaps="false"

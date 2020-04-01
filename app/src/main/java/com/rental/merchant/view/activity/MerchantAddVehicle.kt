@@ -14,7 +14,7 @@ import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.merchant_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class Merchant_Add_Vehicle : AppCompatActivity(), RecyclerViewItemClick {
+class MerchantAddVehicle : AppCompatActivity(), RecyclerViewItemClick {
 
     private lateinit var merchantViewModel: HomeViewModel
     private lateinit var arrayList:ArrayList<Data>
