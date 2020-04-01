@@ -1,376 +1,427 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/_10sdp"
+        >
+<!--top view with text view and close image-->
+        <TextView
+                android:id="@+id/top_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bree_serif"
+                android:text="@string/select_availability"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18sdp"
+                android:layout_alignParentTop="true"
+
+                >
+        </TextView>
+    <ImageView
+            android:id="@+id/img_close"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/close" />
+
+<!--day wise layout-->
     <LinearLayout
+            android:id="@+id/lnr_day_wise"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/top_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_payment_history"
-            android:layout_marginTop="25dp"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:weightSum="7"
+            >
+
         <TextView
-                android:layout_width="match_parent"
-                android:gravity="center_horizontal"
-                android:layout_height="@dimen/_30sdp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/bree_serif"
-                android:textSize="@dimen/_18sdp"
-                android:text="@string/select_availability">
 
-        </TextView>
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_60sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="100"
-                android:orientation="horizontal">
-            <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="35"
-                    android:layout_height="@dimen/_60sdp">
-            <TextView
-                    android:id="@+id/btn_dialog_sun_inactive"
-                    android:layout_width="0dp"
-                    android:layout_weight="35"
-                    android:layout_height="@dimen/_50sdp"
-                    android:textColor="@color/black"
-                    android:shadowColor="@color/mdtp_transparent_black"
-                    android:background="@drawable/round_back"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_18sdp"
-                    android:text="@string/sun">
+                android:text="Sun"
+                style="@style/sunmonday"
+                />
+        <TextView
+                android:text="Mon"
+                style="@style/sunmonday"
+                />
+        <TextView
+                android:text="Tue"
+                style="@style/sunmonday"
+                />
+        <TextView
+                android:text="Wed"
+                style="@style/sunmonday"
+                />
+        <TextView
+                android:text="Thu"
+                style="@style/sunmonday"
+                android:drawableRight="@mipmap/green_check"
 
-            </TextView>
-
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="35"
-                    android:id="@+id/btn_dialog_sun_active"
-                    android:visibility="gone"
-                    android:layout_height="@dimen/_50sdp"
-                    android:textColor="@color/black"
-                    android:drawableRight="@mipmap/green_check"
-                    android:shadowColor="@color/mdtp_transparent_black"
-                    android:background="@drawable/round_back"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_18sdp"
-                    android:text="@string/sun">
-            </TextView>
-
-            </LinearLayout>
-            <LinearLayout
-
-                    android:layout_width="0dp"
-                    android:layout_weight="35"
-                    android:visibility="visible"
-                    android:layout_height="@dimen/_60sdp">
-            <TextView
-                    android:id="@+id/btn_dialog_mon_inactive"
-                    android:layout_width="0dp"
-                    android:layout_weight="35"
-                    android:layout_height="@dimen/_50sdp"
-                    android:textColor="@color/black"
-                    android:shadowColor="@color/mdtp_transparent_black"
-                    android:background="@drawable/round_back"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_18sdp"
-                    android:text="@string/mon">
-
-            </TextView>
-
-                    <TextView
-                            android:id="@+id/btn_dialog_mon_active"
-                            android:visibility="gone"
-                            android:layout_width="0dp"
-                            android:layout_weight="35"
-                            android:layout_height="@dimen/_50sdp"
-                            android:textColor="@color/black"
-                            android:drawableRight="@mipmap/green_check"
-                            android:shadowColor="@color/mdtp_transparent_black"
-                            android:background="@drawable/round_back"
-                            android:fontFamily="@font/bree_serif"
-                            android:textSize="@dimen/_18sdp"
-                            android:text="@string/mon">
-                    </TextView>
-
-            </LinearLayout>
-                    <LinearLayout
-
-                            android:layout_width="0dp"
-                            android:layout_weight="35"
-                            android:layout_height="@dimen/_60sdp">
-                        <TextView
-                                android:id="@+id/btn_dialog_tue_inactive"
-                                android:layout_width="0dp"
-                                android:layout_weight="35"
-                                android:layout_height="@dimen/_50sdp"
-                                android:textColor="@color/black"
-                                android:shadowColor="@color/mdtp_transparent_black"
-                                android:fontFamily="@font/bree_serif"
-                                android:textSize="@dimen/_18sdp"
-                                android:text="@string/tue">
-                        </TextView>
-                        <TextView
-                                android:id="@+id/btn_dialog_tue_active"
-                                android:visibility="gone"
-                                android:layout_width="0dp"
-                                android:layout_weight="35"
-                                android:layout_height="@dimen/_50sdp"
-                                android:textColor="@color/black"
-                                android:drawableRight="@mipmap/green_check"
-                                android:shadowColor="@color/mdtp_transparent_black"
-                                android:background="@drawable/round_back"
-                                android:fontFamily="@font/bree_serif"
-                                android:textSize="@dimen/_18sdp"
-                                android:text="@string/tue">
-                        </TextView>
-
-                </LinearLayout>
-                    <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="35"
-                            android:visibility="visible"
-                            android:layout_height="@dimen/_60sdp">
-            <TextView
-
-                    android:id="@+id/btn_dialog_wed_inactive"
-                    android:layout_width="0dp"
-                    android:layout_weight="35"
-                    android:layout_height="@dimen/_50sdp"
-                    android:textColor="@color/black"
-                    android:shadowColor="@color/mdtp_transparent_black"
-                    android:background="@drawable/round_back"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_18sdp"
-                    android:text="@string/wed">
-
-            </TextView>
-
-                            <TextView
-
-                                    android:id="@+id/btn_dialog_wed_active"
-                                    android:visibility="gone"
-                                    android:layout_width="0dp"
-                                    android:layout_weight="35"
-                                    android:layout_height="@dimen/_50sdp"
-                                    android:textColor="@color/black"
-                                    android:drawableRight="@mipmap/green_check"
-                                    android:shadowColor="@color/mdtp_transparent_black"
-                                    android:background="@drawable/round_back"
-                                    android:fontFamily="@font/bree_serif"
-                                    android:textSize="@dimen/_18sdp"
-                                    android:text="@string/wed">
-                            </TextView>
-                        </LinearLayout>
-                        <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_weight="35"
-                                android:visibility="visible"
-                                android:layout_height="@dimen/_60sdp">
-            <TextView
-
-                    android:id="@+id/btn_dialog_thu_inactive"
-                    android:layout_width="0dp"
-                    android:shadowColor="@color/mdtp_transparent_black"
-                    android:background="@drawable/round_back"
-                    android:layout_weight="35"
-                    android:textColor="@color/black"
-                    android:layout_height="@dimen/_50sdp"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_18sdp"
-                    android:text="@string/thu">
-
-            </TextView>
-
-                                <TextView
-
-                                        android:id="@+id/btn_dialog_thu_active"
-                                        android:layout_width="0dp"
-                                        android:visibility="gone"
-                                        android:layout_weight="35"
-                                        android:layout_height="@dimen/_50sdp"
-                                        android:textColor="@color/black"
-                                        android:drawableRight="@mipmap/green_check"
-                                        android:shadowColor="@color/mdtp_transparent_black"
-                                        android:background="@drawable/round_back"
-                                        android:fontFamily="@font/bree_serif"
-                                        android:textSize="@dimen/_18sdp"
-                                        android:text="@string/thu">
-                                </TextView>
+                />
+        <TextView
+                android:text="Fri"
+                style="@style/sunmonday"
+                />
+        <TextView
+                android:text="Sat"
+                style="@style/sunmonday"
+                />
+    </LinearLayout>
 
 
-                        </LinearLayout>
-                            <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_weight="35"
-                                    android:visibility="visible"
-                                    android:layout_height="@dimen/_60sdp">
-            <TextView
+<!--        <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/_60sdp"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginTop="@dimen/_5sdp"-->
+<!--                android:layout_weight="100"-->
+<!--                android:orientation="horizontal">-->
 
-                    android:id="@+id/btn_dialog_fri_inactive"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:layout_weight="35"
-                    android:textColor="@color/black"
-                    android:shadowColor="@color/mdtp_transparent_black"
-                    android:background="@drawable/round_back"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_18sdp"
-                    android:text="@string/fri">
+<!--            <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="@dimen/_60sdp"-->
+<!--                    android:layout_weight="35">-->
+
+<!--                <TextView-->
+<!--                        android:id="@+id/btn_dialog_sun_inactive"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/sun"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp">-->
+
+<!--                </TextView>-->
+
+<!--                <TextView-->
+<!--                        android:id="@+id/btn_dialog_sun_active"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:drawableRight="@mipmap/green_check"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/sun"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp"-->
+<!--                        android:visibility="gone"></TextView>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="@dimen/_60sdp"-->
+<!--                    android:layout_weight="35"-->
+<!--                    android:visibility="visible">-->
+
+<!--                <TextView-->
+<!--                        android:id="@+id/btn_dialog_mon_inactive"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/mon"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp">-->
+
+<!--                </TextView>-->
+
+<!--                <TextView-->
+<!--                        android:id="@+id/btn_dialog_mon_active"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:drawableRight="@mipmap/green_check"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/mon"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp"-->
+<!--                        android:visibility="gone"></TextView>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="@dimen/_60sdp"-->
+<!--                    android:layout_weight="35">-->
+
+<!--                <TextView-->
+<!--                        android:id="@+id/btn_dialog_tue_inactive"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/tue"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp"></TextView>-->
+
+<!--                <TextView-->
+<!--                        android:id="@+id/btn_dialog_tue_active"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:drawableRight="@mipmap/green_check"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/tue"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp"-->
+<!--                        android:visibility="gone"></TextView>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="@dimen/_60sdp"-->
+<!--                    android:layout_weight="35"-->
+<!--                    android:visibility="visible">-->
+
+<!--                <TextView-->
+
+<!--                        android:id="@+id/btn_dialog_wed_inactive"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/wed"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp">-->
+
+<!--                </TextView>-->
+
+<!--                <TextView-->
+
+<!--                        android:id="@+id/btn_dialog_wed_active"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:drawableRight="@mipmap/green_check"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/wed"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp"-->
+<!--                        android:visibility="gone"></TextView>-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="@dimen/_60sdp"-->
+<!--                    android:layout_weight="35"-->
+<!--                    android:visibility="visible">-->
+
+<!--                <TextView-->
+
+<!--                        android:id="@+id/btn_dialog_thu_inactive"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/thu"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp">-->
+
+<!--                </TextView>-->
+
+<!--                <TextView-->
+
+<!--                        android:id="@+id/btn_dialog_thu_active"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:drawableRight="@mipmap/green_check"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/thu"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp"-->
+<!--                        android:visibility="gone"></TextView>-->
 
 
-            </TextView>
+<!--            </LinearLayout>-->
 
-                                    <TextView
+<!--            <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="@dimen/_60sdp"-->
+<!--                    android:layout_weight="35"-->
+<!--                    android:visibility="visible">-->
 
-                                            android:id="@+id/btn_dialog_fri_active"
-                                            android:visibility="gone"
-                                            android:layout_width="0dp"
-                                            android:layout_weight="35"
-                                            android:layout_height="@dimen/_50sdp"
-                                            android:textColor="@color/black"
-                                            android:drawableRight="@mipmap/green_check"
-                                            android:shadowColor="@color/mdtp_transparent_black"
-                                            android:background="@drawable/round_back"
-                                            android:fontFamily="@font/bree_serif"
-                                            android:textSize="@dimen/_18sdp"
-                                            android:text="@string/fri">
-                                    </TextView>
+<!--                <TextView-->
+
+<!--                        android:id="@+id/btn_dialog_fri_inactive"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/fri"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp">-->
 
 
-                            </LinearLayout>
-                                <LinearLayout
-                                        android:layout_width="0dp"
-                                        android:layout_weight="35"
-                                        android:visibility="visible"
-                                        android:layout_height="@dimen/_60sdp">
-            <TextView
+<!--                </TextView>-->
 
-                    android:id="@+id/btn_dialog_sat_inactive"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:layout_weight="35"
-                    android:shadowColor="@color/mdtp_transparent_black"
-                    android:background="@drawable/round_back"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_18sdp"
-                    android:text="@string/sat">
+<!--                <TextView-->
 
-            </TextView>
+<!--                        android:id="@+id/btn_dialog_fri_active"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:drawableRight="@mipmap/green_check"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/fri"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp"-->
+<!--                        android:visibility="gone"></TextView>-->
 
-                                        <TextView
 
-                                                android:id="@+id/btn_dialog_sat_active"
-                                                android:visibility="gone"
-                                                android:layout_width="0dp"
-                                                android:layout_weight="35"
-                                                android:layout_height="@dimen/_50sdp"
-                                                android:textColor="@color/black"
-                                                android:drawableRight="@mipmap/green_check"
-                                                android:shadowColor="@color/mdtp_transparent_black"
-                                                android:background="@drawable/round_back"
-                                                android:fontFamily="@font/bree_serif"
-                                                android:textSize="@dimen/_18sdp"
-                                                android:text="@string/sat">
-                                        </TextView>
+<!--            </LinearLayout>-->
 
-                                </LinearLayout>
+<!--            <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="@dimen/_60sdp"-->
+<!--                    android:layout_weight="35"-->
+<!--                    android:visibility="visible">-->
 
-        </LinearLayout>
-        <RelativeLayout android:layout_width="match_parent"
-                android:orientation="horizontal"
+<!--                <TextView-->
+
+<!--                        android:id="@+id/btn_dialog_sat_inactive"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/sat"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp">-->
+
+<!--                </TextView>-->
+
+<!--                <TextView-->
+
+<!--                        android:id="@+id/btn_dialog_sat_active"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:layout_weight="35"-->
+<!--                        android:background="@drawable/round_back"-->
+<!--                        android:drawableRight="@mipmap/green_check"-->
+<!--                        android:fontFamily="@font/bree_serif"-->
+<!--                        android:shadowColor="@color/mdtp_transparent_black"-->
+<!--                        android:text="@string/sat"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/_18sdp"-->
+<!--                        android:visibility="gone"></TextView>-->
+
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+
+    <LinearLayout
+            android:layout_below="@+id/lnr_day_wise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/button_payment_history"
+            android:orientation="vertical">
+        <RelativeLayout
                 android:id="@+id/layout_truck_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_25sdp"
-                android:layout_below="@+id/layout_end"
-                android:layout_height="wrap_content">
-            <TextView android:layout_width="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_10sdp"
-                    android:text="@string/truck_quantity"
-                    android:textSize="@dimen/_15sdp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/bree_serif"
-                    android:layout_height="wrap_content"/>
+                    android:text="@string/truck_quantity"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
 
-            <LinearLayout android:layout_width="wrap_content"
-                    android:orientation="horizontal"
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_height="wrap_content">
+                    android:orientation="horizontal">
 
-                <ImageView android:layout_width="@dimen/_25sdp"
+                <ImageView
                         android:id="@+id/minus_quantity"
-                        android:src="@mipmap/minus"
-                        android:padding="@dimen/_5sdp"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:background="@drawable/button_add"
-                        android:layout_height="@dimen/_25sdp"/>
+                        android:padding="@dimen/_5sdp"
+                        android:src="@mipmap/minus" />
 
                 <TextView
                         android:id="@+id/item_quantity"
-                        android:text="@string/one"
-                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_25sdp"
+                        android:background="@drawable/itemquantity_bg"
                         android:fontFamily="@font/bree_serif"
+                        android:gravity="center"
                         android:paddingLeft="@dimen/_10sdp"
                         android:paddingRight="@dimen/_10sdp"
-                        android:layout_width="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/itemquantity_bg"
-                        android:layout_height="@dimen/_25sdp"/>
-                <ImageView android:layout_width="@dimen/_25sdp"
-                        android:src="@mipmap/plus"
-                        android:padding="@dimen/_5sdp"
+                        android:text="@string/one"
+                        android:textColor="@color/black" />
+
+                <ImageView
                         android:id="@+id/add_quantity"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
                         android:background="@drawable/button_minus"
-                        android:layout_height="@dimen/_25sdp"/>
+                        android:padding="@dimen/_5sdp"
+                        android:src="@mipmap/plus" />
 
             </LinearLayout>
 
 
         </RelativeLayout>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="100"
-            android:orientation="horizontal">
+
         <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/_100sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_weight="50"
-                android:orientation="vertical">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_50sdp"
-                    android:text="@string/booking_price_text"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_20sdp">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight="100"
+                android:orientation="horizontal">
 
-            </TextView>
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_50sdp"
-                    android:text="@string/booking_price"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_20sdp">
-
-            </TextView>
-        </LinearLayout>
             <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="50"
                     android:layout_height="@dimen/_100sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="50"
                     android:orientation="vertical">
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_50sdp"
-                        android:text="@string/fuel_type"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/bree_serif"
+                        android:text="@string/booking_price_text"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/_20sdp">
 
                 </TextView>
@@ -378,23 +429,51 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_50sdp"
-                        android:text="@string/diesel"
                         android:fontFamily="@font/bree_serif"
+                        android:text="@string/booking_price"
                         android:textSize="@dimen/_20sdp">
 
                 </TextView>
             </LinearLayout>
-    </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_weight="50"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_50sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:text="@string/fuel_type"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_20sdp">
+
+                </TextView>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_50sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:text="@string/diesel"
+                        android:textSize="@dimen/_20sdp">
+
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:fontFamily="@font/bree_serif"
-                android:textSize="@dimen/_22sdp"
+                android:text="@string/document"
                 android:textColor="@color/black"
-                android:text="@string/document">
+                android:textSize="@dimen/_22sdp">
 
         </TextView>
+
         <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"></Spinner>
@@ -403,56 +482,52 @@
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/payment_status"
-                android:textSize="@dimen/_20sdp"
+                android:fontFamily="@font/bree_serif"
                 android:text="@string/upload"
-                android:fontFamily="@font/bree_serif">
+                android:textSize="@dimen/_20sdp">
 
         </Button>
-
 
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal">
-            <ImageView android:layout_width="@dimen/_20sdp"
+
+            <ImageView
                     android:id="@+id/mer"
-                    android:src="@drawable/check"
-                    android:layout_height="@dimen/_20sdp"/>
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/check" />
 
             <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
                     android:text="@string/with_driver"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_height="@dimen/_35sdp"
-                    android:textSize="@dimen/_22sdp"/>
+                    android:textSize="@dimen/_22sdp"
+                    android:textStyle="bold" />
 
         </LinearLayout>
+
         <Button
+                android:id="@+id/merchant_upload_btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_70sdp"
-                android:background="@drawable/ok"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:id="@+id/merchant_upload_btn"
-                android:textSize="@dimen/_20sdp"
+                android:background="@drawable/ok"
+                android:fontFamily="@font/bree_serif"
                 android:text="@string/upload"
-                android:fontFamily="@font/bree_serif">
+                android:textSize="@dimen/_20sdp">
 
         </Button>
 
 
-
     </LinearLayout>
-    <ImageView
 
-            android:id="@+id/img_close"
-            android:layout_width="@dimen/_25sdp"
-            android:src="@mipmap/close"
-            android:layout_alignParentRight="true"
-            android:layout_height="@dimen/_25sdp"/>
+
 
 </RelativeLayout>
