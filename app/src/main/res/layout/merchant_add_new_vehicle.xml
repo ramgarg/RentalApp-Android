@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/_10sdp"
         android:id="@+id/merchant_truck_scroll"
         android:layout_below="@+id/toolbar">
     <LinearLayout
@@ -18,26 +18,26 @@
 
         <TextView
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_height="30dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:id="@+id/select_category_text"
-                android:textSize="18sp"
+                android:textSize="@dimen/_18sdp"
                 android:fontFamily="@font/bree_serif"
-                android:text="Select Category">
+                android:text="@string/select_category">
 
         </TextView>
             <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="0dp"
                     android:layout_weight="90"
-                    android:layout_height="30dp" />
+                    android:layout_height="@dimen/_30sdp" />
 
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="18sp"
+                android:layout_height="@dimen/_30sdp"
+                android:textSize="@dimen/_18sdp"
                 android:id="@+id/select_subcategory_text"
-                android:text="Select Sub Category"
+                android:text="@string/select_sub_category"
                 android:fontFamily="@font/bree_serif">
 
         </TextView>
@@ -45,12 +45,12 @@
                     android:id="@+id/spinner2"
                     android:layout_width="0dp"
                     android:layout_weight="90"
-                    android:layout_height="30dp"/>
+                    android:layout_height="@dimen/_30sdp"/>
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="18sp"
-                android:text="Truck Name"
+                android:layout_height="@dimen/_30sdp"
+                android:textSize="@dimen/_18sdp"
+                android:text="@string/truck_name"
                 android:fontFamily="@font/bree_serif">
 
         </TextView>
@@ -58,15 +58,15 @@
                 android:layout_width="match_parent"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/merchant_add_truck_name"
-                android:hint="Volvo FH Truck"
+                android:hint="@string/volvo_fh_truck"
                 android:layout_height="wrap_content">
 
         </EditText>
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="18sp"
-                android:text="Truck Capacity"
+                android:layout_height="@dimen/_30sdp"
+                android:textSize="@dimen/_18sdp"
+                android:text="@string/truck_capacity"
                 android:fontFamily="@font/bree_serif">
 
         </TextView>
@@ -74,21 +74,21 @@
                 android:layout_width="match_parent"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/merchant_add_truck_quantity"
-                android:hint="NA"
+                android:hint="@string/na"
                 android:layout_height="wrap_content">
 
         </EditText>
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="18sp"
-                android:text="Full Power"
+                android:layout_height="@dimen/_30sdp"
+                android:textSize="@dimen/_18sdp"
+                android:text="@string/full_power"
                 android:fontFamily="@font/bree_serif">
 
         </TextView>
         <EditText
                 android:layout_width="match_parent"
-                android:hint="125kw(170)@2500rpm"
+                android:hint="@string/truck_power_kv"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/merchant_add_truck_power"
                 android:layout_height="wrap_content">
@@ -96,32 +96,32 @@
         </EditText>
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="18sp"
-                android:text="Price"
+                android:layout_height="@dimen/_30sdp"
+                android:textSize="@dimen/_18sdp"
+                android:text="@string/price"
                 android:fontFamily="@font/bree_serif">
 
         </TextView>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="$20"
+                android:hint="@string/booking_price"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/merchant_add_truck_price">
 
         </EditText>
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="18sp"
-                android:text="Fuel Type"
+                android:layout_height="@dimen/_30sdp"
+                android:textSize="@dimen/_18sdp"
+                android:text="@string/fuel_type"
                 android:fontFamily="@font/bree_serif">
 
         </TextView>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Petrol"
+                android:hint="@string/petrol"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/merchant_add_fuel_type">
 
@@ -130,24 +130,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:textSize="18sp"
-                android:text="Description"
+                android:text="@string/description"
                 android:fontFamily="@font/bree_serif">
 
         </TextView>
         <EditText
                 android:layout_width="match_parent"
                 android:fontFamily="@font/bree_serif"
-                android:hint="Write any other details \n  \n"
+                android:hint="@string/write_any_other"
                 android:layout_height="100dp">
 
         </EditText>
         <Button
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bree_serif"
                 android:background="@drawable/button_gradient"
-                android:text="Notify Admin">
+                android:text="@string/notify_admin">
 
         </Button>
 

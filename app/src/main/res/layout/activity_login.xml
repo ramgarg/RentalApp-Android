@@ -11,7 +11,7 @@
                   android:layout_marginTop="@dimen/_10sdp"
                   android:layout_height="wrap_content">
     <ImageView
-android:visibility="gone"
+            android:visibility="gone"
             android:src="@mipmap/back"
             android:scaleType="fitXY"
             android:layout_width="@dimen/_15sdp"
@@ -19,7 +19,7 @@ android:visibility="gone"
 
     <TextView
             android:id="@+id/tv_skip"
-            android:text="Skip"
+            android:text="@string/skip"
             android:fontFamily="@font/bree_serif"
             android:textSize="@dimen/_15sdp"
             android:layout_marginRight="@dimen/_10sdp"

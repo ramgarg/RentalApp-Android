@@ -23,11 +23,11 @@
 
             <TextView
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:textColor="#000"
+                    android:textColor="@color/black"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:fontFamily="@font/bree_serif"
-                    android:text="Are you sure you want delete this Product"
+                    android:text="@string/are_you_sure"
                     android:textSize="@dimen/_22sdp"
                     android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginRight="@dimen/_20sdp"
@@ -36,22 +36,22 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:orientation="horizontal"
                 android:weightSum="1">
             <Button
                     android:layout_width="wrap_content"
                     android:layout_weight=".5"
-                    android:text="No"
+                    android:text="@string/no"
                     android:background="@drawable/button_no"
-                    android:layout_height="60dp">
+                    android:layout_height="@dimen/_60sdp">
 
             </Button>
             <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="@dimen/_60sdp"
                     android:background="@drawable/button_yes"
-                    android:text="Yes"
+                    android:text="@string/yes"
                     android:layout_weight=".5">
 
             </Button>

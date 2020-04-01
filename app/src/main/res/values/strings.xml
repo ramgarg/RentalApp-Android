@@ -7,7 +7,6 @@
     <string name="gdpr_rights">
         <![CDATA[I agree to terms & conditions and GDPR rights.]]></string>
     <string name="send">Send</string>
-    <string name="email_phonenumber">Email/PhoneNumber</string>
     <string name="enter_opt">Enter OTP</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot Password?</string>
@@ -15,12 +14,9 @@
     <string name="login_with">Login With:</string>
     <string name="don_t_have_an_account">Don\'t have an account?Register</string>
     <string name="login_to_continue_as">Login to continue as</string>
-    <string name="welcome">Welcome</string>
     <string name="otp_sent">We have sent OTP to the email address</string>
     <string name="register">Register</string>
-    <string name="customer">Customer</string>
     <string name="agent">Agent</string>
-    <string name="merchant">Merchant</string>
     <string name="opt_detail">We\'ve sent OTP the email address p@g.com.please enter it below to complete
         verification
     </string>
@@ -35,7 +31,6 @@
     <string name="profile">Profile</string>
     <string name="support">Support</string>
     <string name="my_address">My Addresses</string>
-    <string name="add_new_address">Add New Address</string>
     <string name="booking_details">Booking Details</string>
     <string name="thank_you">Thank You!\n Your payment has been Successfully Processed.</string>
     <string name="vehicle_not_available">The vehicle you have searched is not available.You can notify admin to add this
@@ -47,13 +42,12 @@
     <string name="select_category">Select Category</string>
     <string name="under_development">Under Development</string>
     <string name="vehicle">Vehicles</string>
-    <string name="notify_admin">Notify Admin</string>
     <string name="order_review">Order Review</string>
     <string name="order_summary">Order Summary</string>
     <string name="payment">Payment</string>
     <string name="details">Details</string>
     <string name="order_submit">Thank you for submitting your order.Our agent will call you shortly.</string>
-    <string name="truck">Truck</string>
+
 
     <!--agent value-->
     <string name="accept">Accept</string>
@@ -67,4 +61,118 @@
     <!---->
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--customer value-->
+    <string name="sendbutton">Send</string>
+    <string name="volvo_fh_truck">Volvo FH Truck</string>
+    <string name="totalprice">Total \n Price</string>
+    <string name="booking_price">$30</string>
+    <string name="per_hour">Per Hour</string>
+    <string name="do_you_want_driver">Do you want vehicle with driver?</string>
+    <string name="start_date">Start Date</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_date">End Date</string>
+    <string name="end_time">End Time</string>
+    <string name="truck_quantity">Truck Quantity</string>
+    <string name="one">1</string>
+    <string name="work_location">Work Location</string>
+    <string name="change">Change</string>
+    <string name="add_another_product">Add Another Product</string>
+    <string name="next">Next</string>
+    <string name="no_notification">No Notification</string>
+    <string name="at_vero_os">At vero os et accusamus et iusto odio dignissimos ducimus</string>
+    <string name="truck_name">Truck Name</string>
+    <string name="truck_capacity">Truck Capacity</string>
+    <string name="na">NA</string>
+    <string name="submit">Submit</string>
+    <string name="authentication_required">Authentication Required</string>
+    <string name="orderid">OrderId - 356478484844848</string>
+    <string name="total_price">Total \n Price</string>
+    <string name="pending_amount">Pending Amount $170</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="apply">Apply</string>
+    <string name="choose_payment_method">Choose Payment Method</string>
+    <string name="pay_via_cash">Pay Via Cash</string>
+    <string name="pay_via_paypal">Pay Via Paypal</string>
+    <string name="customer">Customer</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="company_name">Company Name</string>
+    <string name="gender">Gender</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="skip">Skip</string>
+    <string name="welcome">Welcome</string>
+    <string name="register_to_continue">Register to continue as</string>
+    <string name="email_phonenumber">Email/PhoneNumber</string>
+    <string name="booking_n_price">Booking \n Price</string>
+    <string name="downtown_dubai">Downtown, Dubai,United Arab Emirates</string>
+    <string name="address_line1">Address Line1</string>
+    <string name="save_as">Save As</string>
+    <string name="home">Home</string>
+    <string name="work">Work</string>
+    <string name="other">Other</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
+    <string name="select_availability">Select Availability</string>
+    <string name="sun">Sun</string>
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+    <string name="booking_price_text">Booking Price</string>
+    <string name="fuel_type">Fuel Type</string>
+    <string name="diesel">Diesel</string>
+    <string name="document">Document</string>
+    <string name="with_driver">With Driver</string>
+    <string name="upload">Upload</string>
+    <string name="search_vehicles">Search Vehicles...</string>
+    <string name="are_you_sure">Are you sure you want delete this Product</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="hello_this_is">Hello this is \n demo home page for merchant....\n Thank you!!</string>
+    <string name="open_orders">Open Orders</string>
+    <string name="closed_orders">Closed Orders</string>
+    <string name="fathi_asfour">Fathi Asfour</string>
+    <string name="fathi_asfour_gmail">fathi.asfour@gmail.com</string>
+    <string name="phone_no">+966-000-000-0000</string>
+    <string name="rental_company">Rental Company</string>
+    <string name="we_denounce">We denounce with righteous indignation and dislike men who are so beguiled.</string>
+    <string name="bilad_al">Bilad Al</string>
+    <string name="merchant">Merchant</string>
+    <string name="select_location">Select Location</string>
+    <string name="select_sub_category">Select Sub Category</string>
+    <string name="truck_power_kv">125kw(170)@2500rpm</string>
+    <string name="price">Price</string>
+    <string name="petrol">Petrol</string>
+    <string name="write_any_other">Write any other details \n \n</string>
+    <string name="notify_admin">Notify Admin</string>
+    <string name="no_result_found">No Result Found</string>
+    <string name="add_new_address">Add New Address</string>
+    <string name="hi_ajeer">Hi,Ajeer</string>
+    <string name="_45">45</string>
+    <string name="tax_included">Tax Included</string>
+    <string name="rate_amp_review"><![CDATA[Rate & Review]]></string>
+    <string name="delivered_on">* Delivered on 12 Dec 2019</string>
+    <string name="ajeer_mohammed">Ajeer Mohammed</string>
+    <string name="view_history">View History</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="_14_days">14 days</string>
+    <string name="_9995hh">9995hh</string>
+    <string name="for_maintenance">For Maintenance</string>
+    <string name="happy_with_the_service">Happy with the service?</string>
+    <string name="give_a_tip">Give a Tip</string>
+    <string name="rating">Rating</string>
+    <string name="review">Review</string>
+    <string name="choose_to_login_as">Choose to login as,</string>
+    <string name="truck">Truck</string>
+    <string name="remove">Remove</string>
+    <string name="payment_pending">Payment Pending</string>
+    <string name="_02_feb_2020">02 Feb 2020</string>
+    <string name="full_power">Full Power</string>
+    <string name="view_details">View Details</string>
+    <string name="ok">Ok</string>
+    <string name="title">Title</string>
 </resources>

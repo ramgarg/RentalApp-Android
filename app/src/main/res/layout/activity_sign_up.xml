@@ -19,7 +19,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp">
             <ImageView
-android:visibility="gone"
+                    android:visibility="gone"
                     android:src="@mipmap/back"
                     android:scaleType="fitXY"
                     android:layout_width="@dimen/_15sdp"
@@ -27,11 +27,11 @@ android:visibility="gone"
 
             <TextView
                     android:id="@+id/tv_skip"
-                    android:text="Skip"
+                    android:text="@string/skip"
                     android:fontFamily="@font/bree_serif"
                     android:textSize="@dimen/_15sdp"
                     android:layout_marginRight="@dimen/_10sdp"
-                    android:textColor="#0f7e31"
+                    android:textColor="@color/text_green"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -48,9 +48,9 @@ android:visibility="gone"
 
         <TextView
                 android:layout_marginTop="@dimen/_10sdp"
-                android:textColor="#000"
+                android:textColor="@color/black"
                 android:fontFamily="@font/bree_serif"
-                android:text="Welcome"
+                android:text="@string/welcome"
                 android:textSize="@dimen/_20sdp"
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_width="wrap_content"
@@ -58,7 +58,7 @@ android:visibility="gone"
 
         <TextView
                 android:fontFamily="@font/bree_serif"
-                android:text="Register to continue as"
+                android:text="@string/register_to_continue"
                 android:textSize="@dimen/_15sdp"
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_width="wrap_content"
@@ -69,11 +69,10 @@ android:visibility="gone"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp">
+
             <TextView android:layout_width="@dimen/_80sdp"
                     android:text="@string/customer"
-
-                      android:fontFamily="@font/bree_serif"
-
+                    android:fontFamily="@font/bree_serif"
                     android:id="@+id/btn_customer_inactive"
                     android:textSize="@dimen/_10sdp"
                     android:paddingLeft="@dimen/_5sdp"
@@ -92,7 +91,6 @@ android:visibility="gone"
             <TextView android:layout_width="wrap_content"
                       android:text="@string/customer"
                       android:fontFamily="@font/bree_serif"
-
                       android:textSize="@dimen/_10sdp"
                       android:gravity="center"
                       android:paddingLeft="@dimen/_5sdp"
@@ -101,6 +99,7 @@ android:visibility="gone"
                       android:background="@drawable/shadow"
                       android:drawableLeft="@mipmap/customer_active"
                       android:layout_height="@dimen/_30sdp"/>
+
             <ImageView
                     android:layout_alignParentRight="true"
                     android:src="@mipmap/green_check"
@@ -114,7 +113,6 @@ android:visibility="gone"
                 android:id="@+id/btn_agent_inactive"
                 android:textSize="@dimen/_10sdp"
                   android:fontFamily="@font/bree_serif"
-
                   android:paddingLeft="@dimen/_5sdp"
                 android:drawableLeft="@mipmap/agent_inactive_m"
                 android:layout_marginLeft="@dimen/_10sdp"
@@ -135,7 +133,6 @@ android:visibility="gone"
                         android:textSize="@dimen/_10sdp"
                         android:paddingLeft="@dimen/_5sdp"
                         android:fontFamily="@font/bree_serif"
-
                         android:drawableLeft="@mipmap/agent_active"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:background="@drawable/shadow"
@@ -153,7 +150,6 @@ android:visibility="gone"
                 android:text="@string/merchant"
                   android:gravity="center"
                   android:fontFamily="@font/bree_serif"
-
                   android:id="@+id/btn_merchant_inactive"
                 android:drawablePadding="@dimen/_5sdp"
                 android:textSize="@dimen/_10sdp"
@@ -174,7 +170,6 @@ android:visibility="gone"
                         android:text="@string/merchant"
                           android:gravity="center"
                           android:fontFamily="@font/bree_serif"
-
                           android:drawablePadding="@dimen/_5sdp"
                         android:textSize="@dimen/_10sdp"
                         android:drawableLeft="@mipmap/merchant_active"
@@ -204,10 +199,8 @@ android:visibility="gone"
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:hint="@string/full_name"
-                android:textColor="#000"
+                android:textColor="@color/black"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
-
-
                 android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -220,8 +213,8 @@ android:visibility="gone"
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:hint="Email/PhoneNumber"
-                android:textColor="#000"
+                android:hint="@string/email_phonenumber"
+                android:textColor="@color/black"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 android:layout_height="wrap_content">
@@ -237,8 +230,8 @@ android:visibility="gone"
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:hint="Password"
-                android:textColor="#000"
+                android:hint="@string/password"
+                android:textColor="@color/black"
                 android:fontFamily="@font/bree_serif"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 android:layout_height="wrap_content">
@@ -247,7 +240,6 @@ android:visibility="gone"
                     android:layout_width="match_parent"
                     android:inputType="textPassword"
                     android:id="@+id/ed_password"
-
                     android:fontFamily="@font/bree_serif"
                     android:layout_height="@dimen/_40sdp"/>
 
@@ -257,7 +249,7 @@ android:visibility="gone"
                       android:gravity="top"
                       android:layout_height="@dimen/_40sdp">
         <CheckBox android:layout_width="@dimen/_20sdp"
-                  android:textColor="#000"
+                  android:textColor="@color/black"
                   android:id="@+id/checkbox_terms"
                   android:layout_marginTop="@dimen/_5sdp"
                   android:fontFamily="@font/bree_serif"

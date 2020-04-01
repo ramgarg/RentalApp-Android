@@ -27,10 +27,10 @@
 
     <TextView
             android:layout_marginTop="@dimen/_10sdp"
-            android:textColor="#000"
+            android:textColor="@color/black"
             android:layout_gravity="center"
             android:fontFamily="@font/bree_serif"
-            android:text="Choose to login as,"
+            android:text="@string/choose_to_login_as"
             android:textSize="@dimen/_18sdp"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
@@ -40,12 +40,13 @@
 
     <RelativeLayout
 
-            android:layout_width="200dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_gravity="center"
             android:background="@drawable/dialog_transparent"
             android:layout_height="@dimen/_50sdp">
-        <TextView android:layout_width="200.00dp"
+
+        <TextView android:layout_width="@dimen/_200sdp"
                 android:text="@string/customer"
                 android:fontFamily="@font/bree_serif"
                 android:layout_centerHorizontal="true"
@@ -60,10 +61,10 @@
         <RelativeLayout
                 android:visibility="gone"
                 android:id="@+id/btn_customer_active"
-                android:layout_width="200dp"
-                android:layout_height="180.00dp">
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_50sdp">
 
-            <TextView android:layout_width="200.00dp"
+            <TextView android:layout_width="@dimen/_200sdp"
                     android:text="@string/customer"
                     android:fontFamily="@font/bree_serif"
                     android:layout_centerHorizontal="true"
@@ -85,12 +86,12 @@
 
     <RelativeLayout
 
-            android:layout_width="200dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_gravity="center"
             android:background="@drawable/dialog_transparent"
             android:layout_height="@dimen/_50sdp">
-        <TextView android:layout_width="200.00dp"
+        <TextView android:layout_width="@dimen/_200sdp"
                 android:text="@string/agent"
                 android:fontFamily="@font/bree_serif"
                 android:layout_centerHorizontal="true"
@@ -105,10 +106,10 @@
         <RelativeLayout
                 android:visibility="gone"
                 android:id="@+id/btn_agent_active"
-                android:layout_width="200dp"
-                android:layout_height="180.00dp">
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_50sdp">
 
-            <TextView android:layout_width="200.00dp"
+            <TextView android:layout_width="@dimen/_200sdp"
                     android:text="@string/agent"
                     android:fontFamily="@font/bree_serif"
                     android:layout_centerHorizontal="true"
@@ -130,13 +131,13 @@
 
     <RelativeLayout
 
-            android:layout_width="200dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="@dimen/_20sdp"
             android:background="@drawable/dialog_transparent"
             android:layout_height="@dimen/_50sdp">
-        <TextView android:layout_width="200.00dp"
+        <TextView android:layout_width="@dimen/_200sdp"
                 android:text="@string/merchant"
                 android:fontFamily="@font/bree_serif"
                 android:layout_centerHorizontal="true"
@@ -151,10 +152,10 @@
         <RelativeLayout
                 android:visibility="gone"
                 android:id="@+id/btn_merchant_active"
-                android:layout_width="200dp"
-                android:layout_height="180.00dp">
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_50sdp">
 
-            <TextView android:layout_width="200.00dp"
+            <TextView android:layout_width="@dimen/_200sdp"
                     android:text="@string/merchant"
                     android:fontFamily="@font/bree_serif"
                     android:layout_centerHorizontal="true"

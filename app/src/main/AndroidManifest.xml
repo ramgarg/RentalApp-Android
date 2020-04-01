@@ -42,7 +42,7 @@
                 android:screenOrientation="unspecified"
 
                 />
-        <activity android:name=".merchant.view.activity.Merchant_Add_Vehicle"
+        <activity android:name=".merchant.view.activity.MerchantAddVehicle"
                 android:screenOrientation="unspecified"
 
                 />
@@ -75,7 +75,7 @@
 
         />
 
-        <activity android:name=".merchant.view.activity.Merchant_MainActivity"
+        <activity android:name=".merchant.view.activity.MerchantMainActivity"
                 android:screenOrientation="unspecified"
 
                 />

@@ -7,7 +7,7 @@ import com.rental.common.model.repositry.OrderListingRepository
 import com.rental.customer.dashboard.model.modelclass.HomeResponse
 import com.rental.merchant.model.repository.MerchantHomeRepository
 
-class Merchant_Dash_ViewModel : ViewModel() {
+class MerchantDashViewModel : ViewModel() {
     var orderListingRepository : OrderListingRepository
     var merchantHomeResponseLiveData: LiveData<OrderListing>
 

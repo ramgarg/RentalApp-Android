@@ -19,7 +19,7 @@
                   android:layout_height="match_parent">
 
         <TextView android:layout_width="wrap_content"
-                  android:text="Select Category"
+                  android:text="@string/select_category"
                   android:textSize="@dimen/_15sdp"
                   android:fontFamily="@font/bree_serif"
                   android:textColor="#000"
@@ -38,11 +38,11 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
         <View android:layout_width="match_parent"
-              android:layout_height="1dp"
+              android:layout_height="@dimen/_1sdp"
               android:background="@android:color/darker_gray"/>
 
         <TextView android:layout_width="wrap_content"
-                  android:text="Truck Name"
+                  android:text="@string/truck_name"
                   android:layout_marginTop="@dimen/_15sdp"
                   android:textSize="@dimen/_15sdp"
                   android:fontFamily="@font/bree_serif"
@@ -50,7 +50,7 @@
                   android:layout_height="wrap_content"/>
 
         <TextView android:layout_width="match_parent"
-                  android:text="Volvo FH truck"
+                  android:text="@string/volvo_fh_truck"
                   android:textSize="@dimen/_15sdp"
                   android:layout_marginTop="@dimen/_10sdp"
                   android:fontFamily="@font/bree_serif"
@@ -58,7 +58,7 @@
 
 
         <TextView android:layout_width="wrap_content"
-                  android:text="Truck Capacity"
+                  android:text="@string/truck_capacity"
                   android:layout_marginTop="@dimen/_15sdp"
                   android:textSize="@dimen/_15sdp"
                   android:fontFamily="@font/bree_serif"
@@ -66,17 +66,17 @@
                   android:layout_height="wrap_content"/>
 
         <TextView android:layout_width="match_parent"
-                  android:text="NA"
+                  android:text="@string/na"
                   android:textSize="@dimen/_15sdp"
                   android:layout_marginTop="@dimen/_10sdp"
                   android:fontFamily="@font/bree_serif"
                   android:layout_height="@dimen/_40sdp"/>
         <View android:layout_width="match_parent"
-              android:layout_height="1dp"
+              android:layout_height="@dimen/_1sdp"
               android:background="@android:color/darker_gray"/>
 
         <TextView android:layout_width="wrap_content"
-                  android:text="Details"
+                  android:text="@string/details"
                   android:layout_marginTop="@dimen/_15sdp"
                   android:textSize="@dimen/_15sdp"
                   android:fontFamily="@font/bree_serif"
@@ -84,20 +84,20 @@
                   android:layout_height="wrap_content"/>
 
         <TextView android:layout_width="match_parent"
-                  android:text="Details......."
+                  android:text="@string/details"
                   android:textSize="@dimen/_15sdp"
                   android:layout_marginTop="@dimen/_10sdp"
                   android:fontFamily="@font/bree_serif"
                   android:layout_height="@dimen/_40sdp"/>
 
         <View android:layout_width="match_parent"
-              android:layout_height="1dp"
+              android:layout_height="@dimen/_1sdp"
               android:background="@android:color/darker_gray"/>
 
     </LinearLayout>
 
     <Button android:layout_width="match_parent"
-            android:text="Submit"
+            android:text="@string/submit"
             android:id="@+id/btn_submit"
             android:textColor="#fff"
             android:textAllCaps="false"

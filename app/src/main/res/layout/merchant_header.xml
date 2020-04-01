@@ -13,9 +13,9 @@
             android:layout_height="@dimen/_80sdp"/>
 
     <TextView
-            android:text="Bilad Al"
+            android:text="@string/bilad_al"
             android:fontFamily="@font/bree_serif"
-            android:textColor="#000"
+            android:textColor="@color/black"
             android:id="@+id/merchant_user_name_menu"
             android:textSize="@dimen/_15sdp"
             android:layout_marginLeft="@dimen/_10sdp"
@@ -24,17 +24,17 @@
             android:layout_below="@id/merchant_profile_img_menu"
             android:layout_height="wrap_content"/>
     <TextView
-            android:text="Merchant"
-
+            android:text="@string/merchant"
             android:id="@+id/merchant_user_type_menu"
             android:fontFamily="@font/bree_serif"
-            android:textColor="#0f7e31"
+            android:textColor="@color/text_green"
             android:textSize="@dimen/_12sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_width="wrap_content"
             android:layout_below="@id/merchant_user_name_menu"
             android:layout_height="wrap_content"/>
+
     <ImageView android:layout_width="@dimen/_30sdp"
             android:id="@+id/merchant_edit_profile_menu"
             android:src="@mipmap/edit"

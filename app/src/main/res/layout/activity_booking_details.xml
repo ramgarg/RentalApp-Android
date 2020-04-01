@@ -9,7 +9,6 @@
 
     <ScrollView
             android:layout_above="@+id/btn_next"
-
             android:layout_below="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -28,14 +27,13 @@ android:layout_marginRight="@dimen/_15sdp"
                     android:fontFamily="@font/bree_serif"
                     android:textColor="#000"
                     android:textSize="@dimen/_15sdp"
-                    android:text="Volvo FH Truck"
+                    android:text="@string/volvo_fh_truck"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             <TextView android:layout_width="wrap_content"
-                      android:text="Total\nPrice "
+                      android:text="@string/totalprice"
                       android:textColor="#000"
-
                       android:id="@+id/booking_title"
                       android:layout_below="@+id/tv_vehicle_name"
                       android:textSize="@dimen/_12sdp"
@@ -46,7 +44,7 @@ android:layout_marginRight="@dimen/_15sdp"
                       android:textColor="#000"
                       android:fontFamily="@font/bree_serif"
                       android:textSize="@dimen/_20sdp"
-                      android:text="$30"
+                      android:text="@string/booking_price"
                       android:layout_marginLeft="@dimen/_5sdp"
                       android:layout_toRightOf="@+id/booking_title"
                       android:layout_below="@+id/tv_vehicle_name"
@@ -54,7 +52,7 @@ android:layout_marginRight="@dimen/_15sdp"
 
 
             <TextView android:layout_width="wrap_content"
-                      android:text="Per Hour"
+                      android:text="@string/per_hour"
                       android:layout_marginTop="@dimen/_10sdp"
                       android:layout_marginLeft="@dimen/_5sdp"
                       android:layout_toRightOf="@+id/booking_price"
@@ -88,7 +86,7 @@ android:layout_marginRight="@dimen/_15sdp"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/_15sdp"
                         android:textColor="#000"
-                        android:text="Do you want vehicle with driver?"
+                        android:text="@string/do_you_want_driver"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
 
@@ -118,7 +116,7 @@ android:layout_marginRight="@dimen/_15sdp"
                             android:layout_height="@dimen/_20sdp"/>
 
                     <TextView android:layout_width="wrap_content"
-                              android:text="Start Date"
+                              android:text="@string/start_date"
 
                               android:layout_marginLeft="@dimen/_10sdp"
                               android:id="@+id/tv_st_date"
@@ -155,8 +153,7 @@ android:layout_marginRight="@dimen/_15sdp"
                             android:layout_height="@dimen/_20sdp"/>
 
                     <TextView android:layout_width="wrap_content"
-                              android:text="Start Time"
-
+                              android:text="@string/start_time"
                               android:layout_marginLeft="@dimen/_10sdp"
                               android:id="@+id/tv_st_time"
                               android:layout_toRightOf="@+id/img_time"
@@ -199,8 +196,7 @@ android:layout_marginRight="@dimen/_15sdp"
                             android:layout_height="@dimen/_20sdp"/>
 
                     <TextView android:layout_width="wrap_content"
-                              android:text="End Date"
-
+                              android:text="@string/end_date"
                               android:layout_marginLeft="@dimen/_10sdp"
                               android:id="@+id/tv_end_date"
                               android:layout_toRightOf="@+id/img_en_calender"
@@ -236,8 +232,7 @@ android:layout_marginRight="@dimen/_15sdp"
                             android:layout_height="@dimen/_20sdp"/>
 
                     <TextView android:layout_width="wrap_content"
-                              android:text="End Time"
-
+                              android:text="@string/end_time"
                               android:layout_marginLeft="@dimen/_10sdp"
                               android:id="@+id/tv_end_time"
                               android:layout_toRightOf="@+id/img_end_time"
@@ -264,7 +259,7 @@ android:layout_marginRight="@dimen/_15sdp"
                             android:layout_below="@+id/layout_end"
                             android:layout_height="wrap_content">
                 <TextView android:layout_width="wrap_content"
-                          android:text="Truck Quantity"
+                          android:text="@string/truck_quantity"
                           android:textSize="@dimen/_15sdp"
                           android:textColor="#000"
                           android:fontFamily="@font/bree_serif"
@@ -284,7 +279,7 @@ android:layout_marginRight="@dimen/_15sdp"
 
                     <TextView
                             android:id="@+id/item_quantity"
-                            android:text="1"
+                            android:text="@string/one"
                             android:textColor="#000"
                             android:fontFamily="@font/bree_serif"
                             android:paddingLeft="@dimen/_10sdp"
@@ -293,6 +288,7 @@ android:layout_marginRight="@dimen/_15sdp"
                             android:gravity="center"
                             android:background="@drawable/itemquantity_bg"
                             android:layout_height="@dimen/_25sdp"/>
+
                     <ImageView android:layout_width="@dimen/_25sdp"
                                android:src="@mipmap/plus"
                                android:padding="@dimen/_5sdp"
@@ -313,7 +309,7 @@ android:layout_marginRight="@dimen/_15sdp"
                       android:id="@+id/tv_work_title"
                       android:fontFamily="@font/bree_serif"
                       android:textColor="#000"
-                      android:text="Work Location"
+                      android:text="@string/work_location"
                       android:layout_height="wrap_content"/>
 
             <TextView android:layout_width="@dimen/_200sdp"
@@ -322,7 +318,7 @@ android:layout_marginRight="@dimen/_15sdp"
                       android:textSize="@dimen/_15sdp"
                       android:id="@+id/tv_work_location"
                       android:fontFamily="@font/bree_serif"
-                      android:text="Work Location kjffaslakjak"
+                      android:text="@string/work_location"
                       android:layout_height="wrap_content"/>
 
             <TextView android:layout_width="wrap_content"
@@ -337,7 +333,7 @@ android:layout_marginRight="@dimen/_15sdp"
                       android:layout_alignParentRight="true"
                       android:background="@drawable/payment_status"
                       android:fontFamily="@font/bree_serif"
-                      android:text="Change"
+                      android:text="@string/change"
 
                       android:layout_height="wrap_content"/>
 
@@ -346,7 +342,7 @@ android:layout_marginRight="@dimen/_15sdp"
                       android:layout_marginTop="@dimen/_20sdp"
                       android:layout_below="@+id/change_add"
                       android:background="@android:color/darker_gray"
-                      android:layout_height="1dp"/>
+                      android:layout_height="@dimen/_1sdp"/>
 
 
             <ImageView
@@ -358,7 +354,7 @@ android:layout_marginRight="@dimen/_15sdp"
                        android:layout_height="@dimen/_25sdp"/>
 
             <TextView
-                    android:text="Add Another Product"
+                    android:text="@string/add_another_product"
                     android:textColor="#000"
                     android:textSize="@dimen/_15sdp"
                     android:fontFamily="@font/bree_serif"
@@ -374,7 +370,7 @@ android:layout_marginRight="@dimen/_15sdp"
     </ScrollView>
 
     <Button android:layout_width="match_parent"
-            android:text="Next"
+            android:text="@string/next"
             android:textSize="@dimen/_15sdp"
             android:id="@+id/btn_next"
             android:textAllCaps="false"

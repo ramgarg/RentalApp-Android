@@ -40,7 +40,6 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:gravity="center_vertical"
-
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_height="wrap_content">
 
@@ -49,9 +48,9 @@
                 android:layout_width="@dimen/_250sdp"
                 android:textSize="@dimen/_15sdp"
                 android:fontFamily="@font/bree_serif"
-                android:textColor="#000"
+                android:textColor="@color/black"
                 android:maxLines="2"
-                android:text="Downtown, Dubai,United Arab Emirates"
+                android:text="@string/downtown_dubai"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_height="wrap_content"/>
@@ -67,8 +66,8 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_below="@+id/layout_curret_address"
-            android:hint="Address Line1"
-            android:textColor="#000"
+            android:hint="@string/address_line1"
+            android:textColor="@color/black"
 
             app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
             android:textColorHint="@android:color/darker_gray"
@@ -98,11 +97,11 @@
             android:layout_height="wrap_content">
 
         <TextView android:layout_width="wrap_content"
-                  android:textColor="#000"
+                  android:textColor="@color/black"
                   android:id="@+id/address_save_as"
                   android:fontFamily="@font/bree_serif"
                   android:textSize="@dimen/_15sdp"
-                  android:text="Save As"
+                  android:text="@string/save_as"
                   android:layout_height="wrap_content"/>
 
 
@@ -112,11 +111,10 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp">
+
             <TextView android:layout_width="@dimen/_80sdp"
-                      android:text="Home"
-
+                      android:text="@string/home"
                       android:fontFamily="@font/bree_serif"
-
                       android:id="@+id/btn_customer_inactive"
                       android:textSize="@dimen/_12sdp"
                       android:paddingLeft="@dimen/_5sdp"
@@ -126,6 +124,7 @@
                       android:background="@drawable/rounded_corner_gray"
                       android:drawableLeft="@mipmap/home_addres_ss"
                       android:layout_height="@dimen/_30sdp"/>
+
             <RelativeLayout
                     android:visibility="gone"
                     android:id="@+id/btn_customer_active"
@@ -133,9 +132,8 @@
                     android:layout_height="wrap_content">
 
                 <TextView android:layout_width="wrap_content"
-                          android:text="Home"
+                          android:text="@string/home"
                           android:fontFamily="@font/bree_serif"
-
                           android:textSize="@dimen/_10sdp"
                           android:gravity="center"
                           android:paddingLeft="@dimen/_5sdp"
@@ -152,12 +150,11 @@
             </RelativeLayout>
 
             <TextView android:layout_width="@dimen/_80sdp"
-                      android:text="Work"
+                      android:text="@string/work"
                       android:gravity="center"
                       android:id="@+id/btn_agent_inactive"
                       android:textSize="@dimen/_13sdp"
                       android:fontFamily="@font/bree_serif"
-
                       android:paddingLeft="@dimen/_5sdp"
                       android:drawableLeft="@mipmap/work_address_ss"
                       android:layout_marginLeft="@dimen/_10sdp"
@@ -174,11 +171,10 @@
                 <TextView
                         android:gravity="center"
                         android:layout_width="@dimen/_70sdp"
-                        android:text="Work"
+                        android:text="@string/work"
                         android:textSize="@dimen/_12sdp"
                         android:paddingLeft="@dimen/_5sdp"
                         android:fontFamily="@font/bree_serif"
-
                         android:drawableLeft="@mipmap/work_address_ss"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:background="@drawable/shadow"
@@ -190,13 +186,10 @@
                         android:layout_height="@dimen/_10sdp"/>
             </RelativeLayout>
 
-
-
             <TextView android:layout_width="@dimen/_80sdp"
-                      android:text="Other"
+                      android:text="@string/other"
                       android:gravity="center"
                       android:fontFamily="@font/bree_serif"
-
                       android:id="@+id/btn_merchant_inactive"
                       android:drawablePadding="@dimen/_5sdp"
                       android:textSize="@dimen/_12sdp"
@@ -214,10 +207,9 @@
                     android:layout_height="wrap_content">
 
                 <TextView android:layout_width="wrap_content"
-                          android:text="Other"
+                          android:text="@string/other"
                           android:gravity="center"
                           android:fontFamily="@font/bree_serif"
-
                           android:drawablePadding="@dimen/_5sdp"
                           android:textSize="@dimen/_12sdp"
                           android:drawableLeft="@mipmap/order_address_ss"
@@ -250,21 +242,21 @@
                   android:layout_height="@dimen/_40sdp">
 
         <Button
-                android:textColor="#fff"
+                android:textColor="@color/white"
                 android:fontFamily="@font/bree_serif"
                 android:textSize="@dimen/_15sdp"
                 android:background="@color/colorAccent"
                 android:textAllCaps="false"
-                android:text="Delete"
+                android:text="@string/delete"
                 android:layout_weight=".5"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"/>
         <Button
-                android:textColor="#fff"
+                android:textColor="@color/white"
                 android:fontFamily="@font/bree_serif"
                 android:textSize="@dimen/_15sdp"
                 android:background="@color/colorPrimary"
-                android:text="Update"
+                android:text="@string/update"
                 android:textAllCaps="false"
                 android:layout_weight=".5"
                 android:layout_width="wrap_content"

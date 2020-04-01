@@ -17,8 +17,8 @@ import com.rental.customer.profile.ProfileActivity
 import com.rental.customer.webpages.AboutActivity
 import com.rental.customer.webpages.TermsConditionActivity
 import com.rental.merchant.view.activity.MerchantProfileActivity
-import com.rental.merchant.view.activity.Merchant_Add_Vehicle
-import com.rental.merchant.view.activity.Merchant_MainActivity
+import com.rental.merchant.view.activity.MerchantAddVehicle
+import com.rental.merchant.view.activity.MerchantMainActivity
 
 
 class MoveToAnotherComponent {
@@ -26,11 +26,11 @@ class MoveToAnotherComponent {
     companion object{
 
         fun moveToMerchantAddVehicle(context: Context){
-            context.startActivity(Intent(context, Merchant_Add_Vehicle::class.java))
+            context.startActivity(Intent(context, MerchantAddVehicle::class.java))
         }
 
         fun moveToMerchantActivity(context: Context){
-            context.startActivity(Intent(context, Merchant_MainActivity::class.java))
+            context.startActivity(Intent(context, MerchantMainActivity::class.java))
         }
 
         fun moveToForgotPasswordActivity(context: Context){
