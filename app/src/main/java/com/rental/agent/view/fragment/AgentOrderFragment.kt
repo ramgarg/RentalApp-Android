@@ -11,18 +11,21 @@ import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.view.activity.MainActivity
 import com.rental.customer.dashboard.view.adapter.HomeAdapter
+import com.rental.customer.dashboard.view.fragment.OrderFragment
 import com.rental.customer.dashboard.viewmodel.HomeViewModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class AgentOrderFragment : Fragment(), RecyclerViewItemClick {
+class AgentOrderFragment : OrderFragment(){
 
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        val view = super.onCreateView(inflater, container, savedInstanceState)
+//        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         /*homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
@@ -35,11 +38,6 @@ class AgentOrderFragment : Fragment(), RecyclerViewItemClick {
 
         return view
     }
-
-    override fun onItemClick(item: Data) {
-        MoveToAnotherComponent.moveToCategoryActivity(requireContext())
-    }
-
 
 }
 

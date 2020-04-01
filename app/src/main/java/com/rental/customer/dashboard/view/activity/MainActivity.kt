@@ -33,6 +33,7 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         bottom_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         bottom_view.selectedItemId=R.id.navigation_home
+
         navigationView.setNavigationItemSelectedListener(this)
 
         setDefaultFragment()
