@@ -1,7 +1,6 @@
 package com.rental.merchant.view.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -11,16 +10,15 @@ import androidx.core.view.GravityCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.rental.R
-import com.rental.customer.utils.Common
+import com.rental.customer.utils.Common.Companion.showLoading
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.merchant.view.fragment.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.img_gif
 import kotlinx.android.synthetic.main.merchant_activity_main.*
+import kotlinx.android.synthetic.main.merchant_header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.merchant_activity_main)
@@ -35,14 +33,21 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     }
 
     private fun initView(){
-        Common.showLoading(this, merchant_layout_loading, img_gif)
+        showLoading(this, merchant_layout_loading, img_gif)
         merchant_bottom_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         merchant_bottom_view.selectedItemId=R.id.merchant_navigation_home
-        navigationView.setNavigationItemSelectedListener(this)
+        merchant_navigationView.setNavigationItemSelectedListener(this)
 
         setDefaultFragment()
 
         img_menu.setOnClickListener {  merchant_drawer_layout.openDrawer(GravityCompat.START) }
+        val header = merchant_navigationView.getHeaderView(0)
+
+        header.merchant_edit_profile_menu.setOnClickListener {
+            MoveToAnotherComponent.moveToMerchantProfileActivity(this)
+            merchant_drawer_layout.closeDrawer(GravityCompat.START)
+        }
+        img_notification.setOnClickListener { MoveToAnotherComponent.moveToNotificationActivity(this) }
 
 
 
@@ -59,9 +64,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         when (menuItem.itemId) {
 
             R.id.merchant_navigation_home -> {
-                val fragment = Merchant_HomeFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
-                    .commit()
+               setDefaultFragment()
                 toolbar_title.text=getString(R.string.title_home)
                 merchant_toolbar_header.visibility=View.VISIBLE
                 merchant_add_vehicle_btn.visibility=View.VISIBLE
@@ -79,7 +82,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_order -> {
-                Common.showLoading(this, merchant_layout_loading, img_gif)
+                showLoading(this, merchant_layout_loading, img_gif)
                 val fragment = Merchant_OrderFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
@@ -90,7 +93,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             }
 
             R.id.merchant_navigation_profile -> {
-                Common.showLoading(this, merchant_layout_loading, img_gif)
+                showLoading(this, merchant_layout_loading, img_gif)
                 val fragment = Merchant_ProfileFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
@@ -101,7 +104,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 return@OnNavigationItemSelectedListener true
             }
             R.id.merchant_navigation_support -> {
-                Common.showLoading(this, merchant_layout_loading, img_gif)
+                showLoading(this, merchant_layout_loading, img_gif)
                 toolbar_title.text=getString(R.string.help)
                 val fragment = Merchant_Support_Fragment()
                 supportFragmentManager.beginTransaction().replace(R.id.merchant_main_container, fragment, fragment.javaClass.simpleName)
@@ -133,7 +136,7 @@ class Merchant_MainActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 MoveToAnotherComponent.moveToTermsActivity(this)
             }
         }
-        drawer_layout.closeDrawer(GravityCompat.START)
+        merchant_drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
 }

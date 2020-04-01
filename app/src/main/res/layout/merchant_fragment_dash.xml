@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/agent_home_bg_blue_grd"
@@ -52,5 +53,129 @@
             app:layout_constraintStart_toStartOf="@+id/tv_merchant_message"
             android:layout_marginTop="@dimen/_20sdp"
             />
+
+    //---------------------Bottom View ----------------------------
+
+    <Button
+            android:id="@+id/btn_merchant_home_view_all"
+            style="@style/AgentButtonCard"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/selector_aggent_button_blue"
+            android:text="@string/view_all"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/merchant_bottom_white_bg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycle_view_merchant_home" />
+
+    <!--white Bottom view-->
+
+    <LinearLayout
+            android:id="@+id/merchant_bottom_white_bg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:background="@drawable/shap_rectangle_agent_bottom_home"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+                android:id="@+id/tv_total_booking"
+                style="@style/AgentBoldTextCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_booking"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:textSize="@dimen/_15sdp"
+                />
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_6sdp"
+                android:layout_marginRight="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_45sdp"
+                >
+
+            <LinearLayout
+                    android:id="@+id/lnr_first"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_90sdp"
+                    android:background="@mipmap/completed_order"
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+                    >
+                <TextView
+                        style="@style/AgentOrderStatusTop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/complete"
+
+                        />
+
+                <TextView
+                        style="@style/AgentOrderStatusNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="45" />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/lnr_second"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_90sdp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@mipmap/in_progress_order"
+                    android:layout_centerInParent="true"
+                    >
+
+
+                <TextView
+                        style="@style/AgentOrderStatusTop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/in_progress"
+                        />
+
+                <TextView
+                        style="@style/AgentOrderStatusNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="45" />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/lnr_third"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_90sdp"
+                    android:background="@mipmap/rejected_order"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_alignParentRight="true"
+                    >
+
+                <TextView
+                        style="@style/AgentOrderStatusTop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rejected"
+                        />
+
+                <TextView
+                        style="@style/AgentOrderStatusNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="45" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
