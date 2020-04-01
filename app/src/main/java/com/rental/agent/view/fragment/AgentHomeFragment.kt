@@ -9,12 +9,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rental.R
 import com.rental.agent.view.AgentBaseFragment
+import com.rental.agent.view.CustomViewOutlineProvider
 import com.rental.agent.view.adapter.RecyleAdapterAgentHomeCard
 import com.rental.common.model.modelclass.Order_listing
 import com.rental.common.viewmodel.OrderListingViewModel
-import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.utils.MoveToAnotherComponent
-import com.rental.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.fragment_agent_dashboard.*
 
 class AgentHomeFragment : AgentBaseFragment() {
@@ -24,6 +22,8 @@ class AgentHomeFragment : AgentBaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_agent_dashboard, container, false)
+
+
 
         //activity?.findViewById<View>(R.id.drawer_layout_agent)?.visibility = View.GONE
 
@@ -43,6 +43,11 @@ class AgentHomeFragment : AgentBaseFragment() {
         })
 
         return view
+    }
+
+    private fun cirleViewOutline() {
+        btn_agent_home_view_all.outlineProvider = CustomViewOutlineProvider()
+        btn_agent_home_view_all.clipToOutline = true
     }
 
 
