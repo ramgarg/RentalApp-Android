@@ -37,34 +37,33 @@
 
         <TextView
 
-                android:text="Sun"
-                style="@style/sunmonday"
+                android:text="@string/sun"
+                style="@style/days_style"
                 />
         <TextView
-                android:text="Mon"
-                style="@style/sunmonday"
+                android:text="@string/mon"
+                style="@style/days_style"
                 />
         <TextView
-                android:text="Tue"
-                style="@style/sunmonday"
+                android:text="@string/tue"
+                style="@style/days_style"
                 />
         <TextView
-                android:text="Wed"
-                style="@style/sunmonday"
+                android:text="@string/wed"
+                style="@style/days_style"
                 />
         <TextView
-                android:text="Thu"
-                style="@style/sunmonday"
-                android:drawableRight="@mipmap/green_check"
-
+                android:text="@string/thu"
+                style="@style/days_style"
+                android:drawableEnd="@mipmap/green_check"
                 />
         <TextView
-                android:text="Fri"
-                style="@style/sunmonday"
+                android:text="@string/fri"
+                style="@style/days_style"
                 />
         <TextView
-                android:text="Sat"
-                style="@style/sunmonday"
+                android:text="@string/sat"
+                style="@style/days_style"
                 />
     </LinearLayout>
 

@@ -34,7 +34,7 @@
         <item name="ratingBarStyle">@style/MyRatingBar</item>
     </style>
     <!-- sun mon tus wed-->
-    <style name="sunmonday" parent="android:Widget.TextView">
+    <style name="days_style" parent="android:Widget.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15sp</item>
