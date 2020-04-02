@@ -18,10 +18,7 @@
                 android:id="@+id/tv_user_name"
                 android:text="@string/hello_this_is"
                 android:layout_gravity="center"
-                android:fontFamily="@font/bree_serif"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_18sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+                style="@style/AgentBoldTextCard"
                 android:layout_below="@+id/profile_img"
                 android:layout_height="wrap_content"/>
 
