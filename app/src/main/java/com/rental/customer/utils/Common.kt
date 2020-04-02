@@ -71,7 +71,7 @@ class Common {
             val dialog = Dialog(context)
             dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
-            dialog .setCancelable(false)
+            dialog .setCancelable(true)
             dialog .setContentView(layout)
 
             if(title.equals("Payment"))
@@ -88,7 +88,7 @@ class Common {
         }
 
         private fun userDayDialog(context: Activity, dialog: Dialog) {
-            dialog.img_close.setOnClickListener { dialog.cancel() }
+            //dialog.img_close.setOnClickListener { dialog.cancel() }
            
 
         }
