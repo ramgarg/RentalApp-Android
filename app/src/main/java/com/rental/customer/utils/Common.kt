@@ -89,9 +89,7 @@ class Common {
 
         private fun userDayDialog(context: Activity, dialog: Dialog) {
             dialog.img_close.setOnClickListener { dialog.cancel() }
-            dialog.btn_dialog_sun_inactive.setOnClickListener{
-                dialog.btn_dialog_sun_active.visibility = View.VISIBLE
-            }
+           
 
         }
 

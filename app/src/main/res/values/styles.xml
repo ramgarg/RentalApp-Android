@@ -6,11 +6,10 @@
         <item name="colorPrimary">#e7a403</item>
         <item name="colorPrimaryDark">#e7a403</item>
         <item name="colorAccent">@color/colorAccent</item>
-
         <item name="colorControlNormal">@android:color/darker_gray</item>
-
         <item name="colorControlActivated">#26c86c</item>
     </style>
+
     <style name="TextAppearance.App.TextInputLayout" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/cardview_shadow_start_color</item>
         <item name="android:textSize">@dimen/_15sdp</item>
@@ -39,13 +38,11 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15sp</item>
-        <item name="fontFamily">serif</item>
-
+        <item name="fontFamily">@font/bree_serif</item>
         <item name="android:height">@dimen/_45sdp</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-
         <item name="android:background">@drawable/shap_circle_white</item>
         <item name="android:gravity">center|clip_vertical</item>
 
@@ -61,21 +58,21 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
-        <item name="fontFamily">serif</item>
+        <item name="fontFamily">@font/bree_serif</item>
     </style>
 
     <style name="AgentSmallTextCard" parent="android:Widget.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
-        <item name="fontFamily">serif</item>
+        <item name="fontFamily">@font/bree_serif</item>
     </style>
 
     <style name="AgentButtonCard" parent="android:Widget.Button">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
-        <item name="fontFamily">serif</item>
+        <item name="fontFamily">@font/bree_serif</item>
     </style>
 
     <!--agent home bottom below-->
@@ -83,7 +80,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">24sp</item>
-        <item name="fontFamily">serif</item>
+        <item name="fontFamily">@font/bree_serif</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_marginTop">@dimen/_1sdp</item>
     </style>
@@ -92,7 +89,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
-        <item name="fontFamily">serif</item>
+        <item name="fontFamily">@font/bree_serif</item>
         <item name="android:layout_gravity">top|center</item>
         <item name="android:layout_marginBottom">@dimen/_8sdp</item>
     </style>
@@ -107,5 +104,30 @@
         <item name="android:layout_marginTop">@dimen/_5sdp</item>
     </style>-->
 
-<!---->
+<!--Booking Details Views Styles-->
+
+    <style name="BookingDetailsVehicleName" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/bree_serif</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/_15sdp</item>
+        <item name="android:text">@string/volvo_fh_truck</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+    <style name="BookingDetailsParentRelativeLayout" parent="android:Widget.TextView">
+        <item name="android:layout_marginTop">@dimen/_10sdp</item>
+        <item name="android:layout_marginLeft">@dimen/_15sdp</item>
+        <item name="android:layout_marginRight">@dimen/_15sdp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+
+    </style>
+
+    <style name="ScrollViewParent" parent="android:Widget.TextView">
+        <item name="android:layout_below">@id/toolbar</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+
+    </style>
 </resources>
