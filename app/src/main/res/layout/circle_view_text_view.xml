@@ -9,7 +9,7 @@
         >
     <TextView
             android:text="Day"
-            style="@style/sunmonday"
+            style="@style/days_style"
             >
 
     </TextView>
