@@ -24,7 +24,7 @@
         </activity>
         <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
 
-        <activity android:name=".customer.login.view.LoginActivity"
+        <activity android:name="com.rental.login.view.LoginActivity"
         android:screenOrientation="unspecified"
 
         />
@@ -33,7 +33,7 @@
                 android:required="false" />
 
 
-        <activity android:name=".customer.login.view.RegistrationActivity"
+        <activity android:name="com.rental.login.view.RegistrationActivity"
                   android:screenOrientation="unspecified"
 
         />
@@ -48,11 +48,11 @@
                 />
 
 
-        <activity android:name=".customer.login.view.ForgotPasswordActivity"
+        <activity android:name="com.rental.login.view.ForgotPasswordActivity"
                   android:screenOrientation="unspecified"
 
         />
-        <activity android:name=".customer.login.view.OTPActivity"
+        <activity android:name="com.rental.login.view.OTPActivity"
                   android:screenOrientation="unspecified"
 
         />

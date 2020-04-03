@@ -1,6 +1,6 @@
 //package com.rental.customer.forgotpassword.presenter
 //
-//import com.rental.customer.login.model.repositry.ForgotPasswordRespository
+//import com.rental.login.model.repositry.ForgotPasswordRespository
 //import com.rental.customer.presenter.ForgotPasswordInterface
 //import com.rental.customer.utils.Validator
 //

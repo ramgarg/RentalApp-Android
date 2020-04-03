@@ -1,4 +1,4 @@
-package com.rental.customer.login.model.modelclass
+package com.rental.login.model.modelclass
 
 data class ForgotPasswordResponse(var success:Boolean) {
 }

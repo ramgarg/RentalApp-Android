@@ -6,9 +6,9 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.rental.agent.view.activity.AgentHomeActivity
 import com.rental.customer.dashboard.view.activity.*
-import com.rental.customer.login.view.ForgotPasswordActivity
-import com.rental.customer.login.view.OTPActivity
-import com.rental.customer.login.view.RegistrationActivity
+import com.rental.login.view.ForgotPasswordActivity
+import com.rental.login.view.OTPActivity
+import com.rental.login.view.RegistrationActivity
 import com.rental.customer.myaddress.view.AddNewAddressActivity
 import com.rental.customer.myaddress.view.MyAddressActivity
 import com.rental.customer.notification.view.NotificationActivity

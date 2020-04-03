@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.rental.customer.login.view.LoginActivity
+import com.rental.login.view.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 

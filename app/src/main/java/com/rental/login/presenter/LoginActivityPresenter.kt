@@ -1,4 +1,4 @@
-//package com.rental.customer.login.presenter
+//package com.rental.login.presenter
 //
 //import android.widget.EditText
 //import com.rental.customer.presenter.LoginInterface

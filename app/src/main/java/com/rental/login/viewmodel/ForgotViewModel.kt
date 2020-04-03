@@ -1,10 +1,10 @@
-package com.rental.customer.login.viewmodel
+package com.rental.login.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rental.customer.login.model.modelclass.ForgotPasswordRequest
-import com.rental.customer.login.model.modelclass.ForgotPasswordResponse
-import com.rental.customer.login.model.repositry.ForgotPasswordRespository
+import com.rental.login.model.modelclass.ForgotPasswordRequest
+import com.rental.login.model.modelclass.ForgotPasswordResponse
+import com.rental.login.model.repositry.ForgotPasswordRespository
 
 class ForgotViewModel :ViewModel() {
 

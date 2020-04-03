@@ -1,4 +1,4 @@
-package com.rental.customer.login.presenter
+package com.rental.login.presenter
 
 //package com.rental.customer.otp.presenter
 //

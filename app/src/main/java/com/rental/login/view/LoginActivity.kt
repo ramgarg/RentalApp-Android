@@ -1,11 +1,11 @@
-package com.rental.customer.login.view
+package com.rental.login.view
 
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
-import com.rental.customer.login.viewmodel.LoginViewModel
+import com.rental.login.viewmodel.LoginViewModel
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.Validator

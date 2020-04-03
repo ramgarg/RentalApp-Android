@@ -1,8 +1,7 @@
-package com.rental.customer.login.presenter
+package com.rental.login.presenter
 
-import android.view.View
 import android.widget.*
-import com.rental.customer.login.model.repositry.RegistrationRepository
+import com.rental.login.model.repositry.RegistrationRepository
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.Validator
 

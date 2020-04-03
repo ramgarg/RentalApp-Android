@@ -1,10 +1,10 @@
-package com.rental.customer.login.viewmodel
+package com.rental.login.viewmodel
 
 import android.widget.EditText
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rental.customer.login.model.modelclass.LoginRequest
-import com.rental.customer.login.model.repositry.LoginRespository
+import com.rental.login.model.modelclass.LoginRequest
+import com.rental.login.model.repositry.LoginRespository
 
 
 class LoginViewModel :ViewModel(){

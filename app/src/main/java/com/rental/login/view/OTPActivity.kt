@@ -1,11 +1,11 @@
-package com.rental.customer.login.view
+package com.rental.login.view
 
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
-import com.rental.customer.login.viewmodel.OTPViewModel
+import com.rental.login.viewmodel.OTPViewModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_otp.*
 

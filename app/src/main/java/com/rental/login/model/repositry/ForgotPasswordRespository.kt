@@ -1,8 +1,8 @@
-package com.rental.customer.login.model.repositry
+package com.rental.login.model.repositry
 
 import androidx.lifecycle.MutableLiveData
-import com.rental.customer.login.model.modelclass.ForgotPasswordRequest
-import com.rental.customer.login.model.modelclass.ForgotPasswordResponse
+import com.rental.login.model.modelclass.ForgotPasswordRequest
+import com.rental.login.model.modelclass.ForgotPasswordResponse
 import com.rental.webservice.APIServices
 import com.rental.webservice.RetrofitInstance
 import retrofit2.Call

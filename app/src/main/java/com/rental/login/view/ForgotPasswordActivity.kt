@@ -1,10 +1,10 @@
-package com.rental.customer.login.view
+package com.rental.login.view
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
-import com.rental.customer.login.viewmodel.ForgotViewModel
+import com.rental.login.viewmodel.ForgotViewModel
 import com.rental.customer.utils.Validator
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 

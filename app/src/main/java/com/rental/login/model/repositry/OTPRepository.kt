@@ -1,4 +1,4 @@
-package com.rental.customer.login.model.repositry
+package com.rental.login.model.repositry
 
 import androidx.lifecycle.MutableLiveData
 import com.rental.customer.forgotpassword.model.modelClass.OTPRequest

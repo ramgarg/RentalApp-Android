@@ -1,10 +1,10 @@
-package com.rental.customer.login.presenter
+package com.rental.login.presenter
 
 //package com.rental.customer.otp.presenter
 //
 //import android.widget.EditText
 //import android.widget.TextView
-//import com.rental.customer.login.model.repositry.OTPRepository
+//import com.rental.login.model.repositry.OTPRepository
 //
 //class OTPActivityPresenter(otpView: OTPView) {
 //    private  var otpView:OTPView

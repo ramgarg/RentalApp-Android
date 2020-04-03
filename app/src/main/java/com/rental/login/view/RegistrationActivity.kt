@@ -1,11 +1,11 @@
-package com.rental.customer.login.view
+package com.rental.login.view
 
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
-import com.rental.customer.login.presenter.RegistrationActivityPresenter
-import com.rental.customer.login.presenter.RegistrationView
+import com.rental.login.presenter.RegistrationActivityPresenter
+import com.rental.login.presenter.RegistrationView
 import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
