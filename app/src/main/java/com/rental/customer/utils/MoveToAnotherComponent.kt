@@ -5,6 +5,7 @@ import android.content.Intent
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.rental.agent.view.activity.AgentHomeActivity
+import com.rental.agent.view.activity.AgentProfileActivity
 import com.rental.customer.dashboard.view.activity.*
 import com.rental.customer.login.view.ForgotPasswordActivity
 import com.rental.customer.login.view.OTPActivity
@@ -24,6 +25,10 @@ import com.rental.merchant.view.activity.MerchantMainActivity
 class MoveToAnotherComponent {
 
     companion object{
+
+        fun moveToAgentProfileActivity(context: Context){
+            context.startActivity(Intent(context, AgentProfileActivity::class.java))
+        }
 
         fun moveToMerchantAddVehicle(context: Context){
             context.startActivity(Intent(context, MerchantAddVehicle::class.java))

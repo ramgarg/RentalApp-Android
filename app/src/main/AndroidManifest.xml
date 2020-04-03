@@ -38,7 +38,7 @@
 
         />
 
-        <activity android:name=".merchant.view.activity.Merchant_Dash_Activity"
+        <activity android:name=".agent.view.activity.AgentProfileActivity"
                 android:screenOrientation="unspecified"
 
                 />
