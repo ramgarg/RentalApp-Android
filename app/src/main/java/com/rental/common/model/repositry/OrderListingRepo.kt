@@ -11,7 +11,7 @@ import com.rental.webservice.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Response
 
-class OrderListingRepository() {
+class OrderListingRepo() {
 
     var apiServices: APIServices
 

@@ -3,17 +3,15 @@ package com.rental.merchant.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.rental.common.model.modelclass.OrderListing
-import com.rental.common.model.repositry.OrderListingRepository
-import com.rental.customer.dashboard.model.modelclass.HomeResponse
-import com.rental.merchant.model.repository.MerchantHomeRepository
+import com.rental.common.model.repositry.OrderListingRepo
 
 class MerchantDashViewModel : ViewModel() {
-    var orderListingRepository : OrderListingRepository
+    var orderListingRepo : OrderListingRepo
     var merchantHomeResponseLiveData: LiveData<OrderListing>
 
     init {
-        orderListingRepository = OrderListingRepository()
-        merchantHomeResponseLiveData = orderListingRepository.getOrdrListing()
+        orderListingRepo = OrderListingRepo()
+        merchantHomeResponseLiveData = orderListingRepo.getOrdrListing()
     }
 
 

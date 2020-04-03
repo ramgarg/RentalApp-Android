@@ -12,25 +12,27 @@ import com.rental.agent.view.AgentBaseFragment
 import com.rental.agent.view.CustomViewOutlineProvider
 import com.rental.agent.view.adapter.RecyleAdapterAgentHomeCard
 import com.rental.common.model.modelclass.Order_listing
-import com.rental.common.viewmodel.OrderListingViewModel
+import com.rental.common.viewmodel.OrderListingVM
 import kotlinx.android.synthetic.main.fragment_agent_dashboard.*
 
 class AgentHomeFragment : AgentBaseFragment() {
 
-    private lateinit var orderListingViewModel: OrderListingViewModel
+    private lateinit var orderListingVM: OrderListingVM
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_agent_dashboard, container, false)
 
+        return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        orderListingVM = ViewModelProviders.of(this).get(OrderListingVM::class.java)
 
 
-        //activity?.findViewById<View>(R.id.drawer_layout_agent)?.visibility = View.GONE
-
-        orderListingViewModel = ViewModelProviders.of(this).get(OrderListingViewModel::class.java)
-
-
-        orderListingViewModel.getAgentHomeOrderList().observe(this, Observer {
+        orderListingVM.orderListingLiveData.observe(viewLifecycleOwner, Observer {
 
             recycle_view_agent_home.layoutManager = LinearLayoutManager(requireActivity(),
                 LinearLayoutManager.HORIZONTAL,false)
@@ -41,8 +43,6 @@ class AgentHomeFragment : AgentBaseFragment() {
             recycle_view_agent_home.adapter = recyleAdapterAgentHomeCard
 
         })
-
-        return view
     }
 
     private fun cirleViewOutline() {
