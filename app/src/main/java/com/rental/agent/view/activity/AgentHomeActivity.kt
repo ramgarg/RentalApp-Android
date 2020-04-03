@@ -5,7 +5,6 @@ import androidx.core.view.GravityCompat
 import com.rental.R
 import com.rental.agent.view.AgentBaseActivity
 import kotlinx.android.synthetic.main.activity_agent_home_.*
-import kotlinx.android.synthetic.main.activity_agent_home_.navigationView
 import kotlinx.android.synthetic.main.toolbar.*
 
 class AgentHomeActivity : AgentBaseActivity(){
@@ -19,12 +18,12 @@ class AgentHomeActivity : AgentBaseActivity(){
         bottom_navigation_view_agent.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         // set listener drawer
-        navigationView.setNavigationItemSelectedListener(this)
+        agent_navigation_view.setNavigationItemSelectedListener(this)
         //tool bar menu click lisner , open drawer
         img_menu.setOnClickListener {  drawer_layout_agent.openDrawer(GravityCompat.START) }
 
         // select home fragment
-        bottom_navigation_view_agent.selectedItemId = R.id.navigation_home
+        bottom_navigation_view_agent.selectedItemId = R.id.agent_navigation_home
 
 
     }

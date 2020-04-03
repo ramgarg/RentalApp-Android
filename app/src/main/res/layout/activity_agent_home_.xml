@@ -51,12 +51,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 <!--drawer layout naviagtion view left side-->
     <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigationView"
+            android:id="@+id/agent_navigation_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/navigation_drawer"
-            app:menu="@menu/drawer_menu"
-            app:headerLayout="@layout/header"
+            app:menu="@menu/agent_drawer_menu"
+            app:headerLayout="@layout/agent_header"
             android:layout_gravity="start"
             />
 

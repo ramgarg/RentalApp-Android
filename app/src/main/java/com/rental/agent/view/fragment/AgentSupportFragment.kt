@@ -22,7 +22,10 @@ class AgentSupportFragment : Fragment(), RecyclerViewItemClick {
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_agent_support, container, false)
+        return view
+
 
         /*homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
@@ -33,7 +36,6 @@ class AgentSupportFragment : Fragment(), RecyclerViewItemClick {
 
         })*/
 
-        return view
     }
 
     override fun onItemClick(item: Data) {

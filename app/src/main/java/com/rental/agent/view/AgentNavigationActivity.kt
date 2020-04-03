@@ -13,6 +13,7 @@ import com.rental.R
 import com.rental.agent.view.fragment.*
 import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_home_.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 open class AgentNavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,23 +30,29 @@ open class AgentNavigationActivity : AppCompatActivity(), NavigationView.OnNavig
 
             when (menuItem.itemId) {
 
-                R.id.navigation_order -> {
+
+                R.id.agent_navigation_order -> {
                     fragment = AgentOrderFragment()
+                    toolbar_title.text=getString(R.string.order)
                 }
 
-                R.id.navigation_notification-> {
+                R.id.agent_navigation_notification-> {
                     fragment = AgentNotificationFragment()
+                    toolbar_title.text=getString(R.string.title_notification)
                 }
 
-                R.id.navigation_home -> {
+                R.id.agent_navigation_home -> {
                     setVisibleToolbarHeader(View.GONE)
                     fragment = AgentHomeFragment()
+
                 }
-                R.id.navigation_profile -> {
+                R.id.agent_navigation_profile -> {
                     fragment = AgentProfileFragment()
+                    toolbar_title.text=getString(R.string.profie)
                 }
-                R.id.navigation_support -> {
+                R.id.agent_navigation_support -> {
                     fragment = AgentSupportFragment()
+                    toolbar_title.text=getString(R.string.help)
                 }
                 else -> {
                     return@OnNavigationItemSelectedListener false
@@ -68,26 +75,23 @@ open class AgentNavigationActivity : AppCompatActivity(), NavigationView.OnNavig
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
-            R.id.nav_about -> {
+            R.id.agent_nav_about -> {
                 MoveToAnotherComponent.moveToAboutActivity(this)
             }
-            R.id.nav_dashboard -> {
-                bottom_navigation_view_agent.selectedItemId = R.id.navigation_home
-            }
-            R.id.nav_logout -> {
+
+            R.id.agent_nav_help -> {
+
                 Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_my_address -> {
+            R.id.agent_nav_my_address -> {
                 MoveToAnotherComponent.moveToMyAddressActivity(this)
             }
-            R.id.nav_payment -> {
-                MoveToAnotherComponent.moveToPaymentHistoryActivity(this)
-            }
-            R.id.nav_tc -> {
+
+            R.id.agent_nav_tc -> {
                 MoveToAnotherComponent.moveToTermsActivity(this)
             }
         }
-//        menuItem.isChecked = false
+        menuItem.isChecked=false
         drawer_layout_agent.closeDrawer(GravityCompat.START)
         return true
     }
