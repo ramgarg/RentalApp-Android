@@ -13,7 +13,7 @@ import com.rental.customer.utils.RecyclerViewItemClick
 class AgentNotificationFragment : Fragment(), RecyclerViewItemClick {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_agent_support, container, false)
+        val view = inflater.inflate(R.layout.fragment_agent_notification, container, false)
 
         /*homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
