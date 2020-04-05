@@ -9,7 +9,7 @@ import com.rental.agent.view.activity.AgentProfileActivity
 import com.rental.customer.dashboard.view.activity.*
 import com.rental.login.view.ForgotPasswordActivity
 import com.rental.login.view.OTPActivity
-import com.rental.login.view.RegistrationActivity
+import com.rental.login.view.RegistrationUserActivity
 import com.rental.customer.myaddress.view.AddNewAddressActivity
 import com.rental.customer.myaddress.view.MyAddressActivity
 import com.rental.customer.notification.view.NotificationActivity
@@ -43,7 +43,7 @@ class MoveToAnotherComponent {
         }
 
         fun moveToRegistrationActivity(context: Context){
-            context.startActivity(Intent(context, RegistrationActivity::class.java))
+            context.startActivity(Intent(context, RegistrationUserActivity::class.java))
         }
 
         fun moveToOTPActivity(context: Context){

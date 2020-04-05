@@ -5,28 +5,24 @@ class Constant {
 
     companion object {
 
-        const val BASE_URL = "https://reqres.in/api/"
-//        const val BASE_URL = "http://qa.eazyrento.com:8000"
+        const val  PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=1234
 
-        const val LOGIN = ""
+//        const val BASE_URL = "https://reqres.in/api/"
+        const val BASE_URL = "http://qa.eazyrento.com:8000"
 
         const val DASHBOARD = "users?page=2"
         const val NOTIFICATION = "users?page=2"
-        const val REGISTER = ""
-        const val FORGOTPASSOWRD = ""
-        const val SENDOTP = ""
-        const val ORDER_SUMMARY = ""
-        const val  PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=1234
-        
+
         //Login
         //Login Module
-        const val Register       = "/user/register"
-        const val VerifyPasscode = "/user/verify_passcode"
-        const val UserProfile    = "/user/profile"
-        const val ResendOTP      = "/user/resend_otp"
-        const val Login          = "/user/login"
-        const val ForgotPassword = "/user/forget_password"
-        const val ResetPassword  = "/user/reset_password"
+        const val REGISTER       = "/user/register"
+        const val LOGIN          = "/user/login"
+        const val VERIFY_PASSCODE = "/user/verify_passcode"
+        const val USER_PROFILE    = "/user/profile"
+        const val RESEND_OTP      = "/user/resend_otp"
+
+        const val FORGOT_PASSWORD = "/user/forget_password"
+        const val RESET_PASSWORD  = "/user/reset_password"
 
         // Common
         const val MasterCategory      = "/product/masters"

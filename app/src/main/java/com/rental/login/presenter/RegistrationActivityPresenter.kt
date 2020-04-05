@@ -1,20 +1,21 @@
 package com.rental.login.presenter
 
 import android.widget.*
-import com.rental.login.model.repositry.RegistrationRepository
+import com.rental.login.model.repositry.RegisterUserRepo
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.Validator
+import com.rental.login.model.modelclass.RegisterUserReqModel
 
 
 class RegistrationActivityPresenter(registrationView: RegistrationView) {
 
     private var registrationView: RegistrationView
-    var registrationRepository: RegistrationRepository
+    var registerUserRepo: RegisterUserRepo
 
     init {
         this.registrationView=registrationView
-        registrationRepository=
-            RegistrationRepository(registrationView)
+        registerUserRepo=
+            RegisterUserRepo()
     }
 
      fun registrationAs(registrationType:String, buttonInActiveAgent: TextView, buttonInActiveCustomer:
@@ -38,7 +39,7 @@ class RegistrationActivityPresenter(registrationView: RegistrationView) {
     fun registerAPI(editTextUserName: EditText,editTextEmail: EditText,editTextPassword: EditText,
     checkBoxTerms: CheckBox){
         if(checkValidation(editTextUserName,editTextEmail,editTextPassword,checkBoxTerms)){
-            registrationRepository.registrationAPI()
+//            registerUserRepo.registrationAPI()
         }
 
     }

@@ -18,20 +18,20 @@ class HomeRepository() {
 
     }
 
-    fun getVeichleList():LiveData<HomeResponse> {
+    fun getVeichleList(): LiveData<HomeResponse> {
         val data: MutableLiveData<HomeResponse> = MutableLiveData<HomeResponse>()
         val call = apiServices?.getData()
         call?.enqueue(object : retrofit2.Callback<HomeResponse> {
             override fun onFailure(call: Call<HomeResponse>, t: Throwable) {
 //                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-            data.value=null
+                data.value = null
             }
 
             override fun onResponse(call: Call<HomeResponse>, response: Response<HomeResponse>) {
 //                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-         data.value=response.body()
+                data.value = response.body()
             }
 
 

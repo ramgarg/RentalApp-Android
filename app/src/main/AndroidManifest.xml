@@ -33,7 +33,7 @@
                 android:required="false" />
 
 
-        <activity android:name="com.rental.login.view.RegistrationActivity"
+        <activity android:name="com.rental.login.view.RegistrationUserActivity"
                   android:screenOrientation="unspecified"
 
         />

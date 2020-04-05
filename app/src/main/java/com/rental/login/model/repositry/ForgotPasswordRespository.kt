@@ -3,16 +3,17 @@ package com.rental.login.model.repositry
 import androidx.lifecycle.MutableLiveData
 import com.rental.login.model.modelclass.ForgotPasswordRequest
 import com.rental.login.model.modelclass.ForgotPasswordResponse
+import com.rental.login.model.repositry.api.LoginAPI
 import com.rental.webservice.APIServices
 import com.rental.webservice.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Response
 
 class ForgotPasswordRespository() {
-    private var apiclient: APIServices? = null
+    private var apiclient: LoginAPI? = null
 
     init {
-        apiclient = RetrofitInstance.client.create(APIServices::class.java)
+        apiclient = RetrofitInstance.client.create(LoginAPI::class.java)
     }
     fun forgotPasswordAPI(forgotPasswordRequest: ForgotPasswordRequest){
         val data: MutableLiveData<ForgotPasswordResponse> = MutableLiveData<ForgotPasswordResponse>()
