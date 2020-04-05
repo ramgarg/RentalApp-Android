@@ -9,9 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.agent.view.AgentOrderViewModel
+import com.rental.agent.view.adapter.AgentCloseOrderAdapter
+import com.rental.agent.view.adapter.AgentOpenOrderAdapter
 import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.adapter.OrderClosedAdapter
-import com.rental.customer.dashboard.view.adapter.OrderOpenAdapter
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
@@ -30,7 +30,7 @@ class AgentOrderFragment : Fragment() , RecyclerViewItemClick{
 
         agent_orderViewModel = ViewModelProviders.of(this).get(AgentOrderViewModel::class.java)
         agent_orderViewModel.getOrderResponse().observe(this, Observer {
-            agent_rec_order.adapter = OrderOpenAdapter(it.data, requireActivity(), this)
+            agent_rec_order.adapter = AgentOpenOrderAdapter(it.data, requireActivity(), this)
             EventBus.getDefault().postSticky("OPEN_ACTIVE")
         })
         return view
@@ -48,7 +48,7 @@ class AgentOrderFragment : Fragment() , RecyclerViewItemClick{
             Common.hideGroupViews(agent_layout_open_inactive,agent_layout_close_active)
             EventBus.getDefault().postSticky("OPEN_ACTIVE")
             this.agent_orderViewModel.getOrderResponse().observe(this, Observer {
-                agent_rec_order.adapter= OrderOpenAdapter(it.data,requireActivity(),this)
+                agent_rec_order.adapter= AgentOpenOrderAdapter(it.data,requireActivity(),this)
             })
         }
 
@@ -57,7 +57,7 @@ class AgentOrderFragment : Fragment() , RecyclerViewItemClick{
             Common.hideGroupViews(agent_layout_close_inactive,agent_layout_open_active)
             EventBus.getDefault().postSticky("CLOSE_ACTIVE")
             this.agent_orderViewModel.getOrderResponse().observe(this, Observer {
-                agent_rec_order.adapter= OrderClosedAdapter(it.data,requireActivity(),this)
+                agent_rec_order.adapter= AgentCloseOrderAdapter(it.data,requireActivity(),this)
             })
 
         }
