@@ -7,8 +7,8 @@ class Constant {
 
         const val  PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=1234
 
-//        const val BASE_URL = "https://reqres.in/api/"
-        const val BASE_URL = "http://qa.eazyrento.com:8000"
+        const val BASE_URL = "https://reqres.in/api/"
+//        const val BASE_URL = "http://qa.eazyrento.com:8000"
 
         const val DASHBOARD = "users?page=2"
         const val NOTIFICATION = "users?page=2"
