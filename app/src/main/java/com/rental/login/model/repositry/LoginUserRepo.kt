@@ -2,39 +2,32 @@ package com.rental.login.model.repositry
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.rental.login.model.modelclass.LoginUserRequest
+import com.google.gson.Gson
+import com.rental.appbiz.AppBizLogger
+import com.rental.appbiz.retrofitapi.DataWrapper
+import com.rental.appbiz.retrofitapi.GenericRequestHandler
+import com.rental.login.model.modelclass.LoginRequest
+import com.rental.login.model.modelclass.LoginUserReqModel
+import com.rental.login.model.modelclass.LoginUserResModel
 import com.rental.login.model.repositry.api.LoginAPI
-import com.rental.webservice.APIServices
 import com.rental.webservice.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Response
 
-class LoginUserRepo() {
+class LoginUserRepo:GenericRequestHandler<LoginUserResModel>() {
 
-    private var apiclient: LoginAPI? = null
+    private var call: Call<LoginUserResModel>? = null
 
-    init {
-        apiclient = RetrofitInstance.client.create(LoginAPI::class.java)
+
+    fun loginAPI( loginUserReqModel: LoginUserReqModel): LiveData<DataWrapper<LoginUserResModel>> {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+        call = RetrofitInstance.client.create(LoginAPI::class.java).login( loginUserReqModel)
+
+        return doRequest()
     }
 
-    fun loginAPI(loginRequest: LoginUserRequest): LiveData<LoginUserRequest> {
-         val data: MutableLiveData<LoginUserRequest> = MutableLiveData<LoginUserRequest>()
-        val call = apiclient?.login(loginRequest)
-        call?.enqueue(object : retrofit2.Callback<LoginUserRequest> {
-            override fun onFailure(call: Call<LoginUserRequest>, t: Throwable) {
-//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-
-            data.value=null
-            }
-
-            override fun onResponse(call: Call<LoginUserRequest>, response: Response<LoginUserRequest>) {
-//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-
-         data.value=response.body()
-            }
-
-
-        })
-        return data
+    override fun makeRequest(): Call<LoginUserResModel> {
+        return call!!
     }
+
 }

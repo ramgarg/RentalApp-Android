@@ -1,16 +1,16 @@
 package com.rental.appbiz
 
 import android.util.Log
+import com.rental.Env
 
 interface AppBizLogger {
 
     companion object{
 
         private const val TAG = "AppBizLogger"
-        private const val IS_LOGGING = true
 
           fun log(type:LoggingType,msg:String){
-             if(IS_LOGGING){
+             if(Env.isLogging){
 
                  when(type){
                      LoggingType.INFO ->Log.i(TAG,msg)

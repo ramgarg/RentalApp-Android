@@ -13,7 +13,7 @@ class RetrofitInstance {
            if(retrofit ==null){
                retrofit =Retrofit.Builder()
                    .addConverterFactory(GsonConverterFactory.create())
-                   .baseUrl(Constant.BASE_URL)
+                   .baseUrl(PathURL.BASE_URL)
                    .build()
            }
            return retrofit!!

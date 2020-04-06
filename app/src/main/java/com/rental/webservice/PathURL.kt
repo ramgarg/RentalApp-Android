@@ -1,11 +1,11 @@
 package com.rental.webservice
 
-class Constant {
+class PathURL {
 
 
     companion object {
 
-        const val  PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=1234
+
 
         const val BASE_URL = "https://reqres.in/api/"
 //        const val BASE_URL = "http://qa.eazyrento.com:8000"

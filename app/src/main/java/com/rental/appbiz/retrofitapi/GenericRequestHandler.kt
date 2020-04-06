@@ -2,6 +2,7 @@ package com.rental.appbiz.retrofitapi
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.Gson
 import com.rental.appbiz.AppBizLogger
 import retrofit2.Call
 import retrofit2.Response
@@ -15,10 +16,10 @@ abstract  class GenericRequestHandler<R> {
 
     val mutableLiveData: MutableLiveData<DataWrapper<R>> = MutableLiveData<DataWrapper<R>>()
 
-    public fun doRequest(): LiveData<DataWrapper<R>> {
+     fun doRequest(): LiveData<DataWrapper<R>> {
         val call = makeRequest()
 
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,call?.request().toString())
+         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,call?.request().toString())
 
         makeRequest().enqueue(object : AppbizAPICallback<R>() {
 

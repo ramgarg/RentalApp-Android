@@ -24,7 +24,7 @@
         </activity>
         <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
 
-        <activity android:name="com.rental.login.view.LoginActivity"
+        <activity android:name="com.rental.login.view.LoginUserActivity"
         android:screenOrientation="unspecified"
 
         />

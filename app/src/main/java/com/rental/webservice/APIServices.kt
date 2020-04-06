@@ -3,8 +3,6 @@ package com.rental.webservice
 import com.rental.common.model.modelclass.OrderListing
 import com.rental.customer.dashboard.model.modelclass.HomeResponse
 import com.rental.customer.dashboard.model.modelclass.OrderSummaryResponseModel
-import com.rental.customer.forgotpassword.model.modelClass.OTPRequest
-import com.rental.customer.forgotpassword.model.modelClass.OTPResponse
 import com.rental.customer.notification.model.NotificationResponse
 import com.rental.login.model.modelclass.*
 import retrofit2.Call
@@ -15,97 +13,97 @@ import retrofit2.http.Url
 interface APIServices {
 
     /*will be coomenting*/
-    @GET(Constant.DASHBOARD)
+    @GET(PathURL.DASHBOARD)
     fun getData():Call<HomeResponse>
 
-    @GET(Constant.DASHBOARD)
+    @GET(PathURL.DASHBOARD)
     fun getOrderSummary():Call<OrderSummaryResponseModel>
 //
 
-    @GET(Constant.NOTIFICATION)
+    @GET(PathURL.NOTIFICATION)
     fun getNotification(): Call<NotificationResponse>
 
     // Common API
 
     // Master categories
-    @GET(Constant.MasterCategory)
+    @GET(PathURL.MasterCategory)
     fun getMasterCategory(): Call<NotificationResponse>
 
     // categories list by category name
-    @GET(Constant.Product)
-    fun getProductCategory(@Url url: String): Call<LoginUserRequest>
+    @GET(PathURL.Product)
+    fun getProductCategory(@Url url: String): Call<LoginRequest>
 
     // sub categories lsit by product name
-    @GET(Constant.SubCategory)
-    fun getSubCategory(@Url url: String): Call<LoginUserRequest>
+    @GET(PathURL.SubCategory)
+    fun getSubCategory(@Url url: String): Call<LoginRequest>
 
     // sub categories lsit by product name
-    @GET(Constant.ProductDetail)
-    fun getProductDetails(@Url url: String): Call<LoginUserRequest>
+    @GET(PathURL.ProductDetail)
+    fun getProductDetails(@Url url: String): Call<LoginRequest>
 
     // Customer API
     /*
     * create booking
     * */
-    @POST(Constant.CreateBooking)
-    fun createBooking(loginRequest: LoginUserRequest): Call<LoginUserRequest>
+    @POST(PathURL.CreateBooking)
+    fun createBooking(loginReqModel: LoginRequest): Call<LoginRequest>
 
     /*
        * Add to wish list
        * */
-    @POST(Constant.AddToWishlist)
-    fun addToWishList(loginRequest: LoginUserRequest): Call<LoginUserRequest>
+    @POST(PathURL.AddToWishlist)
+    fun addToWishList(loginReqModel: LoginRequest): Call<LoginRequest>
 
     /*
        *Get wish list
        * */
-    @POST(Constant.GetWishlist)
-    fun getWishList(loginRequest: LoginUserRequest): Call<LoginUserRequest>
+    @POST(PathURL.GetWishlist)
+    fun getWishList(loginReqModel: LoginRequest): Call<LoginRequest>
 
     /*
        *Delete wish list
        * */
-    @POST(Constant.DeleteWishlist)
-    fun deleteWishList(loginRequest: LoginUserRequest): Call<LoginUserRequest>
+    @POST(PathURL.DeleteWishlist)
+    fun deleteWishList(loginReqModel: LoginRequest): Call<LoginRequest>
 
     /*
       *customer orders
       * */
-    @POST(Constant.CustomnerOrders)
-    fun customerOrders(loginRequest: LoginUserRequest): Call<LoginUserRequest>
+    @POST(PathURL.CustomnerOrders)
+    fun customerOrders(loginReqModel: LoginRequest): Call<LoginRequest>
 
     /*
       *customer orders details
       * */
-    @POST(Constant.CustomnerOrderDetail)
-    fun customerOrderDetail(loginRequest: LoginUserRequest): Call<LoginUserRequest>
+    @POST(PathURL.CustomnerOrderDetail)
+    fun customerOrderDetail(loginReqModel: LoginRequest): Call<LoginRequest>
 
     /*
       *customer product un available
       * */
-    @POST(Constant.CustomerProductUNavailable)
-    fun customerProductUnAvailable(loginRequest: LoginUserRequest): Call<LoginUserRequest>
+    @POST(PathURL.CustomerProductUNavailable)
+    fun customerProductUnAvailable(loginReqModel: LoginRequest): Call<LoginRequest>
 
     /*
       *Make payment
       * */
-    @POST(Constant.MakePayment)
-    fun makePayment(loginRequest: LoginUserRequest): Call<LoginUserRequest>
+    @POST(PathURL.MakePayment)
+    fun makePayment(loginReqModel: LoginRequest): Call<LoginRequest>
 
     /*
       *Make payment
       * */
-    @POST(Constant.PaymentList)
-    fun paymentList(loginRequest: LoginUserRequest): Call<LoginUserRequest>
+    @POST(PathURL.PaymentList)
+    fun paymentList(loginReqModel: LoginRequest): Call<LoginRequest>
 
     /*
       *Customer feedback
       * */
-    @POST(Constant.CustomerFeedback)
-    fun customerFeedback(loginRequest: LoginUserRequest): Call<LoginUserRequest>
+    @POST(PathURL.CustomerFeedback)
+    fun customerFeedback(loginReqModel: LoginRequest): Call<LoginRequest>
 
 
     // agent order lsiting
-    @GET(Constant.ORDER_LISTING)
+    @GET(PathURL.ORDER_LISTING)
     fun getOrderListing(): Call<OrderListing>
 }

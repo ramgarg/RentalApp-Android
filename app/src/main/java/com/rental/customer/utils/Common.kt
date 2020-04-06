@@ -101,6 +101,7 @@ class Common {
                 dialog.btn_agent_active.visibility = View.VISIBLE
                 dialog.btn_customer_active.visibility = View.INVISIBLE
                 dialog.btn_merchant_active.visibility = View.INVISIBLE
+
                 MoveToAnotherComponent.moveToAgentHomeActivity(context)
             }
             dialog.btn_customer_inactive.setOnClickListener {

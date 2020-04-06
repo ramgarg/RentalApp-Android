@@ -19,11 +19,11 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
+import com.rental.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
 import com.rental.R
 import com.rental.customer.dashboard.view.activity.BaseActivity
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.ViewVisibility
-import com.rental.webservice.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
 import kotlinx.android.synthetic.main.add_new_address_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
