@@ -129,6 +129,16 @@
 
         />
 
+        <activity android:name=".agent.view.activity.AgentAddNoteActivity"
+                android:screenOrientation="unspecified"
+
+                />
+
+        <activity android:name=".agent.view.activity.AgentWriteNoteActivity"
+                android:screenOrientation="unspecified"
+
+                />
+
 
 
         <activity android:name=".customer.dashboard.view.activity.BookingDetailsActivity"

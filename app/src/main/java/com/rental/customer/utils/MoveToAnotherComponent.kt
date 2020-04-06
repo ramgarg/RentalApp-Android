@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.rental.agent.view.activity.AgentAddNoteActivity
 import com.rental.agent.view.activity.AgentHomeActivity
 import com.rental.agent.view.activity.AgentProfileActivity
+import com.rental.agent.view.activity.AgentWriteNoteActivity
 import com.rental.customer.dashboard.view.activity.*
 import com.rental.login.view.ForgotPasswordActivity
 import com.rental.login.view.OTPActivity
@@ -52,6 +54,14 @@ class MoveToAnotherComponent {
 
         fun moveToMyAddressActivity(context: Context){
             context.startActivity(Intent(context, MyAddressActivity::class.java))
+        }
+
+        fun moveToMyNotesActivity(context: Context){
+            context.startActivity(Intent(context, AgentAddNoteActivity::class.java))
+        }
+
+        fun moveToWriteNotesActivity(context: Context){
+            context.startActivity(Intent(context, AgentWriteNoteActivity::class.java))
         }
 
         fun moveToAddNewAddressActivity(context: Context){

@@ -175,4 +175,8 @@
     <string name="view_details">View Details</string>
     <string name="ok">Ok</string>
     <string name="title">Title</string>
+    <string name="add_your_notes_here">Add your notes here.</string>
+    <string name="heading">Heading</string>
+    <string name="note_added">Note Added</string>
+    <string name="mynotes">My Notes</string>
 </resources>

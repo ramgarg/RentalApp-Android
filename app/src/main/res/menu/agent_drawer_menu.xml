@@ -13,8 +13,8 @@
 
         <item
                 android:icon="@mipmap/about"
-                android:id="@+id/agent_nav_my_address"
-                android:title="My Addresses" />
+                android:id="@+id/agent_nav_add_note"
+                android:title="Add a Note" />
 
         <item
                 android:id="@+id/agent_nav_tc"
