@@ -83,8 +83,9 @@ open class AgentNavigationActivity : AppCompatActivity(), NavigationView.OnNavig
 
                 Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
-            R.id.agent_nav_my_address -> {
-                MoveToAnotherComponent.moveToMyAddressActivity(this)
+            R.id.agent_nav_add_note -> {
+                MoveToAnotherComponent.moveToMyNotesActivity(this)
+                toolbar_title.text=getString(R.string.mynotes)
             }
 
             R.id.agent_nav_tc -> {
