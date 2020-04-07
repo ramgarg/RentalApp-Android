@@ -25,7 +25,7 @@ interface APIServices {
 
     // Common API
 
-    // Master categories
+  /*  // Master categories
     @GET(PathURL.MasterCategory)
     fun getMasterCategory(): Call<NotificationResponse>
 
@@ -39,7 +39,7 @@ interface APIServices {
 
     // sub categories lsit by product name
     @GET(PathURL.ProductDetail)
-    fun getProductDetails(@Url url: String): Call<LoginRequest>
+    fun getProductDetails(@Url url: String): Call<LoginRequest>*/
 
     // Customer API
     /*

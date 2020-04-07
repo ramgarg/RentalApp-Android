@@ -10,8 +10,6 @@ import com.rental.login.model.repositry.LoginUserRepo
 
 class LoginUserViewModel :ViewModel() {
 
-    lateinit var mutableLiveData: LiveData<DataWrapper<LoginUserResModel>>
-
     fun loginUser(LoginUserReqModel: LoginUserReqModel): LiveData<DataWrapper<LoginUserResModel>> {
         return LoginUserRepo().loginAPI(LoginUserReqModel)
     }

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
-import com.rental.customer.dashboard.view.activity.BaseActivity
+import com.rental.common.view.BaseActivity
 import com.rental.customer.payment.viewmodel.PaymentHistoryViewModel
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_payment_history.*

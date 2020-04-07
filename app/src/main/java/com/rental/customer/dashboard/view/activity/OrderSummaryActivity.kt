@@ -2,9 +2,9 @@ package com.rental.customer.dashboard.view.activity
 
 import android.os.Bundle
 import com.rental.R
+import com.rental.common.view.BaseActivity
 import com.rental.customer.dashboard.viewmodel.OrderSummaryViewModel
 import com.rental.customer.utils.MoveToAnotherComponent
-import com.rental.customer.utils.Common
 import com.rental.customer.utils.Common.Companion.hideGroupViews
 import com.rental.customer.utils.Common.Companion.invisibleGroupViews
 import com.rental.customer.utils.Common.Companion.showGroupViews

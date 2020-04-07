@@ -12,16 +12,13 @@ import retrofit2.Response
 * */
 abstract  class GenericRequestHandler<R> {
 
-    abstract fun makeRequest(): Call<R>
-
     val mutableLiveData: MutableLiveData<DataWrapper<R>> = MutableLiveData<DataWrapper<R>>()
 
-     fun doRequest(): LiveData<DataWrapper<R>> {
-        val call = makeRequest()
+     fun doRequest(call: Call<R>): LiveData<DataWrapper<R>> {
 
          AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,call?.request().toString())
 
-        makeRequest().enqueue(object : AppbizAPICallback<R>() {
+         call.enqueue(object : AppbizAPICallback<R>() {
 
             override fun handleResponseData(data: R) {
 

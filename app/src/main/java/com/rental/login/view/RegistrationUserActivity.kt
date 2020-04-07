@@ -82,8 +82,6 @@ class RegistrationUserActivity : BaseActivity(),AppBizLogin{
         }
     }
 
-
-
     fun register() {
 
         if(checkValidation(ed_full_name,ed_email_phone,ed_password,checkbox_terms,user_role)){
@@ -96,7 +94,7 @@ class RegistrationUserActivity : BaseActivity(),AppBizLogin{
             val viewModel = ViewModelProviders.of(this).get(RegisterUserViewModel::class.java)
 
             viewModel.registerUser(registerUserReqModel).observe(this,
-            ApiObserver<RegisterUserResModel>(object :ChangedListener<RegisterUserResModel>{
+            ApiObserver<RegisterUserResModel>(this@RegistrationUserActivity,object :ChangedListener<RegisterUserResModel>{
 
                 override fun onSuccess(dataWrapper: RegisterUserResModel) {
                     hideProgress()
@@ -106,10 +104,10 @@ class RegistrationUserActivity : BaseActivity(),AppBizLogin{
                     moveToOtp()
                 }
 
-                override fun onError(dataWrapper: DataWrapper<RegisterUserResModel>) {
+               /* override fun onError(dataWrapper: DataWrapper<RegisterUserResModel>) {
                     hideProgress()
                     errorHandle(dataWrapper.error,dataWrapper.apiException)
-                }
+                }*/
 
             }))
         }

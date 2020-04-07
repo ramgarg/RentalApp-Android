@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.common.merchant.viewModel.MerchantHomeViewModel
 import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.adapter.HomeAdapter
+import com.rental.customer.dashboard.view.adapter.CustomerHomeAdapter
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.merchant.view.activity.MerchantMainActivity
@@ -25,14 +25,14 @@ class MerchantHomeFragment : Fragment(), RecyclerViewItemClick {
 
 
 
-        merchant_homeViewModel = ViewModelProviders.of(this).get(MerchantHomeViewModel::class.java)
+       /* merchant_homeViewModel = ViewModelProviders.of(this).get(MerchantHomeViewModel::class.java)
         merchant_homeViewModel.getmerchant_HomeResponse().observe(this, Observer {
-            merchant_rec_veichle.adapter = HomeAdapter(it.data as ArrayList<Data>, requireActivity(), this)
+            merchant_rec_veichle.adapter = CustomerHomeAdapter(it.data as ArrayList<Data>, requireActivity(), this)
             (activity as MerchantMainActivity).merchant_layout_loading.visibility= View.GONE
 
 
 
-        })
+        })*/
 
         return view
     }

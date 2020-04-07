@@ -1,14 +1,13 @@
 package com.rental.webservice
 
+import com.rental.Env
+
 class PathURL {
 
 
     companion object {
 
-
-
-        const val BASE_URL = "https://reqres.in/api/"
-//        const val BASE_URL = "http://qa.eazyrento.com:8000"
+        const val BASE_URL = Env.BASE_URL
 
         const val DASHBOARD = "users?page=2"
         const val NOTIFICATION = "users?page=2"
@@ -26,8 +25,8 @@ class PathURL {
 
         // Common
         const val MasterCategory      = "/product/masters"
-        const val Category            = "/product/"
-        const val SubCategory         = "/product/"
+        const val ProductCategory     = "/product/{master_name}/categories"
+        const val ProductSubCategory  = "/product/{category_name}/subcategories"
         const val Product             = "/product/"
         const val ProductDetail       = "/product/product_detail/"
 

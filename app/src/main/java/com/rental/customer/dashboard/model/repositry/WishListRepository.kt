@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.rental.customer.dashboard.model.modelclass.HomeResponse
 import com.rental.webservice.APIServices
-import com.rental.webservice.RetrofitInstance
+import com.rental.webservice.ServiceGenrator
 import retrofit2.Call
 import retrofit2.Response
 
@@ -14,7 +14,7 @@ class WishListRepository() {
     var apiServices: APIServices
 
     init {
-        apiServices = RetrofitInstance.client.create(APIServices::class.java)
+        apiServices = ServiceGenrator.client.create(APIServices::class.java)
     }
 
     fun getWishList():LiveData<HomeResponse> {

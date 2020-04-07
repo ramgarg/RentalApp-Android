@@ -1,31 +1,33 @@
 package com.rental.appbiz.retrofitapi
 
+import android.content.Context
 import androidx.lifecycle.Observer
+import com.google.gson.Gson
 import com.rental.Session
 import com.rental.appbiz.AppBizLogger
+import com.rental.appbiz.ErrorHandling
+import com.rental.common.view.BaseActivity
 import retrofit2.Response
 
-class ApiObserver<T>(private val changedListener: ChangedListener<T>):Observer<DataWrapper<T>> {
+class ApiObserver<T>(val context: Context?,private val changedListener: ChangedListener<T>):Observer<DataWrapper<T>> {
 
     override fun onChanged(t: DataWrapper<T>) {
+
+       context?.let { if (it is BaseActivity){ it.hideProgress()} }
+
         if(t.data==null)
         {
             // error In API
-            changedListener.onError(t)
+            ErrorHandling<T>(context).onError(t)
         }
         else{
-            AppBizLogger.log(AppBizLogger.LoggingType.INFO,t.data.toString())
+            AppBizLogger.log(AppBizLogger.LoggingType.INFO,Gson().toJson(t.data))
             changedListener.onSuccess(t.data)
-
-           /* Session.getInstance(this)?.saveUserRole(user_role)
-            Session.getInstance(this)?.saveUserID(it.data.user_id)
-            moveToOtp()*/
-
         }
     }
 }
 interface ChangedListener<T>{
     fun onSuccess(dataWrapper: T)
-    fun onError(dataWrapper: DataWrapper<T>)
+//    fun onError(dataWrapper: DataWrapper<T>)
 
 }

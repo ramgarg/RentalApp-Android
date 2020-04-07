@@ -11,6 +11,7 @@ import com.rental.R
 import com.rental.agent.view.AgentOrderViewModel
 import com.rental.agent.view.adapter.AgentCloseOrderAdapter
 import com.rental.agent.view.adapter.AgentOpenOrderAdapter
+import com.rental.common.model.modelclass.MasterResModelItem
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent

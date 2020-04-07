@@ -1,5 +1,6 @@
 package com.rental.customer.utils
 
+import com.rental.common.model.modelclass.MasterResModelItem
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.model.modelclass.HomeResponse
 

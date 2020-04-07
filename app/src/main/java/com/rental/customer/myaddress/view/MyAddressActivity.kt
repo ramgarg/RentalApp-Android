@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.activity.BaseActivity
+import com.rental.common.view.BaseActivity
 import com.rental.customer.myaddress.view.adapter.MyAddressAdapter
 import com.rental.customer.myaddress.viewmodel.MyAddressViewModel
 import com.rental.customer.utils.*

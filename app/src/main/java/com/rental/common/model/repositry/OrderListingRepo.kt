@@ -7,16 +7,14 @@ import com.rental.common.model.modelclass.OrderListing
 import com.rental.common.model.modelclass.Order_listing
 import com.rental.common.model.modelclass.Product_detail
 import com.rental.webservice.APIServices
-import com.rental.webservice.RetrofitInstance
-import retrofit2.Call
-import retrofit2.Response
+import com.rental.webservice.ServiceGenrator
 
 class OrderListingRepo() {
 
     var apiServices: APIServices
 
     init {
-        apiServices = RetrofitInstance.client.create(APIServices::class.java)
+        apiServices = ServiceGenrator.client.create(APIServices::class.java)
 
     }
 

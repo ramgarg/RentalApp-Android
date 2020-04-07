@@ -2,7 +2,7 @@ package com.rental.agent.view.activity
 
 import android.os.Bundle
 import com.rental.R
-import com.rental.customer.dashboard.view.activity.BaseActivity
+import com.rental.common.view.BaseActivity
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.toolbar.*
 

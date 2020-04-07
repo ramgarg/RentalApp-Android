@@ -79,7 +79,7 @@ class MoveToAnotherComponent {
         }
 
         fun moveToHomeActivity(context: Context){
-            context.startActivity(Intent(context, MainActivity::class.java))
+            context.startActivity(Intent(context, CustomerMainActivity::class.java))
         }
         // agent activity
         fun moveToAgentHomeActivity(context: Context){
@@ -115,7 +115,7 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, PaymentActivity::class.java))
         }
         fun moveToViewDetailsActivity(context: Context){
-            context.startActivity(Intent(context, ViewDetailActivity::class.java))
+            context.startActivity(Intent(context, ProductSubCategoryActivity::class.java))
         }
 
         fun moveToBookingDetailsActivity(context: Context){
@@ -123,7 +123,7 @@ class MoveToAnotherComponent {
         }
 
         fun moveToCategoryActivity(context: Context){
-            context.startActivity(Intent(context, CategoryActivity::class.java))
+            context.startActivity(Intent(context, ProductCategoryActivity::class.java))
         }
 
         fun openWebPage(webView: WebView){
