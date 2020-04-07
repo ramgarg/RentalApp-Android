@@ -2,7 +2,7 @@ package com.rental.agent.view.activity
 
 import android.os.Bundle
 import com.rental.R
-import com.rental.customer.dashboard.view.activity.BaseActivity
+import com.rental.common.view.BaseActivity
 import com.rental.customer.dashboard.viewmodel.OrderSummaryViewModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.ViewVisibility
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.order_summary_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
 
-class AgentOrderSummaryActivity :BaseActivity() {
+class AgentOrderSummaryActivity : BaseActivity() {
 
     lateinit var orderSummaryViewModel : OrderSummaryViewModel
 
