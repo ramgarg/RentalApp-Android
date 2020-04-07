@@ -4,10 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.rental.agent.view.activity.AgentAddNoteActivity
-import com.rental.agent.view.activity.AgentHomeActivity
-import com.rental.agent.view.activity.AgentProfileActivity
-import com.rental.agent.view.activity.AgentWriteNoteActivity
+import com.rental.agent.view.activity.*
 import com.rental.customer.dashboard.view.activity.*
 import com.rental.login.view.ForgotPasswordActivity
 import com.rental.login.view.OTPActivity
@@ -100,6 +97,10 @@ class MoveToAnotherComponent {
 
         fun moveToOrderSummaryActivity(context: Context){
             context.startActivity(Intent(context, OrderSummaryActivity::class.java))
+        }
+
+        fun moveToAgentOrderSummaryActivity(context: Context){
+            context.startActivity(Intent(context, AgentOrderSummaryActivity::class.java))
         }
 
 

@@ -36,7 +36,7 @@ class AgentOrderFragment : Fragment() , RecyclerViewItemClick{
         return view
     }
     override fun onItemClick(item: Data) {
-        MoveToAnotherComponent.moveToOrderSummaryActivity(requireContext())
+        MoveToAnotherComponent.moveToAgentOrderSummaryActivity(requireContext())
     }
 
     private fun viewVisibility(view: View){

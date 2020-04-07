@@ -105,7 +105,7 @@
     <string name="welcome">Welcome</string>
     <string name="register_to_continue">Register to continue as</string>
     <string name="email_phonenumber">Email/PhoneNumber</string>
-    <string name="booking_n_price">Booking \n Price</string>
+    <string name="booking_n_price">Booking\nPrice</string>
     <string name="downtown_dubai">Downtown, Dubai,United Arab Emirates</string>
     <string name="address_line1">Address Line1</string>
     <string name="save_as">Save As</string>
@@ -179,4 +179,7 @@
     <string name="heading">Heading</string>
     <string name="note_added">Note Added</string>
     <string name="mynotes">My Notes</string>
+    <string name="assign_merchant">Assign Merchant</string>
+    <string name="assign">Assign</string>
+    <string name="distance_3km">Distance, 3km</string>
 </resources>
