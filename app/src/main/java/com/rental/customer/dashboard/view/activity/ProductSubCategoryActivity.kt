@@ -6,18 +6,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.WishListModel
-import com.rental.customer.dashboard.view.adapter.OrderReviewAdapter
 import com.rental.customer.dashboard.view.adapter.VehicleDetailsAdapter
-import com.rental.customer.dashboard.viewmodel.HomeViewModel
-import com.rental.customer.utils.Common
+import com.rental.customer.dashboard.viewmodel.CustomerHomeViewModel
 import com.rental.customer.utils.Common.Companion.wishListModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_view_details.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class ViewDetailActivity :AppCompatActivity() {
-    private lateinit var homeViewModel:HomeViewModel
+class ProductSubCategoryActivity :AppCompatActivity() {
+    private lateinit var customerHomeViewModel:CustomerHomeViewModel
     private var likeUnlike:Boolean=true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +30,10 @@ class ViewDetailActivity :AppCompatActivity() {
             MoveToAnotherComponent.moveToBookingDetailsActivity(this)
         }
 
-        homeViewModel= ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        homeViewModel.getHomeResponse().observe(this, Observer {
+        /*customerHomeViewModel= ViewModelProviders.of(this).get(CustomerHomeViewModel::class.java)
+        customerHomeViewModel.getHomeResponse().observe(this, Observer {
             rec_veichle_details.adapter= VehicleDetailsAdapter(it.data,this)
-        })
+        })*/
 
         img_like_unlike.setOnClickListener {
             if(likeUnlike) {

@@ -9,7 +9,6 @@ import com.rental.Session
 import com.rental.appbiz.AppBizLogin
 import com.rental.appbiz.retrofitapi.ApiObserver
 import com.rental.appbiz.retrofitapi.ChangedListener
-import com.rental.appbiz.retrofitapi.DataWrapper
 import com.rental.common.view.BaseActivity
 import com.rental.common.view.UserInfoAPP
 import com.rental.customer.utils.Common
@@ -18,6 +17,7 @@ import com.rental.login.model.modelclass.DeviceInfo
 import com.rental.login.model.modelclass.LoginUserReqModel
 import com.rental.login.model.modelclass.LoginUserResModel
 import com.rental.login.viewmodel.LoginUserViewModel
+import com.rental.webservice.ServiceGenrator
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -61,25 +61,29 @@ class LoginUserActivity :BaseActivity(),AppBizLogin {
             showProgress()
 
             viewModel.loginUser(loginUserReqModel).observe(this,
-                ApiObserver<LoginUserResModel>(object : ChangedListener<LoginUserResModel> {
-
+                ApiObserver(this@LoginUserActivity,object : ChangedListener<LoginUserResModel> {
                     override fun onSuccess(dataWrapper: LoginUserResModel) {
-                        hideProgress()
+                        // ont time set null b/c from now we will add header in retrofit app APIs
+                        ServiceGenrator.retrofit = null
+
                         Session.getInstance(this@LoginUserActivity)?.saveUserRole(dataWrapper.user_info.user_role)
                         Session.getInstance(this@LoginUserActivity)?.saveUserID(dataWrapper.user_info.user_id)
+                        Session.getInstance(this@LoginUserActivity)?.saveAccessToken(dataWrapper.user_info.access_token)
+                        sendToUserRole(dataWrapper.user_info.user_role)
 
-//                        moveToOtp()
                     }
-
-                    override fun onError(dataWrapper: DataWrapper<LoginUserResModel>) {
-                        hideProgress()
-                        errorHandle(dataWrapper.error,dataWrapper.apiException)
-                    }
-
                 })
             )
-
         }
+    }
+
+    private fun sendToUserRole(userRole: String) {
+        when(userRole){
+            UserInfoAPP.AGENT->MoveToAnotherComponent.moveToAgentHomeActivity(this)
+            UserInfoAPP.CUSTOMER->MoveToAnotherComponent.moveToHomeActivity(this)
+            UserInfoAPP.MERCHANT->MoveToAnotherComponent.moveToMerchantActivity(this)
+        }
+
     }
 
     private fun createLoginUserReqModel(): LoginUserReqModel {

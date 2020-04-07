@@ -21,7 +21,7 @@ class AgentOpenOrderAdapter (val items: List<Data>, val context: Context, val re
         fun bind(data: Data,clickListener: RecyclerViewItemClick)
         {
             itemView.setOnClickListener {
-                clickListener.onItemClick(data)
+                //clickListener.onItemClick(data)
             }
         }
 

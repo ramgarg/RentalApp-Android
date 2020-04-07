@@ -17,7 +17,7 @@ import retrofit2.Response
 
 open abstract class BaseActivity: AppCompatActivity() {
     private var dialog: Dialog? =null
-    abstract fun showToast(msg:String)
+//    abstract fun showToast(msg:String)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ open abstract class BaseActivity: AppCompatActivity() {
 
         dialog?.hide()
     }
-    fun <T>errorHandle(error: Response<T>?,apiException: Throwable?) {
+    /*fun <T>errorHandle(error: Response<T>?,apiException: Throwable?) {
 
        if(error!=null){
            showToast(error.message())
@@ -56,5 +56,5 @@ open abstract class BaseActivity: AppCompatActivity() {
         else if(apiException!=null){
            showToast(apiException.toString())
        }
-    }
+    }*/
 }

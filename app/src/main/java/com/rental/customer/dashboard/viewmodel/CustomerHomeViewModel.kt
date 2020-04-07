@@ -3,21 +3,21 @@ package com.rental.customer.dashboard.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.rental.customer.dashboard.model.modelclass.HomeResponse
-import com.rental.customer.dashboard.model.repositry.HomeRepository
+import com.rental.customer.dashboard.model.repositry.CustomerHomeRepo
 
 
-class HomeViewModel : ViewModel() {
-    var homeRepository: HomeRepository
+class CustomerHomeViewModel : ViewModel() {
+   /* var customerHomeRepo: CustomerHomeRepo
     var homeResponseLiveData: LiveData<HomeResponse>
 
     init {
-        homeRepository = HomeRepository()
-        homeResponseLiveData = homeRepository.getVeichleList()
+        customerHomeRepo = CustomerHomeRepo()
+        homeResponseLiveData = customerHomeRepo.getVeichleList()
     }
 
 
 
     fun getHomeResponse():LiveData<HomeResponse>{
         return homeResponseLiveData
-    }
+    }*/
 }

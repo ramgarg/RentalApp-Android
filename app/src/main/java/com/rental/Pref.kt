@@ -43,4 +43,15 @@ class Session private constructor(context: Context?){
     fun getUserID():Int?{
         return sSharedPreferences?.getInt(PrefKey.USER_ID,-1)
     }
+
+    /*save access tokan*/
+    fun saveAccessToken(value:String){
+        val edit = sSharedPreferences?.edit()
+        edit?.putString(PrefKey.ACCESS_TOKEN, value)
+        edit?.commit()
+    }
+    /*get access toakn*/
+    fun getAccessToken():String?{
+        return sSharedPreferences?.getString(PrefKey.ACCESS_TOKEN,null)
+    }
 }

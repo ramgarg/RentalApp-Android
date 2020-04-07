@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.rental.R
+import com.rental.common.model.modelclass.MasterResModelItem
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
+import com.rental.common.model.modelclass.MasterResModelItem
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.RecyclerViewItemClick
@@ -23,11 +24,11 @@ class AgentCloseOrderAdapter(val items:List<Data> , val context: Context, val re
             Common.showDialog("Rating","", it.context as Activity, R.layout.rating_review)
         }
 
-        fun bind(data: Data,clickListener: RecyclerViewItemClick)
+        fun bind(data: MasterResModelItem,clickListener: RecyclerViewItemClick)
         {
-            itemView.setOnClickListener {
+           /* itemView.setOnClickListener {
                 clickListener.onItemClick(data)
-            }
+            }*/
         }
 
     }
@@ -46,6 +47,6 @@ class AgentCloseOrderAdapter(val items:List<Data> , val context: Context, val re
 
     override fun onBindViewHolder(holder: AgentCloseOrderAdapter.ViewHolder, position: Int) {
         holder.tvVeichleName?.text=items.get(position).first_name
-        holder.bind(items.get(position),recyclerViewItemClick)
+        //holder.bind(items.get(position),recyclerViewItemClick)
     }
 }

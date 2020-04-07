@@ -30,9 +30,9 @@ class OrderClosedAdapter(val items:List<Data>, val context: Context, val recycle
 
         fun bind(data: Data,clickListener: RecyclerViewItemClick)
         {
-            itemView.setOnClickListener {
+           /* itemView.setOnClickListener {
                 clickListener.onItemClick(data)
-            }
+            }*/
         }
 
     }

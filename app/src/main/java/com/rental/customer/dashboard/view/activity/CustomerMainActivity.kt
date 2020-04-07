@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
-class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+class CustomerMainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,9 +27,6 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
     }
 
     private fun initView(){
-
-
-        showLoading(this,layout_loading,img_gif)
 
         bottom_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         bottom_view.selectedItemId=R.id.navigation_home
@@ -50,7 +47,7 @@ class MainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelected
     }
 
      private fun setDefaultFragment(){
-        val fragment = HomeFragment()
+        val fragment = CustomerHomeFragment()
         supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
             .commit()
     }

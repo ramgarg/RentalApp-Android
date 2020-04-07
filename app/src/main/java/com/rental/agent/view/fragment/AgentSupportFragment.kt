@@ -5,21 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.rental.R
+import com.rental.common.model.modelclass.MasterResModelItem
 import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.activity.MainActivity
-import com.rental.customer.dashboard.view.adapter.HomeAdapter
-import com.rental.customer.dashboard.viewmodel.HomeViewModel
+import com.rental.customer.dashboard.viewmodel.CustomerHomeViewModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class AgentSupportFragment : Fragment(), RecyclerViewItemClick {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var customerHomeViewModel: CustomerHomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 

@@ -4,8 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.rental.customer.forgotpassword.model.modelClass.OTPRequest
 import com.rental.customer.forgotpassword.model.modelClass.OTPResponse
 import com.rental.login.model.repositry.api.LoginAPI
-import com.rental.webservice.APIServices
-import com.rental.webservice.RetrofitInstance
+import com.rental.webservice.ServiceGenrator
 import retrofit2.Call
 import retrofit2.Response
 
@@ -16,7 +15,7 @@ class OTPRepository() {
 
     init {
 //      this.otpView=otpView
-        apiclient = RetrofitInstance.client.create(LoginAPI::class.java)
+        apiclient = ServiceGenrator.client.create(LoginAPI::class.java)
     }
 
     fun otpVerifyAPI(otpRequest: OTPRequest){

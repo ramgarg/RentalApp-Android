@@ -5,18 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.rental.R
-import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.activity.MainActivity
-import com.rental.customer.dashboard.view.adapter.OrderReviewAdapter
+import com.rental.customer.dashboard.view.activity.CustomerMainActivity
 import com.rental.customer.dashboard.view.adapter.WishListAdapter
 import com.rental.customer.dashboard.viewmodel.WishListViewModel
 import com.rental.customer.utils.Common
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_order_review.*
-import kotlinx.android.synthetic.main.fragment_wish_list.*
 import kotlinx.android.synthetic.main.fragment_wish_list.view.*
 
 class WishListFragment :Fragment() {
@@ -35,7 +29,7 @@ class WishListFragment :Fragment() {
 
         //This is for testing
         view.rec_wishlist.adapter = WishListAdapter(Common.wishListModel,requireActivity())
-        (activity as MainActivity).layout_loading.visibility=View.GONE
+        (activity as CustomerMainActivity).layout_loading.visibility=View.GONE
 
         return view
     }

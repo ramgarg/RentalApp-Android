@@ -9,14 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.activity.MainActivity
 import com.rental.customer.dashboard.view.adapter.OrderClosedAdapter
 import com.rental.customer.dashboard.view.adapter.OrderOpenAdapter
 import com.rental.customer.dashboard.viewmodel.OrderViewModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.customer.utils.Common
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.fragment_order.view.*
 import org.greenrobot.eventbus.EventBus

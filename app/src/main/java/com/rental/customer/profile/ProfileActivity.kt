@@ -1,9 +1,8 @@
 package com.rental.customer.profile
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.rental.R
-import com.rental.customer.dashboard.view.activity.BaseActivity
+import com.rental.common.view.BaseActivity
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.toolbar.*
 

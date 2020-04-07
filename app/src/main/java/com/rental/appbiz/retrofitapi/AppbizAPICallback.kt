@@ -13,8 +13,6 @@ open abstract class AppbizAPICallback<T> :retrofit2.Callback<T> {
 
     protected abstract fun handleException(t: Throwable?)
 
-
-
     override fun onResponse(call: Call<T>, response: Response<T>) {
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,response?.toString())

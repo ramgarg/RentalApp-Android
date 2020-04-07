@@ -21,7 +21,7 @@ import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.rental.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
 import com.rental.R
-import com.rental.customer.dashboard.view.activity.BaseActivity
+import com.rental.common.view.BaseActivity
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.add_new_address_activity.*
