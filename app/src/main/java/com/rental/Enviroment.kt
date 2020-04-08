@@ -7,6 +7,6 @@ interface Env{
 
         const val SERVER_URL_PRODUCTION = "https://reqres.in/api/"
         const val SERVER_URL_QA = "http://qa.eazyrento.com:8000"
-        const val BASE_URL = SERVER_URL_QA
+        const val BASE_URL = SERVER_URL_PRODUCTION
     }
 }
