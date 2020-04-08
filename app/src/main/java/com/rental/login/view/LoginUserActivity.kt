@@ -21,11 +21,7 @@ import com.rental.webservice.ServiceGenrator
 import kotlinx.android.synthetic.main.activity_login.*
 
 
-class LoginUserActivity :BaseActivity(),AppBizLogin {
-
-    override fun showToast(msg: String) {
-        Toast.makeText(this,msg,Toast.LENGTH_LONG).show()
-    }
+class LoginUserActivity :AppBizLogin() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,7 +87,6 @@ class LoginUserActivity :BaseActivity(),AppBizLogin {
         val deviceInfo = DeviceInfo(Settings.Secure.getString(this.contentResolver,Settings.Secure.ANDROID_ID))
         return LoginUserReqModel(deviceInfo,ed_password.text.toString(),UserInfoAPP.REGISTRATIONS_SOURCE!!,
             UserInfoAPP.SOURCE,ed_email.text.toString())
-
 
     }
 

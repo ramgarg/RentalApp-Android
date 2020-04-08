@@ -1,54 +1,53 @@
 package com.rental.customer.dashboard.view.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.rental.R
-import com.rental.customer.dashboard.model.modelclass.WishListModel
-import com.rental.customer.dashboard.view.adapter.VehicleDetailsAdapter
-import com.rental.customer.dashboard.viewmodel.CustomerHomeViewModel
-import com.rental.customer.utils.Common.Companion.wishListModel
+import com.rental.Constant
+import com.rental.ValidationMessage
+import com.rental.appbiz.AppBizLogger
+import com.rental.common.model.modelclass.ProductSubCategoriesResModel
+import com.rental.common.model.modelclass.Vehicle
+import com.rental.common.viewmodel.ProductSubCategoriesViewModel
+import com.rental.customer.dashboard.view.adapter.ProductVehiclesAdapter
 import com.rental.customer.utils.MoveToAnotherComponent
-import com.rental.customer.utils.ViewVisibility
-import kotlinx.android.synthetic.main.activity_view_details.*
-import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
-class ProductSubCategoryActivity :AppCompatActivity() {
-    private lateinit var customerHomeViewModel:CustomerHomeViewModel
-    private var likeUnlike:Boolean=true
+
+class ProductSubCategoryActivity :ProductBaseActitvity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_view_details)
+        val masterResModelItem = intent.getParcelableExtra<Vehicle>(Constant.VEHICLES_DATA_ITEM)
 
-        ViewVisibility.isVisibleOrNot(
-            this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.details))
+        val selectedString = masterResModelItem.category_name
+        AppBizLogger.log(AppBizLogger.LoggingType.INFO,masterResModelItem.toString())
 
-        btn_next.setOnClickListener {
-            MoveToAnotherComponent.moveToBookingDetailsActivity(this)
+//        val liveData = callAPI<ProductSubCategoriesViewModel>().getProductSubCate(selectedString)
+
+        observeApiResult(callAPI<ProductSubCategoriesViewModel>().getProductSubCate(selectedString))
+    }
+
+    override fun <T> onSuccessApiResult(data: T) {
+
+        data?.let {  if (data is ProductSubCategoriesResModel)
+        {
+            rec_veichle.adapter= ProductVehiclesAdapter(data,this@ProductSubCategoryActivity)
+            search(data)
         }
-
-        /*customerHomeViewModel= ViewModelProviders.of(this).get(CustomerHomeViewModel::class.java)
-        customerHomeViewModel.getHomeResponse().observe(this, Observer {
-            rec_veichle_details.adapter= VehicleDetailsAdapter(it.data,this)
-        })*/
-
-        img_like_unlike.setOnClickListener {
-            if(likeUnlike) {
-                likeUnlike=false
-                //Here wishlist add data api will be called
-                wishListModel.add(WishListModel("","Volvo VH Truck","15",1,5))
-                img_like_unlike.setImageResource(R.mipmap.like)
-            }
-            else {
-                likeUnlike=true
-                img_like_unlike.setImageResource(R.mipmap.unlike)
-            }
+            return
         }
+        showToast(ValidationMessage.NO_DATA_FOUND)
+
+    }
+
+
+    override fun <T> moveOnSelecetedItem(type: T) {
+        MoveToAnotherComponent.openActivityWithParcelableParam<ProductDetailsActivity,T>(this,Constant.VEHICLES_SUB_CATE,type)
     }
 
 
 
+
 }
+
+

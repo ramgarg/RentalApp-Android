@@ -25,16 +25,13 @@ import kotlinx.android.synthetic.main.activity_register_user.btn_customer_inacti
 import kotlinx.android.synthetic.main.activity_register_user.btn_merchant_active
 import kotlinx.android.synthetic.main.activity_register_user.btn_merchant_inactive
 
-class RegistrationUserActivity : BaseActivity(),AppBizLogin{
+class RegistrationUserActivity : AppBizLogin(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_user)
 
         initialize()
-
-    // Register view model
-//     viewModel = ViewModelProviders.of(this).get(RegisterUserViewModel::class.java)
 
     }
 
@@ -123,8 +120,5 @@ class RegistrationUserActivity : BaseActivity(),AppBizLogin{
         MoveToAnotherComponent.moveToOTPActivity(this)
     }
 
-    override fun showToast(message: String) {
-        Toast.makeText(this,message, Toast.LENGTH_SHORT).show()
-    }
 
 }

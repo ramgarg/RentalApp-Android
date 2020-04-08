@@ -1,24 +1,21 @@
 package com.rental.customer.dashboard.view.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.rental.Constant
 import com.rental.R
-import com.rental.common.model.modelclass.ProductCategoriesResModel
+import com.rental.common.model.modelclass.ProductSubCategoriesModelResItem
 import com.rental.common.model.modelclass.Vehicle
-import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.activity.ProductSubCategoryActivity
-import com.rental.customer.utils.RecyclerViewItemClick
+import com.rental.customer.dashboard.view.activity.ProductBaseActitvity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.row_category.view.*
 
 
-class ProductCategoriesAdapter(val listProductCatg:List<Vehicle>, val context: Context):
-    RecyclerView.Adapter<ProductCategoriesAdapter.ViewHolder>() {
+class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Context):
+
+    RecyclerView.Adapter<ProductVehiclesAdapter.ViewHolder>() {
 
 
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
@@ -40,15 +37,25 @@ class ProductCategoriesAdapter(val listProductCatg:List<Vehicle>, val context: C
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvVeichleName?.text=listProductCatg.get(position).category_name
+        var itemName :String?=""
+        var imageUrl:String? = ""
+
+        val any  = listProductCatg[position]
+        any.let { if (it is Vehicle){itemName=it.category_name
+                                    imageUrl =it.category_image_url}
+                if (it is ProductSubCategoriesModelResItem)
+                                { itemName = it.subcategory_name
+                                 imageUrl = it.subcategory_image_url}}
+
+        holder.tvVeichleName?.text=itemName
+
+        Picasso.with(context).load(imageUrl)
+            .into(holder.imgVeichle )
+
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, ProductSubCategoryActivity::class.java).putExtra(Constant.MASTER_DATA_ITEM,listProductCatg.get(position))
-            context.startActivity(intent)
+            context.let { if(it is ProductBaseActitvity)it.moveOnSelecetedItem(any) }
         }
-
-        Picasso.with(context).load(listProductCatg.get(position).category_image_url)
-            .into(holder.imgVeichle );
     }
 
 }

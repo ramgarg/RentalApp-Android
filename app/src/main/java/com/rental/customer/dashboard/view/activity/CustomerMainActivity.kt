@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.rental.R
+import com.rental.common.view.BaseActivity
 import com.rental.customer.dashboard.view.fragment.*
 import com.rental.customer.utils.Common.Companion.showLoading
 import com.rental.customer.utils.MoveToAnotherComponent
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
-class CustomerMainActivity :AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+class CustomerMainActivity :BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

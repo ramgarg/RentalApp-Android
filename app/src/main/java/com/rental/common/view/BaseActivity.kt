@@ -2,14 +2,20 @@ package com.rental.common.view
 
 import android.app.Dialog
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
 import com.rental.R
+import com.rental.appbiz.retrofitapi.ApiObserver
+import com.rental.appbiz.retrofitapi.ChangedListener
 import com.rental.appbiz.retrofitapi.DataWrapper
 import com.rental.login.model.modelclass.RegisterUserResModel
 import retrofit2.Response
@@ -17,10 +23,12 @@ import retrofit2.Response
 
 open abstract class BaseActivity: AppCompatActivity() {
     private var dialog: Dialog? =null
-//    abstract fun showToast(msg:String)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
     }
 
@@ -48,13 +56,8 @@ open abstract class BaseActivity: AppCompatActivity() {
 
         dialog?.hide()
     }
-    /*fun <T>errorHandle(error: Response<T>?,apiException: Throwable?) {
+    protected fun showToast(msg: String){
+        Toast.makeText(this,msg, Toast.LENGTH_LONG).show()
+    }
 
-       if(error!=null){
-           showToast(error.message())
-       }
-        else if(apiException!=null){
-           showToast(apiException.toString())
-       }
-    }*/
 }

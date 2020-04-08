@@ -81,7 +81,7 @@ interface APIServices {
     /*
       *customer product un available
       * */
-    @POST(PathURL.CustomerProductUNavailable)
+    @POST(PathURL.CustomerProductUnavailable)
     fun customerProductUnAvailable(loginReqModel: LoginRequest): Call<LoginRequest>
 
     /*

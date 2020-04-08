@@ -2,8 +2,11 @@ package com.rental.customer.utils
 
 import android.content.Context
 import android.content.Intent
+import android.os.Parcelable
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.rental.Constant
+import com.rental.PrefKey
 import com.rental.agent.view.activity.*
 import com.rental.agent.view.fragment.AgentBookingsFragment
 import com.rental.customer.dashboard.view.activity.*
@@ -126,7 +129,7 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, PaymentActivity::class.java))
         }
         fun moveToViewDetailsActivity(context: Context){
-            context.startActivity(Intent(context, ProductSubCategoryActivity::class.java))
+            context.startActivity(Intent(context, ProductDetailsActivity::class.java))
         }
 
         fun moveToBookingDetailsActivity(context: Context){
@@ -144,6 +147,12 @@ class MoveToAnotherComponent {
             webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER)
 //            webView.loadUrl("https://www.google.com")
             webView.loadUrl ( "file:///android_asset/privacy.html" );
+        }
+
+        inline fun <reified T,K>openActivityWithParcelableParam(context: Context, key: String,type: K) {
+            val intent = Intent(context, T::class.java)
+            intent.putExtra(key,type as Parcelable)
+            context.startActivity(intent)
         }
     }
 

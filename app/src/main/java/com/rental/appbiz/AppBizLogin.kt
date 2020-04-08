@@ -1,13 +1,15 @@
 package com.rental.appbiz
 
+import android.content.Context
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rental.ValidationMessage
+import com.rental.common.view.BaseActivity
 import com.rental.customer.utils.Validator
 
-open interface AppBizLogin{
+open  abstract class AppBizLogin:BaseActivity(){
 
     fun checkValidation(editTextUserName: EditText, email: EditText, password: EditText,
                                   checkBoxTerms: CheckBox,user_role:String?): Boolean {
@@ -22,13 +24,13 @@ open interface AppBizLogin{
         }
 
         if (editTextUserName.text.toString().isEmpty()) {
-             showToast("Please Enter User Name Field")
+             showToast(ValidationMessage.VALID_USER_NAME)
         }
 
         else if (editTextUserName.text.toString().length<4) {
-             showToast("Please Enter Valid UserName")
+             showToast(ValidationMessage.VALID_USER_NAME)
         } else if(!checkBoxTerms.isChecked){
-             showToast("Please Check Terms and Condition")
+             showToast(ValidationMessage.CHECK_TERMS_POLICY)
         }else{
             return true
         }
@@ -36,17 +38,17 @@ open interface AppBizLogin{
     }
     fun failCheckValdationLoginCredintitial(email: EditText,password: EditText):Boolean{
         if(email.text.toString().isEmpty() && password.text.toString().isEmpty()){
-            showToast("Please Enter all fields")
+            showToast(ValidationMessage.ENTER_ALL_FIELDS)
         }
        else if (!Validator.isEmailValid(email.text.toString())) {
-            showToast("Please Enter Valid Email")
+            showToast(ValidationMessage.VALID_EMAIL_ID)
             email.requestFocus()
 
         } else if (password.text.toString().isEmpty()) {
             password.requestFocus()
-            showToast("Please Enter Valid Password")
+            showToast(ValidationMessage.VALID_PASSWORD)
         } else if (!Validator.isPasswordValid(password.text.toString())) {
-            showToast("Invalid Password! minimum length 8")
+            showToast(ValidationMessage.VALID_PASSWORD_LENGTH)
         }else
         {
             return false
@@ -54,7 +56,5 @@ open interface AppBizLogin{
 
         return true
     }
-
-    fun showToast(message: String)
 
 }

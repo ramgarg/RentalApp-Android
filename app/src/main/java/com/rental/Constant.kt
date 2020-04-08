@@ -10,5 +10,7 @@ interface Constant{
 
         // key name
         const val MASTER_DATA_ITEM ="master_data_item"
+        const val VEHICLES_DATA_ITEM ="vehicles"
+        const val VEHICLES_SUB_CATE = "vehicle_sub"
     }
 }

@@ -122,7 +122,7 @@
 
         />
 
-        <activity android:name=".customer.dashboard.view.activity.ProductSubCategoryActivity"
+        <activity android:name=".customer.dashboard.view.activity.ProductDetailsActivity"
                   android:screenOrientation="unspecified"
 
         />
@@ -158,6 +158,10 @@
                   android:screenOrientation="unspecified"
 
         />
+        <activity android:name=".customer.dashboard.view.activity.ProductSubCategoryActivity"
+                android:screenOrientation="unspecified"
+
+                />
 
         <activity android:name=".agent.view.activity.AgentHomeActivity"
                 android:screenOrientation="unspecified"

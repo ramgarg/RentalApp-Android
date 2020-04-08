@@ -39,7 +39,7 @@ class PathURL {
         const val CustomnerOrders       = "/customer/orders/"
         const val CustomnerOrderDetail  = "/customer/order_detail/"
 
-        const val CustomerProductUNavailable = "/customer/customer_product_unavailable"
+        const val CustomerProductUnavailable = "/customer/customer_product_unavailable"
 
         const val MakePayment      = "/customer/payment/"
         const val PaymentList      = "/customer/payments"
