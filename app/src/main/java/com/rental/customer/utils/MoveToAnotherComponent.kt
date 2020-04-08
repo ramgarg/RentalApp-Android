@@ -19,6 +19,7 @@ import com.rental.customer.webpages.AboutActivity
 import com.rental.customer.webpages.TermsConditionActivity
 import com.rental.merchant.view.activity.MerchantProfileActivity
 import com.rental.merchant.view.activity.MerchantAddVehicle
+import com.rental.merchant.view.activity.MerchantAddressActivity
 import com.rental.merchant.view.activity.MerchantMainActivity
 
 
@@ -52,6 +53,10 @@ class MoveToAnotherComponent {
 
         fun moveToMyAddressActivity(context: Context){
             context.startActivity(Intent(context, MyAddressActivity::class.java))
+        }
+
+        fun moveToMerchantAddressActivity(context: Context){
+            context.startActivity(Intent(context, MerchantAddressActivity::class.java))
         }
 
         fun moveToMyNotesActivity(context: Context){

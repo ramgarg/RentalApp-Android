@@ -87,7 +87,7 @@ open class MerchantNavigationActivity : AppCompatActivity(), NavigationView.OnNa
                 Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
             R.id.merchant_nav_my_address -> {
-                MoveToAnotherComponent.moveToMyAddressActivity(this)
+                MoveToAnotherComponent.moveToMerchantAddressActivity(this)
             }
 
             R.id.merchant_nav_tc -> {

@@ -112,6 +112,10 @@
                   android:screenOrientation="unspecified"
 
         />
+        <activity android:name=".merchant.view.activity.MerchantAddressActivity"
+                android:screenOrientation="unspecified"
+
+                />
 
         <activity android:name=".customer.dashboard.view.activity.PaymentActivity"
                   android:screenOrientation="unspecified"
