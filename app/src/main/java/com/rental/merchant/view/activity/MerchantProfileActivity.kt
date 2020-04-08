@@ -7,6 +7,9 @@ import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.toolbar.*
 
 class MerchantProfileActivity : BaseActivity() {
+    override fun <T> moveOnSelecetedItem(type: T) {
+        TODO("Not yet implemented")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

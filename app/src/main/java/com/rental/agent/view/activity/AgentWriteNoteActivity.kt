@@ -10,6 +10,10 @@ import kotlinx.android.synthetic.main.activity_agent_write_note.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class AgentWriteNoteActivity : BaseActivity(){
+    override fun <T> moveOnSelecetedItem(type: T) {
+        TODO("Not yet implemented")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agent_write_note)

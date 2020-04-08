@@ -27,6 +27,10 @@ class MerchantAddressActivity : BaseActivity(), RecyclerViewItemClick {
         initView()
     }
 
+    override fun <T> moveOnSelecetedItem(type: T) {
+        TODO("Not yet implemented")
+    }
+
     private fun initView(){
 
         merchantAddressViewModel= ViewModelProviders.of(this).get(MerchantAddressViewModel::class.java)

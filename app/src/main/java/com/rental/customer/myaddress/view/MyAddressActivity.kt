@@ -16,6 +16,9 @@ import org.greenrobot.eventbus.EventBus
 class MyAddressActivity :BaseActivity(),RecyclerViewItemClick {
 
     private lateinit var myAddressViewModel:MyAddressViewModel
+    override fun <T> moveOnSelecetedItem(type: T) {
+        TODO("Not yet implemented")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

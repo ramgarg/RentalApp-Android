@@ -2,6 +2,7 @@ package com.rental.common.model.repositry.api
 
 import com.rental.common.model.modelclass.MasterResModel
 import com.rental.common.model.modelclass.ProductCategoriesResModel
+import com.rental.common.model.modelclass.ProductDetailsResModel
 import com.rental.common.model.modelclass.ProductSubCategoriesResModel
 import com.rental.login.model.modelclass.LoginRequest
 import com.rental.webservice.PathURL
@@ -27,6 +28,6 @@ interface MasterAPI{
 
     // sub categories lsit by product name
     @GET(PathURL.ProductDetail)
-    fun getProductDetails(@Path("sub_cat") url: String): Call<ProductSubCategoriesResModel>
+    fun getProductDetails(@Path("id") id: Int): Call<ProductDetailsResModel>
 
 }

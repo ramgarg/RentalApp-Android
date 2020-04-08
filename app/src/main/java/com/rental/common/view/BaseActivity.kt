@@ -24,6 +24,8 @@ import retrofit2.Response
 open abstract class BaseActivity: AppCompatActivity() {
     private var dialog: Dialog? =null
 
+    abstract fun <T>moveOnSelecetedItem(type:T)
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)

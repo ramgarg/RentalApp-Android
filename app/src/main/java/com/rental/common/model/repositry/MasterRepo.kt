@@ -5,6 +5,7 @@ import com.rental.appbiz.retrofitapi.DataWrapper
 import com.rental.appbiz.retrofitapi.GenericRequestHandler
 import com.rental.common.model.modelclass.MasterResModel
 import com.rental.common.model.modelclass.ProductCategoriesResModel
+import com.rental.common.model.modelclass.ProductDetailsResModel
 import com.rental.common.model.modelclass.ProductSubCategoriesResModel
 import com.rental.common.model.repositry.api.MasterAPI
 import com.rental.webservice.ServiceGenrator
@@ -32,6 +33,19 @@ class ProductSubCategoriesRepo : GenericRequestHandler<ProductSubCategoriesResMo
     fun getProductSubCateg(name:String ): LiveData<DataWrapper<ProductSubCategoriesResModel>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(MasterAPI::class.java).getProductSubCategory(name)
+        return doRequest(call)
+    }
+}
+
+/*
+* product deatils
+* */
+
+class ProductDetailsRepo : GenericRequestHandler<ProductDetailsResModel>(){
+
+    fun getProductDeatils(id:Int ): LiveData<DataWrapper<ProductDetailsResModel>> {
+//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+        val call = ServiceGenrator.client.create(MasterAPI::class.java).getProductDetails(id)
         return doRequest(call)
     }
 }

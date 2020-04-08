@@ -3,7 +3,6 @@ package com.rental.customer.dashboard.view.activity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -47,7 +46,11 @@ class CustomerMainActivity :BaseActivity(), NavigationView.OnNavigationItemSelec
         img_notification.setOnClickListener { MoveToAnotherComponent.moveToNotificationActivity(this) }
     }
 
-     private fun setDefaultFragment(){
+    override fun <T> moveOnSelecetedItem(type: T) {
+        TODO("Not yet implemented")
+    }
+
+    private fun setDefaultFragment(){
         val fragment = CustomerHomeFragment()
         supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
             .commit()

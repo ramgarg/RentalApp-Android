@@ -57,4 +57,7 @@ open  abstract class AppBizLogin:BaseActivity(){
         return true
     }
 
+    override fun <T> moveOnSelecetedItem(type: T) {
+    }
+
 }

@@ -4,16 +4,9 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
 import com.rental.R
-import com.rental.appbiz.retrofitapi.ApiObserver
-import com.rental.appbiz.retrofitapi.ChangedListener
-import com.rental.appbiz.retrofitapi.DataWrapper
 import com.rental.common.model.modelclass.*
 import com.rental.common.view.BaseActivity
-import com.rental.common.view.LiveDataBaseClass
 import com.rental.customer.dashboard.view.adapter.ProductVehiclesAdapter
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
@@ -23,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_home.rec_veichle
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlin.math.roundToInt
 
-open abstract class ProductBaseActitvity: LiveDataBaseClass() {
+open abstract class ProductBaseActitvity: BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

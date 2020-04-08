@@ -13,6 +13,9 @@ import kotlinx.android.synthetic.main.toolbar.*
 class PaymentHistoryActivity :BaseActivity() {
 
     private lateinit var paymentHistoryViewModel:PaymentHistoryViewModel
+    override fun <T> moveOnSelecetedItem(type: T) {
+        TODO("Not yet implemented")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

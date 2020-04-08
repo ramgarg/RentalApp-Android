@@ -10,9 +10,11 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 
 class AboutActivity :BaseActivity() {
+    override fun <T> moveOnSelecetedItem(type: T) {
+    }
 
 
-        override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_about)
 

@@ -19,6 +19,9 @@ import org.greenrobot.eventbus.ThreadMode
 class OrderSummaryActivity : BaseActivity() {
 
     lateinit var orderSummaryViewModel :OrderSummaryViewModel
+    override fun <T> moveOnSelecetedItem(type: T) {
+        TODO("Not yet implemented")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
