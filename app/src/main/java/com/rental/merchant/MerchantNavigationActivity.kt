@@ -1,5 +1,6 @@
-package com.rental.agent.view
+package com.rental.merchant
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -10,50 +11,53 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.rental.R
-import com.rental.agent.view.fragment.*
 import com.rental.customer.utils.MoveToAnotherComponent
-import kotlinx.android.synthetic.main.activity_agent_home_.*
+import com.rental.merchant.view.fragment.*
+import kotlinx.android.synthetic.main.merchant_activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-open class AgentNavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+open class MerchantNavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
+    @SuppressLint("RestrictedApi")
     protected val mOnNavigationItemSelectedListener =
 
         BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
 
-            var fragment:Fragment?
+            var fragment: Fragment?
             setVisibleToolbarHeader(View.VISIBLE)
 
             when (menuItem.itemId) {
 
-
-                R.id.agent_navigation_notification-> {
-                    fragment = AgentNotificationFragment()
-                    toolbar_title.text=getString(R.string.title_notification)
+                R.id.merchant_navigation_dashboard-> {
+                    fragment = MerchantDashFragment()
+                    merchant_add_vehicle_btn.visibility=View.INVISIBLE
+                    setVisibleToolbarHeader(View.GONE)
                 }
-
-                R.id.agent_navigation_order -> {
-                    fragment = AgentOrderFragment()
+                R.id.merchant_navigation_order-> {
+                    fragment = MerchantOrderFragment()
+                    merchant_add_vehicle_btn.visibility=View.INVISIBLE
                     toolbar_title.text=getString(R.string.order)
                 }
+                R.id.merchant_navigation_home-> {
+                    fragment = MerchantHomeFragment()
+                    merchant_add_vehicle_btn.visibility=View.VISIBLE
+                    toolbar_title.text=getString(R.string.title_home)
+                }
+                R.id.merchant_navigation_profile-> {
+                    fragment = MerchantProfileFragment()
+                    merchant_add_vehicle_btn.visibility=View.INVISIBLE
+                    toolbar_title.text=getString(R.string.profile)
+                }
+                R.id.merchant_navigation_support-> {
+                    fragment = MerchantSupportFragment()
+                    merchant_add_vehicle_btn.visibility=View.INVISIBLE
+                    toolbar_title.text=getString(R.string.support)
+                }
 
-                R.id.agent_navigation_home -> {
-                    setVisibleToolbarHeader(View.GONE)
-                    fragment = AgentHomeFragment()
-
-                }
-                R.id.agent_navigation_bookings -> {
-                    fragment = AgentBookingsFragment()
-                    toolbar_title.text=getString(R.string.bookings)
-                }
-                R.id.agent_navigation_support -> {
-                    fragment = AgentSupportFragment()
-                    toolbar_title.text=getString(R.string.help)
-                }
                 else -> {
                     return@OnNavigationItemSelectedListener false
                 }
@@ -63,7 +67,6 @@ open class AgentNavigationActivity : AppCompatActivity(), NavigationView.OnNavig
             moveToTargatedFragment(fragment)
 
             return@OnNavigationItemSelectedListener true
-
         }
 
     private fun moveToTargatedFragment(fragment: Fragment) {
@@ -75,29 +78,28 @@ open class AgentNavigationActivity : AppCompatActivity(), NavigationView.OnNavig
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
-            R.id.agent_nav_about -> {
+            R.id.merchant_nav_about -> {
                 MoveToAnotherComponent.moveToAboutActivity(this)
             }
 
-            R.id.agent_nav_help -> {
+            R.id.merchant_nav_help -> {
 
                 Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
-            R.id.agent_nav_add_note -> {
-                MoveToAnotherComponent.moveToMyNotesActivity(this)
-                toolbar_title.text=getString(R.string.mynotes)
+            R.id.merchant_nav_my_address -> {
+                MoveToAnotherComponent.moveToMyAddressActivity(this)
             }
 
-            R.id.agent_nav_tc -> {
+            R.id.merchant_nav_tc -> {
                 MoveToAnotherComponent.moveToTermsActivity(this)
             }
         }
         menuItem.isChecked=false
-        drawer_layout_agent.closeDrawer(GravityCompat.START)
+        merchant_drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
 
     fun setVisibleToolbarHeader(visible: Int){
-        toolbar_header_agent.visibility = visible
+        merchant_toolbar_header.visibility = visible
     }
 }

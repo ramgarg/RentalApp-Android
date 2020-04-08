@@ -16,7 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                android:id="@+id/merchant_main_container">
+                android:id="@+id/main_container">
 
         </FrameLayout>
 
@@ -52,7 +52,7 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:layout_width="match_parent"
-                android:id="@+id/merchant_bottom_view"
+                android:id="@+id/bottom_navigation_view_merchant"
                 android:layout_alignParentBottom="true"
                 app:menu="@menu/merchant_bottom_menu"
                 app:itemTextColor="@drawable/item_selector"

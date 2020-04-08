@@ -13,6 +13,7 @@ import com.rental.agent.view.CustomViewOutlineProvider
 import com.rental.agent.view.adapter.RecyleAdapterAgentHomeCard
 import com.rental.common.model.modelclass.Order_listing
 import com.rental.common.viewmodel.OrderListingVM
+import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.fragment_agent_dashboard.*
 
 class AgentHomeFragment : AgentBaseFragment() {
@@ -41,6 +42,8 @@ class AgentHomeFragment : AgentBaseFragment() {
             val recyleAdapterAgentHomeCard= RecyleAdapterAgentHomeCard(it.order_listing as MutableList<Order_listing>, requireActivity())
 
             recycle_view_agent_home.adapter = recyleAdapterAgentHomeCard
+
+
 
         })
     }

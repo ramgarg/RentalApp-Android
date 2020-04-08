@@ -5,6 +5,7 @@ import android.content.Intent
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.rental.agent.view.activity.*
+import com.rental.agent.view.fragment.AgentBookingsFragment
 import com.rental.customer.dashboard.view.activity.*
 import com.rental.login.view.ForgotPasswordActivity
 import com.rental.login.view.OTPActivity
@@ -101,6 +102,10 @@ class MoveToAnotherComponent {
 
         fun moveToAgentOrderSummaryActivity(context: Context){
             context.startActivity(Intent(context, AgentOrderSummaryActivity::class.java))
+        }
+
+        fun moveToAgentBookingsFragment(context: Context){
+            context.startActivity(Intent(context, AgentBookingsFragment::class.java))
         }
 
 

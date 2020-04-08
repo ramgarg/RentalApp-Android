@@ -3,22 +3,25 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+            android:id="@+id/agent_navigation_notification"
+            android:icon="@mipmap/dashboard"
+            android:title="@string/title_notification"/>
+
+    <item
             android:id="@+id/agent_navigation_order"
             android:icon="@mipmap/order_inactive"
             android:title="@string/orders"
             />
-    <item
-            android:id="@+id/agent_navigation_notification"
-            android:icon="@mipmap/dashboard"
-            android:title="@string/title_notification"/>
+
     <item
             android:id="@+id/agent_navigation_home"
             android:icon="@mipmap/home_inactive"
             android:title="@string/title_home" />
     <item
-            android:id="@+id/agent_navigation_profile"
-            android:icon="@mipmap/profile_inactive"
-            android:title="@string/profile" />
+            android:id="@+id/agent_navigation_bookings"
+            android:icon="@mipmap/order_inactive"
+            android:title="@string/bookings"
+            />
     <item
             android:id="@+id/agent_navigation_support"
             android:icon="@mipmap/support_inactive"

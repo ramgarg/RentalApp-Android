@@ -35,7 +35,6 @@ class MerchantOrderFragment : Fragment() , RecyclerViewItemClick {
         merchant_orderViewModel.getOrderResponse().observe(this, Observer {
             merchant_rec_order.adapter = OrderOpenAdapter(it.data, requireActivity(), this)
             EventBus.getDefault().postSticky("OPEN_ACTIVE")
-            (activity as MerchantMainActivity).merchant_layout_loading.visibility = View.GONE
         })
         return view
     }

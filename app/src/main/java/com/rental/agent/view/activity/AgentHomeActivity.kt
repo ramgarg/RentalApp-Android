@@ -34,6 +34,8 @@ class AgentHomeActivity : AgentBaseActivity(){
         }
         img_notification.setOnClickListener { MoveToAnotherComponent.moveToNotificationActivity(this) }
 
+        //btn_agent_home_view_all.setOnClickListener{ MoveToAnotherComponent.moveToAgentBookingsFragment(this)}
+
 
     }
 
