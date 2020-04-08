@@ -13,41 +13,49 @@
 
     <include layout="@layout/toolbar"
             android:id="@+id/toolbar" />
+    <TextView
+            style="@style/DocumentTextView"
+            android:id="@+id/tv_select_type"
+            android:text="@string/select_type">
+
+    </TextView>
+
+    <Spinner
+            android:id="@+id/sp_select_type"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp" />
 
 
     <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_30sdp"
-            android:id="@+id/select_category_text"
-            android:textSize="@dimen/_18sdp"
-            android:fontFamily="@font/bree_serif"
+            style="@style/DocumentTextView"
+            android:id="@+id/tv_select_category"
             android:text="@string/select_category">
 
     </TextView>
 
     <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/sp_select_category"
+            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp" />
 
     <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_30sdp"
-            android:textSize="@dimen/_18sdp"
+            style="@style/DocumentTextView"
             android:id="@+id/select_subcategory_text"
-            android:text="@string/select_sub_category"
-            android:fontFamily="@font/bree_serif">
+            android:text="@string/select_sub_category">
 
     </TextView>
 
     <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/sp_select_subcategory"
+            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_add_veichle"
-            android:layout_below="@+id/spinner2"
+            android:layout_below="@+id/sp_select_subcategory"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
