@@ -17,10 +17,7 @@ import com.rental.customer.payment.view.PaymentHistoryActivity
 import com.rental.customer.profile.ProfileActivity
 import com.rental.customer.webpages.AboutActivity
 import com.rental.customer.webpages.TermsConditionActivity
-import com.rental.merchant.view.activity.MerchantProfileActivity
-import com.rental.merchant.view.activity.MerchantAddVehicle
-import com.rental.merchant.view.activity.MerchantAddressActivity
-import com.rental.merchant.view.activity.MerchantMainActivity
+import com.rental.merchant.view.activity.*
 
 
 class MoveToAnotherComponent {
@@ -113,6 +110,10 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, AgentBookingsFragment::class.java))
         }
 
+
+        fun moveToMerchantOrderSummaryActivity(context: Context){
+            context.startActivity(Intent(context, MerchantOrderSummaryActivity::class.java))
+        }
 
         fun moveToOrderReviewActivity(context: Context){
             context.startActivity(Intent(context, OrderReviewActivity::class.java))

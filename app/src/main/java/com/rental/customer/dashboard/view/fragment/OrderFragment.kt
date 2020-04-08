@@ -44,7 +44,7 @@ open class OrderFragment : Fragment() ,RecyclerViewItemClick {
     private fun viewVisibility(view: View){
 
 
-       view. layout_open_inactive.setOnClickListener {
+       view.layout_open_inactive.setOnClickListener {
 
            Common.showGroupViews(layout_open_active,layout_close_inactive)
            Common.hideGroupViews(layout_open_inactive,layout_close_active)
@@ -54,7 +54,7 @@ open class OrderFragment : Fragment() ,RecyclerViewItemClick {
             })
         }
 
-        view. layout_close_inactive.setOnClickListener {
+        view.layout_close_inactive.setOnClickListener {
             Common.showGroupViews(layout_open_inactive,layout_close_active)
             Common.hideGroupViews(layout_close_inactive,layout_open_active)
             EventBus.getDefault().postSticky("CLOSE_ACTIVE")

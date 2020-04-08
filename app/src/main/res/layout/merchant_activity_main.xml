@@ -15,6 +15,7 @@
         <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@+id/merchant_toolbar_header"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:id="@+id/main_container">
 
@@ -64,20 +65,6 @@
 
 
     </RelativeLayout>
-
-    <RelativeLayout android:layout_width="match_parent"
-            android:background="@color/dark_grey"
-            android:id="@+id/merchant_layout_loading"
-            android:visibility="gone"
-            android:layout_height="match_parent">
-        <ImageView
-                android:id="@+id/img_gif"
-                android:layout_centerInParent="true"
-                android:layout_width="@dimen/_200sdp"
-                android:layout_gravity="center"
-                android:layout_height="@dimen/_200sdp"/>
-    </RelativeLayout>
-
 
     <com.google.android.material.navigation.NavigationView
             android:id="@+id/merchant_navigationView"

@@ -43,7 +43,7 @@ class AgentOrderFragment : Fragment() , RecyclerViewItemClick{
     private fun viewVisibility(view: View){
 
 
-        view. agent_layout_open_active.setOnClickListener {
+        view.agent_layout_open_active.setOnClickListener {
 
             Common.showGroupViews(agent_layout_open_active,agent_layout_close_inactive)
             Common.hideGroupViews(agent_layout_open_inactive,agent_layout_close_active)
@@ -53,7 +53,7 @@ class AgentOrderFragment : Fragment() , RecyclerViewItemClick{
             })
         }
 
-        view. agent_layout_close_inactive.setOnClickListener {
+        view.agent_layout_close_inactive.setOnClickListener {
             Common.showGroupViews(agent_layout_open_inactive,agent_layout_close_active)
             Common.hideGroupViews(agent_layout_close_inactive,agent_layout_open_active)
             EventBus.getDefault().postSticky("CLOSE_ACTIVE")
