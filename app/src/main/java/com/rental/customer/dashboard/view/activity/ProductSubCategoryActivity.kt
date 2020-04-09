@@ -27,9 +27,9 @@ class ProductSubCategoryActivity :ProductBaseActitvity(), ApiResult {
         val selectedString = masterResModelItem.category_name
         AppBizLogger.log(AppBizLogger.LoggingType.INFO,masterResModelItem.toString())
 
-        LiveDataActivityClass(this).let {
-            it.observeApiResult<ProductSubCategoriesResModel, LifecycleOwner, Context>(
-                it.callAPIActivity<ProductSubCategoriesViewModel, FragmentActivity>(this)
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<ProductSubCategoriesViewModel>(this)
                     .getProductSubCate(selectedString)
                 , this, this
             )

@@ -36,7 +36,7 @@ class PathURL {
         const val GetWishlist         = "/customer/wishlist"
         const val DeleteWishlist      = "/customer/delete_wishlist/"
 
-        const val CustomnerOrders       = "/customer/orders/"
+        const val CustomnerOrders       = "/customer/orders/{value}"
         const val CustomnerOrderDetail  = "/customer/order_detail/"
 
         const val CustomerProductUnavailable = "/customer/customer_product_unavailable"

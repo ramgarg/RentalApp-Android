@@ -3,6 +3,7 @@ package com.rental
 interface Env{
     companion object{
 
+        const val isNetworkConnect = true
         const val isLogging = true
 
 //      private const val SERVER_URL = "https://reqres.in/api/"

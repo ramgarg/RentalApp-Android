@@ -6,7 +6,6 @@ import android.os.Parcelable
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.rental.Constant
-import com.rental.PrefKey
 import com.rental.agent.view.activity.*
 import com.rental.agent.view.fragment.AgentBookingsFragment
 import com.rental.customer.dashboard.view.activity.*
@@ -119,7 +118,7 @@ class MoveToAnotherComponent {
         }
 
         fun moveToOrderReviewActivity(context: Context){
-            context.startActivity(Intent(context, OrderReviewActivity::class.java))
+            context.startActivity(Intent(context, CustomerOrderReviewActivity::class.java))
         }
 
         fun moveToNotifyAdminActivity(context: Context){
@@ -134,12 +133,13 @@ class MoveToAnotherComponent {
         }
 
         fun moveToBookingDetailsActivity(context: Context){
-            context.startActivity(Intent(context, BookingDetailsActivity::class.java))
+            context.startActivity(Intent(context, CustomerBookingDetailsActivity::class.java))
         }
 
         fun moveToCategoryActivity(context: Context){
             context.startActivity(Intent(context, ProductCategoryActivity::class.java))
         }
+
 
         fun openWebPage(webView: WebView){
             webView.setWebViewClient(WebViewClient())
@@ -155,6 +155,20 @@ class MoveToAnotherComponent {
             intent.putExtra(key,type as Parcelable)
             context.startActivity(intent)
         }
+
+        inline fun <reified T>moveToLogout(context: Context, key: String,value: Int) {
+            val intent = Intent(context, T::class.java)
+            intent.putExtra(key,value)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            context.startActivity(intent)
+        }
+
+        inline fun <reified T>moveToSingleTask(context: Context, key: String,value: Int) {
+            val intent = Intent(context, T::class.java)
+            intent.putExtra(key,value)
+            context.startActivity(intent)
+        }
+
     }
 
 }

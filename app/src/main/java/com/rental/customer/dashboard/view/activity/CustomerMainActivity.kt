@@ -1,12 +1,15 @@
 package com.rental.customer.dashboard.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.rental.Constant
 import com.rental.R
+import com.rental.appbiz.AppBizLogger
 import com.rental.common.view.BaseActivity
 import com.rental.customer.dashboard.view.fragment.*
 import com.rental.customer.utils.Common.Companion.showLoading
@@ -18,6 +21,11 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class CustomerMainActivity :BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        val value = intent?.getIntExtra(Constant.INTENT_SUCCESS_ORDER_BOOKING,-1)
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onNewIntent "+value)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +83,7 @@ class CustomerMainActivity :BaseActivity(), NavigationView.OnNavigationItemSelec
             }
             R.id.navigation_order -> {
                 showLoading(this,layout_loading,img_gif)
-                val fragment = OrderFragment()
+                val fragment = CustomerOrderListFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.order)

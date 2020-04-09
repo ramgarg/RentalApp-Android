@@ -30,7 +30,6 @@ class OrderOpenAdapter(val items:List<Data>, val context: Context, val recyclerV
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return ViewHolder(
             LayoutInflater.from(
                 context
@@ -39,12 +38,10 @@ class OrderOpenAdapter(val items:List<Data>, val context: Context, val recyclerV
     }
 
     override fun getItemCount(): Int {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return items.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
         holder.tvVeichleName?.text=items.get(position).first_name
         holder.bind(items.get(position),recyclerViewItemClick)

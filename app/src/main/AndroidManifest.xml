@@ -98,6 +98,7 @@
 
         <activity android:name=".customer.dashboard.view.activity.CustomerMainActivity"
                   android:screenOrientation="unspecified"
+                  android:launchMode="singleTask"
 
         />
         <activity android:name=".customer.profile.ProfileActivity"
@@ -133,7 +134,7 @@
         />
 
 
-        <activity android:name=".customer.dashboard.view.activity.OrderReviewActivity"
+        <activity android:name=".customer.dashboard.view.activity.CustomerOrderReviewActivity"
                   android:screenOrientation="unspecified"
 
         />
@@ -155,7 +156,7 @@
 
 
 
-        <activity android:name=".customer.dashboard.view.activity.BookingDetailsActivity"
+        <activity android:name=".customer.dashboard.view.activity.CustomerBookingDetailsActivity"
                   android:screenOrientation="unspecified"
 
         />

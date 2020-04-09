@@ -3,14 +3,20 @@ package com.rental.customer.dashboard.view.activity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import com.rental.R
+import com.rental.appbiz.AppBizLogger
+import com.rental.common.view.BaseActivity
+import com.rental.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
+import com.rental.customer.dashboard.viewmodel.CustomerCreateBookingViewModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_booking_details.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class BookingDetailsActivity :AppCompatActivity() {
+class CustomerBookingDetailsActivity :BaseActivity() {
     private var count:Int=1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +29,7 @@ class BookingDetailsActivity :AppCompatActivity() {
             toolbar_title, getString(R.string.booking_details))
 
         clickListenerOnViews()
+
     }
 
     private fun clickListenerOnViews(){
@@ -64,7 +71,11 @@ class BookingDetailsActivity :AppCompatActivity() {
                tv_st_time_book.text.isEmpty()->Toast.makeText(this,"Please select start time",Toast.LENGTH_SHORT).show()
                tv_end_date_book.text.isEmpty()->Toast.makeText(this,"Please select end date",Toast.LENGTH_SHORT).show()
                tv_end_time_book.text.isEmpty()->Toast.makeText(this,"Please select end time",Toast.LENGTH_SHORT).show()
-               else-> MoveToAnotherComponent.moveToOrderReviewActivity(this)
+
+               else-> {
+
+                   MoveToAnotherComponent.moveToOrderReviewActivity(this)
+               }
 
            }
 
@@ -73,6 +84,8 @@ class BookingDetailsActivity :AppCompatActivity() {
 
     }
 
+    override fun <T> moveOnSelecetedItem(type: T) {
+    }
 
-    
+
 }

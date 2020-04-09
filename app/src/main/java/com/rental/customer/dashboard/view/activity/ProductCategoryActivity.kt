@@ -18,7 +18,7 @@ import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
-class ProductCategoryActivity :ProductBaseActitvity(), ApiResult {
+class ProductCategoryActivity :ProductBaseActitvity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -29,9 +29,9 @@ class ProductCategoryActivity :ProductBaseActitvity(), ApiResult {
         AppBizLogger.log(AppBizLogger.LoggingType.INFO, masterResModelItem.toString())
         val selectedString = masterResModelItem.name
 
-        LiveDataActivityClass(this).let {
-            it.observeApiResult<ProductCategoriesResModel, LifecycleOwner, Context>(
-                it.callAPIActivity<ProductCategoriesViewModel, FragmentActivity>(this)
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<ProductCategoriesViewModel>(this)
                     .getProductCateg(selectedString)
                 , this, this
             )

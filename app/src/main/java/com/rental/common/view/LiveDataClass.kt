@@ -15,9 +15,9 @@ open abstract class LiveDataClass(val apiResult: ApiResult){
     /*
 * Api results
 * */
-    fun <T,O:LifecycleOwner,C:Context> observeApiResult(liveData: LiveData<DataWrapper<T>>, owner :O, context:C) {
+    fun <T> observeApiResult(liveData: LiveData<DataWrapper<T>>, owner :LifecycleOwner, context:Context) {
         liveData.observe(owner,
-            ApiObserver<T>(context,object :
+            ApiObserver(context,object :
                 ChangedListener<T> {
                 override fun onSuccess(data: T) {
                     apiResult.onSuccessApiResult(data)
@@ -32,17 +32,18 @@ class LiveDataFragmentClass(apiResult: ApiResult):LiveDataClass(apiResult){
     /*
     *  live data creater
     * */
-     inline fun <reified T: ViewModel,K:Fragment> callAPIFragment(type:K):T{
+     inline fun <reified T: ViewModel> callAPIFragment(type:Fragment):T{
 
         return ViewModelProviders.of(type).get(T::class.java)
     }
 }
 
 class LiveDataActivityClass( apiResultActivity: ApiResult):LiveDataClass(apiResultActivity){
+
     /*
     *  live data creater
     * */
-    inline fun <reified T: ViewModel,K:FragmentActivity> callAPIActivity(type:K):T{
+    inline fun <reified T: ViewModel> callAPIActivity(type:FragmentActivity):T{
 
         return ViewModelProviders.of(type).get(T::class.java)
     }

@@ -124,7 +124,9 @@ class Common {
         }
 
         private fun thankYou(dialog: Dialog,msg: String){
-            dialog.btn_ok.setOnClickListener { dialog.cancel() }
+            dialog.btn_ok.setOnClickListener {
+                dialog.cancel()
+            }
             dialog.tv_msg.text=msg
         }
 

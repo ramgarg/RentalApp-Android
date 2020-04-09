@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
+import com.rental.appbiz.AppBizLogger
+import com.rental.common.view.BaseFragment
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.dashboard.view.adapter.OrderClosedAdapter
 import com.rental.customer.dashboard.view.adapter.OrderOpenAdapter
+import com.rental.customer.dashboard.viewmodel.CustomerOrderListViewModel
 import com.rental.customer.dashboard.viewmodel.OrderViewModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
@@ -19,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.fragment_order.view.*
 import org.greenrobot.eventbus.EventBus
 
-open class OrderFragment : Fragment() ,RecyclerViewItemClick {
+open class CustomerOrderListFragment : BaseFragment() ,RecyclerViewItemClick {
 
    private lateinit var orderViewModel: OrderViewModel
 
@@ -28,13 +31,38 @@ open class OrderFragment : Fragment() ,RecyclerViewItemClick {
 
         viewVisibility(view)
 
-        orderViewModel= ViewModelProviders.of(this).get(OrderViewModel::class.java)
+        /*orderViewModel= ViewModelProviders.of(this).get(OrderViewModel::class.java)
         orderViewModel.getOrderResponse().observe(this, Observer {
             rec_order.adapter= OrderOpenAdapter(it.data,requireActivity(),this)
             EventBus.getDefault().postSticky("OPEN_ACTIVE")
 //            (activity as MainActivity).layout_loading.visibility=View.GONE
-        })
+        })*/
+
         return  view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIFragment<CustomerOrderListViewModel>(this).getOrderList(1)
+                , viewLifecycleOwner, requireActivity()
+            )
+        }
+
+    }
+
+
+    override fun <T> onSuccessApiResult(data: T) {
+        //CustomerOrderListResModelItem
+
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+
+      //  rec_order.adapter= OrderOpenAdapter(data,requireActivity(),this)
+
+        //default set view
+        EventBus.getDefault().postSticky("OPEN_ACTIVE")
     }
 
     override fun onItemClick(item: Data) {
@@ -49,7 +77,7 @@ open class OrderFragment : Fragment() ,RecyclerViewItemClick {
            Common.showGroupViews(layout_open_active,layout_close_inactive)
            Common.hideGroupViews(layout_open_inactive,layout_close_active)
            EventBus.getDefault().postSticky("OPEN_ACTIVE")
-            this.orderViewModel.getOrderResponse().observe(this, Observer {
+            this.orderViewModel.getOrderResponse().observe(viewLifecycleOwner, Observer {
                 rec_order.adapter= OrderOpenAdapter(it.data,requireActivity(),this)
             })
         }
@@ -58,7 +86,7 @@ open class OrderFragment : Fragment() ,RecyclerViewItemClick {
             Common.showGroupViews(layout_open_inactive,layout_close_active)
             Common.hideGroupViews(layout_close_inactive,layout_open_active)
             EventBus.getDefault().postSticky("CLOSE_ACTIVE")
-            this.orderViewModel.getOrderResponse().observe(this, Observer {
+            this.orderViewModel.getOrderResponse().observe(viewLifecycleOwner, Observer {
                 rec_order.adapter= OrderClosedAdapter(it.data,requireActivity(),this)
             })
 
