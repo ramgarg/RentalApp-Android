@@ -190,16 +190,19 @@
 <string name="selected_item">Selected item:</string>
 
 <string-array name="SelectType">
+    <item>Select Type</item>
     <item>Equipments</item>
     <item>Vehicles</item>
     <item>All</item>
 </string-array>
     <string-array name="SelectCategory">
+        <item>Select Category</item>
     <item>Big-Equipment</item>
     <item>Small-Equipment</item>
     <item>Other</item>
 </string-array>
     <string-array name="SelectSubCategory">
+        <item>Select Sub Category</item>
         <item>Big-Equipment</item>
         <item>Small-Equipment</item>
         <item>Other</item>

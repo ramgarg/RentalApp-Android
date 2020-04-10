@@ -13,6 +13,7 @@ import com.rental.customer.dashboard.viewmodel.CustomerHomeViewModel
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.customer.utils.ViewVisibility
+import kotlinx.android.synthetic.main.merchant_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class MerchantAddVehicle : AppCompatActivity(), RecyclerViewItemClick {
@@ -54,8 +55,14 @@ class MerchantAddVehicle : AppCompatActivity(), RecyclerViewItemClick {
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    Toast.makeText(this@MerchantAddVehicle, getString(R.string.selected_item) + " " + "" + select_subcategory[position], Toast.LENGTH_SHORT).show()
-                }
+                    if(position==0){
+
+                    }
+                    else{
+                        Toast.makeText(this@MerchantAddVehicle, getString(R.string.selected_item) + " " + "" + select_subcategory[position], Toast.LENGTH_SHORT).show()
+
+                    }
+                    }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
                     // write code to perform some action
@@ -74,8 +81,14 @@ class MerchantAddVehicle : AppCompatActivity(), RecyclerViewItemClick {
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    Toast.makeText(this@MerchantAddVehicle, getString(R.string.selected_item) + " " + "" + select_category[position], Toast.LENGTH_SHORT).show()
-                }
+                    if(position==0){
+
+                    }
+                    else{
+                        Toast.makeText(this@MerchantAddVehicle, getString(R.string.selected_item) + " " + "" + select_category[position], Toast.LENGTH_SHORT).show()
+
+                    }
+                    }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
                     // write code to perform some action
@@ -92,14 +105,18 @@ class MerchantAddVehicle : AppCompatActivity(), RecyclerViewItemClick {
         if (spinner != null) {
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, select_type)
             spinner.adapter = adapter
-
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    if (position==0){
+
+                    }
+                    else{
                     Toast.makeText(this@MerchantAddVehicle, getString(R.string.selected_item) + " " + "" + select_type[position], Toast.LENGTH_SHORT).show()
+                     }
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
+                    spinner.setBackgroundResource(R.color.megenta)
                 }
             }
         }
