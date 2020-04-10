@@ -14,7 +14,7 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:orientation="vertical">
 
         <LinearLayout
@@ -33,12 +33,12 @@
             <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="80"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:layout_height="75dp"
                     android:orientation="vertical">
 
                 <TextView
-                        android:text="Ajeer Mohammed"
+                        android:text="@string/ajeer_mohammed"
                         android:textStyle="bold"
                         android:textColor="@color/mdtp_transparent_black"
                         android:id="@+id/dash_agent_user_name"
@@ -47,7 +47,7 @@
                         android:layout_height="30dp"/>
 
                 <TextView
-                        android:text="Agent"
+                        android:text="@string/agent"
                         android:textColor="@color/mdtp_transparent_black"
                         android:layout_width="100dp"
                         android:layout_marginTop="5dp"
@@ -57,30 +57,15 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
             <TextView
-                    android:text="Order Id-"
+                    android:text="@string/orderid"
                     android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:textColor="@color/mdtp_transparent_black"
                     android:id="@+id/merchant_order_id"
                     android:layout_width="wrap_content"
                     android:textSize="18sp"
                     android:layout_height="30dp"/>
-
-            <TextView
-                    android:text="394865"
-                    android:textColor="@color/mdtp_transparent_black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:textStyle="bold"
-                    android:textSize="18sp"/>
-
-        </LinearLayout>
 
 
         <LinearLayout
@@ -94,23 +79,18 @@
                     android:layout_height="@dimen/_20sdp"/>
 
             <TextView
-                    android:text="With Driver"
+                    android:text="@string/with_driver"
                     android:textColor="@color/mdtp_transparent_black"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_height="35dp"
                     android:textSize="18sp"/>
 
         </LinearLayout>
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
 
             <TextView
-                    android:text="Truck Quantity-"
+                    android:text="@string/truck_quantity"
                     android:textStyle="bold"
                     android:textColor="@color/mdtp_transparent_black"
                     android:id="@+id/meame"
@@ -118,15 +98,6 @@
                     android:textSize="18sp"
                     android:layout_height="30dp"/>
 
-            <TextView
-                    android:text="2"
-                    android:textStyle="bold"
-                    android:textColor="@color/mdtp_transparent_black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:textSize="18sp"/>
-
-        </LinearLayout>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,7 +105,7 @@
                 android:orientation="vertical">
 
             <TextView
-                    android:text="Order Date"
+                    android:text="@string/order_date"
                     android:textStyle="bold"
                     android:textColor="@color/mdtp_transparent_black"
                     android:id="@+id/agent_order_date"
@@ -154,7 +125,7 @@
                         android:layout_height="@dimen/_20sdp"/>
 
                 <TextView
-                        android:text="27/3/2019"
+                        android:text="@string/_24_jun_1212"
                         android:textStyle="bold"
                         android:textColor="@color/mdtp_transparent_black"
                         android:layout_width="wrap_content"

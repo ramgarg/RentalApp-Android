@@ -31,8 +31,8 @@
                       android:fontFamily="@font/bree_serif"
                       android:textSize="@dimen/_20sdp"
                       android:text="@string/booking_price"
-                      android:layout_marginLeft="@dimen/_5sdp"
-                      android:layout_toRightOf="@+id/booking_title"
+                      android:layout_marginStart="@dimen/_5sdp"
+                      android:layout_toEndOf="@+id/booking_title"
                       android:layout_below="@+id/tv_vehicle_name"
                       android:layout_height="wrap_content"/>
 
@@ -40,8 +40,8 @@
             <TextView android:layout_width="wrap_content"
                       android:text="@string/per_hour"
                       android:layout_marginTop="@dimen/_10sdp"
-                      android:layout_marginLeft="@dimen/_5sdp"
-                      android:layout_toRightOf="@+id/booking_price"
+                      android:layout_marginStart="@dimen/_5sdp"
+                      android:layout_toEndOf="@+id/booking_price"
                       android:id="@+id/per_hour"
                       android:layout_below="@+id/tv_vehicle_name"
                       android:textSize="@dimen/_12sdp"
@@ -68,7 +68,7 @@
 
                 <TextView
                         android:fontFamily="@font/bree_serif"
-                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/_15sdp"
                         android:textColor="#000"
@@ -104,17 +104,17 @@
                     <TextView android:layout_width="wrap_content"
                               android:text="@string/start_date"
 
-                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_st_date"
-                              android:layout_toRightOf="@+id/img_calender"
+                              android:layout_toEndOf="@+id/img_calender"
                               android:textColor="#000"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>
                     <TextView android:layout_width="wrap_content"
-                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_st_date_book"
                               android:layout_below="@+id/tv_st_date"
-                              android:layout_toRightOf="@+id/img_calender"
+                              android:layout_toEndOf="@+id/img_calender"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>
                 </RelativeLayout>
@@ -122,7 +122,6 @@
                           android:layout_marginTop="@dimen/_5sdp"
                           android:layout_marginBottom="@dimen/_5sdp"
                           android:id="@+id/view_div"
-                          android:layout_toRightOf="@+id/tv_st_date_sel"
                           android:background="@android:color/darker_gray"
                           android:layout_height="match_parent"/>
                 <RelativeLayout
@@ -140,17 +139,17 @@
 
                     <TextView android:layout_width="wrap_content"
                               android:text="@string/start_time"
-                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_st_time"
-                              android:layout_toRightOf="@+id/img_time"
+                              android:layout_toEndOf="@+id/img_time"
                               android:textColor="#000"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>
                     <TextView android:layout_width="wrap_content"
-                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_st_time_book"
                               android:layout_below="@+id/tv_st_time"
-                              android:layout_toRightOf="@+id/img_time"
+                              android:layout_toEndOf="@+id/img_time"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>
                 </RelativeLayout>
@@ -183,17 +182,17 @@
 
                     <TextView android:layout_width="wrap_content"
                               android:text="@string/end_date"
-                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_end_date"
-                              android:layout_toRightOf="@+id/img_en_calender"
+                              android:layout_toEndOf="@+id/img_en_calender"
                               android:textColor="#000"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>
                     <TextView android:layout_width="wrap_content"
-                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_end_date_book"
                               android:layout_below="@+id/tv_end_date"
-                              android:layout_toRightOf="@+id/img_en_calender"
+                              android:layout_toEndOf="@+id/img_en_calender"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>
                 </RelativeLayout>
@@ -201,7 +200,6 @@
                           android:layout_marginTop="@dimen/_5sdp"
                           android:layout_marginBottom="@dimen/_5sdp"
                           android:id="@+id/view_div_2"
-                          android:layout_toRightOf="@+id/tv_st_date_sel"
                           android:background="@android:color/darker_gray"
                           android:layout_height="match_parent"/>
                 <RelativeLayout
@@ -219,17 +217,17 @@
 
                     <TextView android:layout_width="wrap_content"
                               android:text="@string/end_time"
-                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_end_time"
-                              android:layout_toRightOf="@+id/img_end_time"
-                              android:textColor="#000"
+                              android:layout_toEndOf="@+id/img_end_time"
+                              android:textColor="@color/black"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>
                     <TextView android:layout_width="wrap_content"
-                              android:layout_marginLeft="@dimen/_10sdp"
+                              android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_end_time_book"
                               android:layout_below="@+id/tv_end_time"
-                              android:layout_toRightOf="@+id/img_end_time"
+                              android:layout_toEndOf="@+id/img_end_time"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>
                 </RelativeLayout>
@@ -253,7 +251,7 @@
 
                 <LinearLayout android:layout_width="wrap_content"
                               android:orientation="horizontal"
-                              android:layout_alignParentRight="true"
+                              android:layout_alignParentEnd="true"
                               android:layout_height="wrap_content">
 
                     <ImageView android:layout_width="@dimen/_25sdp"
@@ -315,8 +313,8 @@
                       android:textColor="#fff"
                       android:paddingLeft="@dimen/_10sdp"
                       android:paddingRight="@dimen/_10sdp"
-                      android:layout_marginRight="@dimen/_10sdp"
-                      android:layout_alignParentRight="true"
+                      android:layout_marginEnd="@dimen/_10sdp"
+                      android:layout_alignParentEnd="true"
                       android:background="@drawable/payment_status"
                       android:fontFamily="@font/bree_serif"
                       android:text="@string/change"
@@ -345,9 +343,9 @@
                     android:textSize="@dimen/_15sdp"
                     android:fontFamily="@font/bree_serif"
                     android:layout_width="wrap_content"
-                      android:layout_marginLeft="@dimen/_10sdp"
+                      android:layout_marginStart="@dimen/_10sdp"
                       android:layout_marginTop="@dimen/_20sdp"
-                      android:layout_toRightOf="@+id/add_new_add_img"
+                      android:layout_toEndOf="@+id/add_new_add_img"
                       android:layout_below="@+id/view_1"
                       android:layout_height="wrap_content"/>
 

@@ -29,7 +29,7 @@
                 android:id="@+id/vehicle_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
-                android:drawableRight="@mipmap/expand"
+                android:drawableEnd="@mipmap/expand"
                 android:textSize="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"

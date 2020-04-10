@@ -34,7 +34,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/fathi_asfour"
                         android:layout_marginTop="@dimen/_12sdp"
-                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         style="@style/AgentBoldTextCard"
                         android:layout_toEndOf="@+id/img_customer_pic"
                         />
@@ -44,7 +44,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/customer"
                         style="@style/AgentSmallTextCard"
-                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_toEndOf="@+id/img_customer_pic"
                         android:layout_below="@+id/tv_customer_name"/>
                 <ImageView
@@ -79,8 +79,8 @@
                         android:fontFamily="@font/bree_serif"
                         android:textSize="@dimen/_20sdp"
                         android:text="@string/booking_price"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_toRightOf="@+id/booking_title"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_toEndOf="@+id/booking_title"
                         android:layout_below="@+id/agent_order_vehicle_name"
                         android:layout_height="wrap_content"/>
                 <TextView android:layout_width="wrap_content"
@@ -88,9 +88,9 @@
                         android:fontFamily="@font/bree_serif"
                         android:textSize="@dimen/_12sdp"
                         android:text="@string/per_hour"
-                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_toRightOf="@+id/booking_price"
+                        android:layout_toEndOf="@+id/booking_price"
                         android:layout_below="@+id/agent_order_vehicle_name"
                         android:layout_height="wrap_content"/>
 
@@ -127,10 +127,10 @@
                             android:paddingRight="@dimen/_10sdp"
                             android:paddingLeft="@dimen/_10sdp"
                             android:background="@drawable/button_gradient"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:id="@+id/tv_rate"
                             android:textColor="@color/white"
-                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
                             android:fontFamily="@font/bree_serif"
                             android:layout_height="@dimen/_20sdp"/>
                 </RelativeLayout>

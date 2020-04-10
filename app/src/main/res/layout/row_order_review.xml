@@ -44,8 +44,8 @@
                   android:fontFamily="@font/bree_serif"
                   android:textSize="@dimen/_20sdp"
                   android:text="@string/booking_price"
-                  android:layout_marginLeft="@dimen/_5sdp"
-                  android:layout_toRightOf="@+id/booking_title"
+                  android:layout_marginStart="@dimen/_5sdp"
+                  android:layout_toEndOf="@+id/booking_title"
                   android:layout_below="@+id/vehicle_name"
                   android:layout_height="wrap_content"/>
 
@@ -53,8 +53,8 @@
         <TextView android:layout_width="wrap_content"
                   android:text="@string/per_hour"
                   android:layout_marginTop="@dimen/_10sdp"
-                  android:layout_marginLeft="@dimen/_5sdp"
-                  android:layout_toRightOf="@+id/booking_price"
+                  android:layout_marginStart="@dimen/_5sdp"
+                  android:layout_toEndOf="@+id/booking_price"
                   android:id="@+id/per_hour"
                   android:layout_below="@+id/vehicle_name"
                   android:textSize="@dimen/_12sdp"
@@ -76,7 +76,7 @@
 
             <LinearLayout android:layout_width="wrap_content"
                           android:orientation="horizontal"
-                          android:layout_alignParentRight="true"
+                          android:layout_alignParentEnd="true"
                           android:layout_height="wrap_content">
 
                 <ImageView android:layout_width="@dimen/_25sdp"
@@ -112,10 +112,10 @@
         <TextView android:layout_width="wrap_content"
                   android:text="@string/_14_days"
                   android:layout_marginTop="@dimen/_10sdp"
-                  android:layout_marginLeft="@dimen/_5sdp"
+                  android:layout_marginStart="@dimen/_5sdp"
                   android:id="@+id/tv_days"
                   android:drawablePadding="@dimen/_15sdp"
-                  android:drawableLeft="@mipmap/calender"
+                  android:drawableStart="@mipmap/calender"
                   android:layout_below="@+id/layout_truck_quantity"
                   android:textSize="@dimen/_15sdp"
                   android:textColor="@color/black"
@@ -135,7 +135,6 @@
                 android:gravity="center"
                 android:layout_weight=".5"
                android:background="@drawable/button_view_details"
-                android:layout_centerInParent="true"
                 android:textColor="@color/white"
                android:text="@string/view_details"
                 android:textSize="@dimen/_15sdp"
@@ -157,7 +156,7 @@
                        android:layout_height="@dimen/_20sdp"/>
         <TextView
                 android:gravity="center"
-                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:textColor="@color/white"
                 android:text="@string/remove"
                 android:textSize="@dimen/_15sdp"

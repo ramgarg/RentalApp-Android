@@ -14,5 +14,6 @@
     <color name="textblack">#000</color>
     <color name="dark_grey">#90000000</color>
     <color name="text_blue">#1c7cf7</color>
+    <color name="cardview_shadow_start">#37000000</color>
 
 </resources>

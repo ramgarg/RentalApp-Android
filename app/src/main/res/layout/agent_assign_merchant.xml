@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <RelativeLayout
@@ -19,7 +18,7 @@
 
             <ImageView android:layout_width="@dimen/_40sdp"
                     android:id="@+id/customer_call_button"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:src="@mipmap/call"
                     android:layout_height="@dimen/_40sdp"/>
 
@@ -35,7 +34,7 @@
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:id="@+id/merchant_location"
                 android:src="@mipmap/location_pick_address"
                 android:layout_below="@id/assign_merchant_name">
@@ -45,7 +44,7 @@
                 style="@style/DocumentTextView"
                 android:id="@+id/merchant_distatnce"
                 android:layout_centerHorizontal="true"
-                android:layout_toRightOf="@+id/merchant_location"
+                android:layout_toEndOf="@+id/merchant_location"
                 android:layout_below="@id/assign_merchant_name"
                 android:text="@string/distance_3km">
         </TextView>
@@ -74,8 +73,8 @@
                 android:fontFamily="@font/bree_serif"
                 android:textSize="@dimen/_20sdp"
                 android:text="@string/booking_price"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_toRightOf="@+id/booking_title"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_toEndOf="@+id/booking_title"
                 android:layout_below="@+id/layout_truck_quantity"
                 android:layout_height="wrap_content"/>
 

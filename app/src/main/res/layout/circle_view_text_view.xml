@@ -8,7 +8,7 @@
         android:background="@color/white"
         >
     <TextView
-            android:text="Day"
+            android:text="@string/day"
             style="@style/days_style"
             >
 
