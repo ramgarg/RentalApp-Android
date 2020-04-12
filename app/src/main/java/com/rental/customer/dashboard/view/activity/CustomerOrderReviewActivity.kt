@@ -1,6 +1,5 @@
 package com.rental.customer.dashboard.view.activity
 
-import android.content.Intent
 import android.os.Bundle
 import com.rental.Constant
 import com.rental.R
@@ -9,7 +8,6 @@ import com.rental.customer.dashboard.model.modelclass.BookingDetailsModel
 import com.rental.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.rental.customer.dashboard.view.adapter.OrderReviewAdapter
 import com.rental.customer.dashboard.viewmodel.CustomerCreateBookingViewModel
-import com.rental.customer.utils.Common
 import com.rental.customer.utils.Common.Companion.bookingDetailsModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.ViewVisibility
@@ -65,7 +63,7 @@ class CustomerOrderReviewActivity :BaseActivity() {
     }
 
     override fun onClickDailog(int: Int) {
-        MoveToAnotherComponent.moveToSingleTask<CustomerMainActivity>(this,Constant.INTENT_SUCCESS_ORDER_BOOKING,1)
+        MoveToAnotherComponent.moveToActivity<CustomerMainActivity>(this,Constant.INTENT_SUCCESS_ORDER_BOOKING,1)
 
     }
 }

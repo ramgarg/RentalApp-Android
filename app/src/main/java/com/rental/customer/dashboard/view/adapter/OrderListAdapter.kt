@@ -6,26 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
-import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.utils.RecyclerViewItemClick
+import com.rental.common.view.BaseFragment
+import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
 import kotlinx.android.synthetic.main.row_category.view.*
 
 
-class OrderOpenAdapter(val items:List<Data>, val context: Context, val recyclerViewItemClick:RecyclerViewItemClick):
-    RecyclerView.Adapter<OrderOpenAdapter.ViewHolder>() {
-
-
+class OrderListAdapter(val customerOrdrListItems:List<CustomerOrderListResModelItem>, val context: Context, val baseFragment: BaseFragment):
+    RecyclerView.Adapter<OrderListAdapter.ViewHolder>() {
 
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val tvVeichleName=view.vehicle_name
 
 
-        fun bind(data: Data,clickListener: RecyclerViewItemClick)
+       /* fun bind(data: Data,clickListener: RecyclerViewItemClick)
         {
             itemView.setOnClickListener {
                 clickListener.onItemClick(data)
             }
-        }
+        }*/
 
     }
 
@@ -38,14 +36,16 @@ class OrderOpenAdapter(val items:List<Data>, val context: Context, val recyclerV
     }
 
     override fun getItemCount(): Int {
-        return items.size
+        return customerOrdrListItems.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.tvVeichleName?.text=items.get(position).first_name
-        holder.bind(items.get(position),recyclerViewItemClick)
-
+        holder.tvVeichleName?.text=customerOrdrListItems.get(position).product_detail.product_name
+//        items.get(position),recyclerViewItemClick)
+        holder.itemView.setOnClickListener { baseFragment.onViewClick<CustomerOrderListResModelItem,Int>(customerOrdrListItems.get(position),1) }
     }
+
+
 
 }

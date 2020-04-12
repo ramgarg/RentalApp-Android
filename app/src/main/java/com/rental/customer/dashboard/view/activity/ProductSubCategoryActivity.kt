@@ -10,7 +10,6 @@ import com.rental.appbiz.AppBizLogger
 import com.rental.common.model.modelclass.ProductSubCategoriesResModel
 import com.rental.common.model.modelclass.Vehicle
 import com.rental.common.view.ApiResult
-import com.rental.common.view.LiveDataActivityClass
 import com.rental.common.viewmodel.ProductSubCategoriesViewModel
 import com.rental.customer.dashboard.view.adapter.ProductVehiclesAdapter
 import com.rental.customer.utils.MoveToAnotherComponent

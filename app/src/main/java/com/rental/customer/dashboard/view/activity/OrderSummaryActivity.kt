@@ -1,8 +1,12 @@
 package com.rental.customer.dashboard.view.activity
 
 import android.os.Bundle
+import com.rental.Constant
 import com.rental.R
+import com.rental.appbiz.AppBizLogger
 import com.rental.common.view.BaseActivity
+import com.rental.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
+import com.rental.customer.dashboard.viewmodel.CustomerOrderListViewModel
 import com.rental.customer.dashboard.viewmodel.OrderSummaryViewModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.Common.Companion.hideGroupViews
@@ -17,6 +21,7 @@ import org.greenrobot.eventbus.ThreadMode
 
 
 class OrderSummaryActivity : BaseActivity() {
+//     private var productID:Int?=-1
 
     lateinit var orderSummaryViewModel :OrderSummaryViewModel
     override fun <T> moveOnSelecetedItem(type: T) {
@@ -27,6 +32,7 @@ class OrderSummaryActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.order_summary_activity)
+//       productID = intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)
 
 //        orderSummaryViewModel=ViewModelProviders.of(this).get(OrderSummaryViewModel::class.java)
 //        orderSummaryViewModel.getOrderSummaryResponse().observe(this, Observer {
@@ -74,6 +80,8 @@ class OrderSummaryActivity : BaseActivity() {
             }
         }
 
+        callAPIOrderList(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
+
     }
 
     override fun onStart() {
@@ -86,5 +94,21 @@ class OrderSummaryActivity : BaseActivity() {
         EventBus.getDefault().unregister(this)
     }
 
+    private fun callAPIOrderList(id: Int){
+
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<CustomerOrderDetailsViewModel>(this)
+                    .getOrderDetails(id!!)
+                , this, this
+            )
+
+        }
+
+    }
+
+    override fun <T> onSuccessApiResult(data: T) {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+    }
 
 }

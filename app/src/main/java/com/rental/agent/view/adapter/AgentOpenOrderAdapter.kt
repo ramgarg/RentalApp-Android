@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.adapter.OrderOpenAdapter
 import com.rental.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.agent_open_order_row.view.*
 

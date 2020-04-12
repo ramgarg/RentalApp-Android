@@ -15,5 +15,11 @@ interface Constant{
 
         //intent key
          const val INTENT_SUCCESS_ORDER_BOOKING = "success"
+
+        // Order status
+        const val OPEN_ORDER = 1
+        const val CLOSE_ORDER =3
+        const val ORDER_SUMMERY_KEY ="orders_id"
+
     }
 }

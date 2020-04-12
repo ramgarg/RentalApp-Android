@@ -2,6 +2,7 @@ package com.rental.customer.dashboard.model.repositry.api
 
 import com.google.gson.JsonElement
 import com.rental.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
+import com.rental.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.rental.login.model.modelclass.LoginRequest
 import com.rental.webservice.PathURL
@@ -46,8 +47,8 @@ interface CustomerAPI {
     /*
       *customer orders details
       * */
-    @POST(PathURL.CustomnerOrderDetail)
-    fun customerOrderDetail(loginReqModel: LoginRequest): Call<LoginRequest>
+    @GET(PathURL.CustomnerOrderDetail)
+    fun getCustomerOrderDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
 
     /*
       *customer product un available

@@ -163,7 +163,7 @@ class MoveToAnotherComponent {
             context.startActivity(intent)
         }
 
-        inline fun <reified T>moveToSingleTask(context: Context, key: String,value: Int) {
+        inline fun <reified T>moveToActivity(context: Context, key: String, value: Int) {
             val intent = Intent(context, T::class.java)
             intent.putExtra(key,value)
             context.startActivity(intent)
