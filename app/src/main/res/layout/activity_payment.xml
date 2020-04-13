@@ -12,7 +12,7 @@
              android:id="@+id/include"/>
     <TextView
             android:layout_below="@+id/include"
-            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_20sdp"
             android:text="@string/orderid"
             android:textSize="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_15sdp"
@@ -25,7 +25,7 @@
     <TextView android:layout_width="wrap_content"
               android:text="@string/total_price"
               android:textColor="#000"
-              android:layout_marginLeft="@dimen/_20sdp"
+              android:layout_marginStart="@dimen/_20sdp"
               android:id="@+id/total_tile"
               android:layout_below="@+id/tv_order_id"
               android:textSize="@dimen/_12sdp"
@@ -38,8 +38,8 @@
               android:fontFamily="@font/bree_serif"
               android:textSize="@dimen/_20sdp"
               android:text="@string/booking_price"
-              android:layout_marginLeft="@dimen/_5sdp"
-              android:layout_toRightOf="@+id/total_tile"
+              android:layout_marginStart="@dimen/_5sdp"
+              android:layout_toEndOf="@+id/total_tile"
               android:layout_below="@+id/tv_order_id"
               android:layout_height="wrap_content"/>
 
@@ -56,11 +56,11 @@
 
         <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
 
             <TextView
-                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="@string/pending_amount"
                     android:fontFamily="@font/bree_serif"
@@ -87,22 +87,22 @@
                     android:layout_below="@+id/view_1"
                     android:visibility="gone"
                     android:layout_height="@dimen/_20sdp"
-                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
                     app:srcCompat="@mipmap/amount"
                     android:id="@+id/imageView"
             />
             <EditText
                     android:drawablePadding="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
                     android:layout_below="@+id/view_1"
-                    android:layout_toRightOf="@+id/imageView"
+                    android:layout_toEndOf="@+id/imageView"
                     android:layout_width="match_parent"
                     android:background="@null"
                     android:inputType="number"
                     android:hint="@string/enter_amount"
-                    android:drawableLeft="@mipmap/amount_en"
-                    android:layout_marginRight="@dimen/_20sdp"
+                    android:drawableStart="@mipmap/amount_en"
+                    android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_height="wrap_content"
                     android:id="@+id/ed_enter_amount"
             />
@@ -122,15 +122,15 @@
                     android:layout_height="@dimen/_40sdp"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_10sdp"
                     android:background="@drawable/ed_coupon_bg"
                     android:hint="@string/enter_amount"
-                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
                     android:id="@+id/ed_apply_copon"
             />
             <Button android:layout_width="match_parent"
                     android:background="@drawable/apply"
-                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:text="@string/apply"
                     android:textAllCaps="false"
@@ -138,7 +138,7 @@
                     android:fontFamily="@font/bree_serif"
                     android:textSize="@dimen/_15sdp"
                     android:layout_below="@+id/view_2"
-                    android:layout_toRightOf="@+id/ed_apply_copon"
+                    android:layout_toEndOf="@+id/ed_apply_copon"
                     android:layout_height="@dimen/_40sdp"/>
 
             <TextView
@@ -150,7 +150,7 @@
                     android:fontFamily="@font/bree_serif"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
                     android:id="@+id/tv_choose_mtd"
             />
 
@@ -167,9 +167,9 @@
 
                 <RelativeLayout
                         android:background="@drawable/button_open_order"
-                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
                         android:layout_weight=".5"
-                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
@@ -189,7 +189,7 @@
                             android:layout_width="@dimen/_20sdp"
                                android:layout_margin="@dimen/_5sdp"
                                android:src="@mipmap/green_check"
-                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
                                android:layout_height="@dimen/_20sdp"/>
 
                     <TextView android:layout_width="wrap_content"
@@ -205,8 +205,8 @@
 
                 <RelativeLayout
                         android:background="@drawable/button_open_order"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_weight=".5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -228,11 +228,11 @@
                             android:layout_width="@dimen/_20sdp"
                                android:layout_margin="@dimen/_5sdp"
                                android:src="@mipmap/green_check"
-                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
                                android:layout_height="@dimen/_20sdp"/>
                     <TextView android:layout_width="wrap_content"
                               android:text="@string/pay_via_paypal"
-                              android:textColor="#000"
+                              android:textColor="@color/black"
                               android:padding="@dimen/_5sdp"
                               android:textSize="@dimen/_15sdp"
                               android:fontFamily="@font/bree_serif"

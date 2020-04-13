@@ -10,7 +10,7 @@
               android:fontFamily="@font/bree_serif"
               android:text="@string/truck"
               android:gravity="center_vertical"
-              android:paddingLeft="@dimen/_10sdp"
+              android:paddingStart="@dimen/_10sdp"
               android:layout_height="@dimen/_40sdp"/>
 
 </LinearLayout>

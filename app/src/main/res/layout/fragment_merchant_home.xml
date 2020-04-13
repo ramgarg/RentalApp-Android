@@ -19,7 +19,6 @@
                 android:text="@string/hello_this_is"
                 android:layout_gravity="center"
                 style="@style/AgentBoldTextCard"
-                android:layout_below="@+id/profile_img"
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>

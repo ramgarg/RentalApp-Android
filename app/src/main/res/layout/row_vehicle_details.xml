@@ -23,8 +23,8 @@
               android:layout_height="wrap_content"/>
 
     <TextView android:layout_width="@dimen/_1sdp"
-              android:layout_toRightOf="@+id/detail_title"
-              android:layout_marginLeft="@dimen/_10sdp"
+              android:layout_toEndOf="@+id/detail_title"
+              android:layout_marginStart="@dimen/_10sdp"
               android:layout_alignTop="@+id/detail_title"
               android:background="@android:color/darker_gray"
               android:layout_alignBottom="@+id/tv_detail"

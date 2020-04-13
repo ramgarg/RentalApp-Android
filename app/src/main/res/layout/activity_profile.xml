@@ -29,7 +29,7 @@
             <ImageView android:layout_width="@dimen/_25sdp"
                        android:src="@mipmap/add_image"
                        android:id="@+id/img_edit"
-                       android:layout_alignRight="@+id/img_profile"
+                       android:layout_alignEnd="@+id/img_profile"
                        android:layout_alignBottom="@+id/img_profile"
                        android:layout_height="@dimen/_25sdp"/>
 
@@ -38,9 +38,9 @@
                       android:fontFamily="@font/bree_serif"
                       android:textSize="@dimen/_20sdp"
                       android:textColor="#0f7e31"
-                      android:layout_marginLeft="@dimen/_20sdp"
+                      android:layout_marginStart="@dimen/_20sdp"
                       android:layout_marginTop="@dimen/_20sdp"
-                      android:layout_toRightOf="@+id/img_profile"
+                      android:layout_toEndOf="@+id/img_profile"
                       android:layout_height="wrap_content"/>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -206,7 +206,7 @@
                          android:layout_below="@id/layout_location"
                          android:layout_height="@dimen/_180sdp">
 
-                <fragment
+                <androidx.fragment.app.FragmentContainerView
                         android:id="@+id/map"
                         android:name="com.google.android.gms.maps.SupportMapFragment"
                         android:layout_width="match_parent"

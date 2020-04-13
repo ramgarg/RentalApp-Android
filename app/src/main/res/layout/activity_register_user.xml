@@ -14,7 +14,6 @@
             android:layout_height="wrap_content">
 
         <RelativeLayout android:layout_width="match_parent"
-                        android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp">
@@ -30,16 +29,16 @@
                     android:text="@string/skip"
                     android:fontFamily="@font/bree_serif"
                     android:textSize="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:textColor="@color/text_green"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
         </RelativeLayout>
 
 
         <ImageView
-                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:src="@mipmap/logo"
                 android:scaleType="fitXY"
@@ -52,7 +51,7 @@
                 android:fontFamily="@font/bree_serif"
                 android:text="@string/welcome"
                 android:textSize="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -60,7 +59,7 @@
                 android:fontFamily="@font/bree_serif"
                 android:text="@string/register_to_continue"
                 android:textSize="@dimen/_15sdp"
-                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -80,7 +79,7 @@
                     android:paddingRight="@dimen/_5sdp"
                     android:drawablePadding="@dimen/_5sdp"
                     android:background="@drawable/rounded_corner_gray"
-                    android:drawableLeft="@mipmap/customer_inactive_m"
+                    android:drawableStart="@mipmap/customer_inactive_m"
                     android:layout_height="@dimen/_30sdp"/>
             <RelativeLayout
                     android:visibility="gone"
@@ -97,11 +96,11 @@
                       android:paddingRight="@dimen/_5sdp"
                       android:drawablePadding="@dimen/_5sdp"
                       android:background="@drawable/shadow"
-                      android:drawableLeft="@mipmap/customer_active"
+                      android:drawableStart="@mipmap/customer_active"
                       android:layout_height="@dimen/_30sdp"/>
 
             <ImageView
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:src="@mipmap/green_check"
                     android:layout_width="@dimen/_10sdp"
                     android:layout_height="@dimen/_10sdp"/>
@@ -113,9 +112,9 @@
                 android:id="@+id/btn_agent_inactive"
                 android:textSize="@dimen/_10sdp"
                   android:fontFamily="@font/bree_serif"
-                  android:paddingLeft="@dimen/_5sdp"
-                android:drawableLeft="@mipmap/agent_inactive_m"
-                android:layout_marginLeft="@dimen/_10sdp"
+                  android:paddingStart="@dimen/_5sdp"
+                android:drawableStart="@mipmap/agent_inactive_m"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:background="@drawable/rounded_corner_gray"
                 android:layout_height="@dimen/_30sdp"/>
 
@@ -131,14 +130,14 @@
                         android:layout_width="@dimen/_70sdp"
                         android:text="@string/agent"
                         android:textSize="@dimen/_10sdp"
-                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingStart="@dimen/_5sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:drawableLeft="@mipmap/agent_active"
-                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:drawableStart="@mipmap/agent_active"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:background="@drawable/shadow"
                         android:layout_height="@dimen/_30sdp"/>
                 <ImageView
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:src="@mipmap/green_check"
                         android:layout_width="@dimen/_10sdp"
                         android:layout_height="@dimen/_10sdp"/>
@@ -153,8 +152,8 @@
                   android:id="@+id/btn_merchant_inactive"
                 android:drawablePadding="@dimen/_5sdp"
                 android:textSize="@dimen/_10sdp"
-                android:drawableLeft="@mipmap/merchant_inactive_m"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:drawableStart="@mipmap/merchant_inactive_m"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:paddingLeft="@dimen/_5sdp"
                 android:paddingRight="@dimen/_5sdp"
                 android:background="@drawable/rounded_corner_gray"
@@ -172,17 +171,17 @@
                           android:fontFamily="@font/bree_serif"
                           android:drawablePadding="@dimen/_5sdp"
                         android:textSize="@dimen/_10sdp"
-                        android:drawableLeft="@mipmap/merchant_active"
-                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:drawableStart="@mipmap/merchant_active"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:paddingLeft="@dimen/_5sdp"
                         android:paddingRight="@dimen/_5sdp"
                         android:background="@drawable/shadow"
                         android:layout_height="@dimen/_30sdp"/>
 
                 <ImageView
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:src="@mipmap/green_check"
-                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_width="@dimen/_10sdp"
                         android:layout_height="@dimen/_10sdp"/>
             </RelativeLayout>
@@ -260,7 +259,7 @@
 
             <TextView
                     android:fontFamily="@font/bree_serif"
-                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:textSize="@dimen/_15sdp"
                       android:text="@string/gdpr_rights"

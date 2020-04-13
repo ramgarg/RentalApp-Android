@@ -203,7 +203,7 @@
                     android:layout_below="@id/agent_layout_location"
                     android:layout_height="@dimen/_180sdp">
 
-                <fragment
+                <androidx.fragment.app.FragmentContainerView
                         android:id="@+id/agent_map"
                         android:name="com.google.android.gms.maps.SupportMapFragment"
                         android:layout_width="match_parent"

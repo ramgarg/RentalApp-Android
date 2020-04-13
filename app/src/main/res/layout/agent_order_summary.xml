@@ -32,7 +32,6 @@
                         android:text="@string/booking_n_price"
                         android:textColor="@color/black"
                         android:id="@+id/booking_title"
-                        android:layout_below="@+id/order_vehicle_name"
                         android:textSize="@dimen/_12sdp"
                         android:fontFamily="@font/bree_serif"
                         android:layout_height="@dimen/_50sdp"/>
@@ -40,7 +39,7 @@
                 <TextView
                         android:id="@+id/order_truck_cost"
                         android:fontFamily="@font/bree_serif"
-                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:textColor="@color/black"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:textSize="@dimen/_24sdp"
@@ -52,7 +51,7 @@
                         android:fontFamily="@font/bree_serif"
                         android:textColor="@color/text_blue"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
                         android:textSize="@dimen/_14sdp"
                         android:text="@string/tax_included"
                         android:layout_width="wrap_content"
@@ -82,7 +81,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <TextView
-                        android:layout_marginLeft="@dimen/_30sdp"
+                        android:layout_marginStart="@dimen/_30sdp"
                         android:id="@+id/tv_merchant_rate_review"
                         android:fontFamily="@font/bree_serif"
                         android:textColor="@color/white"
@@ -96,18 +95,19 @@
                         android:layout_height="wrap_content"/>
 
             </LinearLayout>
+
             <TextView
                     android:id="@+id/agent_asign_merchant_btn"
-                    android:fontFamily="@font/bree_serif"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:background="@color/text_green"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/_16sdp"
-                    android:text="@string/assign_merchant"
                     android:layout_width="@dimen/_200sdp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/button_gradient"
+                    android:fontFamily="@font/bree_serif"
+                    android:text="@string/assign_merchant"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp" />
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -125,7 +125,7 @@
                 <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="75"
-                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginStart="@dimen/_15sdp"
                         android:layout_height="@dimen/_65sdp"
                         android:orientation="vertical">
 
@@ -170,7 +170,7 @@
                 <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="75"
-                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginStart="@dimen/_15sdp"
                         android:layout_height="@dimen/_65sdp"
                         android:orientation="vertical">
 
@@ -218,7 +218,7 @@
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_height="@dimen/_25sdp"
                         android:textSize="@dimen/_16sdp"/>
 
@@ -249,17 +249,17 @@
 
                     <TextView android:layout_width="wrap_content"
                             android:text="@string/start_date"
-                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
                             android:id="@+id/tv_st_date"
-                            android:layout_toRightOf="@+id/img_calender"
+                            android:layout_toEndOf="@+id/img_calender"
                             android:textColor="@color/black"
                             android:fontFamily="@font/bree_serif"
                             android:layout_height="wrap_content"/>
                     <TextView android:layout_width="wrap_content"
-                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
                             android:id="@+id/agent_tv_st_date_sel"
                             android:layout_below="@+id/tv_st_date"
-                            android:layout_toRightOf="@+id/img_calender"
+                            android:layout_toEndOf="@+id/img_calender"
                             android:fontFamily="@font/bree_serif"
                             android:layout_height="wrap_content"/>
                 </RelativeLayout>
@@ -268,7 +268,6 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:id="@+id/view_div"
-                        android:layout_toRightOf="@+id/agent_tv_st_date_sel"
                         android:background="@android:color/darker_gray"
                         android:layout_height="match_parent"/>
 
@@ -288,18 +287,18 @@
 
                     <TextView android:layout_width="wrap_content"
                             android:text="@string/start_time"
-                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
                             android:id="@+id/tv_st_time"
-                            android:layout_toRightOf="@+id/img_time"
+                            android:layout_toEndOf="@+id/img_time"
                             android:textColor="@color/black"
                             android:fontFamily="@font/bree_serif"
                             android:layout_height="wrap_content"/>
 
                     <TextView android:layout_width="wrap_content"
-                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
                             android:id="@+id/agent_tv_st_time_sel"
                             android:layout_below="@+id/tv_st_time"
-                            android:layout_toRightOf="@+id/img_time"
+                            android:layout_toEndOf="@+id/img_time"
                             android:fontFamily="@font/bree_serif"
                             android:layout_height="wrap_content"/>
                 </RelativeLayout>
@@ -312,7 +311,6 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:background="@drawable/calender_bg"
-                    android:layout_below="@+id/layout_start"
                     android:layout_height="@dimen/_50sdp">
 
                 <RelativeLayout
@@ -332,18 +330,18 @@
 
                     <TextView android:layout_width="wrap_content"
                             android:text="@string/end_date"
-                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
                             android:id="@+id/tv_end_date"
-                            android:layout_toRightOf="@+id/img_en_calender"
+                            android:layout_toEndOf="@+id/img_en_calender"
                             android:textColor="@color/black"
                             android:fontFamily="@font/bree_serif"
                             android:layout_height="wrap_content"/>
 
                     <TextView android:layout_width="wrap_content"
-                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
                             android:id="@+id/agent_tv_end_date_sel"
                             android:layout_below="@+id/tv_end_date"
-                            android:layout_toRightOf="@+id/img_en_calender"
+                            android:layout_toEndOf="@+id/img_en_calender"
                             android:fontFamily="@font/bree_serif"
                             android:layout_height="wrap_content"/>
                 </RelativeLayout>
@@ -352,7 +350,6 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:id="@+id/view_div_2"
-                        android:layout_toRightOf="@+id/agent_tv_st_date_sel"
                         android:background="@android:color/darker_gray"
                         android:layout_height="match_parent"/>
 
@@ -371,18 +368,18 @@
 
                     <TextView android:layout_width="wrap_content"
                             android:text="@string/end_time"
-                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
                             android:id="@+id/tv_end_time"
-                            android:layout_toRightOf="@+id/img_end_time"
+                            android:layout_toEndOf="@+id/img_end_time"
                             android:textColor="@color/black"
                             android:fontFamily="@font/bree_serif"
                             android:layout_height="wrap_content"/>
 
                     <TextView android:layout_width="wrap_content"
-                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
                             android:id="@+id/agent_tv_end_time_sel"
                             android:layout_below="@+id/tv_end_time"
-                            android:layout_toRightOf="@+id/img_end_time"
+                            android:layout_toEndOf="@+id/img_end_time"
                             android:fontFamily="@font/bree_serif"
                             android:layout_height="wrap_content"/>
                 </RelativeLayout>

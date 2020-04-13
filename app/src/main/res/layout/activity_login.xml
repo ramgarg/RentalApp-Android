@@ -7,7 +7,7 @@
         android:layout_height="match_parent">
 
     <RelativeLayout android:layout_width="match_parent"
-                  android:layout_marginLeft="@dimen/_10sdp"
+                  android:layout_marginStart="@dimen/_10sdp"
                   android:layout_marginTop="@dimen/_10sdp"
                   android:layout_height="wrap_content">
     <ImageView
@@ -22,14 +22,14 @@
             android:text="@string/skip"
             android:fontFamily="@font/bree_serif"
             android:textSize="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:textColor="#0f7e31"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
               android:layout_height="wrap_content"/>
     </RelativeLayout>
     <ImageView
-            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_40sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:src="@mipmap/logo"
             android:scaleType="fitXY"
@@ -42,7 +42,7 @@
             android:fontFamily="@font/bree_serif"
             android:text="@string/welcome"
             android:textSize="@dimen/_20sdp"
-            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_40sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -50,7 +50,7 @@
             android:fontFamily="@font/bree_serif"
             android:text="@string/login_to_continue_as"
             android:textSize="@dimen/_15sdp"
-            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_40sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -138,12 +138,12 @@
                 android:layout_height="wrap_content"/>
 
         <ImageView
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:src="@mipmap/facebook"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"/>
         <ImageView
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:src="@mipmap/gmail"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"/>
