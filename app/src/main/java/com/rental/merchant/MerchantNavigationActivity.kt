@@ -5,18 +5,21 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.rental.R
+import com.rental.common.view.BaseActivity
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.merchant.view.fragment.*
 import kotlinx.android.synthetic.main.merchant_activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-open class MerchantNavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+open class MerchantNavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
+    override fun <T> moveOnSelecetedItem(type: T) {
+        TODO("Not yet implemented")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +41,7 @@ open class MerchantNavigationActivity : AppCompatActivity(), NavigationView.OnNa
                     setVisibleToolbarHeader(View.GONE)
                 }
                 R.id.merchant_navigation_order-> {
-                    fragment = MerchantOrderFragment()
+                    fragment = MerchantOrderListFragment()
                     merchant_add_vehicle_btn.visibility=View.INVISIBLE
                     toolbar_title.text=getString(R.string.order)
                 }

@@ -1,4 +1,4 @@
-package com.rental.customer.dashboard.view.adapter
+package com.rental.common.view.adapter
 
 import android.app.Activity
 import android.content.Context

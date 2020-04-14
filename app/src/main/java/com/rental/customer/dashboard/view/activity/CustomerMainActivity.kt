@@ -83,7 +83,8 @@ class CustomerMainActivity :BaseActivity(), NavigationView.OnNavigationItemSelec
             }
             R.id.navigation_order -> {
                 showLoading(this,layout_loading,img_gif)
-                val fragment = CustomerOrderListFragment()
+                val fragment =
+                    CustomerOrderListFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.order)

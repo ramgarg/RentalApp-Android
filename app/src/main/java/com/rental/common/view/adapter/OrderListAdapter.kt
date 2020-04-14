@@ -1,4 +1,4 @@
-package com.rental.customer.dashboard.view.adapter
+package com.rental.common.view.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
-import com.rental.common.view.BaseFragment
+import com.rental.common.view.fragment.BaseFragment
 import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
 import kotlinx.android.synthetic.main.row_category.view.*
 
@@ -16,15 +16,6 @@ class OrderListAdapter(val customerOrdrListItems:List<CustomerOrderListResModelI
 
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val tvVeichleName=view.vehicle_name
-
-
-       /* fun bind(data: Data,clickListener: RecyclerViewItemClick)
-        {
-            itemView.setOnClickListener {
-                clickListener.onItemClick(data)
-            }
-        }*/
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,7 +33,6 @@ class OrderListAdapter(val customerOrdrListItems:List<CustomerOrderListResModelI
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.tvVeichleName?.text=customerOrdrListItems.get(position).product_detail.product_name
-//        items.get(position),recyclerViewItemClick)
         holder.itemView.setOnClickListener { baseFragment.onViewClick<CustomerOrderListResModelItem,Int>(customerOrdrListItems.get(position),1) }
     }
 

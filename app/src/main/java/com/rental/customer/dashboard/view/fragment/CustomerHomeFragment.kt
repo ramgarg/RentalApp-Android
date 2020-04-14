@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.rental.R
 import com.rental.common.model.modelclass.MasterResModelItem
-import com.rental.common.view.ApiResult
-import com.rental.common.view.BaseFragment
-import com.rental.common.view.LiveDataFragmentClass
+import com.rental.common.view.fragment.BaseFragment
 import com.rental.common.viewmodel.MasterDataViewModel
 import com.rental.customer.dashboard.view.adapter.CustomerHomeAdapter
 import kotlinx.android.synthetic.main.fragment_home.*

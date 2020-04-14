@@ -12,6 +12,7 @@ import com.rental.agent.view.AgentOrderViewModel
 import com.rental.agent.view.adapter.AgentCloseOrderAdapter
 import com.rental.agent.view.adapter.AgentOpenOrderAdapter
 import com.rental.common.model.modelclass.MasterResModelItem
+import com.rental.common.view.fragment.OrderListFragment
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
@@ -20,27 +21,21 @@ import kotlinx.android.synthetic.main.fragment_agent_order.*
 import kotlinx.android.synthetic.main.fragment_agent_order.view.*
 import org.greenrobot.eventbus.EventBus
 
-class AgentOrderFragment : Fragment() , RecyclerViewItemClick{
+class AgentOrderListFragment : OrderListFragment(){
 
-    private lateinit var agent_orderViewModel: AgentOrderViewModel
+//    private lateinit var agent_orderViewModel: AgentOrderViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_agent_order, container, false)
 
         viewVisibility(view)
-
-        agent_orderViewModel = ViewModelProviders.of(this).get(AgentOrderViewModel::class.java)
-        agent_orderViewModel.getOrderResponse().observe(this, Observer {
-            agent_rec_order.adapter = AgentOpenOrderAdapter(it.data, requireActivity(), this)
-            EventBus.getDefault().postSticky("OPEN_ACTIVE")
-        })
         return view
     }
-    override fun onItemClick(item: Data) {
+    /*override fun onItemClick(item: Data) {
         MoveToAnotherComponent.moveToAgentOrderSummaryActivity(requireContext())
-    }
+    }*/
 
-    private fun viewVisibility(view: View){
+    /*private fun viewVisibility(view: View){
 
 
         view.agent_layout_open_active.setOnClickListener {
@@ -62,7 +57,7 @@ class AgentOrderFragment : Fragment() , RecyclerViewItemClick{
             })
 
         }
-    }
+    }*/
 
 }
 

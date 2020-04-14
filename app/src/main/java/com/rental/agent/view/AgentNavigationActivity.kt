@@ -11,11 +11,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.rental.R
 import com.rental.agent.view.fragment.*
+import com.rental.common.view.BaseActivity
 import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-open class AgentNavigationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+open class AgentNavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+    override fun <T> moveOnSelecetedItem(type: T) {
+        TODO("Not yet implemented")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +41,7 @@ open class AgentNavigationActivity : AppCompatActivity(), NavigationView.OnNavig
                 }
 
                 R.id.agent_navigation_order -> {
-                    fragment = AgentOrderFragment()
+                    fragment = AgentOrderListFragment()
                     toolbar_title.text=getString(R.string.order)
                 }
 

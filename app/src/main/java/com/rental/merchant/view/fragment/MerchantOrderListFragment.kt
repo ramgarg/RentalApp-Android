@@ -4,42 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.rental.R
-import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.utils.Common
-import com.rental.customer.utils.MoveToAnotherComponent
-import com.rental.customer.utils.RecyclerViewItemClick
-import com.rental.merchant.view.adapter.MerchantOrderCloseAdapter
-import com.rental.merchant.view.adapter.MerchantOrderOpenAdapter
-import com.rental.merchant.viewModel.MerchantOrderViewModel
-import kotlinx.android.synthetic.main.merchant_orderfragment.*
-import kotlinx.android.synthetic.main.merchant_orderfragment.view.*
-import org.greenrobot.eventbus.EventBus
+import com.rental.common.view.fragment.OrderListFragment
 
-class MerchantOrderFragment : Fragment() , RecyclerViewItemClick {
+class MerchantOrderListFragment : OrderListFragment() {
 
-    private lateinit var merchant_orderViewModel: MerchantOrderViewModel
+//    private lateinit var merchant_orderViewModel: MerchantOrderViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.merchant_orderfragment, container, false)
+       // return super.onCreateView(inflater, container, savedInstanceState)
+
+        val view = inflater.inflate(R.layout.fragment_merchant_order, container, false)
 
         viewVisibility(view)
-
-        merchant_orderViewModel = ViewModelProviders.of(this).get(MerchantOrderViewModel::class.java)
-        merchant_orderViewModel.getOrderResponse().observe(this, Observer {
-            merchant_rec_order.adapter = MerchantOrderOpenAdapter(it.data, requireActivity(), this)
-            EventBus.getDefault().postSticky("OPEN_ACTIVE")
-        })
         return view
     }
-    override fun onItemClick(item: Data) {
+    /*override fun onItemClick(item: Data) {
         MoveToAnotherComponent.moveToMerchantOrderSummaryActivity(requireContext())
-    }
+    }*/
 
-    private fun viewVisibility(view: View){
+    /*private fun viewVisibility(view: View){
 
 
         view.merchant_layout_open_active.setOnClickListener {
@@ -61,5 +45,7 @@ class MerchantOrderFragment : Fragment() , RecyclerViewItemClick {
             })
 
         }
-    }
+    }*/
+
+
     }
