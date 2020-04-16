@@ -5,9 +5,9 @@ import android.content.Intent
 import android.os.Parcelable
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.rental.Constant
 import com.rental.agent.view.activity.*
 import com.rental.agent.view.fragment.AgentBookingsFragment
+//import com.rental.common.view.OrderSummaryActivity
 import com.rental.customer.dashboard.view.activity.*
 import com.rental.login.view.ForgotPasswordActivity
 import com.rental.login.view.OTPActivity
@@ -100,9 +100,9 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, ProfileActivity::class.java))
         }
 
-        fun moveToOrderSummaryActivity(context: Context){
+       /* fun moveToOrderSummaryActivity(context: Context){
             context.startActivity(Intent(context, OrderSummaryActivity::class.java))
-        }
+        }*/
 
         fun moveToAgentOrderSummaryActivity(context: Context){
             context.startActivity(Intent(context, AgentOrderSummaryActivity::class.java))

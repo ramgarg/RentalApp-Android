@@ -1,28 +1,19 @@
 package com.rental.common.view.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.rental.Constant
-import com.rental.R
-import com.rental.appbiz.AppBizLogger
-import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModel
-import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
-import com.rental.customer.dashboard.view.activity.OrderSummaryActivity
-import com.rental.common.view.adapter.OrderListAdapter
 import com.rental.customer.dashboard.viewmodel.CustomerOrderListViewModel
-import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.Common
-import kotlinx.android.synthetic.main.fragment_order_tamplate.*
-import kotlinx.android.synthetic.main.fragment_order_tamplate.view.*
+import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
+import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
 import org.greenrobot.eventbus.EventBus
 
 open abstract class OrderListFragment : BaseFragment() {
 
     /*override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-       val  view=inflater.inflate(R.layout.fragment_order_tamplate, container, false)
+       val  view=inflater.inflate(R.layout.fragment_order_list_tamplate, container, false)
 
         viewVisibility(view)
 
@@ -74,26 +65,10 @@ open abstract class OrderListFragment : BaseFragment() {
     }
 
 
-
-    override fun <T> onSuccessApiResult(data: T) {
-        //CustomerOrderListResModelItem
-
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
-
-          rec_order.adapter= OrderListAdapter(
-              data as CustomerOrderListResModel,
-              requireActivity(),
-              this
-          )
-
-        //default set view
-
-    }
-
-    override fun <T, K> onViewClick(type: T, where: K) {
+   /* override fun <T, K> onViewClick(type: T, where: K) {
        val item =  type as CustomerOrderListResModelItem
         MoveToAnotherComponent.moveToActivity<OrderSummaryActivity>(requireContext(),Constant.ORDER_SUMMERY_KEY,
             item.id)
-    }
+    }*/
 
 }

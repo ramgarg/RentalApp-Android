@@ -10,7 +10,7 @@ import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.customer.utils.Common
-import kotlinx.android.synthetic.main.row_closed_order.view.*
+import kotlinx.android.synthetic.main.customer_closed_order_row.view.*
 import kotlinx.android.synthetic.main.row_category.view.vehicle_name
 
 
@@ -42,7 +42,7 @@ class OrderClosedAdapter(val items:List<Data>, val context: Context, val recycle
         return ViewHolder(
             LayoutInflater.from(
                 context
-            ).inflate(R.layout.row_closed_order, parent, false)
+            ).inflate(R.layout.customer_closed_order_row, parent, false)
         )
     }
 

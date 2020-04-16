@@ -12,7 +12,7 @@ import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.agent_closed_order_row.view.*
-import kotlinx.android.synthetic.main.row_closed_order.view.tv_rate
+import kotlinx.android.synthetic.main.customer_closed_order_row.view.tv_rate
 
 class AgentCloseOrderAdapter(val items:List<Data> , val context: Context, val recyclerViewItemClick: RecyclerViewItemClick):
     RecyclerView.Adapter<AgentCloseOrderAdapter.ViewHolder>(){

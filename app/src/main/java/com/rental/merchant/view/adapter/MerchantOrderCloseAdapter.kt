@@ -11,7 +11,7 @@ import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.row_category.view.vehicle_name
-import kotlinx.android.synthetic.main.row_closed_order.view.*
+import kotlinx.android.synthetic.main.customer_closed_order_row.view.*
 
 class MerchantOrderCloseAdapter (val items:List<Data>, val context: Context, val recyclerViewItemClick: RecyclerViewItemClick):
     RecyclerView.Adapter<MerchantOrderCloseAdapter.ViewHolder>() {
@@ -35,7 +35,7 @@ class MerchantOrderCloseAdapter (val items:List<Data>, val context: Context, val
         return MerchantOrderCloseAdapter.ViewHolder(
             LayoutInflater.from(
                 context
-            ).inflate(R.layout.row_closed_order, parent, false)
+            ).inflate(R.layout.customer_closed_order_row, parent, false)
         )
     }
 

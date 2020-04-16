@@ -6,15 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
+import com.rental.common.view.adapter.OrderListBaseAdapter
+import com.rental.common.view.fragment.BaseFragment
+import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.RecyclerViewItemClick
-import kotlinx.android.synthetic.main.row_category.view.*
 
-class MerchantOrderOpenAdapter (val items:List<Data>, val context: Context, val recyclerViewItemClick: RecyclerViewItemClick):
-               RecyclerView.Adapter<MerchantOrderOpenAdapter.ViewHolder>() {
+class MerchantOrderStatusAdapter (val items: List<CustomerOrderListResModelItem>, override  val context: Context, override val baseFragment: BaseFragment):
+       OrderListBaseAdapter(items,context,baseFragment){
 
-    class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-        val tvVeichleName=view.vehicle_name
+    /*class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+//        val tvVeichleName=view.agent_order_vehicle_name
 
 
         fun bind(data: Data,clickListener: RecyclerViewItemClick)
@@ -24,22 +26,23 @@ class MerchantOrderOpenAdapter (val items:List<Data>, val context: Context, val 
             }
         }
 
-    }
+    }*/
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return MerchantOrderOpenAdapter.ViewHolder(
+        return ViewHolder(
             LayoutInflater.from(
                 context
-            ).inflate(R.layout.customer_open_order_row, parent, false)
+            ).inflate(R.layout.merchant_order_status_adapter, parent, false)
         )
     }
 
-    override fun getItemCount(): Int {
+   /* override fun getItemCount(): Int {
         return items.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AgentOrderStatusAdapter.ViewHolder, position: Int) {
         holder.tvVeichleName?.text=items.get(position).first_name
         holder.bind(items.get(position),recyclerViewItemClick)
-    }
+    }*/
 }

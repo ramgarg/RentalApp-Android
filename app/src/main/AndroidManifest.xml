@@ -109,7 +109,7 @@
                   android:screenOrientation="unspecified"
 
         />
-        <activity android:name=".customer.dashboard.view.activity.OrderSummaryActivity"
+        <activity android:name=".customer.dashboard.view.activity.CustomerOrderSummaryActivity"
                   android:screenOrientation="unspecified"
 
         />

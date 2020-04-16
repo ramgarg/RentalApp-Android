@@ -2,43 +2,28 @@ package com.rental.merchant.view.activity
 
 import android.os.Bundle
 import com.rental.R
-import com.rental.customer.dashboard.viewmodel.OrderSummaryViewModel
-import com.rental.customer.utils.Common
+import com.rental.common.view.OrderBaseSummaryActivity
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.ViewVisibility
-import com.rental.merchant.MerchantBaseActivity
-import kotlinx.android.synthetic.main.merchant_order_summary.*
-import kotlinx.android.synthetic.main.order_summary_activity.*
-import kotlinx.android.synthetic.main.order_summary_activity.tv_end_date_sel
-import kotlinx.android.synthetic.main.order_summary_activity.tv_end_time_sel
-import kotlinx.android.synthetic.main.order_summary_activity.tv_st_date_sel
-import kotlinx.android.synthetic.main.order_summary_activity.tv_st_time_sel
+import kotlinx.android.synthetic.main.order_summary_template.*
 import kotlinx.android.synthetic.main.toolbar.*
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
-class MerchantOrderSummaryActivity :MerchantBaseActivity() {
+class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
-    lateinit var orderSummaryViewModel: OrderSummaryViewModel
+//    lateinit var orderSummaryViewModel: OrderSummaryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.merchant_order_summary)
-
-//        orderSummaryViewModel=ViewModelProviders.of(this).get(OrderSummaryViewModel::class.java)
-//        orderSummaryViewModel.getOrderSummaryResponse().observe(this, Observer {
-//            //Here response will come form api
-        setResponseViews()
-//        })
+        setContentView(R.layout.activity_merchant_order_summary)
+       /* setResponseViews()
 
         ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
             toolbar_title, getString(R.string.order_summary)
         )
 
-        clickListenerOnViews()
+        clickListenerOnViews()*/
 
     }
 
@@ -56,7 +41,7 @@ class MerchantOrderSummaryActivity :MerchantBaseActivity() {
 
     }
 
-    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+   /* @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     fun messageReceive(customEvent: String?) {
         if (customEvent.equals("OPEN_ACTIVE")) {
             Common.hideGroupViews(
@@ -81,9 +66,9 @@ class MerchantOrderSummaryActivity :MerchantBaseActivity() {
             Common.hideGroupViews(layout_driver)
         }
 
-    }
+    }*/
 
-    override fun onStart() {
+    /*override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
     }
@@ -91,5 +76,5 @@ class MerchantOrderSummaryActivity :MerchantBaseActivity() {
     override fun onPause() {
         super.onPause()
         EventBus.getDefault().unregister(this)
-    }
+    }*/
 }
