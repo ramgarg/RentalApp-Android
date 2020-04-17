@@ -1,6 +1,5 @@
 package com.rental.common.view
 
-import android.os.Bundle
 import com.rental.Constant
 import com.rental.R
 import com.rental.appbiz.AppBizLogger
@@ -14,18 +13,6 @@ import org.greenrobot.eventbus.ThreadMode
 
 
 open abstract class OrderBaseSummaryActivity : BaseActivity() {
-//     private var productID:Int?=-1
-
-//    lateinit var orderSummaryViewModel :OrderSummaryViewModel
-
-
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        //setContentView(R.layout.activity_customer_order_summary)
-
-    }*/
-
 
     private fun clickListenerOnViews(){
       //  tv_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
@@ -93,18 +80,6 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
     }
 
-   /* private fun callAPIOrderList(id: Int){
-
-        callAPI()?.let {
-            it.observeApiResult(
-                it.callAPIActivity<CustomerOrderDetailsViewModel>(this)
-                    .getOrderDetails(id!!)
-                , this, this
-            )
-
-        }
-
-    }*/
 
     override fun <T> onSuccessApiResult(data: T) {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
