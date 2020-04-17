@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        >
+
+    <TextView
+            android:id="@+id/order_product_name"
+
+            android:text="@string/volvo_fh_truck"
+            style="@style/DocumentTextView"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+                android:id="@+id/booking_price"
+
+                android:layout_width="wrap_content"
+                android:text="@string/booking_n_price"
+                android:textColor="@color/black"
+
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/bree_serif"
+                android:layout_height="@dimen/_50sdp"/>
+
+        <TextView
+                android:id="@+id/order_order_price"
+                android:fontFamily="@font/bree_serif"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textSize="@dimen/_24sdp"
+                android:text="@string/booking_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/order_tax_included"
+                android:fontFamily="@font/bree_serif"
+                android:textColor="@color/text_blue"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/tax_included"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+            android:id="@+id/order_id"
+
+            android:fontFamily="@font/bree_serif"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp"
+            android:text="@string/orderid"
+            android:layout_width="match_parent"
+            android:drawableBottom="@drawable/dotted_line"
+            android:layout_height="wrap_content"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
+        <TextView
+                android:id="@+id/order_product_quantity"
+                android:fontFamily="@font/bree_serif"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp"
+                android:text="@string/truck_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/order_rate_review"
+
+                android:layout_marginStart="@dimen/_30sdp"
+
+                android:fontFamily="@font/bree_serif"
+                android:textColor="@color/white"
+                android:visibility="invisible"
+                android:background="@drawable/button_gradient"
+                android:textSize="@dimen/_15sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:paddingRight="@dimen/_5sdp"
+                android:text="@string/rate_amp_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>
