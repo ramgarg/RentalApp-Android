@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:weightSum="100"
+            android:orientation="horizontal">
+
+        <ImageView android:layout_width="@dimen/_50sdp"
+                android:layout_weight="10"
+                android:id="@+id/customer_profile_pic"
+                android:src="@mipmap/profile_pic"
+                android:layout_height="@dimen/_50sdp"/>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="75"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_height="@dimen/_65sdp"
+                android:orientation="vertical">
+
+            <TextView
+                    android:text="@string/ajeer_mohammed"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:id="@+id/customer_user_name"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_16sdp"
+                    android:layout_height="@dimen/_25sdp"/>
+
+            <TextView
+                    android:text="@string/customer"
+                    android:textColor="@color/mdtp_transparent_black"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:textSize="@dimen/_14sdp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+

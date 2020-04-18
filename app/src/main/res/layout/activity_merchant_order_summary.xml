@@ -1,11 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <include
+        android:layout_height="match_parent"
+
+        >
+    <include layout="@layout/toolbar"
+            android:id="@+id/toolbar"
+    />
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            layout="@layout/order_summary_template"
-            />
+            android:layout_below="@+id/toolbar"
+            android:padding="@dimen/_10sdp"
+            >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+            <include
+                    android:id="@+id/lyt_top_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/template_order_summery_top_view"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+            <include
+                    android:id="@+id/lyt_middle_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/adapter_user_order_summery"
+                    app:layout_constraintTop_toBottomOf="@+id/lyt_top_view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_16sdp"
+
+                    />
+            <include
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/template_work_info"
+                    app:layout_constraintTop_toBottomOf="@+id/lyt_middle_view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </RelativeLayout>

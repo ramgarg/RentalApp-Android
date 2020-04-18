@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar"
+            android:id="@+id/toolbar"/>
+
+    <TextView
+            android:id="@+id/agent_asign_merchant_btn"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/button_gradient"
+            android:fontFamily="@font/bree_serif"
+            android:text="@string/assign_merchant"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+
+    <TextView
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/booking_price"
+            android:id="@+id/tv_pay_now"
+            android:paddingLeft="@dimen/_5sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:fontFamily="@font/bree_serif"
+            android:textColor="@color/white"
+            android:background="@drawable/button_gradient"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@string/pay_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv_vehicle_name"
+            android:id="@+id/tv_view_history"
+            android:fontFamily="@font/bree_serif"
+            android:textColor="@color/text_blue"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@string/view_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+
+
+</LinearLayout>
