@@ -16,6 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/merchant_toolbar_header"
+                android:layout_above="@+id/bottom_navigation_view_merchant"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:id="@+id/main_container">
 

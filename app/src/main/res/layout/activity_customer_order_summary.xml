@@ -29,12 +29,25 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/order_dotted_line"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/dotted_line"
+                    app:layout_constraintTop_toBottomOf="@+id/lyt_top_view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/lyt_middle_view">
+
+            </TextView>
+
     <include
             android:id="@+id/lyt_middle_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
             layout="@layout/adapter_user_order_summery"
-            app:layout_constraintTop_toBottomOf="@+id/lyt_top_view"
+            app:layout_constraintTop_toBottomOf="@+id/order_dotted_line"
             app:layout_constraintStart_toStartOf="parent"
 
             />

@@ -22,7 +22,7 @@ open abstract class BaseActivity: AppCompatActivity(),ApiResult,ClickDailogListe
 
         super.onCreate(savedInstanceState)
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+       // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
     }
 

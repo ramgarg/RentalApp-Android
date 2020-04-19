@@ -1,11 +1,15 @@
 package com.rental.merchant.view.activity
 
 import android.os.Bundle
+import android.view.View
 import com.rental.R
+import com.rental.appbiz.AppBizLogger
 import com.rental.common.view.OrderBaseSummaryActivity
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.order_summary_template.*
+import kotlinx.android.synthetic.main.template_order_summery_top_view.*
+import kotlinx.android.synthetic.main.testingxml.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
@@ -16,6 +20,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_merchant_order_summary)
+        customer_payment_button.visibility=View.INVISIBLE
        /* setResponseViews()
 
         ViewVisibility.isVisibleOrNot(
@@ -25,6 +30,10 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         clickListenerOnViews()*/
 
+    }
+
+    override fun <T> moveOnSelecetedItem(type: T) {
+        TODO("Not yet implemented")
     }
 
     private fun clickListenerOnViews(){
@@ -39,6 +48,10 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         tv_end_date_sel.text="12 Feb 2020"
         tv_end_time_sel.text="3:00pm"
 
+    }
+
+    override fun <T> onSuccessApiResult(data: T) {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
     }
 
    /* @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)

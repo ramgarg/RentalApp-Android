@@ -192,6 +192,10 @@
     <string name="day">Day</string>
     <string name="closed_orders">Closed Orders</string>
     <string name="please_wait">Please wait ...</string>
+    <string name="lorem_ipsum">Lorem Ipsum is simply too is and setting industry.</string>
+    <string name="submit_request">Submit Request</string>
+    <string name="work_start_and">Work Start And End Date</string>
+    <string name="request_a_payment">Request a Payment</string>
 
     <string-array name="SelectType">
     <item>Select Type</item>

@@ -4,8 +4,10 @@ import android.os.Bundle
 import com.rental.R
 import com.rental.appbiz.AppBizLogger
 import com.rental.common.view.OrderBaseSummaryActivity
+import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.order_summary_template.*
+import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
@@ -31,14 +33,14 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         ViewVisibility.isVisibleOrNot(this, img_back, img_menu, img_notification,
             toolbar_title, getString(R.string.order_summary))
-
-        clickListenerOnViews()*/
+*/
+        clickListenerOnViews()
 
     }
 
     private fun clickListenerOnViews(){
       //  tv_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
-      //  tv_pay_now.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
+        customer_payment_button.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
     }
 
     private fun setResponseViews(){

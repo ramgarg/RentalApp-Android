@@ -19,49 +19,11 @@
                     android:layout_width="match_parent"
                     android:background="@drawable/button_order"
                     android:layout_height="wrap_content">
-                <ImageView
-                        android:id="@+id/img_customer_pic"
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:background="@android:color/transparent"
-                        android:src="@mipmap/profile_pic"
-                        android:layout_alignParentTop="true"
-                        />
-
-                <TextView
-                        android:id="@+id/tv_customer_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/fathi_asfour"
-                        android:layout_marginTop="@dimen/_12sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        style="@style/AgentBoldTextCard"
-                        android:layout_toEndOf="@+id/img_customer_pic"
-                        />
-                <TextView
-                        android:id="@+id/tv_customer_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/customer"
-                        style="@style/AgentSmallTextCard"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_toEndOf="@+id/img_customer_pic"
-                        android:layout_below="@+id/tv_customer_name"/>
-                <ImageView
-                        android:id="@+id/img_agent_call"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_12sdp"
-                        android:layout_alignParentEnd="true"
-                        android:src="@mipmap/call"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        />
 
 
                 <TextView android:layout_width="match_parent"
                         android:text="@string/volvo_fh_truck"
                         android:id="@+id/agent_order_vehicle_name"
-                        android:layout_below="@id/img_customer_pic"
                         style="@style/DocumentTextView"/>
 
                 <TextView android:layout_width="wrap_content"

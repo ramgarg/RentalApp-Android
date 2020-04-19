@@ -38,7 +38,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="@dimen/_80sdp"
             android:id="@+id/vehicle_image"
-            android:background="@mipmap/category_vehicle"
             android:layout_height="@dimen/_70sdp"/>
 </FrameLayout>
         </RelativeLayout>

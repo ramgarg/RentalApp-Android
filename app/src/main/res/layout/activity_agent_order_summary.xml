@@ -20,20 +20,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 >
+            <TextView
+                    android:id="@+id/agent_update_order_btn"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toTopOf="@id/lyt_top_view"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/payment_status"
+                    android:fontFamily="@font/bree_serif"
+                    android:text="@string/update"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
             <include
                     android:id="@+id/lyt_top_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     layout="@layout/template_order_summery_top_view"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/agent_update_order_btn"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="@dimen/_16sdp"
                     />
             <LinearLayout
                     android:id="@+id/lyt_middle_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/lyt_top_view"
                     app:layout_constraintStart_toStartOf="parent"
                     android:gravity="center"
@@ -42,20 +55,48 @@
             <TextView
                     android:id="@+id/agent_asign_merchant_btn"
                     android:layout_width="@dimen/_200sdp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_gravity="center"
                     android:background="@drawable/button_gradient"
                     android:fontFamily="@font/bree_serif"
-                    android:text="@string/assign_merchant"
+                    android:text="@string/request_a_payment"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16sdp" />
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/order_dotted_line"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/dotted_line">
+
+                </TextView>
             </LinearLayout>
+            <include
+                    android:id="@+id/lyt_middle_view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/adapter_user_order_summery"
+                    app:layout_constraintTop_toBottomOf="@+id/lyt_middle_view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_16sdp"
+
+                    />
+            <include
+                    android:id="@+id/lyt_middle_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/adapter_agent_merchant_order_summary"
+                    app:layout_constraintTop_toBottomOf="@+id/lyt_middle_view1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_16sdp"
+
+                    />
             <include
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     layout="@layout/template_work_info"
-                    app:layout_constraintTop_toBottomOf="@+id/lyt_middle_view"
+                    app:layout_constraintTop_toBottomOf="@+id/lyt_middle_view2"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/_16sdp"
                     />

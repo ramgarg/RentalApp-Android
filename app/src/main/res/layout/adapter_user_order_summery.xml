@@ -27,7 +27,7 @@
                     android:textColor="@color/black"
                     android:id="@+id/customer_user_name"
                     android:layout_width="wrap_content"
-                    android:textSize="@dimen/_16sdp"
+                    android:textSize="@dimen/_14sdp"
                     android:layout_height="@dimen/_25sdp"/>
 
             <TextView
@@ -36,8 +36,20 @@
                     android:layout_width="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_height="@dimen/_20sdp"
-                    android:textSize="@dimen/_14sdp"/>
+                    android:textSize="@dimen/_12sdp"/>
 
         </LinearLayout>
-    </LinearLayout>
+    <ImageView
+            android:id="@+id/img_agent_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:src="@mipmap/call"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            />
+
+</LinearLayout>
 

@@ -87,7 +87,7 @@
     <LinearLayout
             android:id="@+id/agen_bottom_white_bg"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_200sdp"
+            android:layout_height="@dimen/_160sdp"
             android:background="@drawable/shap_rectangle_agent_bottom_home"
             android:gravity="center"
             android:orientation="vertical"
@@ -108,9 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_6sdp"
-                android:layout_marginRight="@dimen/_6sdp"
-                android:layout_marginBottom="@dimen/_45sdp"
-                >
+                android:layout_marginRight="@dimen/_6sdp">
 
             <LinearLayout
                     android:id="@+id/lnr_first"

@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -16,10 +16,10 @@
         <FrameLayout
                 android:id="@+id/main_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar_header_agent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                app:layout_constraintLeft_toLeftOf="parent">
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar_header_agent"
+                android:layout_above="@+id/bottom_navigation_view_agent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         </FrameLayout>
 <!--top tool barr header-->
@@ -27,9 +27,8 @@
                 android:id="@+id/toolbar_header_agent"
                 layout="@layout/toolbar"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_60sdp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_alignParentTop="true"
                 android:visibility="visible"
                 />
 <!-- Bottom navigation bar-->
@@ -37,17 +36,15 @@
                 android:id="@+id/bottom_navigation_view_agent"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_60sdp"
+                android:layout_alignParentBottom="true"
                 app:menu="@menu/bottom_menu_agent"
                 app:itemTextColor="@drawable/item_selector"
                 app:itemIconTint="@drawable/item_selector"
                 android:background="@drawable/bottom_navigation_gradient"
-                app:labelVisibilityMode="labeled"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 >
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>>
 <!--drawer layout naviagtion view left side-->
     <com.google.android.material.navigation.NavigationView
             android:id="@+id/agent_navigation_view"
