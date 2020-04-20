@@ -1,4 +1,4 @@
-package com.rental.merchant.model.modelclass
+package com.rental.common.model.modelclass
 
 data class Booking(
     val customer_detail: CustomerDetail,

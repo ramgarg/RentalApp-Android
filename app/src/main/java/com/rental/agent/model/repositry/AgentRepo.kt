@@ -6,7 +6,6 @@ import com.rental.agent.model.repositry.api.AgentAPI
 import com.rental.appbiz.retrofitapi.DataWrapper
 import com.rental.appbiz.retrofitapi.GenericRequestHandler
 import com.rental.common.model.modelclass.ProductCategoriesResModel
-import com.rental.merchant.model.modelclass.MerchantDashboardResModel
 import com.rental.merchant.model.repository.api.MerchantAPI
 import com.rental.webservice.ServiceGenrator
 

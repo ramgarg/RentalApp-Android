@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
-import com.rental.merchant.model.modelclass.Booking
+import com.rental.common.model.modelclass.Booking
 import kotlinx.android.synthetic.main.card_view_orders.view.*
 
 class DashboardBookingCardAdapter (val orderListing: MutableList<Booking>, val context: Context) : RecyclerView.Adapter<DashboardBookingCardAdapter.CardViewHolder>() {

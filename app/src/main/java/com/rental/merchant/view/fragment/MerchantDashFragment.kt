@@ -11,8 +11,8 @@ import com.rental.appbiz.AppBizLogger
 import com.rental.common.view.fragment.BaseFragment
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
-import com.rental.merchant.model.modelclass.Booking
-import com.rental.merchant.model.modelclass.MerchantDashboardResModel
+import com.rental.common.model.modelclass.Booking
+import com.rental.common.model.modelclass.MerchantDashboardResModel
 import com.rental.common.view.adapter.DashboardBookingCardAdapter
 import com.rental.merchant.viewModel.MerchantDashboardViewModel
 import kotlinx.android.synthetic.main.merchant_fragment_dash.*

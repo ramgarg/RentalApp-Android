@@ -1,10 +1,9 @@
 package com.rental.merchant.model.repository.api
 
-import com.rental.common.model.modelclass.MasterResModel
 import com.rental.common.model.modelclass.ProductCategoriesResModel
 import com.rental.common.model.modelclass.ProductDetailsResModel
 import com.rental.common.model.modelclass.ProductSubCategoriesResModel
-import com.rental.merchant.model.modelclass.MerchantDashboardResModel
+import com.rental.common.model.modelclass.MerchantDashboardResModel
 import com.rental.webservice.PathURL
 import retrofit2.Call
 import retrofit2.http.GET

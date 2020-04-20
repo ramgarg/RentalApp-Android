@@ -1,18 +1,15 @@
 package com.rental.common.view.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rental.R
 import com.rental.ValidationMessage
 import com.rental.agent.model.modelclass.AgentDashboardResModel
 import com.rental.agent.viewmodel.AgentDashboardViewModel
 import com.rental.appbiz.AppBizLogger
 import com.rental.common.view.adapter.DashboardBookingCardAdapter
 import com.rental.customer.utils.Common
-import com.rental.merchant.model.modelclass.Booking
+import com.rental.common.model.modelclass.Booking
 import kotlinx.android.synthetic.main.fragment_agent_dashboard.*
 import kotlinx.android.synthetic.main.merchant_fragment_dash.*
 
