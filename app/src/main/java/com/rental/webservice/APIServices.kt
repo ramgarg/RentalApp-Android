@@ -87,6 +87,6 @@ interface APIServices {
 
 
     // agent order lsiting
-    @GET(PathURL.ORDER_LISTING)
-    fun getOrderListing(): Call<OrderListing>
+    /*@GET(PathURL.ORDER_LISTING)
+    fun getOrderListing(): Call<OrderListing>*/
 }

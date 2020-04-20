@@ -1,4 +1,4 @@
-package com.rental.merchant.view.adapter
+package com.rental.common.view.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
-import com.rental.common.model.modelclass.Order_listing
+import com.rental.merchant.model.modelclass.Booking
 import kotlinx.android.synthetic.main.card_view_orders.view.*
 
-class RecycleAdapterMerchantHomeCard (val orderListing: MutableList<Order_listing>, val context: Context) : RecyclerView.Adapter<RecycleAdapterMerchantHomeCard.CardViewHolder>() {
+class DashboardBookingCardAdapter (val orderListing: MutableList<Booking>, val context: Context) : RecyclerView.Adapter<DashboardBookingCardAdapter.CardViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val card_view = CardViewHolder(LayoutInflater.from(context).inflate(R.layout.card_view_orders, parent, false))
+        val card_view =
+            CardViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.card_view_orders, parent, false)
+            )
         return card_view
     }
 
@@ -19,7 +22,7 @@ class RecycleAdapterMerchantHomeCard (val orderListing: MutableList<Order_listin
         return orderListing.size
     }
 
-    override fun onBindViewHolder(holder: RecycleAdapterMerchantHomeCard.CardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
 
         val order_listing_obj =  orderListing.get(position)
 

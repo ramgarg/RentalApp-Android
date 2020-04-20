@@ -44,9 +44,37 @@ class PathURL {
         const val MakePayment      = "/customer/payment/"
         const val PaymentList      = "/customer/payments"
         const val CustomerFeedback = "/customer/feedback"
+        
+        
+        //Merchant
+        const val MerchantDashboard       = "/merchant/merchant_dashboard"
+        const val MerchantProductCategory = "/merchant/products"
+        const val MerchantProducts        = "/merchant/products/"
+        const val DeleteProduct           = "/merchant/product_detail/"
+
+        const val MerchantGetProduct   = "/merchant/product_detail/"
+        const val MerchantAddProduct   = "/merchant/add_product"
+        const val MerchantNotifyAdmin  = "/merchant/merchant_product_suggestion"
+        const val MerchantUpdateProduct = "/merchant/product_detail/"
+        const val MerchantOrders       = "/merchant/orders/"
+        const val MerchantOrderDetail  = "/merchant/order_detail/"
+        const val MerchantFeedback     = "/merchant/feedback"
 
         //agent module
-        const val ORDER_LISTING = "order_lisitng"
+        const val AgentDashboard                = "/agent/agent_dashboard"
+        const val AgentMyBookings               = "/agent/bookings"
+        const val AgentBookingDetail            = "/agent/booking_detail/"
+
+        const val AgentPendingOrdersAcceptance  = "/agent/booking_action"
+        const val AgentOrders                   = "/agent/orders/"
+        const val AgentOrderDetail              = "/agent/order_detail/"
+        const val AgentUpdateOrder              = "/agent/order_detail/"
+        const val AgentMerchants                = "/agent/find_nearby_merchants/"
+        const val AssignMerchants               = "/agent/assign_merchant"
+        const val AgentRequestPayment           = "/agent/request_payment"
+        const val AgentFeedback                 = "/agent/feedback"
+        const val AgentPayments                 = "/agent/payments/"
+        const val AgentCollectCashPayment       = "/agent/collect_cash_payment"
 
     }
 }
