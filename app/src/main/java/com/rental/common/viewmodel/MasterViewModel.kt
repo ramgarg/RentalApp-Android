@@ -11,6 +11,7 @@ import com.rental.common.model.repositry.MasterRepo
 import com.rental.common.model.repositry.ProductCategoriesRepo
 import com.rental.common.model.repositry.ProductDetailsRepo
 import com.rental.common.model.repositry.ProductSubCategoriesRepo
+import com.rental.merchant.model.repository.MerchantProductCategoriesRepo
 
 class MasterDataViewModel : ViewModel() {
 
@@ -24,6 +25,7 @@ class ProductCategoriesViewModel : ViewModel() {
     fun getProductCateg(name:String): LiveData<DataWrapper<ProductCategoriesResModel>> {
         return ProductCategoriesRepo().getProductCateg(name)
     }
+
 }
 
 class ProductSubCategoriesViewModel : ViewModel() {
