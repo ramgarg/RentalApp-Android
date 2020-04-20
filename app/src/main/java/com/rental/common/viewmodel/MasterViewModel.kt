@@ -3,15 +3,8 @@ package com.rental.common.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.rental.appbiz.retrofitapi.DataWrapper
-import com.rental.common.model.modelclass.MasterResModel
-import com.rental.common.model.modelclass.ProductCategoriesResModel
-import com.rental.common.model.modelclass.ProductDetailsResModel
-import com.rental.common.model.modelclass.ProductSubCategoriesResModel
-import com.rental.common.model.repositry.MasterRepo
-import com.rental.common.model.repositry.ProductCategoriesRepo
-import com.rental.common.model.repositry.ProductDetailsRepo
-import com.rental.common.model.repositry.ProductSubCategoriesRepo
-import com.rental.merchant.model.repository.MerchantProductCategoriesRepo
+import com.rental.common.model.modelclass.*
+import com.rental.common.model.repositry.*
 
 class MasterDataViewModel : ViewModel() {
 
@@ -39,6 +32,13 @@ class ProductDetailsViewModel : ViewModel() {
 
     fun getProductDetails(id: Int): LiveData<DataWrapper<ProductDetailsResModel>> {
         return ProductDetailsRepo().getProductDeatils(id)
+    }
+}
+
+class BookingDashboardViewModel : ViewModel() {
+
+    fun getDashboard(value: Int): LiveData<DataWrapper<BookingDashboardResModel>> {
+        return BookingDashboardRepo().getDeshboardData(value)
     }
 }
 

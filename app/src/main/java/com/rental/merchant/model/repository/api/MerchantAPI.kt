@@ -3,7 +3,7 @@ package com.rental.merchant.model.repository.api
 import com.rental.common.model.modelclass.ProductCategoriesResModel
 import com.rental.common.model.modelclass.ProductDetailsResModel
 import com.rental.common.model.modelclass.ProductSubCategoriesResModel
-import com.rental.common.model.modelclass.MerchantDashboardResModel
+import com.rental.common.model.modelclass.BookingDashboardResModel
 import com.rental.webservice.PathURL
 import retrofit2.Call
 import retrofit2.http.GET
@@ -12,7 +12,7 @@ import retrofit2.http.Path
 interface MerchantAPI {
 
     @GET(PathURL.MerchantDashboard)
-    fun getMerchantDashboradData(): Call<MerchantDashboardResModel>
+    fun getMerchantDashboradData(): Call<BookingDashboardResModel>
 
     // categories list by category name
     @GET(PathURL.MerchantProductCategory)

@@ -4,20 +4,11 @@ import androidx.lifecycle.LiveData
 import com.rental.appbiz.retrofitapi.DataWrapper
 import com.rental.appbiz.retrofitapi.GenericRequestHandler
 import com.rental.common.model.modelclass.ProductCategoriesResModel
-import com.rental.common.model.modelclass.MerchantDashboardResModel
+import com.rental.common.model.modelclass.BookingDashboardResModel
 import com.rental.merchant.model.repository.api.MerchantAPI
 import com.rental.webservice.ServiceGenrator
 
-class MerchantDeshboardRepo :GenericRequestHandler<MerchantDashboardResModel>(){
 
-    fun getDeshboardData(): LiveData<DataWrapper<MerchantDashboardResModel>> {
-//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
-        val call = ServiceGenrator.client.create(MerchantAPI::class.java).getMerchantDashboradData()
-        return doRequest(call)
-    }
-
-
-}
 
 class MerchantProductCategoriesRepo : GenericRequestHandler<ProductCategoriesResModel>(){
 

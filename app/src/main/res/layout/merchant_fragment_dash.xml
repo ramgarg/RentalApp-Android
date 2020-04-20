@@ -38,18 +38,29 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_15sdp"
             />
-    <androidx.recyclerview.widget.RecyclerView
+
+    <!--booking adapter view-->
+    <include layout="@layout/booking_dashboard_adapter_view"
+
+            app:layout_constraintStart_toStartOf="@+id/top_profile_section"
+            app:layout_constraintTop_toBottomOf="@+id/top_profile_section"
+            />
+    <!--white Bottom view-->
+
+    <include layout="@layout/booking_deshboard_bottom_view"/>
+
+   <!-- <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle_view_merchant_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_merchant_message"
             app:layout_constraintStart_toStartOf="@+id/tv_merchant_message"
             android:layout_marginTop="@dimen/_20sdp"
-            />
+            />-->
 
     <!--Bottom View -->
 
-    <Button
+    <!--<Button
             android:id="@+id/btn_merchant_home_view_all"
             style="@style/AgentButtonCard"
             android:layout_width="wrap_content"
@@ -60,11 +71,11 @@
             app:layout_constraintBottom_toTopOf="@+id/merchant_bottom_white_bg"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycle_view_merchant_home" />
+            app:layout_constraintTop_toBottomOf="@+id/recycle_view_merchant_home" />-->
 
     <!--white Bottom view-->
 
-    <LinearLayout
+    <!--<LinearLayout
             android:id="@+id/merchant_bottom_white_bg"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_160sdp"
@@ -171,7 +182,7 @@
 
         </RelativeLayout>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,14 @@
 package com.rental.agent.model.repositry
 
 import androidx.lifecycle.LiveData
-import com.rental.agent.model.modelclass.AgentDashboardResModel
-import com.rental.agent.model.repositry.api.AgentAPI
+
 import com.rental.appbiz.retrofitapi.DataWrapper
 import com.rental.appbiz.retrofitapi.GenericRequestHandler
 import com.rental.common.model.modelclass.ProductCategoriesResModel
 import com.rental.merchant.model.repository.api.MerchantAPI
 import com.rental.webservice.ServiceGenrator
 
-class AgentDashboardRepo :GenericRequestHandler<AgentDashboardResModel>(){
+/*class AgentDashboardRepo :GenericRequestHandler<AgentDashboardResModel>(){
 
     fun getDeshboardData(): LiveData<DataWrapper<AgentDashboardResModel>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
@@ -18,7 +17,7 @@ class AgentDashboardRepo :GenericRequestHandler<AgentDashboardResModel>(){
     }
 
 
-}
+}*/
 
 class MerchantProductCategoriesRepo : GenericRequestHandler<ProductCategoriesResModel>(){
 

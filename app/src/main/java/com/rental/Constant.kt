@@ -21,5 +21,9 @@ interface Constant{
         const val CLOSE_ORDER =3
         const val ORDER_SUMMERY_KEY ="orders_id"
 
+        //Booking Dashboard
+        const val BOOKING_DASHBOARD_AGENT =1
+        const val BOOKING_DASHBOARD_MERCHANT =2
+
     }
 }

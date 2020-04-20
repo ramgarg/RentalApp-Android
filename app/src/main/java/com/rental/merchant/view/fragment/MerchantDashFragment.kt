@@ -1,73 +1,34 @@
 package com.rental.merchant.view.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.rental.R
-import com.rental.ValidationMessage
-import com.rental.appbiz.AppBizLogger
-import com.rental.common.view.fragment.BaseFragment
-import com.rental.customer.utils.Common
-import com.rental.customer.utils.MoveToAnotherComponent
-import com.rental.common.model.modelclass.Booking
-import com.rental.common.model.modelclass.MerchantDashboardResModel
-import com.rental.common.view.adapter.DashboardBookingCardAdapter
-import com.rental.merchant.viewModel.MerchantDashboardViewModel
-import kotlinx.android.synthetic.main.merchant_fragment_dash.*
+import com.rental.Constant
+import com.rental.common.view.fragment.DashboardBaseFragment
 
-class MerchantDashFragment : BaseFragment() {
+class MerchantDashFragment : DashboardBaseFragment() {
 
    // private lateinit var merchantDashboardViewModel: MerchantDashboardViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+   /* override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.merchant_fragment_dash, container, false)
 
-      //  merchantDashboardViewModel = ViewModelProviders.of(this).get(MerchantDashboardViewModel::class.java)
-
-   //     merchantDashboardViewModel.getmerchantHomeOrderList().observe(this, Observer {
-
-            /*recycle_view_merchant_home.layoutManager = LinearLayoutManager(
-                requireActivity(),
-                LinearLayoutManager.HORIZONTAL, false
-            )
-            (recycle_view_merchant_home.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
-                1,
-                1
-            )*/
-
-            /*val recycleAdapterMerchantHomeCard = RecycleAdapterMerchantHomeCard(
-                it.order_listing as MutableList<Order_listing>,
-                requireActivity()
-            )
-
-            recycle_view_merchant_home.adapter = recycleAdapterMerchantHomeCard*/
-
-      //  })
-
         return view
-    }
+    }*/
 
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        callAPI()?.let {
-            it.observeApiResult(
-                it.callAPIFragment<MerchantDashboardViewModel>(this).getMerchantDashboard()
-                , viewLifecycleOwner, requireActivity()
-            )
-        }
+        callAPIDashboard(Constant.BOOKING_DASHBOARD_MERCHANT)
+
 
     }
 
-    override fun <T> onSuccessApiResult(data: T) {
+    /*override fun <T> onSuccessApiResult(data: T) {
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
-        val merchantDashboardResponse = data as MerchantDashboardResModel
+        val merchantDashboardResponse = data as BookingDashboardResModel
 
         if(merchantDashboardResponse.bookings.isEmpty()) {
             Common.showToast(requireContext(),ValidationMessage.NO_DATA_FOUND)
@@ -80,7 +41,7 @@ class MerchantDashFragment : BaseFragment() {
 
     }
 
-   private fun setBookingAdapterDashboard(merchantDashboardResponse: MerchantDashboardResModel) {
+   private fun setBookingAdapterDashboard(bookingDashboardResponse: BookingDashboardResModel) {
        recycle_view_merchant_home.layoutManager = LinearLayoutManager(
            requireActivity(),
            LinearLayoutManager.HORIZONTAL, false
@@ -92,20 +53,20 @@ class MerchantDashFragment : BaseFragment() {
 
        val recycleAdapterMerchantHomeCard =
            DashboardBookingCardAdapter(
-               merchantDashboardResponse.bookings as MutableList<Booking>,
+               bookingDashboardResponse.bookings as MutableList<Booking>,
                requireActivity()
            )
 
        recycle_view_merchant_home.adapter = recycleAdapterMerchantHomeCard
     }
-    private fun setBookingStatus(merchantDashboardResponse: MerchantDashboardResModel) {
-        complete_value.text = ""+merchantDashboardResponse.completed_orders_count
-        in_progress_value.text = ""+merchantDashboardResponse.in_progress_orders_count
-        reject_value.text = ""+merchantDashboardResponse.rejected_orders_count
+    private fun setBookingStatus(bookingDashboardResponse: BookingDashboardResModel) {
+        complete_value.text = ""+bookingDashboardResponse.completed_orders_count
+        in_progress_value.text = ""+bookingDashboardResponse.in_progress_orders_count
+        reject_value.text = ""+bookingDashboardResponse.rejected_orders_count
     }
 
     override fun <T, K> onViewClick(type: T, where: K) {
         MoveToAnotherComponent.moveToCategoryActivity(requireContext())
-    }
+    }*/
 
 }
