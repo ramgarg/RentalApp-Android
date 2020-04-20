@@ -3,6 +3,7 @@ package com.rental.customer.dashboard.view.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -15,6 +16,7 @@ import com.rental.customer.dashboard.view.fragment.*
 import com.rental.customer.utils.Common.Companion.showLoading
 import com.rental.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.customer_closed_order_row.*
 import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -88,15 +90,16 @@ class CustomerMainActivity :BaseActivity(), NavigationView.OnNavigationItemSelec
                 supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
                 toolbar_title.text=getString(R.string.order)
+
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.navigation_profile -> {
+            R.id.navigation_bookings -> {
                 showLoading(this,layout_loading,img_gif)
-                val fragment = ProfieFragment()
+                val fragment = CustomerBookingsFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
                     .commit()
-                toolbar_title.text=getString(R.string.profie)
+                toolbar_title.text=getString(R.string.bookings)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_support -> {

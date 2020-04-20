@@ -5,6 +5,9 @@ import android.view.View
 import com.rental.Constant
 import com.rental.customer.dashboard.viewmodel.CustomerOrderListViewModel
 import com.rental.customer.utils.Common
+import com.rental.customer.utils.MoveToAnotherComponent
+import kotlinx.android.synthetic.main.adapter_order_status_template.*
+import kotlinx.android.synthetic.main.customer_closed_order_row.*
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
 import org.greenrobot.eventbus.EventBus
@@ -57,6 +60,9 @@ open abstract class OrderListFragment : BaseFragment() {
             Common.showGroupViews(layout_open_inactive,layout_close_active)
             Common.hideGroupViews(layout_close_inactive,layout_open_active)
             EventBus.getDefault().postSticky("CLOSE_ACTIVE")
+            //tv_payment_pending.visibility=View.INVISIBLE
+           // tv_rate.visibility= View.VISIBLE
+           // tv_rate.setOnClickListener { MoveToAnotherComponent.moveToOrderReviewActivity(requireContext()) }
 
             callAPIOrderList(Constant.CLOSE_ORDER)
 

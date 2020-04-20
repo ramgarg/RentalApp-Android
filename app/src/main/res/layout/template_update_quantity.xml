@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/calender_bg">
+
+    <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:background="@drawable/button_closed_order"
+            android:layout_height="@dimen/_25sdp"
+            android:weightSum="105">
+
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_weight="35"
+                    android:textAlignment="center"
+                    android:text="@string/merchant"/>
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_weight="35"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:text="@string/quantity"
+                    android:textSize="16sp" >
+            </TextView>
+            <TextView
+                    android:layout_width="0dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_weight="35"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:text="@string/price"
+                    android:textSize="16sp" >
+            </TextView>
+    </TableRow>
+
+    <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:weightSum="105">
+
+
+        <TextView
+                android:layout_width="0dp"
+                android:paddingTop="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_weight="35"
+                android:textAlignment="center"
+                android:text="@string/test_merchant"/>
+
+        <LinearLayout android:layout_width="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="35"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+            <ImageView android:layout_width="@dimen/_25sdp"
+                    android:id="@+id/minus_quantity"
+                    android:src="@mipmap/minus"
+                    android:padding="@dimen/_5sdp"
+                    android:background="@drawable/button_add"
+                    android:layout_height="@dimen/_25sdp"/>
+
+            <TextView
+                    android:id="@+id/item_quantity"
+                    android:text="@string/one"
+                    android:textColor="#000"
+                    android:fontFamily="@font/bree_serif"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:background="@drawable/itemquantity_bg"
+                    android:layout_height="@dimen/_25sdp"/>
+
+            <ImageView android:layout_width="@dimen/_25sdp"
+                    android:src="@mipmap/plus"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/add_quantity"
+                    android:background="@drawable/button_minus"
+                    android:layout_height="@dimen/_25sdp"/>
+
+        </LinearLayout>
+        <TextView
+                android:layout_width="0dp"
+                android:paddingTop="@dimen/_10sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_weight="35"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:text="@string/_80"
+                android:textSize="16sp" >
+        </TextView>
+    </TableRow>
+</TableLayout>

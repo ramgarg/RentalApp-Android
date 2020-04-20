@@ -18,9 +18,9 @@
 
 
     <item
-            android:id="@+id/navigation_profile"
-            android:icon="@mipmap/profile_inactive"
-            android:title="@string/profile"/>
+            android:id="@+id/navigation_bookings"
+            android:icon="@mipmap/order_inactive"
+            android:title="@string/bookings"/>
     <item
             android:id="@+id/navigation_support"
             android:icon="@mipmap/support_inactive"

@@ -7,6 +7,7 @@ import com.rental.appbiz.AppBizLogger
 import com.rental.common.view.OrderBaseSummaryActivity
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.ViewVisibility
+import kotlinx.android.synthetic.main.activity_agent_order_summary.*
 import kotlinx.android.synthetic.main.adapter_agent_merchant_order_summary.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -33,7 +34,7 @@ class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         agent_view_history.visibility=View.VISIBLE
         tv_merchant_tag.setText("Merchant")
         agent_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this)}
-     //   agent_asign_merchant_btn.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
+        agent_update_order_btn.setOnClickListener { MoveToAnotherComponent.moveToAgentUpdateOrderSummaryActivity(this) }
     }
 
    /* private fun setResponseViews() {

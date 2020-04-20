@@ -80,6 +80,10 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, PaymentHistoryActivity::class.java))
         }
 
+        fun moveToAgentUpdateOrderSummaryActivity(context: Context){
+            context.startActivity(Intent(context, AgentUpdateOrderActivity::class.java))
+        }
+
         fun moveToHomeActivity(context: Context){
             context.startActivity(Intent(context, CustomerMainActivity::class.java))
         }

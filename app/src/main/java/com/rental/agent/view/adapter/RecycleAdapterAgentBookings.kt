@@ -10,6 +10,8 @@ import com.rental.common.model.modelclass.Order_listing
 import kotlinx.android.synthetic.main.card_view_orders.view.*
 
 class RecycleAdapterAgentBookings (val orderListing: MutableList<Order_listing>, val context: Context) : RecyclerView.Adapter<RecycleAdapterAgentBookings.CardViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleAdapterAgentBookings.CardViewHolder {
         val card_view = RecycleAdapterAgentBookings.CardViewHolder(
             LayoutInflater.from(context).inflate(

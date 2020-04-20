@@ -87,6 +87,11 @@
 
                 />
 
+        <activity android:name=".agent.view.activity.AgentUpdateOrderActivity"
+                android:screenOrientation="unspecified"
+
+                />
+
         <activity android:name=".merchant.view.activity.MerchantProfileActivity"
                 android:screenOrientation="unspecified"
 

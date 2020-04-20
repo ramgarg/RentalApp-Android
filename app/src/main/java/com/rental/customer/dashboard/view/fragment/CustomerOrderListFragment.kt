@@ -14,6 +14,7 @@ import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModelI
 import com.rental.customer.dashboard.view.activity.CustomerOrderSummaryActivity
 import com.rental.customer.dashboard.view.adapter.CustomerOrderStatusAdapter
 import com.rental.customer.utils.MoveToAnotherComponent
+import kotlinx.android.synthetic.main.customer_closed_order_row.*
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
 
 class CustomerOrderListFragment : OrderListFragment() {
@@ -30,11 +31,7 @@ class CustomerOrderListFragment : OrderListFragment() {
     override fun <T> onSuccessApiResult(data: T) {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
-        rec_order.adapter= CustomerOrderStatusAdapter(
-            data as CustomerOrderListResModel,
-            requireActivity(),
-            this
-        )
+        rec_order.adapter= CustomerOrderStatusAdapter(data as CustomerOrderListResModel, requireActivity(), this)
 
     }
 

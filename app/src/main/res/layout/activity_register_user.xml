@@ -243,14 +243,52 @@
                     android:layout_height="@dimen/_40sdp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lyt_select_document"
+                android:visibility="visible">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_select_document"
+                android:text="@string/select_document"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/bree_serif"
+                android:textSize="@dimen/_14sdp">
+
+        </TextView>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_below="@+id/tv_select_document"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/spinner_dropdown"
+                android:layout_toEndOf="@+id/document_pic"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/bree_serif"
+                android:id="@+id/sp_select_document">
+
+        </Spinner>
+            <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_below="@+id/tv_select_document"
+                    android:id="@+id/document_pic"
+                    android:src="@mipmap/attachment">
+
+            </ImageView>
+        </RelativeLayout>
         <LinearLayout android:layout_width="wrap_content"
                       android:orientation="horizontal"
                       android:gravity="top"
+                      android:layout_marginTop="@dimen/_10sdp"
                       android:layout_height="@dimen/_40sdp">
+
         <CheckBox android:layout_width="@dimen/_20sdp"
                   android:textColor="@color/black"
                   android:id="@+id/checkbox_terms"
-                  android:layout_marginTop="@dimen/_5sdp"
                   android:fontFamily="@font/bree_serif"
                   android:textSize="@dimen/_15sdp"
                   android:background="@drawable/custom_checkbox"

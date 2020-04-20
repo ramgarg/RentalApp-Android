@@ -1,6 +1,10 @@
 package com.rental.login.view
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.rental.R
@@ -40,6 +44,7 @@ class RegistrationUserActivity : AppBizLogin(){
         btn_merchant_inactive.setOnClickListener { assignRole(UserInfoAPP.MERCHANT) }
         btn_customer_inactive.setOnClickListener { assignRole(UserInfoAPP.CUSTOMER)  }
         btn_agent_inactive.setOnClickListener { assignRole(UserInfoAPP.AGENT) }
+        documentSpinnerData()
 
         btn_register.setOnClickListener {
             register()
@@ -61,6 +66,7 @@ class RegistrationUserActivity : AppBizLogin(){
 
                 Common.showGroupViews(btn_merchant_active,btn_customer_inactive,btn_agent_inactive)
                 Common.hideGroupViews(btn_agent_active,btn_customer_active,btn_merchant_inactive)
+                lyt_select_document.visibility=View.VISIBLE
             }
             UserInfoAPP.CUSTOMER->{
 
@@ -68,6 +74,7 @@ class RegistrationUserActivity : AppBizLogin(){
 
                 Common.showGroupViews(btn_customer_active,btn_merchant_inactive,btn_agent_inactive)
                 Common.hideGroupViews(btn_agent_active,btn_merchant_active,btn_customer_inactive)
+                lyt_select_document.visibility=View.INVISIBLE
             }
             UserInfoAPP.AGENT->{
 
@@ -75,6 +82,7 @@ class RegistrationUserActivity : AppBizLogin(){
 
                 Common.showGroupViews(btn_agent_active,btn_customer_inactive,btn_merchant_inactive)
                 Common.hideGroupViews(btn_merchant_active,btn_customer_active,btn_agent_inactive)
+                lyt_select_document.visibility=View.VISIBLE
             }
         }
     }
@@ -120,5 +128,30 @@ class RegistrationUserActivity : AppBizLogin(){
         MoveToAnotherComponent.moveToOTPActivity(this)
     }
 
+    private fun documentSpinnerData() {
+        val document = resources.getStringArray(R.array.RegistrationDocument)
+
+        val spinner = findViewById<Spinner>(R.id.sp_select_document)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, document)
+            spinner.adapter = adapter
+
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    if(position==0){
+
+                    }
+                    else{
+                        Toast.makeText(this@RegistrationUserActivity, getString(R.string.selected_item) + " " + "" + document[position], Toast.LENGTH_SHORT).show()
+
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
+            }
+        }
+    }
 
 }
