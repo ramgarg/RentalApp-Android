@@ -54,7 +54,6 @@
             android:layout_height="@dimen/_20sdp"
             android:elevation="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/-10sdp"
             android:layout_below="@+id/vehicle_card_view"
             android:src="@mipmap/delete">
 
@@ -64,7 +63,6 @@
             android:layout_height="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_20sdp"
             android:elevation="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/-10sdp"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/vehicle_card_view"
             android:src="@mipmap/edit">

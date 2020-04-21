@@ -58,7 +58,6 @@
             android:textColor="@color/white"
             android:layout_centerHorizontal="true"
             android:background="@drawable/button_gradient"
-            android:layout_marginTop="@dimen/-10sdp"
             android:layout_below="@+id/vehicle_card_view">
 
     </Button>
