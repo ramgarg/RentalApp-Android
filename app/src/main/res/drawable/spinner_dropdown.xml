@@ -9,8 +9,14 @@
                 <color android:color="@android:color/white" />
             </item>
 
-            <item>
-                <bitmap android:gravity="center_vertical|right" android:src="@drawable/group" />
+            <item android:width="@dimen/_33sdp"
+                    android:height="@dimen/_22sdp"
+                    android:gravity="right"
+                    android:bottom="@dimen/_5sdp"
+                    android:top="@dimen/_5sdp">
+
+                <bitmap android:gravity="center_vertical|right"
+                        android:src="@drawable/group" />
             </item>
 
         </layer-list>

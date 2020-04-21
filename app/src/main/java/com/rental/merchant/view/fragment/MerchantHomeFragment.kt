@@ -4,22 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.appbiz.AppBizLogger
 import com.rental.common.merchant.viewModel.MerchantHomeViewModel
 import com.rental.common.view.fragment.BaseFragment
-import com.rental.common.viewmodel.ProductCategoriesViewModel
-import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.view.adapter.CustomerHomeAdapter
 import com.rental.customer.utils.MoveToAnotherComponent
-import com.rental.customer.utils.RecyclerViewItemClick
-import com.rental.merchant.view.activity.MerchantMainActivity
 import com.rental.merchant.viewModel.MerchantProductCategoriesViewModel
-import kotlinx.android.synthetic.main.fragment_merchant_home.*
-import kotlinx.android.synthetic.main.merchant_activity_main.*
 
 class MerchantHomeFragment : BaseFragment() {
     private lateinit var merchant_homeViewModel: MerchantHomeViewModel
