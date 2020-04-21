@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
-import com.rental.customer.dashboard.model.modelclass.Data
-import com.rental.customer.dashboard.model.modelclass.HomeResponse
-import com.squareup.picasso.Picasso
+import com.rental.customer.payment.model.modelclass.PaymentListResModelItem
 import kotlinx.android.synthetic.main.row_category.view.*
 
-class PaymentHistoryAdapter(val items:List<Data>, val context: Context):
+class PaymentHistoryAdapter(val items:List<PaymentListResModelItem>, val context: Context):
     RecyclerView.Adapter<PaymentHistoryAdapter.ViewHolder>() {
 
 
@@ -21,7 +19,6 @@ class PaymentHistoryAdapter(val items:List<Data>, val context: Context):
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return ViewHolder(
             LayoutInflater.from(
                 context
@@ -30,13 +27,11 @@ class PaymentHistoryAdapter(val items:List<Data>, val context: Context):
     }
 
     override fun getItemCount(): Int {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return items.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-        holder.tvVeichleName?.text=items.get(position).first_name
+        holder.tvVeichleName?.text=items.get(position).mode_of_payment
     }
 }
