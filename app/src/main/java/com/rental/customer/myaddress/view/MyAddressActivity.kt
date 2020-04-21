@@ -6,18 +6,17 @@ import androidx.lifecycle.ViewModelProviders
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.common.view.BaseActivity
+import com.rental.customer.myaddress.model.modelclass.AddressListResModel
 import com.rental.customer.myaddress.view.adapter.MyAddressAdapter
-import com.rental.customer.myaddress.viewmodel.MyAddressViewModel
+import com.rental.customer.myaddress.viewmodel.AddressListViewModel
 import com.rental.customer.utils.*
 import kotlinx.android.synthetic.main.activity_my_address.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
 
-class MyAddressActivity :BaseActivity(),RecyclerViewItemClick {
+class MyAddressActivity :BaseActivity() {
 
-    private lateinit var myAddressViewModel:MyAddressViewModel
     override fun <T> moveOnSelecetedItem(type: T) {
-        TODO("Not yet implemented")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,13 +29,7 @@ class MyAddressActivity :BaseActivity(),RecyclerViewItemClick {
 
     private fun initView(){
 
-        myAddressViewModel=ViewModelProviders.of(this).get(MyAddressViewModel::class.java)
-        myAddressViewModel.getMyAddressResponse().observe(this, Observer {
-            rec_my_address.adapter=MyAddressAdapter(it.data,this,this)
-        })
-
-
-
+        getAddressList()
 
         ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
             toolbar_title,getString(R.string.my_address))
@@ -50,13 +43,20 @@ class MyAddressActivity :BaseActivity(),RecyclerViewItemClick {
 
     }
 
-    override fun onItemClick(item: Data) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    private fun getAddressList() {
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<AddressListViewModel>(this)
+                    .getAddressList()
+                , this, this
+            )
 
-
-
+        }
     }
 
-
+    override fun <T> onSuccessApiResult(data: T) {
+        val adressList = data as AddressListResModel
+        rec_my_address.adapter=MyAddressAdapter(adressList,this)
+    }
 
 }

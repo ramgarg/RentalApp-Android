@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
+import com.rental.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.row_my_address.view.*
 import org.greenrobot.eventbus.EventBus
 
-class MyAddressAdapter(val items:List<Data>, val context: Context, val recyclerViewItemClick: RecyclerViewItemClick):
+class MyAddressAdapter(val items:List<AddressListResModelItem>, val context: Context):
     RecyclerView.Adapter<MyAddressAdapter.ViewHolder>() {
 
 
@@ -52,8 +53,8 @@ class MyAddressAdapter(val items:List<Data>, val context: Context, val recyclerV
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-        holder.tvVeichleName?.text=items.get(position).first_name
-        holder.bind(items.get(position),recyclerViewItemClick)
+        holder.tvVeichleName?.text=items.get(position).address_line
+//        holder.bind(items.get(position),recyclerViewItemClick)
 //        Picasso.with(context).load(items.get(position).avatar)
 //            .into(holder.imgVeichle );
     }

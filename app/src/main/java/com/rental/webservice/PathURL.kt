@@ -76,5 +76,9 @@ class PathURL {
         const val AgentPayments                 = "/agent/payments/"
         const val AgentCollectCashPayment       = "/agent/collect_cash_payment"
 
+
+        //address
+        const val ADDRESS_LIST = "user/address/list"
+
     }
 }
