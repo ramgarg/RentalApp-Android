@@ -59,7 +59,7 @@
 
         />
 
-        <activity android:name=".customer.myaddress.view.MyAddressActivity"
+        <activity android:name=".customer.myaddress.view.ListAddressActivity"
                   android:screenOrientation="unspecified"
 
         />

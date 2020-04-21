@@ -13,7 +13,7 @@ import com.rental.login.view.ForgotPasswordActivity
 import com.rental.login.view.OTPActivity
 import com.rental.login.view.RegistrationUserActivity
 import com.rental.customer.myaddress.view.AddNewAddressActivity
-import com.rental.customer.myaddress.view.MyAddressActivity
+import com.rental.customer.myaddress.view.ListAddressActivity
 import com.rental.customer.notification.view.NotificationActivity
 import com.rental.customer.payment.view.PaymentHistoryActivity
 import com.rental.customer.profile.ProfileActivity
@@ -51,7 +51,7 @@ class MoveToAnotherComponent {
         }
 
         fun moveToMyAddressActivity(context: Context){
-            context.startActivity(Intent(context, MyAddressActivity::class.java))
+            context.startActivity(Intent(context, ListAddressActivity::class.java))
         }
 
         fun moveToMerchantAddressActivity(context: Context){

@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_my_address.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
 
-class MyAddressActivity :BaseActivity() {
+open class ListAddressActivity :BaseActivity() {
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
