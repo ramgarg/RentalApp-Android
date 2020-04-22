@@ -44,6 +44,8 @@ class PathURL {
         const val MakePayment      = "/customer/payment/"
         const val PaymentList      = "/customer/payments"
         const val CustomerFeedback = "/customer/feedback"
+
+        const val CUSTOMER_MY_BOOKINGS = "/customer/bookings"
         
         
         //Merchant
@@ -59,6 +61,7 @@ class PathURL {
         const val MerchantOrders       = "/merchant/orders/"
         const val MerchantOrderDetail  = "/merchant/order_detail/"
         const val MerchantFeedback     = "/merchant/feedback"
+
 
         //agent module
         const val AgentDashboard                = "/agent/agent_dashboard"

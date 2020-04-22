@@ -22,8 +22,12 @@ interface Constant{
         const val ORDER_SUMMERY_KEY ="orders_id"
 
         //Booking Dashboard
-        const val BOOKING_DASHBOARD_AGENT =1
-        const val BOOKING_DASHBOARD_MERCHANT =2
+        const val BOOKING_DASHBOARD_AGENT =4
+        const val BOOKING_DASHBOARD_MERCHANT =5
+
+        //Booking List
+        const val   BOOKING_LIST_CUSTOMER = 6
+        const val BOOKING_LIST_AGENT = 7
 
     }
 }

@@ -17,7 +17,7 @@ import com.rental.common.viewmodel.BookingDashboardViewModel
 import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
 import kotlinx.android.synthetic.main.booking_deshboard_bottom_view.*
 
-abstract open class DashboardBaseFragment:BaseFragment() {
+abstract class DashboardBaseFragment:BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 

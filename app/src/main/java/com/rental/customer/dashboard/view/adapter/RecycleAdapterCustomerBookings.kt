@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
+import com.rental.common.model.modelclass.BookingListItem
 import com.rental.common.model.modelclass.Order_listing
 import kotlinx.android.synthetic.main.row_customer_bookings.view.*
 
-class RecycleAdapterCustomerBookings (val orderListing: MutableList<Order_listing>, val context: Context) : RecyclerView.Adapter<RecycleAdapterCustomerBookings.CardViewHolder>()  {
+class RecycleAdapterCustomerBookings (val bookingListItem: MutableList<BookingListItem>, val context: Context) : RecyclerView.Adapter<RecycleAdapterCustomerBookings.CardViewHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleAdapterCustomerBookings.CardViewHolder {
+
         val card_view = RecycleAdapterCustomerBookings.CardViewHolder(
             LayoutInflater.from(context).inflate(
                 R.layout.row_customer_bookings,
@@ -23,11 +25,11 @@ class RecycleAdapterCustomerBookings (val orderListing: MutableList<Order_listin
     }
 
     override fun getItemCount(): Int {
-        return orderListing.size
+        return bookingListItem.size
     }
 
     override fun onBindViewHolder(holder: RecycleAdapterCustomerBookings.CardViewHolder, position: Int) {
-        val order_listing_obj =  orderListing.get(position)
+        val order_listing_obj =  bookingListItem.get(position)
 
         //customer details
         holder?.tv_customer_name.text = order_listing_obj.customer_detail.full_name

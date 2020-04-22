@@ -42,3 +42,10 @@ class BookingDashboardViewModel : ViewModel() {
     }
 }
 
+class MyBookingViewModel : ViewModel() {
+
+    fun getBookingList(value: Int): LiveData<DataWrapper<BookingListResModel>> {
+        return MyBookingListRepo().getBookingListData(value)
+    }
+}
+

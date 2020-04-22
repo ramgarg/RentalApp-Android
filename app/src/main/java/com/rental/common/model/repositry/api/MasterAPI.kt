@@ -30,4 +30,5 @@ interface MasterAPI{
     @GET(PathURL.ProductDetail)
     fun getProductDetails(@Path("id") id: Int): Call<ProductDetailsResModel>
 
+
 }

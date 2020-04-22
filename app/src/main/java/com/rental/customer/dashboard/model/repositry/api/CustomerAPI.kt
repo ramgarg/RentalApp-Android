@@ -1,6 +1,7 @@
 package com.rental.customer.dashboard.model.repositry.api
 
 import com.google.gson.JsonElement
+import com.rental.common.model.modelclass.BookingListResModel
 import com.rental.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.rental.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModel
@@ -74,4 +75,9 @@ interface CustomerAPI {
       * */
     @POST(PathURL.CustomerFeedback)
     fun customerFeedback(loginReqModel: LoginRequest): Call<LoginRequest>
+
+    /*Customer booking list*/
+
+    @GET(PathURL.CUSTOMER_MY_BOOKINGS)
+    fun getCustomerBookingList(): Call<BookingListResModel>
 }
