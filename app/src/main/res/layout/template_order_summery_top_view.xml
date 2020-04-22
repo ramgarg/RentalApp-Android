@@ -6,22 +6,23 @@
         android:gravity="top"
         >
 
-    <TextView
-            android:id="@+id/order_product_name"
-            android:text="@string/volvo_fh_truck"
-            style="@style/DocumentTextView"
-            android:layout_marginTop="@dimen/_15sdp"
-            />
+    <TextView android:layout_width="match_parent"
+            android:text="@string/truck"
+            android:id="@+id/tv_order_product_name"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/bree_serif"
+            android:layout_height="wrap_content"/>
 
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_70sdp"
+            android:layout_height="wrap_content"
             android:weightSum="100"
             android:orientation="horizontal">
 
         <TextView
                 android:id="@+id/booking_price"
-                android:layout_weight="40"
+                android:layout_weight="30"
                 android:layout_width="0dp"
                 android:text="@string/booking_n_price"
                 android:textColor="@color/black"
@@ -30,9 +31,9 @@
                 android:layout_height="@dimen/_50sdp"/>
 
         <TextView
-                android:id="@+id/order_order_price"
+                android:id="@+id/tv_booking_price"
                 android:fontFamily="@font/bree_serif"
-                android:layout_weight="35"
+                android:layout_weight="40"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:textColor="@color/black"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -40,28 +41,21 @@
                 android:text="@string/booking_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
-        <TextView
-                android:id="@+id/order_tax_included"
-                android:fontFamily="@font/bree_serif"
-                android:layout_weight="10"
-                android:textColor="@color/text_blue"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:textSize="@dimen/_12sdp"
-                android:text="@string/tax_included"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_weight="15">
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="30">
         <Button
                 android:id="@+id/customer_payment_button"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_33sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_gravity="end"
                 android:textAllCaps="false"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
                 android:background="@drawable/button_gradient"
                 android:textColor="@color/white"
                 android:text="@string/pay_now"
@@ -70,9 +64,11 @@
         </Button>
             <Button
                     android:id="@+id/agent_view_history"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_33sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_gravity="end"
                     android:textAllCaps="false"
                     android:visibility="invisible"
@@ -85,16 +81,7 @@
         </LinearLayout>
     </LinearLayout>
     <TextView
-            android:id="@+id/pending_amount"
-            android:fontFamily="@font/bree_serif"
-            android:layout_marginTop="@dimen/_3sdp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14sdp"
-            android:text="@string/pending_amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    <TextView
-            android:id="@+id/order_id"
+            android:id="@+id/tv_order_id"
             android:fontFamily="@font/bree_serif"
             android:layout_marginTop="@dimen/_5sdp"
             android:textColor="@color/black"
@@ -102,6 +89,17 @@
             android:text="@string/orderid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+    <TextView
+            android:id="@+id/pending_amount"
+            android:fontFamily="@font/bree_serif"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            android:textSize="@dimen/_14sdp"
+            android:text="@string/pending_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -117,11 +115,9 @@
                 android:layout_height="wrap_content"/>
         <TextView
                 android:id="@+id/order_rate_review"
-
-                android:layout_marginStart="@dimen/_30sdp"
-
                 android:fontFamily="@font/bree_serif"
                 android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/_50sdp"
                 android:visibility="invisible"
                 android:background="@drawable/button_gradient"
                 android:textSize="@dimen/_15sdp"

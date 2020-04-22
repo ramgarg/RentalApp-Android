@@ -15,13 +15,15 @@ class WishListAdapter (val orderListing: MutableList<WishListItem>, val context:
 
 
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
-        val tv_wish_name=view.wish_name
+        val tv_wish_name=view.tv_wish_name
+        val tv_wish_price=view.tv_wish_price
 
     }
 
     override fun onBindViewHolder(holder: WishListAdapter.CardViewHolder, position: Int) {
 
         holder.tv_wish_name?.text=orderListing.get(position).product_name
+        holder.tv_wish_price?.text="$"+orderListing.get(position).price
 
 
     }

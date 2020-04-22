@@ -25,5 +25,15 @@ interface Constant{
         const val BOOKING_DASHBOARD_AGENT =1
         const val BOOKING_DASHBOARD_MERCHANT =2
 
+        //Payment History
+        const val CASH ="cash"
+        const val PENDING="pending"
+        const val RECEIVED="received"
+        const val FAILED="failed"
+        const val DOLLAR="$"
+        const val QUANTITY="Quantity- "
+        const val ORDER_ID="Order ID- "
+        const val COMPLETED="completed"
+
     }
 }
