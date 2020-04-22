@@ -18,7 +18,9 @@ class MyAddressAdapter(val items:List<AddressListResModelItem>, val context: Con
 
 
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-        val tvVeichleName=view.tv_add_type
+        val tvAddressType=view.tv_add_type
+        val tvAddressLine=view.tv_add_line
+        val tvCountry=view.tv_add_country
         var imgEdit=view.img_edit.setOnClickListener {
             MoveToAnotherComponent.moveToAddNewAddressActivity(it.context)
 //            RxBus.publish(EventModel("EditAddress"))
@@ -53,7 +55,9 @@ class MyAddressAdapter(val items:List<AddressListResModelItem>, val context: Con
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-        holder.tvVeichleName?.text=items.get(position).address_line
+        holder.tvAddressLine?.text=items.get(position).address_line
+        holder.tvAddressType?.text=items.get(position).address_type
+        holder.tvCountry?.text=items.get(position).country
 //        holder.bind(items.get(position),recyclerViewItemClick)
 //        Picasso.with(context).load(items.get(position).avatar)
 //            .into(holder.imgVeichle );

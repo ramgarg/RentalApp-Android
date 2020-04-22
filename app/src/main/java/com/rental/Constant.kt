@@ -29,5 +29,15 @@ interface Constant{
         const val   BOOKING_LIST_CUSTOMER = 6
         const val BOOKING_LIST_AGENT = 7
 
+        //Payment History
+        const val CASH ="cash"
+        const val PENDING="pending"
+        const val RECEIVED="received"
+        const val FAILED="failed"
+        const val DOLLAR="$"
+        const val QUANTITY="Quantity- "
+        const val ORDER_ID="Order ID- "
+        const val COMPLETED="completed"
+
     }
 }

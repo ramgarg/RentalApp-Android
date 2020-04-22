@@ -1,9 +1,11 @@
 package com.rental.customer.dashboard.view.activity
 
 import android.os.Bundle
+import android.widget.TextView
 import com.rental.R
 import com.rental.appbiz.AppBizLogger
 import com.rental.common.view.OrderBaseSummaryActivity
+import com.rental.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.rental.customer.utils.MoveToAnotherComponent
 import com.rental.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.order_summary_template.*
@@ -88,6 +90,9 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
 
     override fun <T> onSuccessApiResult(data: T) {
+        val orderRes = data as CustomerOrderDetailsResModel
+
+        //tv_order_product_name=orderRes.product_detail.product_name
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
     }
 
