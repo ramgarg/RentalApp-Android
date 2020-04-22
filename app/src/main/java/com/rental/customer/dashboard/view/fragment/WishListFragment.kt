@@ -12,9 +12,12 @@ import com.rental.R
 import com.rental.common.model.modelclass.Order_listing
 import com.rental.common.view.fragment.BaseFragment
 import com.rental.common.viewmodel.OrderListingVM
+import com.rental.customer.dashboard.model.modelclass.CustomerWishListResModel
+import com.rental.customer.dashboard.model.modelclass.WishListItem
 import com.rental.customer.dashboard.view.activity.CustomerMainActivity
 import com.rental.customer.dashboard.view.adapter.RecycleAdapterCustomerBookings
 import com.rental.customer.dashboard.view.adapter.WishListAdapter
+import com.rental.customer.dashboard.viewmodel.CustomerWishListViewModel
 import com.rental.customer.dashboard.viewmodel.WishListViewModel
 import com.rental.customer.utils.Common
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,17 +35,17 @@ class WishListFragment : BaseFragment() {
         return view
     }
 
-        //when data come form api use this code
-//        wishListViewModel= ViewModelProviders.of(this).get(WishListViewModel::class.java)
-//        wishListViewModel.getWishListResponse().observe(this, Observer {
-//            rec_wishlist.adapter= WishListAdapter(it.data as ArrayList<Data>,requireActivity())
-//        })
-
-        //This is for testing
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        orderListingVM = ViewModelProviders.of(this).get(OrderListingVM::class.java)
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIFragment<CustomerWishListViewModel>(this).getWishList()
+                , viewLifecycleOwner, requireActivity()
+            )
+        }
+
+        /*orderListingVM = ViewModelProviders.of(this).get(OrderListingVM::class.java)
 
 
         orderListingVM.orderListingLiveData.observe(viewLifecycleOwner, Observer {
@@ -55,7 +58,19 @@ class WishListFragment : BaseFragment() {
 
             rec_wishlist.adapter = recyleAdapterWishlist
 
-        })
+        })*/
+    }
+
+    override fun <T> onSuccessApiResult(data: T) {
+        val wishListRes = data as CustomerWishListResModel
+
+        rec_wishlist.layoutManager = LinearLayoutManager(requireActivity(),
+            LinearLayoutManager.VERTICAL,false)
+        (rec_wishlist.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(1,1)
+
+        val recyleAdapterWishlist= WishListAdapter(wishListRes as MutableList<WishListItem>, requireActivity())
+
+        rec_wishlist.adapter = recyleAdapterWishlist
     }
 
 

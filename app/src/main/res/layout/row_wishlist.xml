@@ -24,8 +24,8 @@
 
 
         <TextView android:layout_width="match_parent"
-                  android:text="@string/truck"
-                  android:id="@+id/vehicle_name"
+                  android:text=""
+                  android:id="@+id/wish_name"
                   android:textSize="@dimen/_15sdp"
                   android:textColor="@color/black"
                   android:fontFamily="@font/bree_serif"

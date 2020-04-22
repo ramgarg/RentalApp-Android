@@ -7,20 +7,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
 import com.rental.common.model.modelclass.Order_listing
+import com.rental.customer.dashboard.model.modelclass.WishListItem
 import kotlinx.android.synthetic.main.row_customer_bookings.view.*
+import kotlinx.android.synthetic.main.row_wishlist.view.*
 
-class WishListAdapter (val orderListing: MutableList<Order_listing>, val context: Context) : RecyclerView.Adapter<WishListAdapter.CardViewHolder>()  {
+class WishListAdapter (val orderListing: MutableList<WishListItem>, val context: Context) : RecyclerView.Adapter<WishListAdapter.CardViewHolder>()  {
 
 
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
-
+        val tv_wish_name=view.wish_name
 
     }
 
     override fun onBindViewHolder(holder: WishListAdapter.CardViewHolder, position: Int) {
-        val order_listing_obj =  orderListing.get(position)
 
-        //customer details
+        holder.tv_wish_name?.text=orderListing.get(position).product_name
+
 
     }
 

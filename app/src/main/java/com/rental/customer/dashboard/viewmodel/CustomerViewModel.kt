@@ -4,13 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.JsonElement
 import com.rental.appbiz.retrofitapi.DataWrapper
-import com.rental.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
-import com.rental.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModel
-import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
+import com.rental.customer.dashboard.model.modelclass.*
 import com.rental.customer.dashboard.model.repositry.CustomerCreateBookingRepo
 import com.rental.customer.dashboard.model.repositry.CustomerOrderBookingOrderListRepo
 import com.rental.customer.dashboard.model.repositry.CustomerOrderDetailsRepo
+import com.rental.customer.dashboard.model.repositry.CustomerWishListRepo
 
 class CustomerCreateBookingViewModel : ViewModel() {
 
@@ -30,5 +28,12 @@ class CustomerOrderDetailsViewModel : ViewModel() {
 
     fun getOrderDetails(id: Int): LiveData<DataWrapper<CustomerOrderDetailsResModel>> {
         return CustomerOrderDetailsRepo().getCustomerOrderDetail(id)
+    }
+}
+
+class CustomerWishListViewModel : ViewModel() {
+
+    fun getWishList(): LiveData<DataWrapper<CustomerWishListResModel>> {
+        return CustomerWishListRepo().getCustomerWishList()
     }
 }

@@ -4,6 +4,7 @@ import com.google.gson.JsonElement
 import com.rental.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.rental.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModel
+import com.rental.customer.dashboard.model.modelclass.CustomerWishListResModel
 import com.rental.login.model.modelclass.LoginRequest
 import com.rental.webservice.PathURL
 import retrofit2.Call
@@ -29,8 +30,8 @@ interface CustomerAPI {
     /*
        *Get wish list
        * */
-    @POST(PathURL.GetWishlist)
-    fun getWishList(loginReqModel: LoginRequest): Call<LoginRequest>
+    @GET(PathURL.GetWishlist)
+    fun getWishList(): Call<CustomerWishListResModel>
 
     /*
        *Delete wish list

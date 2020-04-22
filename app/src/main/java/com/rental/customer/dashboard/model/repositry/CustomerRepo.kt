@@ -7,6 +7,7 @@ import com.rental.appbiz.retrofitapi.GenericRequestHandler
 import com.rental.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.rental.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModel
+import com.rental.customer.dashboard.model.modelclass.CustomerWishListResModel
 import com.rental.customer.dashboard.model.repositry.api.CustomerAPI
 import com.rental.webservice.ServiceGenrator
 
@@ -36,6 +37,16 @@ class CustomerOrderDetailsRepo :GenericRequestHandler<CustomerOrderDetailsResMod
     fun getCustomerOrderDetail(value: Int): LiveData<DataWrapper<CustomerOrderDetailsResModel>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(CustomerAPI::class.java).getCustomerOrderDetail(value)
+        return doRequest(call)
+    }
+
+}
+
+class CustomerWishListRepo :GenericRequestHandler<CustomerWishListResModel>(){
+
+    fun getCustomerWishList(): LiveData<DataWrapper<CustomerWishListResModel>> {
+//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+        val call = ServiceGenrator.client.create(CustomerAPI::class.java).getWishList()
         return doRequest(call)
     }
 
