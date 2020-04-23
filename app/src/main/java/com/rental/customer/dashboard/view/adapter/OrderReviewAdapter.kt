@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.BookingDetailsModel
-import kotlinx.android.synthetic.main.row_category.view.*
-import kotlinx.android.synthetic.main.row_category.view.vehicle_name
+import kotlinx.android.synthetic.main.card_product_template.view.*
+import kotlinx.android.synthetic.main.card_product_template.view.vehicle_name
 import kotlinx.android.synthetic.main.row_order_review.view.*
 
 

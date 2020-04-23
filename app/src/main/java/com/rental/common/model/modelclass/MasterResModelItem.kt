@@ -9,3 +9,6 @@ data class MasterResModelItem(
     val master_image_url: String?,
     val name: String
 ) : Parcelable
+{
+    override fun toString(): String = name
+}

@@ -10,7 +10,7 @@ import com.rental.R
 import com.rental.common.view.fragment.BaseFragment
 import com.rental.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
 import kotlinx.android.synthetic.main.adapter_order_status_template.view.*
-import kotlinx.android.synthetic.main.row_category.view.*
+import kotlinx.android.synthetic.main.card_product_template.view.*
 
 
 open abstract class OrderListBaseAdapter(val customerOrdrListItems:List<CustomerOrderListResModelItem>, open val context: Context, open val baseFragment: BaseFragment):

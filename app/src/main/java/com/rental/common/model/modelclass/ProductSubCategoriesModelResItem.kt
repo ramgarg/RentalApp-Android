@@ -10,3 +10,6 @@ data class ProductSubCategoriesModelResItem(
     val subcategory_image_url: String,
     val subcategory_name: String
 ) : Parcelable
+{
+    override fun toString(): String = subcategory_name
+}

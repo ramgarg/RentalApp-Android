@@ -43,7 +43,7 @@ class ProductSubCategoryActivity :ProductBaseActitvity(), ApiResult {
     override fun <T> onSuccessApiResult(data: T) {
         data?.let {  if (data is ProductSubCategoriesResModel)
         {
-            rec_veichle.adapter= ProductVehiclesAdapter(data,this@ProductSubCategoryActivity)
+            rec_veichle.adapter= ProductVehiclesAdapter(data,this@ProductSubCategoryActivity,this)
             search(data)
         }
             return

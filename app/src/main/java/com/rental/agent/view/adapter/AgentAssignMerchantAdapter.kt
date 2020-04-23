@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
 import com.rental.common.model.modelclass.Order_listing
 import kotlinx.android.synthetic.main.card_view_orders.view.*
-import kotlinx.android.synthetic.main.row_category.view.*
+import kotlinx.android.synthetic.main.card_product_template.view.*
 
 class AgentAssignMerchantAdapter (val orderListing: MutableList<Order_listing>, val context: Context) : RecyclerView.Adapter<AgentAssignMerchantAdapter.CardViewHolder>() {
 

@@ -7,6 +7,7 @@ import android.view.View
 import com.rental.R
 import com.rental.common.model.modelclass.*
 import com.rental.common.view.BaseActivity
+import com.rental.customer.dashboard.view.adapter.InfalterViewAdapter
 import com.rental.customer.dashboard.view.adapter.ProductVehiclesAdapter
 import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_home.rec_veichle
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlin.math.roundToInt
 
-open abstract class ProductBaseActitvity: BaseActivity() {
+open abstract class ProductBaseActitvity: BaseActivity(), InfalterViewAdapter {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +45,7 @@ open abstract class ProductBaseActitvity: BaseActivity() {
               // serching in list
                 serchingInList(textlength,arrayListOiginal,arrayListAfterSorting)
 
-                rec_veichle.adapter= ProductVehiclesAdapter(arrayListAfterSorting,this@ProductBaseActitvity)
+                rec_veichle.adapter= ProductVehiclesAdapter(arrayListAfterSorting,this@ProductBaseActitvity,this@ProductBaseActitvity)
 0
                 if(arrayListAfterSorting.size==0){
                     layout_vehicle_not_found.visibility= View.VISIBLE
@@ -76,6 +77,10 @@ open abstract class ProductBaseActitvity: BaseActivity() {
                 }
             }
         }
+    }
+
+    override fun getInflaterViewIDAdapter(): Int {
+        return R.layout.card_product_template
     }
 
 
