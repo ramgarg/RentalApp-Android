@@ -54,7 +54,7 @@
                     android:id="@+id/lyt_middle_view2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    layout="@layout/adapter_agent_merchant_order_summary"
+                    layout="@layout/adapter_users_order_summary"
                     app:layout_constraintTop_toBottomOf="@+id/lyt_middle_view1"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/_16sdp"

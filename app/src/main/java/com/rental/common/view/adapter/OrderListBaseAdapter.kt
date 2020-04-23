@@ -19,7 +19,7 @@ open abstract class OrderListBaseAdapter(val customerOrdrListItems:List<Customer
      class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val tvOrderProductName=view.tv_order_product_name
          val tvBookingPrice=view.tv_order_booking_price
-         val tvOrderQuantity=view.tv_order_quantity
+         val tvOrderQuantity=view.tv_quantity
          val tvOrderId=view.tv_order_id
          val tvPaymentStatus=view.tv_payment_status
          val tvOrderRateReview=view.order_rate_review
@@ -28,7 +28,7 @@ open abstract class OrderListBaseAdapter(val customerOrdrListItems:List<Customer
 
         holder.tvOrderProductName?.text=customerOrdrListItems.get(position).product_detail.product_name
         holder.tvBookingPrice?.text=Constant.DOLLAR+customerOrdrListItems.get(position).product_detail.starting_price
-        holder.tvOrderQuantity?.text=" "+customerOrdrListItems.get(position).product_detail.quantity
+        holder.tvOrderQuantity?.text=customerOrdrListItems.get(position).product_detail.product_name+"-"+customerOrdrListItems.get(position).product_detail.quantity
         holder.tvOrderId?.text=Constant.ORDER_ID+customerOrdrListItems.get(position).order_id
         if(customerOrdrListItems.get(position).status== Constant.PENDING){
             holder.tvPaymentStatus?.text=customerOrdrListItems.get(position).status

@@ -1,16 +1,23 @@
 package com.rental.customer.dashboard.view.activity
 
 import android.os.Bundle
-import android.widget.TextView
+import android.view.View
+import com.rental.Constant
 import com.rental.R
 import com.rental.appbiz.AppBizLogger
 import com.rental.common.view.OrderBaseSummaryActivity
 import com.rental.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.rental.customer.utils.Common
 import com.rental.customer.utils.MoveToAnotherComponent
-import com.rental.customer.utils.ViewVisibility
-import kotlinx.android.synthetic.main.order_summary_template.*
+import kotlinx.android.synthetic.main.activity_customer_order_summary.*
+import kotlinx.android.synthetic.main.adapter_user_order_summery.*
+import kotlinx.android.synthetic.main.adapter_users_order_summary.*
+import kotlinx.android.synthetic.main.order_summary_template.tv_end_date_sel
+import kotlinx.android.synthetic.main.order_summary_template.tv_end_time_sel
+import kotlinx.android.synthetic.main.order_summary_template.tv_st_date_sel
+import kotlinx.android.synthetic.main.order_summary_template.tv_st_time_sel
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
-import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.template_work_info.*
 
 
 class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
@@ -41,18 +48,13 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
     }
 
     private fun clickListenerOnViews(){
-      //  tv_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
+       payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
+        order_rate_review.setOnClickListener { Common.showDialog(getString(R.string.rating),getString(R.string.thank_you),this,R.layout.rating_review) }
         customer_payment_button.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
     }
 
-    private fun setResponseViews(){
-        tv_st_date_sel.text="12 Jan 2020"
-        tv_st_time_sel.text="4:00pm"
-        tv_end_date_sel.text="12 Feb 2020"
-        tv_end_time_sel.text="3:00pm"
        // checkbox_with_driver.isClickable=false
 
-    }
 
    /* @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     fun messageReceive(customEvent: String?) {
@@ -91,8 +93,48 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
         val orderRes = data as CustomerOrderDetailsResModel
+        tv_order_product_name.text=orderRes.product_detail.product_name
+        tv_booking_price.text=Constant.DOLLAR+orderRes.product_detail.starting_price
+        tv_order_id.text=Constant.ORDER_ID+orderRes.order_id
+        order_product_quantity.text=orderRes.product_detail.product_name+"-"+orderRes.product_detail.quantity
+        tv_st_date_sel.text=orderRes.product_detail.start_date
+        tv_st_time_sel.text=orderRes.product_detail.start_time
+        tv_end_date_sel.text=orderRes.product_detail.end_date
+        tv_end_time_sel.text=orderRes.product_detail.end_time
+        checkbox_with_driver.isChecked=orderRes.product_detail.with_driver
+        tv_work_location.text=orderRes.product_detail.work_location
+        tv_user_name.text=orderRes.agent_detail.full_name
+        tv_user_tag.text=Constant.AGENT
+        img_user_call.contentDescription=orderRes.agent_detail.mobile_number
+        if(orderRes.order_status==Constant.COMPLETED)
+        {
+          if(orderRes.merchant_detail.isNotEmpty()){
+              lyt_middle_view2.visibility=View.VISIBLE
+              tv_users_name.text=""+orderRes.merchant_detail.get(1).full_name
+              tv_users_tag.text=Constant.MERCHANT
+              img_users_call.visibility=View.INVISIBLE
+          }
+          else{
+              lyt_middle_view2.visibility=View.INVISIBLE
+          }
+            customer_payment_button.visibility=View.INVISIBLE
+            payment_view_history.visibility=View.VISIBLE
+            order_rate_review.visibility=View.VISIBLE
 
-        //tv_order_product_name=orderRes.product_detail.product_name
+        }
+        else if(orderRes.order_status==Constant.PENDING)
+        {
+            if(orderRes.merchant_detail.isNotEmpty()){
+                lyt_middle_view2.visibility=View.VISIBLE
+                tv_users_name.text=""+orderRes.merchant_detail.get(1).full_name
+                tv_users_tag.text=Constant.MERCHANT
+                img_users_call.visibility=View.INVISIBLE
+            }
+            else{
+                lyt_middle_view2.visibility=View.INVISIBLE
+            }
+        }
+
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
     }
 

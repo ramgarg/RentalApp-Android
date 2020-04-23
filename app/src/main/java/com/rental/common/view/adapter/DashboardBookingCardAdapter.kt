@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.rental.Constant
 import com.rental.R
 import com.rental.common.model.modelclass.Booking
 import kotlinx.android.synthetic.main.card_view_orders.view.*
@@ -28,7 +29,7 @@ class DashboardBookingCardAdapter (val orderListing: MutableList<Booking>, val c
 
         //customer details
         holder?.tv_agent_name.text = order_listing_obj.customer_detail.full_name
-        holder?.tv_agent_type.text = order_listing_obj.customer_detail.mobile_number
+        holder?.tv_agent_type.text = Constant.CUSTOMER
 
         // prodect details
         holder?.tv_agent_product_quantity.text = order_listing_obj.product_detail.product_name+ "-"+order_listing_obj.product_detail.quantity

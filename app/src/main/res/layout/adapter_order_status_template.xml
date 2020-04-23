@@ -84,16 +84,7 @@
 
                     <TextView android:layout_width="wrap_content"
                             android:text="@string/quantity"
-                            android:id="@+id/text_quantity"
-                            android:textColor="@color/black"
-                            android:layout_centerVertical="true"
-                            android:textSize="@dimen/_14sdp"
-                            android:fontFamily="@font/bree_serif"
-                            android:layout_height="wrap_content"/>
-                    <TextView android:layout_width="wrap_content"
-                            android:text="@string/truck_quantity"
-                            android:id="@+id/tv_order_quantity"
-                            android:layout_toEndOf="@id/text_quantity"
+                            android:id="@+id/tv_quantity"
                             android:textColor="@color/black"
                             android:layout_centerVertical="true"
                             android:textSize="@dimen/_14sdp"

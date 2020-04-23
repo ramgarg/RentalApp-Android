@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.rental.Constant
 import com.rental.R
 import com.rental.common.model.modelclass.BookingListItem
 import com.rental.common.model.modelclass.Order_listing
@@ -29,29 +30,24 @@ class RecycleAdapterCustomerBookings (val bookingListItem: MutableList<BookingLi
     }
 
     override fun onBindViewHolder(holder: RecycleAdapterCustomerBookings.CardViewHolder, position: Int) {
-        val order_listing_obj =  bookingListItem.get(position)
 
-        //customer details
-        holder?.tv_customer_name.text = order_listing_obj.customer_detail.full_name
-        holder?.tv_customer_type.text = order_listing_obj.customer_detail.mobile_number
+        //agent details
+        holder.tv_booking_agent_name.text=bookingListItem.get(position).agent_detail.full_name
+        holder.img_booking_agent_call.contentDescription=bookingListItem.get(position).agent_detail.mobile_number
+        //holder?.img_booking_agent_pic.setImageURI("https://eazyrento-qa.s3.amazonaws.com/media/default_profile_pic.png")
+        holder?.tv_customer_order_id.text = Constant.ORDER_ID + bookingListItem.get(position).order_id
 
-        // prodect details
-        holder?.tv_customer_product_quantity.text = order_listing_obj.product_detail.product_name+
-                "-"+order_listing_obj.product_detail.quantity
-        holder.tv_customer_date_show.text = order_listing_obj.product_detail.start_date
-        holder.tv_customer_order.text = order_listing_obj.order_id
+        // product details
+        holder?.tv_customer_date_show.text = bookingListItem.get(position).product_detail.start_date
+        holder?.tv_customer_product_quantity.text = bookingListItem.get(position).product_detail.product_name + "-" + bookingListItem.get(position).product_detail.quantity
     }
 
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
-        val img_customer_pic = view.img_customer_pic
-        val tv_customer_name = view.tv_customer_name
-        val tv_customer_type = view.tv_customer_type
-        val tv_customer_order = view.tv_customer_order
         val tv_customer_product_quantity = view.tv_customer_quantiity
         val tv_customer_date_show = view.tv_show_date
-
-        val btn_customer_accept = view.btn_customer_accept
-        val btn_customer_decline = view.btn_customer_decline
-
+        val tv_customer_order_id = view.tv_customer_order_id
+        val img_booking_agent_pic = view.img_booking_agent_pic
+        val img_booking_agent_call = view.img_booking_agent_call
+        val tv_booking_agent_name = view.tv_booking_agent_name
     }
 }

@@ -33,9 +33,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/order_dotted_line"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_1sdp"
                     android:background="@drawable/dotted_line"
                     app:layout_constraintTop_toBottomOf="@+id/lyt_top_view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/order_for_maintain">
+
+            </TextView>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/order_for_maintain"
+                    android:text="@string/for_maintenance"
+                    android:fontFamily="@font/bree_serif"
+                    android:textSize="@dimen/_18sdp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/order_dotted_line"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/lyt_middle_view">
 
@@ -45,17 +59,27 @@
             android:id="@+id/lyt_middle_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             layout="@layout/adapter_user_order_summery"
-            app:layout_constraintTop_toBottomOf="@+id/order_dotted_line"
+            app:layout_constraintTop_toBottomOf="@+id/order_for_maintain"
             app:layout_constraintStart_toStartOf="parent"
 
             />
+            <include
+                    android:id="@+id/lyt_middle_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    layout="@layout/adapter_users_order_summary"
+                    app:layout_constraintTop_toBottomOf="@+id/lyt_middle_view"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    />
     <include
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             layout="@layout/template_work_info"
-            app:layout_constraintTop_toBottomOf="@+id/lyt_middle_view"
+            app:layout_constraintTop_toBottomOf="@+id/lyt_middle_view2"
             app:layout_constraintStart_toStartOf="parent"
             />
 

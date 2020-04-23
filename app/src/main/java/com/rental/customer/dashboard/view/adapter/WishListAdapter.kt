@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.rental.Constant
 import com.rental.R
 import com.rental.common.model.modelclass.Order_listing
 import com.rental.customer.dashboard.model.modelclass.WishListItem
@@ -23,7 +24,7 @@ class WishListAdapter (val orderListing: MutableList<WishListItem>, val context:
     override fun onBindViewHolder(holder: WishListAdapter.CardViewHolder, position: Int) {
 
         holder.tv_wish_name?.text=orderListing.get(position).product_name
-        holder.tv_wish_price?.text="$"+orderListing.get(position).price
+        holder.tv_wish_price?.text=Constant.DOLLAR+orderListing.get(position).price
 
 
     }

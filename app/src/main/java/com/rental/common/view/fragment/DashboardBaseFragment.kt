@@ -13,8 +13,6 @@ import com.rental.customer.utils.Common
 import com.rental.common.model.modelclass.Booking
 import com.rental.common.model.modelclass.BookingDashboardResModel
 import com.rental.common.viewmodel.BookingDashboardViewModel
-import com.rental.customer.utils.MoveToAnotherComponent
-
 import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
 import kotlinx.android.synthetic.main.booking_deshboard_bottom_view.*
 

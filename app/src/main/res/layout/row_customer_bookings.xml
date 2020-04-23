@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:layout_width="@dimen/_250sdp"
+        android:layout_width="@dimen/_270sdp"
         android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
@@ -22,14 +22,14 @@
 
                 android:layout_marginLeft="@dimen/_12sdp"
                 android:layout_marginRight="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_1sdp"
                 android:layout_marginBottom="@dimen/_12sdp"
                 >
 
             <ImageView
-                    android:id="@+id/img_customer_pic"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_80sdp"
+                    android:id="@+id/img_booking_agent_pic"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
                     android:background="@android:color/transparent"
                     android:src="@mipmap/profile_pic"
                     app:layout_constraintStart_toStartOf="parent"
@@ -37,37 +37,46 @@
                     />
 
             <TextView
-                    android:id="@+id/tv_customer_name"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_booking_agent_name"
+                    android:layout_width="@dimen/_120sdp"
                     android:layout_height="wrap_content"
                     android:text="@string/app_name"
                     android:layout_marginTop="@dimen/_12sdp"
-
+                    android:layout_marginStart="@dimen/_5sdp"
                     style="@style/AgentBoldTextCard"
-
-                    app:layout_constraintStart_toEndOf="@+id/img_customer_pic"
+                    app:layout_constraintStart_toEndOf="@+id/img_booking_agent_pic"
                     app:layout_constraintTop_toTopOf="parent"
 
                     />
-            <TextView
-                    android:id="@+id/tv_customer_type"
+            <ImageView
+                    android:id="@+id/img_booking_agent_call"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:src="@mipmap/call"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginBottom="@dimen/_12sdp"
 
-                    style="@style/AgentSmallTextCard"
 
-                    app:layout_constraintStart_toEndOf="@+id/img_customer_pic"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_customer_name" />
+                    />
             <TextView
-                    android:id="@+id/tv_customer_order"
+                    android:id="@+id/tv_user_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text="@string/agent"
+                    style="@style/AgentSmallTextCard"
+                    app:layout_constraintStart_toEndOf="@+id/img_booking_agent_pic"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_booking_agent_name" />
+            <TextView
+                    android:id="@+id/tv_customer_order_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/order"
-
                     style="@style/AgentBoldTextCard"
-
-                    app:layout_constraintTop_toBottomOf="@+id/img_customer_pic"
+                    app:layout_constraintTop_toBottomOf="@+id/img_booking_agent_pic"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -76,30 +85,32 @@
                     android:id="@+id/btn_customer_accept"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_30sdp"
+                    android:visibility="invisible"
                     android:text="@string/accept"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:background="@drawable/selector_aggent_button_green"
                     android:textAllCaps="false"
                     style="@style/AgentButtonCard"
 
-                    app:layout_constraintTop_toBottomOf="@+id/tv_customer_order"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_customer_order_id"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
 
                     />
             <Button
                     android:id="@+id/btn_customer_decline"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_30sdp"
+                    android:visibility="invisible"
                     android:text="@string/decline"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:background="@drawable/selector_aggent_button_megenta"
                     android:textAllCaps="false"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
 
                     style="@style/AgentButtonCard"
 
-                    app:layout_constraintTop_toBottomOf="@+id/tv_customer_order"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_customer_order_id"
                     app:layout_constraintStart_toEndOf="@+id/btn_customer_accept"
 
                     />
@@ -108,12 +119,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/truck_quantity"
-
                     style="@style/AgentBoldTextCard"
-
                     android:layout_marginStart="@dimen/_6sdp"
-                    android:layout_marginTop="@dimen/_12sdp"
-
+                    android:layout_marginTop="@dimen/_5sdp"
                     app:layout_constraintTop_toBottomOf="@+id/btn_customer_accept"
                     app:layout_constraintStart_toStartOf="parent"
 
@@ -124,9 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/order_date"
-
                     style="@style/AgentBoldTextCard"
-
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginTop="@dimen/_12sdp"
 
@@ -158,20 +164,6 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     app:layout_constraintStart_toEndOf="@id/img_customer_calnder"
                     app:layout_constraintTop_toBottomOf="@id/tv_order_date"
-
-                    />
-            <ImageView
-                    android:id="@+id/img_customer_call"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_6sdp"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:src="@mipmap/call"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="@dimen/_12sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-
 
                     />
 

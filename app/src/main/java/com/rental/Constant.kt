@@ -38,6 +38,9 @@ interface Constant{
         const val QUANTITY="Quantity- "
         const val ORDER_ID="Order ID- "
         const val COMPLETED="completed"
+        const val MERCHANT="Merchant"
+        const val AGENT="Agent"
+        const val CUSTOMER="Customer"
 
     }
 }

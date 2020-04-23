@@ -5,7 +5,6 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.content.Context
-import android.os.Handler
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
@@ -13,14 +12,9 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.bumptech.glide.Glide
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.BookingDetailsModel
 import com.rental.customer.dashboard.model.modelclass.WishListModel
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_payment.*
-import kotlinx.android.synthetic.main.add_vehicle_dialog.*
-import kotlinx.android.synthetic.main.rating_review.*
 import kotlinx.android.synthetic.main.rating_review.img_close
 import kotlinx.android.synthetic.main.rental_dialog.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
