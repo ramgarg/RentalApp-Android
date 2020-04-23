@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rental.Constant
 import com.rental.R
 import com.rental.customer.payment.model.modelclass.PaymentListResModelItem
-import kotlinx.android.synthetic.main.row_category.view.*
+import kotlinx.android.synthetic.main.card_product_template.view.*
 import kotlinx.android.synthetic.main.row_payment_history.view.*
 
 class PaymentHistoryAdapter(val items:List<PaymentListResModelItem>, val context: Context):

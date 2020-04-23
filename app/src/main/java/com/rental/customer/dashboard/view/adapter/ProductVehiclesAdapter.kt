@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
 import com.rental.common.model.modelclass.ProductSubCategoriesModelResItem
 import com.rental.common.model.modelclass.Vehicle
+import com.rental.common.view.BaseActivity
 import com.rental.customer.dashboard.view.activity.ProductBaseActitvity
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.row_category.view.*
+import kotlinx.android.synthetic.main.card_product_template.view.*
+import kotlinx.android.synthetic.main.row_merchant_add_vehicle.view.*
 
 
-class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Context):
+class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Context,val infalterViewAdapter: InfalterViewAdapter):
 
     RecyclerView.Adapter<ProductVehiclesAdapter.ViewHolder>() {
 
@@ -21,6 +23,7 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val tvVeichleName=view.vehicle_name
         val imgVeichle=view.vehicle_image
+        val btnAdd = view.btn_add_product
 
     }
 
@@ -28,7 +31,7 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
         return ViewHolder(
             LayoutInflater.from(
                 context
-            ).inflate(R.layout.row_category, parent, false)
+            ).inflate(infalterViewAdapter.getInflaterViewIDAdapter(), parent, false)
         )
     }
 
@@ -49,13 +52,23 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
 
         holder.tvVeichleName?.text=itemName
 
-        Picasso.with(context).load(imageUrl)
-            .into(holder.imgVeichle )
+        if(imageUrl!=null && !imageUrl.equals("")) {
+            Picasso.with(context).load(imageUrl)
+                .into(holder.imgVeichle)
+        }
 
 
         holder.itemView.setOnClickListener {
-            context.let { if(it is ProductBaseActitvity)it.moveOnSelecetedItem(any) }
+            context.let { if(it is BaseActivity)it.moveOnSelecetedItem(any) }
+        }
+        //add product click
+        holder.btnAdd?.setOnClickListener {
+            context.let { if(it is BaseActivity)it.moveOnSelecetedItem(any) }
         }
     }
 
+}
+
+interface InfalterViewAdapter{
+    fun getInflaterViewIDAdapter():Int
 }

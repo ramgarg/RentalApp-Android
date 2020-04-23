@@ -52,7 +52,7 @@ class ProductCategoryActivity :ProductBaseActitvity() {
             if (it is ProductCategoriesResModel)
             {
                 it.vehicles?.let {
-                    rec_veichle.adapter= ProductVehiclesAdapter(it,this@ProductCategoryActivity)
+                    rec_veichle.adapter= ProductVehiclesAdapter(it,this@ProductCategoryActivity,this)
                     search(it as ArrayList<Vehicle>)
                     return
                 }

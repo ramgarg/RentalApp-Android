@@ -4,12 +4,12 @@ import android.os.Bundle
 import androidx.core.view.GravityCompat
 import com.rental.R
 import com.rental.customer.utils.MoveToAnotherComponent
-import com.rental.merchant.MerchantBaseActivity
+import com.rental.merchant.MerchantNavigationActivity
 import kotlinx.android.synthetic.main.merchant_activity_main.*
 import kotlinx.android.synthetic.main.merchant_header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class MerchantMainActivity : MerchantBaseActivity() {
+class MerchantMainActivity : MerchantNavigationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.merchant_activity_main)

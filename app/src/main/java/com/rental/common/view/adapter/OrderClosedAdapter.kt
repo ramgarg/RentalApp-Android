@@ -11,7 +11,7 @@ import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.RecyclerViewItemClick
 import com.rental.customer.utils.Common
 import kotlinx.android.synthetic.main.customer_closed_order_row.view.*
-import kotlinx.android.synthetic.main.row_category.view.vehicle_name
+import kotlinx.android.synthetic.main.card_product_template.view.vehicle_name
 
 
 class OrderClosedAdapter(val items:List<Data>, val context: Context, val recyclerViewItemClick:RecyclerViewItemClick):

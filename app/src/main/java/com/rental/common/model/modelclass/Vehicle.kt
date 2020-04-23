@@ -10,3 +10,7 @@ data class Vehicle(
     val description: String,
     val id: Int
 ) : Parcelable
+{
+
+    override fun toString(): String = category_name
+}

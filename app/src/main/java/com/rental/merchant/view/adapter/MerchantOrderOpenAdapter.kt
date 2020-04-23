@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rental.R
 import com.rental.customer.dashboard.model.modelclass.Data
 import com.rental.customer.utils.RecyclerViewItemClick
-import kotlinx.android.synthetic.main.row_category.view.*
+import kotlinx.android.synthetic.main.card_product_template.view.*
 
 class MerchantOrderOpenAdapter (val items:List<Data>, val context: Context, val recyclerViewItemClick: RecyclerViewItemClick):
                RecyclerView.Adapter<MerchantOrderOpenAdapter.ViewHolder>() {

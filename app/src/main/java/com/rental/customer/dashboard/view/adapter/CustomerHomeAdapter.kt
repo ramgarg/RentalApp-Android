@@ -13,7 +13,7 @@ import com.rental.common.view.BaseActivity
 import com.rental.common.view.fragment.BaseFragment
 import com.rental.customer.dashboard.view.activity.ProductCategoryActivity
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.row_category.view.*
+import kotlinx.android.synthetic.main.card_product_template.view.*
 
 class CustomerHomeAdapter(val listMasterData: ArrayList<MasterResModelItem>, val context: Context,val baseFragment: BaseFragment):
     RecyclerView.Adapter<CustomerHomeAdapter.ViewHolder>() {
