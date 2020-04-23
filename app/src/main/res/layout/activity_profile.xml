@@ -225,7 +225,9 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_20sdp"
                     android:background="@drawable/button_gradient"
-                    android:layout_height="@dimen/_40sdp"/>
+                    android:layout_height="@dimen/_40sdp"
+                    android:onClick="onClickSaveButton"
+                    />
 
         </RelativeLayout>
 
