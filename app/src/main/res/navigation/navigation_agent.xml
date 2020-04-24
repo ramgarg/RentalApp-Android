@@ -7,12 +7,12 @@
 
     <fragment
             android:id="@+id/agentDashboard"
-            android:name="com.rental.agent.view.AgentDashboard"
+            android:name="com.eazyrento.agent.view.AgentDashboard"
             android:label="fragment_agent_dashboard"
             tools:layout="@layout/fragment_booking_dashboard" />
     <fragment
             android:id="@+id/agentOrderFragment"
-            android:name="com.rental.agent.view.AgentOrderFragment"
+            android:name="com.eazyrento.agent.view.AgentOrderFragment"
             android:label="fragment_agent_order"
             tools:layout="@layout/fragment_agent_order" />
 </navigation>

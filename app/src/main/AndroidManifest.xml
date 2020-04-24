@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.rental">
+          xmlns:tools="http://schemas.android.com/tools" package="com.eazyrento">
 
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-            android:name=".EazyRantoApplication"
+            android:name="com.eazyrento.EazyRantoApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -17,7 +17,7 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.eazyrento.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -26,7 +26,7 @@
         </activity>
         <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
 
-        <activity android:name="com.rental.login.view.LoginUserActivity"
+        <activity android:name="com.eazyrento.login.view.LoginUserActivity"
         android:screenOrientation="unspecified"
 
         />
@@ -35,149 +35,149 @@
                 android:required="false" />
 
 
-        <activity android:name="com.rental.login.view.RegistrationUserActivity"
+        <activity android:name="com.eazyrento.login.view.RegistrationUserActivity"
                   android:screenOrientation="unspecified"
 
         />
 
-        <activity android:name=".agent.view.activity.AgentProfileActivity"
+        <activity android:name="com.eazyrento.agent.view.activity.AgentProfileActivity"
                 android:screenOrientation="unspecified"
 
                 />
-        <activity android:name=".merchant.view.activity.MerchantAddVehicle"
-                android:screenOrientation="unspecified"
-
-                />
-
-
-        <activity android:name="com.rental.login.view.ForgotPasswordActivity"
-                  android:screenOrientation="unspecified"
-
-        />
-        <activity android:name="com.rental.login.view.OTPActivity"
-                  android:screenOrientation="unspecified"
-
-        />
-
-        <activity android:name=".customer.myaddress.view.ListAddressActivity"
-                  android:screenOrientation="unspecified"
-
-        />
-
-        <activity android:name=".customer.myaddress.view.AddNewAddressActivity"
-                  android:screenOrientation="unspecified"
-
-        />
-        <activity android:name=".customer.webpages.AboutActivity"
-                  android:screenOrientation="unspecified"
-
-        />
-        <activity android:name=".customer.webpages.TermsConditionActivity"
-                  android:screenOrientation="unspecified"
-
-        />
-
-        <activity android:name=".merchant.view.activity.MerchantMainActivity"
+        <activity android:name="com.eazyrento.merchant.view.activity.MerchantAddVehicle"
                 android:screenOrientation="unspecified"
 
                 />
 
-        <activity android:name=".agent.view.activity.AgentOrderSummaryActivity"
+
+        <activity android:name="com.eazyrento.login.view.ForgotPasswordActivity"
+                  android:screenOrientation="unspecified"
+
+        />
+        <activity android:name="com.eazyrento.login.view.OTPActivity"
+                  android:screenOrientation="unspecified"
+
+        />
+
+        <activity android:name="com.eazyrento.customer.myaddress.view.ListAddressActivity"
+                  android:screenOrientation="unspecified"
+
+        />
+
+        <activity android:name="com.eazyrento.customer.myaddress.view.AddNewAddressActivity"
+                  android:screenOrientation="unspecified"
+
+        />
+        <activity android:name="com.eazyrento.customer.webpages.AboutActivity"
+                  android:screenOrientation="unspecified"
+
+        />
+        <activity android:name="com.eazyrento.customer.webpages.TermsConditionActivity"
+                  android:screenOrientation="unspecified"
+
+        />
+
+        <activity android:name="com.eazyrento.merchant.view.activity.MerchantMainActivity"
                 android:screenOrientation="unspecified"
 
                 />
 
-        <activity android:name=".agent.view.activity.AgentUpdateOrderActivity"
+        <activity android:name="com.eazyrento.agent.view.activity.AgentOrderSummaryActivity"
                 android:screenOrientation="unspecified"
 
                 />
 
-        <activity android:name=".merchant.view.activity.MerchantProfileActivity"
+        <activity android:name="com.eazyrento.agent.view.activity.AgentUpdateOrderActivity"
                 android:screenOrientation="unspecified"
 
                 />
 
-        <activity android:name=".customer.payment.view.PaymentHistoryActivity"
+        <activity android:name="com.eazyrento.merchant.view.activity.MerchantProfileActivity"
+                android:screenOrientation="unspecified"
+
+                />
+
+        <activity android:name="com.eazyrento.customer.payment.view.PaymentHistoryActivity"
                   android:screenOrientation="unspecified"
 
         />
 
 
-        <activity android:name=".customer.dashboard.view.activity.CustomerMainActivity"
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity"
                 android:windowSoftInputMode="adjustPan|adjustResize"
                   android:screenOrientation="unspecified"
                   android:launchMode="singleTask"
 
         />
-        <activity android:name=".customer.profile.ProfileActivity"
+        <activity android:name="com.eazyrento.customer.profile.ProfileActivity"
                   android:screenOrientation="unspecified"/>
 
         <!--/>-->
-        <activity android:name=".customer.notification.view.NotificationActivity"
+        <activity android:name="com.eazyrento.customer.notification.view.NotificationActivity"
                   android:screenOrientation="unspecified"
 
         />
-        <activity android:name=".customer.dashboard.view.activity.CustomerOrderSummaryActivity"
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity"
                   android:screenOrientation="unspecified"
 
         />
-        <activity android:name=".merchant.view.activity.MerchantAddressActivity"
+        <activity android:name="com.eazyrento.merchant.view.activity.MerchantAddressActivity"
                 android:screenOrientation="unspecified"
 
                 />
 
-        <activity android:name=".merchant.view.activity.MerchantOrderSummaryActivity"
+        <activity android:name="com.eazyrento.merchant.view.activity.MerchantOrderSummaryActivity"
                 android:screenOrientation="unspecified"
 
                 />
 
-        <activity android:name=".customer.dashboard.view.activity.PaymentActivity"
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.PaymentActivity"
                   android:screenOrientation="unspecified"
 
         />
 
-        <activity android:name=".customer.dashboard.view.activity.ProductDetailsActivity"
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.ProductDetailsActivity"
                   android:screenOrientation="unspecified"
 
         />
 
 
-        <activity android:name=".customer.dashboard.view.activity.CustomerOrderReviewActivity"
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.CustomerOrderReviewActivity"
                   android:screenOrientation="unspecified"
 
         />
 
-        <activity android:name=".customer.dashboard.view.activity.NotifyToAdminActivity"
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.NotifyToAdminActivity"
                   android:screenOrientation="unspecified"
 
         />
 
-        <activity android:name=".agent.view.activity.AgentAddNoteActivity"
+        <activity android:name="com.eazyrento.agent.view.activity.AgentAddNoteActivity"
                 android:screenOrientation="unspecified"
 
                 />
 
-        <activity android:name=".agent.view.activity.AgentWriteNoteActivity"
+        <activity android:name="com.eazyrento.agent.view.activity.AgentWriteNoteActivity"
                 android:screenOrientation="unspecified"
 
                 />
 
 
 
-        <activity android:name=".customer.dashboard.view.activity.CustomerBookingDetailsActivity"
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.CustomerBookingDetailsActivity"
                   android:screenOrientation="unspecified"
 
         />
-        <activity android:name=".customer.dashboard.view.activity.ProductCategoryActivity"
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.ProductCategoryActivity"
                   android:screenOrientation="unspecified"
 
         />
-        <activity android:name=".customer.dashboard.view.activity.ProductSubCategoryActivity"
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.ProductSubCategoryActivity"
                 android:screenOrientation="unspecified"
 
                 />
 
-        <activity android:name=".agent.view.activity.AgentHomeActivity"
+        <activity android:name="com.eazyrento.agent.view.activity.AgentHomeActivity"
                 android:screenOrientation="unspecified"
 
                 />
