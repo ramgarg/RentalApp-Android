@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.model.modelclass.*
 import com.eazyrento.common.model.repositry.*
+import com.google.gson.JsonElement
 
 class MasterDataViewModel : ViewModel() {
 
@@ -15,7 +16,7 @@ class MasterDataViewModel : ViewModel() {
 
 class ProductCategoriesViewModel : ViewModel() {
 
-    fun getProductCateg(name:String): LiveData<DataWrapper<ProductCategoriesResModel>> {
+    fun getProductCateg(name:String): LiveData<DataWrapper<JsonElement>> {
         return ProductCategoriesRepo().getProductCateg(name)
     }
 

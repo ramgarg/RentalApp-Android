@@ -14,9 +14,10 @@ class AgentDashboardViewModel : ViewModel() {
         return AgentDashboardRepo().getDeshboardData()
     }
 }*/
+/*
 class MerchantProductCategoriesViewModel:ViewModel(){
     fun getProductCateg(): LiveData<DataWrapper<ProductCategoriesResModel>> {
         return MerchantProductCategoriesRepo()
             .getProductCateg()
     }
-}
+}*/

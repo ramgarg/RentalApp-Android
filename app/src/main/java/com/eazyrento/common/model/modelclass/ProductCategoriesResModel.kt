@@ -5,5 +5,5 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ProductCategoriesResModel(
-    val vehicles: List<Vehicle>
+    val productCateItems: List<ProductCateItem>
 ) : Parcelable

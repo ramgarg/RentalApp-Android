@@ -6,6 +6,7 @@ import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesResModel
 import com.eazyrento.login.model.modelclass.LoginRequest
 import com.eazyrento.webservice.PathURL
+import com.google.gson.JsonElement
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -19,8 +20,10 @@ interface MasterAPI{
     fun getMasterCategory(): Call<MasterResModel>
 
     // categories list by category name
+    //ProductCategoriesResModel
+
     @GET(PathURL.ProductCategory)
-    fun getProductCategory(@Path("master_name") master_name: String): Call<ProductCategoriesResModel>
+    fun getProductCategory(@Path("master_name") master_name: String): Call<JsonElement>
 
     // sub categories lsit by product name
     @GET(PathURL.ProductSubCategory)

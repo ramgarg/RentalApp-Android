@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.common.model.modelclass.ProductCateItem
 import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.viewModel.MerchantProductCategoriesViewModel
+import com.eazyrento.supporting.MyJsonParser
+import com.google.gson.JsonElement
 
 class MerchantHomeFragment : BaseFragment() {
 
@@ -33,6 +36,14 @@ class MerchantHomeFragment : BaseFragment() {
     override fun <T> onSuccessApiResult(data: T) {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
         //adapter
+        if(data is JsonElement){
+            val keys = data.asJsonObject.keySet()
+            for (key in keys){
+            val list:List<ProductCateItem>? = MyJsonParser.convertJSONListIntoList(MyJsonParser.JsonArrayFromJsonObject
+                (data.asJsonObject,key))
+
+        }
+        }
 
     }
 

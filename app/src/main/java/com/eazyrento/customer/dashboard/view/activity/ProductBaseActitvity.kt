@@ -5,7 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesModelResItem
-import com.eazyrento.common.model.modelclass.Vehicle
+import com.eazyrento.common.model.modelclass.ProductCateItem
 import com.eazyrento.R
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.view.adapter.InfalterViewAdapter
@@ -32,7 +32,7 @@ open abstract class ProductBaseActitvity: BaseActivity(),
 
     }
 
-    protected fun <T>search(arrayListOiginal: ArrayList<T>){
+    protected fun <T>setSearch(arrayListOiginal: ArrayList<T>){
 
         var arrayListAfterSorting:ArrayList<T> = ArrayList()
 
@@ -72,7 +72,7 @@ open abstract class ProductBaseActitvity: BaseActivity(),
 
         for (i in 0 until arrayListOriginal.size) {
             var name:String=""
-            arrayListOriginal[i].let { if(it is Vehicle){name = it.category_name}
+            arrayListOriginal[i].let { if(it is ProductCateItem){name = it.category_name}
                 if(it is ProductSubCategoriesModelResItem){name = it.subcategory_name}
             }
 

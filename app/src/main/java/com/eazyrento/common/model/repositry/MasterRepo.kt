@@ -9,6 +9,7 @@ import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesResModel
 import com.eazyrento.common.model.repositry.api.MasterAPI
 import com.eazyrento.webservice.ServiceGenrator
+import com.google.gson.JsonElement
 
 class MasterRepo : GenericRequestHandler<MasterResModel>(){
 
@@ -20,9 +21,9 @@ class MasterRepo : GenericRequestHandler<MasterResModel>(){
     }
 }
 
-class ProductCategoriesRepo : GenericRequestHandler<ProductCategoriesResModel>(){
+class ProductCategoriesRepo : GenericRequestHandler<JsonElement>(){
 
-    fun getProductCateg(name:String ): LiveData<DataWrapper<ProductCategoriesResModel>> {
+    fun getProductCateg(name:String ): LiveData<DataWrapper<JsonElement>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             MasterAPI::class.java).getProductCategory(name)

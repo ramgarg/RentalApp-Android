@@ -16,11 +16,15 @@ import com.eazyrento.common.viewmodel.ProductSubCategoriesViewModel
 import com.eazyrento.customer.dashboard.view.adapter.InfalterViewAdapter
 import com.eazyrento.customer.dashboard.view.adapter.ProductVehiclesAdapter
 import com.eazyrento.customer.utils.ViewVisibility
+import com.eazyrento.supporting.MyJsonParser
+import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.merchant_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
     InfalterViewAdapter {
+
+    private var selectMasterCatName:String =""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +55,9 @@ class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
             setSpinnerAdapter(data,R.id.sp_select_type)
             return
         }
-         if(data is ProductCategoriesResModel){
-            setSpinnerAdapter(data.vehicles,R.id.sp_select_category)
+         if(data is JsonElement){
+             val list:List<ProductCateItem>? = MyJsonParser.convertJSONListIntoList(MyJsonParser.JsonArrayFromJsonObject(data.asJsonObject,selectMasterCatName))
+                setSpinnerAdapter(list,R.id.sp_select_category)
              return
         }
         else if(data is ProductSubCategoriesResModel){
@@ -90,11 +95,13 @@ class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
             {
                 R.id.sp_select_type ->{
                    val masterResModelItem = parent?.getItemAtPosition(position) as MasterResModelItem
-                    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,masterResModelItem.name)
-                    getProductByMasterCateName(masterResModelItem.name)
+
+                    selectMasterCatName = masterResModelItem.name
+                    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,selectMasterCatName)
+                    getProductByMasterCateName(selectMasterCatName)
                 }
                 R.id.sp_select_category ->{
-                    val vehicle = parent?.getItemAtPosition(position) as Vehicle
+                    val vehicle = parent?.getItemAtPosition(position) as ProductCateItem
                     AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,""+vehicle.category_name)
                     getProSubcategoryByProName(vehicle.category_name)
                 }

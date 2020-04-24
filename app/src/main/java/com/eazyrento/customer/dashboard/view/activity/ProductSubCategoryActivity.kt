@@ -1,14 +1,11 @@
 package com.eazyrento.customer.dashboard.view.activity
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LifecycleOwner
 import com.eazyrento.Constant
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesResModel
-import com.eazyrento.common.model.modelclass.Vehicle
+import com.eazyrento.common.model.modelclass.ProductCateItem
 import com.eazyrento.common.view.ApiResult
 import com.eazyrento.common.viewmodel.ProductSubCategoriesViewModel
 import com.eazyrento.customer.dashboard.view.adapter.ProductVehiclesAdapter
@@ -23,7 +20,7 @@ class ProductSubCategoryActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val masterResModelItem = intent.getParcelableExtra<Vehicle>(
+        val masterResModelItem = intent.getParcelableExtra<ProductCateItem>(
             Constant.VEHICLES_DATA_ITEM)
 
         val selectedString = masterResModelItem.category_name
@@ -53,7 +50,7 @@ class ProductSubCategoryActivity :
                     this@ProductSubCategoryActivity,
                     this
                 )
-            search(data)
+            setSearch(data)
         }
             return
         }

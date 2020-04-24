@@ -7,12 +7,12 @@ import com.eazyrento.common.model.modelclass.ProductCategoriesResModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.merchant.model.repository.api.MerchantAPI
 import com.eazyrento.webservice.ServiceGenrator
+import com.google.gson.JsonElement
 
 
+class MerchantProductCategoriesRepo : GenericRequestHandler<JsonElement>(){
 
-class MerchantProductCategoriesRepo : GenericRequestHandler<ProductCategoriesResModel>(){
-
-    fun getProductCateg( ): LiveData<DataWrapper<ProductCategoriesResModel>> {
+    fun getProductCateg( ): LiveData<DataWrapper<JsonElement>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             MerchantAPI::class.java).getProductCategory()

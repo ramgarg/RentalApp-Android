@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesModelResItem
-import com.eazyrento.common.model.modelclass.Vehicle
+import com.eazyrento.common.model.modelclass.ProductCateItem
 import com.eazyrento.common.view.BaseActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_product_template.view.*
@@ -42,7 +42,7 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
         var imageUrl:String? = ""
 
         val any  = listProductCatg[position]
-        any.let { if (it is Vehicle){itemName=it.category_name
+        any.let { if (it is ProductCateItem){itemName=it.display_name
                                     imageUrl =it.category_image_url}
                 if (it is ProductSubCategoriesModelResItem)
                                 { itemName = it.subcategory_name

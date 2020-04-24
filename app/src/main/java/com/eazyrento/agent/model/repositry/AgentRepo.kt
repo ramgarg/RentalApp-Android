@@ -19,7 +19,7 @@ import com.eazyrento.webservice.ServiceGenrator
 
 }*/
 
-class MerchantProductCategoriesRepo : GenericRequestHandler<ProductCategoriesResModel>(){
+/*class MerchantProductCategoriesRepo : GenericRequestHandler<ProductCategoriesResModel>(){
 
     fun getProductCateg( ): LiveData<DataWrapper<ProductCategoriesResModel>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
@@ -27,7 +27,7 @@ class MerchantProductCategoriesRepo : GenericRequestHandler<ProductCategoriesRes
             MerchantAPI::class.java).getProductCategory()
         return doRequest(call)
     }
-}
+}*/
 
 /*class MerchantProductCategories :GenericRequestHandler<ProductCategoriesResModel>(){
 
