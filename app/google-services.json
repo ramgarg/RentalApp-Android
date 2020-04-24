@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "989763716935",
+    "firebase_url": "https://eazyrento-4c0fc.firebaseio.com",
+    "project_id": "eazyrento-4c0fc",
+    "storage_bucket": "eazyrento-4c0fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989763716935:android:5e64e2d95e483b408cae62",
+        "android_client_info": {
+          "package_name": "com.eazyrento"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989763716935-u2sg0l81onqsdqfn54oquh5ea6f0676l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eazyrento",
+            "certificate_hash": "931af379635af65bfa01a1d828ad895367ab29e9"
+          }
+        },
+        {
+          "client_id": "989763716935-fgmlter8vqijg32gfsmukau6iql6e52i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4lZLqj70ySGr-edgDvmv-Mt2mKEyyku0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989763716935-fgmlter8vqijg32gfsmukau6iql6e52i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

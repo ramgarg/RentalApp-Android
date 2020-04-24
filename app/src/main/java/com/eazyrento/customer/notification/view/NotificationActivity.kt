@@ -7,6 +7,8 @@ import com.eazyrento.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.toolbar.*
 
 class NotificationActivity : BaseActivity() {
+
+
     override fun <T> moveOnSelecetedItem(type: T) {
         TODO("Not yet implemented")
     }
