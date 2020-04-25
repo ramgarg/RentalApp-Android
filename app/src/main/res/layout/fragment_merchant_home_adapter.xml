@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <TextView android:layout_width="@dimen/_100sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:id="@+id/tv_select_vehicles"
+                android:id="@+id/tv_merchant_cat_name"
                 android:text="@string/vehicle"
                 android:layout_gravity="center"
                 style="@style/DocumentTextView"
@@ -15,7 +14,7 @@
 
     <TextView android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/_15sdp"
-            android:id="@+id/btn_select_vehicles"
+            android:id="@+id/tv_merchant_view_all"
             android:layout_marginEnd="@dimen/_10sdp"
             android:fontFamily="@font/bree_serif"
             android:textSize="@dimen/_16sdp"
@@ -25,27 +24,25 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"/>
 
-    <RelativeLayout
-            android:layout_width="match_parent"
+   <!-- <include
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_select_vehicles"
+            android:layout_below="@+id/tv_merchant_view_all"
             android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="vertical">
+            layout="@layout/row_merchant_home_vehicle"
+            />-->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec_edit_delete_product"
 
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/merchant_rec_veichle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/tv_merchant_view_all"
 
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+            app:spanCount="3"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            >
 
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </RelativeLayout>
-
-
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

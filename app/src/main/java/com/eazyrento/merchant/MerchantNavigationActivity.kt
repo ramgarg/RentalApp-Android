@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 open class MerchantNavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
     override fun <T> moveOnSelecetedItem(type: T) {
-        TODO("Not yet implemented")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

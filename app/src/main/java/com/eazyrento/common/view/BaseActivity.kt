@@ -1,7 +1,9 @@
 package com.eazyrento.common.view
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
+import android.content.pm.ActivityInfo
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
@@ -19,11 +21,12 @@ open abstract class BaseActivity: AppCompatActivity(),
 
     abstract fun <T>moveOnSelecetedItem(type:T)
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
-       // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
 
     }
 

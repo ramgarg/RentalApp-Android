@@ -181,6 +181,10 @@
                 android:screenOrientation="unspecified"
 
                 />
+        <activity android:name="com.eazyrento.merchant.view.activity.MerchantProductCategory"
+                android:screenOrientation="unspecified"
+
+                />
 
 
         <meta-data

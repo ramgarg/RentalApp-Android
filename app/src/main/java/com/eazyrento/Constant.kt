@@ -15,6 +15,7 @@ interface Constant{
 
         //intent key
          const val INTENT_SUCCESS_ORDER_BOOKING = "success"
+        const val INTENT_MERCHANT_PRODUCT_LIST = "list"
 
         // Order status
         const val OPEN_ORDER = 1

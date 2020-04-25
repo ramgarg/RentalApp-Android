@@ -14,8 +14,7 @@ import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
-class ProductCategoryActivity :
-    ProductBaseActitvity() {
+class ProductCategoryActivity : ProductBaseActitvity() {
 
     private var selectedKey:String=""
 
