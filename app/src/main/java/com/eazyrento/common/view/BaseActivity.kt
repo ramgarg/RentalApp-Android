@@ -5,6 +5,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -25,8 +26,8 @@ open abstract class BaseActivity: AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }
 

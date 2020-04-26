@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
@@ -15,6 +16,7 @@ import com.eazyrento.common.viewmodel.ProductCategoriesViewModel
 import com.eazyrento.common.viewmodel.ProductSubCategoriesViewModel
 import com.eazyrento.customer.dashboard.view.adapter.InfalterViewAdapter
 import com.eazyrento.customer.dashboard.view.adapter.ProductVehiclesAdapter
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
 import com.eazyrento.supporting.MyJsonParser
 import com.google.gson.JsonElement
@@ -42,7 +44,9 @@ class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
     * to move other activity or componant
     * */
     override fun <T> moveOnSelecetedItem(type: T) {
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"move item")
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,type.toString())
+        MoveToAnotherComponent.openActivityWithParcelableParam<AddProductDailogActivity,T>(this,
+            Constant.INTENT_MERCHANT_PRODUCT_ADD,type)
     }
 
     override fun <T> onSuccessApiResult(data: T) {

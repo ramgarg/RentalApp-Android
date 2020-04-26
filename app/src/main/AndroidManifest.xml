@@ -185,6 +185,11 @@
                 android:screenOrientation="unspecified"
 
                 />
+        <activity
+                android:theme="@style/ThemeDialog"
+                android:name="com.eazyrento.merchant.view.activity.AddProductDailogActivity"
+                android:screenOrientation="unspecified"
+                />
 
 
         <meta-data

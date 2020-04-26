@@ -67,13 +67,14 @@
     <string name="volvo_fh_truck">Volvo FH Truck</string>
     <string name="totalprice">Total \n Price</string>
     <string name="booking_price">$30</string>
+    <string name="hint_enter_booking_price">Enter booking price</string>
     <string name="per_hour">Per Hour</string>
     <string name="do_you_want_driver">Do you want vehicle with driver?</string>
     <string name="start_date">Start Date</string>
     <string name="start_time">Start Time</string>
     <string name="end_date">End Date</string>
     <string name="end_time">End Time</string>
-    <string name="truck_quantity">Truck Quantity</string>
+    <string name="truck_quantity">Quantity</string>
     <string name="one">1</string>
     <string name="work_location">Work Location</string>
     <string name="change">Change</string>
@@ -235,5 +236,11 @@
         <item>Driving Licence</item>
         <item>UID Card</item>
         <item>Any ID Card</item>
+    </string-array>
+    <string-array name="FuelType">
+        <item>Select Fuel Type</item>
+        <item>Petrol</item>
+        <item>Diesel</item>
+        <item>Gasoline</item>
     </string-array>
 </resources>

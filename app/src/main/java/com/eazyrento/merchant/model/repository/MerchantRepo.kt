@@ -5,6 +5,7 @@ import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.common.model.modelclass.ProductCategoriesResModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
+import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.merchant.model.repository.api.MerchantAPI
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
@@ -13,9 +14,17 @@ import com.google.gson.JsonElement
 class MerchantProductCategoriesRepo : GenericRequestHandler<JsonElement>(){
 
     fun getProductCateg( ): LiveData<DataWrapper<JsonElement>> {
-//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             MerchantAPI::class.java).getProductCategory()
+        return doRequest(call)
+    }
+}
+
+class MerchantAddProductRepo : GenericRequestHandler<JsonElement>(){
+
+    fun addMerchantProduct(merchantAddProductReqModel: MerchantAddProductReqModel): LiveData<DataWrapper<JsonElement>> {
+        val call = ServiceGenrator.client.create(
+            MerchantAPI::class.java).addProduct(merchantAddProductReqModel)
         return doRequest(call)
     }
 }

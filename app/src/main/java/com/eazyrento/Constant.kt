@@ -3,6 +3,7 @@ package com.eazyrento
 interface Constant{
     companion object
     {
+        const val PICK_PHOTO_FOR_AVATAR = 100
         const val  PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=1234
         //SECOND
         const val API_CONNECTION_TIMEOUT = 6*1000L
@@ -16,6 +17,7 @@ interface Constant{
         //intent key
          const val INTENT_SUCCESS_ORDER_BOOKING = "success"
         const val INTENT_MERCHANT_PRODUCT_LIST = "list"
+        const val INTENT_MERCHANT_PRODUCT_ADD = "add"
 
         // Order status
         const val OPEN_ORDER = 1
