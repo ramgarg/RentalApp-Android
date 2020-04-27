@@ -38,6 +38,15 @@ class MerchantDeleteProductRepo : GenericRequestHandler<JsonElement>(){
     }
 }
 
+class MerchantProductDetailsRepo : GenericRequestHandler<JsonElement>(){
+
+    fun detailsProduct(id: Int): LiveData<DataWrapper<JsonElement>> {
+        val call = ServiceGenrator.client.create(
+            MerchantAPI::class.java).getProductDetails(id)
+        return doRequest(call)
+    }
+}
+
 /*class MerchantProductCategories :GenericRequestHandler<ProductCategoriesResModel>(){
 
     fun getBookingOrdersList(value: Int): LiveData<DataWrapper<ProductCategoriesResModel>> {

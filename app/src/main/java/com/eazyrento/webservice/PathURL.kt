@@ -52,9 +52,9 @@ class PathURL {
         const val MerchantDashboard       = "/merchant/merchant_dashboard"
         const val MerchantProductCategory = "/merchant/products"
         const val MerchantProducts        = "/merchant/products/"
-        const val DeleteProduct           = "/merchant/product_detail/{id}"
+        const val MerchantDeleteProduct           = "/merchant/product_detail/{id}"
 
-        const val MerchantGetProduct   = "/merchant/product_detail/"
+        const val MerchantProductDetail   = "/merchant/product_detail/{id}"
         const val MerchantAddProduct   = "/merchant/add_product"
         const val MerchantNotifyAdmin  = "/merchant/merchant_product_suggestion"
         const val MerchantUpdateProduct = "/merchant/product_detail/"

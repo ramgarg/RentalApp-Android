@@ -23,6 +23,7 @@ import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.merchant.model.modelclass.MerchantProductItem
 import com.eazyrento.merchant.viewModel.MerchantAddProductViewModel
+import com.eazyrento.merchant.viewModel.MerchantProductDetailViewModel
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.add_vehicle_dialog.*
 import java.io.ByteArrayOutputStream
@@ -33,6 +34,7 @@ class AddProductDailogActivity:BaseActivity() {
 
     private val merchantAddProductReqModel = MerchantAddProductReqModel()
     private  val DEFUALT_VALUE = -1
+    var edit_product_ID:Int =-1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +42,12 @@ class AddProductDailogActivity:BaseActivity() {
         this.setFinishOnTouchOutside(false)
 
         //edit functionalty
-        val edit_product = intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_EDIT,DEFUALT_VALUE)
+         edit_product_ID = intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_EDIT,DEFUALT_VALUE)
 
         merchantAddProductReqModel.product_id =
-            if (edit_product!=DEFUALT_VALUE)
-                edit_product
+            if (edit_product_ID!=DEFUALT_VALUE) {
+                editProductFuntionalty(edit_product_ID)
+            }
         //Adding funtionalty
             else
                intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_ADD,DEFUALT_VALUE)
@@ -55,6 +58,20 @@ class AddProductDailogActivity:BaseActivity() {
         setCheckBoxListener()
 
 
+    }
+
+    private fun editProductFuntionalty(editProductID:Int): Int {
+
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<MerchantProductDetailViewModel>(this)
+                    .detailsPoductAPI(editProductID)
+                , this, this
+            )
+
+        }
+
+        return editProductID
     }
 
     private fun setCheckBoxListener() {
@@ -251,16 +268,26 @@ class AddProductDailogActivity:BaseActivity() {
     }
 
     override fun <T> onSuccessApiResult(data: T) {
+
         if (data is JsonElement) {
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, data.toString())
-            showToast(ValidationMessage.PRODUCT_ADDED_SUCCESS)
+            if (edit_product_ID ==DEFUALT_VALUE) {
+                showToast(ValidationMessage.PRODUCT_ADDED_SUCCESS)
 //        {"status":201}
-            MoveToAnotherComponent.moveToActivity<MerchantMainActivity>(
-                this,
-                Constant.INTENT_SUCCESS_ADDED_PRODUCT, 1
-            )
+                MoveToAnotherComponent.moveToActivity<MerchantMainActivity>(
+                    this,
+                    Constant.INTENT_SUCCESS_ADDED_PRODUCT, 1
+                )
+            }
+            else{
+                editProductData(data as JsonElement)
+            }
         }
 
+    }
+
+    private fun editProductData(jsonElement: JsonElement) {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,jsonElement.asJsonObject.toString())
     }
 
 

@@ -8,6 +8,7 @@ import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.merchant.model.repository.MerchantAddProductRepo
 import com.eazyrento.merchant.model.repository.MerchantDeleteProductRepo
 import com.eazyrento.merchant.model.repository.MerchantProductCategoriesRepo
+import com.eazyrento.merchant.model.repository.MerchantProductDetailsRepo
 import com.google.gson.JsonElement
 
 
@@ -29,6 +30,14 @@ class MerchantDeleteProductViewModel:ViewModel(){
     fun deletePoductAPI(id:Int): LiveData<DataWrapper<JsonElement>> {
         return MerchantDeleteProductRepo()
             .deleteProduct(id)
+    }
+
+}
+
+class MerchantProductDetailViewModel:ViewModel(){
+    fun detailsPoductAPI(id:Int): LiveData<DataWrapper<JsonElement>> {
+        return MerchantProductDetailsRepo()
+            .detailsProduct(id)
     }
 
 }

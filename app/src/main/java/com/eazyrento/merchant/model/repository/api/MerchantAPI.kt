@@ -29,10 +29,10 @@ interface MerchantAPI {
 
 
     // delete product
-    @DELETE(PathURL.DeleteProduct)
+    @DELETE(PathURL.MerchantDeleteProduct)
     fun deleteProduct(@Path("id") id: Int): Call<JsonElement>
 
     // sub categories lsit by product name
-    @GET(PathURL.ProductDetail)
-    fun getProductDetails(@Path("id") id: Int): Call<ProductDetailsResModel>
+    @GET(PathURL.MerchantProductDetail)
+    fun getProductDetails(@Path("id") id: Int): Call<JsonElement>
 }
