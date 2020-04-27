@@ -30,6 +30,10 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, AgentProfileActivity::class.java))
         }
 
+        fun moveToListAddressActivity(context: Context){
+            context.startActivity(Intent(context, ListAddressActivity::class.java))
+        }
+
         fun moveToMerchantAddVehicle(context: Context){
             context.startActivity(Intent(context, MerchantAddVehicle::class.java))
         }

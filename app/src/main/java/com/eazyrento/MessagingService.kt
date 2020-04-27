@@ -39,6 +39,10 @@ class MessagingService : FirebaseMessagingService() {
         }
         remoteMessage?.notification?.let {
             sendNotification(remoteMessage.notification?.body)
+            val intent = Intent(this@MessagingService, CustomerMainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("message", remoteMessage.notification?.body!!)
+            startActivity(intent)
         }
 
     }
