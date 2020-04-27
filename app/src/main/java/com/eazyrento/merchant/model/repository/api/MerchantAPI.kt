@@ -4,14 +4,11 @@ import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesResModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
+import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
 import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.DELETE
+import retrofit2.http.*
 
 interface MerchantAPI {
 
@@ -27,12 +24,16 @@ interface MerchantAPI {
     @POST(PathURL.MerchantAddProduct)
     fun addProduct(@Body merchantAddProductReqModel: MerchantAddProductReqModel): Call<JsonElement>
 
+    @PUT(PathURL.MerchantProductDetail)
+    fun updateProductDetails(@Path("id") id: Int,@Body merchantAddProductReqModel: MerchantAddProductReqModel): Call<JsonElement>
 
     // delete product
     @DELETE(PathURL.MerchantDeleteProduct)
     fun deleteProduct(@Path("id") id: Int): Call<JsonElement>
 
-    // sub categories lsit by product name
+    // get product details
     @GET(PathURL.MerchantProductDetail)
-    fun getProductDetails(@Path("id") id: Int): Call<JsonElement>
+    fun getProductDetails(@Path("id") id: Int): Call<MerchantProductDetailsResModel>
+
+
 }

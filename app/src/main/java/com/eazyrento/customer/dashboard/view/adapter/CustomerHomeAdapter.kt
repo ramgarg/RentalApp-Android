@@ -43,6 +43,6 @@ class CustomerHomeAdapter(val listMasterData: ArrayList<MasterResModelItem>, val
             context.startActivity(intent)*/
         }
         Picasso.with(context).load(listMasterData.get(position).master_image_url)
-            .into(holder.imgVeichle );
+            .into(holder.imgVeichle )
     }
 }

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Base64
 import android.view.View
@@ -21,10 +22,14 @@ import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
+import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
 import com.eazyrento.merchant.model.modelclass.MerchantProductItem
 import com.eazyrento.merchant.viewModel.MerchantAddProductViewModel
 import com.eazyrento.merchant.viewModel.MerchantProductDetailViewModel
+import com.eazyrento.supporting.MyJsonParser
 import com.google.gson.JsonElement
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.add_vehicle_dialog.*
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
@@ -55,6 +60,7 @@ class AddProductDailogActivity:BaseActivity() {
 
         setSppinerData( R.array.RegistrationDocument,R.id.sp_select_document)
         setSppinerData( R.array.FuelType,R.id.spinner_fuel_type)
+
         setCheckBoxListener()
 
 
@@ -110,6 +116,20 @@ class AddProductDailogActivity:BaseActivity() {
         }
     }
 
+    private fun setCheckBoxValue(merchantAddProductReqModel: MerchantAddProductReqModel){
+        //drive chk
+        findViewById<CheckBox>(R.id.chk_box_with_driver).isChecked =merchantAddProductReqModel.with_driver
+
+        //days chk
+            findViewById<CheckBox>(R.id.sun_chk).isChecked= merchantAddProductReqModel.availability_days.sun==1
+            findViewById<CheckBox>(R.id.mon_chk).isChecked =merchantAddProductReqModel.availability_days.mon ==1
+            findViewById<CheckBox>(R.id.tue_chk).isChecked= merchantAddProductReqModel.availability_days.tue ==1
+            findViewById<CheckBox>(R.id.wed_chk).isChecked=merchantAddProductReqModel.availability_days.wed ==1
+            findViewById<CheckBox>(R.id.thu_chk).isChecked=merchantAddProductReqModel.availability_days.thu ==1
+            findViewById<CheckBox>(R.id.fri_chk).isChecked=merchantAddProductReqModel.availability_days.fri ==1
+            findViewById<CheckBox>(R.id.sat_chk).isChecked =merchantAddProductReqModel.availability_days.sat ==1
+    }
+
 
     fun onMinusClick(view: View){
         merchantAddProductReqModel.quantity--
@@ -136,10 +156,19 @@ class AddProductDailogActivity:BaseActivity() {
    private fun submitCallAPI(){
         merchantAddProductReqModel.price = ed_price.text.toString().toDouble()
 
+       var boolean_add:Boolean = false
+       var id:Int = edit_product_ID
+
+       if (edit_product_ID ==DEFUALT_VALUE){
+           // ADDED PROJECT
+           boolean_add = true
+           id =DEFUALT_VALUE
+       }
+
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<MerchantAddProductViewModel>(this)
-                    .addProductAPI(merchantAddProductReqModel)
+                    .addProductAPI(merchantAddProductReqModel,boolean_add,id)
                 , this, this
             )
 
@@ -249,6 +278,19 @@ class AddProductDailogActivity:BaseActivity() {
             val imageStream: InputStream? =
                 data.data?.let { context?.getContentResolver()?.openInputStream(it) }
             val selectedImage = BitmapFactory.decodeStream(imageStream)
+
+        // set Image in view and set base64 to send server
+            setImageViewAndConvertIntoBase64(selectedImage)
+
+
+        }
+    }
+
+    private fun setImageViewAndConvertIntoBase64(selectedImage: Bitmap?) {
+        //set into Image view
+        selectedImage?.let {
+            img_doc.setImageBitmap(selectedImage)
+
             val base64 = encodeImage(selectedImage)
             if (base64 != null) {
                 merchantAddProductReqModel.attach_document = base64
@@ -271,23 +313,88 @@ class AddProductDailogActivity:BaseActivity() {
 
         if (data is JsonElement) {
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, data.toString())
-            if (edit_product_ID ==DEFUALT_VALUE) {
+//            if (edit_product_ID ==DEFUALT_VALUE) {
                 showToast(ValidationMessage.PRODUCT_ADDED_SUCCESS)
 //        {"status":201}
                 MoveToAnotherComponent.moveToActivity<MerchantMainActivity>(
                     this,
                     Constant.INTENT_SUCCESS_ADDED_PRODUCT, 1
                 )
-            }
-            else{
-                editProductData(data as JsonElement)
-            }
+//            }
+
+        }
+        else{
+            editProductData(data as MerchantProductDetailsResModel)
         }
 
     }
 
-    private fun editProductData(jsonElement: JsonElement) {
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,jsonElement.asJsonObject.toString())
+    private fun editProductData(productDetails: MerchantProductDetailsResModel) {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,productDetails.toString())
+
+//        merchantAddProductReqModel.product_id =productDetails.product_info.id
+
+        merchantAddProductReqModel.availability_days = productDetails.product_info.availability_days
+        merchantAddProductReqModel.document_name =productDetails.product_info.document_name
+        merchantAddProductReqModel.quantity = productDetails.product_info.quantity
+        merchantAddProductReqModel.price =productDetails.product_info.price
+        merchantAddProductReqModel.variant = productDetails.product_info.product_details.fuel_type
+        merchantAddProductReqModel.with_driver =productDetails.product_info.with_driver
+
+        setAttachedDocOnImageView(productDetails.product_info.attached_document)
+
+        setDataOnUI(merchantAddProductReqModel)
+
+    }
+    private fun setDataOnUI(merchantAddProductReqModel: MerchantAddProductReqModel){
+
+        setCheckBoxValue(merchantAddProductReqModel)
+
+        item_quantity.text = ""+merchantAddProductReqModel.quantity
+
+        ed_price.setText(""+merchantAddProductReqModel.price)
+
+        setSpinnerData(merchantAddProductReqModel)
+
+
+    }
+
+    private fun setSpinnerData(merchantAddProductReqModel: MerchantAddProductReqModel) {
+       // R.id.spinner_fuel_type ->{
+        spinner_fuel_type.setSelection(getComparedPostion(getSpinnerDataByID(R.array.FuelType),merchantAddProductReqModel.variant))
+        sp_select_document.setSelection(getComparedPostion(getSpinnerDataByID(R.array.RegistrationDocument),merchantAddProductReqModel.document_name))
+
+       // R.id.sp_select_document ->{
+//            merchantAddProductReqModel.document_name = getSpinnerDataByID(R.array.RegistrationDocument)[position]
+        //}
+
+    }
+
+    private fun getComparedPostion(spinnerDataByID: Array<String>, variant: String): Int {
+
+        for (i in spinnerDataByID.indices){
+            if (spinnerDataByID[i] == variant)
+                return i
+        }
+        return 0
+    }
+
+    private fun setAttachedDocOnImageView(attachedDocument: String) {
+        if (attachedDocument.isEmpty())
+            return
+
+        Picasso.with(context).load(attachedDocument).into(object :Target{
+            override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+            }
+
+            override fun onBitmapFailed(errorDrawable: Drawable?) {
+            }
+
+            override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
+                setImageViewAndConvertIntoBase64(bitmap)
+            }
+
+        })
     }
 
 

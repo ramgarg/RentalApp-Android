@@ -6,6 +6,7 @@ import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.common.model.modelclass.ProductCategoriesResModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
+import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
 import com.eazyrento.merchant.model.repository.api.MerchantAPI
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
@@ -22,10 +23,18 @@ class MerchantProductCategoriesRepo : GenericRequestHandler<JsonElement>(){
 
 class MerchantAddProductRepo : GenericRequestHandler<JsonElement>(){
 
-    fun addMerchantProduct(merchantAddProductReqModel: MerchantAddProductReqModel): LiveData<DataWrapper<JsonElement>> {
-        val call = ServiceGenrator.client.create(
-            MerchantAPI::class.java).addProduct(merchantAddProductReqModel)
-        return doRequest(call)
+    fun addMerchantProduct(merchantAddProductReqModel: MerchantAddProductReqModel,boolean_add: Boolean,id:Int): LiveData<DataWrapper<JsonElement>> {
+
+        if (boolean_add) {
+            return doRequest( ServiceGenrator.client.create(
+                MerchantAPI::class.java
+            ).addProduct(merchantAddProductReqModel))
+        }else {
+            return doRequest(ServiceGenrator.client.create(
+                MerchantAPI::class.java
+            ).updateProductDetails(id,merchantAddProductReqModel))
+        }
+
     }
 }
 
@@ -38,9 +47,9 @@ class MerchantDeleteProductRepo : GenericRequestHandler<JsonElement>(){
     }
 }
 
-class MerchantProductDetailsRepo : GenericRequestHandler<JsonElement>(){
+class MerchantProductDetailsRepo : GenericRequestHandler<MerchantProductDetailsResModel>(){
 
-    fun detailsProduct(id: Int): LiveData<DataWrapper<JsonElement>> {
+    fun detailsProduct(id: Int): LiveData<DataWrapper<MerchantProductDetailsResModel>> {
         val call = ServiceGenrator.client.create(
             MerchantAPI::class.java).getProductDetails(id)
         return doRequest(call)

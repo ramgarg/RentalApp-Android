@@ -24,7 +24,7 @@ interface ValidationMessage{
         const val SUBMIT_TITLE ="Submit"
 
         //sucessfully added
-        const val PRODUCT_ADDED_SUCCESS = "Product has been added successfully"
+        const val PRODUCT_ADDED_SUCCESS = "Request has been submit successfully"
         const val PRODUCT_DELETE_SUCCESS = "Product has been deleted successfully"
 
 
