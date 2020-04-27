@@ -9,225 +9,389 @@
     <include layout="@layout/toolbar"
              android:id="@+id/toolbar"
     />
+
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         <RelativeLayout
 
-                android:layout_margin="@dimen/_20sdp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_20sdp"
+                android:orientation="vertical">
 
-            <ImageView android:layout_width="@dimen/_80sdp"
-                       android:id="@+id/img_profile"
-                       android:src="@mipmap/profile_pic"
+            <ImageView
+                    android:id="@+id/img_profile"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:src="@mipmap/profile_pic" />
 
-                       android:layout_height="@dimen/_80sdp"/>
+            <ImageView
+                    android:id="@+id/img_edit"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_alignEnd="@+id/img_profile"
+                    android:layout_alignBottom="@+id/img_profile"
+                    android:src="@mipmap/add_image" />
 
-            <ImageView android:layout_width="@dimen/_25sdp"
-                       android:src="@mipmap/add_image"
-                       android:id="@+id/img_edit"
-                       android:layout_alignEnd="@+id/img_profile"
-                       android:layout_alignBottom="@+id/img_profile"
-                       android:layout_height="@dimen/_25sdp"/>
-
-            <TextView android:layout_width="wrap_content"
-                      android:text="@string/customer"
-                      android:fontFamily="@font/bree_serif"
-                      android:textSize="@dimen/_20sdp"
-                      android:textColor="#0f7e31"
-                      android:layout_marginStart="@dimen/_20sdp"
-                      android:layout_marginTop="@dimen/_20sdp"
-                      android:layout_toEndOf="@+id/img_profile"
-                      android:layout_height="wrap_content"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_toEndOf="@+id/img_profile"
+                    android:fontFamily="@font/bree_serif"
+                    android:text="@string/customer"
+                    android:textColor="@color/text_green"
+                    android:textSize="@dimen/_20sdp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_below="@+id/img_profile"
-                    android:hint="@string/full_name"
                     android:id="@+id/layout_full_name"
-                    android:textColor="#000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/img_profile"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="@string/full_name"
 
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
-                    android:layout_height="wrap_content">
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_full_name"
                         android:layout_width="match_parent"
-                        android:id="@+id/ed_user_name"
-                        android:maxLines="1"
-                        android:lines="1"
-                        android:inputType="textEmailAddress"
-                        android:nextFocusDown="@id/ed_password"
+                        android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:layout_height="@dimen/_40sdp"/>
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/ed_password" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_username"
                     android:layout_width="match_parent"
-                    android:hint="@string/email"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:textColor="#000"
-                    android:id="@+id/layout_email"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/layout_full_name"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="@string/user_name"
 
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
-                    android:layout_height="wrap_content">
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_user_name"
                         android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/ed_password" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_username"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="@string/email"
+
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ed_email"
-                        android:maxLines="1"
-                        android:lines="1"
-                        android:inputType="textEmailAddress"
-                        android:nextFocusDown="@id/ed_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:layout_height="@dimen/_40sdp"/>
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/ed_password" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+
             <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:hint="@string/phone_number"
-                    android:id="@+id/layout_phone"
+                    android:id="@+id/layout_country"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/layout_email"
-                    android:textColor="#000"
                     android:layout_marginTop="@dimen/_10sdp"
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    android:hint="@string/code"
+                    android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
-                    android:layout_height="wrap_content">
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
+                        android:id="@+id/ed_country"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/ed_password" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_email"
+                    android:layout_toEndOf="@+id/layout_country"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="@string/phone_number"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ed_phone"
-                        android:maxLines="1"
-                        android:lines="1"
-                        android:inputType="textEmailAddress"
-                        android:nextFocusDown="@id/ed_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:layout_height="@dimen/_40sdp"/>
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/ed_password" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_dob"
                     android:layout_width="match_parent"
-                    android:hint="@string/company_name"
-                    android:id="@id/layout_company"
-                    android:textColor="#000"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/layout_phone"
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="@string/date_of_birth"
+                    android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
-                    android:layout_height="wrap_content">
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_dob"
                         android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/ed_password" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@id/layout_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_dob"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="@string/company_name"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ed_company_name"
-                        android:maxLines="1"
-                        android:lines="1"
-                        android:inputType="textEmailAddress"
-                        android:nextFocusDown="@id/ed_password"
-                        android:fontFamily="@font/bree_serif"
-                        android:layout_height="@dimen/_40sdp"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:hint="@string/gender"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:id="@+id/layout_gender"
-                    android:textColor="#000"
-                    android:layout_below="@+id/layout_company"
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
-                    android:textColorHint="@android:color/darker_gray"
-                    android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:id="@+id/ed_gender"
-                        android:maxLines="1"
-                        android:lines="1"
-                        android:inputType="textEmailAddress"
-                        android:nextFocusDown="@id/ed_password"
+                        android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:layout_height="@dimen/_40sdp"/>
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/ed_password" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:hint="@string/description"
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:id="@+id/layout_des"
-                    android:textColor="#000"
-                    android:layout_below="@+id/layout_gender"
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
-                    android:textColorHint="@android:color/darker_gray"
-                    android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:id="@+id/ed_des"
-                        android:maxLines="1"
-                        android:lines="1"
-                        android:inputType="textEmailAddress"
-                        android:nextFocusDown="@id/ed_password"
-                        android:fontFamily="@font/bree_serif"
-                        android:layout_height="@dimen/_40sdp"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:hint="@string/select_location"
-                    android:id="@+id/layout_location"
-                    android:textColor="#000"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_company"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_below="@+id/layout_des"
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    android:hint="@string/description"
+                    android:textColor="#000"
                     android:textColorHint="@android:color/darker_gray"
-                    android:layout_height="wrap_content">
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_des"
                         android:layout_width="match_parent"
-                        android:id="@+id/ed_location"
-                        android:maxLines="1"
-                        android:lines="1"
-                        android:inputType="textEmailAddress"
-                        android:nextFocusDown="@id/ed_password"
+                        android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:layout_height="@dimen/_40sdp"/>
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/ed_password" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <FrameLayout android:layout_width="match_parent"
-                         android:id="@+id/frame_map"
-                         android:layout_marginTop="@dimen/_20sdp"
-                         android:layout_below="@id/layout_location"
-                         android:layout_height="@dimen/_180sdp">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/layout_gender"
+                android:layout_below="@id/layout_des"
+                android:visibility="visible">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:id="@+id/tv_gender"
+                    android:text="@string/select_gender"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/bree_serif"
+                    android:textSize="@dimen/_16sdp">
+
+            </TextView>
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/tv_gender"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/spinner_dropdown"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/bree_serif"
+                    android:id="@+id/sp_gender">
+
+            </Spinner>
+        </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lyt_select_document"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_below="@id/layout_gender"
+                    android:visibility="visible">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_select_document"
+                        android:text="@string/select_document"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:textSize="@dimen/_16sdp">
+
+                </TextView>
+                <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_below="@+id/tv_select_document"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/spinner_dropdown"
+                        android:layout_toEndOf="@+id/document_pic"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:id="@+id/sp_select_document">
+
+                </Spinner>
+                <ImageView
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_below="@+id/tv_select_document"
+                        android:id="@+id/document_pic"
+                        android:src="@mipmap/attachment">
+
+                </ImageView>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lyt_select_document"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:id="@+id/layout_location">
+                <TextView
+                        android:layout_width="@dimen/_125sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:id="@+id/tv_select_location"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/select_location_">
+
+                </TextView>
+                <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_toEndOf="@id/tv_select_location"
+                        android:layout_alignParentEnd="true"
+                        android:id="@+id/btn_select_location"
+                        android:layout_marginStart="@dimen/_50sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/change"
+                        android:background="@drawable/payment_status"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:paddingRight="@dimen/_10sdp">
+
+                </Button>
+                <TextView android:layout_width="@dimen/_120sdp"
+                        android:text="@string/downtown_dubai"
+                        android:layout_below="@+id/tv_select_location"
+                        android:id="@+id/tv_add_line"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:layout_height="@dimen/_20sdp"/>
+                <TextView android:layout_width="@dimen/_140sdp"
+                        android:text="@string/downtown_dubai"
+                        android:id="@+id/tv_add_city"
+                        android:layout_below="@id/tv_select_location"
+                        android:layout_toRightOf="@+id/tv_add_line"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:layout_height="@dimen/_20sdp"/>
+            <TextView android:layout_width="match_parent"
+                    android:text="@string/downtown_dubai"
+                    android:id="@+id/tv_add_country"
+                    android:layout_below="@+id/tv_add_line"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/bree_serif"
+                    android:layout_height="@dimen/_20sdp"/>
+
+            </RelativeLayout>
+
+            <FrameLayout
+                    android:id="@+id/frame_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_180sdp"
+                    android:layout_below="@id/layout_location"
+                    android:layout_marginTop="@dimen/_20sdp">
 
                 <androidx.fragment.app.FragmentContainerView
                         android:id="@+id/map"
                         android:name="com.google.android.gms.maps.SupportMapFragment"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                />
+                        android:layout_height="match_parent" />
             </FrameLayout>
 
-            <Button android:layout_width="match_parent"
-                    android:text="@string/save"
+            <Button
                     android:id="@+id/btn_save"
-                    android:textColor="#fff"
-                    android:fontFamily="@font/bree_serif"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/_15sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_below="@id/frame_map"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_20sdp"
                     android:background="@drawable/button_gradient"
-                    android:layout_height="@dimen/_40sdp"
+                    android:fontFamily="@font/bree_serif"
                     android:onClick="onClickSaveButton"
-                    />
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/_15sdp" />
 
         </RelativeLayout>
 
