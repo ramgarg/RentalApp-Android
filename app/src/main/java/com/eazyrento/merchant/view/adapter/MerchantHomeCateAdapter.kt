@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.customer.dashboard.view.adapter.InfalterViewAdapter
 import com.eazyrento.customer.dashboard.view.adapter.ProductVehiclesAdapter
+import com.eazyrento.merchant.model.modelclass.MerchantProductItem
 import com.eazyrento.merchant.view.fragment.MerchantCatItem
 import kotlinx.android.synthetic.main.fragment_merchant_home_adapter.view.*
 
@@ -32,7 +34,7 @@ class MerchantHomeCateAdapter(val context: Context,val listItem:MutableList<Merc
         holder.tv_merchant_cat_name.text = listItem.get(position).key
 
         holder.tv_merchant_view_all.setOnClickListener {
-            baseFragment.onViewClick(listItem.get(position),1)
+            baseFragment.onViewClick(listItem.get(position),Constant.VIEW_ALL)
         }
 
         holder.rec_edit_delete_product.adapter =
@@ -46,4 +48,13 @@ class MerchantHomeCateAdapter(val context: Context,val listItem:MutableList<Merc
     override fun getInflaterViewIDAdapter(): Int {
         return R.layout.row_merchant_home_vehicle
     }
+
+    override fun <T> setListnerOnView(view: View?,type: T,where:Int) {
+
+        view?.setOnClickListener{
+            baseFragment.onViewClick(type,where)
+        }
+
+    }
+
 }

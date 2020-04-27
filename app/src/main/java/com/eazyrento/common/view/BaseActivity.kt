@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.eazyrento.Constant
 import com.eazyrento.Env.Companion.isNetworkConnect
 import com.eazyrento.R
 import kotlinx.android.synthetic.main.thank_you_pop.*
@@ -62,16 +63,24 @@ open abstract class BaseActivity: AppCompatActivity(),
         val dialog = Dialog(context)
         dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
-        dialog .setCancelable(true)
+        dialog .setCancelable(false)
         dialog .setContentView(layout)
+
+        dialog.btn_cancel.visibility = View.VISIBLE
+
+        dialog.tv_msg.text=msg
 
         dialog.btn_ok.setOnClickListener {
             dialog.cancel()
-            this.onClickDailog(1)
+            this.onClickDailog(Constant.OK)
         }
-        dialog.tv_msg.text=msg
+        dialog.btn_cancel.setOnClickListener {
+            dialog.cancel()
+            this.onClickDailog(Constant.CANCEL)
+        }
 
-       /* if(title.equals("Payment"))
+
+        /*if(title.equals("Payment"))
             Common.thankYou(dialog, msg)
         else if(title.equals("UserType"))
             Common.userDialog(context, dialog)

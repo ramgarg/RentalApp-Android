@@ -1,40 +1,54 @@
 package com.eazyrento.merchant.view.activity
 
-import android.R.attr.tag
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
-import android.net.Uri
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.util.Base64
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.Spinner
 import com.eazyrento.Constant
+import com.eazyrento.EazyRantoApplication.Companion.context
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
+import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.common.model.modelclass.ProductSubCategoriesModelResItem
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.utils.Common
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
+import com.eazyrento.merchant.model.modelclass.MerchantProductItem
 import com.eazyrento.merchant.viewModel.MerchantAddProductViewModel
+import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.add_vehicle_dialog.*
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
-import java.io.IOException
+import java.io.ByteArrayOutputStream
+import java.io.InputStream
 
 
 class AddProductDailogActivity:BaseActivity() {
 
-    val merchantAddProductReqModel = MerchantAddProductReqModel()
+    private val merchantAddProductReqModel = MerchantAddProductReqModel()
+    private  val DEFUALT_VALUE = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_vehicle_dialog)
         this.setFinishOnTouchOutside(false)
+
+        //edit functionalty
+        val edit_product = intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_EDIT,DEFUALT_VALUE)
+
+        merchantAddProductReqModel.product_id =
+            if (edit_product!=DEFUALT_VALUE)
+                edit_product
+        //Adding funtionalty
+            else
+               intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_ADD,DEFUALT_VALUE)
+
 
         setSppinerData( R.array.RegistrationDocument,R.id.sp_select_document)
         setSppinerData( R.array.FuelType,R.id.spinner_fuel_type)
@@ -93,29 +107,81 @@ class AddProductDailogActivity:BaseActivity() {
     fun onUploadClick(view: View){
         pickImage()
     }
-//final submit
+//final submit review
     fun onSubmitClick(view: View){
 
-        merchantAddProductReqModel.price = ed_price.text.toString().toInt()
-
-    callAPI()?.let {
-        it.observeApiResult(
-            it.callAPIActivity<MerchantAddProductViewModel>(this)
-                .addProductAPI(merchantAddProductReqModel)
-            , this, this
-        )
-
+     if (isRequireValidationFailed(merchantAddProductReqModel)){
+         return
      }
+     showDialog(ValidationMessage.SUBMIT_TITLE,ValidationMessage.ON_SUBMIT_BUTTON_CLICK,this,R.layout.thank_you_pop)
+
+    }
+   private fun submitCallAPI(){
+        merchantAddProductReqModel.price = ed_price.text.toString().toDouble()
+
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<MerchantAddProductViewModel>(this)
+                    .addProductAPI(merchantAddProductReqModel)
+                , this, this
+            )
+
+        }
+    }
+
+    override fun onClickDailog(int: Int) {
+        when (int){
+            Constant.OK -> submitCallAPI()
+            Constant.CANCEL->AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,""+int)
+        }
+
+    }
+
+    private fun isRequireValidationFailed(obj: MerchantAddProductReqModel): Boolean {
+
+        if (!listOf<Int>(obj.availability_days.sun,obj.availability_days.mon,obj.availability_days.tue
+            ,obj.availability_days.wed,obj.availability_days.thu,obj.availability_days.fri,obj.availability_days.sat).any(){it==1}) {
+
+            showToast(ValidationMessage.SELECT_AT_LIST_ONE_DAYS)
+            return true
+
+        }
+        if (obj.quantity==0)
+        {
+            showToast(ValidationMessage.FILL_QUANTITY)
+            return true
+        }
+        if (ed_price.text.toString().isEmpty() && ed_price.text.toString().toDouble()==0.0){
+            showToast(ValidationMessage.FILL_BOOKING_PRICE)
+            return true
+        }
+        if (obj.variant.equals("")){
+            showToast(ValidationMessage.SELECT_FUEL_TYPE_SPINNER)
+            return true
+        }
+        if (obj.document_name.equals("")){
+            showToast(ValidationMessage.SELECT_DOCUMENT)
+            return true
+        }
+        if (obj.attach_document.equals("")){
+            showToast(ValidationMessage.UPLOAD_DOCUMENT)
+            return true
+        }
+
+        return false
     }
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
+    fun getSpinnerDataByID(int: Int): Array<String> {
+        return resources.getStringArray(int)
+    }
 
     private fun setSppinerData(spinerDataReSource:Int,spinerName:Int) {
 //        R.array.RegistrationDocument
         //R.id.sp_select_document
-        val data = resources.getStringArray(spinerDataReSource)
+        val data = getSpinnerDataByID(spinerDataReSource)
         val spinner = findViewById<Spinner>(spinerName)
 
         spinner?.let {
@@ -132,9 +198,15 @@ class AddProductDailogActivity:BaseActivity() {
 
             }
             else{
-                //Toast.makeText(this@AddProductDailogActivity, getString(R.string.selected_item) + " " + "" + document[position], Toast.LENGTH_SHORT).show()
-                merchantAddProductReqModel.document_name = "pan"
-//                merchantAddProductReqModel.
+                when(parent.id){
+                    R.id.spinner_fuel_type ->{
+                        merchantAddProductReqModel.variant = getSpinnerDataByID(R.array.FuelType)[position]
+                    }
+                    R.id.sp_select_document ->{
+                        merchantAddProductReqModel.document_name = getSpinnerDataByID(R.array.RegistrationDocument)[position]
+                    }
+                }
+
             }
         }
 
@@ -157,45 +229,39 @@ class AddProductDailogActivity:BaseActivity() {
                 //Display an error
                 return
             }
-            /*val inputStream: InputStream? =
-                data.data?.let { context?.getContentResolver()?.openInputStream(it) }*/
-
-            try {
-                // get uri from Intent
-                val uri: Uri? = data.data
-                // get bitmap from uri
-                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
-                // store bitmap to file
-                val filename =
-                    File(Environment.getExternalStorageDirectory(), "imageName.jpg")
-                val out = FileOutputStream(filename)
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 60, out)
-                out.flush()
-                out.close()
-                // get base64 string from file
-                val base64: String? = getStringImage(filename)
-                if (base64 != null) {
-                    merchantAddProductReqModel.attach_document =base64
-                }
-                // use base64 for your next step.
-            } catch (e: IOException) {
-                e.printStackTrace()
+            val imageStream: InputStream? =
+                data.data?.let { context?.getContentResolver()?.openInputStream(it) }
+            val selectedImage = BitmapFactory.decodeStream(imageStream)
+            val base64 = encodeImage(selectedImage)
+            if (base64 != null) {
+                merchantAddProductReqModel.attach_document = base64
+//                merchantAddProductReqModel.attach_document = ""
+            }else{
+                showToast(ValidationMessage.DOC_IS_NOT_UPLOADED)
             }
 
         }
     }
-    private fun getStringImage(file: File): String? {
-        try {
-            val fin = FileInputStream(file)
-            val imageBytes = ByteArray(file.length().toInt())
-            fin.read(imageBytes, 0, imageBytes.size)
-            fin.close()
-            return Base64.encodeToString(imageBytes, Base64.DEFAULT)
-        } catch (ex: Exception) {
-//            Log.e(tag, Log.getStackTraceString(ex))
-//            toast("Image Size is Too High to upload.")
-        }
-        return null
+
+    private fun encodeImage(bm: Bitmap): String? {
+        val baos = ByteArrayOutputStream()
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val b = baos.toByteArray()
+        return Base64.encodeToString(b, Base64.DEFAULT)
     }
+
+    override fun <T> onSuccessApiResult(data: T) {
+        if (data is JsonElement) {
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, data.toString())
+            showToast(ValidationMessage.PRODUCT_ADDED_SUCCESS)
+//        {"status":201}
+            MoveToAnotherComponent.moveToActivity<MerchantMainActivity>(
+                this,
+                Constant.INTENT_SUCCESS_ADDED_PRODUCT, 1
+            )
+        }
+
+    }
+
 
 }

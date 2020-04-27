@@ -148,7 +148,7 @@
                         android:gravity="center"
                         android:paddingLeft="@dimen/_10sdp"
                         android:paddingRight="@dimen/_10sdp"
-                        android:text=""
+                        android:text="@string/quantity_value"
                         android:textColor="@color/black" />
 
                 <ImageView

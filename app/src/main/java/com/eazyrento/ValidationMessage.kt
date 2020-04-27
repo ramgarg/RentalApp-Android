@@ -11,5 +11,22 @@ interface ValidationMessage{
         const val SELECT_USER_ROLE = "Please select user role"
         const val NO_DATA_FOUND = "No data found"
 
+        //merchant add product validation
+        const val DOC_IS_NOT_UPLOADED = "Doc is not uploaded.Please try it again."
+        const val SELECT_AT_LIST_ONE_DAYS = "Please select at list one day."
+        const val FILL_QUANTITY = "Please fill quantity."
+        const val FILL_BOOKING_PRICE ="Booking price can not be zero or empty."
+        const val SELECT_FUEL_TYPE_SPINNER = "Please select fuel type."
+        const val SELECT_DOCUMENT = "Please select document."
+        const val UPLOAD_DOCUMENT = "Please upload a document."
+        //merchnat product submit
+        const val ON_SUBMIT_BUTTON_CLICK ="Do you want to submit the product info?"
+        const val SUBMIT_TITLE ="Submit"
+
+        //sucessfully added
+        const val PRODUCT_ADDED_SUCCESS = "Product has been added successfully"
+        const val PRODUCT_DELETE_SUCCESS = "Product has been deleted successfully"
+
+
     }
 }

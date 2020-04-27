@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.eazyrento.Constant
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesModelResItem
 import com.eazyrento.common.model.modelclass.ProductCateItem
 import com.eazyrento.common.view.BaseActivity
@@ -23,6 +24,7 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val tvVeichleName=view.vehicle_name
         val imgVeichle=view.vehicle_image
+
         val btnAdd = view.btn_add_product
         val btn_edit = view.btn_edit_product
         val btn_delete=view.btn_delete_product
@@ -45,8 +47,9 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
         var itemName :String?=""
         var imageUrl:String? = ""
 
-        val any  = listProductCatg[position]
-        any.let { if (it is ProductCateItem){itemName=it.display_name
+        val objProduct  = listProductCatg[position]
+
+        objProduct.let { if (it is ProductCateItem){itemName=it.display_name
                                     imageUrl =it.category_image_url}
                    if (it is ProductSubCategoriesModelResItem)
                                 { itemName = it.subcategory_name
@@ -64,27 +67,32 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
                 .into(holder.imgVeichle)
         }
 
+
         // click on whole view
         holder.itemView.setOnClickListener {
-            context.let { if(it is BaseActivity)it.moveOnSelecetedItem(any) }
+            context.let { if(it is BaseActivity)it.moveOnSelecetedItem(objProduct) }
         }
         //add product click merchnat add vehile
         holder.btnAdd?.setOnClickListener {
-            context.let { if(it is BaseActivity)it.moveOnSelecetedItem(any) }
+            context.let { if(it is BaseActivity)it.moveOnSelecetedItem(objProduct) }
         }
 
+        //delete,add product merchant home
+        infalterViewAdapter.setListnerOnView(holder.btn_delete,objProduct,Constant.delete)
+        infalterViewAdapter.setListnerOnView(holder.btn_edit,objProduct,Constant.edit)
         //delete product merchant home
-        holder.btn_delete?.setOnClickListener {
-            context.let { if(it is BaseActivity)it.moveOnSelecetedItem(any) }
+        /*holder.btn_delete?.setOnClickListener {
+            context.let { if(it is BaseActivity)it.moveOnSelecetedItem(objProduct) }
         }
         //edit product merchnat home
         holder.btn_edit?.setOnClickListener {
-            context.let { if(it is BaseActivity)it.moveOnSelecetedItem(any) }
-        }
+            context.let { if(it is BaseActivity)it.moveOnSelecetedItem(objProduct) }
+        }*/
     }
 
 }
 
 interface InfalterViewAdapter{
     fun getInflaterViewIDAdapter():Int
+    fun <T>setListnerOnView(view: View?,type:T,where:Int)
 }

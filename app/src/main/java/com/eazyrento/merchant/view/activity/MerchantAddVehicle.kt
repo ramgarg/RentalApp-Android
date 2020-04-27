@@ -44,9 +44,8 @@ class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
     * to move other activity or componant
     * */
     override fun <T> moveOnSelecetedItem(type: T) {
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,type.toString())
-        MoveToAnotherComponent.openActivityWithParcelableParam<AddProductDailogActivity,T>(this,
-            Constant.INTENT_MERCHANT_PRODUCT_ADD,type)
+        MoveToAnotherComponent.moveToActivity<AddProductDailogActivity>(this,
+            Constant.INTENT_MERCHANT_PRODUCT_ADD,(type as ProductSubCategoriesModelResItem).id)
     }
 
     override fun <T> onSuccessApiResult(data: T) {
@@ -178,6 +177,9 @@ class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
 
     override fun getInflaterViewIDAdapter(): Int {
         return R.layout.row_merchant_add_vehicle
+    }
+
+    override fun <T> setListnerOnView(view: View?, type: T, where: Int) {
     }
 
 

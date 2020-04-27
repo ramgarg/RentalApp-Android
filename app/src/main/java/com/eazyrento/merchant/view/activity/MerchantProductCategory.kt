@@ -1,6 +1,7 @@
 package com.eazyrento.merchant.view.activity
 
 import android.os.Bundle
+import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.BaseActivity
@@ -36,5 +37,8 @@ class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
     }
     override fun getInflaterViewIDAdapter(): Int {
         return R.layout.row_merchant_home_vehicle
+    }
+
+    override fun <T> setListnerOnView(view: View?, type: T, where: Int) {
     }
 }

@@ -1,8 +1,11 @@
 package com.eazyrento.merchant.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.core.view.GravityCompat
+import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.MerchantNavigationActivity
 import kotlinx.android.synthetic.main.merchant_activity_main.*
@@ -37,6 +40,19 @@ class MerchantMainActivity : MerchantNavigationActivity() {
         //btn_merchant_home_view_all.setOnClickListener{ MoveToAnotherComponent.moveToAgentBookingsFragment(this)}
 
 
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        val value = intent?.getIntExtra(Constant.INTENT_SUCCESS_ADDED_PRODUCT,-1)
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onNewIntent "+value)
+
+        // move to home fragemtn
+        bottom_navigation_view_merchant.selectedItemId = R.id.merchant_navigation_home
+    }
+    fun setHomeFragMent()
+    {
+        bottom_navigation_view_merchant.selectedItemId = R.id.merchant_navigation_home
     }
 
 }

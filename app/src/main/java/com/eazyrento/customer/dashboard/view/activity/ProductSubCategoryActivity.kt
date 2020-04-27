@@ -1,6 +1,7 @@
 package com.eazyrento.customer.dashboard.view.activity
 
 import android.os.Bundle
+import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
@@ -55,6 +56,9 @@ class ProductSubCategoryActivity :
             return
         }
         showToast(ValidationMessage.NO_DATA_FOUND)
+    }
+
+    override fun <T> setListnerOnView(view: View?, type: T, where: Int) {
     }
 
 }

@@ -18,6 +18,8 @@ interface Constant{
          const val INTENT_SUCCESS_ORDER_BOOKING = "success"
         const val INTENT_MERCHANT_PRODUCT_LIST = "list"
         const val INTENT_MERCHANT_PRODUCT_ADD = "add"
+        const val INTENT_MERCHANT_PRODUCT_EDIT = "edit"
+        const val INTENT_SUCCESS_ADDED_PRODUCT = "success"
 
         // Order status
         const val OPEN_ORDER = 1
@@ -44,6 +46,16 @@ interface Constant{
         const val MERCHANT="Merchant"
         const val AGENT="Agent"
         const val CUSTOMER="Customer"
+
+
+        const val OK = 1
+        const val CANCEL =0
+
+        const val delete =0
+        const val edit = 1
+        const val add =2
+        const val VIEW_ALL =3
+
 
     }
 }
