@@ -83,13 +83,16 @@ open class AgentNavigationActivity : BaseActivity(), NavigationView.OnNavigation
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
+            R.id.agent_nav_dashboard -> {
+                MoveToAnotherComponent.moveToAgentHomeActivity(this)
+            }
+
             R.id.agent_nav_about -> {
                 MoveToAnotherComponent.moveToAboutActivity(this)
             }
 
             R.id.agent_nav_help -> {
-
-                Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
+                moveToTargatedFragment(AgentSupportFragment())
             }
             R.id.agent_nav_add_note -> {
                 MoveToAnotherComponent.moveToMyNotesActivity(this)
@@ -98,6 +101,10 @@ open class AgentNavigationActivity : BaseActivity(), NavigationView.OnNavigation
 
             R.id.agent_nav_tc -> {
                 MoveToAnotherComponent.moveToTermsActivity(this)
+                Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
+            }
+            R.id.agent_nav_logout -> {
+                Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
         }
         menuItem.isChecked=false

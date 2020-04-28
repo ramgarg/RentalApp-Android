@@ -14,6 +14,7 @@ import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.fragment.*
 import kotlinx.android.synthetic.main.merchant_activity_main.*
+import kotlinx.android.synthetic.main.row_merchant_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 open class MerchantNavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -81,17 +82,23 @@ open class MerchantNavigationActivity : BaseActivity(), NavigationView.OnNavigat
             .replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
             .commit()
 
+
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
+            R.id.merchant_nav_dashboard -> {
+                MoveToAnotherComponent.moveToMerchantMainActivity(this)
+            }
             R.id.merchant_nav_about -> {
                 MoveToAnotherComponent.moveToAboutActivity(this)
             }
 
             R.id.merchant_nav_help -> {
 
-                Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
+                moveToTargatedFragment(MerchantSupportFragment())
+                merchant_add_vehicle_btn.visibility=View.INVISIBLE
             }
             R.id.merchant_nav_my_address -> {
                 MoveToAnotherComponent.moveToMerchantAddressActivity(this)
@@ -99,6 +106,9 @@ open class MerchantNavigationActivity : BaseActivity(), NavigationView.OnNavigat
 
             R.id.merchant_nav_tc -> {
                 MoveToAnotherComponent.moveToTermsActivity(this)
+            }
+            R.id.merchant_nav_logout -> {
+                Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
         }
         menuItem.isChecked=false

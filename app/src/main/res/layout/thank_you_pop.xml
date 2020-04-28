@@ -1,93 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-    <RelativeLayout
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@color/transparent"
-            >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
     <LinearLayout
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"
             android:id="@+id/layout_rating"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/button_order"
+            android:background="@drawable/dialog_transparent"
             android:layout_height="wrap_content">
-
-        <ImageView android:layout_width="@dimen/_50sdp"
-                   android:src="@mipmap/leaf"
-                   android:layout_marginTop="@dimen/_20sdp"
-                   android:layout_height="@dimen/_50sdp"/>
-
-        <TextView android:layout_width="wrap_content"
-                  android:gravity="center"
-                  android:id="@+id/tv_msg"
-                  android:layout_marginTop="@dimen/_20sdp"
-                  android:layout_marginBottom="@dimen/_20sdp"
-                  android:textColor="@color/black"
-                  android:fontFamily="@font/bree_serif"
-                  android:textSize="@dimen/_20sdp"
-                  android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layout_rating"
-                android:weightSum="1"
-                android:orientation="horizontal"
-
-                android:gravity="center"
+        <ImageView
                 android:layout_gravity="center"
-                >
-
-            <Button
-                    android:id="@+id/btn_cancel"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_weight=".5"
-
-                    android:text="@string/cancel"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/_15sdp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/bree_serif"
-
-                    android:background="@drawable/ok"
-                    android:visibility="gone"
-                    />
-    <Button
-            android:id="@+id/btn_ok"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_weight=".5"
-
-            android:text="@string/ok"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_15sdp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/bree_serif"
-
-            android:background="@drawable/ok"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:src="@mipmap/leaf"
+                android:scaleType="fitXY"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_60sdp"/>
 
 
-            />
+        <TextView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:fontFamily="@font/bree_serif"
+                android:id="@+id/tv_msg"
+                android:textSize="@dimen/_22sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_weight=".5"
+                android:id="@+id/btn_cancel"
+                android:text="@string/cancel"
+                android:background="@drawable/button_no"
+                android:layout_height="@dimen/_60sdp">
+
+        </Button>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_60sdp"
+                android:id="@+id/btn_ok"
+                android:background="@drawable/button_yes"
+                android:text="@string/ok"
+                android:layout_weight=".5">
+        </Button>
+
+    </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
-</RelativeLayout>
+

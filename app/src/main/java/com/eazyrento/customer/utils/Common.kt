@@ -122,7 +122,7 @@ class Common {
                 dialog.btn_merchant_active.visibility = View.VISIBLE
                 dialog.btn_agent_active.visibility = View.INVISIBLE
                 dialog.btn_customer_active.visibility = View.INVISIBLE
-                MoveToAnotherComponent.moveToMerchantActivity(
+                MoveToAnotherComponent.moveToMerchantMainActivity(
                     context
                 )
             }

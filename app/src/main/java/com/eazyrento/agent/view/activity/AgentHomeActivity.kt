@@ -7,6 +7,7 @@ import com.eazyrento.agent.view.AgentBaseActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.agent_header.view.*
+import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class AgentHomeActivity : AgentBaseActivity(){
@@ -25,6 +26,8 @@ class AgentHomeActivity : AgentBaseActivity(){
 
         // select home fragment
         bottom_navigation_view_agent.selectedItemId = R.id.agent_navigation_home
+
+        //btn_home_view_all.setOnClickListener { MoveToAnotherComponent.moveToAgentBookingsFragment(this) }
 
         val header = agent_navigation_view.getHeaderView(0)
 

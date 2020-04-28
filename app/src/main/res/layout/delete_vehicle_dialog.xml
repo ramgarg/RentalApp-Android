@@ -8,7 +8,7 @@
 
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/button_order"
+            android:background="@drawable/dialog_transparent"
             android:layout_height="wrap_content">
 
 

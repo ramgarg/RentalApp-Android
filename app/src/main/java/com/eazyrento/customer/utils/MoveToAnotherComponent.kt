@@ -39,7 +39,7 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, MerchantAddVehicle::class.java))
         }
 
-        fun moveToMerchantActivity(context: Context){
+        fun moveToMerchantMainActivity(context: Context){
             context.startActivity(Intent(context, MerchantMainActivity::class.java))
         }
 

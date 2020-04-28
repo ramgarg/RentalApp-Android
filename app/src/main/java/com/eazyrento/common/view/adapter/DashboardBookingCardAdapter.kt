@@ -28,6 +28,7 @@ class DashboardBookingCardAdapter (val orderListing: MutableList<Booking>, val c
         val order_listing_obj =  orderListing.get(position)
 
         //customer details
+
         holder?.tv_agent_name.text = order_listing_obj.customer_detail.full_name
         holder?.tv_agent_type.text = Constant.CUSTOMER
 

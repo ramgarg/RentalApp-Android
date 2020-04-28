@@ -8,12 +8,12 @@
 
     <androidx.cardview.widget.CardView
 
-            android:layout_width="@dimen/_120sdp"
+            android:layout_width="@dimen/_160sdp"
             android:layout_height="@dimen/_110sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             android:background="@drawable/calender_bg"
             android:id="@+id/vehicle_card_view"
-            android:layout_margin="@dimen/_8sdp"
+            android:layout_margin="@dimen/_12sdp"
             >
 
         <androidx.constraintlayout.widget.ConstraintLayout

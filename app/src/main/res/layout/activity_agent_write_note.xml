@@ -7,72 +7,73 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <include layout="@layout/toolbar"
-            android:id="@+id/toolbar"
-            />
-
-
-    <TextView
-            android:id="@+id/tv_agent_note_heading"
-            style="@style/AgentBoldTextCard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:text="@string/heading"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            />
-
-    <EditText
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_30sdp"
-            android:hint="@string/heading"
-            android:inputType="text"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:id="@+id/ed_agent_note_heading"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:layout_constraintStart_toStartOf="@+id/tv_agent_note_heading"
-            app:layout_constraintTop_toBottomOf="@+id/tv_agent_note_heading"
-            >
-    </EditText>
+            android:layout_height="match_parent">
 
-    <TextView
-            android:id="@+id/tv_agent_note_desc"
-            style="@style/AgentBoldTextCard"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="@string/description"
-            android:layout_marginStart="@dimen/_10sdp"
-            app:layout_constraintStart_toStartOf="@+id/tv_agent_note_heading"
-            app:layout_constraintTop_toBottomOf="@+id/ed_agent_note_heading"
-            />
+        <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
 
-    <EditText
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_80sdp"
-            android:id="@+id/ed_agent_note_desc"
-            android:hint="@string/description"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginStart="@dimen/_10sdp"
-            app:layout_constraintStart_toStartOf="@+id/tv_agent_note_heading"
-            app:layout_constraintTop_toBottomOf="@+id/tv_agent_note_desc"
-            android:inputType="textLongMessage">
-    </EditText>
 
-    <Button
-            android:id="@+id/agent_submit_note_btn"
-            style="@style/AddVehicleSubmitDialog"
-            android:text="@string/submit"
-            app:layout_constraintTop_toBottomOf="@id/ed_agent_note_desc"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/_25sdp">
+        <TextView
+                android:id="@+id/tv_agent_note_heading"
+                style="@style/AgentBoldTextCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/heading"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    </Button>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+                android:id="@+id/ed_agent_note_heading"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/heading"
+                android:inputType="text"
+                app:layout_constraintStart_toStartOf="@+id/tv_agent_note_heading"
+                app:layout_constraintTop_toBottomOf="@+id/tv_agent_note_heading"></EditText>
+
+        <TextView
+                android:id="@+id/tv_agent_note_desc"
+                style="@style/AgentBoldTextCard"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/description"
+                app:layout_constraintStart_toStartOf="@+id/tv_agent_note_heading"
+                app:layout_constraintTop_toBottomOf="@+id/ed_agent_note_heading" />
+
+        <EditText
+                android:id="@+id/ed_agent_note_desc"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/description"
+                android:inputType="textLongMessage"
+                app:layout_constraintStart_toStartOf="@+id/tv_agent_note_heading"
+                app:layout_constraintTop_toBottomOf="@+id/tv_agent_note_desc"></EditText>
+
+        <Button
+                android:id="@+id/agent_submit_note_btn"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:background="@drawable/button_gradient"
+                android:text="@string/submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ed_agent_note_desc">
+
+        </Button>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

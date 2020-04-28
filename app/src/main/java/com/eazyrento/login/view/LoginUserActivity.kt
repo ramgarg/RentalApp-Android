@@ -81,7 +81,7 @@ class LoginUserActivity : AppBizLogin() {
         when(userRole){
             UserInfoAPP.AGENT-> MoveToAnotherComponent.moveToAgentHomeActivity(this)
             UserInfoAPP.CUSTOMER-> MoveToAnotherComponent.moveToHomeActivity(this)
-            UserInfoAPP.MERCHANT-> MoveToAnotherComponent.moveToMerchantActivity(this)
+            UserInfoAPP.MERCHANT-> MoveToAnotherComponent.moveToMerchantMainActivity(this)
         }
 
     }

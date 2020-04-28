@@ -11,27 +11,29 @@
             android:layout_height="wrap_content"
             layout="@layout/card_product_template"/>
 
-    <ImageButton
+    <ImageView
             android:id="@+id/btn_delete_product"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:src="@mipmap/delete"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:padding="@dimen/_2sdp"
+            android:layout_marginStart="10dp"
             android:background="@color/transparent"
-            app:layout_constraintStart_toStartOf="@+id/lyt_product_temp"
+            android:src="@mipmap/delete"
             app:layout_constraintBottom_toBottomOf="@+id/lyt_product_temp"
-            >
+            app:layout_constraintStart_toStartOf="@+id/lyt_product_temp">
 
-    </ImageButton>
-    <ImageButton
+    </ImageView>
+
+    <ImageView
             android:id="@+id/btn_edit_product"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="@+id/lyt_product_temp"
-            app:layout_constraintBottom_toBottomOf="@+id/lyt_product_temp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:padding="@dimen/_2sdp"
+            android:layout_marginRight="10dp"
             android:background="@color/transparent"
             android:src="@mipmap/edit"
-            >
+            app:layout_constraintBottom_toBottomOf="@+id/lyt_product_temp"
+            app:layout_constraintRight_toRightOf="@+id/lyt_product_temp">
 
-    </ImageButton>
+    </ImageView>
 </androidx.constraintlayout.widget.ConstraintLayout>

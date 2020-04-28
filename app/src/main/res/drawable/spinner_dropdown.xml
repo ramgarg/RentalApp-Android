@@ -9,14 +9,10 @@
                 <color android:color="@android:color/white" />
             </item>
 
-            <item android:width="@dimen/_33sdp"
-                    android:height="@dimen/_22sdp"
+            <item android:width="@dimen/_25sdp"
+                    android:height="@dimen/_25sdp"
                     android:gravity="right"
-                    android:bottom="@dimen/_5sdp"
-                    android:top="@dimen/_5sdp">
-
-                <bitmap android:gravity="center_vertical|right"
-                        android:src="@drawable/group" />
+                    android:drawable="@drawable/spinner_drop_down">
             </item>
 
         </layer-list>
