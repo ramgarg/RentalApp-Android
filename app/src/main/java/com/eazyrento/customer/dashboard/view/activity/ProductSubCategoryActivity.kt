@@ -7,6 +7,7 @@ import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesResModel
 import com.eazyrento.common.model.modelclass.ProductCateItem
+import com.eazyrento.common.model.modelclass.ProductSubCategoriesModelResItem
 import com.eazyrento.common.view.ApiResult
 import com.eazyrento.common.viewmodel.ProductSubCategoriesViewModel
 import com.eazyrento.customer.dashboard.view.adapter.ProductVehiclesAdapter
@@ -38,8 +39,9 @@ class ProductSubCategoryActivity :
     }
 
     override fun <T> moveOnSelecetedItem(type: T) {
-        MoveToAnotherComponent.openActivityWithParcelableParam<ProductDetailsActivity,T>(this,
-            Constant.VEHICLES_SUB_CATE,type)
+        MoveToAnotherComponent.moveToActivity<ProductDetailsActivity>(this,
+            Constant.VEHICLES_SUB_CATE,(type as ProductSubCategoriesModelResItem).id
+        )
     }
 
     override fun <T> onSuccessApiResult(data: T) {

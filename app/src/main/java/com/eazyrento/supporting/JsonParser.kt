@@ -1,5 +1,6 @@
 package com.eazyrento.supporting
 
+import com.eazyrento.common.model.modelclass.DynamicKeyValue
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
@@ -36,6 +37,25 @@ class MyJsonParser{
         inline fun <reified T>convertJsonObjectToObject(jsonObject: JsonObject):T{
             return Gson().fromJson(jsonObject,T::class.java)
         }
+
+        /*fun <T>convertObjectToJsonObject(obj: T):JsonObject{
+            return Gson().toJson(obj)
+        }*/
+        /*
+   * Dynamic parser object to
+   * */
+
+        fun dynamicKeyValueList(jsonObject: JsonObject):List<DynamicKeyValue>{
+            val keys = jsonObject.keySet()
+            val list = ArrayList<DynamicKeyValue>()
+
+            for (key in keys){
+                list.add(DynamicKeyValue(key,jsonObject.get(key).asString))
+            }
+            return list
+        }
     }
+
+
 
 }

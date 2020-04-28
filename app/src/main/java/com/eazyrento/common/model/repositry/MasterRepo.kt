@@ -45,9 +45,9 @@ class ProductSubCategoriesRepo : GenericRequestHandler<ProductSubCategoriesResMo
 * product deatils
 * */
 
-class ProductDetailsRepo : GenericRequestHandler<ProductDetailsResModel>(){
+class ProductDetailsRepo : GenericRequestHandler<JsonElement>(){
 
-    fun getProductDeatils(id:Int ): LiveData<DataWrapper<ProductDetailsResModel>> {
+    fun getProductDeatils(id:Int ): LiveData<DataWrapper<JsonElement>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             MasterAPI::class.java).getProductDetails(id)

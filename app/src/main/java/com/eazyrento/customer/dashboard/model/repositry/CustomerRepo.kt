@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.google.gson.JsonElement
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
+import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
@@ -55,6 +56,30 @@ class CustomerWishListRepo :
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             CustomerAPI::class.java).getWishList()
+        return doRequest(call)
+    }
+
+}
+
+class CustomerAddWishRepo :
+    GenericRequestHandler<JsonElement>(){
+
+    fun customerWishAdd(productID: ProductID): LiveData<DataWrapper<JsonElement>> {
+//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+        val call = ServiceGenrator.client.create(
+            CustomerAPI::class.java).addToWishList(productID)
+        return doRequest(call)
+    }
+
+}
+
+class CustomerWishDeleteRepo :
+    GenericRequestHandler<JsonElement>(){
+
+    fun customerWishDelete(id:Int): LiveData<DataWrapper<JsonElement>> {
+//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+        val call = ServiceGenrator.client.create(
+            CustomerAPI::class.java).deleteWishList(id)
         return doRequest(call)
     }
 

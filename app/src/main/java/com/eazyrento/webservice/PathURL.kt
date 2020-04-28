@@ -34,7 +34,7 @@ class PathURL {
         const val CreateBooking       = "/customer/create_booking"
         const val AddToWishlist       = "/customer/add_to_wishlist"
         const val GetWishlist         = "/customer/wishlist"
-        const val DeleteWishlist      = "/customer/delete_wishlist/"
+        const val DeleteWishlist      = "/customer/delete_wishlist/{id}"
 
         const val CustomnerOrders       = "/customer/orders/{value}"
         const val CustomnerOrderDetail  = "/customer/order_detail/{id}"

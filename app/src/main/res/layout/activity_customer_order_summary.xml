@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/order_dotted_line"
                     android:layout_marginTop="@dimen/_1sdp"
-                    android:background="@drawable/dotted_line"
+                    android:background="@drawable/dotted_line_horizon"
                     app:layout_constraintTop_toBottomOf="@+id/lyt_top_view"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/order_for_maintain">

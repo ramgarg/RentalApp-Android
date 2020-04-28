@@ -64,9 +64,9 @@
 
     <!--customer value-->
     <string name="sendbutton">Send</string>
-    <string name="volvo_fh_truck">Volvo FH Truck</string>
+    <string name="volvo_fh_truck"> </string>
     <string name="totalprice">Total \n Price</string>
-    <string name="booking_price">$30</string>
+    <string name="booking_price">$</string>
     <string name="hint_enter_booking_price">Enter booking price</string>
     <string name="per_hour">Per Hour</string>
     <string name="do_you_want_driver">Do you want vehicle with driver?</string>

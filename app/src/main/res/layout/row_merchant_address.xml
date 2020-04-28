@@ -50,6 +50,6 @@
     <TextView android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_10sdp"
             android:layerType="software"
-            android:background="@drawable/dotted_line"
+            android:background="@drawable/dotted_line_horizon"
             android:layout_height="wrap_content"/>
 </LinearLayout>
