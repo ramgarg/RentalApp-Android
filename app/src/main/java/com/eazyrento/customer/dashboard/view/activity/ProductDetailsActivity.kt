@@ -8,7 +8,6 @@ import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.model.modelclass.DynamicKeyValue
 import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.model.modelclass.ProductID
-import com.eazyrento.common.model.modelclass.ProductSubCategoriesModelResItem
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.viewmodel.ProductDetailsViewModel
 import com.eazyrento.customer.dashboard.view.adapter.AdapterProductDetails
@@ -54,30 +53,6 @@ class ProductDetailsActivity : BaseActivity()
         }
 
 
-    }
-
-    private fun setClick() {
-
-        /*img_like_unlike.setOnClickListener {
-            if(likeUnlike) {
-                likeUnlike=false
-                //Here wishlist add data api will be called
-                wishListModel.add(
-                    WishListModel(
-                        "",
-                        "Volvo VH Truck",
-                        "15",
-                        1,
-                        5
-                    )
-                )
-                img_like_unlike.setImageResource(R.mipmap.like)
-            }
-            else {
-                likeUnlike=true
-                img_like_unlike.setImageResource(R.mipmap.unlike)
-            }
-        }*/
     }
 
     override fun <T> onSuccessApiResult(data: T) {
@@ -158,7 +133,9 @@ class ProductDetailsActivity : BaseActivity()
         pro_wish.setImageResource(if(data.is_wishlisted) R.mipmap.like else R.mipmap.unlike)
     }
 
-}
+
+
+     }
 
 
 
