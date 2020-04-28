@@ -21,8 +21,8 @@ class OTPViewModel :ViewModel() {
         return responseMutableLiveData
     }
 
-    fun otpAPI(email:String){
-        val otpRequest = OTPRequest(email)
+    fun otpAPI(user_id:Int, passcode:Int){
+        val otpRequest = OTPRequest(user_id,passcode)
         otpRepository.otpVerifyAPI(otpRequest)
     }
 }
