@@ -99,6 +99,7 @@
                        android:layout_marginTop="@dimen/_2sdp"
                        android:layout_height="@dimen/_20sdp"/>
         <TextView
+                android:id="@+id/tv_remove"
                 android:gravity="center"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:textColor="@color/white"

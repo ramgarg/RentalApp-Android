@@ -65,7 +65,7 @@
                     android:textSize="@dimen/_16sdp"
                     android:text="@string/orderid"
                     android:layout_width="match_parent"
-                    android:drawableBottom="@drawable/dotted_line"
+                    android:drawableBottom="@drawable/dotted_line_horizon"
                     android:layout_height="wrap_content"/>
                 <LinearLayout
                         android:layout_width="match_parent"

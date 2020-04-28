@@ -59,5 +59,8 @@ interface Constant{
         // request code for activiity
         const val MERCHANT_HOME_FRAGMENT = 100
 
+        //Dollor
+        const val DOLLAR_NOTATION = "$"
+
     }
 }

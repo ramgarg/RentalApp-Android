@@ -2,6 +2,7 @@ package com.eazyrento.customer.dashboard.model.repositry.api
 
 import com.google.gson.JsonElement
 import com.eazyrento.common.model.modelclass.BookingListResModel
+import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
@@ -9,10 +10,7 @@ import com.eazyrento.customer.dashboard.model.modelclass.CustomerWishListResMode
 import com.eazyrento.login.model.modelclass.LoginRequest
 import com.eazyrento.webservice.PathURL
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface CustomerAPI {
     // Customer API
@@ -26,7 +24,7 @@ interface CustomerAPI {
        * Add to wish list
        * */
     @POST(PathURL.AddToWishlist)
-    fun addToWishList(loginReqModel: LoginRequest): Call<LoginRequest>
+    fun addToWishList(@Body productID: ProductID): Call<JsonElement>
 
     /*
        *Get wish list
@@ -37,8 +35,8 @@ interface CustomerAPI {
     /*
        *Delete wish list
        * */
-    @POST(PathURL.DeleteWishlist)
-    fun deleteWishList(loginReqModel: LoginRequest): Call<LoginRequest>
+    @DELETE(PathURL.DeleteWishlist)
+    fun deleteWishList(@Path ("id") id:Int): Call<JsonElement>
 
     /*
       *customer orders

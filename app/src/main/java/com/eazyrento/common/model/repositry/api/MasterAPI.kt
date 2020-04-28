@@ -31,7 +31,7 @@ interface MasterAPI{
 
     // sub categories lsit by product name
     @GET(PathURL.ProductDetail)
-    fun getProductDetails(@Path("id") id: Int): Call<ProductDetailsResModel>
+    fun getProductDetails(@Path("id") id: Int): Call<JsonElement>
 
 
 }

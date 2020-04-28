@@ -9,7 +9,6 @@ import android.webkit.WebViewClient
 import com.eazyrento.agent.view.activity.*
 import com.eazyrento.agent.view.fragment.AgentBookingsFragment
 import com.eazyrento.customer.dashboard.view.activity.*
-//import com.rental.common.view.OrderSummaryActivity
 import com.eazyrento.login.view.ForgotPasswordActivity
 import com.eazyrento.login.view.OTPActivity
 import com.eazyrento.login.view.RegistrationUserActivity
@@ -136,9 +135,6 @@ class MoveToAnotherComponent {
 
         fun moveToPaymentActivity(context: Context){
             context.startActivity(Intent(context, PaymentActivity::class.java))
-        }
-        fun moveToViewDetailsActivity(context: Context){
-            context.startActivity(Intent(context, ProductDetailsActivity::class.java))
         }
 
         fun moveToBookingDetailsActivity(context: Context){

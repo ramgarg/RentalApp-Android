@@ -4,14 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.JsonElement
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
+import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerWishListResModel
-import com.eazyrento.customer.dashboard.model.repositry.CustomerCreateBookingRepo
-import com.eazyrento.customer.dashboard.model.repositry.CustomerOrderBookingOrderListRepo
-import com.eazyrento.customer.dashboard.model.repositry.CustomerOrderDetailsRepo
-import com.eazyrento.customer.dashboard.model.repositry.CustomerWishListRepo
+import com.eazyrento.customer.dashboard.model.repositry.*
 
 class CustomerCreateBookingViewModel : ViewModel() {
 
@@ -42,5 +40,21 @@ class CustomerWishListViewModel : ViewModel() {
     fun getWishList(): LiveData<DataWrapper<CustomerWishListResModel>> {
         return CustomerWishListRepo()
             .getCustomerWishList()
+    }
+}
+
+class CustomerWishAddViewModel : ViewModel() {
+
+    fun wishAdd(productID: ProductID): LiveData<DataWrapper<JsonElement>> {
+        return CustomerAddWishRepo()
+            .customerWishAdd(productID)
+    }
+}
+
+class CustomerWishDeleteViewModel : ViewModel() {
+
+    fun wishDelete(id: Int): LiveData<DataWrapper<JsonElement>> {
+        return CustomerWishDeleteRepo()
+            .customerWishDelete(id)
     }
 }

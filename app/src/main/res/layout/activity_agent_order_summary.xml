@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/order_dotted_line"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@drawable/dotted_line">
+                        android:background="@drawable/dotted_line_horizon">
 
                 </TextView>
             </LinearLayout>
