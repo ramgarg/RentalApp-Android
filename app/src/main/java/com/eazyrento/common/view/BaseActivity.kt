@@ -3,11 +3,14 @@ package com.eazyrento.common.view
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.view.*
+import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.eazyrento.Constant
@@ -111,7 +114,35 @@ open abstract class BaseActivity: AppCompatActivity(),
     override fun onClickDailog(int: Int) {
     }
 
+    //dismissed progrss barr before leave the activity....
+    override fun onDestroy() {
+        dialogProgrss?.dismiss()
+        super.onDestroy()
+    }
 
+    //dismissed progrss barr before Pause the activity....
+    override fun onPause() {
+        dialogProgrss?.dismiss()
+        super.onPause()
+    }
+
+    //finish current activity
+    protected fun finishCurrentActivity(flag:Int)
+    {
+        finish()
+    }
+
+    //finish current activity with Result
+    protected fun finishCurrentActivityWithResult(flag:Int)
+    {
+        setResult(Activity.RESULT_OK, Intent())
+
+        finishCurrentActivity(flag)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
 }
 
 interface ClickDailogListener{

@@ -179,7 +179,12 @@ class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
         return R.layout.row_merchant_add_vehicle
     }
 
-    override fun <T> setListnerOnView(view: View?, type: T, where: Int) {
+    override fun <T> setListnerOnView(
+        view: View?,
+        type: T,
+        where: Int,
+        pos: Int
+    ) {
     }
 
 

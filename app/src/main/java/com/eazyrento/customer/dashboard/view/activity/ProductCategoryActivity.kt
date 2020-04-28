@@ -74,7 +74,12 @@ class ProductCategoryActivity : ProductBaseActitvity() {
         showToast(ValidationMessage.NO_DATA_FOUND)
     }
 
-    override fun <T> setListnerOnView(view: View?, type: T, where: Int) {
+    override fun <T> setListnerOnView(
+        view: View?,
+        type: T,
+        where: Int,
+        pos: Int
+    ) {
     }
 
 

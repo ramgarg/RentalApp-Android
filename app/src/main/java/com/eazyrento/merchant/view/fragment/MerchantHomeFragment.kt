@@ -83,7 +83,8 @@ class MerchantHomeFragment : BaseFragment() {
 
     override fun <T, K> onViewClick(type: T, where: K) {
         when(where){
-            Constant.VIEW_ALL->MoveToAnotherComponent.openActivityWithParcelableParam<MerchantProductCategory,T>(requireContext(),Constant.INTENT_MERCHANT_PRODUCT_LIST,type)
+            Constant.VIEW_ALL->MoveToAnotherComponent.startActivityResultWithParcelable<MerchantProductCategory,T>(requireActivity(),
+                Constant.INTENT_MERCHANT_PRODUCT_LIST,type,Constant.MERCHANT_HOME_FRAGMENT)
             Constant.edit ->MoveToAnotherComponent.moveToActivity<AddProductDailogActivity>(requireContext(),
                 Constant.INTENT_MERCHANT_PRODUCT_EDIT,(type as MerchantProductItem).id)
             Constant.delete->deleteProduct(type)

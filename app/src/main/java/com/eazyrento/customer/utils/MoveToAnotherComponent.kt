@@ -1,5 +1,6 @@
 package com.eazyrento.customer.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Parcelable
@@ -156,6 +157,13 @@ class MoveToAnotherComponent {
             webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER)
 //            webView.loadUrl("https://www.google.com")
             webView.loadUrl ( "file:///android_asset/privacy.html" );
+        }
+
+        // start activity for result
+        inline fun <reified T,K>startActivityResultWithParcelable(activity: Activity, key: String,type: K,requestCode: Int) {
+            val intent = Intent(activity, T::class.java)
+            intent.putExtra(key,type as Parcelable)
+            activity.startActivityForResult(intent,requestCode)
         }
 
         inline fun <reified T,K>openActivityWithParcelableParam(context: Context, key: String,type: K) {

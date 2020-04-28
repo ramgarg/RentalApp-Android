@@ -49,12 +49,14 @@ class AddProductDailogActivity:BaseActivity() {
         //edit functionalty
          edit_product_ID = intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_EDIT,DEFUALT_VALUE)
 
+        //
         merchantAddProductReqModel.product_id =
-            if (edit_product_ID!=DEFUALT_VALUE) {
+            if (edit_product_ID!=DEFUALT_VALUE)
+                //editing functioalty
                 editProductFuntionalty(edit_product_ID)
-            }
-        //Adding funtionalty
+
             else
+            //Adding funtionalty
                intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_ADD,DEFUALT_VALUE)
 
 
@@ -395,6 +397,10 @@ class AddProductDailogActivity:BaseActivity() {
             }
 
         })
+    }
+
+    fun onCloseButtonClick(view: View){
+        finishCurrentActivity(0)
     }
 
 

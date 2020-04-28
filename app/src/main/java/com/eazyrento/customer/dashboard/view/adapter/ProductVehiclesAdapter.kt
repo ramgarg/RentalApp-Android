@@ -78,8 +78,8 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
         }
 
         //delete,add product merchant home
-        infalterViewAdapter.setListnerOnView(holder.btn_delete,objProduct,Constant.delete)
-        infalterViewAdapter.setListnerOnView(holder.btn_edit,objProduct,Constant.edit)
+        infalterViewAdapter.setListnerOnView(holder.btn_delete, objProduct, Constant.delete,position)
+        infalterViewAdapter.setListnerOnView(holder.btn_edit, objProduct, Constant.edit,position)
         //delete product merchant home
         /*holder.btn_delete?.setOnClickListener {
             context.let { if(it is BaseActivity)it.moveOnSelecetedItem(objProduct) }
@@ -94,5 +94,5 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
 
 interface InfalterViewAdapter{
     fun getInflaterViewIDAdapter():Int
-    fun <T>setListnerOnView(view: View?,type:T,where:Int)
+    fun <T>setListnerOnView(view: View?, type: T, where: Int, pos: Int)
 }

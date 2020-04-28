@@ -3,13 +3,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_payment_history"
-        android:paddingTop="@dimen/_10sdp">
+        >
+    <!--Close button-->
+    <ImageButton
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@mipmap/close"
+            android:layout_marginTop="-5dp"
+            android:layout_marginRight="-5dp"
+            android:onClick="onCloseButtonClick"
+            />
     <!--top view with text view and close image-->
     <TextView
             android:id="@+id/top_text_view"
             style="@style/DocumentTextView"
             android:layout_alignParentTop="true"
             android:text="@string/select_availability"
+            android:paddingTop="@dimen/_10sdp"
 
             />
 

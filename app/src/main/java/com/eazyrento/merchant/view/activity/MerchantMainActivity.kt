@@ -1,5 +1,6 @@
 package com.eazyrento.merchant.view.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.view.GravityCompat
@@ -25,7 +26,7 @@ class MerchantMainActivity : MerchantNavigationActivity() {
         img_menu.setOnClickListener {  merchant_drawer_layout.openDrawer(GravityCompat.START) }
 
         // select home fragment
-        bottom_navigation_view_merchant.selectedItemId = R.id.merchant_navigation_home
+        setHomeFragMent()
 
         merchant_add_vehicle_btn.setOnClickListener{ MoveToAnotherComponent.moveToMerchantAddVehicle(this) }
 
@@ -48,11 +49,19 @@ class MerchantMainActivity : MerchantNavigationActivity() {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onNewIntent "+value)
 
         // move to home fragemtn
-        bottom_navigation_view_merchant.selectedItemId = R.id.merchant_navigation_home
+        setHomeFragMent()
     }
     fun setHomeFragMent()
     {
         bottom_navigation_view_merchant.selectedItemId = R.id.merchant_navigation_home
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode== Activity.RESULT_OK && requestCode ==Constant.MERCHANT_HOME_FRAGMENT){
+            setHomeFragMent()
+        }
     }
 
 }

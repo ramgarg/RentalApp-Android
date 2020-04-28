@@ -56,6 +56,8 @@ interface Constant{
         const val add =2
         const val VIEW_ALL =3
 
+        // request code for activiity
+        const val MERCHANT_HOME_FRAGMENT = 100
 
     }
 }

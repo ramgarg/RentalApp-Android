@@ -90,7 +90,12 @@ open abstract class ProductBaseActitvity: BaseActivity(),
         return R.layout.card_product_template
     }
 
-    override fun <T> setListnerOnView(view: View?, type: T, where: Int) {
+    override fun <T> setListnerOnView(
+        view: View?,
+        type: T,
+        where: Int,
+        pos: Int
+    ) {
     }
 
 
