@@ -4,10 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
@@ -16,11 +17,12 @@ import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_booking_details.*
+import kotlinx.android.synthetic.main.template_product_main_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class CustomerBookingDetailsActivity : BaseActivity() {
-    private var count:Int=1
-    private val customerCreateBookingReqModelItem = CustomerCreateBookingReqModelItem()
+
+    private val objBookingReqModelItem = CustomerCreateBookingReqModelItem()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,12 +33,18 @@ class CustomerBookingDetailsActivity : BaseActivity() {
             this, img_back, img_menu, img_notification,
             toolbar_title, getString(R.string.booking_details))
 
-        val id = intent.getIntExtra(Constant.BOOKING_PRODECT_DETAILS,-1)
+        val prodDetailsObj = intent.getParcelableExtra<ProductDetailsResModel>(Constant.BOOKING_PRODECT_DETAILS)
+        objBookingReqModelItem.projectDetails =prodDetailsObj
 
-        customerCreateBookingReqModelItem.product_id =id
-
+        prodDetailsObj?.let{setData(it)}
         clickListenerOnViews()
 
+    }
+
+    private fun setData(prodDetailsObj: ProductDetailsResModel) {
+
+        pro_booking_price.text = ""+prodDetailsObj.base_price
+        pro_name.text = prodDetailsObj.name
     }
 
     private fun clickListenerOnViews(){
@@ -53,47 +61,74 @@ class CustomerBookingDetailsActivity : BaseActivity() {
             Common.timeSelector(this,tv_end_time_book)
         }
 
-        add_new_add_img.setOnClickListener {
-            MoveToAnotherComponent.moveToHomeActivity(this)
-        }
-
         add_quantity.setOnClickListener {
-             count += 1
-            item_quantity.text= (count).toString()
+
+            item_quantity.text= ""+(++objBookingReqModelItem.quantity)
         }
 
         minus_quantity.setOnClickListener {
-            if(count>1) {
-                count -= 1
-                item_quantity.text = (count).toString()
-            }
+            item_quantity.text= ""+(--objBookingReqModelItem.quantity)
         }
+
 
     }
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
-    fun isRequiredValidation(){
+    fun isNotRequiredValidation():Boolean{
 
         when{
-            tv_st_date_book.text.isEmpty()->Toast.makeText(this,"Please select start date",Toast.LENGTH_SHORT).show()
-            tv_st_time_book.text.isEmpty()->Toast.makeText(this,"Please select start time",Toast.LENGTH_SHORT).show()
-            tv_end_date_book.text.isEmpty()->Toast.makeText(this,"Please select end date",Toast.LENGTH_SHORT).show()
-            tv_end_time_book.text.isEmpty()->Toast.makeText(this,"Please select end time",Toast.LENGTH_SHORT).show()
+            tv_st_date_book.text.isEmpty()->showToast(ValidationMessage.START_DATE)
+            tv_st_time_book.text.isEmpty()->showToast(ValidationMessage.START_TIME)
+            tv_end_date_book.text.isEmpty()->showToast(ValidationMessage.END_DATE)
+            tv_end_time_book.text.isEmpty()->showToast(ValidationMessage.END_TIME)
+            item_quantity.text.toString().toInt()<=0 ->showToast(ValidationMessage.FILL_QUANTITY)
+            tv_work_location.text.isEmpty() ->showToast(ValidationMessage.SELECT_ADRESS)
+
+            Common.calculateDatesWithString(tv_st_date_book.text.toString(),tv_end_date_book.text.toString()).let { objBookingReqModelItem.booking_days=it
+                objBookingReqModelItem.booking_days}<0->showToast(ValidationMessage.DATE_VALIDATION)
 
             else-> {
+                return false
             }
 
         }
+        return true
     }
 
     fun onChangeAddressClick(view:View){
-       MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,customerCreateBookingReqModelItem.product_id)
+       MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,objBookingReqModelItem.projectDetails!!.id)
+    }
+    fun moveToAddAnOther(view: View){
+
+        if (isNotRequiredValidation())
+            return
+        prepareBookingObjectList()
+        //HOME
+        MoveToAnotherComponent.moveToActivity<CustomerMainActivity>(this,Constant.INTENT_ADD_ANOTHER,1)
+
     }
 
-    fun moveTOFinalReview(){
+    fun moveTOFinalReview(view: View){
+        if (isNotRequiredValidation())
+            return
+        prepareBookingObjectList()
+        //final review
         MoveToAnotherComponent.moveToActivity<CustomerBookingSubmitReviewActivity>(this,"",1)
+    }
+
+    private fun prepareBookingObjectList() {
+
+        objBookingReqModelItem.start_date = tv_st_date_book.text.toString()
+        objBookingReqModelItem.start_time = tv_st_time_book.text.toString()
+        objBookingReqModelItem.end_date = tv_end_date_book.text.toString()
+        objBookingReqModelItem.end_time = tv_end_time_book.text.toString()
+
+        objBookingReqModelItem.quantity = item_quantity.text.toString().toInt()
+
+        CustomerBookingSubmitReviewActivity.setBookingItem(objBookingReqModelItem)
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -107,6 +142,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,address.toString())
 
             tv_work_location.text = address.address_line+","+address.address_type
+            objBookingReqModelItem.address_id = address.id
         }
     }
 

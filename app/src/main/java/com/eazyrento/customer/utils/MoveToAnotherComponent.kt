@@ -137,10 +137,6 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, PaymentActivity::class.java))
         }
 
-        fun moveToBookingDetailsActivity(context: Context){
-            context.startActivity(Intent(context, CustomerBookingDetailsActivity::class.java))
-        }
-
         fun moveToCategoryActivity(context: Context){
             context.startActivity(Intent(context, ProductCategoryActivity::class.java))
         }

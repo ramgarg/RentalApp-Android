@@ -20,7 +20,7 @@ open class MyAddressListActivity : BaseActivity() {
 
     override fun <T> moveOnSelecetedItem(type: T) {
 
-        if (defaultProductID!=1) {
+        if (defaultProductID!=-1) {
 
             val intent = Intent()
             intent.putExtra(Constant.KEY_ADDRESS, type as AddressListResModelItem)

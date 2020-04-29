@@ -13,7 +13,7 @@
         <RelativeLayout
                 style="@style/BookingDetailsParentRelativeLayout">
 
-            <TextView
+            <!--<TextView
                     android:id="@+id/tv_vehicle_name"
                     style="@style/BookingDetailsVehicleName"/>
 
@@ -46,14 +46,24 @@
                       android:layout_below="@+id/tv_vehicle_name"
                       android:textSize="@dimen/_12sdp"
                       android:fontFamily="@font/bree_serif"
-                      android:layout_height="wrap_content"/>
+                      android:layout_height="wrap_content"/>-->
+
+            <!--product main view-->
+            <include
+                    android:id="@+id/lyt_price_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    layout="@layout/template_product_main_view"
+                    />
+
+            <!--End view product-->
 
 
             <LinearLayout android:layout_width="wrap_content"
                           android:orientation="horizontal"
                           android:gravity="top"
                           android:id="@+id/layout_driver"
-                          android:layout_below="@+id/per_hour"
+                          android:layout_below="@+id/lyt_price_details"
                           android:layout_marginTop="@dimen/_10sdp"
                           android:layout_height="@dimen/_30sdp">
                 <CheckBox android:layout_width="@dimen/_20sdp"
@@ -263,7 +273,7 @@
 
                     <TextView
                             android:id="@+id/item_quantity"
-                            android:text="@string/one"
+                            android:text="0"
                             android:textColor="#000"
                             android:fontFamily="@font/bree_serif"
                             android:paddingLeft="@dimen/_10sdp"
@@ -302,7 +312,6 @@
                       android:textSize="@dimen/_15sdp"
                       android:id="@+id/tv_work_location"
                       android:fontFamily="@font/bree_serif"
-                      android:text="@string/work_location"
                       android:layout_height="wrap_content"
                      android:singleLine="true"
                     />
@@ -353,7 +362,9 @@
                       android:layout_marginTop="@dimen/_20sdp"
                       android:layout_toEndOf="@+id/add_new_add_img"
                       android:layout_below="@+id/view_1"
-                      android:layout_height="wrap_content"/>
+                      android:layout_height="wrap_content"
+                    android:onClick="moveToAddAnOther"
+                    />
 
         </RelativeLayout>
 
@@ -368,5 +379,7 @@
             android:textColor="#fff"
             android:background="@drawable/ripple"
             android:layout_alignParentBottom="true"
-            android:layout_height="@dimen/_40sdp"/>
+            android:layout_height="@dimen/_40sdp"
+            android:onClick="moveTOFinalReview"
+            />
 </RelativeLayout>

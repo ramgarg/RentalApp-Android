@@ -24,6 +24,8 @@ interface Constant{
         const val INTENT_MERCHANT_PRODUCT_EDIT = "edit"
         const val INTENT_SUCCESS_ADDED_PRODUCT = "success"
 
+        const val INTENT_ADD_ANOTHER = "booking"
+
         const val INTENT_ADDR_LIST = "getAddID"
 
 

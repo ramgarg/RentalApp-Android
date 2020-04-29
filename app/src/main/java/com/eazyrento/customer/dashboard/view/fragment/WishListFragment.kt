@@ -1,5 +1,6 @@
 package com.eazyrento.customer.dashboard.view.fragment
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerWishListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.WishListItem
 import com.eazyrento.customer.dashboard.view.activity.ProductDetailsActivity
+import com.eazyrento.customer.dashboard.view.adapter.DeleteAndViewDetails
 import com.eazyrento.customer.dashboard.view.adapter.WishListAdapter
 import com.eazyrento.customer.dashboard.viewmodel.CustomerWishDeleteViewModel
 import com.eazyrento.customer.dashboard.viewmodel.CustomerWishListViewModel
@@ -18,7 +20,7 @@ import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.fragment_wish_list.*
 
-class WishListFragment : BaseFragment() {
+class WishListFragment : BaseFragment(), DeleteAndViewDetails {
 
     var listPosition:Int =0
     lateinit var listWish:MutableList<WishListItem>
@@ -66,27 +68,47 @@ class WishListFragment : BaseFragment() {
     }
 
 
-     fun delete(wishListItem: WishListItem,pos:Int) {
-         listPosition = pos
-        callAPI()?.let {
-            it.observeApiResult(
-                it.callAPIFragment<CustomerWishDeleteViewModel>(this)
-                    .wishDelete(wishListItem.id)
-                , viewLifecycleOwner, requireActivity()
-            )
-        }
+      fun <T>delete(wishListItem: T,pos:Int) {
+         if(wishListItem is WishListItem) {
+             listPosition = pos
+             callAPI()?.let {
+                 it.observeApiResult(
+                     it.callAPIFragment<CustomerWishDeleteViewModel>(this)
+                         .wishDelete(wishListItem.id)
+                     , viewLifecycleOwner, requireActivity()
+                 )
+             }
+         }
     }
 
-     fun viewDetails(wishListItem: WishListItem,pos: Int) {
-         listPosition = pos
-         MoveToAnotherComponent.moveToActivity<ProductDetailsActivity>(requireContext(),
-             Constant.VEHICLES_SUB_CATE,wishListItem.id
-         )
+     fun <T>viewDetails(wishListItem: T,pos: Int) {
+        if(wishListItem is WishListItem) {
+            listPosition = pos
+            MoveToAnotherComponent.moveToActivity<ProductDetailsActivity>(
+                requireContext(),
+                Constant.VEHICLES_SUB_CATE, wishListItem.id
+            )
+        }
     }
 
     override fun <T, K> onViewClick(type: T, where: K) {
     }
 
+    override fun setHolderOnView(holder: WishListAdapter.CardViewHolder, position: Int) {
 
+        holder.tv_pro_name?.text=listWish.get(position).product_name
+        holder.tv_booking_price?.text= Constant.DOLLAR+listWish.get(position).price
+        holder.lyt_booking_details.visibility = View.GONE
+
+        holder.tv_remove.setOnClickListener{
+            delete(listWish.get(position),position)
+        }
+
+        holder.tv_view_detail.setOnClickListener{
+            viewDetails(listWish.get(position),position)
+        }
     }
+
+
+}
 

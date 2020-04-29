@@ -19,6 +19,7 @@ import com.eazyrento.supporting.MyJsonParser
 import com.google.gson.JsonElement
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_details.*
+import kotlinx.android.synthetic.main.template_product_main_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class ProductDetailsActivity : BaseActivity()
@@ -98,7 +99,7 @@ class ProductDetailsActivity : BaseActivity()
     }
 
     fun onNextButtonClick(view:View){
-        MoveToAnotherComponent.moveToActivity<CustomerBookingDetailsActivity>(this,Constant.BOOKING_PRODECT_DETAILS,product_id)
+        MoveToAnotherComponent.openActivityWithParcelableParam<CustomerBookingDetailsActivity,ProductDetailsResModel>(this,Constant.BOOKING_PRODECT_DETAILS,dataProductDetails)
     }
 
     fun onWishIconClick(view: View){

@@ -13,8 +13,6 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.eazyrento.R
-import com.eazyrento.customer.dashboard.model.modelclass.BookingDetailsModel
-import com.eazyrento.customer.dashboard.model.modelclass.WishListModel
 import kotlinx.android.synthetic.main.rating_review.img_close
 import kotlinx.android.synthetic.main.rental_dialog.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
@@ -22,22 +20,32 @@ import java.sql.Time
 import java.text.Format
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class Common {
+    //date format  Use one of these formats instead: YYYY-MM-DD.
+    //time format hh:mm[:ss[.uuuuuu]]
 
     companion object {
 
         //crating an arraylist to store users using the data class user
-        val bookingDetailsModel = ArrayList<BookingDetailsModel>()
 
         val MONTHS =
             arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
         val c = Calendar.getInstance()
         fun dateSelector(context: Context,txt:TextView) {
             val datePickerDialog = DatePickerDialog(
                 context, R.style.TimePickerTheme,
                 DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                    txt.setText(dayOfMonth.toString() + " " + MONTHS[(monthOfYear)] + " " + year) },
+
+                    // old format
+//                    txt.setText(dayOfMonth.toString() + " " + MONTHS[(monthOfYear)] + " " + year)
+
+                    //server format
+                    txt.setText(year.toString() + "-" +monthOfYear  + "-" + dayOfMonth)
+
+                },
                 c.get(Calendar.YEAR),
                 c.get(Calendar.MONTH),
                 c.get(Calendar.DAY_OF_MONTH)
@@ -53,14 +61,34 @@ class Common {
 
                     val tme = Time(hourOfDay, minute, 0) //seconds by default set to zero
                     val formatter: Format
-                    formatter = SimpleDateFormat("h:mm a")
+                    //old format
+//                    formatter = SimpleDateFormat("h:mm a")
+                    //server format
+                    formatter = SimpleDateFormat("hh:mm:ss")
 
                     txt.setText(formatter.format(tme)) },
+
                 c.get(Calendar.HOUR_OF_DAY),
                 c.get(Calendar.MINUTE),
                 false
             )
             timePickerDialog.show()
+        }
+
+        fun calculateDatesWithString(startDate:String , endDate:String):Long{
+            val myFormat = SimpleDateFormat("YYYY-MM-DD")
+
+            try {
+                val date1 = myFormat.parse(startDate)
+                val date2 = myFormat.parse(endDate)
+                val diff = date2.time - date1.time
+
+                    return(TimeUnit.DAYS.convert(diff,TimeUnit.MILLISECONDS))
+
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
+            return -1
         }
         fun showDialog(title: String,msg:String,context: Activity,layout:Int) {
             val dialog = Dialog(context)

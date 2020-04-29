@@ -1,5 +1,7 @@
 package com.eazyrento.customer.dashboard.model.modelclass
 
+import com.eazyrento.common.model.modelclass.ProductDetailsResModel
+
 data class CustomerCreateBookingReqModelItem(
     var address_id: Int,
     var start_date: String,
@@ -9,7 +11,10 @@ data class CustomerCreateBookingReqModelItem(
     var product_id: Int,
     var quantity: Int,
 
-    var with_driver: Boolean
+    var with_driver: Boolean,
+
+    var projectDetails: ProductDetailsResModel?,
+    var booking_days:Long
 ){
-    constructor():this(-1,"","","","",-1,0,false)
+    constructor():this(-1,"","","","",-1,0,false,null,-1)
 }

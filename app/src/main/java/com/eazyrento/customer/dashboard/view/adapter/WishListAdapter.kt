@@ -7,36 +7,27 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.common.view.fragment.BaseFragment
-import com.eazyrento.customer.dashboard.model.modelclass.WishListItem
-import com.eazyrento.customer.dashboard.view.fragment.WishListFragment
 import kotlinx.android.synthetic.main.row_wishlist.view.*
+import kotlinx.android.synthetic.main.template_product_main_view.view.*
+import kotlinx.android.synthetic.main.template_quantity_view.view.*
 
-class WishListAdapter (val orderListing: MutableList<WishListItem>, val context: Context,val baseFragment: WishListFragment) : RecyclerView.Adapter<WishListAdapter.CardViewHolder>()  {
+class WishListAdapter<T> (val orderListing: MutableList<T>, val context: Context,val deleteAndViewDetails: DeleteAndViewDetails) : RecyclerView.Adapter<WishListAdapter.CardViewHolder>()  {
 
 
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
-        val tv_wish_name=view.tv_wish_name
-        val tv_wish_price=view.tv_wish_price
+        val tv_pro_name=view.pro_name
+        val tv_booking_price=view.pro_booking_price
+        val tv_quantity = view.item_quantity
         val tv_view_detail = view.tv_view_detail
+        val pro_booking_days = view.pro_booking_days
         val tv_remove =view.tv_remove
+        val lyt_booking_details = view.lyt_booking_details
 
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
 
-        holder.tv_wish_name?.text=orderListing.get(position).product_name
-        holder.tv_wish_price?.text= Constant.DOLLAR+orderListing.get(position).price
-
-       holder.tv_remove.setOnClickListener{
-           baseFragment.delete(orderListing.get(position),position)
-       }
-
-        holder.tv_view_detail.setOnClickListener{
-            baseFragment.viewDetails(orderListing.get(position),position)
-        }
-
-
+        deleteAndViewDetails.setHolderOnView(holder,position)
 
     }
 
@@ -57,9 +48,9 @@ class WishListAdapter (val orderListing: MutableList<WishListItem>, val context:
     }
 }
 
-/*
 interface DeleteAndViewDetails{
 
-    fun delete(wishListItem:WishListItem)
-    fun viewDetails(wishListItem: WishListItem)
-}*/
+    //fun <T>delete(wishListItem:T,position: Int)
+   // fun <T>viewDetails(wishListItem: T,position: Int)
+    fun setHolderOnView(holder: WishListAdapter.CardViewHolder, position: Int)
+}

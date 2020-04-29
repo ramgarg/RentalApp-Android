@@ -27,6 +27,17 @@ interface ValidationMessage{
         const val PRODUCT_ADDED_SUCCESS = "Request has been submit successfully"
         const val PRODUCT_DELETE_SUCCESS = "Product has been deleted successfully"
 
+        //Booking details validation
+        const val START_DATE = "Please select start date"
+        const val START_TIME = "Please select start time"
+        const val END_DATE = "Please select end date"
+        const val END_TIME = "Please select end time"
+
+        const val DATE_VALIDATION = "Start date can not be less then end date"
+        const val SELECT_ADRESS = "Please select address"
+
+        const val BOOKING_SUBMITTED = "Thank you for submitting your order.Our agent will call you shortly."
+
 
     }
 }
