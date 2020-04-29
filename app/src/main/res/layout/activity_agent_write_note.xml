@@ -36,7 +36,9 @@
                 android:hint="@string/heading"
                 android:inputType="text"
                 app:layout_constraintStart_toStartOf="@+id/tv_agent_note_heading"
-                app:layout_constraintTop_toBottomOf="@+id/tv_agent_note_heading"></EditText>
+                app:layout_constraintTop_toBottomOf="@+id/tv_agent_note_heading">
+
+        </EditText>
 
         <TextView
                 android:id="@+id/tv_agent_note_desc"
@@ -58,7 +60,9 @@
                 android:hint="@string/description"
                 android:inputType="textLongMessage"
                 app:layout_constraintStart_toStartOf="@+id/tv_agent_note_heading"
-                app:layout_constraintTop_toBottomOf="@+id/tv_agent_note_desc"></EditText>
+                app:layout_constraintTop_toBottomOf="@+id/tv_agent_note_desc">
+
+        </EditText>
 
         <Button
                 android:id="@+id/agent_submit_note_btn"

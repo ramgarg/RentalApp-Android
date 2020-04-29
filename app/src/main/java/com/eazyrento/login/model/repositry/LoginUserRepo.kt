@@ -7,6 +7,8 @@ import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.customer.forgotpassword.model.modelClass.OTPRequest
 import com.eazyrento.customer.forgotpassword.model.modelClass.OTPResponse
+import com.eazyrento.login.model.modelclass.ForgotPasswordRequest
+import com.eazyrento.login.model.modelclass.ForgotPasswordResponse
 import com.eazyrento.login.model.modelclass.LoginUserReqModel
 import com.eazyrento.login.model.modelclass.LoginUserResModel
 import com.eazyrento.login.model.repositry.api.LoginAPI
@@ -31,6 +33,18 @@ class LoginOTPRepo:
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             LoginAPI::class.java).otp(otpRequest)
+        return doRequest(call)
+    }
+
+}
+
+class ForgetPasswordRepo:
+    GenericRequestHandler<ForgotPasswordResponse>() {
+
+    fun forget_password_api( forgotPasswordRequest: ForgotPasswordRequest): LiveData<DataWrapper<ForgotPasswordResponse>> {
+//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+        val call = ServiceGenrator.client.create(
+            LoginAPI::class.java).forgotPassword(forgotPasswordRequest)
         return doRequest(call)
     }
 

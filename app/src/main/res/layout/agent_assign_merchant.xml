@@ -78,14 +78,50 @@
                 android:layout_below="@+id/layout_truck_quantity"
                 android:layout_height="wrap_content"/>
 
-            <Button
-                    android:id="@+id/agent_assign_merchant_btn"
-                    android:text="@string/assign"
-                    android:layout_below="@id/booking_title"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    style="@style/AddVehicleSubmitDialog">
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/booking_price"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:orientation="horizontal">
 
-            </Button>
+            <ImageView
+                    android:id="@+id/minus_quantity"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:background="@drawable/button_add"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@mipmap/minus"
+                    android:onClick="onMinusClick"
+                    />
+
+            <TextView
+                    android:id="@+id/item_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_28sdp"
+                    android:background="@drawable/itemquantity_bg"
+                    android:fontFamily="@font/bree_serif"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_10sdp"
+                    android:text="@string/quantity_value"
+                    android:textColor="@color/black" />
+
+            <ImageView
+                    android:id="@+id/add_quantity"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:background="@drawable/button_minus"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@mipmap/plus"
+                    android:onClick="onPlusClick"
+                    />
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 

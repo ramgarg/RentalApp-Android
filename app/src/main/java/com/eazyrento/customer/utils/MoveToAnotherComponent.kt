@@ -19,6 +19,7 @@ import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.profile.ProfileActivity
 import com.eazyrento.customer.webpages.AboutActivity
 import com.eazyrento.customer.webpages.TermsConditionActivity
+import com.eazyrento.login.view.LoginUserActivity
 import com.eazyrento.merchant.view.activity.*
 
 
@@ -28,6 +29,9 @@ class MoveToAnotherComponent {
 
         fun moveToAgentProfileActivity(context: Context){
             context.startActivity(Intent(context, AgentProfileActivity::class.java))
+        }
+        fun moveToLoginUserActivity(context: Context){
+            context.startActivity(Intent(context, LoginUserActivity::class.java))
         }
 
         fun moveToListAddressActivity(context: Context){
