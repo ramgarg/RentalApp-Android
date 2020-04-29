@@ -67,6 +67,7 @@
             android:layout_width="wrap_content"
             android:background="@drawable/navigation_drawer"
             android:layout_height="match_parent"
+            style="@style/NavigationTheme"
             app:menu="@menu/drawer_menu"
             app:headerLayout="@layout/header"
             android:layout_gravity="start"/>

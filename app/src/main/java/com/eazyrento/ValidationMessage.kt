@@ -10,6 +10,8 @@ interface ValidationMessage{
         const val VALID_USER_NAME= "Please Enter User Name Field"
         const val SELECT_USER_ROLE = "Please select user role"
         const val NO_DATA_FOUND = "No data found"
+        const val VALID_OTD="Please Enter Valid OTP"
+        const val OTP_SENT="OTP have been sent"
 
         //merchant add product validation
         const val DOC_IS_NOT_UPLOADED = "Doc is not uploaded.Please try it again."
@@ -37,6 +39,10 @@ interface ValidationMessage{
         const val SELECT_ADRESS = "Please select address"
 
         const val BOOKING_SUBMITTED = "Thank you for submitting your order.Our agent will call you shortly."
+
+        //agent note
+        const val VALID_HEADING = "Write a heading"
+        const val VALID_DESC = "Write description"
 
 
     }

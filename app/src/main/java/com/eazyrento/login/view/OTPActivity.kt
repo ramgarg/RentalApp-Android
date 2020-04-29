@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.eazyrento.R
 import com.eazyrento.Session
+import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.appbiz.AppBizLogin
 import com.eazyrento.common.view.BaseActivity
@@ -44,7 +45,7 @@ class OTPActivity :BaseActivity(){
 
         if(editTextOTP.text.toString().isEmpty()){
 //            otpView.showToast("Please Enter Valid OTP")
-            Toast.makeText(this,"Please Enter Valid OTP",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,ValidationMessage.VALID_OTD,Toast.LENGTH_SHORT).show()
         }else{
             otpRequest.user_id = Session.getInstance(this)?.getUserID()
             otpRequest.passcode = editTextOTP.text.toString().toInt()
