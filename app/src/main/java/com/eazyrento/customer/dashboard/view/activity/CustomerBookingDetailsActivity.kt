@@ -1,9 +1,17 @@
 package com.eazyrento.customer.dashboard.view.activity
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
+import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem
+import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
+import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.ViewVisibility
@@ -12,6 +20,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class CustomerBookingDetailsActivity : BaseActivity() {
     private var count:Int=1
+    private val customerCreateBookingReqModelItem = CustomerCreateBookingReqModelItem()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +30,10 @@ class CustomerBookingDetailsActivity : BaseActivity() {
         ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
             toolbar_title, getString(R.string.booking_details))
+
+        val id = intent.getIntExtra(Constant.BOOKING_PRODECT_DETAILS,-1)
+
+        customerCreateBookingReqModelItem.product_id =id
 
         clickListenerOnViews()
 
@@ -44,9 +57,6 @@ class CustomerBookingDetailsActivity : BaseActivity() {
             MoveToAnotherComponent.moveToHomeActivity(this)
         }
 
-        change_add.setOnClickListener {
-            MoveToAnotherComponent.moveToMyAddressActivity(this)
-        }
         add_quantity.setOnClickListener {
              count += 1
             item_quantity.text= (count).toString()
@@ -59,26 +69,45 @@ class CustomerBookingDetailsActivity : BaseActivity() {
             }
         }
 
-        btn_next.setOnClickListener {
-           when{
-               tv_st_date_book.text.isEmpty()->Toast.makeText(this,"Please select start date",Toast.LENGTH_SHORT).show()
-               tv_st_time_book.text.isEmpty()->Toast.makeText(this,"Please select start time",Toast.LENGTH_SHORT).show()
-               tv_end_date_book.text.isEmpty()->Toast.makeText(this,"Please select end date",Toast.LENGTH_SHORT).show()
-               tv_end_time_book.text.isEmpty()->Toast.makeText(this,"Please select end time",Toast.LENGTH_SHORT).show()
-
-               else-> {
-
-                   MoveToAnotherComponent.moveToOrderReviewActivity(this)
-               }
-
-           }
-
-
-        }
-
     }
 
     override fun <T> moveOnSelecetedItem(type: T) {
+    }
+
+    fun isRequiredValidation(){
+
+        when{
+            tv_st_date_book.text.isEmpty()->Toast.makeText(this,"Please select start date",Toast.LENGTH_SHORT).show()
+            tv_st_time_book.text.isEmpty()->Toast.makeText(this,"Please select start time",Toast.LENGTH_SHORT).show()
+            tv_end_date_book.text.isEmpty()->Toast.makeText(this,"Please select end date",Toast.LENGTH_SHORT).show()
+            tv_end_time_book.text.isEmpty()->Toast.makeText(this,"Please select end time",Toast.LENGTH_SHORT).show()
+
+            else-> {
+            }
+
+        }
+    }
+
+    fun onChangeAddressClick(view:View){
+       MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,customerCreateBookingReqModelItem.product_id)
+    }
+
+    fun moveTOFinalReview(){
+        MoveToAnotherComponent.moveToActivity<CustomerBookingSubmitReviewActivity>(this,"",1)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode== Activity.RESULT_OK && requestCode ==Constant.ADDRESS_REQUECT_CODE){
+
+            val address =data!!.getParcelableExtra<AddressListResModelItem>(Constant.KEY_ADDRESS)
+
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,address.toString())
+
+            tv_work_location.text = address.address_line+","+address.address_type
+        }
     }
 
 

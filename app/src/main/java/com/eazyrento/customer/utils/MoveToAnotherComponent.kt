@@ -13,7 +13,7 @@ import com.eazyrento.login.view.ForgotPasswordActivity
 import com.eazyrento.login.view.OTPActivity
 import com.eazyrento.login.view.RegistrationUserActivity
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
-import com.eazyrento.customer.myaddress.view.ListAddressActivity
+import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.notification.view.NotificationActivity
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.profile.ProfileActivity
@@ -31,7 +31,7 @@ class MoveToAnotherComponent {
         }
 
         fun moveToListAddressActivity(context: Context){
-            context.startActivity(Intent(context, ListAddressActivity::class.java))
+            context.startActivity(Intent(context, MyAddressListActivity::class.java))
         }
 
         fun moveToMerchantAddVehicle(context: Context){
@@ -55,11 +55,11 @@ class MoveToAnotherComponent {
         }
 
         fun moveToMyAddressActivity(context: Context){
-            context.startActivity(Intent(context, ListAddressActivity::class.java))
+            context.startActivity(Intent(context, MyAddressListActivity::class.java))
         }
 
         fun moveToMerchantAddressActivity(context: Context){
-            context.startActivity(Intent(context, MerchantAddressActivity::class.java))
+            context.startActivity(Intent(context, MerchantAddressListActivity::class.java))
         }
 
         fun moveToMyNotesActivity(context: Context){
@@ -126,7 +126,7 @@ class MoveToAnotherComponent {
         }
 
         fun moveToOrderReviewActivity(context: Context){
-            context.startActivity(Intent(context, CustomerOrderReviewActivity::class.java))
+            context.startActivity(Intent(context, CustomerBookingSubmitReviewActivity::class.java))
         }
 
         fun moveToNotifyAdminActivity(context: Context){
@@ -156,6 +156,15 @@ class MoveToAnotherComponent {
         }
 
         // start activity for result
+        //normal
+
+        inline fun <reified T>startActivityForResult(activity: Activity,requestCode: Int,key:String,value: Int) {
+            val intent = Intent(activity, T::class.java)
+            intent.putExtra(key,value)
+            activity.startActivityForResult(intent,requestCode)
+        }
+
+        //with parsble
         inline fun <reified T,K>startActivityResultWithParcelable(activity: Activity, key: String,type: K,requestCode: Int) {
             val intent = Intent(activity, T::class.java)
             intent.putExtra(key,type as Parcelable)

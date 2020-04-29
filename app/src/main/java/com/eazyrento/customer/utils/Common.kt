@@ -29,7 +29,7 @@ class Common {
 
         //crating an arraylist to store users using the data class user
         val bookingDetailsModel = ArrayList<BookingDetailsModel>()
-        val wishListModel = ArrayList<WishListModel>()
+
         val MONTHS =
             arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
         val c = Calendar.getInstance()

@@ -133,11 +133,10 @@ open abstract class BaseActivity: AppCompatActivity(),
     }
 
     //finish current activity with Result
-    protected fun finishCurrentActivityWithResult(flag:Int)
+    protected fun finishCurrentActivityWithResult(code:Int,data:Intent)
     {
-        setResult(Activity.RESULT_OK, Intent())
-
-        finishCurrentActivity(flag)
+        setResult(Activity.RESULT_OK, data)
+        finishCurrentActivity(code)
     }
 
     override fun onBackPressed() {

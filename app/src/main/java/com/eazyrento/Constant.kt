@@ -13,6 +13,9 @@ interface Constant{
         const val MASTER_DATA_ITEM ="master_data_item"
         const val VEHICLES_DATA_ITEM ="vehicles"
         const val VEHICLES_SUB_CATE = "vehicle_sub"
+        const val KEY_ADDRESS ="addr_id"
+
+        const val BOOKING_PRODECT_DETAILS = "ID"
 
         //intent key
          const val INTENT_SUCCESS_ORDER_BOOKING = "success"
@@ -20,6 +23,9 @@ interface Constant{
         const val INTENT_MERCHANT_PRODUCT_ADD = "add"
         const val INTENT_MERCHANT_PRODUCT_EDIT = "edit"
         const val INTENT_SUCCESS_ADDED_PRODUCT = "success"
+
+        const val INTENT_ADDR_LIST = "getAddID"
+
 
         // Order status
         const val OPEN_ORDER = 1
@@ -57,7 +63,8 @@ interface Constant{
         const val VIEW_ALL =3
 
         // request code for activiity
-        const val MERCHANT_HOME_FRAGMENT = 100
+        const val MERCHANT_HOME_FRAGMENT_REQUEST_CODE = 100
+        const val ADDRESS_REQUECT_CODE =200
 
         //Dollor
         const val DOLLAR_NOTATION = "$"

@@ -9,7 +9,6 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.common.model.modelclass.ProductCateItem
 import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -84,7 +83,7 @@ class MerchantHomeFragment : BaseFragment() {
     override fun <T, K> onViewClick(type: T, where: K) {
         when(where){
             Constant.VIEW_ALL->MoveToAnotherComponent.startActivityResultWithParcelable<MerchantProductCategory,T>(requireActivity(),
-                Constant.INTENT_MERCHANT_PRODUCT_LIST,type,Constant.MERCHANT_HOME_FRAGMENT)
+                Constant.INTENT_MERCHANT_PRODUCT_LIST,type,Constant.MERCHANT_HOME_FRAGMENT_REQUEST_CODE)
             Constant.edit ->MoveToAnotherComponent.moveToActivity<AddProductDailogActivity>(requireContext(),
                 Constant.INTENT_MERCHANT_PRODUCT_EDIT,(type as MerchantProductItem).id)
             Constant.delete->deleteProduct(type)

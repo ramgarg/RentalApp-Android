@@ -59,7 +59,7 @@ class MerchantMainActivity : MerchantNavigationActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode== Activity.RESULT_OK && requestCode ==Constant.MERCHANT_HOME_FRAGMENT){
+        if (resultCode== Activity.RESULT_OK && requestCode ==Constant.MERCHANT_HOME_FRAGMENT_REQUEST_CODE){
             setHomeFragMent()
         }
     }

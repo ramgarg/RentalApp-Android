@@ -32,6 +32,10 @@
             android:textSize="@dimen/_15sdp"
             android:fontFamily="@font/bree_serif"
             android:background="@drawable/button_save"
-            android:layout_height="@dimen/_40sdp"/>
+            android:layout_height="@dimen/_40sdp"
+            android:onClick="onSubmitButtonClick"
+
+
+            />
 
 </RelativeLayout>

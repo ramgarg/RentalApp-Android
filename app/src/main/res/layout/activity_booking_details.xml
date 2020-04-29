@@ -303,9 +303,13 @@
                       android:id="@+id/tv_work_location"
                       android:fontFamily="@font/bree_serif"
                       android:text="@string/work_location"
-                      android:layout_height="wrap_content"/>
+                      android:layout_height="wrap_content"
+                     android:singleLine="true"
+                    />
 
             <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
                       android:layout_below="@+id/tv_work_title"
                       android:layout_marginTop="@dimen/_10sdp"
                       android:textSize="@dimen/_15sdp"
@@ -319,7 +323,9 @@
                       android:fontFamily="@font/bree_serif"
                       android:text="@string/change"
 
-                      android:layout_height="wrap_content"/>
+                    android:onClick="onChangeAddressClick"
+
+                      />
 
             <TextView android:layout_width="match_parent"
                       android:id="@+id/view_1"

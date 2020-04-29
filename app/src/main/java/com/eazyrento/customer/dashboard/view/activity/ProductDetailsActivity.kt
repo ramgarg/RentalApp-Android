@@ -25,6 +25,7 @@ class ProductDetailsActivity : BaseActivity()
      {
           lateinit var dataProductDetails: ProductDetailsResModel
           var isAddOrDeleteWish:Boolean = false
+         var product_id:Int=-1
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -34,7 +35,7 @@ class ProductDetailsActivity : BaseActivity()
 
         setContentView(R.layout.activity_view_details)
 
-        val id = intent.getIntExtra(Constant.VEHICLES_SUB_CATE,-1)
+         product_id = intent.getIntExtra(Constant.VEHICLES_SUB_CATE,-1)
 
 
         ViewVisibility.isVisibleOrNot(
@@ -47,7 +48,7 @@ class ProductDetailsActivity : BaseActivity()
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<ProductDetailsViewModel>(this)
-                    .getProductDetails(id)
+                    .getProductDetails(product_id)
                 , this, this
             )
         }
@@ -97,7 +98,7 @@ class ProductDetailsActivity : BaseActivity()
     }
 
     fun onNextButtonClick(view:View){
-        MoveToAnotherComponent.moveToBookingDetailsActivity(this)
+        MoveToAnotherComponent.moveToActivity<CustomerBookingDetailsActivity>(this,Constant.BOOKING_PRODECT_DETAILS,product_id)
     }
 
     fun onWishIconClick(view: View){

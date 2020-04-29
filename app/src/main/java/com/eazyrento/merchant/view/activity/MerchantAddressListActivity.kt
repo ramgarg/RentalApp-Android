@@ -1,9 +1,9 @@
 package com.eazyrento.merchant.view.activity
 
 import android.os.Bundle
-import com.eazyrento.customer.myaddress.view.ListAddressActivity
+import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 
-class MerchantAddressActivity : ListAddressActivity() {
+class MerchantAddressListActivity : MyAddressListActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

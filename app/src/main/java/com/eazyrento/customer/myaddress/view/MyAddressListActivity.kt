@@ -1,9 +1,12 @@
 package com.eazyrento.customer.myaddress.view
 
+import android.content.Intent
 import android.os.Bundle
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModel
+import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.eazyrento.customer.myaddress.view.adapter.MyAddressAdapter
 import com.eazyrento.customer.myaddress.viewmodel.AddressListViewModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -12,9 +15,17 @@ import kotlinx.android.synthetic.main.activity_my_address.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
 
-open class ListAddressActivity : BaseActivity() {
+open class MyAddressListActivity : BaseActivity() {
+    var defaultProductID:Int = -1
 
     override fun <T> moveOnSelecetedItem(type: T) {
+
+        if (defaultProductID!=1) {
+
+            val intent = Intent()
+            intent.putExtra(Constant.KEY_ADDRESS, type as AddressListResModelItem)
+            finishCurrentActivityWithResult(Constant.ADDRESS_REQUECT_CODE, intent)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +33,9 @@ open class ListAddressActivity : BaseActivity() {
 
         setContentView(R.layout.activity_my_address)
 
-      initView()
+        defaultProductID = intent.getIntExtra(Constant.INTENT_ADDR_LIST,-1)
+
+        initView()
     }
 
     private fun initView(){

@@ -1,12 +1,15 @@
 package com.eazyrento.customer.dashboard.model.modelclass
 
 data class CustomerCreateBookingReqModelItem(
-    val address_id: Int,
-    val end_date: String,
-    val end_time: String,
-    val product_id: Int,
-    val quantity: Int,
-    val start_date: String,
-    val start_time: String,
-    val with_driver: Boolean
-)
+    var address_id: Int,
+    var start_date: String,
+    var start_time: String,
+    var end_date: String,
+    var end_time: String,
+    var product_id: Int,
+    var quantity: Int,
+
+    var with_driver: Boolean
+){
+    constructor():this(-1,"","","","",-1,0,false)
+}

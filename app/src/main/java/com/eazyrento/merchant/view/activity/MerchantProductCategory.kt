@@ -105,7 +105,7 @@ class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
     }
 
     override fun onBackPressed() {
-        finishCurrentActivityWithResult(1)
+        finishCurrentActivityWithResult(Constant.MERCHANT_HOME_FRAGMENT_REQUEST_CODE,Intent())
         super.onBackPressed()
     }
 
