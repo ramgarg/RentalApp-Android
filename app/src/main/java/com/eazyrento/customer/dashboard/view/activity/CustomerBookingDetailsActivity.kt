@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 class CustomerBookingDetailsActivity : BaseActivity() {
 
     private val objBookingReqModelItem = CustomerCreateBookingReqModelItem()
+    private var defaultID:Int =-1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
         val prodDetailsObj = intent.getParcelableExtra<ProductDetailsResModel>(Constant.BOOKING_PRODECT_DETAILS)
         objBookingReqModelItem.projectDetails =prodDetailsObj
+        defaultID = prodDetailsObj.id
 
         prodDetailsObj?.let{setData(it)}
         clickListenerOnViews()
@@ -98,7 +100,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
     }
 
     fun onChangeAddressClick(view:View){
-       MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,objBookingReqModelItem.projectDetails!!.id)
+       MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,defaultID)
     }
     fun moveToAddAnOther(view: View){
 
@@ -126,8 +128,14 @@ class CustomerBookingDetailsActivity : BaseActivity() {
         objBookingReqModelItem.end_time = tv_end_time_book.text.toString()
 
         objBookingReqModelItem.quantity = item_quantity.text.toString().toInt()
+        objBookingReqModelItem.with_driver = checkbox_with_driver.isChecked
 
-        CustomerBookingSubmitReviewActivity.setBookingItem(objBookingReqModelItem)
+        if (isContains()) {
+            objBookingReqModelItem.product_id = defaultID
+            CustomerBookingSubmitReviewActivity.setBookingItem(objBookingReqModelItem)
+        }
+        else
+            showToast(ValidationMessage.ITEM_IS_IN_LIST)
 
     }
 
@@ -145,6 +153,12 @@ class CustomerBookingDetailsActivity : BaseActivity() {
             objBookingReqModelItem.address_id = address.id
         }
     }
-
+    fun isContains():Boolean{
+        for (obj in CustomerBookingSubmitReviewActivity.objListBookingItem) {
+            if (defaultID== obj.product_id)
+                return false
+        }
+        return true
+    }
 
 }
