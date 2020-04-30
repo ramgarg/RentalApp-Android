@@ -22,6 +22,7 @@ class MyAddressAdapter(val items:List<AddressListResModelItem>, val context: Con
         val tvAddressType=view.tv_add_type
         val tvAddressLine=view.tv_add_line
         val tvCountry=view.tv_add_country
+        val imgSelected=view.img_selected
         var imgEdit=view.img_edit.setOnClickListener {
             MoveToAnotherComponent.moveToAddNewAddressActivity(it.context)
 //            RxBus.publish(EventModel("EditAddress"))
@@ -59,6 +60,11 @@ class MyAddressAdapter(val items:List<AddressListResModelItem>, val context: Con
         holder.tvCountry?.text=items.get(position).country
 
         holder.itemView.setOnClickListener {
+            if (holder.imgSelected?.visibility!=View.INVISIBLE) {
+                holder.imgSelected?.visibility = View.INVISIBLE
+            }else{
+                holder.imgSelected?.visibility=View.VISIBLE
+            }
             (context as BaseActivity).moveOnSelecetedItem(items.get(position))
         }
 //        holder.bind(items.get(position),recyclerViewItemClick)

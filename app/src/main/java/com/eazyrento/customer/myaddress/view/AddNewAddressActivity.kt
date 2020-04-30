@@ -7,8 +7,11 @@ import android.location.*
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.EditText
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.eazyrento.Constant
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,11 +22,19 @@ import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.eazyrento.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModel
+import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
+import com.eazyrento.customer.myaddress.viewmodel.AddressCreateViewModel
+import com.eazyrento.customer.myaddress.viewmodel.AddressDetailsViewModel
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.ViewVisibility
+import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
+import com.eazyrento.merchant.viewModel.MerchantProductDetailViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import kotlinx.android.synthetic.main.activity_agent_write_note.*
 import kotlinx.android.synthetic.main.add_new_address_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
@@ -33,6 +44,9 @@ import org.greenrobot.eventbus.ThreadMode
 
 class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
+    private  val DEFUALT_VALUE = -1
+    var edit_address_ID:Int =-1
+    private val addressCreateReqModelItem = AddressCreateReqModelItem()
     private var mLocationPermissionGranted: Boolean = false
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -45,11 +59,26 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         setContentView(R.layout.add_new_address_activity)
 
+        edit_address_ID = intent.getIntExtra(Constant.INTENT_ADDRESS_EDIT,DEFUALT_VALUE)
+
+        //
+        addressCreateReqModelItem.id =
+            if (edit_address_ID!=DEFUALT_VALUE)
+            //editing functioalty
+                editAddressFuntionalty(edit_address_ID)
+
+            else
+            //Adding funtionalty
+                intent.getIntExtra(Constant.INTENT_NEW_ADDRESS_ADD,DEFUALT_VALUE)
+
         initView()
 
         getLocationPermission();
 
     }
+
+
+
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     fun messageReceive(customEvent: String?) {
@@ -124,11 +153,57 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     private fun initView() {
+        btn_save.setOnClickListener { checkValidation(ed_address) }
         ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
             toolbar_title, getString(R.string.add_new_address)
         )
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+    }
+    private fun checkValidation(ed_address:EditText):Boolean{
+        if (ed_address.text.toString().isEmpty()) {
+            Toast.makeText(this, ValidationMessage.VALID_ADDRESS, Toast.LENGTH_SHORT).show()
+        }
+        else{
+            addressCreateReqModelItem.address_line = ed_address.text.toString()
+            addressCreateReqModelItem.latitude=lastLocation.latitude
+            addressCreateReqModelItem.longitude=lastLocation.longitude
+            if(btn_home_active.visibility==View.VISIBLE){
+                addressCreateReqModelItem.address_type=Constant.Address_Home
+            }
+            else if(btn_work_active.visibility==View.VISIBLE){
+                addressCreateReqModelItem.address_type=Constant.Address_Work
+            }
+            else if(btn_other_active.visibility==View.VISIBLE){
+                addressCreateReqModelItem.address_type=Constant.Address_Other
+            }else{
+                Toast.makeText(this, ValidationMessage.VALID_ADDRESS_TYPE, Toast.LENGTH_SHORT).show()
+            }
+             callAPI()?.let {
+               it.observeApiResult(
+                   it.callAPIActivity<AddressCreateViewModel>(this)
+                       .createAddress(addressCreateReqModelItem)
+                   , this, this
+               )
+           }
+
+
+        }
+        return false
+    }
+
+    private fun editAddressFuntionalty(editAddressID:Int): Int {
+
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<AddressDetailsViewModel>(this)
+                    .addressdetailsAPI(editAddressID)
+                , this, this
+            )
+
+        }
+
+        return editAddressID
     }
 
     private fun getLocationPermission() { /*

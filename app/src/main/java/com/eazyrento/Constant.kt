@@ -22,7 +22,10 @@ interface Constant{
         const val INTENT_MERCHANT_PRODUCT_LIST = "list"
         const val INTENT_MERCHANT_PRODUCT_ADD = "add"
         const val INTENT_MERCHANT_PRODUCT_EDIT = "edit"
+        const val INTENT_ADDRESS_EDIT = "edit"
         const val INTENT_SUCCESS_ADDED_PRODUCT = "success"
+        const val INTENT_NEW_ADDRESS_ADD = "add"
+
 
         const val INTENT_ADD_ANOTHER = "booking"
 
@@ -70,6 +73,11 @@ interface Constant{
 
         //Dollor
         const val DOLLAR_NOTATION = "$"
+
+        //Address Type
+        const val Address_Home= "Home"
+        const val Address_Work= "Work"
+        const val Address_Other= "Other"
 
     }
 }

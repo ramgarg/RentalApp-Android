@@ -43,6 +43,8 @@ interface ValidationMessage{
         //agent note
         const val VALID_HEADING = "Write a heading"
         const val VALID_DESC = "Write description"
+        const val VALID_ADDRESS = "Enter Your Address"
+        const val VALID_ADDRESS_TYPE = "Enter Address Type"
 
 
     }

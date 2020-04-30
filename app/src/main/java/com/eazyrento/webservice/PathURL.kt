@@ -84,6 +84,10 @@ class PathURL {
 
         //address
         const val ADDRESS_LIST = "user/address/list"
+        const val ADDRESS_CREATE = "user/address/create"
+        const val ADDRESS_UPDATE = "user/address/update"
+        const val ADDRESS_DETAIL = "user/address/get/{id}"
+        const val ADDRESS_DELETE = "user/address/delete"
 
     }
 }

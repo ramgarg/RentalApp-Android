@@ -4,17 +4,12 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import com.eazyrento.R
-import com.eazyrento.Session
 import com.eazyrento.ValidationMessage
-import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModel
 import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModelItem
-import com.eazyrento.agent.viewmodel.AgentCreateNotesViewModel
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
-import com.eazyrento.login.viewmodel.LoginOTPViewModel
 import kotlinx.android.synthetic.main.activity_agent_write_note.*
-import kotlinx.android.synthetic.main.activity_otp.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class AgentWriteNoteActivity : BaseActivity(){
