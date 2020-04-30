@@ -44,6 +44,8 @@ interface ValidationMessage{
         const val VALID_HEADING = "Write a heading"
         const val VALID_DESC = "Write description"
 
+        const val ITEM_IS_IN_LIST = "The product is already in list"
+
 
     }
 }

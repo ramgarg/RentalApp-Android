@@ -13,6 +13,7 @@ data class CustomerCreateBookingReqModelItem(
 
     var with_driver: Boolean,
 
+    // it is only for showing data
     var projectDetails: ProductDetailsResModel?,
     var booking_days:Long
 ){

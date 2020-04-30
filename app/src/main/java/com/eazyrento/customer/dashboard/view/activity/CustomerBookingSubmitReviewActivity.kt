@@ -52,7 +52,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
     override fun <T> onSuccessApiResult(data: T) {
         data?.let {
-            showToast(it.toString())
+            showToast(ValidationMessage.BOOKING_SUBMITTED)
 
             MoveToAnotherComponent.moveToActivity<CustomerMainActivity>(this,
                 Constant.INTENT_SUCCESS_ORDER_BOOKING,1)
@@ -61,15 +61,16 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
     override fun onClickDailog(int: Int) {
 
-        callAPI()?.let {
-            it.observeApiResult(
-                it.callAPIActivity<CustomerCreateBookingViewModel>(this)
-                    .createBooking(objListBookingItem)
-                , this, this
-            )
+        if(int==Constant.OK) {
+            callAPI()?.let {
+                it.observeApiResult(
+                    it.callAPIActivity<CustomerCreateBookingViewModel>(this)
+                        .createBooking(objListBookingItem)
+                    , this, this
+                )
 
+            }
         }
-
     }
 
     fun onSubmitButtonClick(view: View){

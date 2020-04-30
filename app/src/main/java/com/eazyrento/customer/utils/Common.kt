@@ -13,6 +13,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.eazyrento.R
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem
 import kotlinx.android.synthetic.main.rating_review.img_close
 import kotlinx.android.synthetic.main.rental_dialog.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
@@ -205,6 +206,8 @@ class Common {
         }
 
     }
+
+
 
 
 }
