@@ -42,6 +42,10 @@ interface Constant{
         const val   BOOKING_LIST_CUSTOMER = 6
         const val BOOKING_LIST_AGENT = 7
 
+        // acceptnace delete
+        const val AGENT_ACCEPTANCE = 8
+        const val MERCHNAT_ACCEPTANCE = 9
+
         //Payment History
         const val CASH ="cash"
         const val PENDING="pending"

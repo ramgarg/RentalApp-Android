@@ -12,13 +12,18 @@
     />
 
     <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec_order_review"
 
             android:layout_below="@+id/toolbar"
             android:layout_above="@+id/btn_submit"
+
             android:layout_width="match_parent"
-            android:id="@+id/rec_order_review"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_15sdp"
+
+
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
            >
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -61,6 +61,7 @@ class PathURL {
         const val MerchantOrders       = "/merchant/orders/"
         const val MerchantOrderDetail  = "/merchant/order_detail/"
         const val MerchantFeedback     = "/merchant/feedback"
+        const val MERCHANT_ACCEPTANCE_DECLINE = "/merchant/booking_action"
 
 
         //agent module
@@ -80,6 +81,7 @@ class PathURL {
         const val AgentCollectCashPayment       = "/agent/collect_cash_payment"
         const val AgentAddNotes                 = "/agent/notes/create"
         const val AgentNotesList                 = "/agent/notes/list"
+        const val AGENT_ACCEPTANCE_DECLINE =      "/agent/booking_action"
 
 
         //address

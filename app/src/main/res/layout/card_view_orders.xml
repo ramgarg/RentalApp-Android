@@ -21,7 +21,7 @@
             >
 
         <ImageView
-                android:id="@+id/img_agent_pic"
+                android:id="@+id/img__pic"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:background="@android:color/transparent"
@@ -31,39 +31,39 @@
                 />
 
         <TextView
-                android:id="@+id/tv_agent_name"
+                android:id="@+id/tv__name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:text="@string/full_name"
                 android:layout_marginTop="@dimen/_12sdp"
                 style="@style/AgentBoldTextCard"
-                app:layout_constraintStart_toEndOf="@+id/img_agent_pic"
+                app:layout_constraintStart_toEndOf="@+id/img__pic"
                 app:layout_constraintTop_toTopOf="parent"
 
                 />
         <TextView
-                android:id="@+id/tv_agent_type"
+                android:id="@+id/tv__type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:text="@string/full_name"
                 style="@style/AgentSmallTextCard"
-                app:layout_constraintStart_toEndOf="@+id/img_agent_pic"
-                app:layout_constraintTop_toBottomOf="@+id/tv_agent_name" />
+                app:layout_constraintStart_toEndOf="@+id/img__pic"
+                app:layout_constraintTop_toBottomOf="@+id/tv__name" />
         <TextView
-                android:id="@+id/tv_agent_order"
+                android:id="@+id/tv__order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/order"
                 style="@style/AgentBoldTextCard"
-                app:layout_constraintTop_toBottomOf="@+id/img_agent_pic"
+                app:layout_constraintTop_toBottomOf="@+id/img__pic"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_6sdp"
                  />
         <Button
-                android:id="@+id/btn_agent_accept"
+                android:id="@+id/btn__accept"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_30sdp"
                 android:text="@string/accept"
@@ -72,13 +72,13 @@
                 android:textAllCaps="false"
                 style="@style/AgentButtonCard"
 
-                app:layout_constraintTop_toBottomOf="@+id/tv_agent_order"
+                app:layout_constraintTop_toBottomOf="@+id/tv__order"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/_6sdp"
 
                 />
         <Button
-                android:id="@+id/btn_agent_decline"
+                android:id="@+id/btn__decline"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_30sdp"
                 android:text="@string/decline"
@@ -87,19 +87,19 @@
                 android:textAllCaps="false"
                 android:layout_marginTop="@dimen/_6sdp"
                 style="@style/AgentButtonCard"
-                app:layout_constraintTop_toBottomOf="@+id/tv_agent_order"
-                app:layout_constraintStart_toEndOf="@+id/btn_agent_accept"
+                app:layout_constraintTop_toBottomOf="@+id/tv__order"
+                app:layout_constraintStart_toEndOf="@+id/btn__accept"
 
                 />
         <TextView
-                android:id="@+id/tv_agent_quantiity"
+                android:id="@+id/tv__quantiity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/truck_quantity"
                 style="@style/AgentBoldTextCard"
                 android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_6sdp"
-                app:layout_constraintTop_toBottomOf="@+id/btn_agent_accept"
+                app:layout_constraintTop_toBottomOf="@+id/btn__accept"
                 app:layout_constraintStart_toStartOf="parent"
 
                 />
@@ -112,13 +112,13 @@
                 style="@style/AgentBoldTextCard"
                 android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_6sdp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_agent_quantiity"
+                app:layout_constraintTop_toBottomOf="@+id/tv__quantiity"
                 app:layout_constraintStart_toStartOf="parent"
 
                 />
 
         <ImageView
-                android:id="@+id/img_agent_calnder"
+                android:id="@+id/img__calnder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_6sdp"
@@ -138,12 +138,12 @@
                 style="@style/AgentSmallTextCard"
                 android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_6sdp"
-                app:layout_constraintStart_toEndOf="@id/img_agent_calnder"
+                app:layout_constraintStart_toEndOf="@id/img__calnder"
                 app:layout_constraintTop_toBottomOf="@id/tv_order_date"
 
                 />
         <ImageView
-                android:id="@+id/img_agent_call"
+                android:id="@+id/img__call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_6sdp"

@@ -3,6 +3,7 @@ package com.eazyrento.agent.model.repositry.api
 import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModel
 import com.eazyrento.agent.model.modelclass.AgentDashboardResModel
 import com.eazyrento.agent.model.modelclass.AgentNotesListResModel
+import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.common.model.modelclass.BookingListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
@@ -19,6 +20,9 @@ interface AgentAPI {
 
     @GET(PathURL.AgentDashboard)
     fun getAgentDashboardData(): Call<BookingDashboardResModel>
+
+    @POST(PathURL.AGENT_ACCEPTANCE_DECLINE)
+    fun acceptanceDelete(@Body acceptanceDeclineReqModel: AcceptanceDeclineReqModel): Call<JsonElement>
 
     //Booking list
 

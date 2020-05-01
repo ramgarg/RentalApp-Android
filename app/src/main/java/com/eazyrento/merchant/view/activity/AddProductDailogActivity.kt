@@ -17,16 +17,12 @@ import com.eazyrento.EazyRantoApplication.Companion.context
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.common.model.modelclass.ProductSubCategoriesModelResItem
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
-import com.eazyrento.merchant.model.modelclass.MerchantProductItem
 import com.eazyrento.merchant.viewModel.MerchantAddProductViewModel
 import com.eazyrento.merchant.viewModel.MerchantProductDetailViewModel
-import com.eazyrento.supporting.MyJsonParser
 import com.google.gson.JsonElement
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
@@ -316,7 +312,7 @@ class AddProductDailogActivity:BaseActivity() {
         if (data is JsonElement) {
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, data.toString())
 //            if (edit_product_ID ==DEFUALT_VALUE) {
-                showToast(ValidationMessage.PRODUCT_ADDED_SUCCESS)
+                showToast(ValidationMessage.REQUEST_SUCCESSED)
 //        {"status":201}
                 MoveToAnotherComponent.moveToActivity<MerchantMainActivity>(
                     this,

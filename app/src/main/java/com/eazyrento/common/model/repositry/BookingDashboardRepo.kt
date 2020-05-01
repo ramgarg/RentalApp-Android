@@ -22,9 +22,6 @@ class BookingDashboardRepo : GenericRequestHandler<BookingDashboardResModel>(){
             return doRequest( ServiceGenrator.client.create(
                 AgentAPI::class.java).getAgentDashboardData())
     }
-
-
-
 }
 class MyBookingListRepo : GenericRequestHandler<BookingListResModel>(){
 
