@@ -77,7 +77,7 @@ class Common {
         }
 
         fun calculateDatesWithString(startDate:String , endDate:String):Long{
-            val myFormat = SimpleDateFormat("YYYY-MM-DD")
+            val myFormat = SimpleDateFormat("yyyy-MM-dd")
 
             try {
                 val date1 = myFormat.parse(startDate)

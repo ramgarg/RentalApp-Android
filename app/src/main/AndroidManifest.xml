@@ -191,7 +191,14 @@
                 android:name="com.eazyrento.merchant.view.activity.AddProductDailogActivity"
                 android:screenOrientation="unspecified"
                 />
-
+        <activity
+                android:name="com.eazyrento.merchant.view.activity.MerchantShowAllBooking"
+                android:screenOrientation="unspecified"
+                />
+        <activity
+                android:name="com.eazyrento.agent.view.activity.AgentShowAllBookingActivity"
+                android:screenOrientation="unspecified"
+                />
 
         <meta-data
                 android:name="com.google.android.gms.version"

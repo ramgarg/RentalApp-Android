@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.model.modelclass.Booking
+import com.eazyrento.customer.dashboard.view.adapter.WishListAdapter
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_view_orders.view.*
 
-class DashboardBookingCardAdapter (val orderListing: MutableList<Booking>, val context: Context) : RecyclerView.Adapter<DashboardBookingCardAdapter.CardViewHolder>() {
+class DashboardBookingCardAdapter (val orderListing: List<Booking>, val context: Context,val acceptDecline:AcceptDecline) : RecyclerView.Adapter<DashboardBookingCardAdapter.CardViewHolder>() {
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val card_view =
             CardViewHolder(
@@ -24,39 +27,27 @@ class DashboardBookingCardAdapter (val orderListing: MutableList<Booking>, val c
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-
-
-        val order_listing_obj =  orderListing.get(position)
-
-        //customer details
-         if (order_listing_obj.customer_detail!=null) {
-             holder?.tv_agent_name.text = order_listing_obj.customer_detail.full_name
-             holder?.tv_agent_type.text = Constant.CUSTOMER
-         }else {
-             holder?.tv_agent_name.text=Constant.CUSTOMER
-             holder?.tv_agent_type.text=Constant.CUSTOMER
-         }
-          if (order_listing_obj.product_detail!=null) {
-              // prodect details
-              holder?.tv_agent_product_quantity.text = order_listing_obj.product_detail.product_name + "-" + order_listing_obj.product_detail.quantity
-              holder.tv_agent_date_show.text = order_listing_obj.product_detail.start_date
-              holder.tv_agent_order.text = order_listing_obj.order_id
-          }else{
-
-          }
-
+        acceptDecline.setBookingHolder(holder,orderListing,position)
+        //
     }
+   
+   
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
-        val img_agent_pic = view.img_agent_pic
-        val tv_agent_name = view.tv_agent_name
-        val tv_agent_type = view.tv_agent_type
-        val tv_agent_order = view.tv_agent_order
-        val tv_agent_product_quantity = view.tv_agent_quantiity
-        val tv_agent_date_show = view.tv_show_date
 
-        val btn_agent_accept = view.btn_agent_accept
-        val btn_agent_decline = view.btn_agent_decline
+        
+        val tv__name = view.tv__name
+        val tv__type = view.tv__type
+        val tv__order = view.tv__order
+        val tv__product_quantity = view.tv__quantiity
+        val tv__date_show = view.tv_show_date
+
+        val img__pic = view.img__pic
+        val btn__accept = view.btn__accept
+        val btn__decline = view.btn__decline
 
     }
+}
 
+interface AcceptDecline{
+    fun setBookingHolder(holder: DashboardBookingCardAdapter.CardViewHolder,list: List<Booking>, position: Int)
 }

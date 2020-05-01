@@ -1,33 +1,57 @@
 package com.eazyrento.agent.view.fragment
 
 import android.os.Bundle
-import androidx.core.view.GravityCompat
 import com.eazyrento.Constant
+import com.eazyrento.agent.view.activity.AgentShowAllBookingActivity
+import com.eazyrento.common.model.modelclass.Booking
+import com.eazyrento.common.model.modelclass.BookingDashboardResModel
+import com.eazyrento.common.view.activity.ShowAllBookingActivity
+import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.common.view.fragment.DashboardBaseFragment
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import kotlinx.android.synthetic.main.activity_agent_home_.*
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
-import kotlinx.android.synthetic.main.toolbar.*
 
 class AgentHomeFragment : DashboardBaseFragment() {
-
-//    private lateinit var orderListingVM: OrderListingVM
-
-   /* override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        val view = inflater.inflate(R.layout.fragment_booking_dashboard, container, false)
-
-        return view
-    }*/
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
         super.onActivityCreated(savedInstanceState)
+
         callAPIDashboard(Constant.BOOKING_DASHBOARD_AGENT)
 
-        //img_menu.setOnClickListener {  drawer_layout_agent.openDrawer(GravityCompat.START) }
+        btn_home_view_all.setOnClickListener {
+            MoveToAnotherComponent.openActivityWithParcelableParam<AgentShowAllBookingActivity, BookingDashboardResModel>(requireContext(),Constant.INTENT_BOOKING_LIST,agentDashboardResponse)
+        }
 
     }
+
+    override fun setBookingHolder(
+        holder: DashboardBookingCardAdapter.CardViewHolder,
+        list: List<Booking>,
+        position: Int
+    ) {
+
+        val order_listing_obj = list.get(position)
+
+        holder?.tv__name.text = order_listing_obj.customer_detail?.full_name
+        holder?.tv__type.text = Constant.CUSTOMER
+
+        // prodect details
+        holder?.tv__product_quantity.text = order_listing_obj.product_detail?.product_name+ "-"+order_listing_obj.product_detail?.quantity
+        holder.tv__date_show.text = order_listing_obj.product_detail?.start_date
+        holder.tv__order.text = order_listing_obj.order_id
+
+        Picasso.with(context).load(order_listing_obj.customer_detail?.profile_image).into(holder.img__pic)
+
+        holder.btn__accept.setOnClickListener{
+            acceptBooking(order_listing_obj,position,Constant.AGENT_ACCEPTANCE)
+        }
+        holder.btn__decline.setOnClickListener{
+            declineBooking(order_listing_obj,position,Constant.AGENT_ACCEPTANCE)
+        }
+    }
+
 
 }
 

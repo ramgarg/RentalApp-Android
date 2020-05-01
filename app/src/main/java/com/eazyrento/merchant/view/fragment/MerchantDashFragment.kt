@@ -2,18 +2,16 @@ package com.eazyrento.merchant.view.fragment
 
 import android.os.Bundle
 import com.eazyrento.Constant
+import com.eazyrento.common.model.modelclass.Booking
+import com.eazyrento.common.model.modelclass.BookingDashboardResModel
+import com.eazyrento.common.view.activity.ShowAllBookingActivity
+import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.common.view.fragment.DashboardBaseFragment
+import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.merchant.view.activity.MerchantShowAllBooking
+import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
 
 class MerchantDashFragment : DashboardBaseFragment() {
-
-   // private lateinit var merchantDashboardViewModel: MerchantDashboardViewModel
-
-   /* override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.merchant_fragment_dash, container, false)
-
-        return view
-    }*/
-
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -21,52 +19,28 @@ class MerchantDashFragment : DashboardBaseFragment() {
 
         callAPIDashboard(Constant.BOOKING_DASHBOARD_MERCHANT)
 
-
-    }
-
-    /*override fun <T> onSuccessApiResult(data: T) {
-
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
-
-        val merchantDashboardResponse = data as BookingDashboardResModel
-
-        if(merchantDashboardResponse.bookings.isEmpty()) {
-            Common.showToast(requireContext(),ValidationMessage.NO_DATA_FOUND)
-            btn_merchant_home_view_all.visibility = View.GONE
-            return
+        btn_home_view_all.setOnClickListener {
+            MoveToAnotherComponent.openActivityWithParcelableParam<MerchantShowAllBooking, BookingDashboardResModel>(requireContext(),Constant.INTENT_BOOKING_LIST,agentDashboardResponse)
         }
-        setBookingAdapterDashboard(merchantDashboardResponse)
-        setBookingStatus(merchantDashboardResponse)
-
-
     }
 
-   private fun setBookingAdapterDashboard(bookingDashboardResponse: BookingDashboardResModel) {
-       recycle_view_merchant_home.layoutManager = LinearLayoutManager(
-           requireActivity(),
-           LinearLayoutManager.HORIZONTAL, false
-       )
-       (recycle_view_merchant_home.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
-           1,
-           1
-       )
 
-       val recycleAdapterMerchantHomeCard =
-           DashboardBookingCardAdapter(
-               bookingDashboardResponse.bookings as MutableList<Booking>,
-               requireActivity()
-           )
+    override fun setBookingHolder(
+        holder: DashboardBookingCardAdapter.CardViewHolder,
+        list: List<Booking>,
+        position: Int
+    ) {
+       val order_listing_obj = list.get(position)
 
-       recycle_view_merchant_home.adapter = recycleAdapterMerchantHomeCard
-    }
-    private fun setBookingStatus(bookingDashboardResponse: BookingDashboardResModel) {
-        complete_value.text = ""+bookingDashboardResponse.completed_orders_count
-        in_progress_value.text = ""+bookingDashboardResponse.in_progress_orders_count
-        reject_value.text = ""+bookingDashboardResponse.rejected_orders_count
+        holder.tv__order.text = order_listing_obj.order_id
+
+        holder.btn__accept.setOnClickListener{
+            acceptBooking(order_listing_obj,position,Constant.MERCHNAT_ACCEPTANCE)
+        }
+        holder.btn__decline.setOnClickListener{
+            declineBooking(order_listing_obj,position,Constant.MERCHNAT_ACCEPTANCE)
+        }
     }
 
-    override fun <T, K> onViewClick(type: T, where: K) {
-        MoveToAnotherComponent.moveToCategoryActivity(requireContext())
-    }*/
 
 }

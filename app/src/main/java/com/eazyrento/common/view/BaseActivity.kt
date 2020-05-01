@@ -14,8 +14,9 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.eazyrento.Constant
-import com.eazyrento.Env.Companion.isNetworkConnect
+import com.eazyrento.InternetNetworkConnection
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
 import kotlinx.android.synthetic.main.thank_you_pop.*
 
 
@@ -100,9 +101,12 @@ open abstract class BaseActivity: AppCompatActivity(),
     //call api
     protected fun callAPI(): LiveDataActivityClass?{
 
-        if(isNetworkConnect) {
+        if(InternetNetworkConnection.isNetworkInternetAvailbale(this)) {
             showProgress()
             return LiveDataActivityClass(this)
+        }
+        else{
+            showToast(ValidationMessage.CHECK_INTERNET)
         }
         return null
     }

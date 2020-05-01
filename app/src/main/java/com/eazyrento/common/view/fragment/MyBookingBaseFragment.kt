@@ -20,6 +20,11 @@ abstract class MyBookingBaseFragment: BaseFragment() {
         return inflater.inflate(R.layout.fragment_customer_bookings, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        toolbar_view_all?.visibility =View.GONE
+    }
+
     protected fun callMyBookingAPI(value: Int){
 
         callAPI()?.let {

@@ -27,6 +27,8 @@ interface Constant{
         const val INTENT_NEW_ADDRESS_ADD = "add"
 
 
+        const val INTENT_BOOKING_LIST = "booking_list"
+
         const val INTENT_ADD_ANOTHER = "booking"
 
         const val INTENT_ADDR_LIST = "getAddID"
@@ -44,6 +46,10 @@ interface Constant{
         //Booking List
         const val   BOOKING_LIST_CUSTOMER = 6
         const val BOOKING_LIST_AGENT = 7
+
+        // acceptnace delete
+        const val AGENT_ACCEPTANCE = 8
+        const val MERCHNAT_ACCEPTANCE = 9
 
         //Payment History
         const val CASH ="cash"

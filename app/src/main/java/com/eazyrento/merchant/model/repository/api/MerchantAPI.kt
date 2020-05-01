@@ -1,5 +1,6 @@
 package com.eazyrento.merchant.model.repository.api
 
+import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
 import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesResModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
@@ -34,6 +35,10 @@ interface MerchantAPI {
     // get product details
     @GET(PathURL.MerchantProductDetail)
     fun getProductDetails(@Path("id") id: Int): Call<MerchantProductDetailsResModel>
+
+    //acceptnace delete
+    @POST(PathURL.MERCHANT_ACCEPTANCE_DECLINE)
+    fun acceptanceDelete(@Body acceptanceDeclineReqModel: AcceptanceDeclineReqModel): Call<JsonElement>
 
 
 }

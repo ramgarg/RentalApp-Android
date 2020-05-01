@@ -2,6 +2,7 @@ package com.eazyrento
 
 interface ValidationMessage{
     companion object{
+        const val CHECK_INTERNET = "please check internet connectivity"
         const val VALID_PASSWORD_LENGTH= "Invalid Password! minimum length 8"
         const val VALID_PASSWORD= "Please Enter Valid Password"
         const val VALID_EMAIL_ID = "Please Enter Valid Email"
@@ -26,7 +27,7 @@ interface ValidationMessage{
         const val SUBMIT_TITLE ="Submit"
 
         //sucessfully added
-        const val PRODUCT_ADDED_SUCCESS = "Request has been submit successfully"
+        const val REQUEST_SUCCESSED = "Request has been submit successfully"
         const val PRODUCT_DELETE_SUCCESS = "Product has been deleted successfully"
 
         //Booking details validation

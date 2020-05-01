@@ -11,7 +11,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
 
     <!-- button View all-->
 
@@ -27,6 +29,7 @@
             app:layout_constraintBottom_toTopOf="@+id/agen_bottom_white_bg"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycle_booking_home_adpter" />
+            app:layout_constraintTop_toBottomOf="@+id/recycle_booking_home_adpter"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.eazyrento.agent.view.activity.AgentOrderRepository
 import com.eazyrento.customer.dashboard.model.modelclass.HomeResponse
 
+/*
 class AgentOrderViewModel :ViewModel() {
 
     var agentOrderRepository: AgentOrderRepository
@@ -21,4 +22,4 @@ class AgentOrderViewModel :ViewModel() {
     fun getOrderResponse(): LiveData<HomeResponse> {
         return agentorderResponseLiveData
     }
-}
+}*/
