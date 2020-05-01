@@ -3,6 +3,7 @@ package com.eazyrento.customer.myaddress.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
+import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModel
 import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
 import com.eazyrento.customer.myaddress.model.modelclass.AddressDetailsResModel
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModel
@@ -19,9 +20,9 @@ class AddressListViewModel : ViewModel() {
 
 class AddressCreateViewModel : ViewModel() {
 
-    fun createAddress(addressCreateReqModelItem: AddressCreateReqModelItem): LiveData<DataWrapper<JsonElement>> {
+    fun createAddress(addressCreateReqModel: AddressCreateReqModel): LiveData<DataWrapper<JsonElement>> {
         return AddressCreateRepo()
-            .addressCreate(addressCreateReqModelItem)
+            .addressCreate(addressCreateReqModel)
     }
 }
 
