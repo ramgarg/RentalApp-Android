@@ -1,10 +1,12 @@
 package com.eazyrento.common.view.fragment
 
 import androidx.fragment.app.Fragment
-import com.eazyrento.Env.Companion.isNetworkConnect
+import com.eazyrento.InternetNetworkConnection
+import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.ApiResult
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.view.LiveDataFragmentClass
+import com.eazyrento.customer.utils.Common
 
 open abstract class BaseFragment:Fragment(), ApiResult,
     ViewClickOnFragment {
@@ -12,9 +14,12 @@ open abstract class BaseFragment:Fragment(), ApiResult,
     override fun <T> onSuccessApiResult(data: T) {
     }
     protected fun callAPI(): LiveDataFragmentClass? {
-        if (isNetworkConnect) {
+        if (InternetNetworkConnection.isNetworkInternetAvailbale(requireContext())) {
             (requireActivity() as BaseActivity).showProgress()
             return LiveDataFragmentClass(this)
+        }
+        else{
+            Common.showToast(requireActivity(),ValidationMessage.CHECK_INTERNET)
         }
         return null
     }

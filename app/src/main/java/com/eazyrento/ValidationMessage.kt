@@ -2,6 +2,7 @@ package com.eazyrento
 
 interface ValidationMessage{
     companion object{
+        const val CHECK_INTERNET = "please check internet connectivity"
         const val VALID_PASSWORD_LENGTH= "Invalid Password! minimum length 8"
         const val VALID_PASSWORD= "Please Enter Valid Password"
         const val VALID_EMAIL_ID = "Please Enter Valid Email"
