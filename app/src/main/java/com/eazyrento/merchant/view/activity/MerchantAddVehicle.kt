@@ -35,7 +35,7 @@ class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
 
         ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.vehicle))
+            toolbar_title, getString(R.string.add_product))
 
         getMasterCategory()
 

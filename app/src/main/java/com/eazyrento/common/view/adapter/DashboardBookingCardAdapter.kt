@@ -25,17 +25,26 @@ class DashboardBookingCardAdapter (val orderListing: MutableList<Booking>, val c
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
 
+
         val order_listing_obj =  orderListing.get(position)
 
         //customer details
+         if (order_listing_obj.customer_detail!=null) {
+             holder?.tv_agent_name.text = order_listing_obj.customer_detail.full_name
+             holder?.tv_agent_type.text = Constant.CUSTOMER
+         }else {
+             holder?.tv_agent_name.text=Constant.CUSTOMER
+             holder?.tv_agent_type.text=Constant.CUSTOMER
+         }
+          if (order_listing_obj.product_detail!=null) {
+              // prodect details
+              holder?.tv_agent_product_quantity.text = order_listing_obj.product_detail.product_name + "-" + order_listing_obj.product_detail.quantity
+              holder.tv_agent_date_show.text = order_listing_obj.product_detail.start_date
+              holder.tv_agent_order.text = order_listing_obj.order_id
+          }else{
 
-        holder?.tv_agent_name.text = order_listing_obj.customer_detail.full_name
-        holder?.tv_agent_type.text = Constant.CUSTOMER
+          }
 
-        // prodect details
-        holder?.tv_agent_product_quantity.text = order_listing_obj.product_detail.product_name+ "-"+order_listing_obj.product_detail.quantity
-        holder.tv_agent_date_show.text = order_listing_obj.product_detail.start_date
-        holder.tv_agent_order.text = order_listing_obj.order_id
     }
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
         val img_agent_pic = view.img_agent_pic

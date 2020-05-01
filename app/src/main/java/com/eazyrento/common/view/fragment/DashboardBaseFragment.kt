@@ -48,11 +48,19 @@ abstract class DashboardBaseFragment:
             btn_home_view_all.visibility = View.GONE
             return
         }
-        else{
-//            MoveToAnotherComponent.moveToActivity<My>()
+        else {
+            setBookingAdapterDashboard(agentDashboardResponse)
         }
-        setBookingAdapterDashboard(agentDashboardResponse)
-        setBookingStatus(agentDashboardResponse)
+        if (agentDashboardResponse!=null) {
+            setBookingStatus(agentDashboardResponse)
+        }else{
+            Common.showToast(requireContext(), ValidationMessage.NO_DATA_FOUND)
+            btn_home_view_all.visibility = View.GONE
+            return
+        }
+//            MoveToAnotherComponent.moveToActivity<My>()
+
+
 
     }
 

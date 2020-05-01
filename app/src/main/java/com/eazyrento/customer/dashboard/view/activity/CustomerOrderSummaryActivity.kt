@@ -2,11 +2,14 @@ package com.eazyrento.customer.dashboard.view.activity
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
+import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAdapter
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_customer_order_summary.*
@@ -89,6 +92,22 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
         EventBus.getDefault().unregister(this)
     }*/
 
+    private fun setUsersAdapter(customerOderDetailsResponse: CustomerOrderDetailsResModel) {
+        rec_user_order_summary.layoutManager = LinearLayoutManager(this,
+            LinearLayoutManager.VERTICAL, false
+        )
+        (rec_user_order_summary.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
+            1,
+            1
+        )
+
+        val recycleAdapterUsersHomeCard =
+            CustomerOrderSummaryUsersAdapter(
+                customerOderDetailsResponse.merchant_detail as MutableList<MerchantDetail>,this)
+
+        rec_user_order_summary.adapter = recycleAdapterUsersHomeCard
+    }
+
 
 
     override fun <T> onSuccessApiResult(data: T) {
@@ -103,19 +122,27 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
         tv_end_time_sel.text=orderRes.product_detail.end_time
         checkbox_with_driver.isChecked=orderRes.product_detail.with_driver
         tv_work_location.text=orderRes.product_detail.work_location
-        tv_user_name.text=orderRes.agent_detail.full_name
-        tv_user_tag.text= Constant.AGENT
-        img_user_call.contentDescription=orderRes.agent_detail.mobile_number
+        if(orderRes.agent_detail!=null){
+            users_view.visibility=View.VISIBLE
+            tv_users_name.text=orderRes.agent_detail.full_name
+            tv_users_tag.text= orderRes.agent_detail.mobile_number
+            //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
+        }
+        else{
+            users_view.visibility=View.INVISIBLE
+        }
+        //tv_user_name.text=orderRes.agent_detail.full_name
+        //tv_user_tag.text= Constant.AGENT
+        //img_user_call.contentDescription=orderRes.agent_detail.mobile_number
         if(orderRes.order_status== Constant.COMPLETED)
         {
           if(orderRes.merchant_detail.isNotEmpty()){
-              lyt_middle_view2.visibility=View.VISIBLE
-              tv_users_name.text=""+orderRes.merchant_detail.get(1).full_name
-              tv_users_tag.text= Constant.MERCHANT
-              img_users_call.visibility=View.INVISIBLE
+              rec_user_order_summary.visibility=View.VISIBLE
+              img_user_call.visibility=View.INVISIBLE
+              setUsersAdapter(orderRes)
           }
           else{
-              lyt_middle_view2.visibility=View.INVISIBLE
+              rec_user_order_summary.visibility=View.INVISIBLE
           }
             customer_payment_button.visibility=View.INVISIBLE
             payment_view_history.visibility=View.VISIBLE
@@ -125,13 +152,11 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
         else if(orderRes.order_status== Constant.PENDING)
         {
             if(orderRes.merchant_detail.isNotEmpty()){
-                lyt_middle_view2.visibility=View.VISIBLE
-                tv_users_name.text=""+orderRes.merchant_detail.get(1).full_name
-                tv_users_tag.text= Constant.MERCHANT
-                img_users_call.visibility=View.INVISIBLE
+                rec_user_order_summary.visibility=View.VISIBLE
+                setUsersAdapter(orderRes)
             }
             else{
-                lyt_middle_view2.visibility=View.INVISIBLE
+                rec_user_order_summary.visibility=View.INVISIBLE
             }
         }
 

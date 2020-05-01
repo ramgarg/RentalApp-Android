@@ -3,6 +3,7 @@ package com.eazyrento.merchant.view.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.GravityCompat
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
@@ -11,11 +12,14 @@ import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.view.adapter.InfalterViewAdapter
 import com.eazyrento.customer.dashboard.view.adapter.ProductVehiclesAdapter
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.customer.utils.ViewVisibility
 import com.eazyrento.merchant.model.modelclass.MerchantProductItem
 import com.eazyrento.merchant.view.fragment.MerchantCatItem
 import com.eazyrento.merchant.viewModel.MerchantDeleteProductViewModel
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_merchant_all_product_home.*
+import kotlinx.android.synthetic.main.merchant_activity_main.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
 
@@ -24,11 +28,15 @@ class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_merchant_all_product_home)
+
+        ViewVisibility.isVisibleOrNot(
+            this, img_back, img_menu, img_notification,
+            toolbar_title, getString(R.string.view_product))
 
         val merchantCatItem = intent.getParcelableExtra<MerchantCatItem>(
             Constant.INTENT_MERCHANT_PRODUCT_LIST
+
         )
 
         listMerchantCatItem = merchantCatItem.value as ArrayList
@@ -44,6 +52,9 @@ class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
         }
 
     }
+
+
+
     override fun <T> moveOnSelecetedItem(type: T) {
 
     }
@@ -73,6 +84,7 @@ class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
                 Constant.INTENT_MERCHANT_PRODUCT_EDIT,(type as MerchantProductItem).id)
 
             Constant.delete->deleteProduct(type)
+
         }
 
     }

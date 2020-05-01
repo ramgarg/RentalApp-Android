@@ -42,6 +42,8 @@
     <string name="select_category">Select Category</string>
     <string name="under_development">Under Development</string>
     <string name="vehicle">Vehicles</string>
+    <string name="add_product">"Add Product"</string>
+    <string name="view_product">"View Product"</string>
     <string name="order_review">Order Review</string>
     <string name="order_summary">Order Summary</string>
     <string name="payment">Payment</string>
