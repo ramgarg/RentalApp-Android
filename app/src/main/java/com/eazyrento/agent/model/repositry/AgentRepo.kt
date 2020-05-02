@@ -2,59 +2,40 @@ package com.eazyrento.agent.model.repositry
 
 import androidx.lifecycle.LiveData
 import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModel
+import com.eazyrento.agent.model.modelclass.AgentMerchantFindNearByResModel
 import com.eazyrento.agent.model.modelclass.AgentNotesListResModel
+import com.eazyrento.agent.model.modelclass.AssignMerchantsReqModel
 import com.eazyrento.agent.model.repositry.api.AgentAPI
 
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
-import com.eazyrento.common.model.modelclass.ProductCategoriesResModel
-import com.eazyrento.common.model.modelclass.ProductID
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerWishListResModel
-import com.eazyrento.customer.dashboard.model.repositry.api.CustomerAPI
-import com.eazyrento.merchant.model.repository.api.MerchantAPI
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
 
-/*class AgentDashboardRepo :GenericRequestHandler<AgentDashboardResModel>(){
-
-    fun getDeshboardData(): LiveData<DataWrapper<AgentDashboardResModel>> {
-//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
-        val call = ServiceGenrator.client.create(AgentAPI::class.java).getAgentDashboardData()
-        return doRequest(call)
-    }
 
 
-}*/
+class AgentMerchantsAssignRepo :
+    GenericRequestHandler<JsonElement>(){
 
-/*class MerchantProductCategoriesRepo : GenericRequestHandler<ProductCategoriesResModel>(){
-
-    fun getProductCateg( ): LiveData<DataWrapper<ProductCategoriesResModel>> {
-//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+    fun assignMerchants(assignMerchantsReqModel: AssignMerchantsReqModel): LiveData<DataWrapper<JsonElement>> {
         val call = ServiceGenrator.client.create(
-            MerchantAPI::class.java).getProductCategory()
-        return doRequest(call)
-    }
-}*/
-
-/*class MerchantProductCategories :GenericRequestHandler<ProductCategoriesResModel>(){
-
-    fun getBookingOrdersList(value: Int): LiveData<DataWrapper<ProductCategoriesResModel>> {
-//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
-        val call = ServiceGenrator.client.create(MerchantAPI::class.java).getProductCategory()
+            AgentAPI::class.java).assignMerchants(assignMerchantsReqModel)
         return doRequest(call)
     }
 
-}*/
+}
 
-/*class CustomerOrderDetailsRepo :GenericRequestHandler<CustomerOrderDetailsResModel>(){
+class AgentMerchantNearByRepo :
+    GenericRequestHandler<AgentMerchantFindNearByResModel>(){
 
-    fun getCustomerOrderDetail(value: Int): LiveData<DataWrapper<CustomerOrderDetailsResModel>> {
-//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
-        val call = ServiceGenrator.client.create(MerchantAPI::class.java).getCustomerOrderDetail(value)
+    fun getAgentMerchantNearBy(id:Int): LiveData<DataWrapper<AgentMerchantFindNearByResModel>> {
+        val call = ServiceGenrator.client.create(
+            AgentAPI::class.java).getAgentMerchantsNearBy(id)
         return doRequest(call)
     }
 
-}*/
+}
+
 class AgentNotesListRepo :
     GenericRequestHandler<AgentNotesListResModel>(){
 

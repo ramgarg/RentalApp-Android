@@ -97,7 +97,7 @@ class MoveToAnotherComponent {
         }
         // agent activity
         fun moveToAgentHomeActivity(context: Context){
-            context.startActivity(Intent(context, AgentHomeActivity::class.java))
+            context.startActivity(Intent(context, AgentMainActivity::class.java))
         }
 
         fun moveToNotificationActivity(context: Context){

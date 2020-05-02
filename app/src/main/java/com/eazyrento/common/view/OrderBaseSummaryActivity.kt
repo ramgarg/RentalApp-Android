@@ -7,16 +7,11 @@ import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
 import com.eazyrento.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.order_summary_template.*
 import kotlinx.android.synthetic.main.toolbar.*
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
 
 open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
     private fun clickListenerOnViews(){
-      //  tv_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
-      //  tv_pay_now.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
     }
 
     private fun setResponseViews(){
@@ -26,30 +21,10 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
         tv_end_time_sel.text="3:00pm"
        // checkbox_with_driver.isClickable=false
 
+
+       // callAPIOrderList(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
     }
 
-    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    fun messageReceive(customEvent: String?) {
-       /* if (customEvent.equals("OPEN_ACTIVE")) {
-            hideGroupViews(tv_order_id,tv_delver_date,tv_days,tv_coupon,coupon_applied,
-                tv_happy,tv_happy_with, tv_give_tip)
-
-            showGroupViews(tv_pending_amount,tv_pay_now)
-
-        } else {
-            invisibleGroupViews(tv_pending_amount,tv_pay_now)
-            showGroupViews(tv_order_id,tv_delver_date,tv_days,tv_coupon,coupon_applied,tv_happy,tv_happy_with,
-                tv_give_tip)
-            hideGroupViews(layout_driver)
-
-            tv_c.setOnClickListener {
-                MoveToAnotherComponent.moveToPaymentActivity(this)
-            }
-        }*/
-
-        callAPIOrderList(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
-
-    }
 
     override fun onStart() {
         super.onStart()
@@ -59,12 +34,10 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
         clickListenerOnViews()
 
-        EventBus.getDefault().register(this)
     }
 
     override fun onPause() {
         super.onPause()
-        EventBus.getDefault().unregister(this)
     }
 
     private fun callAPIOrderList(id: Int){
@@ -85,6 +58,5 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
     }
     override fun <T> moveOnSelecetedItem(type: T) {
-        TODO("Not yet implemented")
     }
 }

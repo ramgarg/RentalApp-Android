@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
@@ -7,17 +7,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <include layout="@layout/toolbar"
+            android:id="@+id/toolbar"
+            />
 
     <androidx.recyclerview.widget.RecyclerView
 
+            android:layout_below="@+id/toolbar"
+            android:layout_above="@+id/btn_assign"
+
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
             android:layout_gravity="center"
             android:layout_margin="@dimen/_10sdp"
             android:id="@+id/rec_agent_assign_merchant"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_10sdp"
             >
 
     </androidx.recyclerview.widget.RecyclerView>
+    <Button
+            android:id="@+id/btn_assign"
+            style="@style/AgentSmallTextCard"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_gradient"
+            android:text="Assign"
 
-</LinearLayout>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_10sdp"
+
+            android:onClick="assignMerchant"
+            />
+
+</RelativeLayout>

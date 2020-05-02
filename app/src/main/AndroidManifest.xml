@@ -178,8 +178,9 @@
 
                 />
 
-        <activity android:name="com.eazyrento.agent.view.activity.AgentHomeActivity"
+        <activity android:name="com.eazyrento.agent.view.activity.AgentMainActivity"
                 android:screenOrientation="unspecified"
+                android:launchMode="singleTask"
 
                 />
         <activity android:name="com.eazyrento.merchant.view.activity.MerchantProductCategory"
@@ -197,6 +198,14 @@
                 />
         <activity
                 android:name="com.eazyrento.agent.view.activity.AgentShowAllBookingActivity"
+                android:screenOrientation="unspecified"
+                />
+        <activity
+                android:name="com.eazyrento.agent.view.activity.AgentBookingReviewSummeryActivity"
+                android:screenOrientation="unspecified"
+                />
+        <activity
+                android:name="com.eazyrento.agent.view.activity.AgentFinalAsignMerchantActivity"
                 android:screenOrientation="unspecified"
                 />
 

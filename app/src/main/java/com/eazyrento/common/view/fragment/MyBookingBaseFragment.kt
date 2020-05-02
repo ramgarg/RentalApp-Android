@@ -10,11 +10,13 @@ import com.eazyrento.ValidationMessage
 import com.eazyrento.common.model.modelclass.BookingListItem
 import com.eazyrento.common.model.modelclass.BookingListResModel
 import com.eazyrento.common.viewmodel.MyBookingViewModel
+import com.eazyrento.customer.dashboard.view.adapter.BookingDataHolderBinder
 import com.eazyrento.customer.dashboard.view.adapter.RecycleAdapterCustomerBookings
 import com.eazyrento.customer.utils.Common
 import kotlinx.android.synthetic.main.fragment_customer_bookings.*
 
-abstract class MyBookingBaseFragment: BaseFragment() {
+abstract class MyBookingBaseFragment: BaseFragment(), BookingDataHolderBinder {
+    protected lateinit  var listCustomerBooking:BookingListResModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_customer_bookings, container, false)
@@ -37,9 +39,9 @@ abstract class MyBookingBaseFragment: BaseFragment() {
     }
 
     override fun <T> onSuccessApiResult(data: T) {
-        val bookingListResModel = data as BookingListResModel
+        listCustomerBooking = data as BookingListResModel
 
-        if (bookingListResModel.size<=0)
+        if (listCustomerBooking.size<=0)
         {
             Common.showToast(requireContext(),
                 ValidationMessage.NO_DATA_FOUND)
@@ -50,8 +52,8 @@ abstract class MyBookingBaseFragment: BaseFragment() {
         (rec_customer_bookings.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(1,1)
 
         val recyleAdapterCustomerBookings=
-            RecycleAdapterCustomerBookings(
-                bookingListResModel as MutableList<BookingListItem>,
+            RecycleAdapterCustomerBookings(this,
+                listCustomerBooking,
                 requireActivity()
             )
 

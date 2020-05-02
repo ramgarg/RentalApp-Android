@@ -27,11 +27,10 @@ open abstract class BaseActivity: AppCompatActivity(),
 
     abstract fun <T>moveOnSelecetedItem(type:T)
 
-    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
+
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }

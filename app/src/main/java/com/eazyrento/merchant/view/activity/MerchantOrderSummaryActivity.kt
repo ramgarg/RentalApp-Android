@@ -18,19 +18,10 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         setContentView(R.layout.activity_merchant_order_summary)
         customer_payment_button.visibility=View.INVISIBLE
-       /* setResponseViews()
-
-        ViewVisibility.isVisibleOrNot(
-            this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.order_summary)
-        )
-
-        clickListenerOnViews()*/
 
     }
 
     override fun <T> moveOnSelecetedItem(type: T) {
-        TODO("Not yet implemented")
     }
 
     private fun clickListenerOnViews(){
@@ -51,40 +42,4 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
     }
 
-   /* @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    fun messageReceive(customEvent: String?) {
-        if (customEvent.equals("OPEN_ACTIVE")) {
-            Common.hideGroupViews(
-                tv_order_id, tv_delver_date, tv_days, tv_coupon, coupon_applied,
-                tv_happy, tv_happy_with, tv_give_tip
-            )
-
-            Common.showGroupViews(tv_pending_amount, tv_pay_now)
-
-        } else {
-            Common.invisibleGroupViews(tv_pending_amount, tv_pay_now)
-            Common.showGroupViews(
-                tv_order_id,
-                tv_delver_date,
-                tv_days,
-                tv_coupon,
-                coupon_applied,
-                tv_happy,
-                tv_happy_with,
-                tv_give_tip
-            )
-            Common.hideGroupViews(layout_driver)
-        }
-
-    }*/
-
-    /*override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        EventBus.getDefault().unregister(this)
-    }*/
 }

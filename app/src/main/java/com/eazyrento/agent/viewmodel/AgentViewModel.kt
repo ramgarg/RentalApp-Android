@@ -2,34 +2,31 @@ package com.eazyrento.agent.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModel
-import com.eazyrento.agent.model.modelclass.AgentDashboardResModel
-import com.eazyrento.agent.model.modelclass.AgentNotesListResModel
+import com.eazyrento.agent.model.modelclass.*
 import com.eazyrento.agent.model.repositry.AgentAddNotesRepo
+import com.eazyrento.agent.model.repositry.AgentMerchantNearByRepo
+import com.eazyrento.agent.model.repositry.AgentMerchantsAssignRepo
 import com.eazyrento.agent.model.repositry.AgentNotesListRepo
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
-import com.eazyrento.common.model.modelclass.ProductCategoriesResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
-import com.eazyrento.customer.dashboard.model.repositry.CustomerCreateBookingRepo
-import com.eazyrento.customer.dashboard.model.repositry.CustomerOrderBookingOrderListRepo
-import com.eazyrento.merchant.model.repository.MerchantProductCategoriesRepo
+
 import com.google.gson.JsonElement
 
-/*
-class AgentDashboardViewModel : ViewModel() {
 
-    fun getAgentDashboard(): LiveData<DataWrapper<AgentDashboardResModel>> {
-        return AgentDashboardRepo().getDeshboardData()
+class AgentAssignMerchantViewModel : ViewModel() {
+
+    fun assignMerchants(assignMerchantsReqModel: AssignMerchantsReqModel): LiveData<DataWrapper<JsonElement>> {
+        return AgentMerchantsAssignRepo().assignMerchants(assignMerchantsReqModel)
+
     }
-}*/
-/*
-class MerchantProductCategoriesViewModel:ViewModel(){
-    fun getProductCateg(): LiveData<DataWrapper<ProductCategoriesResModel>> {
-        return MerchantProductCategoriesRepo()
-            .getProductCateg()
+}
+
+class AgentMerchantNeearByViewModel : ViewModel() {
+
+    fun nearMerchantBy(id: Int): LiveData<DataWrapper<AgentMerchantFindNearByResModel>> {
+        return AgentMerchantNearByRepo().getAgentMerchantNearBy(id)
+
     }
-}*/
+}
 
 class AgentCreateNotesViewModel : ViewModel() {
 

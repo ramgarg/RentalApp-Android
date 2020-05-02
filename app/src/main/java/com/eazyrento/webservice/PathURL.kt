@@ -73,7 +73,7 @@ class PathURL {
         const val AgentOrders                   = "/agent/orders/"
         const val AgentOrderDetail              = "/agent/order_detail/"
         const val AgentUpdateOrder              = "/agent/order_detail/"
-        const val AgentMerchants                = "/agent/find_nearby_merchants/"
+        const val AgentMerchants                = "/agent/find_nearby_merchants/{id}"
         const val AssignMerchants               = "/agent/assign_merchant"
         const val AgentRequestPayment           = "/agent/request_payment"
         const val AgentFeedback                 = "/agent/feedback"

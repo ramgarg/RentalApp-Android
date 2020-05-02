@@ -54,6 +54,7 @@
                     >
             <TextView
                     android:id="@+id/agent_asign_merchant_btn"
+
                     android:layout_width="@dimen/_200sdp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_gravity="center"
@@ -62,7 +63,9 @@
                     android:text="@string/request_a_payment"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_16sdp" />
+                    android:textSize="@dimen/_16sdp"
+                    android:gravity="center"
+                    />
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

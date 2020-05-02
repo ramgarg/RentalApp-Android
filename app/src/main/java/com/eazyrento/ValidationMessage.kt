@@ -50,6 +50,8 @@ interface ValidationMessage{
 
         const val ITEM_IS_IN_LIST = "The product is already in list"
 
+        const val SELECT_MERCHANT = "Please select at list one merchant"
+
 
     }
 }

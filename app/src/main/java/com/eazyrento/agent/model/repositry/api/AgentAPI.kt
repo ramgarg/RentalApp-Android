@@ -1,8 +1,6 @@
 package com.eazyrento.agent.model.repositry.api
 
-import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModel
-import com.eazyrento.agent.model.modelclass.AgentDashboardResModel
-import com.eazyrento.agent.model.modelclass.AgentNotesListResModel
+import com.eazyrento.agent.model.modelclass.*
 import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.common.model.modelclass.BookingListResModel
@@ -36,4 +34,10 @@ interface AgentAPI {
 
     @GET(PathURL.AgentNotesList)
     fun getAgentNotes(): Call<AgentNotesListResModel>
+
+    @GET(PathURL.AgentMerchants)
+    fun getAgentMerchantsNearBy(@Path("id") id:Int) : Call<AgentMerchantFindNearByResModel>
+
+    @POST(PathURL.AssignMerchants)
+    fun assignMerchants(@Body assignMerchantsReqModel: AssignMerchantsReqModel) : Call<JsonElement>
 }

@@ -14,21 +14,13 @@ import org.greenrobot.eventbus.EventBus
 
 open abstract class OrderListFragment : BaseFragment() {
 
-    /*override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-       val  view=inflater.inflate(R.layout.fragment_order_list_tamplate, container, false)
-
-        viewVisibility(view)
-
-        return  view
-    }*/
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
 
         //default for order open
         EventBus.getDefault().postSticky("OPEN_ACTIVE")
+
         callAPIOrderList(Constant.OPEN_ORDER)
 
     }

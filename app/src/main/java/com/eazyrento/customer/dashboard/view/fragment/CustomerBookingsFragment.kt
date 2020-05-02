@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.eazyrento.Constant
 import com.eazyrento.common.view.fragment.MyBookingBaseFragment
+import com.eazyrento.customer.dashboard.view.adapter.RecycleAdapterCustomerBookings
 
 class CustomerBookingsFragment: MyBookingBaseFragment() {
 
@@ -18,24 +19,24 @@ class CustomerBookingsFragment: MyBookingBaseFragment() {
         super.onActivityCreated(savedInstanceState)
         callMyBookingAPI(Constant.BOOKING_LIST_CUSTOMER)
 
-       /* callAPI()?.let {
-            it.observeApiResult(
-                it.callAPIFragment<MyBookingViewModel>(this).getBookingList(Constant.BOOKING_LIST_CUSTOMER)
-                , viewLifecycleOwner, requireActivity()
-            )
-        }*/
 
     }
 
-    /*override fun <T> onSuccessApiResult(data: T) {
-        val bookingListResModel = data as BookingListResModel
+    override fun setDataHolder(
+        holder: RecycleAdapterCustomerBookings.CardViewHolder,
+        position: Int
 
-        rec_customer_bookings.layoutManager = LinearLayoutManager(requireActivity(),
-            LinearLayoutManager.VERTICAL,false)
-        (rec_customer_bookings.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(1,1)
+    ) {
 
-        val recyleAdapterCustomerBookings= RecycleAdapterCustomerBookings(bookingListResModel as MutableList<BookingListItem>, requireActivity())
+        //agent details
+        holder.tv_booking__name.text=listCustomerBooking.get(position).agent_detail.full_name
+        holder.img_booking__call.contentDescription=listCustomerBooking.get(position).agent_detail.mobile_number
+        //holder?.img_booking__pic.setImageURI("https://eazyrento-qa.s3.amazonaws.com/media/default_profile_pic.png")
+        holder?.tv_customer_order_id.text = Constant.ORDER_ID + listCustomerBooking.get(position).order_id
 
-        rec_customer_bookings.adapter = recyleAdapterCustomerBookings
-    }*/
+        // product details
+        holder?.tv_customer_date_show.text = listCustomerBooking.get(position).product_detail.start_date
+        holder?.tv_customer_product_quantity.text = listCustomerBooking.get(position).product_detail.product_name + "-" + listCustomerBooking.get(position).product_detail.quantity
+    }
+
 }
