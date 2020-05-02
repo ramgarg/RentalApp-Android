@@ -46,6 +46,7 @@ interface ValidationMessage{
         const val VALID_DESC = "Write description"
         const val VALID_ADDRESS = "Enter Your Address"
         const val VALID_ADDRESS_TYPE = "Enter Address Type"
+        const val ADDRESS_ADDED = "Address Added Successfully"
 
         const val ITEM_IS_IN_LIST = "The product is already in list"
 

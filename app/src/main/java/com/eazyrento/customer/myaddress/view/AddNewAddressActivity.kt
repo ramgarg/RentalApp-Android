@@ -24,17 +24,23 @@ import com.eazyrento.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem
+import com.eazyrento.customer.dashboard.view.activity.CustomerBookingSubmitReviewActivity
+import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
 import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModel
 import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
 import com.eazyrento.customer.myaddress.viewmodel.AddressCreateViewModel
 import com.eazyrento.customer.myaddress.viewmodel.AddressDetailsViewModel
 import com.eazyrento.customer.utils.Common
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.merchant.viewModel.MerchantProductDetailViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_agent_write_note.*
+import kotlinx.android.synthetic.main.activity_booking_details.*
 import kotlinx.android.synthetic.main.add_new_address_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
@@ -44,9 +50,18 @@ import org.greenrobot.eventbus.ThreadMode
 
 class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
+    val listAddressModelItem = AddressCreateReqModelItem()
+
+    companion object AddressList {
+        val objListAddressModel = AddressCreateReqModel()
+
+        fun setAddressItem( obj: AddressCreateReqModelItem){
+            objListAddressModel.add(obj)
+        }
+    }
+    private var defaultID:Int =-1
     private  val DEFUALT_VALUE = -1
     var edit_address_ID:Int =-1
-    private val addressCreateReqModelItem = AddressCreateReqModelItem()
     private var mLocationPermissionGranted: Boolean = false
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -59,17 +74,17 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         setContentView(R.layout.add_new_address_activity)
 
-        edit_address_ID = intent.getIntExtra(Constant.INTENT_ADDRESS_EDIT,DEFUALT_VALUE)
+        //edit_address_ID = intent.getIntExtra(Constant.INTENT_ADDRESS_EDIT,DEFUALT_VALUE)
 
         //
-        addressCreateReqModelItem.id =
-            if (edit_address_ID!=DEFUALT_VALUE)
+       // listAddressModelItem.id =
+           // if (edit_address_ID!=DEFUALT_VALUE)
             //editing functioalty
-                editAddressFuntionalty(edit_address_ID)
+                //editAddressFuntionalty(edit_address_ID)
 
-            else
+            //else
             //Adding funtionalty
-                intent.getIntExtra(Constant.INTENT_NEW_ADDRESS_ADD,DEFUALT_VALUE)
+             //   intent.getIntExtra(Constant.INTENT_NEW_ADDRESS_ADD,DEFUALT_VALUE)
 
         initView()
 
@@ -153,43 +168,59 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     private fun initView() {
-        btn_save.setOnClickListener { checkValidation(ed_address) }
         ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
             toolbar_title, getString(R.string.add_new_address)
         )
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        btn_save.setOnClickListener { moveTOSave() }
     }
-    private fun checkValidation(ed_address:EditText):Boolean{
-        if (ed_address.text.toString().isEmpty()) {
-            Toast.makeText(this, ValidationMessage.VALID_ADDRESS, Toast.LENGTH_SHORT).show()
+    private fun checkValidation():Boolean {
+        when {
+            ed_address.text.toString().isEmpty()->showToast(ValidationMessage.VALID_ADDRESS)
+            btn_home_active.visibility != View.VISIBLE && btn_other_active.visibility != View.VISIBLE && btn_work_active.visibility != View.VISIBLE ->showToast(ValidationMessage.VALID_ADDRESS_TYPE)
+            else-> {
+                    return false
+                }
         }
-        else{
-            addressCreateReqModelItem.address_line = ed_address.text.toString()
-            addressCreateReqModelItem.latitude=lastLocation.latitude
-            addressCreateReqModelItem.longitude=lastLocation.longitude
+        return true
+    }
+    fun moveTOSave(){
+        if (checkValidation())
+            return
+        setAddressListItem()
+    }
+
+    private fun setAddressListItem(){
             if(btn_home_active.visibility==View.VISIBLE){
-                addressCreateReqModelItem.address_type=Constant.Address_Home
+                listAddressModelItem.address_type=Constant.Address_Home
             }
             else if(btn_work_active.visibility==View.VISIBLE){
-                addressCreateReqModelItem.address_type=Constant.Address_Work
+                listAddressModelItem.address_type=Constant.Address_Work
             }
             else if(btn_other_active.visibility==View.VISIBLE){
-                addressCreateReqModelItem.address_type=Constant.Address_Other
-            }else{
-                Toast.makeText(this, ValidationMessage.VALID_ADDRESS_TYPE, Toast.LENGTH_SHORT).show()
+                listAddressModelItem.address_type=Constant.Address_Other
             }
-             callAPI()?.let {
-               it.observeApiResult(
-                   it.callAPIActivity<AddressCreateViewModel>(this)
-                       .createAddress(addressCreateReqModelItem)
-                   , this, this
-               )
-           }
-
-
+        listAddressModelItem.longitude=lastLocation.longitude
+        listAddressModelItem.latitude=lastLocation.latitude
+        listAddressModelItem.address_line=ed_address.text.toString()
+        setAddressItem(listAddressModelItem)
+              //setAddressItem()
+            callAPI()?.let {
+                it.observeApiResult(
+                    it.callAPIActivity<AddressCreateViewModel>(this)
+                        .createAddress(objListAddressModel)
+                    , this, this
+                )
         }
-        return false
+
+    }
+    override fun <T> onSuccessApiResult(data: T) {
+        data?.let {
+            showToast(ValidationMessage.ADDRESS_ADDED)
+
+            MoveToAnotherComponent.moveToListAddressActivity(this)
+        }
     }
 
     private fun editAddressFuntionalty(editAddressID:Int): Int {
