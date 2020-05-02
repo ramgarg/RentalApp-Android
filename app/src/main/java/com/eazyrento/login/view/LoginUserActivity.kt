@@ -50,11 +50,19 @@ class LoginUserActivity : AppBizLogin() {
 
             val loginUserReqModel = createLoginUserReqModel()
 
-            val viewModel = ViewModelProviders.of(this).get(LoginUserViewModel::class.java)
+            callAPI()?.let {
+                it.observeApiResult(
+                    it.callAPIActivity<LoginUserViewModel>(this)
+                        .loginUser(loginUserReqModel)
+                    , this, this
+                )
+            }
+
+            /* val viewModel = ViewModelProviders.of(this).get(LoginUserViewModel::class.java)
 
             showProgress()
 
-            viewModel.loginUser(loginUserReqModel).observe(this,
+           viewModel.loginUser(loginUserReqModel).observe(this,
                 ApiObserver(this@LoginUserActivity,
                     object :
                         ChangedListener<LoginUserResModel> {
@@ -73,7 +81,7 @@ class LoginUserActivity : AppBizLogin() {
 
                         }
                     })
-            )
+            )*/
         }
     }
 
@@ -104,4 +112,21 @@ class LoginUserActivity : AppBizLogin() {
 
     }
 
+    override fun <T> onSuccessApiResult(data: T) {
+
+        if (data is LoginUserResModel) {
+
+            // one time set null b/c from now we will add header in retrofit app APIs
+            ServiceGenrator.retrofit =
+                null
+
+            Session.getInstance(this@LoginUserActivity)
+                ?.saveUserRole(data.user_info.user_role)
+            Session.getInstance(this@LoginUserActivity)
+                ?.saveUserID(data.user_info.user_id)
+            Session.getInstance(this@LoginUserActivity)
+                ?.saveAccessToken(data.user_info.access_token)
+            sendToUserRole(data.user_info.user_role)
+        }
+    }
 }

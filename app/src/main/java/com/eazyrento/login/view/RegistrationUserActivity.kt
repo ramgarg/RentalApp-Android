@@ -94,7 +94,15 @@ class RegistrationUserActivity : AppBizLogin(){
             UserInfoAPP.REGISTRATIONS_SOURCE = UserInfoAPP.BY_NORMAL
            val registerUserReqModel = createRegisterUserReqModel()
 
-            val viewModel = ViewModelProviders.of(this).get(RegisterUserViewModel::class.java)
+            callAPI()?.let {
+                it.observeApiResult(
+                    it.callAPIActivity<RegisterUserViewModel>(this)
+                        .registerUser(registerUserReqModel)
+                    , this, this
+                )
+            }
+
+            /*val viewModel = ViewModelProviders.of(this).get(RegisterUserViewModel::class.java)
 
             viewModel.registerUser(registerUserReqModel).observe(this,
                 ApiObserver<RegisterUserResModel>(
@@ -104,6 +112,7 @@ class RegistrationUserActivity : AppBizLogin(){
 
                         override fun onSuccess(dataWrapper: RegisterUserResModel) {
                             hideProgress()
+
                             Session.getInstance(this@RegistrationUserActivity)
                                 ?.saveUserRole(user_role)
                             Session.getInstance(this@RegistrationUserActivity)
@@ -112,13 +121,14 @@ class RegistrationUserActivity : AppBizLogin(){
                             moveToOtp()
                         }
 
-                        /* override fun onError(dataWrapper: DataWrapper<RegisterUserResModel>) {
+                        *//* override fun onError(dataWrapper: DataWrapper<RegisterUserResModel>) {
                              hideProgress()
                              errorHandle(dataWrapper.error,dataWrapper.apiException)
-                         }*/
+                         }*//*
 
                     })
-            )
+            )*/
+
         }
 
     }
@@ -162,6 +172,18 @@ class RegistrationUserActivity : AppBizLogin(){
                     // write code to perform some action
                 }
             }
+        }
+    }
+
+    override fun <T> onSuccessApiResult(data: T) {
+
+        if (data is RegisterUserResModel) {
+            Session.getInstance(this@RegistrationUserActivity)
+                ?.saveUserRole(user_role)
+            Session.getInstance(this@RegistrationUserActivity)
+                ?.saveUserID(data.user_id)
+
+            moveToOtp()
         }
     }
 
