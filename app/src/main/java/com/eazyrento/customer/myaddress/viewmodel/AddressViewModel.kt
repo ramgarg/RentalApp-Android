@@ -20,9 +20,9 @@ class AddressListViewModel : ViewModel() {
 
 class AddressCreateViewModel : ViewModel() {
 
-    fun createAddress(addressCreateReqModel: AddressCreateReqModel): LiveData<DataWrapper<JsonElement>> {
+    fun createAddress(addressCreateReqModelItem: AddressCreateReqModelItem): LiveData<DataWrapper<JsonElement>> {
         return AddressCreateRepo()
-            .addressCreate(addressCreateReqModel)
+            .addressCreate(addressCreateReqModelItem)
     }
 }
 

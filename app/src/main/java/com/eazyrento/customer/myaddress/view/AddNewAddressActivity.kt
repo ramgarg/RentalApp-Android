@@ -30,6 +30,8 @@ import com.eazyrento.customer.dashboard.view.activity.CustomerBookingSubmitRevie
 import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
 import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModel
 import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
+import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModel
+import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.eazyrento.customer.myaddress.viewmodel.AddressCreateViewModel
 import com.eazyrento.customer.myaddress.viewmodel.AddressDetailsViewModel
 import com.eazyrento.customer.utils.Common
@@ -46,19 +48,21 @@ import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.util.*
 
 
 class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     val listAddressModelItem = AddressCreateReqModelItem()
+    val addressCreateReqModel= AddressCreateReqModel()
 
-    companion object AddressList {
+    /*companion object AddressList {
         val objListAddressModel = AddressCreateReqModel()
 
         fun setAddressItem( obj: AddressCreateReqModelItem){
             objListAddressModel.add(obj)
         }
-    }
+    }*/
     private var defaultID:Int =-1
     private  val DEFUALT_VALUE = -1
     var edit_address_ID:Int =-1
@@ -66,6 +70,9 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
+    private var cityName: String=""
+    private var stateName: String=""
+    private var countryName: String=""
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
@@ -73,15 +80,22 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.add_new_address_activity)
+        edit_address_ID = intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_EDIT,DEFUALT_VALUE)
 
-        //edit_address_ID = intent.getIntExtra(Constant.INTENT_ADDRESS_EDIT,DEFUALT_VALUE)
+      /* if(edit_address_ID>-1)
+        {
+            btn_save.visibility=View.INVISIBLE
+            layout_update.visibility=View.VISIBLE
+        }else{
+            btn_save.visibility=View.VISIBLE
+           layout_update.visibility=View.INVISIBLE
+        }*/
 
-        //
-       // listAddressModelItem.id =
-           // if (edit_address_ID!=DEFUALT_VALUE)
-            //editing functioalty
-                //editAddressFuntionalty(edit_address_ID)
 
+            if (edit_address_ID!=DEFUALT_VALUE) {
+                //editing functioalty
+                edit_address_ID=editAddressFuntionalty(edit_address_ID)
+            }
             //else
             //Adding funtionalty
              //   intent.getIntExtra(Constant.INTENT_NEW_ADDRESS_ADD,DEFUALT_VALUE)
@@ -192,6 +206,8 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     private fun setAddressListItem(){
+
+        getAddress(lastLocation.latitude, lastLocation.longitude)
             if(btn_home_active.visibility==View.VISIBLE){
                 listAddressModelItem.address_type=Constant.Address_Home
             }
@@ -204,12 +220,15 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         listAddressModelItem.longitude=lastLocation.longitude
         listAddressModelItem.latitude=lastLocation.latitude
         listAddressModelItem.address_line=ed_address.text.toString()
-        setAddressItem(listAddressModelItem)
+        listAddressModelItem.appartment=""
+        listAddressModelItem.city=cityName
+        listAddressModelItem.country=countryName
+        listAddressModelItem.state=stateName
               //setAddressItem()
             callAPI()?.let {
                 it.observeApiResult(
                     it.callAPIActivity<AddressCreateViewModel>(this)
-                        .createAddress(objListAddressModel)
+                        .createAddress(listAddressModelItem)
                     , this, this
                 )
         }
@@ -315,4 +334,17 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         mMap.addMarker(markerOptions)
     }
 
-}
+    private fun getAddress(lat: Double, lng: Double) {
+        if(lat!=null && lng!=null) {
+            val geocoder = Geocoder(this)
+            val list = geocoder.getFromLocation(lat, lng, 1)
+            val address = list[0].getAddressLine(0)
+            cityName = list.get(0).subLocality
+            countryName = list.get(0).countryName
+            stateName = list.get(0).locality
+        }else{
+            showToast(ValidationMessage.LOCATION)
+        }
+    }
+
+   }

@@ -237,6 +237,17 @@
     </ScrollView>
     <include layout="@layout/toolbar"
     />
+    <Button android:layout_width="match_parent"
+            android:text="@string/save"
+            android:id="@+id/btn_save"
+            android:textColor="@color/white"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:layout_above="@id/layout_update"
+            android:fontFamily="@font/bree_serif"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_15sdp"
+            android:background="@drawable/ripple"
+            android:layout_height="@dimen/_40sdp"/>
     <LinearLayout
             android:id="@+id/layout_update"
             android:weightSum="1"
@@ -267,16 +278,8 @@
                 android:layout_weight=".5"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"/>
-        <Button android:layout_width="match_parent"
-                android:text="@string/save"
-                android:id="@+id/btn_save"
-                android:textColor="@color/white"
-                android:fontFamily="@font/bree_serif"
-                android:textAllCaps="false"
-                android:textSize="@dimen/_15sdp"
-                android:background="@drawable/ripple"
-                android:layout_height="@dimen/_40sdp"/>
     </LinearLayout>
+
 
 
 

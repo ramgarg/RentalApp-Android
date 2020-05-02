@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.Data
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
+import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.RecyclerViewItemClick
+import com.eazyrento.merchant.model.modelclass.MerchantProductItem
+import com.eazyrento.merchant.view.activity.AddProductDailogActivity
 import kotlinx.android.synthetic.main.row_my_address.view.*
 import org.greenrobot.eventbus.EventBus
 
@@ -23,11 +27,7 @@ class MyAddressAdapter(val items:List<AddressListResModelItem>, val context: Con
         val tvAddressLine=view.tv_add_line
         val tvCountry=view.tv_add_country
         val imgSelected=view.img_selected
-        var imgEdit=view.img_edit.setOnClickListener {
-            MoveToAnotherComponent.moveToAddNewAddressActivity(it.context)
-//            RxBus.publish(EventModel("EditAddress"))
-            EventBus.getDefault().postSticky("EditAddress")
-        }
+        var imgEdit=view.img_edit
 
        /* fun bind(data: Data, clickListener: RecyclerViewItemClick)
         {
@@ -66,6 +66,10 @@ class MyAddressAdapter(val items:List<AddressListResModelItem>, val context: Con
                 holder.imgSelected?.visibility=View.VISIBLE
             }
             (context as BaseActivity).moveOnSelecetedItem(items.get(position))
+        }
+        holder.imgEdit.setOnClickListener {
+            MoveToAnotherComponent.moveToActivity<AddNewAddressActivity>(context,
+                Constant.INTENT_ADDRESS_EDIT,items[position].id)
         }
 //        holder.bind(items.get(position),recyclerViewItemClick)
 //        Picasso.with(context).load(items.get(position).avatar)
