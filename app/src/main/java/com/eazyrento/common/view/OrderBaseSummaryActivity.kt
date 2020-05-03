@@ -23,7 +23,7 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
     }
 
 
-    protected fun setDataAndCallAPI(int: Int){
+    protected fun setDataAndCallOrderDetailsAPI(int: Int){
 
         callAPIOrderList(int)
 
@@ -36,7 +36,7 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
     private fun clickListenerOnViews(){
     }
 
-
+// order details
     private fun callAPIOrderList(id: Int){
 
         callAPI()?.let {

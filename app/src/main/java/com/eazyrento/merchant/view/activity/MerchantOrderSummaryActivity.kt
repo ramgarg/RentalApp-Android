@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.order_summary_template.*
@@ -19,7 +18,9 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         setContentView(R.layout.activity_merchant_order_summary)
         customer_payment_button.visibility=View.INVISIBLE
-        setDataAndCallAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
+
+        // order details
+        setDataAndCallOrderDetailsAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
 
     }
 

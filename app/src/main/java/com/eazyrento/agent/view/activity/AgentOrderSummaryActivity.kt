@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_order_summary.*
@@ -24,8 +23,9 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
 
             val booking_id=  intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY,-1)
 
+        // order details
         if (booking_id != -1)
-            setDataAndCallAPI(booking_id!!)
+            setDataAndCallOrderDetailsAPI(booking_id!!)
     }
 
     private fun clickListenerOnViews(){
