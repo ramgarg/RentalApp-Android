@@ -32,10 +32,10 @@ class AddressListRepo : GenericRequestHandler<AddressListResModel>(){
 class AddressCreateRepo :
     GenericRequestHandler<JsonElement>(){
 
-    fun addressCreate(addressCreateReqModel: AddressCreateReqModel): LiveData<DataWrapper<JsonElement>> {
+    fun addressCreate(addressCreateReqModelItem: AddressCreateReqModelItem): LiveData<DataWrapper<JsonElement>> {
 
             val call = ServiceGenrator.client.create(
-                AddressApi::class.java).createAddress(addressCreateReqModel)
+                AddressApi::class.java).createAddress(addressCreateReqModelItem)
             return doRequest(call)
         }
 

@@ -1,17 +1,20 @@
 package com.eazyrento.customer.myaddress.model.modelclass
 
 data class AddressCreateReqModelItem (
-    var address_line: String?,
     var address_type: String?,
     var appartment: String?,
-    var city: String?,
-    var country: String?,
-    var is_default: Boolean?,
+    var address_line: String?,
     var latitude: Double?,
     var longitude: Double?,
-    var state: String?
+    var city: String?,
+    var state: String?,
+    var country: String?,
+    var is_default: Boolean?
+
+
 ){
     constructor():this("","","",
-        "","",false,0.0,0.0,"")
+        0.0,0.0,"","","",false)
 }
+
 
