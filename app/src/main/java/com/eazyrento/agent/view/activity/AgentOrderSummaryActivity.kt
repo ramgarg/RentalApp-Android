@@ -2,6 +2,7 @@ package com.eazyrento.agent.view.activity
 
 import android.os.Bundle
 import android.view.View
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.OrderBaseSummaryActivity
@@ -20,8 +21,13 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         setContentView(R.layout.activity_agent_order_summary)
 
-        clickListenerOnViews()
+
+            val booking_id=  intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY,-1)
+
+        if (booking_id != -1)
+            setDataAndCallAPI(booking_id!!)
     }
+
     private fun clickListenerOnViews(){
         customer_payment_button.visibility=View.INVISIBLE
         payment_view_history.visibility=View.VISIBLE
@@ -31,6 +37,8 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
     }
 
    override fun <T> onSuccessApiResult(data: T) {
-       AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+       super.onSuccessApiResult(data)
+
+
    }
 }

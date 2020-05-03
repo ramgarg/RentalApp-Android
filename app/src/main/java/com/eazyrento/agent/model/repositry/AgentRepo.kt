@@ -9,6 +9,7 @@ import com.eazyrento.agent.model.repositry.api.AgentAPI
 
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
 
@@ -24,6 +25,19 @@ class AgentMerchantsAssignRepo :
     }
 
 }
+
+class AgentBookingDetailsRepo :
+    GenericRequestHandler<CustomerOrderDetailsResModel>(){
+
+    fun agentBookingDetails(id: Int): LiveData<DataWrapper<CustomerOrderDetailsResModel>> {
+        val call = ServiceGenrator.client.create(
+            AgentAPI::class.java).getAgentBookingDetail(id)
+        return doRequest(call)
+    }
+
+}
+
+
 
 class AgentMerchantNearByRepo :
     GenericRequestHandler<AgentMerchantFindNearByResModel>(){

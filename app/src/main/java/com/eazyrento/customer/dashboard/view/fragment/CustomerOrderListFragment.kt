@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.common.view.adapter.OrderListBaseAdapter
 import com.eazyrento.common.view.fragment.OrderListFragment
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
 import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
-import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderStatusAdapter
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
 
@@ -26,21 +26,21 @@ class CustomerOrderListFragment : OrderListFragment() {
         return  view
     }
 
-    override fun <T> onSuccessApiResult(data: T) {
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
-        rec_order.adapter=
-            CustomerOrderStatusAdapter(
-                data as CustomerOrderListResModel,
-                requireActivity(),
-                this
-            )
-
-    }
 
     override fun <T, K> onViewClick(type: T, where: K) {
         val item =  type as CustomerOrderListResModelItem
         MoveToAnotherComponent.moveToActivity<CustomerOrderSummaryActivity>(requireContext(), Constant.ORDER_SUMMERY_KEY,
             item.id)
     }
+
+    override fun getInflaterView(parent: ViewGroup, viewType: Int): OrderListBaseAdapter.ViewHolder {
+        return OrderListBaseAdapter.ViewHolder(
+            LayoutInflater.from(
+                context
+            ).inflate(R.layout.customer_order_status_adapter, parent, false)
+        )
+    }
+
+
 }

@@ -5,6 +5,7 @@ import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.common.model.modelclass.BookingListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement
@@ -40,4 +41,18 @@ interface AgentAPI {
 
     @POST(PathURL.AssignMerchants)
     fun assignMerchants(@Body assignMerchantsReqModel: AssignMerchantsReqModel) : Call<JsonElement>
+
+    @GET(PathURL.AgentOrders)
+    fun getCustomerOrdersList(@Path ("value") value:Int): Call<CustomerOrderListResModel>
+
+    /*
+     *customer orders details
+     * */
+    @GET(PathURL.AgentOrderDetail)
+    fun getCustomerOrderDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
+
+    @GET(PathURL.AgentBookingDetail)
+    fun getAgentBookingDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
+
+
 }

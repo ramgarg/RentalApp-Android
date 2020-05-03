@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.common.view.adapter.OrderListBaseAdapter
 import com.eazyrento.common.view.fragment.OrderListFragment
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.activity.MerchantOrderSummaryActivity
-import com.eazyrento.merchant.view.adapter.MerchantOrderStatusAdapter
-import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
 
 class MerchantOrderListFragment : OrderListFragment() {
 
@@ -25,22 +23,27 @@ class MerchantOrderListFragment : OrderListFragment() {
         return view
         }
 
-    override fun <T> onSuccessApiResult(data: T) {
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
-
-        rec_order.adapter=
-            MerchantOrderStatusAdapter(
-                data as CustomerOrderListResModel,
-                requireActivity(),
-                this
-            )
-
-    }
-
     override fun <T, K> onViewClick(type: T, where: K) {
         val item =  type as CustomerOrderListResModelItem
         MoveToAnotherComponent.moveToActivity<MerchantOrderSummaryActivity>(requireContext(), Constant.ORDER_SUMMERY_KEY,
             item.id)
     }
 
+    override fun getInflaterView(parent: ViewGroup, viewType: Int): OrderListBaseAdapter.ViewHolder {
+        return OrderListBaseAdapter.ViewHolder(
+            LayoutInflater.from(
+                context
+            ).inflate(R.layout.merchant_order_status_adapter, parent, false)
+        )
+       }
+
+    override fun setDataHolderBinder(holder: OrderListBaseAdapter.ViewHolder, position: Int) {
+        super.setDataHolderBinder(holder, position)
+
+        holder.tvOrderProductName?.text=listOrderItems.get(position).merchant_order_detail?.product_name
+        holder.tvBookingPrice?.text= Constant.DOLLAR+listOrderItems.get(position).merchant_order_detail?.booking_price
+        holder.tvOrderQuantity?.text=listOrderItems.get(position).merchant_order_detail?.product_name+"-"+listOrderItems.get(position).merchant_order_detail?.merchant_quantity
+        
     }
+
+  }

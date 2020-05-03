@@ -3,14 +3,20 @@ package com.eazyrento.agent.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.eazyrento.agent.model.modelclass.*
-import com.eazyrento.agent.model.repositry.AgentAddNotesRepo
-import com.eazyrento.agent.model.repositry.AgentMerchantNearByRepo
-import com.eazyrento.agent.model.repositry.AgentMerchantsAssignRepo
-import com.eazyrento.agent.model.repositry.AgentNotesListRepo
+import com.eazyrento.agent.model.repositry.*
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 
 import com.google.gson.JsonElement
 
+
+class AgentBookingDetailsViewModel : ViewModel() {
+
+    fun agentBookingDetails(id: Int): LiveData<DataWrapper<CustomerOrderDetailsResModel>> {
+        return AgentBookingDetailsRepo().agentBookingDetails(id)
+
+    }
+}
 
 class AgentAssignMerchantViewModel : ViewModel() {
 

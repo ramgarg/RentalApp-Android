@@ -2,6 +2,7 @@ package com.eazyrento.merchant.view.activity
 
 import android.os.Bundle
 import android.view.View
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.OrderBaseSummaryActivity
@@ -18,6 +19,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         setContentView(R.layout.activity_merchant_order_summary)
         customer_payment_button.visibility=View.INVISIBLE
+        setDataAndCallAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
 
     }
 
@@ -30,16 +32,9 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         tv_merchant_rate_review.setOnClickListener { MoveToAnotherComponent.moveToOrderReviewActivity(this) }
     }
 
-    private fun setResponseViews(){
-        tv_st_date_sel.text="12 Jan 2020"
-        tv_st_time_sel.text="4:00pm"
-        tv_end_date_sel.text="12 Feb 2020"
-        tv_end_time_sel.text="3:00pm"
-
-    }
 
     override fun <T> onSuccessApiResult(data: T) {
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+        super.onSuccessApiResult(data)
     }
 
 }

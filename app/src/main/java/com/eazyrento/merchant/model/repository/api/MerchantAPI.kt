@@ -4,6 +4,8 @@ import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
 import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesResModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
 import com.eazyrento.webservice.PathURL
@@ -39,6 +41,15 @@ interface MerchantAPI {
     //acceptnace delete
     @POST(PathURL.MERCHANT_ACCEPTANCE_DECLINE)
     fun acceptanceDelete(@Body acceptanceDeclineReqModel: AcceptanceDeclineReqModel): Call<JsonElement>
+
+    @GET(PathURL.MerchantOrders)
+    fun getCustomerOrdersList(@Path ("value") value:Int): Call<CustomerOrderListResModel>
+
+    /*
+     *customer orders details
+     * */
+    @GET(PathURL.MerchantOrderDetail)
+    fun getCustomerOrderDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
 
 
 }

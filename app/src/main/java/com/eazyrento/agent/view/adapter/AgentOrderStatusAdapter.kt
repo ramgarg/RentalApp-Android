@@ -8,8 +8,9 @@ import com.eazyrento.common.view.adapter.OrderListBaseAdapter
 import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
 
-class AgentOrderStatusAdapter (val items: List<CustomerOrderListResModelItem>, override  val context: Context, override val baseFragment: BaseFragment):
-       OrderListBaseAdapter(items,context,baseFragment){
+/*
+class AgentOrderStatusAdapter (val items: List<CustomerOrderListResModelItem>, override  val context: Context, override val infalterBinderInterface: BaseFragment):
+       OrderListBaseAdapter(items,context,infalterBinderInterface){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -19,4 +20,4 @@ class AgentOrderStatusAdapter (val items: List<CustomerOrderListResModelItem>, o
         )
     }
 
-}
+}*/

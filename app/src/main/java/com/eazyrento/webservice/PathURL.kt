@@ -58,8 +58,8 @@ class PathURL {
         const val MerchantAddProduct   = "/merchant/add_product"
         const val MerchantNotifyAdmin  = "/merchant/merchant_product_suggestion"
         const val MerchantUpdateProduct = "/merchant/product_detail/"
-        const val MerchantOrders       = "/merchant/orders/"
-        const val MerchantOrderDetail  = "/merchant/order_detail/"
+        const val MerchantOrders       = "/merchant/orders/{value}"
+        const val MerchantOrderDetail  = "/merchant/order_detail/{id}"
         const val MerchantFeedback     = "/merchant/feedback"
         const val MERCHANT_ACCEPTANCE_DECLINE = "/merchant/booking_action"
 
@@ -67,11 +67,11 @@ class PathURL {
         //agent module
         const val AgentDashboard                = "/agent/agent_dashboard"
         const val AgentMyBookings               = "/agent/bookings"
-        const val AgentBookingDetail            = "/agent/booking_detail/"
+        const val AgentBookingDetail            = "/agent/booking_detail/{id}"
 
-        const val AgentPendingOrdersAcceptance  = "/agent/booking_action"
-        const val AgentOrders                   = "/agent/orders/"
-        const val AgentOrderDetail              = "/agent/order_detail/"
+//        const val AgentPendingOrdersAcceptance  = "/agent/booking_action"
+        const val AgentOrders                   = "/agent/orders/{value}"
+        const val AgentOrderDetail              = "/agent/order_detail/{id}"
         const val AgentUpdateOrder              = "/agent/order_detail/"
         const val AgentMerchants                = "/agent/find_nearby_merchants/{id}"
         const val AssignMerchants               = "/agent/assign_merchant"

@@ -24,30 +24,16 @@ import kotlinx.android.synthetic.main.template_work_info.*
 
 
 class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
-//     private var productID:Int?=-1
 
-//    lateinit var orderSummaryViewModel :OrderSummaryViewModel
     override fun <T> moveOnSelecetedItem(type: T) {
-        TODO("Not yet implemented")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_customer_order_summary)
-//       productID = intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)
 
-//        orderSummaryViewModel=ViewModelProviders.of(this).get(OrderSummaryViewModel::class.java)
-//        orderSummaryViewModel.getOrderSummaryResponse().observe(this, Observer {
-//            //Here response will come form api
-       /* setResponseViews()
-//        })
-
-        ViewVisibility.isVisibleOrNot(this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.order_summary))
-*/
-        clickListenerOnViews()
-
+        setDataAndCallAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
     }
 
     private fun clickListenerOnViews(){
@@ -56,7 +42,38 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
         customer_payment_button.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
     }
 
-       // checkbox_with_driver.isClickable=false
+    override fun <T> onSuccessApiResult(data: T) {
+        super.onSuccessApiResult(data)
+        orderStatus(orderRes)
+    }
+
+     fun orderStatus(orderRes: CustomerOrderDetailsResModel) {
+
+        if(orderRes.order_status== Constant.COMPLETED)
+        {
+            if(orderRes.merchant_detail.isNotEmpty()){
+                rec_user_order_summary.visibility=View.VISIBLE
+                img_user_call.visibility=View.INVISIBLE
+                setUsersAdapter(orderRes)
+            }
+            else{
+                rec_user_order_summary.visibility=View.INVISIBLE
+            }
+
+        }
+        else if(orderRes.order_status== Constant.PENDING)
+        {
+            if(orderRes.merchant_detail.isNotEmpty()){
+                rec_user_order_summary.visibility=View.VISIBLE
+                setUsersAdapter(orderRes)
+            }
+            else{
+                rec_user_order_summary.visibility= View.INVISIBLE
+            }
+        }
+    }
+
+    // checkbox_with_driver.isClickable=false
 
 
    /* @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
@@ -110,57 +127,6 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
 
 
-    override fun <T> onSuccessApiResult(data: T) {
-        val orderRes = data as CustomerOrderDetailsResModel
-        tv_order_product_name.text=orderRes.product_detail.product_name
-        tv_booking_price.text= Constant.DOLLAR+orderRes.product_detail.starting_price
-        tv_order_id.text= Constant.ORDER_ID+orderRes.order_id
-        order_product_quantity.text=orderRes.product_detail.product_name+"-"+orderRes.product_detail.quantity
-        tv_st_date_sel.text=orderRes.product_detail.start_date
-        tv_st_time_sel.text=orderRes.product_detail.start_time
-        tv_end_date_sel.text=orderRes.product_detail.end_date
-        tv_end_time_sel.text=orderRes.product_detail.end_time
-        checkbox_with_driver.isChecked=orderRes.product_detail.with_driver
-        tv_work_location.text=orderRes.product_detail.work_location
-        if(orderRes.agent_detail!=null){
-            users_view.visibility=View.VISIBLE
-            tv_users_name.text=orderRes.agent_detail.full_name
-            tv_users_tag.text= orderRes.agent_detail.mobile_number
-            //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
-        }
-        else{
-            users_view.visibility=View.INVISIBLE
-        }
-        //tv_user_name.text=orderRes.agent_detail.full_name
-        //tv_user_tag.text= Constant.AGENT
-        //img_user_call.contentDescription=orderRes.agent_detail.mobile_number
-        if(orderRes.order_status== Constant.COMPLETED)
-        {
-          if(orderRes.merchant_detail.isNotEmpty()){
-              rec_user_order_summary.visibility=View.VISIBLE
-              img_user_call.visibility=View.INVISIBLE
-              setUsersAdapter(orderRes)
-          }
-          else{
-              rec_user_order_summary.visibility=View.INVISIBLE
-          }
-            customer_payment_button.visibility=View.INVISIBLE
-            payment_view_history.visibility=View.VISIBLE
-            order_rate_review.visibility=View.VISIBLE
 
-        }
-        else if(orderRes.order_status== Constant.PENDING)
-        {
-            if(orderRes.merchant_detail.isNotEmpty()){
-                rec_user_order_summary.visibility=View.VISIBLE
-                setUsersAdapter(orderRes)
-            }
-            else{
-                rec_user_order_summary.visibility=View.INVISIBLE
-            }
-        }
-
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
-    }
 
 }
