@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import com.eazyrento.Constant
 import com.eazyrento.agent.view.fragment.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -104,7 +105,8 @@ open class AgentNavigationActivity : BaseActivity(), NavigationView.OnNavigation
                 Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
             R.id.agent_nav_logout -> {
-                Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
+                MoveToAnotherComponent.onLogout(this, Constant.INTENT_LOGOUT_KEY, Constant.LOGOUT_VALUE)
+//                Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
             }
         }
         menuItem.isChecked=false

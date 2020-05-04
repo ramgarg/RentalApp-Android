@@ -10,6 +10,7 @@ class EazyRantoApplication : Application() {
 
     companion object{
         var context:Context?=null
+         var defaultUserID:Int=-1
 
         fun onLoginUpdateSession(userInfo: UserInfo){
             // one time set null b/c from now we will add header in retrofit app APIs
@@ -33,12 +34,22 @@ class EazyRantoApplication : Application() {
             Session.getInstance(context)
                 ?.saveUserRole(null)
             Session.getInstance(context)
-                ?.saveUserID(-1)
+                ?.saveUserID(defaultUserID)
             Session.getInstance(context)
                 ?.saveAccessToken(null)
 
 //            UserInfoAPP.user_role = null
         }
+
+        fun isUserLogin():Boolean{
+
+           val session=  Session.getInstance(context)
+           session?.let {
+               return !(session.getUserRole()==null || session.getUserID()==defaultUserID || session.getAccessToken()==null)
+           }
+            return false
+        }
+
     }
     override fun onCreate() {
         super.onCreate()

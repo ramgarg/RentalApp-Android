@@ -127,7 +127,7 @@ class CustomerMainActivity : BaseActivity(), NavigationView.OnNavigationItemSele
                 toolbar_title.text=getString(R.string.select_category)
             }
             R.id.nav_logout -> {
-                Toast.makeText(this, getString(R.string.under_development), Toast.LENGTH_SHORT).show()
+                MoveToAnotherComponent.onLogout(this,Constant.INTENT_LOGOUT_KEY,Constant.LOGOUT_VALUE)
             }
             R.id.nav_my_address -> {
                MoveToAnotherComponent.moveToMyAddressActivity(this)

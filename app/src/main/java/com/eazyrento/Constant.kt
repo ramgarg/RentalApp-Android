@@ -97,5 +97,10 @@ interface Constant{
         const val Address_Work= "Work"
         const val Address_Other= "Other"
 
+        //logunt
+        const val INTENT_LOGOUT_KEY = "logout"
+        const val LOGOUT_VALUE = 1001
+
+
     }
 }

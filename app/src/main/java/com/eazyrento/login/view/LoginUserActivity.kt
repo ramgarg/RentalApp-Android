@@ -26,6 +26,10 @@ class LoginUserActivity : AppBizLogin() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
+
+        if(EazyRantoApplication.isUserLogin())
+            sendUserReleventPanel(Session.getInstance(EazyRantoApplication.context)?.getUserRole())
+
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -73,7 +77,7 @@ class LoginUserActivity : AppBizLogin() {
 
     }
 
-    private fun sendUserReleventPanel(userRole: String) {
+    private fun sendUserReleventPanel(userRole: String?) {
 
         when(userRole){
             UserInfoAPP.AGENT-> MoveToAnotherComponent.moveToAgentHomeActivity(this)

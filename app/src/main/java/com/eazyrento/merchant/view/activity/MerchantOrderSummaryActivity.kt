@@ -55,7 +55,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         val customerDetail = orderRes.customer_detail
         val agentDetail = orderRes.agent_detail
         if (orderRes.order_status == Constant.COMPLETED) {
-            agent_update_order_btn.visibility = View.INVISIBLE
+            //agent_update_order_btn.visibility = View.INVISIBLE
             agent_asign_merchant_btn.visibility = View.INVISIBLE
 
             if (agentDetail != null) {
