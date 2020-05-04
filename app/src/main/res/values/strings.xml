@@ -183,7 +183,6 @@
     <string name="note_added">Note Added</string>
     <string name="mynotes">My Notes</string>
     <string name="assign_merchant">Assign Merchant</string>
-    <string name="assign">Assign</string>
     <string name="distance_3km">Distance, 3km</string>
     <string name="dashboard">Dashboard</string>
     <string name="select_type">Select Type</string>
@@ -217,6 +216,7 @@
     <string name="select_gender">Select Gender</string>
     <string name="booking_price_dollar">Booking Price($)</string>
     <string name="add_a_note">Add a Note</string>
+    <string name="assign">Assign</string>
 
     <!--Activity and view title-->
     <string name="title_forgot_pass">Forgot password</string>

@@ -2,11 +2,19 @@ package com.eazyrento.agent.view.activity
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
 import com.eazyrento.common.view.OrderBaseSummaryActivity
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
+import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAdapter
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_order_summary.*
+import kotlinx.android.synthetic.main.activity_agent_order_summary.rec_user_order_summary
+import kotlinx.android.synthetic.main.activity_customer_order_summary.*
+import kotlinx.android.synthetic.main.adapter_user_order_summery.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
@@ -21,24 +29,96 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         setContentView(R.layout.activity_agent_order_summary)
 
 
-            val booking_id=  intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY,-1)
+        val booking_id = intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)
 
         // order details
         if (booking_id != -1)
             setDataAndCallOrderDetailsAPI(booking_id!!)
+        clickListenerOnViews()
     }
 
-    private fun clickListenerOnViews(){
-        customer_payment_button.visibility=View.INVISIBLE
-        payment_view_history.visibility=View.VISIBLE
-        tv_users_tag.setText("Merchant")
-        payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this)}
-        agent_update_order_btn.setOnClickListener { MoveToAnotherComponent.moveToAgentUpdateOrderSummaryActivity(this) }
+    private fun clickListenerOnViews() {
+        customer_payment_button.visibility = View.INVISIBLE
+        payment_view_history.visibility = View.VISIBLE
+        per_hour.visibility = View.INVISIBLE
+        payment_view_history.setOnClickListener {
+            MoveToAnotherComponent.moveToPaymentHistoryActivity(
+                this
+            )
+        }
+        agent_update_order_btn.setOnClickListener {
+            MoveToAnotherComponent.moveToAgentUpdateOrderSummaryActivity(
+                this
+            )
+        }
     }
 
-   override fun <T> onSuccessApiResult(data: T) {
-       super.onSuccessApiResult(data)
+    override fun <T> onSuccessApiResult(data: T) {
+        super.onSuccessApiResult(data)
+        orderStatus(orderRes)
+        }
+
+    private fun orderStatus(orderRes: CustomerOrderDetailsResModel) {
+        val merchantDetail= orderRes.merchant_detail
+        val customerDetail = orderRes.customer_detail
+        if (orderRes.order_status == Constant.COMPLETED) {
+            agent_update_order_btn.visibility=View.INVISIBLE
+            agent_asign_merchant_btn.visibility=View.INVISIBLE
+
+            if (customerDetail != null) {
+                agent_customer_view.visibility = View.VISIBLE
+                tv_users_name.text = customerDetail.full_name
+                tv_users_tag.text = customerDetail.mobile_number
+                img_users_call.visibility=View.VISIBLE
+                //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
+
+            }
+            if (merchantDetail != null) {
+                rec_user_order_summary.visibility = View.VISIBLE
+                img_user_call?.visibility = View.VISIBLE
+                setUsersAdapter(orderRes)
+            } else {
+                rec_user_order_summary.visibility = View.INVISIBLE
+            }
+        }
+        else if(orderRes.order_status!= Constant.COMPLETED) {
+            pending_amount.visibility = View.VISIBLE
+            pending_amount.text = Constant.PENDING_AMOUNT + "- " + orderRes.pending_order_amount
+            if (customerDetail != null) {
+                agent_customer_view.visibility = View.VISIBLE
+                tv_users_name.text = customerDetail.full_name
+                tv_users_tag.text = customerDetail.mobile_number
+                img_users_call.visibility = View.VISIBLE
+                //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
+
+            }
+            if (orderRes.merchant_detail != null) {
+                if (orderRes.merchant_detail.isNotEmpty()) {
+                    rec_user_order_summary.visibility = View.VISIBLE
+                    img_user_call?.visibility = View.VISIBLE
+                    setUsersAdapter(orderRes)
+                } else {
+                    rec_user_order_summary.visibility = View.INVISIBLE
+                }
+            }
+        }
 
 
-   }
-}
+    }
+
+    private fun setUsersAdapter(customerOderDetailsResponse: CustomerOrderDetailsResModel) {
+        rec_user_order_summary.layoutManager = LinearLayoutManager(this,
+            LinearLayoutManager.VERTICAL, false
+        )
+        (rec_user_order_summary.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
+            1,
+            1
+        )
+
+        val recycleAdapterUsersHomeCard =
+            AgentOrderSummaryUsersAdapter(
+                customerOderDetailsResponse.merchant_detail as MutableList<MerchantDetail>,this)
+
+        rec_user_order_summary.adapter = recycleAdapterUsersHomeCard
+    }
+    }

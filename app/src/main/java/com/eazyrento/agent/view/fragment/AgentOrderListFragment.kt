@@ -38,11 +38,8 @@ class AgentOrderListFragment : OrderListFragment(){
             item.id)
     }
 
-
     override fun getInflaterView(parent: ViewGroup, viewType: Int): OrderListBaseAdapter.ViewHolder {
-        return OrderListBaseAdapter.ViewHolder(
-            LayoutInflater.from(
-                context
+        return OrderListBaseAdapter.ViewHolder(LayoutInflater.from(context
             ).inflate(R.layout.agent_order_status_adapter, parent, false)
         )
     }

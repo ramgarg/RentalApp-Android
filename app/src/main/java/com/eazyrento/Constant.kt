@@ -60,6 +60,9 @@ interface Constant{
         //Payment History
         const val CASH ="cash"
         const val PENDING="pending"
+        const val PENDING_AMOUNT="Pending Amount"
+        const val TOTAL_AMOUNT="Total Amount"
+        const val BOOKING_PRICE="Booking Price"
         const val RECEIVED="received"
         const val FAILED="failed"
         const val DOLLAR="$"
@@ -70,6 +73,8 @@ interface Constant{
         const val MERCHANT="Merchant"
         const val AGENT="Agent"
         const val CUSTOMER="Customer"
+        const val DISTANCE="Distance"
+        const val KM="km"
 
 
         const val OK = 1

@@ -11,8 +11,11 @@ import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAdapter
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import kotlinx.android.synthetic.main.activity_agent_order_summary.*
 import kotlinx.android.synthetic.main.activity_customer_order_summary.*
+import kotlinx.android.synthetic.main.activity_customer_order_summary.rec_user_order_summary
 import kotlinx.android.synthetic.main.adapter_user_order_summery.*
+import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 
@@ -41,27 +44,45 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
     }
 
      fun orderStatus(orderRes: CustomerOrderDetailsResModel) {
+         val merchantdetail=orderRes.merchant_detail
+         val agentdetail=orderRes.agent_detail
 
         if(orderRes.order_status== Constant.COMPLETED)
         {
-            if(orderRes.merchant_detail.isNotEmpty()){
-                rec_user_order_summary.visibility=View.VISIBLE
-                img_user_call?.visibility=View.INVISIBLE
-                setUsersAdapter(orderRes)
+            if (agentdetail != null) {
+                users_view.visibility = View.VISIBLE
+                tv_users_name.text = agentdetail.full_name
+                tv_users_tag.text = agentdetail.mobile_number
+                //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
+
             }
-            else{
-                rec_user_order_summary.visibility=View.INVISIBLE
+            if(merchantdetail != null) {
+                if (merchantdetail.isNotEmpty()) {
+                    rec_user_order_summary.visibility = View.VISIBLE
+                    img_user_call?.visibility = View.INVISIBLE
+                    setUsersAdapter(orderRes)
+                } else {
+                    rec_user_order_summary.visibility = View.INVISIBLE
+                }
             }
 
         }
-        else if(orderRes.order_status== Constant.PENDING)
-        {
-            if(orderRes.merchant_detail.isNotEmpty()){
-                rec_user_order_summary.visibility=View.VISIBLE
-                setUsersAdapter(orderRes)
+        else if(orderRes.order_status!= Constant.COMPLETED) {
+            if (agentdetail != null) {
+                users_view.visibility = View.VISIBLE
+                tv_users_name.text = agentdetail.full_name
+                tv_users_tag.text = agentdetail.mobile_number
+                //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
+            } else {
+                rec_user_order_summary.visibility = View.INVISIBLE
             }
-            else{
-                rec_user_order_summary.visibility= View.INVISIBLE
+            if (merchantdetail != null) {
+                if (orderRes.merchant_detail.isNotEmpty()) {
+                    rec_user_order_summary.visibility = View.VISIBLE
+                    setUsersAdapter(orderRes)
+                } else {
+                    rec_user_order_summary.visibility = View.INVISIBLE
+                }
             }
         }
     }
