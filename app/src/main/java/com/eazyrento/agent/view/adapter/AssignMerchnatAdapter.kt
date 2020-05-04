@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.model.modelclass.Merchants
 import com.squareup.picasso.Picasso
@@ -34,22 +35,22 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
 
         assignMerchantDataHolderBinder.setDataHolder(holder,position)
 
-       /* holder.assign_merchant_name.text =merchantListItem.get(position).details.full_name
-        holder.booking_price.text = ""+merchantListItem.get(position).details.price
+        holder.assign_merchant_name.text =merchantListItem.get(position).details.full_name
+        holder.booking_price.text = Constant.BOOKING_PRICE+"- "+merchantListItem.get(position).details.price
 //        holder.booking_total_prcie = merchantListItem
-        holder.layout_truck_quantity.text =""+merchantListItem.get(position).details.quantity_available
-
+        holder.layout_truck_quantity.text =Constant.QUANTITY+merchantListItem.get(position).details.quantity_available
+        holder.merchant_distance.text=" "+merchantListItem.get(position).details.distance+Constant.KM
 //        Picasso.with(context).load(merchantListItem.get(position).details.)*/
         
     }
 
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
         val layout_truck_quantity = view.layout_truck_quantity
-        val booking_total_prcie = view.booking_total_prcie
         val booking_price = view.booking_price
         val customer_profile_pic = view.customer_profile_pic
         val chkbox_assign_merchnat = view.chkbox_assign_merchnat
         val assign_merchant_name = view.assign_merchant_name
+        val merchant_distance = view.merchant_distatnce
     }
 }
 

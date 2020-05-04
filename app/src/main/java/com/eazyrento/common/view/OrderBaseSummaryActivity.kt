@@ -91,7 +91,6 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
                 order_rate_review.visibility=View.VISIBLE
             }
             Constant.PENDING ->{
-
             }
         }
 
