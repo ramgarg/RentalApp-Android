@@ -8,8 +8,6 @@ import com.eazyrento.login.view.LoginUserActivity
 
 class SplashActivity : AppCompatActivity() {
 
-    private val SPLASH_TIME_OUT:Long = 3000 // 1 sec
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,6 +21,6 @@ class SplashActivity : AppCompatActivity() {
 
             // close this activity
             finish()
-        }, SPLASH_TIME_OUT)
+        }, Env.SPLASH_TIME_OUT)
     }
 }

@@ -6,11 +6,9 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.customer.dashboard.model.modelclass.BookingDetailsModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem
 import com.eazyrento.customer.dashboard.view.adapter.DeleteAndViewDetails
-import com.eazyrento.customer.dashboard.view.adapter.OrderReviewAdapter
 import com.eazyrento.customer.dashboard.view.adapter.WishListAdapter
 import com.eazyrento.customer.dashboard.viewmodel.CustomerCreateBookingViewModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -54,7 +52,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
         data?.let {
             showToast(ValidationMessage.BOOKING_SUBMITTED)
 
-            MoveToAnotherComponent.moveToActivity<CustomerMainActivity>(this,
+            MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,
                 Constant.INTENT_SUCCESS_ORDER_BOOKING,1)
         }
     }
@@ -92,7 +90,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
         }
 
         holder.tv_view_detail.setOnClickListener{
-            MoveToAnotherComponent.moveToActivity<ProductDetailsActivity>(
+            MoveToAnotherComponent.moveToActivityWithIntentValue<ProductDetailsActivity>(
                 this,
                 Constant.VEHICLES_SUB_CATE,objListBookingItem.get(position).projectDetails!!.id)
 

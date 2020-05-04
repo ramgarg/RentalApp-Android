@@ -108,7 +108,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
             return
         prepareBookingObjectList()
         //HOME
-        MoveToAnotherComponent.moveToActivity<CustomerMainActivity>(this,Constant.INTENT_ADD_ANOTHER,1)
+        MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_ADD_ANOTHER,1)
 
     }
 
@@ -117,7 +117,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
             return
         prepareBookingObjectList()
         //final review
-        MoveToAnotherComponent.moveToActivity<CustomerBookingSubmitReviewActivity>(this,"",1)
+        MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerBookingSubmitReviewActivity>(this,"",1)
     }
 
     private fun prepareBookingObjectList() {

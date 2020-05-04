@@ -15,7 +15,7 @@ class ForgotPasswordRespository() {
         apiclient = ServiceGenrator.client.create(
             LoginAPI::class.java)
     }
-    fun forgotPasswordAPI(forgotPasswordRequest: ForgotPasswordRequest){
+    /*fun forgotPasswordAPI(forgotPasswordRequest: ForgotPasswordRequest){
         val data: MutableLiveData<ForgotPasswordResponse> = MutableLiveData<ForgotPasswordResponse>()
              val call = apiclient?.forgotPassword(forgotPasswordRequest)
              call?.enqueue(object : retrofit2.Callback<ForgotPasswordResponse> {
@@ -34,5 +34,5 @@ class ForgotPasswordRespository() {
              })
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
-    }
+    }*/
 }

@@ -1,6 +1,5 @@
 package com.eazyrento.customer.dashboard.view.fragment
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -84,7 +83,7 @@ class WishListFragment : BaseFragment(), DeleteAndViewDetails {
      fun <T>viewDetails(wishListItem: T,pos: Int) {
         if(wishListItem is WishListItem) {
             listPosition = pos
-            MoveToAnotherComponent.moveToActivity<ProductDetailsActivity>(
+            MoveToAnotherComponent.moveToActivityWithIntentValue<ProductDetailsActivity>(
                 requireContext(),
                 Constant.VEHICLES_SUB_CATE, wishListItem.id
             )

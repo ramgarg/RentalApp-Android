@@ -17,7 +17,9 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name="com.eazyrento.SplashActivity">
+        <activity android:name="com.eazyrento.SplashActivity"
+                android:screenOrientation="portrait"
+                >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -27,8 +29,8 @@
         <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
 
         <activity android:name="com.eazyrento.login.view.LoginUserActivity"
-        android:screenOrientation="unspecified"
-
+                android:screenOrientation="unspecified"
+                android:launchMode="singleTask"
         />
         <uses-library
                 android:name="org.apache.http.legacy"

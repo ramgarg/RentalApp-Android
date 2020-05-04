@@ -56,7 +56,7 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
 
     override fun <T> onSuccessApiResult(data: T) {
         if (data is JsonElement){
-            MoveToAnotherComponent.moveToActivity<AgentMainActivity>(this,Constant.INTENT_SUCCESS_ADDED_PRODUCT,1)
+            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(this,Constant.INTENT_SUCCESS_ADDED_PRODUCT,1)
             showToast(ValidationMessage.REQUEST_SUCCESSED)
             return
         }

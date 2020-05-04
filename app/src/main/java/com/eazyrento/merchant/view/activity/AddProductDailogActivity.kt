@@ -314,7 +314,7 @@ class AddProductDailogActivity:BaseActivity() {
 //            if (edit_product_ID ==DEFUALT_VALUE) {
                 showToast(ValidationMessage.REQUEST_SUCCESSED)
 //        {"status":201}
-                MoveToAnotherComponent.moveToActivity<MerchantMainActivity>(
+                MoveToAnotherComponent.moveToActivityWithIntentValue<MerchantMainActivity>(
                     this,
                     Constant.INTENT_SUCCESS_ADDED_PRODUCT, 1
                 )

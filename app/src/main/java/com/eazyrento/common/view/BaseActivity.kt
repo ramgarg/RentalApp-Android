@@ -1,12 +1,10 @@
 package com.eazyrento.common.view
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.Window
@@ -18,6 +16,7 @@ import com.eazyrento.InternetNetworkConnection
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import kotlinx.android.synthetic.main.thank_you_pop.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 
 open abstract class BaseActivity: AppCompatActivity(),
@@ -144,6 +143,32 @@ open abstract class BaseActivity: AppCompatActivity(),
 
     override fun onBackPressed() {
         super.onBackPressed()
+    }
+
+    protected fun topBarWithMenuIconAndTitleMessage(){
+
+
+        img_menu.visibility = View.VISIBLE
+        img_notification.visibility = View.VISIBLE
+        toolbar_title.text=title
+
+        img_back.visibility = View.GONE
+
+        img_menu.setOnClickListener {  }
+    }
+
+    protected fun topBarWithBackIconAndTitle(title: String) {
+        img_back.visibility = View.VISIBLE
+        img_menu.visibility = View.GONE
+        img_notification.visibility = View.GONE
+
+        toolbar_title.text=title
+
+        img_back.setOnClickListener { backImageIconClick(1) }
+    }
+
+    protected fun backImageIconClick(flag: Int){
+        finishCurrentActivity(flag)
     }
 }
 

@@ -44,7 +44,7 @@ class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
     * to move other activity or componant
     * */
     override fun <T> moveOnSelecetedItem(type: T) {
-        MoveToAnotherComponent.moveToActivity<AddProductDailogActivity>(this,
+        MoveToAnotherComponent.moveToActivityWithIntentValue<AddProductDailogActivity>(this,
             Constant.INTENT_MERCHANT_PRODUCT_ADD,(type as ProductSubCategoriesModelResItem).id)
     }
 

@@ -34,7 +34,7 @@ class AgentOrderListFragment : OrderListFragment(){
     }*/
     override fun <T, K> onViewClick(type: T, where: K) {
         val item =  type as CustomerOrderListResModelItem
-        MoveToAnotherComponent.moveToActivity<AgentOrderSummaryActivity>(requireContext(), Constant.ORDER_SUMMERY_KEY,
+        MoveToAnotherComponent.moveToActivityWithIntentValue<AgentOrderSummaryActivity>(requireContext(), Constant.ORDER_SUMMERY_KEY,
             item.id)
     }
 

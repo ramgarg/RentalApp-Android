@@ -12,6 +12,7 @@ import com.eazyrento.login.model.modelclass.LoginUserResModel
 import com.eazyrento.login.model.repositry.ForgetPasswordRepo
 import com.eazyrento.login.model.repositry.LoginOTPRepo
 import com.eazyrento.login.model.repositry.LoginUserRepo
+import com.google.gson.JsonElement
 
 
 class LoginUserViewModel :ViewModel() {
@@ -30,7 +31,7 @@ class LoginOTPViewModel :ViewModel() {
 
 class ForgotPasswordViewModel :ViewModel() {
 
-    fun forgotPassword(forgotPassword: ForgotPasswordRequest): LiveData<DataWrapper<ForgotPasswordResponse>> {
+    fun forgotPassword(forgotPassword: ForgotPasswordRequest): LiveData<DataWrapper<JsonElement>> {
         return ForgetPasswordRepo().forget_password_api(forgotPassword)
     }
 }

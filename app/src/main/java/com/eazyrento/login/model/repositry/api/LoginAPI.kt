@@ -23,7 +23,7 @@ interface LoginAPI {
     fun register(@Body registerRequest: RegisterUserReqModel): Call<RegisterUserResModel>
 
     @POST(PathURL.FORGOT_PASSWORD)
-    fun forgotPassword(@Body forgotPasswordRequest: ForgotPasswordRequest): Call<ForgotPasswordResponse>
+    fun forgotPassword(@Body forgotPasswordRequest: ForgotPasswordRequest): Call<JsonElement>
 
     @POST(PathURL.RESEND_OTP)
     fun otp(@Body otpRequest: OTPRequest): Call<OTPResponse>

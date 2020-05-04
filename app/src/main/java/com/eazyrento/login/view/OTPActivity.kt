@@ -1,72 +1,83 @@
 package com.eazyrento.login.view
 
 import android.os.Bundle
-import android.widget.EditText
+import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.Session
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.appbiz.AppBizLogin
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.forgotpassword.model.modelClass.OTPRequest
-import com.eazyrento.login.viewmodel.OTPViewModel
+import com.eazyrento.customer.forgotpassword.model.modelClass.OTPResponse
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.login.viewmodel.LoginOTPViewModel
+import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_otp.*
+import java.lang.NumberFormatException
 
 class OTPActivity :BaseActivity(){
 
-    var otpRequest = OTPRequest()
+//    var otpRequest = OTPRequest()
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_otp);
-
-        initialize()
-//        otpViewModel=ViewModelProviders.of(this).get(OTPViewModel::class.java)
-//        otpViewModel.getOTPResponse()?.observe(this, Observer {
-//
-//        })
-
-
+        setContentView(R.layout.activity_otp)
+        topBarWithBackIconAndTitle(resources.getString(R.string.title_OTP))
 
     }
 
-    private fun initialize(){
-        btn_continue.setOnClickListener { checkValidation(ed_email) }
-    }
+    fun onContinueClick(view:View){
 
-    private fun checkValidation(editTextOTP: EditText):Boolean{
 
-        if(editTextOTP.text.toString().isEmpty()){
-//            otpView.showToast("Please Enter Valid OTP")
-            Toast.makeText(this,ValidationMessage.VALID_OTD,Toast.LENGTH_SHORT).show()
-        }else{
-            otpRequest.user_id = Session.getInstance(this)?.getUserID()
-            otpRequest.passcode = editTextOTP.text.toString().toInt()
-
-            callAPI()?.let {
-                it.observeApiResult(
-                    it.callAPIActivity<LoginOTPViewModel>(this)
-                        .OTPAPI(otpRequest)
-                    , this, this
-                )
-            }
+        val userID = intent.getIntExtra(Constant.INTENT_OTP_USER_ID,-1)
+        var passcode:Int
+        try {
+             passcode =ed_otp.text.toString().toInt()
         }
-//            otpViewModel.otpAPI(ed_email.text.toString())
+        catch (e:NumberFormatException){
+            showToast(ValidationMessage.OTP_VALID_NUMBER)
+            return
+        }
 
-//            MoveToAnotherComponent.moveToHomeActivity(this)
+
+
+        if (checkValidationFailed(userID,passcode)){
+            return
+        }
+
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<LoginOTPViewModel>(this)
+                    .OTPAPI(OTPRequest(userID,passcode))
+                , this, this
+            )
+        }
+    }
+
+    private fun checkValidationFailed(userID: Int, passcode: Int):Boolean{
+
+        if(userID==-1 || passcode<=0){
+            Toast.makeText(this,ValidationMessage.VALID_OTD,Toast.LENGTH_SHORT).show()
+            return true
+        }
         return false
     }
 
     override fun <T> onSuccessApiResult(data: T) {
+
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
-        MoveToAnotherComponent.moveToHomeActivity(this)
+
+        if (data is OTPResponse){
+//             {"status":200}
+            MoveToAnotherComponent.moveToActivityWithIntentValue<LoginUserActivity>(this,Constant.INTENT_OTP_TO_LOGIN,1)
+
+        }
+
+//        MoveToAnotherComponent.moveToHomeActivity(this)
     }
 
 

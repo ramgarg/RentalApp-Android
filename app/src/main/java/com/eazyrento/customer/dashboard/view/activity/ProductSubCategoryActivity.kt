@@ -39,7 +39,7 @@ class ProductSubCategoryActivity :
     }
 
     override fun <T> moveOnSelecetedItem(type: T) {
-        MoveToAnotherComponent.moveToActivity<ProductDetailsActivity>(this,
+        MoveToAnotherComponent.moveToActivityWithIntentValue<ProductDetailsActivity>(this,
             Constant.VEHICLES_SUB_CATE,(type as ProductSubCategoriesModelResItem).id
         )
     }

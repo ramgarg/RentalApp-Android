@@ -6,13 +6,17 @@
         android:orientation="vertical"
         android:layout_height="match_parent">
 
-    <ImageView
+    <include
+            layout="@layout/toolbar"
+            />
+
+   <!-- <ImageView
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:src="@mipmap/back"
             android:scaleType="fitXY"
             android:layout_width="@dimen/_15sdp"
-            android:layout_height="@dimen/_25sdp"/>
+            android:layout_height="@dimen/_25sdp"/>-->
     <ImageView
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_40sdp"
@@ -60,10 +64,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:id="@+id/ed_email"
-                    android:inputType="textEmailAddress"
+                    android:id="@+id/ed_otp"
+                    android:inputType="number"
                     android:fontFamily="@font/bree_serif"
-                    android:layout_height="@dimen/_40sdp"/>
+                    android:layout_height="@dimen/_40sdp"
+                    />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,7 +83,9 @@
                 android:textSize="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/button_gradient"
-                android:layout_height="@dimen/_40sdp"/>
+                android:layout_height="@dimen/_40sdp"
+                android:onClick="onContinueClick"
+                />
 
     </LinearLayout>
 

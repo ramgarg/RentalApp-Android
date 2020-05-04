@@ -27,7 +27,7 @@ interface MerchantAPI {
     @POST(PathURL.MerchantAddProduct)
     fun addProduct(@Body merchantAddProductReqModel: MerchantAddProductReqModel): Call<JsonElement>
 
-    @PUT(PathURL.MerchantProductDetail)
+    @PUT(PathURL.MerchantUpdateProduct)
     fun updateProductDetails(@Path("id") id: Int,@Body merchantAddProductReqModel: MerchantAddProductReqModel): Call<JsonElement>
 
     // delete product

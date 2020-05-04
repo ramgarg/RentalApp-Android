@@ -47,7 +47,7 @@ class Session private constructor(context: Context?){
     }
 
     /*save access tokan*/
-    fun saveAccessToken(value:String){
+    fun saveAccessToken(value:String?){
         val edit = sSharedPreferences?.edit()
         edit?.putString(PrefKey.ACCESS_TOKEN, value)
         edit?.commit()

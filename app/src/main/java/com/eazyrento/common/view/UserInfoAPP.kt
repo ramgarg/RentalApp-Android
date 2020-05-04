@@ -7,7 +7,7 @@ interface UserInfoAPP {
         const val CUSTOMER = "customer"
         const val AGENT = "agent"
         const val MERCHANT = "merchant"
-        var user_role:String?=null
+//        var user_role:String?=null
 
         // User login source facebook/google/normal
         const val BY_NORMAL = "normal"

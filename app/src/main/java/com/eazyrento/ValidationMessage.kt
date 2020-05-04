@@ -26,6 +26,9 @@ interface ValidationMessage{
         const val ON_SUBMIT_BUTTON_CLICK ="Do you want to submit the product info?"
         const val SUBMIT_TITLE ="Submit"
 
+        //logout
+
+        const val LOGOUT_MESSAGE = "You have been logout successfully"
         //sucessfully added
         const val REQUEST_SUCCESSED = "Request has been submit successfully"
         const val PRODUCT_DELETE_SUCCESS = "Product has been deleted successfully"
@@ -51,6 +54,8 @@ interface ValidationMessage{
         const val ITEM_IS_IN_LIST = "The product is already in list"
 
         const val SELECT_MERCHANT = "Please select at list one merchant"
+
+        const val OTP_VALID_NUMBER = "Please enter valid number."
 
 
     }

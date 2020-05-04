@@ -1,24 +1,25 @@
 package com.eazyrento.login.view
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProviders
+import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.Session
+import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogin
-import com.eazyrento.appbiz.retrofitapi.ApiObserver
-import com.eazyrento.appbiz.retrofitapi.ChangedListener
 import com.eazyrento.common.view.UserInfoAPP
-import com.eazyrento.common.view.UserInfoAPP.Companion.user_role
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.login.model.modelclass.RegisterUserReqModel
 import com.eazyrento.login.model.modelclass.RegisterUserResModel
 import com.eazyrento.login.viewmodel.RegisterUserViewModel
+import com.eazyrento.supporting.OnPiclImageToBase64
+import com.eazyrento.supporting.UploadImageFromDevice
 import kotlinx.android.synthetic.main.activity_register_user.*
 import kotlinx.android.synthetic.main.activity_register_user.btn_agent_active
 import kotlinx.android.synthetic.main.activity_register_user.btn_agent_inactive
@@ -28,6 +29,10 @@ import kotlinx.android.synthetic.main.activity_register_user.btn_merchant_active
 import kotlinx.android.synthetic.main.activity_register_user.btn_merchant_inactive
 
 class RegistrationUserActivity : AppBizLogin(){
+    private val uploadImageFromDevice = UploadImageFromDevice()
+    private var selectProfID:String?=null
+    private var selectBase64String:String?=null
+    private var user_role:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,16 +42,31 @@ class RegistrationUserActivity : AppBizLogin(){
 
     }
 
+    fun onRegisterButtonClick(view: View){
+
+        if(checkValidation(ed_full_name,ed_email_phone,ed_password,checkbox_terms,user_role) && isDocumentUploaded()){
+            register(UserInfoAPP.BY_NORMAL)
+        }
+
+    }
+    private fun isDocumentUploaded():Boolean{
+
+        if (!(user_role.equals(UserInfoAPP.CUSTOMER)) && (selectBase64String==null || selectProfID==null))
+        {
+            showToast(ValidationMessage.SELECT_DOCUMENT)
+            return false
+        }
+        return true
+    }
+
     private fun initialize() {
 
         btn_merchant_inactive.setOnClickListener { assignRole(UserInfoAPP.MERCHANT) }
         btn_customer_inactive.setOnClickListener { assignRole(UserInfoAPP.CUSTOMER)  }
         btn_agent_inactive.setOnClickListener { assignRole(UserInfoAPP.AGENT) }
+
         documentSpinnerData()
 
-        btn_register.setOnClickListener {
-            register()
-        }
 
         skipLogin()
     }
@@ -85,13 +105,10 @@ class RegistrationUserActivity : AppBizLogin(){
         }
     }
 
-    fun register() {
+    fun register(byUser: String) {
 
-        if(checkValidation(ed_full_name,ed_email_phone,ed_password,checkbox_terms,user_role)){
+          UserInfoAPP.REGISTRATIONS_SOURCE = byUser
 
-            showProgress()
-
-            UserInfoAPP.REGISTRATIONS_SOURCE = UserInfoAPP.BY_NORMAL
            val registerUserReqModel = createRegisterUserReqModel()
 
             callAPI()?.let {
@@ -101,36 +118,6 @@ class RegistrationUserActivity : AppBizLogin(){
                     , this, this
                 )
             }
-
-            /*val viewModel = ViewModelProviders.of(this).get(RegisterUserViewModel::class.java)
-
-            viewModel.registerUser(registerUserReqModel).observe(this,
-                ApiObserver<RegisterUserResModel>(
-                    this@RegistrationUserActivity,
-                    object :
-                        ChangedListener<RegisterUserResModel> {
-
-                        override fun onSuccess(dataWrapper: RegisterUserResModel) {
-                            hideProgress()
-
-                            Session.getInstance(this@RegistrationUserActivity)
-                                ?.saveUserRole(user_role)
-                            Session.getInstance(this@RegistrationUserActivity)
-                                ?.saveUserID(dataWrapper.user_id)
-
-                            moveToOtp()
-                        }
-
-                        *//* override fun onError(dataWrapper: DataWrapper<RegisterUserResModel>) {
-                             hideProgress()
-                             errorHandle(dataWrapper.error,dataWrapper.apiException)
-                         }*//*
-
-                    })
-            )*/
-
-        }
-
     }
 
     private fun createRegisterUserReqModel(): RegisterUserReqModel {
@@ -141,13 +128,21 @@ class RegistrationUserActivity : AppBizLogin(){
             ,
             UserInfoAPP.REGISTRATIONS_SOURCE!!,
             user_role!!,
-            ed_email_phone.text.toString()
+            ed_email_phone.text.toString(),
+            selectProfID,
+            selectBase64String
         )
     }
 
-    fun moveToOtp() {
-        MoveToAnotherComponent.moveToOTPActivity(this)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == Constant.PICK_PHOTO_FOR_AVATAR && resultCode == Activity.RESULT_OK) {
+            uploadImageFromDevice.onActivityResult(requestCode, resultCode, data)
+        }
     }
+    /*fun moveToOtp() {
+        MoveToAnotherComponent.moveToOTPActivity(this)
+    }*/
 
     private fun documentSpinnerData() {
         val document = resources.getStringArray(R.array.RegistrationDocument)
@@ -160,11 +155,17 @@ class RegistrationUserActivity : AppBizLogin(){
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                     if(position==0){
-
+                            selectBase64String = null
+                            selectProfID = null
                     }
                     else{
-                        Toast.makeText(this@RegistrationUserActivity, getString(R.string.selected_item) + " " + "" + document[position], Toast.LENGTH_SHORT).show()
-
+                        uploadImageFromDevice.pickImage(this@RegistrationUserActivity,
+                            object : OnPiclImageToBase64 {
+                                override fun onBase64(image64: String?) {
+                                    selectProfID = this@RegistrationUserActivity.resources.getStringArray(R.array.RegistrationDocument)[position]
+                                    selectBase64String =image64
+                                }
+                            })
                     }
                 }
 
@@ -178,13 +179,21 @@ class RegistrationUserActivity : AppBizLogin(){
     override fun <T> onSuccessApiResult(data: T) {
 
         if (data is RegisterUserResModel) {
-            Session.getInstance(this@RegistrationUserActivity)
+
+//            EazyRantoApplication.onLoginUpdateSession(data.user_info)
+
+//            {"status":201,"user_id":348}
+
+            /*Session.getInstance(this@RegistrationUserActivity)
                 ?.saveUserRole(user_role)
             Session.getInstance(this@RegistrationUserActivity)
-                ?.saveUserID(data.user_id)
+                ?.saveUserID(data.user_id)*/
 
-            moveToOtp()
+            MoveToAnotherComponent.moveToActivityWithIntentValue<OTPActivity>(this,Constant.INTENT_OTP_USER_ID,data.user_id)
+
         }
     }
+
+
 
 }

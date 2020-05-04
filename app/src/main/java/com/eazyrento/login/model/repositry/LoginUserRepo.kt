@@ -13,6 +13,7 @@ import com.eazyrento.login.model.modelclass.LoginUserReqModel
 import com.eazyrento.login.model.modelclass.LoginUserResModel
 import com.eazyrento.login.model.repositry.api.LoginAPI
 import com.eazyrento.webservice.ServiceGenrator
+import com.google.gson.JsonElement
 
 class LoginUserRepo:
     GenericRequestHandler<LoginUserResModel>() {
@@ -39,9 +40,9 @@ class LoginOTPRepo:
 }
 
 class ForgetPasswordRepo:
-    GenericRequestHandler<ForgotPasswordResponse>() {
+    GenericRequestHandler<JsonElement>() {
 
-    fun forget_password_api( forgotPasswordRequest: ForgotPasswordRequest): LiveData<DataWrapper<ForgotPasswordResponse>> {
+    fun forget_password_api( forgotPasswordRequest: ForgotPasswordRequest): LiveData<DataWrapper<JsonElement>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             LoginAPI::class.java).forgotPassword(forgotPasswordRequest)

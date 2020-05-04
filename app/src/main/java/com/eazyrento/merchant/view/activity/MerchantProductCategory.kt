@@ -3,7 +3,6 @@ package com.eazyrento.merchant.view.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.GravityCompat
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
@@ -18,7 +17,6 @@ import com.eazyrento.merchant.view.fragment.MerchantCatItem
 import com.eazyrento.merchant.viewModel.MerchantDeleteProductViewModel
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_merchant_all_product_home.*
-import kotlinx.android.synthetic.main.merchant_activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
@@ -80,7 +78,7 @@ class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
          deletePosition = pos
 
         when(where){
-            Constant.edit -> MoveToAnotherComponent.moveToActivity<AddProductDailogActivity>(this,
+            Constant.edit -> MoveToAnotherComponent.moveToActivityWithIntentValue<AddProductDailogActivity>(this,
                 Constant.INTENT_MERCHANT_PRODUCT_EDIT,(type as MerchantProductItem).id)
 
             Constant.delete->deleteProduct(type)

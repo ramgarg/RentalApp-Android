@@ -61,7 +61,6 @@
     <string name="in_progress">In Progress</string>
     <string name="rejected">Rejected</string>
     <!---->
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--customer value-->
@@ -218,6 +217,10 @@
     <string name="select_gender">Select Gender</string>
     <string name="booking_price_dollar">Booking Price($)</string>
     <string name="add_a_note">Add a Note</string>
+
+    <!--Activity and view title-->
+    <string name="title_forgot_pass">Forgot password</string>
+    <string name="title_OTP">OTP</string>
 
     <string-array name="SelectType">
     <item>Select Type</item>

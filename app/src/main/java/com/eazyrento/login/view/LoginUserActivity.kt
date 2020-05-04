@@ -1,13 +1,14 @@
 package com.eazyrento.login.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import androidx.lifecycle.ViewModelProviders
+import android.view.View
+import com.eazyrento.EazyRantoApplication
 import com.eazyrento.R
 import com.eazyrento.Session
+import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.appbiz.AppBizLogin
-import com.eazyrento.appbiz.retrofitapi.ApiObserver
-import com.eazyrento.appbiz.retrofitapi.ChangedListener
 import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -23,30 +24,41 @@ class LoginUserActivity : AppBizLogin() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
-        initialize()
+        setContentView(R.layout.activity_login)
     }
 
-    private fun initialize(){
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onNewIntent")
+    }
 
-        tv_registration.setOnClickListener { MoveToAnotherComponent.moveToRegistrationActivity(this) }
+    // lisetner
+    fun onRegisterClick(view:View){
+        MoveToAnotherComponent.moveToActivityNormal<RegistrationUserActivity>(this)
+    }
 
-        tv_forgot_password.setOnClickListener { MoveToAnotherComponent.moveToForgotPasswordActivity(this) }
+    fun onForgotPasswordClick(view: View){
+        MoveToAnotherComponent.moveToActivityNormal<ForgotPasswordActivity>(this)
+    }
 
-        btn_login.setOnClickListener { login()/*checkValidation(ed_email,ed_password)*/ }
+    fun onLoginClick(view: View){
 
-        tv_skip.setOnClickListener {
-
-            Common.showDialog("UserType","",this,R.layout.rental_dialog)
+        if(failCheckValdationLoginCredintitial(ed_email,ed_password)){
+            return
         }
 
+        login(UserInfoAPP.BY_NORMAL)
+
+    }
+    fun onSkipLoginClick(view: View){
+        Common.showDialog("UserType","",this,R.layout.rental_dialog)
     }
 
-    private fun login() {
-        if(!failCheckValdationLoginCredintitial(ed_email,ed_password)){
+    // by user login by email, gamail , fb
+    private fun login(byUser: String) {
 
-            UserInfoAPP.REGISTRATIONS_SOURCE = UserInfoAPP.BY_NORMAL
+            UserInfoAPP.REGISTRATIONS_SOURCE = byUser
 
             val loginUserReqModel = createLoginUserReqModel()
 
@@ -58,34 +70,11 @@ class LoginUserActivity : AppBizLogin() {
                 )
             }
 
-            /* val viewModel = ViewModelProviders.of(this).get(LoginUserViewModel::class.java)
 
-            showProgress()
-
-           viewModel.loginUser(loginUserReqModel).observe(this,
-                ApiObserver(this@LoginUserActivity,
-                    object :
-                        ChangedListener<LoginUserResModel> {
-                        override fun onSuccess(dataWrapper: LoginUserResModel) {
-                            // ont time set null b/c from now we will add header in retrofit app APIs
-                            ServiceGenrator.retrofit =
-                                null
-
-                            Session.getInstance(this@LoginUserActivity)
-                                ?.saveUserRole(dataWrapper.user_info.user_role)
-                            Session.getInstance(this@LoginUserActivity)
-                                ?.saveUserID(dataWrapper.user_info.user_id)
-                            Session.getInstance(this@LoginUserActivity)
-                                ?.saveAccessToken(dataWrapper.user_info.access_token)
-                            sendToUserRole(dataWrapper.user_info.user_role)
-
-                        }
-                    })
-            )*/
-        }
     }
 
-    private fun sendToUserRole(userRole: String) {
+    private fun sendUserReleventPanel(userRole: String) {
+
         when(userRole){
             UserInfoAPP.AGENT-> MoveToAnotherComponent.moveToAgentHomeActivity(this)
             UserInfoAPP.CUSTOMER-> MoveToAnotherComponent.moveToHomeActivity(this)
@@ -116,7 +105,9 @@ class LoginUserActivity : AppBizLogin() {
 
         if (data is LoginUserResModel) {
 
-            // one time set null b/c from now we will add header in retrofit app APIs
+            EazyRantoApplication.onLoginUpdateSession(data.user_info)
+
+            /*// one time set null b/c from now we will add header in retrofit app APIs
             ServiceGenrator.retrofit =
                 null
 
@@ -126,7 +117,12 @@ class LoginUserActivity : AppBizLogin() {
                 ?.saveUserID(data.user_info.user_id)
             Session.getInstance(this@LoginUserActivity)
                 ?.saveAccessToken(data.user_info.access_token)
-            sendToUserRole(data.user_info.user_role)
+
+            UserInfoAPP.user_role = data.user_info.user_role*/
+
+            sendUserReleventPanel(data.user_info.user_role)
+
+
         }
     }
 }

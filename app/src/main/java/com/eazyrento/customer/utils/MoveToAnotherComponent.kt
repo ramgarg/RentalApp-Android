@@ -6,6 +6,8 @@ import android.content.Intent
 import android.os.Parcelable
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.eazyrento.EazyRantoApplication
+import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.view.activity.*
 import com.eazyrento.agent.view.fragment.AgentBookingsFragment
 import com.eazyrento.customer.dashboard.view.activity.*
@@ -44,18 +46,6 @@ class MoveToAnotherComponent {
 
         fun moveToMerchantMainActivity(context: Context){
             context.startActivity(Intent(context, MerchantMainActivity::class.java))
-        }
-
-        fun moveToForgotPasswordActivity(context: Context){
-            context.startActivity(Intent(context, ForgotPasswordActivity::class.java))
-        }
-
-        fun moveToRegistrationActivity(context: Context){
-            context.startActivity(Intent(context, RegistrationUserActivity::class.java))
-        }
-
-        fun moveToOTPActivity(context: Context){
-            context.startActivity(Intent(context, OTPActivity::class.java))
         }
 
         fun moveToMyAddressActivity(context: Context){
@@ -177,16 +167,29 @@ class MoveToAnotherComponent {
             context.startActivity(intent)
         }
 
-        inline fun <reified T>moveToLogout(context: Context, key: String,value: Int) {
-            val intent = Intent(context, T::class.java)
+        // log out user
+
+        fun onLogout(context: Context, key: String,value: Int) {
+
+            Common.showToast(context,ValidationMessage.LOGOUT_MESSAGE)
+
+            EazyRantoApplication.onLogoutUpdateSession()
+
+            val intent = Intent(context, LoginUserActivity::class.java)
+
             intent.putExtra(key,value)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             context.startActivity(intent)
         }
 
-        inline fun <reified T>moveToActivity(context: Context, key: String, value: Int) {
+        inline fun <reified T>moveToActivityWithIntentValue(context: Context, key: String, value: Int) {
             val intent = Intent(context, T::class.java)
             intent.putExtra(key,value)
+            context.startActivity(intent)
+        }
+//without params open activity
+        inline fun <reified T>moveToActivityNormal(context: Context) {
+            val intent = Intent(context, T::class.java)
             context.startActivity(intent)
         }
 
