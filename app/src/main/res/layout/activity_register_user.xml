@@ -235,7 +235,9 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/bree_serif"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                >
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

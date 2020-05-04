@@ -91,7 +91,9 @@
         android:textColor="#000"
         app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
         android:textColorHint="@android:color/darker_gray"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                >
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
