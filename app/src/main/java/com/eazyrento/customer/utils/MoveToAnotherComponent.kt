@@ -44,6 +44,10 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, MerchantAddVehicle::class.java))
         }
 
+        fun moveToMerchantNotifyAdmin(context: Context){
+            context.startActivity(Intent(context, MerchantNotifyAdminActivity::class.java))
+        }
+
         fun moveToMerchantMainActivity(context: Context){
             context.startActivity(Intent(context, MerchantMainActivity::class.java))
         }
@@ -121,6 +125,10 @@ class MoveToAnotherComponent {
 
         fun moveToOrderReviewActivity(context: Context){
             context.startActivity(Intent(context, CustomerBookingSubmitReviewActivity::class.java))
+        }
+
+        fun moveToRateAndReviewActivity(context: Context){
+            context.startActivity(Intent(context, RateAndReviewActivity::class.java))
         }
 
         fun moveToNotifyAdminActivity(context: Context){

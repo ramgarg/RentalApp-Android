@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar"
+            android:id="@+id/notify_admin_toolbar"
+            />
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/notify_admin_toolbar">
+
+    <LinearLayout android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_height="wrap_content">
+
+        <TextView android:layout_width="wrap_content"
+                android:text="@string/name"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+        <EditText android:layout_width="match_parent"
+                android:hint="@string/name"
+                android:id="@+id/ed_name"
+                android:textSize="@dimen/_15sdp"
+                android:inputType="text"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/bree_serif"
+                android:layout_height="@dimen/_40sdp"/>
+
+        <TextView android:layout_width="wrap_content"
+                android:text="@string/capacity"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+        <EditText android:layout_width="match_parent"
+                android:hint="@string/capacity"
+                android:id="@+id/ed_capacity"
+                android:textSize="@dimen/_15sdp"
+                android:inputType="text"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/bree_serif"
+                android:layout_height="@dimen/_40sdp"/>
+
+        <TextView android:layout_width="wrap_content"
+                android:text="@string/power"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+        <EditText android:layout_width="match_parent"
+                android:hint="@string/power"
+                android:id="@+id/ed_power"
+                android:textSize="@dimen/_15sdp"
+                android:inputType="text"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/bree_serif"
+                android:layout_height="@dimen/_40sdp"/>
+
+
+        <TextView android:layout_width="wrap_content"
+                android:text="@string/price"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+        <EditText android:layout_width="match_parent"
+                android:hint="@string/price"
+                android:id="@+id/ed_price"
+                android:textSize="@dimen/_15sdp"
+                android:inputType="number"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/bree_serif"
+                android:layout_height="@dimen/_40sdp"/>
+        <TextView android:layout_width="wrap_content"
+                android:text="@string/fuel_type"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+        <EditText android:layout_width="match_parent"
+                android:hint="@string/fuel_type"
+                android:id="@+id/ed_fuel_type"
+                android:textSize="@dimen/_15sdp"
+                android:inputType="text"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/bree_serif"
+                android:layout_height="@dimen/_40sdp"/>
+        <TextView android:layout_width="wrap_content"
+                android:text="@string/description"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+        <EditText android:layout_width="match_parent"
+                android:hint="@string/description"
+                android:id="@+id/ed_des"
+                android:textSize="@dimen/_15sdp"
+                android:inputType="text"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/bree_serif"
+                android:layout_height="@dimen/_60sdp"/>
+
+        <Button android:layout_width="match_parent"
+                android:text="@string/submit"
+                android:id="@+id/btn_notify_admin_submit"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/bree_serif"
+                android:background="@drawable/button_save"
+                android:layout_height="@dimen/_40sdp"/>
+
+
+    </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

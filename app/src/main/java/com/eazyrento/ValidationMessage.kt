@@ -57,6 +57,16 @@ interface ValidationMessage{
 
         const val OTP_VALID_NUMBER = "Please enter valid number."
 
+        //Merchant Notify Admin
+        const val VALID_NAME = "Enter product name"
+        const val VALID_POWER = "Enter product power"
+        const val VALID_PRICE = "Enter product price"
+        const val VALID_FUEL_TYPE = "Enter fuel type"
+        const val VALID_CAPACITY ="Enter capacity"
+        const val ADMIN_NOTIFY ="Notification sent to Admin"
+        const val VALID_RATING = "Enter your feedback"
+        const val FEEDBACK_SENT = "Feedback Sent"
+
 
     }
 }

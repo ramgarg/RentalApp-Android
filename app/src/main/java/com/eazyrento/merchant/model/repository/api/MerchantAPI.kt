@@ -7,6 +7,8 @@ import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
+import com.eazyrento.merchant.model.modelclass.MerchantFeedbackReqModel
+import com.eazyrento.merchant.model.modelclass.MerchantNotifyAdminReqModelItem
 import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
 import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement
@@ -50,6 +52,12 @@ interface MerchantAPI {
      * */
     @GET(PathURL.MerchantOrderDetail)
     fun getCustomerOrderDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
+
+    @POST(PathURL.MerchantNotifyAdmin)
+    fun notifyAdmin(@Body merchantNotifyAdminReqModelItem: MerchantNotifyAdminReqModelItem): Call<JsonElement>
+
+    @POST(PathURL.MerchantFeedback)
+    fun merchantFeedback(@Body merchantfeedbackReqModel: MerchantFeedbackReqModel): Call<JsonElement>
 
 
 }

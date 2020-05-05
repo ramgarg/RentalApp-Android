@@ -54,7 +54,7 @@ import java.util.*
 class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     val listAddressModelItem = AddressCreateReqModelItem()
-    val addressCreateReqModel= AddressCreateReqModel()
+    //val addressCreateReqModel= AddressCreateReqModel()
 
     /*companion object AddressList {
         val objListAddressModel = AddressCreateReqModel()

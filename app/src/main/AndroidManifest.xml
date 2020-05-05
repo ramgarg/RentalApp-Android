@@ -50,6 +50,14 @@
                 android:screenOrientation="unspecified"
 
                 />
+        <activity android:name="com.eazyrento.merchant.view.activity.MerchantNotifyAdminActivity"
+                android:screenOrientation="unspecified"
+
+                />
+        <activity android:name="com.eazyrento.merchant.view.activity.RateAndReviewActivity"
+                android:screenOrientation="unspecified"
+
+                />
 
 
         <activity android:name="com.eazyrento.login.view.ForgotPasswordActivity"

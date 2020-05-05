@@ -14,12 +14,16 @@ import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.adapter.MerchantUsersOrderSummaryAdapter
 import kotlinx.android.synthetic.main.activity_agent_order_summary.*
+import kotlinx.android.synthetic.main.activity_agent_order_summary.agent_asign_merchant_btn
 import kotlinx.android.synthetic.main.activity_agent_order_summary.rec_user_order_summary
 import kotlinx.android.synthetic.main.activity_merchant_order_summary.*
+import kotlinx.android.synthetic.main.adapter_order_status_template.*
 import kotlinx.android.synthetic.main.adapter_user_order_summery.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.order_summary_template.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
+import kotlinx.android.synthetic.main.template_order_summery_top_view.order_rate_review
+import kotlinx.android.synthetic.main.testingxml.*
 
 class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
@@ -29,10 +33,10 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_merchant_order_summary)
-        customer_payment_button.visibility=View.INVISIBLE
 
         // order details
         setDataAndCallOrderDetailsAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
+        clickListenerOnViews()
 
     }
 
@@ -40,9 +44,12 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
     }
 
     private fun clickListenerOnViews(){
-       // tv_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
+
+        customer_payment_button.visibility=View.INVISIBLE
+        //agent_update_order_btn.setOnClickListener { MoveToAnotherComponent.moveToAgentUpdateOrderSummaryActivity(this) }
+        //payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
         //tv_pay_now.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
-        tv_merchant_rate_review.setOnClickListener { MoveToAnotherComponent.moveToOrderReviewActivity(this) }
+        order_rate_review.setOnClickListener { MoveToAnotherComponent.moveToRateAndReviewActivity(this) }
     }
 
 
@@ -52,11 +59,12 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
     }
     private fun orderStatus(orderRes: CustomerOrderDetailsResModel) {
+
         val customerDetail = orderRes.customer_detail
         val agentDetail = orderRes.agent_detail
         if (orderRes.order_status == Constant.COMPLETED) {
-            //agent_update_order_btn.visibility = View.INVISIBLE
-            agent_asign_merchant_btn.visibility = View.INVISIBLE
+            order_rate_review.visibility=View.VISIBLE
+            payment_view_history.visibility=View.INVISIBLE
 
             if (agentDetail != null) {
                 merchant_user1_view.visibility = View.VISIBLE
@@ -79,6 +87,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
                 merchant_user2_view.visibility = View.INVISIBLE
             }
         } else if (orderRes.order_status != Constant.COMPLETED) {
+            order_rate_review.visibility=View.INVISIBLE
             pending_amount.visibility = View.VISIBLE
             pending_amount.text = Constant.PENDING_AMOUNT + "- " + orderRes.pending_order_amount
             if (agentDetail != null) {

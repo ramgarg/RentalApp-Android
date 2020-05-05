@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.model.modelclass.ProductCategoriesResModel
+import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
+import com.eazyrento.customer.myaddress.model.repostory.AddressCreateRepo
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
+import com.eazyrento.merchant.model.modelclass.MerchantFeedbackReqModel
+import com.eazyrento.merchant.model.modelclass.MerchantNotifyAdminReqModelItem
 import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
-import com.eazyrento.merchant.model.repository.MerchantAddProductRepo
-import com.eazyrento.merchant.model.repository.MerchantDeleteProductRepo
-import com.eazyrento.merchant.model.repository.MerchantProductCategoriesRepo
-import com.eazyrento.merchant.model.repository.MerchantProductDetailsRepo
+import com.eazyrento.merchant.model.repository.*
 import com.google.gson.JsonElement
 
 
@@ -39,6 +40,22 @@ class MerchantProductDetailViewModel:ViewModel(){
     fun detailsPoductAPI(id:Int): LiveData<DataWrapper<MerchantProductDetailsResModel>> {
         return MerchantProductDetailsRepo()
             .detailsProduct(id)
+    }
+
+}
+
+class MerchantNotifyAdminViewModel:ViewModel(){
+    fun notifyAdmin(merchantNotifyAdminReqModelItem: MerchantNotifyAdminReqModelItem): LiveData<DataWrapper<JsonElement>> {
+        return MerchantNotifyAdminRepo()
+            .notifyAdmin(merchantNotifyAdminReqModelItem)
+    }
+
+}
+
+class MerchantFeedbackViewModel:ViewModel(){
+    fun merchantFeedback(merchantFeedbackReqModel: MerchantFeedbackReqModel): LiveData<DataWrapper<JsonElement>> {
+        return MerchantFeedbackRepo()
+            .merchantFeedback(merchantFeedbackReqModel)
     }
 
 }

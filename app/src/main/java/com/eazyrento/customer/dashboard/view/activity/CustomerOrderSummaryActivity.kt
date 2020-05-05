@@ -30,11 +30,12 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
         setContentView(R.layout.activity_customer_order_summary)
 
         setDataAndCallOrderDetailsAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
+        clickListenerOnViews()
     }
 
     private fun clickListenerOnViews(){
        payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
-        order_rate_review.setOnClickListener { Common.showDialog(getString(R.string.rating),getString(R.string.thank_you),this,R.layout.rating_review) }
+        order_rate_review.setOnClickListener { MoveToAnotherComponent.moveToRateAndReviewActivity(this) }
         customer_payment_button.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
     }
 

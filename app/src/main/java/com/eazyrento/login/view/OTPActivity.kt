@@ -32,7 +32,6 @@ class OTPActivity :BaseActivity(){
 
     fun onContinueClick(view:View){
 
-
         val userID = intent.getIntExtra(Constant.INTENT_OTP_USER_ID,-1)
         var passcode:Int
         try {
