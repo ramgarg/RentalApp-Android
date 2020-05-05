@@ -47,6 +47,7 @@ class MerchantMainActivity : BaseNavigationActivity() {
             R.id.navigation_common_first_pos-> {
                 fragment =
                     MerchantDashFragment()
+                toolbar_title.text=getString(R.string.dashboard)
             }
             R.id.navigation_order-> {
                 fragment =
