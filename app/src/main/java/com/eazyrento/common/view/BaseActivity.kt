@@ -11,6 +11,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import com.eazyrento.Constant
 import com.eazyrento.InternetNetworkConnection
 import com.eazyrento.R
@@ -145,16 +146,17 @@ open abstract class BaseActivity: AppCompatActivity(),
         super.onBackPressed()
     }
 
-    protected fun topBarWithMenuIconAndTitleMessage(){
-
+    /*Top bar setting*/
+    protected fun topBarWithMenuIconAndNotificationWithTitleMessage(title: String){
 
         img_menu.visibility = View.VISIBLE
         img_notification.visibility = View.VISIBLE
+
         toolbar_title.text=title
 
         img_back.visibility = View.GONE
 
-        img_menu.setOnClickListener {  }
+
     }
 
     protected fun topBarWithBackIconAndTitle(title: String) {

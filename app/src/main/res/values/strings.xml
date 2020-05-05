@@ -227,6 +227,8 @@
     <string name="capacity">Capacity</string>
     <string name="power">Power</string>
 
+
+
     <string-array name="SelectType">
     <item>Select Type</item>
     <item>Equipments</item>

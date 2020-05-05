@@ -18,18 +18,16 @@ import kotlinx.android.synthetic.main.merchant_activity_main.*
 import kotlinx.android.synthetic.main.row_merchant_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-open class MerchantNavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener{
+open class MerchantNavigationActivity : BaseActivity(){
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
-    @SuppressLint("RestrictedApi")
+
+    /*@SuppressLint("RestrictedApi")
     protected val mOnNavigationItemSelectedListener =
 
-        BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+       *//* BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
 
             var fragment: Fragment?
             setVisibleToolbarHeader(View.VISIBLE)
@@ -40,7 +38,6 @@ open class MerchantNavigationActivity : BaseActivity(), NavigationView.OnNavigat
                     fragment =
                         MerchantDashFragment()
                     merchant_add_vehicle_btn.visibility=View.INVISIBLE
-                    setVisibleToolbarHeader(View.GONE)
                 }
                 R.id.merchant_navigation_order-> {
                     fragment =
@@ -75,18 +72,18 @@ open class MerchantNavigationActivity : BaseActivity(), NavigationView.OnNavigat
 
             moveToTargatedFragment(fragment)
 
-            return@OnNavigationItemSelectedListener true
-        }
+            return@OnNavigationItemSelectedListener true*//*
+        }*/
 
-    private fun moveToTargatedFragment(fragment: Fragment) {
+    /*private fun moveToTargatedFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, fragment, fragment.javaClass.simpleName)
             .commit()
 
 
-    }
+    }*/
 
-    @SuppressLint("RestrictedApi")
+   /* @SuppressLint("RestrictedApi")
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
             R.id.merchant_nav_dashboard -> {
@@ -98,8 +95,7 @@ open class MerchantNavigationActivity : BaseActivity(), NavigationView.OnNavigat
 
             R.id.merchant_nav_help -> {
 
-                moveToTargatedFragment(MerchantSupportFragment())
-                merchant_add_vehicle_btn.visibility=View.INVISIBLE
+
             }
             R.id.merchant_nav_my_address -> {
                 MoveToAnotherComponent.moveToMerchantAddressActivity(this)
@@ -117,9 +113,7 @@ open class MerchantNavigationActivity : BaseActivity(), NavigationView.OnNavigat
         menuItem.isChecked=false
         merchant_drawer_layout.closeDrawer(GravityCompat.START)
         return true
-    }
+    }*/
 
-    fun setVisibleToolbarHeader(visible: Int){
-        merchant_toolbar_header.visibility = visible
-    }
+
 }

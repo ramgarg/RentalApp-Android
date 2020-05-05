@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/drawer_layout_agent"
@@ -72,7 +72,7 @@
 
 
 </RelativeLayout>
-    <com.google.android.material.navigation.NavigationView
+    <!--<com.google.android.material.navigation.NavigationView
             android:id="@+id/agent_navigation_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -80,5 +80,5 @@
             app:menu="@menu/agent_drawer_menu"
             app:headerLayout="@layout/agent_header"
             android:layout_gravity="start"
-            />
-</androidx.drawerlayout.widget.DrawerLayout>
+            />-->
+</RelativeLayout>

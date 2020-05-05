@@ -11,9 +11,6 @@ import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.view.activity.*
 import com.eazyrento.agent.view.fragment.AgentBookingsFragment
 import com.eazyrento.customer.dashboard.view.activity.*
-import com.eazyrento.login.view.ForgotPasswordActivity
-import com.eazyrento.login.view.OTPActivity
-import com.eazyrento.login.view.RegistrationUserActivity
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.notification.view.NotificationActivity

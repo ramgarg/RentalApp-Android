@@ -22,7 +22,7 @@ class AgentAddNoteActivity: BaseActivity(){
         setContentView(R.layout.activity_agent_add_note)
 
         //tool bar menu click lisner , open drawer
-        img_menu.setOnClickListener {  drawer_layout_agent.openDrawer(GravityCompat.START) }
+//        img_menu.setOnClickListener {  drawer_layout_agent.penDrawer(GravityCompat.START) }
 
         agent_add_note_btn.setOnClickListener { MoveToAnotherComponent.moveToWriteNotesActivity(this) }
 

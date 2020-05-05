@@ -17,4 +17,25 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:scaleType="center"
+                android:src="@drawable/add_green"
+                android:visibility="visible"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:maxImageSize="@dimen/_65sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_100sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/merchant_add_vehicle_btn"
+                app:backgroundTint="@null"
+                app:fabSize="normal">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
 </RelativeLayout>

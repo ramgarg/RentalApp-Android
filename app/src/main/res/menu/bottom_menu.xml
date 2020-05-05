@@ -2,10 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <!--customer specific-->
     <item
-            android:id="@+id/navigation_wishlist"
+            android:id="@+id/navigation_common_first_pos"
             android:icon="@mipmap/wishlist_inactive"
-            android:title="@string/wishlist" />
+            android:title="@string/wishlist"
+            />
+   <!--
+    &lt;!&ndash;Merchant spciific&ndash;&gt;
+    <item
+            android:id="@+id/navigation_dashboard"
+            android:icon="@mipmap/dashboard"
+            android:title="@string/dashboard"
+            android:visible="false"
+            />
+    &lt;!&ndash;Agent specific&ndash;&gt;
+    <item
+            android:id="@+id/agent_navigation_notification"
+            android:icon="@mipmap/notification"
+            android:title="@string/title_notification"
+            android:visible="false"
+            />   -->
+
 
     <item
             android:id="@+id/navigation_order"
@@ -18,9 +36,18 @@
 
 
     <item
-            android:id="@+id/navigation_bookings"
+            android:id="@+id/navigation_common_fourth_pos"
             android:icon="@mipmap/order_inactive"
             android:title="@string/bookings"/>
+
+<!--Merchant spciific-->
+   <!-- <item
+            android:id="@+id/navigation_profile"
+            android:icon="@mipmap/profile_inactive"
+            android:title="@string/profile"
+            android:visible="false"
+            />-->
+
     <item
             android:id="@+id/navigation_support"
             android:icon="@mipmap/support_inactive"

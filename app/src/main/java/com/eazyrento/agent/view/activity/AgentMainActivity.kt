@@ -2,52 +2,42 @@ package com.eazyrento.agent.view.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.agent.view.AgentBaseActivity
+import com.eazyrento.agent.view.BaseNavigationActivity
+import com.eazyrento.agent.view.fragment.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_home_.*
-import kotlinx.android.synthetic.main.agent_header.view.*
-import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class AgentMainActivity : AgentBaseActivity(){
+class AgentMainActivity : BaseNavigationActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agent_home_)
 
-        // set listener bottom navigation view
-        bottom_navigation_view_agent.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        setInitData()
+        // specific method of every module
+        setBottomNavigationItemsDynamic()
 
-        // set listener drawer
-        agent_navigation_view.setNavigationItemSelectedListener(this)
-        //tool bar menu click lisner , open drawer
-        img_menu.setOnClickListener {  drawer_layout_agent.openDrawer(GravityCompat.START) }
-
-        // select home fragment
-        bottom_navigation_view_agent.selectedItemId = R.id.agent_navigation_home
-
-        //btn_home_view_all.setOnClickListener { MoveToAnotherComponent.moveToAgentBookingsFragment(this) }
-
-        val header = agent_navigation_view.getHeaderView(0)
-
-        header.agent_edit_profile_menu.setOnClickListener {
-            MoveToAnotherComponent.moveToAgentProfileActivity(this)
-            drawer_layout_agent.closeDrawer(GravityCompat.START)
-        }
-        img_notification.setOnClickListener { MoveToAnotherComponent.moveToNotificationActivity(this) }
-
-        //btn_agent_home_view_all.setOnClickListener{ MoveToAnotherComponent.moveToAgentBookingsFragment(this)}
+        navigation_view.menu.findItem(R.id.nav_add_note).isVisible = true
 
 
     }
 
-    fun setHomeFragment(){
-        bottom_navigation_view_agent.selectedItemId = R.id.agent_navigation_home
+    fun setBottomNavigationItemsDynamic(){
+        val hashMap = HashMap<Int,MenuData>()
+
+        hashMap.put(R.id.navigation_common_first_pos,MenuData(R.mipmap.notification,R.string.title_notification))
+        hashMap.put(R.id.navigation_common_fourth_pos,MenuData(R.mipmap.order_inactive,R.string.bookings))
+
+        setNavigationIconAndTitle(hashMap)
     }
+
+
+
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
@@ -57,5 +47,68 @@ class AgentMainActivity : AgentBaseActivity(){
         // move to home fragemtn
         setHomeFragment()
     }
+/*
+*
+* Bottom menu item listner
+* */
+    override fun bottomNavigationListener(itemId:Int): Fragment? {
+
+        var fragment:Fragment?
+
+        when (itemId) {
+
+
+            R.id.navigation_common_first_pos-> {
+
+                fragment =
+                    AgentNotificationFragment()
+                toolbar_title.text=getString(R.string.title_notification)
+            }
+
+            R.id.navigation_order -> {
+                fragment =
+                    AgentOrderListFragment()
+                toolbar_title.text=getString(R.string.order)
+            }
+
+            R.id.navigation_home -> {
+                //setVisibleToolbarHeader(View.GONE)
+                toolbar_title.text=getString(R.string.home)
+                fragment =
+                    AgentHomeFragment()
+
+            }
+            R.id.navigation_common_fourth_pos -> {
+                fragment =
+                    AgentBookingsFragment()
+                toolbar_title.text=getString(R.string.bookings)
+            }
+            R.id.navigation_support -> {
+                fragment =
+                    AgentSupportFragment()
+                toolbar_title.text=getString(R.string.help)
+            }
+            else -> {
+                return null
+            }
+        }
+        return fragment
+    }
+
+    override fun helpAndSupport() {
+        moveToSelectedFragment(AgentSupportFragment())
+    }
+
+    override fun addNotes() {
+        MoveToAnotherComponent.moveToMyNotesActivity(this)
+        toolbar_title.text=getString(R.string.mynotes)
+    }
+
+    override fun viewPaymentHistory() {
+    }
+
+    override fun viewMyAddress() {
+    }
+
 
 }
