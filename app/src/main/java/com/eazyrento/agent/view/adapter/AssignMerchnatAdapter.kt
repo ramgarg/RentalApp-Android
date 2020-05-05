@@ -38,19 +38,33 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
         holder.assign_merchant_name.text =merchantListItem.get(position).details.full_name
         holder.booking_price.text = Constant.BOOKING_PRICE+"- "+merchantListItem.get(position).details.price
 //        holder.booking_total_prcie = merchantListItem
-        holder.layout_truck_quantity.text =Constant.QUANTITY+merchantListItem.get(position).details.quantity_available
+//        holder.layout_truck_quantity.text =Constant.QUANTITY+merchantListItem.get(position).details.quantity_available
         holder.merchant_distance.text=" "+merchantListItem.get(position).details.distance+Constant.KM
-//        Picasso.with(context).load(merchantListItem.get(position).details.)*/
-        
+
+        holder.item_quantity.text = ""+merchantListItem.get(position).details.quantity_available
+
+        holder.plusIcon.setOnClickListener {
+            merchantListItem.get(position).details.quantity_available++
+            holder.item_quantity.text =  ""+merchantListItem.get(position).details.quantity_available
+         }
+
+        holder.minusIcon.setOnClickListener {
+            merchantListItem.get(position).details.quantity_available--
+            holder.item_quantity.text =  ""+merchantListItem.get(position).details.quantity_available
+        }
+
     }
 
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
-        val layout_truck_quantity = view.layout_truck_quantity
+        //val layout_truck_quantity = view.layout_truck_quantity
         val booking_price = view.booking_price
         val customer_profile_pic = view.customer_profile_pic
         val chkbox_assign_merchnat = view.chkbox_assign_merchnat
         val assign_merchant_name = view.assign_merchant_name
         val merchant_distance = view.merchant_distatnce
+        val item_quantity = view.item_quantity
+        val plusIcon = view.add_quantity
+        val minusIcon =view.minus_quantity
     }
 }
 

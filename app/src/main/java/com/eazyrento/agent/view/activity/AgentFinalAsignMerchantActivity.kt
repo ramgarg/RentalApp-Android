@@ -71,7 +71,7 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
         holder.assign_merchant_name.text =merchantListItem.get(position).details.full_name
         holder.booking_price.text = ""+merchantListItem.get(position).details.price
 //        holder.booking_total_prcie = merchantListItem
-        holder.layout_truck_quantity.text =""+merchantListItem.get(position).details.quantity_available
+//        holder.layout_truck_quantity.text =""+merchantListItem.get(position).details.quantity_available
 
 //        Picasso.with(context).load(merchantListItem.get(position).details.)
         holder.chkbox_assign_merchnat.setOnCheckedChangeListener { buttonView, isChecked ->

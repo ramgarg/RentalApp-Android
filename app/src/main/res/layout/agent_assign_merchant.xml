@@ -64,6 +64,19 @@
         </TextView>
 
         </LinearLayout>
+
+
+        <TextView android:layout_width="wrap_content"
+                android:id="@+id/booking_price"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/bree_serif"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/booking_price"
+                android:layout_below="@+id/lyt_distance"
+                android:layout_height="wrap_content"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,27 +88,15 @@
                 android:fontFamily="@font/bree_serif"
                 android:textAlignment="center"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/lyt_distance"
+                android:layout_below="@id/booking_price"
                 android:text="@string/truck_quantity">
         </TextView>
-
-        <TextView android:layout_width="wrap_content"
-                android:id="@+id/booking_price"
-                android:textColor="@color/black"
-                android:layout_centerHorizontal="true"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/bree_serif"
-                android:textSize="@dimen/_14sdp"
-                android:text="@string/booking_price"
-                android:layout_below="@+id/layout_truck_quantity"
-                android:layout_height="wrap_content"/>
 
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_below="@+id/booking_price"
+                android:layout_below="@+id/layout_truck_quantity"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
@@ -108,7 +109,6 @@
                     android:background="@drawable/button_add"
                     android:padding="@dimen/_5sdp"
                     android:src="@mipmap/minus"
-                    android:onClick="onMinusClick"
                     />
 
             <TextView
@@ -130,7 +130,6 @@
                     android:background="@drawable/button_minus"
                     android:padding="@dimen/_5sdp"
                     android:src="@mipmap/plus"
-                    android:onClick="onPlusClick"
                     />
 
         </LinearLayout>
