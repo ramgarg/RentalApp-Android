@@ -222,6 +222,8 @@
     <string name="title_forgot_pass">Forgot password</string>
     <string name="title_OTP">OTP</string>
 
+
+
     <string-array name="SelectType">
     <item>Select Type</item>
     <item>Equipments</item>

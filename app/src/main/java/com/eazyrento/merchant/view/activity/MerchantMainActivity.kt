@@ -3,45 +3,82 @@ package com.eazyrento.merchant.view.activity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.merchant.MerchantNavigationActivity
+import com.eazyrento.merchant.view.fragment.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.merchant_activity_main.*
-import kotlinx.android.synthetic.main.merchant_header.view.*
+import kotlinx.android.synthetic.main.merchant_activity_main.bottom_navigation_view
+import kotlinx.android.synthetic.main.merchant_activity_main.navigation_view
 import kotlinx.android.synthetic.main.toolbar.*
 
-class MerchantMainActivity : MerchantNavigationActivity() {
+class MerchantMainActivity : BaseNavigationActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.merchant_activity_main)
 
-        bottom_navigation_view_merchant.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        setInitData()
+        /*specific data*/
+        setBottomNavigationItemsDynamic()
 
-        // set listener drawer
-        merchant_navigationView.setNavigationItemSelectedListener(this)
-        //tool bar menu click lisner , open drawer
-        img_menu.setOnClickListener {  merchant_drawer_layout.openDrawer(GravityCompat.START) }
-
-        // select home fragment
-        setHomeFragMent()
-
-        merchant_add_vehicle_btn.setOnClickListener{ MoveToAnotherComponent.moveToMerchantAddVehicle(this) }
-
-        val header = merchant_navigationView.getHeaderView(0)
-
-        header.merchant_edit_profile_menu.setOnClickListener {
-            MoveToAnotherComponent.moveToMerchantProfileActivity(this)
-            merchant_drawer_layout.closeDrawer(GravityCompat.START)
-        }
-        img_notification.setOnClickListener { MoveToAnotherComponent.moveToNotificationActivity(this) }
-
-        //btn_merchant_home_view_all.setOnClickListener{ MoveToAnotherComponent.moveToAgentBookingsFragment(this)}
-
+        navigation_view.menu.findItem(R.id.nav_my_address).isVisible = true
 
     }
+
+    fun setBottomNavigationItemsDynamic(){
+        val hashMap = HashMap<Int,MenuData>()
+
+        hashMap.put(R.id.navigation_common_first_pos,MenuData(R.mipmap.dashboard,R.string.dashboard))
+        hashMap.put(R.id.navigation_common_fourth_pos,MenuData(R.mipmap.profile_inactive,R.string.profile))
+
+        setNavigationIconAndTitle(hashMap)
+    }
+
+    override fun bottomNavigationListener(menuItemID: Int): Fragment? {
+
+        var fragment:Fragment?
+
+        when (menuItemID) {
+
+            R.id.navigation_common_first_pos-> {
+                fragment =
+                    MerchantDashFragment()
+            }
+            R.id.navigation_order-> {
+                fragment =
+                    MerchantOrderListFragment()
+                toolbar_title.text=getString(R.string.order)
+            }
+            R.id.navigation_home-> {
+                fragment =
+                    MerchantHomeFragment()
+                toolbar_title.text=getString(R.string.title_home)
+            }
+            R.id.navigation_common_fourth_pos-> {
+                fragment =
+                    MerchantProfileFragment()
+                toolbar_title.text=getString(R.string.profile)
+            }
+            R.id.navigation_support-> {
+                fragment =
+                    MerchantSupportFragment()
+                toolbar_title.text=getString(R.string.support)
+            }
+
+            else -> {
+                return null
+            }
+        }
+
+        return fragment
+
+    }
+
+
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
@@ -53,7 +90,7 @@ class MerchantMainActivity : MerchantNavigationActivity() {
     }
     fun setHomeFragMent()
     {
-        bottom_navigation_view_merchant.selectedItemId = R.id.merchant_navigation_home
+        bottom_navigation_view.selectedItemId = R.id.merchant_navigation_home
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -62,6 +99,20 @@ class MerchantMainActivity : MerchantNavigationActivity() {
         if (resultCode== Activity.RESULT_OK && requestCode ==Constant.MERCHANT_HOME_FRAGMENT_REQUEST_CODE){
             setHomeFragMent()
         }
+    }
+
+    override fun helpAndSupport() {
+        moveToSelectedFragment(MerchantSupportFragment())
+    }
+
+    override fun addNotes() {
+    }
+
+    override fun viewPaymentHistory() {
+    }
+
+    override fun viewMyAddress() {
+        MoveToAnotherComponent.moveToMerchantAddressActivity(this)
     }
 
 }

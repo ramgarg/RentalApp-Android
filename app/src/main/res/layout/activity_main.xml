@@ -17,7 +17,7 @@
         <FrameLayout
                android:layout_below="@+id/toolbar_header"
                 android:layout_width="match_parent"
-                android:layout_above="@+id/bottom_view"
+                android:layout_above="@+id/bottom_navigation_view"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:id="@+id/main_container"
@@ -33,7 +33,35 @@
                 android:layout_alignParentTop="true"
                 android:visibility="visible"/>
 
+        <!-- Bottom navigation bar-->
         <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_alignParentBottom="true"
+                app:menu="@menu/bottom_menu"
+                app:itemTextColor="@drawable/item_selector"
+                app:itemIconTint="@drawable/item_selector"
+                android:background="@drawable/bottom_navigation_gradient"
+                >
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </RelativeLayout>
+    <!--drawer layout naviagtion view left side-->
+    <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/navigation_drawer"
+            android:theme="@style/NavigationTheme"
+            app:menu="@menu/drawer_menu"
+            app:headerLayout="@layout/header"
+            android:layout_gravity="start"
+            />
+
+</androidx.drawerlayout.widget.DrawerLayout>
+
+        <!--<com.google.android.material.bottomnavigation.BottomNavigationView
                 android:layout_width="match_parent"
                 android:id="@+id/bottom_view"
                 android:layout_alignParentBottom="true"
@@ -45,20 +73,6 @@
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    </RelativeLayout>
-
-    <RelativeLayout android:layout_width="match_parent"
-                    android:background="#90000000"
-                    android:id="@+id/layout_loading"
-                    android:visibility="gone"
-                    android:layout_height="match_parent"
-            >
-        <ImageView
-                android:id="@+id/img_gif"
-                android:layout_centerInParent="true"
-                android:layout_width="@dimen/_200sdp"
-                android:layout_gravity="center"
-                android:layout_height="@dimen/_200sdp"/>
     </RelativeLayout>
 
 
@@ -73,4 +87,4 @@
             android:layout_gravity="start"/>
 
 
-</androidx.drawerlayout.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout> -->
