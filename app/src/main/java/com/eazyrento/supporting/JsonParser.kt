@@ -18,7 +18,7 @@ class MyJsonParser{
         *
         * */
 
-        inline fun <reified T>convertJSONListIntoList(jsonArray: JsonArray?): List<T>?{
+        inline fun <reified T>convertJSONListIntoList(jsonArray: JsonArray?): ArrayList<T>?{
 
             jsonArray?.let {
 

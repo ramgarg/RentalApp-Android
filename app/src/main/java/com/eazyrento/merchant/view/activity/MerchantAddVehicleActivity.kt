@@ -57,12 +57,19 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
             return
         }
          if(data is JsonElement){
-             val list:List<ProductCateItem>? = MyJsonParser.convertJSONListIntoList(MyJsonParser.JsonArrayFromJsonObject(data.asJsonObject,selectMasterCatName))
-                setSpinnerAdapter(list,R.id.sp_select_category)
+             val list:ArrayList<ProductCateItem>? = MyJsonParser.convertJSONListIntoList(MyJsonParser.JsonArrayFromJsonObject(data.asJsonObject,selectMasterCatName))
+               // adding others option
+             list!!.add(ProductCateItem("","","",resources.getString(R.string.others),-1))
+             setSpinnerAdapter(list,R.id.sp_select_category)
              return
         }
         else if(data is ProductSubCategoriesResModel){
+
+             data.add(ProductSubCategoriesModelResItem("",-1,"",resources.getString(R.string.others)))
+
             setSpinnerAdapter(data,R.id.sp_select_subcategory)
+             //recycler in bottom add
+             setRecyclerAdapter(data)
              return
         }
 
@@ -79,8 +86,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
         spinnerSelectType.adapter = adapter
         spinnerSelectType.onItemSelectedListener = this
 
-//        recycler in bottom add
-      setRecyclerAdapter(list)
+
     }
 
     /*Spinner selection*/
@@ -98,21 +104,37 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
                    val masterResModelItem = parent?.getItemAtPosition(position) as MasterResModelItem
 
                     selectMasterCatName = masterResModelItem.name
-                    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,selectMasterCatName)
                     getProductByMasterCateName(selectMasterCatName)
                 }
                 R.id.sp_select_category ->{
+
                     val vehicle = parent?.getItemAtPosition(position) as ProductCateItem
-                    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,""+vehicle.category_name)
+
+                    if (vehicle.id==-1) {
+                        notifyToAdmin()
+                        return
+                    }
                     getProSubcategoryByProName(vehicle.category_name)
                 }
                 R.id.sp_select_subcategory ->{
+
                     val subCategories = parent?.getItemAtPosition(position) as ProductSubCategoriesModelResItem
-                    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,""+subCategories.subcategory_name)
+
+                    if (subCategories.id==-1) {
+                        notifyToAdmin()
+                        return
+                    }
 
                 }
             }
 
+    }
+    /*
+    * Notify admin
+    * */
+
+    private fun notifyToAdmin(){
+        MoveToAnotherComponent.moveToActivityNormal<MerchantNotifyAdminActivity>(this)
     }
 
     /*

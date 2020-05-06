@@ -1,5 +1,6 @@
 package com.eazyrento.merchant.view.activity
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.R
@@ -71,12 +72,12 @@ class MerchantNotifyAdminActivity : BaseActivity() {
     override fun <T> onSuccessApiResult(data: T) {
         data?.let {
             showToast(ValidationMessage.ADMIN_NOTIFY)
+            finishCurrentActivity(Activity.RESULT_OK)
 
                 //MoveToAnotherComponent.moveToListAddressActivity(this)
         }
     }
 
     override fun <T> moveOnSelecetedItem(type: T) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

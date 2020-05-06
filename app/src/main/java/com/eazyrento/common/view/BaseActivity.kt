@@ -16,6 +16,7 @@ import com.eazyrento.Constant
 import com.eazyrento.InternetNetworkConnection
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
+import com.eazyrento.merchant.view.activity.MerchantAddVehicleActivity
 import kotlinx.android.synthetic.main.thank_you_pop.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -30,8 +31,12 @@ open abstract class BaseActivity: AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+           try {
+               requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+           }catch (e:Exception){
+               e.printStackTrace()
+           }
 
-            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
     }
 
