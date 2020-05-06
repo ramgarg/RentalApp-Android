@@ -11,14 +11,15 @@ import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.forgotpassword.model.modelClass.OTPRequest
 import com.eazyrento.customer.forgotpassword.model.modelClass.OTPResponse
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.login.model.modelclass.ResendOTPRequest
 import com.eazyrento.login.viewmodel.LoginOTPViewModel
+import com.eazyrento.login.viewmodel.ResendOTPViewModel
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_otp.*
 import java.lang.NumberFormatException
 
 class OTPActivity :BaseActivity(){
 
-    var otp_flag=0
 
 //    var otpRequest = OTPRequest()
 
@@ -33,21 +34,19 @@ class OTPActivity :BaseActivity(){
     }
 
    fun onResendOTPClick(view:View){
-        otp_flag=Constant.RESEND_OTP
-
         val userID=intent.getIntExtra(Constant.INTENT_OTP_USER_ID,-1)
-      /*  callAPI()?.let {
+
+       callAPI()?.let {
             it.observeApiResult(
-                it.callAPIActivity<LoginOTPViewModel>(this)
-                    .OTPAPI(OTPRequest(userID,null),otp_flag)
+                it.callAPIActivity<ResendOTPViewModel>(this)
+                    .resendOTPAPI(ResendOTPRequest(userID))
                 , this, this
             )
-        } */
+        }
 
     }
 
     fun onContinueClick(view:View){
-        otp_flag=Constant.LOGIN
 
         val userID = intent.getIntExtra(Constant.INTENT_OTP_USER_ID,-1)
         var passcode:Int
@@ -68,7 +67,7 @@ class OTPActivity :BaseActivity(){
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<LoginOTPViewModel>(this)
-                    .OTPAPI(OTPRequest(userID,passcode),otp_flag)
+                    .OTPAPI(OTPRequest(userID,passcode))
                 , this, this
             )
         }
