@@ -3,12 +3,8 @@ package com.eazyrento.merchant.model.repository
 import androidx.lifecycle.LiveData
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
-import com.eazyrento.common.model.modelclass.ProductCategoriesResModel
-import com.eazyrento.common.model.modelclass.BookingDashboardResModel
-import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
-import com.eazyrento.customer.myaddress.model.repostory.api.AddressApi
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
-import com.eazyrento.merchant.model.modelclass.MerchantFeedbackReqModel
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.merchant.model.modelclass.MerchantNotifyAdminReqModelItem
 import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
 import com.eazyrento.merchant.model.repository.api.MerchantAPI
@@ -75,10 +71,10 @@ class MerchantNotifyAdminRepo :
 class MerchantFeedbackRepo :
     GenericRequestHandler<JsonElement>(){
 
-    fun merchantFeedback(merchantFeedbackReqmodel: MerchantFeedbackReqModel): LiveData<DataWrapper<JsonElement>> {
+    fun merchantFeedback(feedbackReqmodel: FeedbackReqModel): LiveData<DataWrapper<JsonElement>> {
 
         val call = ServiceGenrator.client.create(
-            MerchantAPI::class.java).merchantFeedback(merchantFeedbackReqmodel)
+            MerchantAPI::class.java).merchantFeedback(feedbackReqmodel)
         return doRequest(call)
     }
 

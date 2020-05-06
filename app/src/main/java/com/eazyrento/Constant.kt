@@ -26,6 +26,9 @@ interface Constant{
         const val INTENT_SUCCESS_ADDED_PRODUCT = "success"
         const val INTENT_NEW_ADDRESS_ADD = "add"
         const val INTENT_RESET_SUCCESSFULY ="reset"
+        const val INTENT_NOTE_ADDED ="sucess"
+
+        const val INTENT_RATE_REVIEWS ="sucess"
 
         const val INTENT_OTP_USER_ID ="user_id"
         const val INTENT_OTP_TO_LOGIN ="otp"

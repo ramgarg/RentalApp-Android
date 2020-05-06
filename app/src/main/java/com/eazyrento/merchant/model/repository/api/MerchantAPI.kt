@@ -1,13 +1,11 @@
 package com.eazyrento.merchant.model.repository.api
 
 import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
-import com.eazyrento.common.model.modelclass.ProductDetailsResModel
-import com.eazyrento.common.model.modelclass.ProductSubCategoriesResModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
-import com.eazyrento.merchant.model.modelclass.MerchantFeedbackReqModel
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.merchant.model.modelclass.MerchantNotifyAdminReqModelItem
 import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
 import com.eazyrento.webservice.PathURL
@@ -57,7 +55,7 @@ interface MerchantAPI {
     fun notifyAdmin(@Body merchantNotifyAdminReqModelItem: MerchantNotifyAdminReqModelItem): Call<JsonElement>
 
     @POST(PathURL.MerchantFeedback)
-    fun merchantFeedback(@Body merchantfeedbackReqModel: MerchantFeedbackReqModel): Call<JsonElement>
+    fun merchantFeedback(@Body merchantfeedbackReqModel: FeedbackReqModel): Call<JsonElement>
 
 
 }

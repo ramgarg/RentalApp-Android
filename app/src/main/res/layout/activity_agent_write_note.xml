@@ -76,7 +76,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ed_agent_note_desc">
+                app:layout_constraintTop_toBottomOf="@id/ed_agent_note_desc"
+                android:onClick="onSubmit"
+                >
+
 
         </Button>
     </androidx.constraintlayout.widget.ConstraintLayout>

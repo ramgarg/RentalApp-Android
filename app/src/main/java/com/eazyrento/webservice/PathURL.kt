@@ -23,6 +23,12 @@ class PathURL {
         const val FORGOT_PASSWORD = "/user/forget_password"
         const val RESET_PASSWORD  = "/user/reset_password"
 
+        const val UserAddNotes      = "/user/notes/create"
+        const val UserNotesList     = "/user/notes/list"
+        const val UserUpdateNote    = "user/notes/update/{id}"
+        const val UserDeleteNote    = "user/notes/delete/{id}"
+
+
         // Common
         const val MasterCategory      = "/product/masters"
         const val ProductCategory     = "/product/{master_name}/categories"
@@ -79,8 +85,7 @@ class PathURL {
         const val AgentFeedback                 = "/agent/feedback"
         const val AgentPayments                 = "/agent/payments/"
         const val AgentCollectCashPayment       = "/agent/collect_cash_payment"
-        const val AgentAddNotes                 = "/agent/notes/create"
-        const val AgentNotesList                 = "/agent/notes/list"
+
         const val AGENT_ACCEPTANCE_DECLINE =      "/agent/booking_action"
 
 

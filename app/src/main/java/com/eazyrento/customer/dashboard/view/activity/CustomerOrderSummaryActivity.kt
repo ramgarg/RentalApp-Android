@@ -9,8 +9,11 @@ import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAdapter
+import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
+import com.eazyrento.merchant.view.activity.RateAndReviewActivity
 import kotlinx.android.synthetic.main.activity_agent_order_summary.*
 import kotlinx.android.synthetic.main.activity_customer_order_summary.*
 import kotlinx.android.synthetic.main.activity_customer_order_summary.rec_user_order_summary
@@ -34,9 +37,13 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
     }
 
     private fun clickListenerOnViews(){
-       payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
-        order_rate_review.setOnClickListener { MoveToAnotherComponent.moveToRateAndReviewActivity(this) }
-        customer_payment_button.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
+       payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<PaymentHistoryActivity>(this) }
+        order_rate_review.setOnClickListener {
+
+            feedbackReqModel.agent_id = orderRes.agent_detail.id
+            rateAndReviews(feedbackReqModel)
+        }
+        customer_payment_button.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<PaymentActivity>(this) }
     }
 
     override fun <T> onSuccessApiResult(data: T) {
@@ -104,9 +111,5 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         rec_user_order_summary.adapter = recycleAdapterUsersHomeCard
     }
-
-
-
-
 
 }

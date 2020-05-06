@@ -50,30 +50,6 @@ interface CustomerAPI {
     @GET(PathURL.CustomnerOrderDetail)
     fun getCustomerOrderDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
 
-    /*
-      *customer product un available
-      * */
-    @POST(PathURL.CustomerProductUnavailable)
-    fun customerProductUnAvailable(loginReqModel: LoginRequest): Call<LoginRequest>
-
-    /*
-      *Make payment
-      * */
-    @POST(PathURL.MakePayment)
-    fun makePayment(loginReqModel: LoginRequest): Call<LoginRequest>
-
-    /*
-      *Make payment
-      * */
-    @POST(PathURL.PaymentList)
-    fun paymentList(loginReqModel: LoginRequest): Call<LoginRequest>
-
-    /*
-      *Customer feedback
-      * */
-    @POST(PathURL.CustomerFeedback)
-    fun customerFeedback(loginReqModel: LoginRequest): Call<LoginRequest>
-
     /*Customer booking list*/
 
     @GET(PathURL.CUSTOMER_MY_BOOKINGS)

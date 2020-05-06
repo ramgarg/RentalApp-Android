@@ -7,7 +7,10 @@ import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
+import com.eazyrento.merchant.view.activity.RateAndReviewActivity
 import kotlinx.android.synthetic.main.order_summary_template.tv_end_date_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_end_time_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_st_date_sel
@@ -18,7 +21,10 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 
 open abstract class OrderBaseSummaryActivity : BaseActivity() {
+
     lateinit var orderRes:CustomerOrderDetailsResModel
+    val feedbackReqModel = FeedbackReqModel()
+
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
@@ -27,13 +33,12 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
         callAPIOrderList(int)
 
+        topBarWithBackIconAndTitle(getString(R.string.order_summary))
+
+        /*
         ViewVisibility.isVisibleOrNot(this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.order_summary))
+            toolbar_title, getString(R.string.order_summary))*/
 
-        clickListenerOnViews()
-    }
-
-    private fun clickListenerOnViews(){
     }
 
 // order details
@@ -69,17 +74,6 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
         setOrderStatus(orderRes)
 
-        /*if(orderRes.agent_detail!=null){
-            users_view.visibility=View.VISIBLE
-            tv_users_name.text=orderRes.agent_detail.full_name
-            tv_users_tag.text= orderRes.agent_detail.mobile_number
-            //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
-        }
-        else{
-            users_view.visibility=View.INVISIBLE
-        }*/
-
-
     }
 
     fun setOrderStatus(orderRes: CustomerOrderDetailsResModel) {
@@ -94,14 +88,13 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
             }
         }
 
-
-        //tv_user_name.text=orderRes.agent_detail.full_name
-        //tv_user_tag.text= Constant.AGENT
-        //img_user_call.contentDescription=orderRes.agent_detail.mobile_number
-
-
     }
 
-//    abstract fun orderStatus(orderRes: CustomerOrderDetailsResModel)
+    fun rateAndReviews(feedbackReqModel: FeedbackReqModel){
+
+        feedbackReqModel.order_id = orderRes.order_id
+
+        MoveToAnotherComponent.openActivityWithParcelableParam<RateAndReviewActivity,FeedbackReqModel>(this,Constant.INTENT_RATE_REVIEWS,feedbackReqModel)
+    }
 
 }

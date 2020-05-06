@@ -100,8 +100,8 @@ class AgentMainActivity : BaseNavigationActivity(){
     }
 
     override fun addNotes() {
-        MoveToAnotherComponent.moveToMyNotesActivity(this)
-        toolbar_title.text=getString(R.string.mynotes)
+        MoveToAnotherComponent.moveToActivityNormal<AgentAddNoteActivity>(this)
+//        toolbar_title.text=getString(R.string.mynotes)
     }
 
     override fun viewPaymentHistory() {

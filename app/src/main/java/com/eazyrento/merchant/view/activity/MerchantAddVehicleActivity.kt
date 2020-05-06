@@ -23,7 +23,7 @@ import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.merchant_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
+class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedListener,
     InfalterViewAdapter {
 
     private var selectMasterCatName:String =""
@@ -33,9 +33,7 @@ class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
 
         setContentView(R.layout.merchant_add_vehicle)
 
-        ViewVisibility.isVisibleOrNot(
-            this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.add_product))
+        topBarWithBackIconAndTitle(getString(R.string.add_product))
 
         getMasterCategory()
 
@@ -166,7 +164,7 @@ class MerchantAddVehicle : BaseActivity(),AdapterView.OnItemSelectedListener,
             rec_add_veichle.adapter =
                 ProductVehiclesAdapter(
                     list,
-                    this@MerchantAddVehicle,
+                    this@MerchantAddVehicleActivity,
                     this
                 )
         /*}else{

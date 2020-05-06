@@ -14,6 +14,7 @@ import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.MerchantProductItem
 import com.eazyrento.merchant.view.activity.AddProductDailogActivity
+import com.eazyrento.merchant.view.activity.MerchantAddVehicleActivity
 import com.eazyrento.merchant.view.activity.MerchantMainActivity
 import com.eazyrento.merchant.view.activity.MerchantProductCategory
 import com.eazyrento.merchant.view.adapter.MerchantHomeCateAdapter
@@ -29,15 +30,13 @@ class MerchantHomeFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_merchant_home, container, false)
-
-
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        merchant_add_vehicle_btn.setOnClickListener{ MoveToAnotherComponent.moveToMerchantAddVehicle(requireContext()) }
+        merchant_add_vehicle_btn.setOnClickListener{ MoveToAnotherComponent.moveToActivityNormal<MerchantAddVehicleActivity>(requireContext()) }
 
         isDeleteProject = false
 

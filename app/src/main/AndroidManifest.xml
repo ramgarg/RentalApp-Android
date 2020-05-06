@@ -43,7 +43,7 @@
         />
 
 
-        <activity android:name="com.eazyrento.merchant.view.activity.MerchantAddVehicle"
+        <activity android:name="com.eazyrento.merchant.view.activity.MerchantAddVehicleActivity"
                 android:screenOrientation="unspecified"
 
                 />
@@ -162,6 +162,7 @@
 
         <activity android:name="com.eazyrento.agent.view.activity.AgentAddNoteActivity"
                 android:screenOrientation="unspecified"
+                android:launchMode="singleTask"
 
                 />
 

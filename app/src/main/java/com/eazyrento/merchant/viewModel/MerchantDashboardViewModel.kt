@@ -3,11 +3,8 @@ package com.eazyrento.merchant.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
-import com.eazyrento.common.model.modelclass.ProductCategoriesResModel
-import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
-import com.eazyrento.customer.myaddress.model.repostory.AddressCreateRepo
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
-import com.eazyrento.merchant.model.modelclass.MerchantFeedbackReqModel
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.merchant.model.modelclass.MerchantNotifyAdminReqModelItem
 import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
 import com.eazyrento.merchant.model.repository.*
@@ -53,9 +50,9 @@ class MerchantNotifyAdminViewModel:ViewModel(){
 }
 
 class MerchantFeedbackViewModel:ViewModel(){
-    fun merchantFeedback(merchantFeedbackReqModel: MerchantFeedbackReqModel): LiveData<DataWrapper<JsonElement>> {
+    fun merchantFeedback(feedbackReqModel: FeedbackReqModel): LiveData<DataWrapper<JsonElement>> {
         return MerchantFeedbackRepo()
-            .merchantFeedback(merchantFeedbackReqModel)
+            .merchantFeedback(feedbackReqModel)
     }
 
 }

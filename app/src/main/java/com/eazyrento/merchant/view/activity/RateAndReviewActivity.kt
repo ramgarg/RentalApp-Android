@@ -1,22 +1,26 @@
 package com.eazyrento.merchant.view.activity
 
+import android.app.Activity
 import android.os.Bundle
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.merchant.model.modelclass.MerchantFeedbackReqModel
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.merchant.viewModel.MerchantFeedbackViewModel
 import kotlinx.android.synthetic.main.activity_rate_and_review.*
 
 class RateAndReviewActivity :BaseActivity() {
 
-   val merchantFeedbackModelItem= MerchantFeedbackReqModel()
+    lateinit var feedbackModelItem:FeedbackReqModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rate_and_review)
         topBarWithBackIconAndTitle(resources.getString(R.string.feedback))
          initView()
+
+        feedbackModelItem = intent.getParcelableExtra<FeedbackReqModel>(Constant.INTENT_RATE_REVIEWS)
     }
 
     private fun initView() {
@@ -24,22 +28,21 @@ class RateAndReviewActivity :BaseActivity() {
     }
 
     private fun moveTOSave() {
+
         if (checkValidation())
             return
-        setRatingListItem()
+
+        sendFeedback()
     }
 
-    private fun setRatingListItem() {
-        merchantFeedbackModelItem.review=ed_rating.text.toString()
-        merchantFeedbackModelItem.agent_id=5
-        merchantFeedbackModelItem.customer_id=10
-        merchantFeedbackModelItem.order_id="1"
-        merchantFeedbackModelItem.rating=1.0
+    private fun sendFeedback() {
+        feedbackModelItem.review=ed_rating.text.toString()
+        feedbackModelItem.rating=rating_bar.rating
 
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<MerchantFeedbackViewModel>(this)
-                    .merchantFeedback(merchantFeedbackModelItem)
+                    .merchantFeedback(feedbackModelItem)
                 , this, this
             )
         }
@@ -48,25 +51,19 @@ class RateAndReviewActivity :BaseActivity() {
     override fun <T> onSuccessApiResult(data: T) {
         data?.let {
             showToast(ValidationMessage.FEEDBACK_SENT)
-
-            //MoveToAnotherComponent.moveToListAddressActivity(this)
+            finishCurrentActivity(Activity.RESULT_OK)
         }
     }
 
     private fun checkValidation(): Boolean {
-        when {
-            ed_rating.text.toString().isEmpty()->showToast(ValidationMessage.VALID_RATING)
 
-            else-> {
-                return false
-            }
+        if (ed_rating.text.toString().isEmpty() || rating_bar.rating==0.0f){
+            showToast(ValidationMessage.VALID_RATING)
+            return true
         }
-        return true
-
-
+        return false
     }
 
     override fun <T> moveOnSelecetedItem(type: T) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

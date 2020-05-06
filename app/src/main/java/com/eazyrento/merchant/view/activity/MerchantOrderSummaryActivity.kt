@@ -49,7 +49,11 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         //agent_update_order_btn.setOnClickListener { MoveToAnotherComponent.moveToAgentUpdateOrderSummaryActivity(this) }
         //payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
         //tv_pay_now.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
-        order_rate_review.setOnClickListener { MoveToAnotherComponent.moveToRateAndReviewActivity(this) }
+        order_rate_review.setOnClickListener {
+            feedbackReqModel.customer_id = orderRes.customer_detail.id
+            feedbackReqModel.agent_id = orderRes.agent_detail.id
+            rateAndReviews(feedbackReqModel)
+        }
     }
 
 

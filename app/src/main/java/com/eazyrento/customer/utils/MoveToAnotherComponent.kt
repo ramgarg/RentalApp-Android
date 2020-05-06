@@ -26,25 +26,10 @@ class MoveToAnotherComponent {
 
     companion object{
 
-       /* fun moveToAgentProfileActivity(context: Context){
-            context.startActivity(Intent(context, AgentProfileActivity::class.java))
-        }*/
-        fun moveToLoginUserActivity(context: Context){
-            context.startActivity(Intent(context, LoginUserActivity::class.java))
-        }
-
         fun moveToListAddressActivity(context: Context){
             context.startActivity(Intent(context, MyAddressListActivity::class.java))
         }
-
-        fun moveToMerchantAddVehicle(context: Context){
-            context.startActivity(Intent(context, MerchantAddVehicle::class.java))
-        }
-
-        fun moveToMerchantNotifyAdmin(context: Context){
-            context.startActivity(Intent(context, MerchantNotifyAdminActivity::class.java))
-        }
-
+        
         fun moveToMerchantMainActivity(context: Context){
             context.startActivity(Intent(context, MerchantMainActivity::class.java))
         }
@@ -55,14 +40,6 @@ class MoveToAnotherComponent {
 
         fun moveToMerchantAddressActivity(context: Context){
             context.startActivity(Intent(context, MerchantAddressListActivity::class.java))
-        }
-
-        fun moveToMyNotesActivity(context: Context){
-            context.startActivity(Intent(context, AgentAddNoteActivity::class.java))
-        }
-
-        fun moveToWriteNotesActivity(context: Context){
-            context.startActivity(Intent(context, AgentWriteNoteActivity::class.java))
         }
 
         fun moveToAddNewAddressActivity(context: Context){
@@ -95,46 +72,10 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, NotificationActivity::class.java))
         }
 
-       /* fun moveToMerchantProfileActivity(context: Context){
-            context.startActivity(Intent(context, MerchantProfileActivity::class.java))
-        }
-
-        fun moveToProfileActivity(context: Context){
-            context.startActivity(Intent(context, ProfileActivity::class.java))
-        }*/
-
-       /* fun moveToOrderSummaryActivity(context: Context){
-            context.startActivity(Intent(context, OrderSummaryActivity::class.java))
-        }*/
-
-        fun moveToAgentOrderSummaryActivity(context: Context){
-            context.startActivity(Intent(context, AgentOrderSummaryActivity::class.java))
-        }
-
-        fun moveToAgentBookingsFragment(context: Context){
-            context.startActivity(Intent(context, AgentBookingsFragment::class.java))
-        }
-
-
-        fun moveToMerchantOrderSummaryActivity(context: Context){
-            context.startActivity(Intent(context, MerchantOrderSummaryActivity::class.java))
-        }
-
-        fun moveToOrderReviewActivity(context: Context){
-            context.startActivity(Intent(context, CustomerBookingSubmitReviewActivity::class.java))
-        }
-
-        fun moveToRateAndReviewActivity(context: Context){
-            context.startActivity(Intent(context, RateAndReviewActivity::class.java))
-        }
-
         fun moveToNotifyAdminActivity(context: Context){
             context.startActivity(Intent(context, NotifyToAdminActivity::class.java))
         }
 
-        fun moveToPaymentActivity(context: Context){
-            context.startActivity(Intent(context, PaymentActivity::class.java))
-        }
 
         fun moveToCategoryActivity(context: Context){
             context.startActivity(Intent(context, ProductCategoryActivity::class.java))

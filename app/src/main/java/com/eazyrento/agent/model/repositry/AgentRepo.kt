@@ -1,10 +1,7 @@
 package com.eazyrento.agent.model.repositry
 
 import androidx.lifecycle.LiveData
-import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModel
-import com.eazyrento.agent.model.modelclass.AgentMerchantFindNearByResModel
-import com.eazyrento.agent.model.modelclass.AgentNotesListResModel
-import com.eazyrento.agent.model.modelclass.AssignMerchantsReqModel
+import com.eazyrento.agent.model.modelclass.*
 import com.eazyrento.agent.model.repositry.api.AgentAPI
 
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
@@ -63,9 +60,9 @@ class AgentNotesListRepo :
 }
 
 class AgentAddNotesRepo :
-    GenericRequestHandler<JsonElement>(){
+    GenericRequestHandler<AgentAddNoteReqModelItem>(){
 
-    fun agentNotesAdd(agentAddNoteReqModel: AgentAddNoteReqModel): LiveData<DataWrapper<JsonElement>> {
+    fun agentNotesAdd(agentAddNoteReqModel: AgentAddNoteReqModelItem): LiveData<DataWrapper<AgentAddNoteReqModelItem>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             AgentAPI::class.java).createAgentNote(agentAddNoteReqModel)

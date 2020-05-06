@@ -64,7 +64,7 @@ interface ValidationMessage{
         const val VALID_FUEL_TYPE = "Enter fuel type"
         const val VALID_CAPACITY ="Enter capacity"
         const val ADMIN_NOTIFY ="Notification sent to Admin"
-        const val VALID_RATING = "Enter your feedback"
+        const val VALID_RATING = "Enter your feedback and Rating"
         const val FEEDBACK_SENT = "Feedback Sent"
 
 
