@@ -9,6 +9,7 @@ import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.login.model.modelclass.ProfileModelReqRes
 import com.eazyrento.login.viewmodel.ProfileUserViewModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.merchant_fragment_profile.*
 
 class MerchantProfileFragment : BaseFragment() {
@@ -36,10 +37,14 @@ class MerchantProfileFragment : BaseFragment() {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
         val userProfile = data as ProfileModelReqRes
+
         tv_merchant_name.text=userProfile.user_profile.full_name
         merchant_email.text=userProfile.user_profile.email
         merchant_phone.text=userProfile.user_profile.mobile_number
         merchant_address.text=userProfile.user_profile.address_info.address_line+" "+userProfile.user_profile.address_info.state+" "+userProfile.user_profile.address_info.country
+
+        Picasso.with(requireContext()).load(userProfile.user_profile.profile_image).into(profile_img)
+
 
     }
 }

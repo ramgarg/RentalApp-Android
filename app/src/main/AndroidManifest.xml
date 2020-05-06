@@ -42,10 +42,7 @@
 
         />
 
-        <activity android:name="com.eazyrento.agent.view.activity.AgentProfileActivity"
-                android:screenOrientation="unspecified"
 
-                />
         <activity android:name="com.eazyrento.merchant.view.activity.MerchantAddVehicle"
                 android:screenOrientation="unspecified"
 
@@ -103,10 +100,10 @@
 
                 />
 
-        <activity android:name="com.eazyrento.merchant.view.activity.MerchantProfileActivity"
+       <!-- <activity android:name="com.eazyrento.merchant.view.activity.MerchantProfileActivity"
                 android:screenOrientation="unspecified"
 
-                />
+                />-->
 
         <activity android:name="com.eazyrento.customer.payment.view.PaymentHistoryActivity"
                   android:screenOrientation="unspecified"
