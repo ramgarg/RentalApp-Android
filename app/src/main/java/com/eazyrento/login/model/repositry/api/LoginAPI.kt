@@ -29,7 +29,7 @@ interface LoginAPI {
     fun otp(@Body otpRequest: OTPRequest): Call<OTPResponse>
 
     @POST(PathURL.RESEND_OTP)
-    fun resendOTP(@Body otpRequest: OTPRequest): Call<OTPResponse>
+    fun resendOTP(@Body resendOTPRequest: ResendOTPRequest): Call<OTPResponse>
 
     /*
     * get user profile

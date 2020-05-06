@@ -22,7 +22,9 @@ import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
 import com.eazyrento.supporting.OnPiclImageToBase64
 import com.eazyrento.supporting.UploadImageFromDevice
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class ProfileActivity : BaseActivity() {
@@ -45,6 +47,9 @@ class ProfileActivity : BaseActivity() {
 
         userProfile = EazyRantoApplication.profileData
 
+        setProfileData(userProfile)
+
+
         documentSpinnerData()
 
         btn_save.setOnClickListener { onClickSaveButton() }
@@ -53,6 +58,27 @@ class ProfileActivity : BaseActivity() {
             MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,userProfile?.address_info!!.id)
 
         }
+
+    }
+
+    private fun setProfileData(userProfile: UserProfile?) {
+        ed_full_name.setText(userProfile?.full_name)
+        ed_user_name.setText(userProfile?.username_choice)
+        ed_email.setText(userProfile?.email)
+        ed_country.setText(userProfile?.country_code)
+        ed_phone.setText(userProfile?.mobile_number)
+        ed_dob.setText(userProfile?.dob)
+        ed_company_name.setText(userProfile?.buisness)
+        ed_des.setText(userProfile?.description)
+        tv_add_country.setText(userProfile?.address_info?.country)
+        tv_add_city.setText(userProfile?.address_info?.city)
+        tv_add_line.setText(userProfile?.address_info?.address_line)
+        Picasso.with(this).load(userProfile?.profile_image).into(img_profile)
+
+
+       // sp_gender.setSelection(userProfile?.gender)
+        //  sp_select_document.setSelection(userProfile?.attached_document)
+
 
     }
 

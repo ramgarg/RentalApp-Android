@@ -8,10 +8,7 @@ import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.customer.forgotpassword.model.modelClass.OTPRequest
 import com.eazyrento.customer.forgotpassword.model.modelClass.OTPResponse
-import com.eazyrento.login.model.modelclass.ForgotPasswordRequest
-import com.eazyrento.login.model.modelclass.ForgotPasswordResponse
-import com.eazyrento.login.model.modelclass.LoginUserReqModel
-import com.eazyrento.login.model.modelclass.LoginUserResModel
+import com.eazyrento.login.model.modelclass.*
 import com.eazyrento.login.model.repositry.api.LoginAPI
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
@@ -31,20 +28,27 @@ class LoginUserRepo:
 class LoginOTPRepo:
     GenericRequestHandler<OTPResponse>() {
 
-    fun OTP_API( otpRequest: OTPRequest,otp_flag:Int): LiveData<DataWrapper<OTPResponse>> {
+    fun OTP_API( otpRequest: OTPRequest): LiveData<DataWrapper<OTPResponse>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
-        if (otp_flag == Constant.LOGIN) {
+
             val call = ServiceGenrator.client.create(
                 LoginAPI::class.java
             ).otp(otpRequest)
             return doRequest(call)
-        } else {
+        }
+
+}
+class ResendOTPRepo:
+    GenericRequestHandler<OTPResponse>() {
+
+    fun RESEND_OTP_API( resendotpRequest: ResendOTPRequest): LiveData<DataWrapper<OTPResponse>> {
+//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+
             val call = ServiceGenrator.client.create(
                 LoginAPI::class.java
-            ).resendOTP(otpRequest)
+            ).resendOTP(resendotpRequest)
             return doRequest(call)
 
-        }
     }
 
 }
