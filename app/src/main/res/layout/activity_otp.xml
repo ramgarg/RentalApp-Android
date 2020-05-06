@@ -87,6 +87,18 @@
                 android:onClick="onContinueClick"
                 />
 
+        <TextView android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:textColor="@color/black"
+                android:id="@+id/tv_forgot_password"
+                android:fontFamily="@font/bree_serif"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/resend_otp"
+                android:layout_height="wrap_content"
+                android:onClick="onResendOTPClick"
+                />
+
     </LinearLayout>
 
 </LinearLayout>

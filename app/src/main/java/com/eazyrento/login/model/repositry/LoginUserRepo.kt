@@ -1,6 +1,7 @@
 package com.eazyrento.login.model.repositry
 
 import androidx.lifecycle.LiveData
+import com.eazyrento.Constant
 import com.google.gson.Gson
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
@@ -30,11 +31,20 @@ class LoginUserRepo:
 class LoginOTPRepo:
     GenericRequestHandler<OTPResponse>() {
 
-    fun OTP_API( otpRequest: OTPRequest): LiveData<DataWrapper<OTPResponse>> {
+    fun OTP_API( otpRequest: OTPRequest,otp_flag:Int): LiveData<DataWrapper<OTPResponse>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
-        val call = ServiceGenrator.client.create(
-            LoginAPI::class.java).otp(otpRequest)
-        return doRequest(call)
+        if (otp_flag == Constant.LOGIN) {
+            val call = ServiceGenrator.client.create(
+                LoginAPI::class.java
+            ).otp(otpRequest)
+            return doRequest(call)
+        } else {
+            val call = ServiceGenrator.client.create(
+                LoginAPI::class.java
+            ).resendOTP(otpRequest)
+            return doRequest(call)
+
+        }
     }
 
 }

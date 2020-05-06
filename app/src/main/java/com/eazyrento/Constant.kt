@@ -29,6 +29,8 @@ interface Constant{
 
         const val INTENT_OTP_USER_ID ="user_id"
         const val INTENT_OTP_TO_LOGIN ="otp"
+        const val RESEND_OTP = 2
+        const val LOGIN=1
 
 
         const val INTENT_BOOKING_LIST = "booking_list"

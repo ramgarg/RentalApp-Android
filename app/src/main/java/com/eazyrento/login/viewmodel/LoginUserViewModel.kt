@@ -24,8 +24,8 @@ class LoginUserViewModel :ViewModel() {
 
 class LoginOTPViewModel :ViewModel() {
 
-    fun OTPAPI(otp: OTPRequest): LiveData<DataWrapper<OTPResponse>> {
-        return LoginOTPRepo().OTP_API(otp)
+    fun OTPAPI(otp: OTPRequest,otp_flag:Int): LiveData<DataWrapper<OTPResponse>> {
+        return LoginOTPRepo().OTP_API(otp,otp_flag)
     }
 }
 

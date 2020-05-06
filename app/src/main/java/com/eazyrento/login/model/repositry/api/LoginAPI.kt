@@ -25,8 +25,11 @@ interface LoginAPI {
     @POST(PathURL.FORGOT_PASSWORD)
     fun forgotPassword(@Body forgotPasswordRequest: ForgotPasswordRequest): Call<JsonElement>
 
-    @POST(PathURL.RESEND_OTP)
+    @POST(PathURL.VERIFY_PASSCODE)
     fun otp(@Body otpRequest: OTPRequest): Call<OTPResponse>
+
+    @POST(PathURL.RESEND_OTP)
+    fun resendOTP(@Body otpRequest: OTPRequest): Call<OTPResponse>
 
     /*
     * get user profile

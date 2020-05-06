@@ -18,6 +18,8 @@ import java.lang.NumberFormatException
 
 class OTPActivity :BaseActivity(){
 
+    var otp_flag=0
+
 //    var otpRequest = OTPRequest()
 
     override fun <T> moveOnSelecetedItem(type: T) {
@@ -30,7 +32,22 @@ class OTPActivity :BaseActivity(){
 
     }
 
+   fun onResendOTPClick(view:View){
+        otp_flag=Constant.RESEND_OTP
+
+        val userID=intent.getIntExtra(Constant.INTENT_OTP_USER_ID,-1)
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<LoginOTPViewModel>(this)
+                    .OTPAPI(OTPRequest(userID,null),otp_flag)
+                , this, this
+            )
+        }
+
+    }
+
     fun onContinueClick(view:View){
+        otp_flag=Constant.LOGIN
 
         val userID = intent.getIntExtra(Constant.INTENT_OTP_USER_ID,-1)
         var passcode:Int
@@ -51,7 +68,7 @@ class OTPActivity :BaseActivity(){
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<LoginOTPViewModel>(this)
-                    .OTPAPI(OTPRequest(userID,passcode))
+                    .OTPAPI(OTPRequest(userID,passcode),otp_flag)
                 , this, this
             )
         }

@@ -226,7 +226,7 @@
     <string name="title_OTP">OTP</string>
     <string name="capacity">Capacity</string>
     <string name="power">Power</string>
-
+    <string name="resend_otp">Resend OTP</string>
 
 
     <string-array name="SelectType">
