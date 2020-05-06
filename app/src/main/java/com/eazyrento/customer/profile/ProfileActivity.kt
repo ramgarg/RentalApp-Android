@@ -33,6 +33,7 @@ class ProfileActivity : BaseActivity() {
     private val uploadImageFromDevice = UploadImageFromDevice()
     private var selectProfID:String?=null
     private var selectBase64String:String?=null
+    private var selectGenderID:String?=null
 
 
     override fun <T> moveOnSelecetedItem(type: T) {
@@ -46,11 +47,9 @@ class ProfileActivity : BaseActivity() {
         topBarWithBackIconAndTitle("Profile")
 
         userProfile = EazyRantoApplication.profileData
-
-        setProfileData(userProfile)
-
-
         documentSpinnerData()
+        genderSpinnerData()
+        setProfileData(userProfile)
 
         btn_save.setOnClickListener { onClickSaveButton() }
 
@@ -62,6 +61,7 @@ class ProfileActivity : BaseActivity() {
     }
 
     private fun setProfileData(userProfile: UserProfile?) {
+
         ed_full_name.setText(userProfile?.full_name)
         ed_user_name.setText(userProfile?.username_choice)
         ed_email.setText(userProfile?.email)
@@ -74,11 +74,8 @@ class ProfileActivity : BaseActivity() {
         tv_add_city.setText(userProfile?.address_info?.city)
         tv_add_line.setText(userProfile?.address_info?.address_line)
         Picasso.with(this).load(userProfile?.profile_image).into(img_profile)
-
-
-       // sp_gender.setSelection(userProfile?.gender)
-        //  sp_select_document.setSelection(userProfile?.attached_document)
-
+       //sp_gender.setSelection((selectGenderID)!!.toInt())
+        // sp_select_document.setSelection((selectProfID)!!.toInt())
 
     }
 
@@ -183,6 +180,31 @@ class ProfileActivity : BaseActivity() {
                                     selectBase64String =image64
                                 }
                             })
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
+            }
+        }
+    }
+
+    private fun genderSpinnerData() {
+        val gender = resources.getStringArray(R.array.Gender)
+
+        val spinner = findViewById<Spinner>(R.id.sp_gender)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, gender)
+            spinner.adapter = adapter
+
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    if(position==0){
+                        selectGenderID=null
+                    }
+                    else{
+                        selectGenderID = this@ProfileActivity.resources.getStringArray(R.array.Gender)[position]
                     }
                 }
 

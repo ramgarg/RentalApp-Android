@@ -237,6 +237,11 @@
     <item>Vehicles</item>
     <item>All</item>
 </string-array>
+    <string-array name="Gender">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
     <string-array name="SelectCategory">
         <item>Select Category</item>
     <item>Big-Equipment</item>
