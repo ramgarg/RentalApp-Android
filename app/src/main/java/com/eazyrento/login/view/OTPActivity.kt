@@ -36,13 +36,13 @@ class OTPActivity :BaseActivity(){
         otp_flag=Constant.RESEND_OTP
 
         val userID=intent.getIntExtra(Constant.INTENT_OTP_USER_ID,-1)
-        callAPI()?.let {
+      /*  callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<LoginOTPViewModel>(this)
                     .OTPAPI(OTPRequest(userID,null),otp_flag)
                 , this, this
             )
-        }
+        } */
 
     }
 
