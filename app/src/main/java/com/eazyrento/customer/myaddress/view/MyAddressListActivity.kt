@@ -48,7 +48,7 @@ open class MyAddressListActivity : BaseActivity() {
             EventBus.getDefault().postSticky("AddNew")
 //            RxBus.publish(EventModel("AddNew"))
 
-            MoveToAnotherComponent.moveToAddNewAddressActivity(this)
+            add_new_address.setOnClickListener { MoveToAnotherComponent.moveToAddNewAddressActivity(this)}
 
         }
 

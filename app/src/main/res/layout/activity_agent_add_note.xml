@@ -7,11 +7,6 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-
-<RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
     <include layout="@layout/toolbar"
             android:id="@+id/toolbar"
             />
@@ -20,36 +15,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/toolbar"
             android:orientation="vertical">
-
-        <TextView android:layout_width="wrap_content"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:text="@string/add_your_notes_here"
-                android:layout_gravity="center"
-                style="@style/AgentBoldTextCard"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
-
-    </LinearLayout>
-
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/agent_rec_notes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:visibility="gone"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+                android:id="@+id/rec_note_list">
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
@@ -71,16 +44,4 @@
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-
-
-</RelativeLayout>
-    <!--<com.google.android.material.navigation.NavigationView
-            android:id="@+id/agent_navigation_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/navigation_drawer"
-            app:menu="@menu/agent_drawer_menu"
-            app:headerLayout="@layout/agent_header"
-            android:layout_gravity="start"
-            />-->
 </RelativeLayout>

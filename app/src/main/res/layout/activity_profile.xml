@@ -375,7 +375,6 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/button_gradient"
                     android:fontFamily="@font/bree_serif"
-                    android:onClick="onClickSaveButton"
                     android:text="@string/save"
                     android:textAllCaps="false"
                     android:textColor="#fff"
