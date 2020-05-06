@@ -2,16 +2,20 @@ package com.eazyrento.agent.view
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import com.eazyrento.Constant
-import com.eazyrento.agent.view.fragment.*
+import com.eazyrento.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import com.eazyrento.R
+import com.eazyrento.common.view.ApiResult
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.common.view.LiveDataActivityClass
+import com.eazyrento.customer.profile.ProfileActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.login.model.modelclass.ProfileModelReqRes
+import com.eazyrento.login.model.modelclass.UserProfile
+import com.eazyrento.login.viewmodel.ProfileUserViewModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -23,6 +27,27 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        getProfileAPI()
+    }
+    private fun getProfileAPI(){
+        if(InternetNetworkConnection.isNetworkInternetAvailbale(this)) {
+
+            val livedata = LiveDataActivityClass(object :ApiResult{
+                override fun <T> onSuccessApiResult(data: T) {
+                    EazyRantoApplication.profileData = (data as ProfileModelReqRes).user_profile
+
+                    EazyRantoApplication.profileData?.let { setTopHeaderData(it)}
+                }
+
+            })
+            livedata.observeApiResult(
+                livedata.callAPIActivity<ProfileUserViewModel>(this).getProfileUser(),this,this
+            )
+     }
     }
 
     fun setHomeFragment(){
@@ -57,7 +82,7 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         setBottomNavigationListener()
         setLeftSliderNavigationListener()
 
-        setTopHeaderListener()
+
         topBarWithMenuIconAndTitleMessage(resources.getString(R.string.title_home))
 
         // select home fragment
@@ -76,11 +101,16 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     }
 
 // profile view
-    protected fun setTopHeaderListener(){
-        val header = navigation_view.getHeaderView(0)
+    private fun setTopHeaderData(user_profile: UserProfile) {
+
+    val header = navigation_view.getHeaderView(0)
+    header.user_name_menu.text=user_profile.full_name
+    header.user_type_menu.text =Session.getInstance(this)?.getUserRole()
+
+    Picasso.with(this).load(user_profile.profile_image).into(header.profile_img_menu)
 
         header.edit_profile_menu.setOnClickListener {
-            MoveToAnotherComponent.moveToAgentProfileActivity(this)
+            MoveToAnotherComponent.moveToActivityNormal<ProfileActivity>(this)
             drawer_layout.closeDrawer(GravityCompat.START)
         }
     }

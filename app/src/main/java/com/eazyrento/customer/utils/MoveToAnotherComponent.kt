@@ -26,9 +26,9 @@ class MoveToAnotherComponent {
 
     companion object{
 
-        fun moveToAgentProfileActivity(context: Context){
+       /* fun moveToAgentProfileActivity(context: Context){
             context.startActivity(Intent(context, AgentProfileActivity::class.java))
-        }
+        }*/
         fun moveToLoginUserActivity(context: Context){
             context.startActivity(Intent(context, LoginUserActivity::class.java))
         }
@@ -95,13 +95,13 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, NotificationActivity::class.java))
         }
 
-        fun moveToMerchantProfileActivity(context: Context){
+       /* fun moveToMerchantProfileActivity(context: Context){
             context.startActivity(Intent(context, MerchantProfileActivity::class.java))
         }
 
         fun moveToProfileActivity(context: Context){
             context.startActivity(Intent(context, ProfileActivity::class.java))
-        }
+        }*/
 
        /* fun moveToOrderSummaryActivity(context: Context){
             context.startActivity(Intent(context, OrderSummaryActivity::class.java))

@@ -3,7 +3,9 @@ package com.eazyrento
 import android.app.Application
 import android.content.Context
 import com.eazyrento.common.view.UserInfoAPP
+import com.eazyrento.login.model.modelclass.ProfileModelReqRes
 import com.eazyrento.login.model.modelclass.UserInfo
+import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.webservice.ServiceGenrator
 
 class EazyRantoApplication : Application() {
@@ -11,6 +13,8 @@ class EazyRantoApplication : Application() {
     companion object{
         var context:Context?=null
          var defaultUserID:Int=-1
+        // profile data in session
+        var profileData: UserProfile?=null
 
         fun onLoginUpdateSession(userInfo: UserInfo){
             // one time set null b/c from now we will add header in retrofit app APIs
@@ -40,7 +44,7 @@ class EazyRantoApplication : Application() {
 
 //            UserInfoAPP.user_role = null
         }
-
+// check whether user is login or not
         fun isUserLogin():Boolean{
 
            val session=  Session.getInstance(context)
