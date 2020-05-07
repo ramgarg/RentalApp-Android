@@ -25,6 +25,7 @@
             <ImageView
                     android:id="@+id/img_profile"
                     android:layout_width="@dimen/_80sdp"
+                    android:layout_centerHorizontal="true"
                     android:layout_height="@dimen/_80sdp"
                     android:src="@mipmap/profile_pic" />
 
@@ -36,16 +37,6 @@
                     android:layout_alignBottom="@+id/img_profile"
                     android:src="@mipmap/add_image" />
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_toEndOf="@+id/img_profile"
-                    android:fontFamily="@font/bree_serif"
-                    android:text="@string/customer"
-                    android:textColor="@color/text_green"
-                    android:textSize="@dimen/_20sdp" />
 
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_full_name"
