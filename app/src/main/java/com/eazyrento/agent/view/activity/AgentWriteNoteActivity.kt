@@ -8,6 +8,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModelItem
+import com.eazyrento.agent.model.modelclass.AgentNotesListResModelItem
 import com.eazyrento.agent.viewmodel.AgentCreateNotesViewModel
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
@@ -56,9 +57,9 @@ class AgentWriteNoteActivity : BaseActivity(){
 
     override fun <T> onSuccessApiResult(data: T) {
 
-        val agentAddNoteReqModelItem = data as AgentAddNoteReqModelItem
+        val agentAddNoteReqModelItem = data as AgentNotesListResModelItem
 
-        MoveToAnotherComponent.openActivityWithParcelableParam<AgentAddNoteActivity,AgentAddNoteReqModelItem>(this,Constant.INTENT_NOTE_ADDED,agentAddNoteReqModelItem)
+        MoveToAnotherComponent.openActivityWithParcelableParam<AgentAddNoteActivity,AgentNotesListResModelItem>(this,Constant.INTENT_NOTE_ADDED,agentAddNoteReqModelItem)
 
     }
 

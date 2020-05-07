@@ -71,10 +71,10 @@ class AgentAddNoteActivity: BaseActivity(){
         rec_note_list.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.VERTICAL, false
         )
-        (rec_note_list.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
+      /*  (rec_note_list.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
             1,
             1
-        )
+        )*/
 
         val recycleAdapterNoteCard =
             AgentNotesListAdapter(notesListResModel,this)
@@ -90,7 +90,7 @@ class AgentAddNoteActivity: BaseActivity(){
             noteList = AgentNotesListResModel()
             setNotesAdapter(noteList!!)
         }
-        noteList!!.add(addedNote!!)
+        noteList!!.add(0,addedNote!!)
         rec_note_list.adapter?.notifyDataSetChanged()
 
     }
