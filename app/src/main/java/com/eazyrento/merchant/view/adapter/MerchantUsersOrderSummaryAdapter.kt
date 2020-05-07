@@ -11,6 +11,7 @@ import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
 import com.eazyrento.customer.dashboard.model.modelclass.AgentDetail
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerDetail
 import kotlinx.android.synthetic.main.adapter_user_order_summery.view.*
+import kotlinx.android.synthetic.main.phone_view.view.*
 
 class MerchantUsersOrderSummaryAdapter (val orderListing: MutableList<AgentDetail>, val context: Context) : RecyclerView.Adapter<MerchantUsersOrderSummaryAdapter.CardViewHolder>() {
 
@@ -18,7 +19,7 @@ class MerchantUsersOrderSummaryAdapter (val orderListing: MutableList<AgentDetai
         val img_user_pic = view.img_user_pic
         val tv_user_name = view.tv_user_name
         val tv_user_type = view.tv_user_tag
-        val img_user_call= view.img_user_call
+        val img_user_call= view.phone_view
 
     }
 

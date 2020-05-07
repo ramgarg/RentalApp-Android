@@ -11,6 +11,7 @@ import com.eazyrento.customer.dashboard.model.modelclass.AgentDetail
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerDetail
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.adapter.MerchantUsersOrderSummaryAdapter
 import kotlinx.android.synthetic.main.activity_agent_order_summary.*
@@ -21,6 +22,7 @@ import kotlinx.android.synthetic.main.adapter_order_status_template.*
 import kotlinx.android.synthetic.main.adapter_user_order_summery.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.order_summary_template.*
+import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.order_rate_review
 import kotlinx.android.synthetic.main.testingxml.*
@@ -74,8 +76,10 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
                 merchant_user1_view.visibility = View.VISIBLE
                 tv_user_name.text = agentDetail.full_name
                 tv_user_tag.text = agentDetail.mobile_number
-                img_user_call.visibility = View.VISIBLE
-                //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
+                phone_view.visibility = View.VISIBLE
+                phone_view.setOnClickListener {
+                    Common.phoneCallWithNumber(agentDetail.mobile_number, this)
+                }
 
             }
             else{
@@ -86,7 +90,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
                 merchant_user2_view.visibility= View.VISIBLE
                 tv_users_name.text=customerDetail.full_name
                 tv_users_tag.text=customerDetail.mobile_number
-                img_users_call.visibility=View.INVISIBLE
+                phone_view.visibility=View.INVISIBLE
             } else {
                 merchant_user2_view.visibility = View.INVISIBLE
             }
@@ -98,8 +102,9 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
                 merchant_user1_view.visibility = View.VISIBLE
                 tv_user_name.text = agentDetail.full_name
                 tv_user_tag.text = agentDetail.mobile_number
-                img_user_call.visibility = View.VISIBLE
-                //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
+                phone_view.visibility = View.VISIBLE
+                phone_view.setOnClickListener {
+                    Common.phoneCallWithNumber(agentDetail.mobile_number, this)}
 
             }
             else{
@@ -110,7 +115,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
                 merchant_user2_view.visibility = View.VISIBLE
                 tv_users_name.text=customerDetail.full_name
                 tv_users_tag.text=customerDetail.mobile_number
-                img_users_call.visibility=View.INVISIBLE
+                phone_view.visibility=View.INVISIBLE
             } else {
                 merchant_user2_view.visibility = View.INVISIBLE
             }

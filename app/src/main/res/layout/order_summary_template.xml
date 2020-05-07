@@ -183,11 +183,14 @@
                             android:textSize="@dimen/_14sdp"/>
 
                 </LinearLayout>
-                <ImageView android:layout_width="0dp"
+                <include
+                        layout="@layout/phone_view"
+                        android:layout_width="0dp"
                         android:layout_weight="15"
-                        android:id="@+id/agent_call_button"
-                        android:src="@mipmap/call"
-                        android:layout_height="@dimen/_30sdp"/>
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        />
             </LinearLayout>
             <LinearLayout
                     android:layout_width="match_parent"

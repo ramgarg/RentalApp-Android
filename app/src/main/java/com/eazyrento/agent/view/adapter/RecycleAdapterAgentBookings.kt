@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.R
 import com.eazyrento.common.model.modelclass.Order_listing
+import com.eazyrento.customer.utils.Common
 import kotlinx.android.synthetic.main.card_view_orders.view.*
+import kotlinx.android.synthetic.main.phone_view.view.*
 
 class RecycleAdapterAgentBookings (val orderListing: MutableList<Order_listing>, val context: Context) : RecyclerView.Adapter<RecycleAdapterAgentBookings.CardViewHolder>() {
 
@@ -41,6 +43,8 @@ class RecycleAdapterAgentBookings (val orderListing: MutableList<Order_listing>,
                 "-"+order_listing_obj.product_detail.quantity
         holder.tv__date_show.text = order_listing_obj.product_detail.start_date
         holder.tv__order.text = order_listing_obj.order_id
+        holder.img_mobile.setOnClickListener {  Common.phoneCallWithNumber(order_listing_obj.customer_detail?.mobile_number, context) }
+
 
     }
 
@@ -51,7 +55,7 @@ class RecycleAdapterAgentBookings (val orderListing: MutableList<Order_listing>,
         val tv__order = view.tv__order
         val tv__product_quantity = view.tv__quantiity
         val tv__date_show = view.tv_show_date
-
+        val img_mobile=view.phone_view
         val btn__accept = view.btn__accept
         val btn__decline = view.btn__decline
 
