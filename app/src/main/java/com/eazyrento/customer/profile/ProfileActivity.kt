@@ -2,6 +2,7 @@ package com.eazyrento.customer.profile
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -13,6 +14,7 @@ import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.appbiz.AppBizLogin
+import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.Common
@@ -23,16 +25,18 @@ import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
 import com.eazyrento.supporting.OnPiclImageToBase64
 import com.eazyrento.supporting.UploadImageFromDevice
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_booking_details.*
 import kotlinx.android.synthetic.main.activity_profile.*
 
-class ProfileActivity : AppBizLogin() {
+class ProfileActivity : BaseActivity() {
     var userProfile: UserProfile? = null
 
     private val uploadImageFromDevice = UploadImageFromDevice()
     private var selectProfID:String?=null
-    private var selectBase64String:String?=null
+    private var selectBase64StringAttachedDoc:String?=null
     private var selectGender:String?=null
+
+    private var selectBase64StringProfilePic:String?=null
+    private var isEditableDocumentSpinner:Int =0
 
 
     override fun <T> moveOnSelecetedItem(type: T) {
@@ -75,9 +79,44 @@ class ProfileActivity : AppBizLogin() {
         tv_add_country.setText(userProfile?.address_info?.country)
         tv_add_city.setText(userProfile?.address_info?.city)
         tv_add_line.setText(userProfile?.address_info?.address_line)
+
+
         Picasso.with(this).load(userProfile?.profile_image).into(img_profile)
+        Picasso.with(this).load(userProfile?.attached_document).into(document_pic)
 
+        sp_gender.setSelection(getComparedPostion(getSpinnerDataByID(R.array.Gender),userProfile?.gender))
+        isEditableDocumentSpinner = getComparedPostion(getSpinnerDataByID(R.array.RegistrationDocument),userProfile?.id_proof_title)
+        sp_select_document.setSelection(isEditableDocumentSpinner)
 
+        img_edit.setOnClickListener {
+            uploadImageFromDevice.pickImage(this,object :OnPiclImageToBase64{
+                override fun onBase64(stringBase64: String?) {
+                    selectBase64StringProfilePic = stringBase64
+                }
+
+                override fun onBitmap(bm: Bitmap?) {
+                    img_profile.setImageBitmap(bm)
+                }
+            })
+        }
+
+        ed_dob.setOnClickListener {  Common.dateSelector(this,ed_dob) }
+
+    }
+
+    private fun getComparedPostion(spinnerDataByID: Array<String>, variant: String?): Int {
+
+        for (i in spinnerDataByID.indices){
+            if (spinnerDataByID[i] == variant) {
+
+                return i
+            }
+        }
+        return 0
+    }
+
+    fun getSpinnerDataByID(int: Int): Array<String> {
+        return resources.getStringArray(int)
     }
 
     fun onClickSaveButton() {
@@ -121,10 +160,10 @@ class ProfileActivity : AppBizLogin() {
         else if(ed_company_name.text.toString().isEmpty()){
             showToast(ValidationMessage.COMPANY)
         }
-        else if(!sp_gender.isSelected){
+        else if(sp_gender.selectedItemPosition==0){
             showToast(ValidationMessage.GENDER)
         }
-        else if(!sp_select_document.isSelected){
+        else if(sp_select_document.selectedItemPosition==0){
             showToast(ValidationMessage.DOCUMENT)
         }
         else{
@@ -138,21 +177,23 @@ class ProfileActivity : AppBizLogin() {
         userProfile?.let { it ->
             it.full_name = "" + ed_user_name.text
             it.dob = "" + ed_dob.text
-            it.gender = "" + sp_gender.selectedItemId
+            it.gender = "" + sp_gender.selectedItem
             it.email = "" + ed_email.text
             it.description = "" + ed_des.text
             it.country_code = "" + ed_country.text
             it.buisness = "" + ed_company_name.text
-            it.attached_document = "" + sp_select_document.selectedItemId
+            it.attached_document = "" + selectBase64StringAttachedDoc
 
             it.id_proof_title = "" + sp_select_document.selectedItem
             it.mobile_number = "" + ed_phone.text
             it.profile_image = "" + img_profile
             it.username_choice = "" + ed_user_name.text
 
-            it.gender = selectGender
+            selectBase64StringProfilePic?.let {inner_base64->
+                it.profile_image = inner_base64
+            }
 
-            selectBase64String?.let {inner ->
+            selectBase64StringAttachedDoc?.let { inner ->
                 it.attached_document = inner
                 it.id_proof_title = selectProfID!!
             }
@@ -180,6 +221,7 @@ class ProfileActivity : AppBizLogin() {
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+        finishCurrentActivity(Activity.RESULT_OK)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -217,15 +259,24 @@ class ProfileActivity : AppBizLogin() {
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                     if(position==0){
-                        selectBase64String = null
+                        selectBase64StringAttachedDoc = null
                         selectProfID = null
                     }
                     else{
+                        // alreday selected the document spiiner
+                        if( isEditableDocumentSpinner!=0){
+                            isEditableDocumentSpinner =0
+                            return
+                        }
                         uploadImageFromDevice.pickImage(this@ProfileActivity,
                             object : OnPiclImageToBase64 {
                                 override fun onBase64(image64: String?) {
                                     selectProfID = this@ProfileActivity.resources.getStringArray(R.array.RegistrationDocument)[position]
-                                    selectBase64String =image64
+                                    selectBase64StringAttachedDoc =image64
+                                }
+
+                                override fun onBitmap(bm: Bitmap?) {
+                                    document_pic.setImageBitmap(bm)
                                 }
                             })
                     }

@@ -37,20 +37,12 @@ class UploadImageFromDevice {
 
             val selectedImage = BitmapFactory.decodeStream(imageStream)
 
-
+            picImageBase64.onBitmap(selectedImage)
 
             // set Image in view and set base64 to send server
 
             picImageBase64.onBase64(encodeImage(selectedImage))
 
-           /* if (base64 != null) {
-                merchantAddProductReqModel.attach_document = base64
-//                merchantAddProductReqModel.attach_document = ""
-            }else{
-                Common.showToast(act,ValidationMessage.DOC_IS_NOT_UPLOADED)
-            }*/
-
-           // setImageViewAndConvertIntoBase64(selectedImage)
         }
     }
 
@@ -64,4 +56,5 @@ class UploadImageFromDevice {
 
 interface OnPiclImageToBase64{
     fun onBase64(string: String?)
+    fun onBitmap(bm:Bitmap?)
 }

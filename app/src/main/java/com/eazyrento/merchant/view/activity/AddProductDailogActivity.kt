@@ -358,14 +358,8 @@ class AddProductDailogActivity:BaseActivity() {
     }
 
     private fun setSpinnerData(merchantAddProductReqModel: MerchantAddProductReqModel) {
-       // R.id.spinner_fuel_type ->{
         spinner_fuel_type.setSelection(getComparedPostion(getSpinnerDataByID(R.array.FuelType),merchantAddProductReqModel.variant))
         sp_select_document.setSelection(getComparedPostion(getSpinnerDataByID(R.array.RegistrationDocument),merchantAddProductReqModel.document_name))
-
-       // R.id.sp_select_document ->{
-//            merchantAddProductReqModel.document_name = getSpinnerDataByID(R.array.RegistrationDocument)[position]
-        //}
-
     }
 
     private fun getComparedPostion(spinnerDataByID: Array<String>, variant: String): Int {
