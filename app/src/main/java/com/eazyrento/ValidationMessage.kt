@@ -66,6 +66,12 @@ interface ValidationMessage{
         const val ADMIN_NOTIFY ="Request has been successfully submitted to admin."
         const val VALID_RATING = "Enter your feedback and Rating"
         const val FEEDBACK_SENT = "Feedback Sent"
+        const val PHONE_NUMBER="Enter phone number"
+        const val COUNTRY_CODE="Enter country code"
+        const val DATE_OF_BIRTH="Enter date of birth"
+        const val GENDER="Select Gender"
+        const val DOCUMENT="Select Document"
+        const val COMPANY="Enter Company"
 
 
     }

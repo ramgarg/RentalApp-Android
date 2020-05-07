@@ -10,16 +10,20 @@ import android.widget.Spinner
 import com.eazyrento.Constant
 import com.eazyrento.EazyRantoApplication
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.appbiz.AppBizLogin
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.customer.utils.Validator
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
 import com.eazyrento.supporting.OnPiclImageToBase64
 import com.eazyrento.supporting.UploadImageFromDevice
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_booking_details.*
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity : AppBizLogin() {
@@ -47,6 +51,9 @@ class ProfileActivity : AppBizLogin() {
         setProfileData(userProfile)
 
         btn_save.setOnClickListener { onClickSaveButton() }
+        ed_dob.setOnClickListener {
+            Common.dateSelector(this,ed_dob)
+        }
 
         btn_select_location.setOnClickListener {
             MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,userProfile?.address_info!!.id)
@@ -70,6 +77,7 @@ class ProfileActivity : AppBizLogin() {
         tv_add_line.setText(userProfile?.address_info?.address_line)
         Picasso.with(this).load(userProfile?.profile_image).into(img_profile)
 
+
     }
 
     fun onClickSaveButton() {
@@ -77,9 +85,52 @@ class ProfileActivity : AppBizLogin() {
         updateProfileData()
         userProfile?.let {
             //validation
+            if(checkProfileValidation()) {
+                updateProfileUserAPI(it)
+            }
 
-            updateProfileUserAPI(it)
         }
+    }
+
+    private fun checkProfileValidation():Boolean {
+        if (ed_full_name.text.toString().isEmpty()) {
+            showToast(ValidationMessage.VALID_NAME)
+        }
+        else if(ed_user_name.text.toString().isEmpty()){
+            showToast(ValidationMessage.VALID_USER_NAME)
+        }
+        else if(ed_user_name.text.toString().length<4){
+            showToast(ValidationMessage.VALID_USER_NAME)
+        }
+        else if(ed_email.text.toString().isEmpty()){
+            showToast(ValidationMessage.VALID_EMAIL_ID)
+        }
+        else if (!Validator.isEmailValid(ed_email.text.toString())) {
+            showToast(ValidationMessage.VALID_EMAIL_ID)
+            ed_email.requestFocus()
+        }
+        else if(ed_country.text.toString().isEmpty()){
+            showToast(ValidationMessage.COUNTRY_CODE)
+        }
+        else if(ed_phone.text.toString().isEmpty()){
+            showToast(ValidationMessage.PHONE_NUMBER)
+        }
+        else if(ed_dob.text.toString().isEmpty()){
+            showToast(ValidationMessage.DATE_OF_BIRTH)
+        }
+        else if(ed_company_name.text.toString().isEmpty()){
+            showToast(ValidationMessage.COMPANY)
+        }
+        else if(!sp_gender.isSelected){
+            showToast(ValidationMessage.GENDER)
+        }
+        else if(!sp_select_document.isSelected){
+            showToast(ValidationMessage.DOCUMENT)
+        }
+        else{
+            return true
+        }
+        return false
     }
 
     private fun updateProfileData() {
