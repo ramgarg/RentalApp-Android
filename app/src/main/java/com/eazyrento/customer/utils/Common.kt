@@ -5,6 +5,8 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
@@ -12,6 +14,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import com.eazyrento.R
 import kotlinx.android.synthetic.main.rating_review.img_close
 import kotlinx.android.synthetic.main.rental_dialog.*
@@ -21,6 +24,7 @@ import java.text.Format
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+
 
 class Common {
     //date format  Use one of these formats instead: YYYY-MM-DD.
@@ -202,6 +206,12 @@ class Common {
 
         fun showToast(context: Context,msg: String){
             Toast.makeText(context,msg,Toast.LENGTH_LONG).show()
+        }
+
+        fun phoneCallWithNumber(number:String?,context: Context){
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse(number)
+            context.startActivity(intent)
         }
 
     }

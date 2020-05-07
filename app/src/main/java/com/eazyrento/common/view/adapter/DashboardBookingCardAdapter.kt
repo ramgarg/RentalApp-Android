@@ -11,6 +11,7 @@ import com.eazyrento.common.model.modelclass.Booking
 import com.eazyrento.customer.dashboard.view.adapter.WishListAdapter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_view_orders.view.*
+import kotlinx.android.synthetic.main.phone_view.view.*
 
 class DashboardBookingCardAdapter (val orderListing: List<Booking>, val context: Context,val acceptDecline:AcceptDecline) : RecyclerView.Adapter<DashboardBookingCardAdapter.CardViewHolder>() {
     
@@ -44,6 +45,7 @@ class DashboardBookingCardAdapter (val orderListing: List<Booking>, val context:
         val img__pic = view.img__pic
         val btn__accept = view.btn__accept
         val btn__decline = view.btn__decline
+        val phone_view = view.phone_view
 
     }
 }

@@ -7,6 +7,7 @@ import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.common.view.activity.ShowAllBookingActivity
 import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.common.view.fragment.DashboardBaseFragment
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.activity.MerchantShowAllBooking
 import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
@@ -39,6 +40,9 @@ class MerchantDashFragment : DashboardBaseFragment() {
         }
         holder.btn__decline.setOnClickListener{
             declineBooking(order_listing_obj,position,Constant.MERCHNAT_ACCEPTANCE)
+        }
+        holder.phone_view.setOnClickListener {
+            Common.phoneCallWithNumber(list.get(position).agent_detail?.mobile_number,requireContext())
         }
     }
 

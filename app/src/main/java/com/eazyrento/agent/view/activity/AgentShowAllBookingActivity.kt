@@ -5,6 +5,7 @@ import com.eazyrento.R
 import com.eazyrento.common.model.modelclass.Booking
 import com.eazyrento.common.view.activity.ShowAllBookingActivity
 import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
+import com.eazyrento.customer.utils.Common
 import com.squareup.picasso.Picasso
 
 class AgentShowAllBookingActivity:ShowAllBookingActivity() {
@@ -32,6 +33,10 @@ class AgentShowAllBookingActivity:ShowAllBookingActivity() {
         }
         holder.btn__decline.setOnClickListener{
             declineBooking(order_listing_obj,position, Constant.MERCHNAT_ACCEPTANCE)
+        }
+
+        holder.phone_view.setOnClickListener {
+            Common.phoneCallWithNumber(order_listing_obj.customer_detail?.mobile_number,this)
         }
     }
 

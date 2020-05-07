@@ -14,11 +14,9 @@ import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.common.model.modelclass.Booking
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
-import com.eazyrento.common.view.activity.ShowAllBookingActivity
 import com.eazyrento.common.view.adapter.AcceptDecline
 import com.eazyrento.common.viewmodel.AcceptanceDeleteViewModel
 import com.eazyrento.common.viewmodel.BookingDashboardViewModel
-import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
 import kotlinx.android.synthetic.main.booking_deshboard_bottom_view.*
@@ -131,8 +129,6 @@ abstract class DashboardBaseFragment:
         positionAccetDecline = position
         callAPIAcceptanceDecline(AcceptanceDeclineReqModel(type.id,false), flagCustomerType)
     }
-
-
 
 
 }
