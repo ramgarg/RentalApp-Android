@@ -31,7 +31,7 @@ interface AgentAPI {
     //Add Note
 
     @POST(PathURL.UserAddNotes)
-    fun createAgentNote(@Body agentAddNoteReqModel: AgentAddNoteReqModelItem): Call<AgentAddNoteReqModelItem>
+    fun createAgentNote(@Body agentAddNoteReqModel: AgentAddNoteReqModelItem): Call<AgentNotesListResModelItem>
 
     @GET(PathURL.UserNotesList)
     fun getAgentNotes(): Call<AgentNotesListResModel>

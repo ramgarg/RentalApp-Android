@@ -34,14 +34,10 @@ class AgentWriteNoteActivity : BaseActivity(){
 
         if (checkValidation()){
 
-            AgentAddNoteReqModelItem(-1,ed_agent_note_heading.text.toString(),ed_agent_note_desc.text.toString())
-                /*agentAddNoteReqModelItem.header = ed_agent_note_heading.text.toString()
-                agentAddNoteReqModelItem.description = ed_agent_note_desc.text.toString()*/
-
                  callAPI()?.let {
                     it.observeApiResult(
                         it.callAPIActivity<AgentCreateNotesViewModel>(this)
-                            .createNote(AgentAddNoteReqModelItem(-1,ed_agent_note_heading.text.toString(),ed_agent_note_desc.text.toString()))
+                            .createNote(AgentAddNoteReqModelItem(ed_agent_note_heading.text.toString(),ed_agent_note_desc.text.toString()))
                         , this, this
                     )
                 }

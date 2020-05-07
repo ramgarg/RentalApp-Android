@@ -36,7 +36,7 @@ class AgentMerchantNeearByViewModel : ViewModel() {
 
 class AgentCreateNotesViewModel : ViewModel() {
 
-    fun createNote(agentAddNoteReqModelItem: AgentAddNoteReqModelItem): LiveData<DataWrapper<AgentAddNoteReqModelItem>> {
+    fun createNote(agentAddNoteReqModelItem: AgentAddNoteReqModelItem): LiveData<DataWrapper<AgentNotesListResModelItem>> {
         return AgentAddNotesRepo()
             .agentNotesAdd(agentAddNoteReqModelItem)
     }

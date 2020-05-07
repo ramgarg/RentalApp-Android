@@ -36,6 +36,8 @@ open  abstract class AppBizLogin: BaseActivity(){
         }
         return false
     }
+
+    //user validation
     fun failCheckValdationLoginCredintitial(email: EditText,password: EditText):Boolean{
         if(email.text.toString().isEmpty() && password.text.toString().isEmpty()){
             showToast(ValidationMessage.ENTER_ALL_FIELDS)
@@ -56,6 +58,9 @@ open  abstract class AppBizLogin: BaseActivity(){
 
         return true
     }
+
+    // chk validation for profile
+
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }

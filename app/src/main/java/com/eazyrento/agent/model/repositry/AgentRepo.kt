@@ -60,9 +60,9 @@ class AgentNotesListRepo :
 }
 
 class AgentAddNotesRepo :
-    GenericRequestHandler<AgentAddNoteReqModelItem>(){
+    GenericRequestHandler<AgentNotesListResModelItem>(){
 
-    fun agentNotesAdd(agentAddNoteReqModel: AgentAddNoteReqModelItem): LiveData<DataWrapper<AgentAddNoteReqModelItem>> {
+    fun agentNotesAdd(agentAddNoteReqModel: AgentAddNoteReqModelItem): LiveData<DataWrapper<AgentNotesListResModelItem>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             AgentAPI::class.java).createAgentNote(agentAddNoteReqModel)

@@ -8,6 +8,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModelItem
 import com.eazyrento.agent.model.modelclass.AgentNotesListResModel
+import com.eazyrento.agent.model.modelclass.AgentNotesListResModelItem
 import com.eazyrento.agent.view.adapter.AgentNotesListAdapter
 import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
 import com.eazyrento.agent.viewmodel.AgentCreateNotesViewModel
@@ -28,6 +29,8 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 
 class AgentAddNoteActivity: BaseActivity(){
+
+     var noteList:AgentNotesListResModel?=null
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -56,10 +59,10 @@ class AgentAddNoteActivity: BaseActivity(){
 
     override fun <T> onSuccessApiResult(data: T) {
 
-        val noteList = data as AgentNotesListResModel
+         noteList = data as AgentNotesListResModel
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,noteList.toString())
-        setNotesAdapter(noteList)
+        setNotesAdapter(noteList!!)
 
         //set adapter here........
     }
@@ -82,9 +85,13 @@ class AgentAddNoteActivity: BaseActivity(){
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
-        val addedNote = intent?.getParcelableExtra<AgentAddNoteReqModelItem>(Constant.INTENT_NOTE_ADDED)
-
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,addedNote.toString())
+        val addedNote = intent?.getParcelableExtra<AgentNotesListResModelItem>(Constant.INTENT_NOTE_ADDED)
+        if(noteList==null) {
+            noteList = AgentNotesListResModel()
+            setNotesAdapter(noteList!!)
+        }
+        noteList!!.add(addedNote!!)
+        rec_note_list.adapter?.notifyDataSetChanged()
 
     }
 }

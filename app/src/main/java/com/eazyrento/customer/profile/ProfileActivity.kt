@@ -11,29 +11,24 @@ import com.eazyrento.Constant
 import com.eazyrento.EazyRantoApplication
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.appbiz.AppBizLogin
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
-import com.eazyrento.customer.myaddress.view.adapter.MyAddressAdapter
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.customer.utils.ViewVisibility
-import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
 import com.eazyrento.supporting.OnPiclImageToBase64
 import com.eazyrento.supporting.UploadImageFromDevice
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profile.*
-import kotlinx.android.synthetic.main.header.view.*
-import kotlinx.android.synthetic.main.toolbar.*
 
-class ProfileActivity : BaseActivity() {
+class ProfileActivity : AppBizLogin() {
     var userProfile: UserProfile? = null
 
     private val uploadImageFromDevice = UploadImageFromDevice()
     private var selectProfID:String?=null
     private var selectBase64String:String?=null
-    private var selectGenderID:String?=null
+    private var selectGender:String?=null
 
 
     override fun <T> moveOnSelecetedItem(type: T) {
@@ -74,8 +69,6 @@ class ProfileActivity : BaseActivity() {
         tv_add_city.setText(userProfile?.address_info?.city)
         tv_add_line.setText(userProfile?.address_info?.address_line)
         Picasso.with(this).load(userProfile?.profile_image).into(img_profile)
-       //sp_gender.setSelection((selectGenderID)!!.toInt())
-        // sp_select_document.setSelection((selectProfID)!!.toInt())
 
     }
 
@@ -83,7 +76,9 @@ class ProfileActivity : BaseActivity() {
 
         updateProfileData()
         userProfile?.let {
-            updateProfileUser(it)
+            //validation
+
+            updateProfileUserAPI(it)
         }
     }
 
@@ -104,6 +99,8 @@ class ProfileActivity : BaseActivity() {
             it.profile_image = "" + img_profile
             it.username_choice = "" + ed_user_name.text
 
+            it.gender = selectGender
+
             selectBase64String?.let {inner ->
                 it.attached_document = inner
                 it.id_proof_title = selectProfID!!
@@ -115,7 +112,7 @@ class ProfileActivity : BaseActivity() {
     /*
     * update profile
     * */
-    fun updateProfileUser(userProfile: UserProfile) {
+    fun updateProfileUserAPI(userProfile: UserProfile) {
 
         callAPI()?.let {
             it.observeApiResult(
@@ -201,10 +198,10 @@ class ProfileActivity : BaseActivity() {
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                     if(position==0){
-                        selectGenderID=null
+                        selectGender=null
                     }
                     else{
-                        selectGenderID = this@ProfileActivity.resources.getStringArray(R.array.Gender)[position]
+                        selectGender = this@ProfileActivity.resources.getStringArray(R.array.Gender)[position]
                     }
                 }
 
