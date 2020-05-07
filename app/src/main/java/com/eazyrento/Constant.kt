@@ -23,6 +23,8 @@ interface Constant{
         const val INTENT_MERCHANT_PRODUCT_ADD = "add"
         const val INTENT_MERCHANT_PRODUCT_EDIT = "edit"
         const val INTENT_ADDRESS_EDIT = "edit"
+        const val INTENT_NOTE_EDIT = "edit"
+        const val INTENT_NOTE_DELETE = "delete"
         const val INTENT_SUCCESS_ADDED_PRODUCT = "success"
         const val INTENT_NEW_ADDRESS_ADD = "add"
         const val INTENT_RESET_SUCCESSFULY ="reset"

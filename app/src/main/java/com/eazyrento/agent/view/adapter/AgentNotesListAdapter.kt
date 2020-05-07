@@ -5,8 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.model.modelclass.AgentNotesListResModelItem
+import com.eazyrento.agent.view.activity.AgentWriteNoteActivity
+import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.agent_note_card_view.view.*
 
 class AgentNotesListAdapter (val items:List<AgentNotesListResModelItem>, val context: Context):
@@ -14,7 +18,9 @@ class AgentNotesListAdapter (val items:List<AgentNotesListResModelItem>, val con
 
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val tvNoteTitle=view.tv_note_title
-        val tvNoteDesc=view.tv_note_date
+        val tvNoteDesc=view.tv_note_desc
+        val imgEdit = view.img_edit_note
+        val imgdelet= view.img_delet_note
 
     }
 
@@ -34,5 +40,13 @@ class AgentNotesListAdapter (val items:List<AgentNotesListResModelItem>, val con
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvNoteTitle?.text=items.get(position).header
         holder.tvNoteDesc?.text=items.get(position).description
+        holder.imgEdit.setOnClickListener {
+            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentWriteNoteActivity>(context,
+                Constant.INTENT_NOTE_EDIT,items[position].id)
+        }
+        holder.imgdelet.setOnClickListener {
+            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentWriteNoteActivity>(context,
+                Constant.INTENT_NOTE_DELETE,items[position].id)
+        }
     }
 }

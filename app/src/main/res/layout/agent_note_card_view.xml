@@ -23,7 +23,7 @@
                 style="@style/AgentBoldTextCard"
                 />
         <TextView
-                android:id="@+id/tv_note_date"
+                android:id="@+id/tv_note_desc"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_below="@+id/tv_note_title"
@@ -32,7 +32,28 @@
                 android:text="@string/date_of_birth"
                 style="@style/AgentSmallTextCard"
                 />
- 
+ <ImageView
+         android:layout_width="@dimen/_25sdp"
+         android:layout_height="@dimen/_25sdp"
+         android:layout_alignParentEnd="true"
+         android:layout_marginTop="@dimen/_5sdp"
+         android:layout_marginEnd="@dimen/_5sdp"
+         android:layout_alignParentTop="true"
+         android:id="@+id/img_edit_note"
+         android:src="@mipmap/edit">
+
+ </ImageView>
+        <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/img_delet_note"
+                android:src="@mipmap/delete">
+
+        </ImageView>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
