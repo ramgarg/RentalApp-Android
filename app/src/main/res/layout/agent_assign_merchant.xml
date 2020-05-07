@@ -23,11 +23,14 @@
                     android:layout_centerHorizontal="true"
                     android:layout_height="@dimen/_70sdp"/>
 
-            <ImageView android:layout_width="@dimen/_30sdp"
-                    android:id="@+id/customer_call_button"
-                    android:layout_alignParentEnd="true"
-                    android:src="@mipmap/call"
-                    android:layout_height="@dimen/_30sdp"/>
+        <include
+                layout="@layout/phone_view"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                />
 
         <TextView
                 style="@style/DocumentTextView"

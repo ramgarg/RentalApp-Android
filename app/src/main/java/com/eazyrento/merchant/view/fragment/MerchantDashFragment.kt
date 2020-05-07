@@ -34,7 +34,9 @@ class MerchantDashFragment : DashboardBaseFragment() {
        val order_listing_obj = list.get(position)
 
         holder.tv__order.text = order_listing_obj.order_id
-
+        holder.tv__name.text=order_listing_obj.agent_detail?.full_name
+        holder.tv__type.text=order_listing_obj.agent_detail?.mobile_number
+        holder.tv__product_quantity.text=order_listing_obj.product_detail?.product_name+"- "+order_listing_obj.product_detail?.quantity
         holder.btn__accept.setOnClickListener{
             acceptBooking(order_listing_obj,position,Constant.MERCHNAT_ACCEPTANCE)
         }

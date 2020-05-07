@@ -9,6 +9,7 @@ import com.eazyrento.agent.view.activity.AgentBookingReviewSummeryActivity
 import com.eazyrento.common.model.modelclass.BookingListItem
 import com.eazyrento.common.view.fragment.MyBookingBaseFragment
 import com.eazyrento.customer.dashboard.view.adapter.RecycleAdapterCustomerBookings
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 
 class AgentBookingsFragment : MyBookingBaseFragment() {
@@ -30,8 +31,10 @@ class AgentBookingsFragment : MyBookingBaseFragment() {
 
         //agent details
         holder.tv_booking__name.text=listCustomerBooking.get(position).agent_detail.full_name
-        holder.img_booking__call.contentDescription=listCustomerBooking.get(position).agent_detail.mobile_number
-        //holder?.img_booking__pic.setImageURI("https://eazyrento-qa.s3.amazonaws.com/media/default_profile_pic.png")
+        holder.img_booking__call.setOnClickListener {
+            Common.phoneCallWithNumber(listCustomerBooking.get(position)?.customer_detail.mobile_number, requireContext())
+        }
+         //holder?.img_booking__pic.setImageURI("https://eazyrento-qa.s3.amazonaws.com/media/default_profile_pic.png")
         holder?.tv_customer_order_id.text = Constant.ORDER_ID + listCustomerBooking.get(position).order_id
 
         // product details

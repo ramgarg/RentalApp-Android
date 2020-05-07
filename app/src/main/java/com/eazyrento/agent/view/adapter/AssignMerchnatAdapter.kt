@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.model.modelclass.Merchants
+import com.eazyrento.customer.utils.Common
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.agent_assign_merchant.view.*
+import kotlinx.android.synthetic.main.phone_view.view.*
 import kotlinx.android.synthetic.main.row_customer_bookings.view.*
 
 class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolderBinder, val merchantListItem: List<Merchants>, val context: Context) : RecyclerView.Adapter<AssignMerchnatAdapter.CardViewHolder>()  {
@@ -42,6 +44,8 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
         holder.merchant_distance.text=" "+merchantListItem.get(position).details.distance+Constant.KM
 
         holder.item_quantity.text = ""+merchantListItem.get(position).details.quantity_available
+        holder.img_call.setOnClickListener {
+            Common.phoneCallWithNumber(merchantListItem.get(position).details.mobile_number, context) }
 
         holder.plusIcon.setOnClickListener {
             merchantListItem.get(position).details.quantity_available++
@@ -65,6 +69,7 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
         val item_quantity = view.item_quantity
         val plusIcon = view.add_quantity
         val minusIcon =view.minus_quantity
+        val img_call= view.phone_view
     }
 }
 

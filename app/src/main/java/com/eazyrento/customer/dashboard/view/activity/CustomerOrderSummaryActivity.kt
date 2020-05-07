@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_customer_order_summary.*
 import kotlinx.android.synthetic.main.activity_customer_order_summary.rec_user_order_summary
 import kotlinx.android.synthetic.main.adapter_user_order_summery.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
+import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 
@@ -61,13 +62,15 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
                 users_view.visibility = View.VISIBLE
                 tv_users_name.text = agentdetail.full_name
                 tv_users_tag.text = agentdetail.mobile_number
+                phone_view.setOnClickListener {
+                    Common.phoneCallWithNumber(agentdetail.mobile_number, this) }
                 //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
 
             }
             if(merchantdetail != null) {
                 if (merchantdetail.isNotEmpty()) {
                     rec_user_order_summary.visibility = View.VISIBLE
-                    img_user_call?.visibility = View.INVISIBLE
+                    phone_view.visibility = View.INVISIBLE
                     setUsersAdapter(orderRes)
                 } else {
                     rec_user_order_summary.visibility = View.INVISIBLE
@@ -80,13 +83,16 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
                 users_view.visibility = View.VISIBLE
                 tv_users_name.text = agentdetail.full_name
                 tv_users_tag.text = agentdetail.mobile_number
-                //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
+                phone_view.setOnClickListener {
+                    Common.phoneCallWithNumber(agentdetail.mobile_number, this) }
+
             } else {
                 rec_user_order_summary.visibility = View.INVISIBLE
             }
             if (merchantdetail != null) {
                 if (orderRes.merchant_detail.isNotEmpty()) {
                     rec_user_order_summary.visibility = View.VISIBLE
+                    phone_view.visibility=View.INVISIBLE
                     setUsersAdapter(orderRes)
                 } else {
                     rec_user_order_summary.visibility = View.INVISIBLE

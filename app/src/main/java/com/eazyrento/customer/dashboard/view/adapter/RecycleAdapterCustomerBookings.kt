@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.model.modelclass.BookingListItem
+import kotlinx.android.synthetic.main.phone_view.view.*
 import kotlinx.android.synthetic.main.row_customer_bookings.view.*
 
 class RecycleAdapterCustomerBookings (val bookingDataHolderBinder:BookingDataHolderBinder,val bookingListItem: List<BookingListItem>, val context: Context) : RecyclerView.Adapter<RecycleAdapterCustomerBookings.CardViewHolder>()  {
@@ -32,6 +32,7 @@ class RecycleAdapterCustomerBookings (val bookingDataHolderBinder:BookingDataHol
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
 
         bookingDataHolderBinder.setDataHolder(holder,position)
+
         /*//agent details
         holder.tv_booking__name.text=bookingListItem.get(position).agent_detail.full_name
         holder.img_booking__call.contentDescription=bookingListItem.get(position).agent_detail.mobile_number
@@ -48,7 +49,7 @@ class RecycleAdapterCustomerBookings (val bookingDataHolderBinder:BookingDataHol
         val tv_customer_date_show = view.tv_show_date
         val tv_customer_order_id = view.tv_customer_order_id
         val img_booking__pic = view.img_booking__pic
-        val img_booking__call = view.img_booking__call
+        val img_booking__call = view.phone_view
         val tv_booking__name = view.tv_booking__name
     }
 }
