@@ -221,6 +221,9 @@
     <string name="select_gender">Select Gender</string>
     <string name="booking_price_dollar">Booking Price($)</string>
     <string name="add_a_note">Add a Note</string>
+    <string name="update_note">Update Note</string>
+    <string name="booking">Bookings</string>
+
     <string name="assign">Assign</string>
 
     <!--Activity and view title-->

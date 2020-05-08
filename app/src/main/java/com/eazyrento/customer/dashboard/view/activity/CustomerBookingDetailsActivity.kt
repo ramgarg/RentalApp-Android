@@ -43,6 +43,10 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
     }
 
+    fun addAnotherBooking(view: View){
+        MoveToAnotherComponent.moveToActivityNormal<CustomerMainActivity>(this)
+    }
+
     private fun setData(prodDetailsObj: ProductDetailsResModel) {
 
         pro_booking_price.text = ""+prodDetailsObj.base_price

@@ -5,11 +5,13 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAdapter
+import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_order_summary.*
@@ -43,15 +45,19 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         customer_payment_button.visibility = View.INVISIBLE
         payment_view_history.visibility = View.VISIBLE
         per_hour.visibility = View.INVISIBLE
+        agent_asign_merchant_btn.setOnClickListener { showToast(ValidationMessage.UNDER_DEVELOPMENT) }
         payment_view_history.setOnClickListener {
-            MoveToAnotherComponent.moveToPaymentHistoryActivity(
-                this
-            )
+            MoveToAnotherComponent.moveToActivityNormal<PaymentHistoryActivity>(this)
         }
         agent_update_order_btn.setOnClickListener {
             MoveToAnotherComponent.moveToAgentUpdateOrderSummaryActivity(
                 this
             )
+        }
+        order_rate_review.setOnClickListener {
+
+            feedbackReqModel.customer_id = orderRes.customer_detail.id
+            rateAndReviews(feedbackReqModel)
         }
     }
 

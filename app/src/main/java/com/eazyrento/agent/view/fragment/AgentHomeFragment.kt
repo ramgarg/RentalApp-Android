@@ -33,25 +33,32 @@ class AgentHomeFragment : DashboardBaseFragment() {
     ) {
 
         val order_listing_obj = list.get(position)
+        if(order_listing_obj!=null) {
 
-        holder?.tv__name.text = order_listing_obj.customer_detail?.full_name
-        holder?.tv__type.text = Constant.CUSTOMER
+            holder?.tv__name.text = order_listing_obj.customer_detail?.full_name
+            holder?.tv__type.text = Constant.CUSTOMER
 
-        // prodect details
-        holder?.tv__product_quantity.text = order_listing_obj.product_detail?.product_name+ "-"+order_listing_obj.product_detail?.quantity
-        holder.tv__date_show.text = order_listing_obj.product_detail?.start_date
-        holder.tv__order.text = order_listing_obj.order_id
+            // prodect details
+            holder?.tv__product_quantity.text =
+                order_listing_obj.product_detail?.product_name + "-" + order_listing_obj.product_detail?.quantity
+            holder.tv__date_show.text = order_listing_obj.product_detail?.start_date
+            holder.tv__order.text = order_listing_obj.order_id
 
-        Picasso.with(context).load(order_listing_obj.customer_detail?.profile_image).into(holder.img__pic)
+            Picasso.with(context).load(order_listing_obj.customer_detail?.profile_image)
+                .into(holder.img__pic)
 
-        holder.btn__accept.setOnClickListener{
-            acceptBooking(order_listing_obj,position,Constant.AGENT_ACCEPTANCE)
-        }
-        holder.btn__decline.setOnClickListener{
-            declineBooking(order_listing_obj,position,Constant.AGENT_ACCEPTANCE)
-        }
-        holder.phone_view.setOnClickListener {
-            Common.phoneCallWithNumber(list.get(position).customer_detail?.mobile_number,requireContext())
+            holder.btn__accept.setOnClickListener {
+                acceptBooking(order_listing_obj, position, Constant.AGENT_ACCEPTANCE)
+            }
+            holder.btn__decline.setOnClickListener {
+                declineBooking(order_listing_obj, position, Constant.AGENT_ACCEPTANCE)
+            }
+            holder.phone_view.setOnClickListener {
+                Common.phoneCallWithNumber(
+                    list.get(position).customer_detail?.mobile_number,
+                    requireContext()
+                )
+            }
         }
     }
 

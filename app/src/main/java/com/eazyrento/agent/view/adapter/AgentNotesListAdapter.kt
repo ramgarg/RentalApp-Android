@@ -9,12 +9,14 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.model.modelclass.AgentNotesListResModelItem
 import com.eazyrento.agent.view.activity.AgentWriteNoteActivity
+import com.eazyrento.agent.viewmodel.AgentDeleteNoteViewModel
+import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.agent_note_card_view.view.*
 
-class AgentNotesListAdapter (val items:List<AgentNotesListResModelItem>, val context: Context):
-    RecyclerView.Adapter<AgentNotesListAdapter.ViewHolder>() {
+class AgentNotesListAdapter (val items:List<AgentNotesListResModelItem>, val context: BaseActivity):
+    RecyclerView.Adapter<AgentNotesListAdapter.ViewHolder>(){
 
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val tvNoteTitle=view.tv_note_title
@@ -40,13 +42,16 @@ class AgentNotesListAdapter (val items:List<AgentNotesListResModelItem>, val con
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvNoteTitle?.text=items.get(position).header
         holder.tvNoteDesc?.text=items.get(position).description
-        holder.imgEdit.setOnClickListener {
-            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentWriteNoteActivity>(context,
-                Constant.INTENT_NOTE_EDIT,items[position].id)
-        }
-        holder.imgdelet.setOnClickListener {
-            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentWriteNoteActivity>(context,
-                Constant.INTENT_NOTE_DELETE,items[position].id)
-        }
+        holder.imgEdit.setOnClickListener { context.moveOnSelecetedItem(items.get(position)) }
+
+       // holder.imgdelet.setOnClickListener { onDelete(items.get(position).id)  }
     }
+
+    /*fun onDelete(id:Int){
+        context.callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<AgentDeleteNoteViewModel>(context)
+                    .deleteNoteAPI(id),context,context)
+        }
+    } */
 }

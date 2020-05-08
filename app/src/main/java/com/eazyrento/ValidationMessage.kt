@@ -45,6 +45,7 @@ interface ValidationMessage{
         const val BOOKING_SUBMITTED = "Thank you for submitting your order.Our agent will call you shortly."
 
         //agent note
+        const val UNDER_DEVELOPMENT = "Under Development"
         const val VALID_HEADING = "Write a heading"
         const val VALID_DESC = "Write description"
         const val VALID_ADDRESS = "Enter Your Address"
