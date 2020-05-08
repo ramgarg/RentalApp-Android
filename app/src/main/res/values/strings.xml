@@ -230,6 +230,9 @@
     <string name="power">Power</string>
     <string name="resend_otp">Resend OTP</string>
 
+    <!--FB login-->
+    <string name="facebook_app_id">1335125313346145</string>
+    <string name="fb_login_protocol_scheme">fb1335125313346145</string>
 
     <string-array name="SelectType">
     <item>Select Type</item>

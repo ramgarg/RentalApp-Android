@@ -1,9 +1,11 @@
 package com.eazyrento.supporting
 
 import com.eazyrento.common.model.modelclass.DynamicKeyValue
+import com.eazyrento.login.model.modelclass.LoginUserReqModel
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import org.json.JSONObject
 
 class MyJsonParser{
     companion object{
@@ -53,6 +55,15 @@ class MyJsonParser{
                 list.add(DynamicKeyValue(key,jsonObject.get(key).asString))
             }
             return list
+        }
+
+        fun parseFBData(jsonObject: JSONObject?,loginUserReqModel: LoginUserReqModel) {
+            jsonObject?.let {
+                if (it.has("email")){
+                    loginUserReqModel.email =it.getString("email")
+                }
+            }
+
         }
     }
 

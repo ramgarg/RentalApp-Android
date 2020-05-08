@@ -2,6 +2,7 @@ package com.eazyrento.login.view
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -165,7 +166,12 @@ class RegistrationUserActivity : AppBizLogin(){
                                     selectProfID = this@RegistrationUserActivity.resources.getStringArray(R.array.RegistrationDocument)[position]
                                     selectBase64String =image64
                                 }
+
+                                override fun onBitmap(bm: Bitmap?) {
+                                    document_pic.setImageBitmap(bm)
+                                }
                             })
+
                     }
                 }
 

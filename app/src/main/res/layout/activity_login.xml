@@ -150,12 +150,16 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:src="@mipmap/facebook"
                 android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"/>
+                android:layout_height="@dimen/_25sdp"
+                android:onClick="onFBClick"
+                />
         <ImageView
                 android:layout_marginStart="@dimen/_10sdp"
                 android:src="@mipmap/gmail"
                 android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"/>
+                android:layout_height="@dimen/_25sdp"
+                android:onClick="onGmailClick"
+                />
 
     </LinearLayout>
 

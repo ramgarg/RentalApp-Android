@@ -2,11 +2,12 @@ package com.eazyrento
 
 import android.app.Application
 import android.content.Context
-import com.eazyrento.common.view.UserInfoAPP
-import com.eazyrento.login.model.modelclass.ProfileModelReqRes
 import com.eazyrento.login.model.modelclass.UserInfo
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.webservice.ServiceGenrator
+import com.facebook.AccessToken
+import com.facebook.login.LoginManager
+
 
 class EazyRantoApplication : Application() {
 
@@ -42,8 +43,12 @@ class EazyRantoApplication : Application() {
             Session.getInstance(context)
                 ?.saveAccessToken(null)
 
-//            UserInfoAPP.user_role = null
+            if(isUserLoginWithFB()){
+                LoginManager.getInstance().logOut()
+            }
+
         }
+
 // check whether user is login or not
         fun isUserLogin():Boolean{
 
@@ -52,6 +57,11 @@ class EazyRantoApplication : Application() {
                return !(session.getUserRole()==null || session.getUserID()==defaultUserID || session.getAccessToken()==null)
            }
             return false
+        }
+        fun isUserLoginWithFB():Boolean{
+            val accessToken = AccessToken.getCurrentAccessToken()
+            val isLoggedIn = accessToken != null && !accessToken.isExpired
+            return isLoggedIn
         }
 
     }

@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import com.eazyrento.R
+import com.eazyrento.common.view.UserInfoAPP
 import kotlinx.android.synthetic.main.rating_review.img_close
 import kotlinx.android.synthetic.main.rental_dialog.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
@@ -138,25 +139,33 @@ class Common {
                 dialog.btn_customer_active.visibility = View.INVISIBLE
                 dialog.btn_merchant_active.visibility = View.INVISIBLE
 
-                MoveToAnotherComponent.moveToAgentHomeActivity(
+                UserInfoAPP.user_role = UserInfoAPP.AGENT
+
+               /* MoveToAnotherComponent.moveToAgentHomeActivity(
                     context
-                )
+                )*/
+
+
             }
             dialog.btn_customer_inactive.setOnClickListener {
                 dialog.btn_customer_active.visibility = View.VISIBLE
                 dialog.btn_merchant_active.visibility = View.INVISIBLE
                 dialog.btn_agent_active.visibility = View.INVISIBLE
-                MoveToAnotherComponent.moveToHomeActivity(
+
+                UserInfoAPP.user_role = UserInfoAPP.CUSTOMER
+               /* MoveToAnotherComponent.moveToHomeActivity(
                     context
-                )
+                )*/
             }
             dialog.btn_merchant_inactive.setOnClickListener {
                 dialog.btn_merchant_active.visibility = View.VISIBLE
                 dialog.btn_agent_active.visibility = View.INVISIBLE
                 dialog.btn_customer_active.visibility = View.INVISIBLE
-                MoveToAnotherComponent.moveToMerchantMainActivity(
+
+                UserInfoAPP.user_role = UserInfoAPP.MERCHANT
+               /* MoveToAnotherComponent.moveToMerchantMainActivity(
                     context
-                )
+                )*/
             }
         }
 
@@ -210,7 +219,7 @@ class Common {
 
         fun phoneCallWithNumber(number:String?,context: Context){
             val intent = Intent(Intent.ACTION_DIAL)
-            intent.data = Uri.parse(number)
+            intent.data = Uri.parse("tel:"+number)
             context.startActivity(intent)
         }
 
