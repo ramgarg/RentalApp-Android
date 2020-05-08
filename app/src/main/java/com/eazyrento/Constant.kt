@@ -90,6 +90,7 @@ interface Constant{
         const val edit = 1
         const val add =2
         const val VIEW_ALL =3
+        const val LENGTH = 4
 
         // request code for activiity
         const val MERCHANT_HOME_FRAGMENT_REQUEST_CODE = 100

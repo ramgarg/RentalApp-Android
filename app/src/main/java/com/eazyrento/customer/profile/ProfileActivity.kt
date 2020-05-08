@@ -133,12 +133,15 @@ class ProfileActivity : BaseActivity() {
 
     private fun checkProfileValidation():Boolean {
         if (ed_full_name.text.toString().isEmpty()) {
-            showToast(ValidationMessage.VALID_NAME)
+            showToast(ValidationMessage.VALID_PROFILE_NAME)
+        }
+        if (img_profile.drawable == null) {
+            showToast(ValidationMessage.VALID_IMAGE)
         }
         else if(ed_user_name.text.toString().isEmpty()){
             showToast(ValidationMessage.VALID_USER_NAME)
         }
-        else if(ed_user_name.text.toString().length<4){
+        else if(ed_user_name.text.toString().length<Constant.LENGTH){
             showToast(ValidationMessage.VALID_USER_NAME)
         }
         else if(ed_email.text.toString().isEmpty()){
