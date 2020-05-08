@@ -82,9 +82,9 @@ class AgentNoteDeleteRepo : GenericRequestHandler<JsonElement>(){
     }
 }
 
-class AgentUpdateNoteRepo : GenericRequestHandler<JsonElement>(){
+class AgentUpdateNoteRepo : GenericRequestHandler<AgentNotesListResModelItem>(){
 
-    fun updateNote( id:Int,agentAddNoteReqModelItem: AgentAddNoteReqModelItem): LiveData<DataWrapper<JsonElement>> {
+    fun updateNote( id:Int,agentAddNoteReqModelItem: AgentAddNoteReqModelItem): LiveData<DataWrapper<AgentNotesListResModelItem>> {
 
         val call = ServiceGenrator.client.create(
             AgentAPI::class.java).updateNote(id,agentAddNoteReqModelItem)

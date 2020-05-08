@@ -37,7 +37,7 @@ interface AgentAPI {
     fun deleteNote(@Path("id") id: Int): Call<JsonElement>
 
     @PUT(PathURL.UserUpdateNote)
-    fun updateNote(@Path("id") id: Int,@Body agentAddNoteReqModelItem: AgentAddNoteReqModelItem): Call<JsonElement>
+    fun updateNote(@Path("id") id: Int,@Body agentAddNoteReqModelItem: AgentAddNoteReqModelItem): Call<AgentNotesListResModelItem>
 
 
     @GET(PathURL.AgentMerchants)

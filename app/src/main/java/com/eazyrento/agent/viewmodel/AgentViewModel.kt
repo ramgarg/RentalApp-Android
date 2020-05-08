@@ -59,7 +59,7 @@ class AgentDeleteNoteViewModel:ViewModel(){
 }
 
 class AgentUpdateNoteViewModel:ViewModel(){
-    fun updateNoteAPI(id:Int,agentAddNoteReqModelItem: AgentAddNoteReqModelItem): LiveData<DataWrapper<JsonElement>> {
+    fun updateNoteAPI(id:Int,agentAddNoteReqModelItem: AgentAddNoteReqModelItem): LiveData<DataWrapper<AgentNotesListResModelItem>> {
         return AgentUpdateNoteRepo().updateNote(id,agentAddNoteReqModelItem)
     }
 

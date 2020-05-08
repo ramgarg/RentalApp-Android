@@ -48,7 +48,6 @@ class LoginUserActivity : AppBizLogin() {
         if (EazyRantoApplication.isUserLogin())
             sendUserReleventPanel(Session.getInstance(EazyRantoApplication.context)?.getUserRole())
 
-//        /*setProfileDataFromFP()*/
 
     }
 
