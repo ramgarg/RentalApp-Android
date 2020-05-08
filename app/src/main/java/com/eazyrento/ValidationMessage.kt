@@ -2,6 +2,7 @@ package com.eazyrento
 
 interface ValidationMessage{
     companion object{
+        const val SOCIAL_FAILED = "Auth failed.Please try after some time."
         const val CHECK_INTERNET = "Please check internet connectivity"
         const val VALID_PASSWORD_LENGTH= "Invalid Password! minimum length 8"
         const val VALID_PASSWORD= "Please Enter Valid Password"

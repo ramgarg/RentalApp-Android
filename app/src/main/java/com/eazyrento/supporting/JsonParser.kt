@@ -59,8 +59,18 @@ class MyJsonParser{
 
         fun parseFBData(jsonObject: JSONObject?,loginUserReqModel: LoginUserReqModel) {
             jsonObject?.let {
+
+//                loginUserReqModel.username = (if (it.has("email")) {loginUserReqModel.email = it.getString("email") } else  it.getString("id")) as String
+
+                loginUserReqModel.full_name= it.getString("name")
+
                 if (it.has("email")){
-                    loginUserReqModel.email =it.getString("email")
+                    loginUserReqModel.username =it.getString("email")
+                    loginUserReqModel.email= loginUserReqModel.username
+
+                }
+                else{
+                    loginUserReqModel.username = it.getString("id")
                 }
             }
 

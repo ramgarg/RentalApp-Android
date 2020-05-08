@@ -5,7 +5,7 @@ data class LoginUserReqModel(
     val password: String,
     val registeration_source: String,
     val source: String,
-    val username: String,
+    var username: String,
 
     /*social login*/
     var user_role: String?=null,

@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import com.eazyrento.R
 import com.eazyrento.common.view.UserInfoAPP
+import com.eazyrento.login.view.ChoseUserRole
 import kotlinx.android.synthetic.main.rating_review.img_close
 import kotlinx.android.synthetic.main.rental_dialog.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
@@ -95,12 +96,17 @@ class Common {
             }
             return -1
         }
-        fun showDialog(title: String,msg:String,context: Activity,layout:Int) {
+        fun initDailog(context: Context,layout: Int):Dialog{
             val dialog = Dialog(context)
             dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
             dialog .setCancelable(true)
             dialog .setContentView(layout)
+            return dialog
+        }
+        fun showDialog(title: String,msg:String,context: Activity,layout:Int) {
+
+            val dialog = initDailog(context,layout)
 
             if(title.equals("Payment"))
                 thankYou(
@@ -110,7 +116,8 @@ class Common {
             else if(title.equals("UserType"))
                 userDialog(
                     context,
-                    dialog
+                    layout,
+                    null
                 )
             else if(title.equals("UserDay"))
                 userDayDialog(
@@ -130,7 +137,9 @@ class Common {
 
         }
 
-        private fun userDialog(context: Context,dialog: Dialog){
+         fun userDialog(context: Context,layout: Int,choseUserRole: ChoseUserRole?):Dialog{
+
+             val dialog = initDailog(context,layout)
 
             dialog.img_close.setOnClickListener { dialog.cancel() }
 
@@ -139,7 +148,7 @@ class Common {
                 dialog.btn_customer_active.visibility = View.INVISIBLE
                 dialog.btn_merchant_active.visibility = View.INVISIBLE
 
-                UserInfoAPP.user_role = UserInfoAPP.AGENT
+                choseUserRole?.onChose(UserInfoAPP.AGENT)
 
                /* MoveToAnotherComponent.moveToAgentHomeActivity(
                     context
@@ -152,7 +161,7 @@ class Common {
                 dialog.btn_merchant_active.visibility = View.INVISIBLE
                 dialog.btn_agent_active.visibility = View.INVISIBLE
 
-                UserInfoAPP.user_role = UserInfoAPP.CUSTOMER
+                choseUserRole?.onChose(UserInfoAPP.CUSTOMER)
                /* MoveToAnotherComponent.moveToHomeActivity(
                     context
                 )*/
@@ -162,11 +171,13 @@ class Common {
                 dialog.btn_agent_active.visibility = View.INVISIBLE
                 dialog.btn_customer_active.visibility = View.INVISIBLE
 
-                UserInfoAPP.user_role = UserInfoAPP.MERCHANT
+                choseUserRole?.onChose(UserInfoAPP.MERCHANT)
+
                /* MoveToAnotherComponent.moveToMerchantMainActivity(
                     context
                 )*/
             }
+             return dialog
         }
 
         private fun rating(dialog: Dialog){
