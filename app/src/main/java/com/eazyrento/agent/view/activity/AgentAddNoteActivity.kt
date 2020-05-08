@@ -33,6 +33,7 @@ class AgentAddNoteActivity: BaseActivity(){
      var noteList:AgentNotesListResModel?=null
 
     override fun <T> moveOnSelecetedItem(type: T) {
+        MoveToAnotherComponent.openActivityWithParcelableParam<AgentWriteNoteActivity,AgentNotesListResModelItem>(this,Constant.INTENT_NOTE_EDIT,type as AgentNotesListResModelItem)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
