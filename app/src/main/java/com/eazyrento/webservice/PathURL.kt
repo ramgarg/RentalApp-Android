@@ -25,8 +25,8 @@ class PathURL {
 
         const val UserAddNotes      = "/user/notes/create"
         const val UserNotesList     = "/user/notes/list"
-        const val UserUpdateNote    = "user/notes/update/{id}"
-        const val UserDeleteNote    = "user/notes/delete/{id}"
+        const val UserUpdateNote    = "/user/notes/update/{id}"
+        const val UserDeleteNote    = "/user/notes/delete/{id}"
 
 
         // Common

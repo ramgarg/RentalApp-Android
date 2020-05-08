@@ -80,46 +80,27 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.add_new_address_activity)
-        edit_address_ID = intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_EDIT,DEFUALT_VALUE)
+        edit_address_ID = intent.getIntExtra(Constant.INTENT_ADDRESS_EDIT,DEFUALT_VALUE)
 
-      /* if(edit_address_ID>-1)
+       if(edit_address_ID>-1)
         {
-            btn_save.visibility=View.INVISIBLE
-            layout_update.visibility=View.VISIBLE
+            btn_save.visibility=View.GONE
+            Common.showGroupViews(btn_delete, btn_update)
         }else{
             btn_save.visibility=View.VISIBLE
-           layout_update.visibility=View.INVISIBLE
-        }*/
-
-
-            if (edit_address_ID!=DEFUALT_VALUE) {
+           Common.hideGroupViews(btn_delete, btn_update)
+        }
+            /*if (edit_address_ID!=DEFUALT_VALUE) {
                 //editing functioalty
                 edit_address_ID=editAddressFuntionalty(edit_address_ID)
             }
             //else
             //Adding funtionalty
-             //   intent.getIntExtra(Constant.INTENT_NEW_ADDRESS_ADD,DEFUALT_VALUE)
+             //   intent.getIntExtra(Constant.INTENT_NEW_ADDRESS_ADD,DEFUALT_VALUE)*/
 
         initView()
 
         getLocationPermission();
-
-    }
-
-
-
-
-    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    fun messageReceive(customEvent: String?) {
-        if (customEvent.equals("AddNew")) {
-            toolbar_title.text = "Add New Address"
-            btn_save.visibility = View.VISIBLE
-            Common.hideGroupViews(btn_delete, btn_update)
-        } else {
-            toolbar_title.text = "MyAddress"
-            btn_save.visibility = View.GONE
-            Common.showGroupViews(btn_delete, btn_update)
-        }
 
     }
 
@@ -242,7 +223,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun editAddressFuntionalty(editAddressID:Int): Int {
+    /*private fun editAddressFuntionalty(editAddressID:Int): Int {
 
         callAPI()?.let {
             it.observeApiResult(
@@ -254,7 +235,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         }
 
         return editAddressID
-    }
+    }*/
 
     private fun getLocationPermission() { /*
      * Request location permission, so that we can get the location of the

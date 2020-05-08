@@ -7,6 +7,8 @@ import com.eazyrento.agent.model.repositry.api.AgentAPI
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
+import com.eazyrento.merchant.model.repository.api.MerchantAPI
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
 
@@ -71,5 +73,23 @@ class AgentAddNotesRepo :
 
 }
 
+class AgentNoteDeleteRepo : GenericRequestHandler<JsonElement>(){
+
+    fun deleteNote(id: Int): LiveData<DataWrapper<JsonElement>> {
+        val call = ServiceGenrator.client.create(
+            AgentAPI::class.java).deleteNote(id)
+        return doRequest(call)
+    }
+}
+
+class AgentUpdateNoteRepo : GenericRequestHandler<JsonElement>(){
+
+    fun updateNote( id:Int,agentAddNoteReqModelItem: AgentAddNoteReqModelItem): LiveData<DataWrapper<JsonElement>> {
+
+        val call = ServiceGenrator.client.create(
+            AgentAPI::class.java).updateNote(id,agentAddNoteReqModelItem)
+           return doRequest(call)
+    }
+}
 
 

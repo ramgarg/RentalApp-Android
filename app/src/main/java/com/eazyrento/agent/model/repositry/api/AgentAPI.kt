@@ -4,16 +4,13 @@ import com.eazyrento.agent.model.modelclass.*
 import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.common.model.modelclass.BookingListResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
+import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface AgentAPI {
 
@@ -36,6 +33,13 @@ interface AgentAPI {
     @GET(PathURL.UserNotesList)
     fun getAgentNotes(): Call<AgentNotesListResModel>
 
+    @DELETE(PathURL.UserDeleteNote)
+    fun deleteNote(@Path("id") id: Int): Call<JsonElement>
+
+    @PUT(PathURL.UserUpdateNote)
+    fun updateNote(@Path("id") id: Int,@Body agentAddNoteReqModelItem: AgentAddNoteReqModelItem): Call<JsonElement>
+
+
     @GET(PathURL.AgentMerchants)
     fun getAgentMerchantsNearBy(@Path("id") id:Int) : Call<AgentMerchantFindNearByResModel>
 
@@ -53,6 +57,7 @@ interface AgentAPI {
 
     @GET(PathURL.AgentBookingDetail)
     fun getAgentBookingDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
+
 
 
 }
