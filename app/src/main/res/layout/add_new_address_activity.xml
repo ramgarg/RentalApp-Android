@@ -17,7 +17,6 @@
 
     <FrameLayout android:layout_width="match_parent"
                  android:id="@+id/frame_map"
-
                  android:background="@color/colorAccent"
                  android:layout_height="@dimen/_280sdp">
 
@@ -26,8 +25,27 @@
                   android:name="com.google.android.gms.maps.SupportMapFragment"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
-                  tools:context="com.eazyrento.customer.myaddress.view.AddNewAddressActivity" />
+                  tools:context="com.eazyrento.customer.myaddress.view.AddNewAddressActivity"
+                />
     </FrameLayout>
+
+            <!--place fragment google-->
+            <androidx.cardview.widget.CardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    android:background="@drawable/calender_bg"
+                    android:id="@+id/card_frg_place"
+                    android:layout_margin="@dimen/_4sdp"
+                    >
+
+            <fragment android:id="@+id/autocomplete_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                    />
+            </androidx.cardview.widget.CardView>>
 
 
 
@@ -236,6 +254,7 @@
         </RelativeLayout>
     </ScrollView>
     <include layout="@layout/toolbar"
+            android:visibility="gone"
     />
     <Button android:layout_width="match_parent"
             android:text="@string/save"
@@ -265,7 +284,9 @@
                 android:text="@string/delete"
                 android:layout_weight=".5"
                 android:layout_width="@dimen/_40sdp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:onClick="onSaveAddressClick"
+                />
         <Button
                 android:id="@+id/btn_update"
                 android:textColor="@color/white"
