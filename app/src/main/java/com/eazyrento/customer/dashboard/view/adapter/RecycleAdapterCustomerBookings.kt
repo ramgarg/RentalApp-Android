@@ -51,6 +51,7 @@ class RecycleAdapterCustomerBookings (val bookingDataHolderBinder:BookingDataHol
         val img_booking__pic = view.img_booking__pic
         val img_booking__call = view.phone_view
         val tv_booking__name = view.tv_booking__name
+        val tv_booking_type = view.tv_user_type
     }
 }
 

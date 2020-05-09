@@ -30,7 +30,8 @@ class AgentBookingsFragment : MyBookingBaseFragment() {
     ) {
 
         //agent details
-        holder.tv_booking__name.text=listCustomerBooking.get(position).agent_detail.full_name
+        holder.tv_booking__name.text=listCustomerBooking.get(position).customer_detail.full_name
+        holder.tv_booking_type.text=listCustomerBooking.get(position).customer_detail.mobile_number
         holder.img_booking__call.setOnClickListener {
             Common.phoneCallWithNumber(listCustomerBooking.get(position)?.customer_detail.mobile_number, requireContext())
         }

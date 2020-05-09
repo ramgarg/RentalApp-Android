@@ -12,3 +12,7 @@ data class AddressInfo(
     var longitude: Double,
     var state: String
 )
+{
+    constructor():this("","","",
+        "","",-1,false,0.0,0.0,"")
+}
