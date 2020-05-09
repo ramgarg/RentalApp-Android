@@ -20,6 +20,7 @@ import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.Validator
+import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
 import com.eazyrento.supporting.OnPiclImageToBase64
@@ -52,6 +53,7 @@ class ProfileActivity : BaseActivity() {
         userProfile = EazyRantoApplication.profileData
         documentSpinnerData()
         genderSpinnerData()
+
         setProfileData(userProfile)
 
         btn_save.setOnClickListener { onClickSaveButton() }
@@ -60,7 +62,7 @@ class ProfileActivity : BaseActivity() {
         }
 
         btn_select_location.setOnClickListener {
-            MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,userProfile?.address_info!!.id)
+            MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,1)
 
         }
 
@@ -76,9 +78,7 @@ class ProfileActivity : BaseActivity() {
         ed_dob.setText(userProfile?.dob)
         ed_company_name.setText(userProfile?.buisness)
         ed_des.setText(userProfile?.description)
-        tv_add_country.setText(userProfile?.address_info?.country)
-        tv_add_city.setText(userProfile?.address_info?.city)
-        tv_add_line.setText(userProfile?.address_info?.address_line)
+        setAddress()
 
 
         Picasso.with(this).load(userProfile?.profile_image).into(img_profile)
@@ -240,15 +240,27 @@ class ProfileActivity : BaseActivity() {
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,address.toString())
 
             userProfile?.let {
-             it.address_info.address_line = address.address_line as String
+                if (it.address_info==null){
+                    it.address_info= AddressInfo()
+                }
+            it.address_info.address_line = address.address_line as String
             it.address_info.address_type =address.address_type as String
             it.address_info.city = address.city as String
             it.address_info.country = address.country as String
+                it.address_info.state=address.state as String
+                setAddress()
+
             }
 
             /*tv_work_location.text = address.address_line+","+address.address_type
             objBookingReqModelItem.address_id = address.id*/
         }
+    }
+
+    fun setAddress(){
+        tv_add_country.setText(userProfile?.address_info?.country)
+        tv_add_city.setText(userProfile?.address_info?.city)
+        tv_add_line.setText(userProfile?.address_info?.address_line)
     }
 
     private fun documentSpinnerData() {
