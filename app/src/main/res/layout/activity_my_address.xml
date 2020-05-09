@@ -31,8 +31,10 @@
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_width="match_parent"
             android:gravity="center"
-                  android:orientation="horizontal"
-                  android:layout_height="wrap_content">
+             android:orientation="horizontal"
+             android:layout_height="wrap_content"
+            android:onClick="onAddAddressClick"
+            >
 
         <ImageView android:layout_width="@dimen/_20sdp"
                    android:src="@mipmap/add_address"

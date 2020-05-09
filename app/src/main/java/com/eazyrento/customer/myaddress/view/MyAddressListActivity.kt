@@ -2,6 +2,7 @@ package com.eazyrento.customer.myaddress.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.BaseActivity
@@ -10,10 +11,7 @@ import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.eazyrento.customer.myaddress.view.adapter.MyAddressAdapter
 import com.eazyrento.customer.myaddress.viewmodel.AddressListViewModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_my_address.*
-import kotlinx.android.synthetic.main.toolbar.*
-import org.greenrobot.eventbus.EventBus
 
 open class MyAddressListActivity : BaseActivity() {
     var defaultProductID:Int = -1
@@ -32,29 +30,18 @@ open class MyAddressListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_my_address)
+        topBarWithBackIconAndTitle(getString(R.string.my_address))
 
         defaultProductID = intent.getIntExtra(Constant.INTENT_ADDR_LIST,-1)
 
-        initView()
+        fetchAddressList()
     }
 
-    private fun initView(){
-
-        getAddressList()
-
-        ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
-            toolbar_title,getString(R.string.my_address))
-        btn_add_new_address.setOnClickListener {
-            EventBus.getDefault().postSticky("AddNew")
-//            RxBus.publish(EventModel("AddNew"))
-
-            add_new_address.setOnClickListener { MoveToAnotherComponent.moveToAddNewAddressActivity(this)}
-
-        }
-
+    fun onAddAddressClick(view:View){
+        MoveToAnotherComponent.moveToActivityNormal<AddNewAddressActivity>(this)
     }
 
-    private fun getAddressList() {
+    private fun fetchAddressList() {
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<AddressListViewModel>(this)

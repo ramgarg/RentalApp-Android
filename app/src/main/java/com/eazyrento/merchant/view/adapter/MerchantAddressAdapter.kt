@@ -12,13 +12,14 @@ import com.eazyrento.customer.utils.RecyclerViewItemClick
 import kotlinx.android.synthetic.main.row_my_address.view.*
 import org.greenrobot.eventbus.EventBus
 
+/*
 class MerchantAddressAdapter (val items:List<Data>, val context: Context, val recyclerViewItemClick: RecyclerViewItemClick):
     RecyclerView.Adapter<MerchantAddressAdapter.ViewHolder>() {
 
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val tvVeichleName = view.tv_add_type
         var imgEdit = view.img_edit.setOnClickListener {
-            MoveToAnotherComponent.moveToAddNewAddressActivity(it.context)
+            MoveToAnotherComponent.moveToActivityNormal<AddNewAddressActivity>(it.context)
 //            RxBus.publish(EventModel("EditAddress"))
             EventBus.getDefault().postSticky("EditAddress")
         }
@@ -46,4 +47,4 @@ class MerchantAddressAdapter (val items:List<Data>, val context: Context, val re
         holder.tvVeichleName?.text=items.get(position).first_name
         holder.bind(items.get(position),recyclerViewItemClick)
     }
-}
+}*/

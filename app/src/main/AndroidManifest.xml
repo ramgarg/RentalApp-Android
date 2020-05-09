@@ -129,10 +129,7 @@
                   android:screenOrientation="unspecified"
 
         />
-        <activity android:name="com.eazyrento.merchant.view.activity.MerchantAddressListActivity"
-                android:screenOrientation="unspecified"
 
-                />
 
         <activity android:name="com.eazyrento.merchant.view.activity.MerchantOrderSummaryActivity"
                 android:screenOrientation="unspecified"

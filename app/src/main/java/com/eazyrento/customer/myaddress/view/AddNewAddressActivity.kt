@@ -7,8 +7,6 @@ import android.location.*
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.eazyrento.Constant
@@ -24,31 +22,15 @@ import com.eazyrento.Constant.Companion.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem
-import com.eazyrento.customer.dashboard.view.activity.CustomerBookingSubmitReviewActivity
-import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
-import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModel
 import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
-import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModel
-import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.eazyrento.customer.myaddress.viewmodel.AddressCreateViewModel
-import com.eazyrento.customer.myaddress.viewmodel.AddressDetailsViewModel
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
-import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
-import com.eazyrento.merchant.viewModel.MerchantProductDetailViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import kotlinx.android.synthetic.main.activity_agent_write_note.*
-import kotlinx.android.synthetic.main.activity_booking_details.*
 import kotlinx.android.synthetic.main.add_new_address_activity.*
 import kotlinx.android.synthetic.main.toolbar.*
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
-import java.util.*
 
 
 class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
@@ -80,6 +62,9 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.add_new_address_activity)
+
+        topBarWithBackIconAndTitle(getString(R.string.add_new_address))
+
         edit_address_ID = intent.getIntExtra(Constant.INTENT_ADDRESS_EDIT,DEFUALT_VALUE)
 
        if(edit_address_ID>-1)
@@ -100,23 +85,11 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         initView()
 
-        getLocationPermission();
+        getLocationPermission()
 
     }
-
-    override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        EventBus.getDefault().unregister(this)
-    }
-
 
     override fun onMapReady(map: GoogleMap?) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         if (map != null) {
             mMap = map
         }
@@ -163,10 +136,6 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     private fun initView() {
-        ViewVisibility.isVisibleOrNot(
-            this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.add_new_address)
-        )
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         btn_save.setOnClickListener { moveTOSave() }
     }
@@ -219,7 +188,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         data?.let {
             showToast(ValidationMessage.ADDRESS_ADDED)
 
-            MoveToAnotherComponent.moveToListAddressActivity(this)
+            MoveToAnotherComponent.moveToActivityNormal<MyAddressListActivity>(this)
         }
     }
 
