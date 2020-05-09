@@ -8,6 +8,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -113,7 +114,7 @@ class MerchantMainActivity : BaseNavigationActivity() {
     }
 
     override fun viewMyAddress() {
-        MoveToAnotherComponent.moveToMerchantAddressActivity(this)
+        MoveToAnotherComponent.moveToActivityNormal<MyAddressListActivity>(this)
     }
 
 }

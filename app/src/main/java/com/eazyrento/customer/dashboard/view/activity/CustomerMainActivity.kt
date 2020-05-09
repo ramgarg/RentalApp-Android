@@ -11,6 +11,7 @@ import com.eazyrento.R
 import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.dashboard.view.fragment.*
+import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -94,34 +95,7 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
     }
 
     override fun viewMyAddress() {
-        MoveToAnotherComponent.moveToMyAddressActivity(this)
+        MoveToAnotherComponent.moveToActivityNormal<MyAddressListActivity>(this)
     }
-
-   /* override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
-        when (menuItem.itemId) {
-            R.id.nav_about -> {
-                MoveToAnotherComponent.moveToAboutActivity(this)
-            }
-            R.id.nav_dashboard -> {
-                setHomeFragment()
-                toolbar_title.text=getString(R.string.select_category)
-            }
-            R.id.nav_logout -> {
-                MoveToAnotherComponent.onLogout(this,Constant.INTENT_LOGOUT_KEY,Constant.LOGOUT_VALUE)
-            }
-            R.id.nav_my_address -> {
-
-            }
-            R.id.nav_payment -> {
-
-            }
-            R.id.nav_tc -> {
-                MoveToAnotherComponent.moveToTermsActivity(this)
-            }
-        }
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
-    }*/
-
 
 }

@@ -9,13 +9,9 @@ import android.webkit.WebViewClient
 import com.eazyrento.EazyRantoApplication
 import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.view.activity.*
-import com.eazyrento.agent.view.fragment.AgentBookingsFragment
 import com.eazyrento.customer.dashboard.view.activity.*
-import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
-import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.notification.view.NotificationActivity
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
-import com.eazyrento.customer.profile.ProfileActivity
 import com.eazyrento.customer.webpages.AboutActivity
 import com.eazyrento.customer.webpages.TermsConditionActivity
 import com.eazyrento.login.view.LoginUserActivity
@@ -26,25 +22,11 @@ class MoveToAnotherComponent {
 
     companion object{
 
-        fun moveToListAddressActivity(context: Context){
-            context.startActivity(Intent(context, MyAddressListActivity::class.java))
-        }
         
         fun moveToMerchantMainActivity(context: Context){
             context.startActivity(Intent(context, MerchantMainActivity::class.java))
         }
 
-        fun moveToMyAddressActivity(context: Context){
-            context.startActivity(Intent(context, MyAddressListActivity::class.java))
-        }
-
-        fun moveToMerchantAddressActivity(context: Context){
-            context.startActivity(Intent(context, MerchantAddressListActivity::class.java))
-        }
-
-        fun moveToAddNewAddressActivity(context: Context){
-            context.startActivity(Intent(context, AddNewAddressActivity::class.java))
-        }
         fun moveToAboutActivity(context: Context){
             context.startActivity(Intent(context, AboutActivity::class.java))
         }

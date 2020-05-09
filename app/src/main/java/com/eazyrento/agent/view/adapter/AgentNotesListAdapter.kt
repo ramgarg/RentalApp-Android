@@ -9,11 +9,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.model.modelclass.AgentNotesListResModelItem
 import com.eazyrento.agent.view.activity.AgentAddNoteActivity
-import com.eazyrento.agent.view.activity.AgentWriteNoteActivity
-import com.eazyrento.agent.viewmodel.AgentDeleteNoteViewModel
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
-import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.agent_note_card_view.view.*
 
 class AgentNotesListAdapter (val items:List<AgentNotesListResModelItem>, val context: BaseActivity):
