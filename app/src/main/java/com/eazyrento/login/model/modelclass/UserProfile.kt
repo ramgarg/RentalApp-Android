@@ -12,6 +12,6 @@ data class UserProfile(
     var gender: String?,
     var id_proof_title: String,
     var mobile_number: String,
-    var profile_image: String,
+    var profile_image: String?,
     var username_choice: String
 )

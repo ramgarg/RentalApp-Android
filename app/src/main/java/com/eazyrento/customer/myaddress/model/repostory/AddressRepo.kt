@@ -8,10 +8,10 @@ import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.model.repositry.api.MasterAPI
 import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModel
-import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
 import com.eazyrento.customer.myaddress.model.modelclass.AddressDetailsResModel
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModel
 import com.eazyrento.customer.myaddress.model.repostory.api.AddressApi
+import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
 import com.eazyrento.merchant.model.repository.api.MerchantAPI
@@ -32,7 +32,7 @@ class AddressListRepo : GenericRequestHandler<AddressListResModel>(){
 class AddressCreateRepo :
     GenericRequestHandler<JsonElement>(){
 
-    fun addressCreate(addressCreateReqModelItem: AddressCreateReqModelItem): LiveData<DataWrapper<JsonElement>> {
+    fun addressCreate(addressCreateReqModelItem: AddressInfo): LiveData<DataWrapper<JsonElement>> {
 
             val call = ServiceGenrator.client.create(
                 AddressApi::class.java).createAddress(addressCreateReqModelItem)
@@ -43,7 +43,7 @@ class AddressCreateRepo :
 class AddressUpdateRepo :
     GenericRequestHandler<JsonElement>(){
 
-    fun addressUpdate(addressCreateReqModelItem: AddressCreateReqModelItem,id: Int): LiveData<DataWrapper<JsonElement>> {
+    fun addressUpdate(addressCreateReqModelItem: AddressInfo,id: Int): LiveData<DataWrapper<JsonElement>> {
 
         val call = ServiceGenrator.client.create(
             AddressApi::class.java).updateAddress(id,addressCreateReqModelItem)

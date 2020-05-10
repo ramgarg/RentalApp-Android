@@ -2,6 +2,8 @@ package com.eazyrento
 
 interface ValidationMessage{
     companion object{
+        const val PLAY_SERVICE_APK_NOT_FOUND= "Please install the Google play service APK to get accurate location."
+        const val CURRENT_LOCATION_NOT_GETTING= "There are some issue to getting location.Please restart your device or launch the Google Map once to get the location."
         const val SOCIAL_FAILED = "Auth failed.Please try after some time."
         const val CHECK_INTERNET = "Please check internet connectivity"
         const val VALID_PASSWORD_LENGTH= "Invalid Password! minimum length 8"
@@ -52,8 +54,8 @@ interface ValidationMessage{
         const val VALID_HEADING = "Write a heading"
         const val VALID_DESC = "Write description"
         const val VALID_ADDRESS = "Enter Your Address"
-        const val VALID_ADDRESS_TYPE = "Enter Address Type"
-        const val ADDRESS_ADDED = "Address Added Successfully"
+        const val VALID_ADDRESS_TYPE = "Select Address as Type"
+        const val ADDRESS_ADDED = "Request has been successfully done"
          const val LOCATION ="Turn Your Location On"
         const val ITEM_IS_IN_LIST = "The product is already in list"
 

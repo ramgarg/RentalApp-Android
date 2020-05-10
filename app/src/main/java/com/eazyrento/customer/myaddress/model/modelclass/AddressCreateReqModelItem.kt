@@ -1,6 +1,6 @@
 package com.eazyrento.customer.myaddress.model.modelclass
 
-data class AddressCreateReqModelItem (
+/*data class AddressCreateReqModelItem (
     var address_type: String?,
     var appartment: String?,
     var address_line: String?,
@@ -15,6 +15,6 @@ data class AddressCreateReqModelItem (
 ){
     constructor():this("","","",
         0.0,0.0,"","","",false)
-}
+}*/
 
 

@@ -5,17 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
+import com.eazyrento.EazyRantoApplication
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem
-import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.ViewVisibility
+import com.eazyrento.login.model.modelclass.AddressInfo
 import kotlinx.android.synthetic.main.activity_booking_details.*
 import kotlinx.android.synthetic.main.template_product_main_view.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -29,10 +30,14 @@ class CustomerBookingDetailsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_booking_details)
+        topBarWithBackIconAndTitle(getString(R.string.booking_details))
 
-        ViewVisibility.isVisibleOrNot(
+        /*ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.booking_details))
+            toolbar_title, getString(R.string.booking_details))*/
+        val addresss = EazyRantoApplication.profileData?.address_info
+
+        addresss?.let { setAddressOnUI(it) }
 
         val prodDetailsObj = intent.getParcelableExtra<ProductDetailsResModel>(Constant.BOOKING_PRODECT_DETAILS)
         objBookingReqModelItem.projectDetails =prodDetailsObj
@@ -149,13 +154,19 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
         if (resultCode== Activity.RESULT_OK && requestCode ==Constant.ADDRESS_REQUECT_CODE){
 
-            val address =data!!.getParcelableExtra<AddressListResModelItem>(Constant.KEY_ADDRESS)
+            val address =data!!.getParcelableExtra<AddressInfo>(Constant.KEY_ADDRESS)
 
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,address.toString())
 
-            tv_work_location.text = address.address_line+","+address.address_type
-            objBookingReqModelItem.address_id = address.id
+            setAddressOnUI(address)
+
         }
+    }
+
+    private fun setAddressOnUI(address:AddressInfo){
+
+        tv_work_location.text = address.address_line+","+address.address_type
+        objBookingReqModelItem.address_id = address.id
     }
     fun isContains():Boolean{
         for (obj in CustomerBookingSubmitReviewActivity.objListBookingItem) {

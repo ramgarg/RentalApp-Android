@@ -23,8 +23,10 @@ class LocationPermissionUser(val activity: Activity) {
                 Manifest.permission.ACCESS_FINE_LOCATION
             )
             == PackageManager.PERMISSION_GRANTED
+
         ) {
             verifyUserPermission.onSuccess()
+
         } else {
               verifyUserPermission.onFailler()
         }
@@ -62,7 +64,7 @@ class LocationPermissionUser(val activity: Activity) {
                 for (location in locationResult.locations) {
                     if (location != null) {
                         locationCreator.onLocation(location)
-                        fusedLocationClient.removeLocationUpdates(locationCallback)
+//                        fusedLocationClient.removeLocationUpdates(locationCallback)
                     }
                 }
             }

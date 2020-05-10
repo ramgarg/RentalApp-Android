@@ -3,7 +3,7 @@ package com.eazyrento.customer.dashboard.model.modelclass
 import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 
 data class CustomerCreateBookingReqModelItem(
-    var address_id: Int,
+    var address_id: Int?,
     var start_date: String,
     var start_time: String,
     var end_date: String,

@@ -3,6 +3,7 @@ package com.eazyrento.customer.myaddress.model.modelclass
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
+/*
 @Parcelize
 data class AddressListResModelItem(
     val address_line: String?,
@@ -15,4 +16,4 @@ data class AddressListResModelItem(
     val latitude: Double,
     val longitude: Double,
     val state: String?
-) : Parcelable
+) : Parcelable*/

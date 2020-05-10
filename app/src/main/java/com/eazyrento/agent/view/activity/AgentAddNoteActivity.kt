@@ -6,28 +6,18 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModelItem
 import com.eazyrento.agent.model.modelclass.AgentNotesListResModel
 import com.eazyrento.agent.model.modelclass.AgentNotesListResModelItem
 import com.eazyrento.agent.view.adapter.AgentNotesListAdapter
-import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
-import com.eazyrento.agent.viewmodel.AgentCreateNotesViewModel
 import com.eazyrento.agent.viewmodel.AgentDeleteNoteViewModel
 import com.eazyrento.agent.viewmodel.AgentNotesListViewModel
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
-import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModel
-import com.eazyrento.customer.myaddress.view.adapter.MyAddressAdapter
+
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.customer.utils.ViewVisibility
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_agent_add_note.*
-import kotlinx.android.synthetic.main.activity_agent_add_note.drawer_layout_agent
-import kotlinx.android.synthetic.main.activity_agent_order_summary.*
-import kotlinx.android.synthetic.main.activity_my_address.*
-import kotlinx.android.synthetic.main.toolbar.*
+
 
 
 class AgentAddNoteActivity: BaseActivity(){

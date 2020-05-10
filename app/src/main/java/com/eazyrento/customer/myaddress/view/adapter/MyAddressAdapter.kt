@@ -1,5 +1,6 @@
 package com.eazyrento.customer.myaddress.view.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
+import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.login.model.modelclass.AddressInfo
 import kotlinx.android.synthetic.main.row_my_address.view.*
 
-class MyAddressAdapter(val items:List<AddressListResModelItem>, val context: Context):
+class MyAddressAdapter(val items:List<AddressInfo>, val context: Activity):
     RecyclerView.Adapter<MyAddressAdapter.ViewHolder>() {
 
 
@@ -22,17 +24,8 @@ class MyAddressAdapter(val items:List<AddressListResModelItem>, val context: Con
         val tvAddressLine=view.tv_add_line
         val tvCountry=view.tv_add_country
         val imgSelected=view.img_selected
-        var imgEdit=view.img_edit
-
-       /* fun bind(data: Data, clickListener: RecyclerViewItemClick)
-        {
-            itemView.setOnClickListener {
-                clickListener.onItemClick(data)
-            }
-        }*/
-
-
-
+        var img_delete=view.img_delete
+        val img_edit =view.img_edit
 
     }
 
@@ -55,19 +48,24 @@ class MyAddressAdapter(val items:List<AddressListResModelItem>, val context: Con
         holder.tvCountry?.text=items.get(position).country
 
         holder.itemView.setOnClickListener {
-            if (holder.imgSelected?.visibility!=View.INVISIBLE) {
+            /*if (holder.imgSelected?.visibility!=View.INVISIBLE) {
                 holder.imgSelected?.visibility = View.INVISIBLE
             }else{
                 holder.imgSelected?.visibility=View.VISIBLE
-            }
+            }*/
             (context as BaseActivity).moveOnSelecetedItem(items.get(position))
         }
-        holder.imgEdit.setOnClickListener {
-            MoveToAnotherComponent.moveToActivityWithIntentValue<AddNewAddressActivity>(context,
-                Constant.INTENT_ADDRESS_EDIT,items[position].id)
+        holder.img_delete.setOnClickListener {
+
+            (context as MyAddressListActivity).deleteAddress(position)
+
         }
-//        holder.bind(items.get(position),recyclerViewItemClick)
-//        Picasso.with(context).load(items.get(position).avatar)
-//            .into(holder.imgVeichle );
+
+        holder.img_edit.setOnClickListener {
+
+            (context as BaseActivity).moveOnSelecetedItem(items.get(position))
+
+        }
+
     }
 }

@@ -13,9 +13,7 @@ import com.eazyrento.EazyRantoApplication
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.appbiz.AppBizLogin
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModelItem
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -32,11 +30,14 @@ class ProfileActivity : BaseActivity() {
     var userProfile: UserProfile? = null
 
     private val uploadImageFromDevice = UploadImageFromDevice()
+
     private var selectProfID:String?=null
     private var selectBase64StringAttachedDoc:String?=null
+
     private var selectGender:String?=null
 
     private var selectBase64StringProfilePic:String?=null
+
     private var isEditableDocumentSpinner:Int =0
 
 
@@ -192,9 +193,9 @@ class ProfileActivity : BaseActivity() {
             it.profile_image = "" + img_profile
             it.username_choice = "" + ed_user_name.text
 
-            selectBase64StringProfilePic?.let {inner_base64->
-                it.profile_image = inner_base64
-            }
+           // selectBase64StringProfilePic?.let {inner_base64->
+                it.profile_image = selectBase64StringProfilePic
+            //}
 
             selectBase64StringAttachedDoc?.let { inner ->
                 it.attached_document = inner
@@ -235,19 +236,29 @@ class ProfileActivity : BaseActivity() {
         }
         if (resultCode== Activity.RESULT_OK && requestCode ==Constant.ADDRESS_REQUECT_CODE){
 
-            val address =data!!.getParcelableExtra<AddressListResModelItem>(Constant.KEY_ADDRESS)
-
-            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,address.toString())
-
             userProfile?.let {
-                if (it.address_info==null){
-                    it.address_info= AddressInfo()
+                val addressInfo = data!!.getParcelableExtra<AddressInfo>(Constant.KEY_ADDRESS)
+
+                if(it.address_info==null) {
+                    it.address_info = AddressInfo(
+                        addressInfo.address_line,
+                        addressInfo.address_type,
+                        addressInfo.appartment,
+                        addressInfo.city,
+                        addressInfo.country,
+                        addressInfo.id,
+                        addressInfo.is_default,
+                        addressInfo.latitude,
+                        addressInfo.longitude,
+                        addressInfo.state
+                    )
+                }else{
+                     it.address_info = addressInfo.copy()
                 }
-            it.address_info.address_line = address.address_line as String
-            it.address_info.address_type =address.address_type as String
-            it.address_info.city = address.city as String
-            it.address_info.country = address.country as String
-                it.address_info.state=address.state as String
+
+                //testing purpose
+                it.address_info.id =null
+
                 setAddress()
 
             }

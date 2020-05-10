@@ -3,11 +3,10 @@ package com.eazyrento.customer.myaddress.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
-import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModel
-import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
 import com.eazyrento.customer.myaddress.model.modelclass.AddressDetailsResModel
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModel
 import com.eazyrento.customer.myaddress.model.repostory.*
+import com.eazyrento.login.model.modelclass.AddressInfo
 import com.google.gson.JsonElement
 
 class AddressListViewModel : ViewModel() {
@@ -20,7 +19,7 @@ class AddressListViewModel : ViewModel() {
 
 class AddressCreateViewModel : ViewModel() {
 
-    fun createAddress(addressCreateReqModelItem: AddressCreateReqModelItem): LiveData<DataWrapper<JsonElement>> {
+    fun createAddress(addressCreateReqModelItem: AddressInfo): LiveData<DataWrapper<JsonElement>> {
         return AddressCreateRepo()
             .addressCreate(addressCreateReqModelItem)
     }
@@ -42,7 +41,7 @@ class AddressDeleteViewModel:ViewModel() {
 }
 
 class UpdateAddressViewModel:ViewModel() {
-    fun updateAddress(addressCreateReqModelItem: AddressCreateReqModelItem,id: Int): LiveData<DataWrapper<JsonElement>> {
+    fun updateAddress(addressCreateReqModelItem: AddressInfo,id: Int): LiveData<DataWrapper<JsonElement>> {
         return AddressUpdateRepo()
             .addressUpdate(addressCreateReqModelItem,id)
     }

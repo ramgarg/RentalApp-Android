@@ -1,9 +1,9 @@
 package com.eazyrento.customer.myaddress.view
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
-import android.location.Location
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityCompat
@@ -12,13 +12,15 @@ import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.customer.myaddress.model.modelclass.AddressCreateReqModelItem
 import com.eazyrento.customer.myaddress.viewmodel.AddressCreateViewModel
+import com.eazyrento.customer.myaddress.viewmodel.AddressDeleteViewModel
+import com.eazyrento.customer.myaddress.viewmodel.UpdateAddressViewModel
 import com.eazyrento.customer.utils.Common
-import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.supporting.LocationGetter
+import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.supporting.LocationPermissionUser
 import com.eazyrento.supporting.VerifyUserPermission
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -36,37 +38,31 @@ import com.google.android.libraries.places.api.net.PlacesClient
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import kotlinx.android.synthetic.main.add_new_address_activity.*
+import java.lang.Exception
 import java.util.*
 
 
 class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
-    val locationPermissionUser = LocationPermissionUser(this)
+    private val locationPermissionUser = LocationPermissionUser(this)
 
-    val addressModelItem = AddressCreateReqModelItem()
-
-    private val DEFUALT_VALUE = -1
-    var edit_address_ID: Int = -1
-
-        private var mLocationPermissionGranted: Boolean = false
+    private var addressInfo :AddressInfo?=null
+    private var mLocationPermissionGranted: Boolean = false
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-//    private  var mLocationOnMap: Location?=null
 
-
-    private var cityName: String = ""
-    private var stateName: String = ""
-    private var countryName: String = ""
 
     private val verifying = object : VerifyUserPermission {
         override fun onSuccess() {
             mLocationPermissionGranted = true
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"Permistion already")
 
-             getLocation()
+            // getLocation()
 
         }
 
         override fun onFailler() {
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"Permistion not  granted requesting.........")
             ActivityCompat.requestPermissions(
                 this@AddNewAddressActivity, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 Constant.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
@@ -85,40 +81,66 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         topBarWithBackIconAndTitle(getString(R.string.add_new_address))
 
-        edit_address_ID = intent.getIntExtra(Constant.INTENT_ADDRESS_EDIT, DEFUALT_VALUE)
+        addressInfo = intent.getParcelableExtra(Constant.INTENT_ADDRESS_EDIT)
 
-        if (edit_address_ID != DEFUALT_VALUE) {
-            //enanled edit and delete functionlaty
+        if (addressInfo != null) {
+            //enanled edit and delete functionlaty....
             enableUpdateDeleteFunctionalty()
+        }else{
+            //For adding new functionlaty......
+            createNewAddressFunctionalty()
         }
-        /* else {
-            btn_save.visibility = View.VISIBLE
-            Common.hideGroupViews(btn_delete, btn_update)
-        }
-*/
-        mapInit()
+
+        googleMapInitilizing()
+        googlePlaceAPIinitlizing()
+
+
+    }
+
+    private fun createNewAddressFunctionalty() {
+        // new address is initititing........
+        addressInfo = AddressInfo("","","","","",null,false,0.0,0.0,"")
+
         //fatching location....
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        fatchingLocation()
+    }
+    /*
+    * fatching last location ........
+    * */
+    private fun fatchingLocation(){
+        when(GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this)){
+            ConnectionResult.SUCCESS-> {
+                fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+                // current locatioon varifying....
+                locationPermissionUser.verifingPermission(verifying)
+            }
+            else -> showToast(ValidationMessage.PLAY_SERVICE_APK_NOT_FOUND)
+        }
+    }
 
-        //update UI
-
-        UIDataAsUserAddressType()
-
-        // initlization google map
-
-
-        // current locatioon varifying....
-        locationPermissionUser.verifingPermission(verifying)
-
-
-        // initilize places
-        initPlaceAPI()
-
+    fun setAddressOnUI(){
+//        tv_current_address.text = addressModelItem.appartment.plus(addressModelItem.city).plus(addressModelItem.country).plus(addressModelItem.state)
+        addressInfo?.let {
+        tv_current_address.text = it.address_line
+        ed_address.setText(it.address_line)
+        }
     }
     fun enableUpdateDeleteFunctionalty(){
 
         btn_save.visibility = View.GONE
-        Common.showGroupViews(btn_delete, btn_update)
+//        Common.showGroupViews(btn_delete, btn_update)
+        Common.showGroupViews(btn_update)
+        setUserAddressTypeEditMode()
+        setAddressOnUI()
+
+//        moveCamraAtLocation(addressInfo.latitude,addressInfo.longitude)
+    }
+    fun setUserAddressTypeEditMode(){
+        when(addressInfo?.address_type){
+            Constant.Address_Work -> onWorkTypeClick(null)
+            Constant.Address_Home ->onHomeTypeClick(null)
+            Constant.Address_Other ->onOtherTypeClick(null)
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -138,16 +160,18 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
                 ) {
                     mLocationPermissionGranted = true
 
-                    getLocation()
+                    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"Permistion granted........")
+
+                   // getLocation()
 
                 }
             }
         }
     }
-    private fun initPlaceAPI(){
+    private fun googlePlaceAPIinitlizing(){
 // Initialize the SDK
         // Initialize the SDK
-        Places.initialize(applicationContext, "AIzaSyBpHL3PdTYMgPqXQzzc54IW3cd-SCMpNzg")
+        Places.initialize(applicationContext, "AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I")
 
 // Create a new Places client instance
 
@@ -166,13 +190,20 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         * utcOffsetMinutes=null, viewport=null, websiteUri=null}
 
         * */
-        autocompleteFragment?.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME,Place.Field.ADDRESS,
-            Place.Field.ADDRESS_COMPONENTS,Place.Field.LAT_LNG))
+        autocompleteFragment?.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME,Place.Field.ADDRESS,Place.Field.LAT_LNG))
 
 // Set up a PlaceSelectionListener to handle the response.
         autocompleteFragment?.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
                 AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, place.toString())
+                //place.address
+
+                place.latLng?.let {
+                    setData(it.latitude, it.longitude)
+                        return
+                }
+                addressInfo?.address_line = place.address as String
+
             }
 
             override fun onError(staus: Status) {
@@ -182,7 +213,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     }
 
-    private fun mapInit() {
+    private fun googleMapInitilizing() {
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment?
@@ -196,14 +227,16 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         val mapStyleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.style)
         this.mMap.setMapStyle(mapStyleOptions)
 
+        getLocation()
+
     }
 
-    private fun moveCamraAtLocation(location: Location){
+    private fun moveCamraAtLocation(lat: Double,lng: Double){
         val cameraPosition = CameraPosition.Builder()
             .target(
                 LatLng(
-                    location.latitude,
-                    location.longitude
+                    lat,
+                    lng
                 )
             ) // Sets the center of the it to location user
             .zoom(17f) // Sets the zoom
@@ -213,7 +246,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
-        placeMarkerOnMap(LatLng(location.latitude, location.longitude))
+        placeMarkerOnMap(LatLng(lat, lng))
     }
 
     private fun enbledLocationOnMap(){
@@ -221,55 +254,83 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         mMap.uiSettings?.isMyLocationButtonEnabled = true
     }
 
-    fun setData(location: Location){
-        moveCamraAtLocation(location)
-        enbledLocationOnMap()
-        getAddress(location)
+    fun setData(lat: Double,lng: Double){
+
+        moveCamraAtLocation(lat,lng)
+        getAddressByLocation(lat,lng)
+        setAddressOnUI()
     }
     private fun getLocation() {
 
-        fusedLocationClient.lastLocation.addOnSuccessListener(this ){ location ->
+        if (mLocationPermissionGranted) {
+            fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
 
+                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "" + location)
 
-            location?.let {
-                setData(location)
-                return@addOnSuccessListener
-            }
-            locationPermissionUser.locationCreater(fusedLocationClient,object:LocationGetter{
-                override fun onLocation(location: Location) {
-                   setData(location)
-
+                location?.let {
+                    enbledLocationOnMap()
+                    setData(location.latitude, location.longitude)
+                    return@addOnSuccessListener
                 }
-
-            })
-
+                showToast(ValidationMessage.CURRENT_LOCATION_NOT_GETTING)
+            }
         }
     }
 
 
 
     private fun checkValidation(): Boolean {
-        when {
-            ed_address.text.toString().isEmpty() -> showToast(ValidationMessage.VALID_ADDRESS)
-            btn_home_active.visibility != View.VISIBLE && btn_other_active.visibility != View.VISIBLE && btn_work_active.visibility != View.VISIBLE -> showToast(
-                ValidationMessage.VALID_ADDRESS_TYPE
-            )
-            else -> {
-                return false
-            }
+        if (ed_address.text.toString().isEmpty() ){
+            showToast(ValidationMessage.VALID_ADDRESS)
+            return true
         }
-        return true
+        if (btn_home_active.visibility != View.VISIBLE && btn_other_active.visibility != View.VISIBLE && btn_work_active.visibility != View.VISIBLE){
+            showToast(ValidationMessage.VALID_ADDRESS_TYPE)
+            return true
+        }
+        return false
+
     }
 
 
     fun onSaveAddressClick(view: View) {
+
         if (checkValidation())
             return
-        addressObjectBuilder()
+
+        addressInfo?.address_line = ed_address.text.toString()
         callSaveAddressAPI()
     }
 
-    private fun addressObjectBuilder() {
+    fun onDeleteClick(view: View){
+
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<AddressDeleteViewModel>(this)
+                    .deleteAddress(addressInfo?.id!!)
+                , this, this
+            )
+        }
+    }
+    fun onUpdateClick(view: View)
+    {
+        if (checkValidation())
+            return
+
+        addressInfo?.address_line = ed_address.text.toString()
+
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<UpdateAddressViewModel>(this)
+                    .updateAddress(addressInfo!!,addressInfo!!.id!!)
+                , this, this
+            )
+        }
+
+    }
+
+
+    /*private fun addressObjectBuilder() {
 
         if (btn_home_active.visibility == View.VISIBLE) {
             addressModelItem.address_type = Constant.Address_Home
@@ -279,9 +340,27 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
             addressModelItem.address_type = Constant.Address_Other
         }
 
-        addressModelItem.address_line = ed_address.text.toString()
-        addressModelItem.appartment = ""
 
+
+    }*/
+
+    fun onHomeTypeClick(view: View?){
+            addressInfo?.address_type = Constant.Address_Home
+            Common.hideGroupViews(btn_work_active, btn_other_active, btn_home_inactive)
+            Common.showGroupViews(btn_home_active, btn_other_inactive, btn_work_inactive)
+    }
+
+    fun onWorkTypeClick(view: View?){
+            addressInfo?.address_type = Constant.Address_Work
+            Common.hideGroupViews(btn_home_active, btn_other_active, btn_work_inactive)
+            Common.showGroupViews(btn_work_active, btn_other_inactive, btn_home_inactive)
+
+    }
+
+    fun onOtherTypeClick(view: View?){
+            addressInfo?.address_type = Constant.Address_Other
+            Common.hideGroupViews(btn_home_active, btn_work_active, btn_other_inactive)
+            Common.showGroupViews(btn_other_active, btn_work_inactive, btn_home_inactive)
     }
 
     fun callSaveAddressAPI(){
@@ -289,38 +368,23 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<AddressCreateViewModel>(this)
-                    .createAddress(addressModelItem)
+                    .createAddress(addressInfo!!)
                 , this, this
             )
         }
     }
 
     override fun <T> onSuccessApiResult(data: T) {
+
+
         data?.let {
+
             showToast(ValidationMessage.ADDRESS_ADDED)
 
-            MoveToAnotherComponent.moveToActivityNormal<MyAddressListActivity>(this)
+            val intent= Intent()
+            intent.putExtra(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST,addressInfo)
+            finishCurrentActivityWithResult(Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST,intent)
         }
-    }
-
-    private fun UIDataAsUserAddressType() {
-        btn_home_inactive.setOnClickListener {
-            Common.hideGroupViews(btn_work_active, btn_other_active, btn_home_inactive)
-            Common.showGroupViews(btn_home_active, btn_other_inactive, btn_work_inactive)
-
-        }
-
-        btn_work_inactive.setOnClickListener {
-            Common.hideGroupViews(btn_home_active, btn_other_active, btn_work_inactive)
-            Common.showGroupViews(btn_work_active, btn_other_inactive, btn_home_inactive)
-
-        }
-
-        btn_other_inactive.setOnClickListener {
-            Common.hideGroupViews(btn_home_active, btn_work_active, btn_other_inactive)
-            Common.showGroupViews(btn_other_active, btn_work_inactive, btn_home_inactive)
-        }
-
     }
 
     private fun placeMarkerOnMap(location: LatLng) {
@@ -328,19 +392,45 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         mMap.addMarker(markerOptions)
     }
 
-    private fun getAddress(location: Location) {
+    private fun getAddressByLocation(lat:Double,lng:Double) {
 
             val geocoder = Geocoder(this)
 
-            val list = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+            val listOfAdress = geocoder.getFromLocation(lat, lng, 1)
+        addressInfo?.let {
+            try {
 
-            addressModelItem.longitude = location.longitude
-            addressModelItem.latitude = location.latitude
+            it.latitude = lat
+            it.longitude = lng
 
-            val address = list[0].getAddressLine(0)
-            addressModelItem.city = list.get(0).subLocality
-            addressModelItem.country = list.get(0).countryName
-            addressModelItem.state = list.get(0).locality
+
+            val address = listOfAdress[0].getAddressLine(0)
+
+                 it.address_line = address
+
+                splitAddress(address)
+
+            }catch (ex:Exception){
+                ex.printStackTrace()
+            }
 
         }
+
+        }
+
+   private fun splitAddress(address: String) {
+       try {
+
+       val listOfAdress = address.split(",")
+
+       addressInfo?.let {
+       it.appartment = listOfAdress.component1()
+       it.city = listOfAdress.component2()
+       it.country = listOfAdress.component3()
+       it.state = listOfAdress.component4()
+       }
+       }catch (ex:Exception){
+           ex.printStackTrace()
+       }
+    }
 }

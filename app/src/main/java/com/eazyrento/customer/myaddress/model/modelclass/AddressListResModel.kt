@@ -1,3 +1,5 @@
 package com.eazyrento.customer.myaddress.model.modelclass
 
-class AddressListResModel : ArrayList<AddressListResModelItem>()
+import com.eazyrento.login.model.modelclass.AddressInfo
+
+class AddressListResModel : ArrayList<AddressInfo>()

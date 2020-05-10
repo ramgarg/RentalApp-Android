@@ -16,6 +16,9 @@ interface Constant{
         const val VEHICLES_SUB_CATE = "vehicle_sub"
         const val KEY_ADDRESS ="addr_id"
 
+        const val KEY_UPDATE_DELETE_CREATE_REQUEST ="addressmod"
+        const val KEY_DATA_IS_CREATING="ceate"
+
         const val BOOKING_PRODECT_DETAILS = "ID"
 
         //intent key
@@ -42,6 +45,10 @@ interface Constant{
         const val INTENT_ADD_ANOTHER = "booking"
 
         const val INTENT_ADDR_LIST = "getAddID"
+
+
+
+        const val INTENT_UPDATE_DELETE_CREATE_REQUEST = 5001
 
 
         // Order status
