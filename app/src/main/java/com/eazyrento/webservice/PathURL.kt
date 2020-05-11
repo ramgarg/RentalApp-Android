@@ -49,6 +49,7 @@ class PathURL {
 
         const val MakePayment      = "/customer/payment/"
         const val PaymentList      = "/customer/payments"
+        const val PaymentListByID      = "/customer/payments{id}"
         const val CustomerFeedback = "/customer/feedback"
 
         const val CUSTOMER_MY_BOOKINGS = "/customer/bookings"
@@ -83,7 +84,7 @@ class PathURL {
         const val AssignMerchants               = "/agent/assign_merchant"
         const val AgentRequestPayment           = "/agent/request_payment"
         const val AgentFeedback                 = "/agent/feedback"
-        const val AgentPayments                 = "/agent/payments/"
+        const val AgentPayments                 = "/agent/payments/{id}"
         const val AgentCollectCashPayment       = "/agent/collect_cash_payment"
 
         const val AGENT_ACCEPTANCE_DECLINE =      "/agent/booking_action"

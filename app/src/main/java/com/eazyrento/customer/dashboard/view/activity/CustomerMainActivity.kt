@@ -12,6 +12,7 @@ import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.dashboard.view.fragment.*
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
+import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -91,7 +92,7 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
     }
 
     override fun viewPaymentHistory() {
-        MoveToAnotherComponent.moveToPaymentHistoryActivity(this)
+        MoveToAnotherComponent.moveToActivityNormal<PaymentHistoryActivity>(this)
     }
 
     override fun viewMyAddress() {

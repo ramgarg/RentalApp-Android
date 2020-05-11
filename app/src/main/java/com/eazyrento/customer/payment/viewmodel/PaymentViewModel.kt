@@ -8,7 +8,7 @@ import com.eazyrento.customer.payment.model.repository.PaymentListRepo
 
 class PaymentListViewModel : ViewModel() {
 
-    fun getAddressList(): LiveData<DataWrapper<PaymentListResModel>> {
-        return PaymentListRepo().getPaymentList()
+    fun getPaymentList(orderID:String?): LiveData<DataWrapper<PaymentListResModel>> {
+        return PaymentListRepo().getPaymentList(orderID)
     }
 }

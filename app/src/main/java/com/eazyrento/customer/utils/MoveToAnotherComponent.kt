@@ -11,7 +11,6 @@ import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.view.activity.*
 import com.eazyrento.customer.dashboard.view.activity.*
 import com.eazyrento.customer.notification.view.NotificationActivity
-import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.webpages.AboutActivity
 import com.eazyrento.customer.webpages.TermsConditionActivity
 import com.eazyrento.login.view.LoginUserActivity
@@ -34,9 +33,9 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, TermsConditionActivity::class.java))
         }
 
-        fun moveToPaymentHistoryActivity(context: Context){
+       /* fun moveToPaymentHistoryActivity(context: Context){
             context.startActivity(Intent(context, PaymentHistoryActivity::class.java))
-        }
+        }*/
 
         fun moveToAgentUpdateOrderSummaryActivity(context: Context){
             context.startActivity(Intent(context, AgentUpdateOrderActivity::class.java))
@@ -108,6 +107,12 @@ class MoveToAnotherComponent {
         }
 
         inline fun <reified T>moveToActivityWithIntentValue(context: Context, key: String, value: Int) {
+            val intent = Intent(context, T::class.java)
+            intent.putExtra(key,value)
+            context.startActivity(intent)
+        }
+        //with string value
+        inline fun <reified T>moveToActivityWithIntentValue(context: Context, key: String, value: String) {
             val intent = Intent(context, T::class.java)
             intent.putExtra(key,value)
             context.startActivity(intent)

@@ -39,7 +39,11 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
     }
 
     private fun clickListenerOnViews(){
-       payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<PaymentHistoryActivity>(this) }
+       payment_view_history.setOnClickListener {
+
+           MoveToAnotherComponent.moveToActivityWithIntentValue<PaymentHistoryActivity>(this,
+               Constant.KEY_PAYMENT_HISTORY,orderRes.order_id)
+       }
         order_rate_review.setOnClickListener {
 
             feedbackReqModel.agent_id = orderRes.agent_detail.id

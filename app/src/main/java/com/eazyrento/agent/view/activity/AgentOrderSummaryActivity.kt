@@ -47,7 +47,8 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         per_hour.visibility = View.INVISIBLE
         agent_asign_merchant_btn.setOnClickListener { showToast(ValidationMessage.UNDER_DEVELOPMENT) }
         payment_view_history.setOnClickListener {
-            MoveToAnotherComponent.moveToActivityNormal<PaymentHistoryActivity>(this)
+            MoveToAnotherComponent.moveToActivityWithIntentValue<PaymentHistoryActivity>(this,
+                Constant.KEY_PAYMENT_HISTORY,orderRes.order_id)
         }
         agent_update_order_btn.setOnClickListener {
             MoveToAnotherComponent.moveToAgentUpdateOrderSummaryActivity(

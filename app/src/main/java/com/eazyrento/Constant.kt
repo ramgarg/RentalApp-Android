@@ -3,6 +3,8 @@ package com.eazyrento
 interface Constant{
     companion object
     {
+        const val DEFAULT_VALUE =""
+        const val KEY_PAYMENT_HISTORY = "ORDER_ID"
         const val REQUEST_CODE_FINISH_LOGIN_ON_BACK = 8001
         const val LOGIN_KEY_FINISH ="FINISH"
         const val LOGIN_VALUE = 1
