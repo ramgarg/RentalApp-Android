@@ -9,8 +9,6 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.view.activity.AgentOrderSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
-import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
-import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAdapter
 import com.eazyrento.customer.utils.Common
 import kotlinx.android.synthetic.main.adapter_user_order_summery.view.*
 import kotlinx.android.synthetic.main.phone_view.view.*
