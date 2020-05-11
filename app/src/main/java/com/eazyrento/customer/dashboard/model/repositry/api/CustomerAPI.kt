@@ -3,11 +3,9 @@ package com.eazyrento.customer.dashboard.model.repositry.api
 import com.google.gson.JsonElement
 import com.eazyrento.common.model.modelclass.BookingListResModel
 import com.eazyrento.common.model.modelclass.ProductID
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerWishListResModel
+import com.eazyrento.customer.dashboard.model.modelclass.*
 import com.eazyrento.login.model.modelclass.LoginRequest
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.webservice.PathURL
 import retrofit2.Call
 import retrofit2.http.*
@@ -54,4 +52,7 @@ interface CustomerAPI {
 
     @GET(PathURL.CUSTOMER_MY_BOOKINGS)
     fun getCustomerBookingList(): Call<BookingListResModel>
+
+    @POST(PathURL.CustomerFeedback)
+    fun customerFeedback(@Body customerfeedbackRequestModel: CustomerFeedbackRequestModel): Call<JsonElement>
 }

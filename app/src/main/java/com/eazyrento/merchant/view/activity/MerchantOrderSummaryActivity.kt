@@ -7,12 +7,11 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
 import com.eazyrento.common.view.OrderBaseSummaryActivity
-import com.eazyrento.customer.dashboard.model.modelclass.AgentDetail
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerDetail
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
+import com.eazyrento.customer.dashboard.model.modelclass.*
+import com.eazyrento.customer.dashboard.view.activity.CustomerFeedbackActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.merchant.view.adapter.MerchantUsersOrderSummaryAdapter
 import kotlinx.android.synthetic.main.activity_agent_order_summary.*
 import kotlinx.android.synthetic.main.activity_agent_order_summary.agent_asign_merchant_btn
@@ -28,6 +27,8 @@ import kotlinx.android.synthetic.main.template_order_summery_top_view.order_rate
 import kotlinx.android.synthetic.main.testingxml.*
 
 class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
+
+    val feedbackReqModel = FeedbackReqModel()
 
 //    lateinit var orderSummaryViewModel: OrderSummaryViewModel
 
@@ -54,6 +55,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         order_rate_review.setOnClickListener {
             feedbackReqModel.customer_id = orderRes.customer_detail.id
             feedbackReqModel.agent_id = orderRes.agent_detail.id
+            feedbackReqModel.order_id=orderRes.order_id
             rateAndReviews(feedbackReqModel)
         }
     }
@@ -123,6 +125,11 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         }
 
 
+    }
+
+    fun rateAndReviews(feedbackReqModel: FeedbackReqModel){
+
+        MoveToAnotherComponent.openActivityWithParcelableParam<RateAndReviewActivity, FeedbackReqModel>(this,Constant.INTENT_RATE_REVIEWS,feedbackReqModel)
     }
 
 }

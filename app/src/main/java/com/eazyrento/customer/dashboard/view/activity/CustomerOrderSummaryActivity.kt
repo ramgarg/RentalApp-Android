@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.OrderBaseSummaryActivity
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerFeedbackRequestModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAdapter
@@ -25,6 +26,9 @@ import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
+    var merchant_ID=-1
+    val customerFeedbackReqModel = CustomerFeedbackRequestModel()
+
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
@@ -41,8 +45,10 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
        payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<PaymentHistoryActivity>(this) }
         order_rate_review.setOnClickListener {
 
-            feedbackReqModel.agent_id = orderRes.agent_detail.id
-            rateAndReviews(feedbackReqModel)
+            customerFeedbackReqModel.agent_id = orderRes.agent_detail.id
+            customerFeedbackReqModel.merchant_id=merchant_ID
+            customerFeedbackReqModel.order_id = orderRes.order_id
+            rateAndReviews(customerFeedbackReqModel)
         }
         customer_payment_button.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<PaymentActivity>(this) }
     }
@@ -116,6 +122,15 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
                 customerOderDetailsResponse.merchant_detail as MutableList<MerchantDetail>,this)
 
         rec_user_order_summary.adapter = recycleAdapterUsersHomeCard
+    }
+
+    fun sendMerchantID(merchantId: Int) {
+       merchant_ID=merchantId
+
+    }
+    fun rateAndReviews(customerfeedbackReqModel: CustomerFeedbackRequestModel){
+
+        MoveToAnotherComponent.openActivityWithParcelableParam<CustomerFeedbackActivity,CustomerFeedbackRequestModel>(this,Constant.INTENT_RATE_REVIEWS,customerfeedbackReqModel)
     }
 
 }

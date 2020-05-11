@@ -6,7 +6,9 @@ import com.eazyrento.agent.model.repositry.api.AgentAPI
 
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerFeedbackRequestModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.repositry.api.CustomerAPI
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.merchant.model.repository.api.MerchantAPI
 import com.eazyrento.webservice.ServiceGenrator
@@ -90,6 +92,18 @@ class AgentUpdateNoteRepo : GenericRequestHandler<AgentNotesListResModelItem>(){
             AgentAPI::class.java).updateNote(id,agentAddNoteReqModelItem)
            return doRequest(call)
     }
+}
+
+class AgentFeedbackRepo :
+    GenericRequestHandler<JsonElement>(){
+
+    fun agentFeedback(agentFeedbackReqModel: AgentFeedbackReqModel): LiveData<DataWrapper<JsonElement>> {
+
+        val call = ServiceGenrator.client.create(
+            AgentAPI::class.java).agentFeedback(agentFeedbackReqModel)
+        return doRequest(call)
+    }
+
 }
 
 
