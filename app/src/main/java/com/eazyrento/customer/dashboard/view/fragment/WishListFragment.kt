@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerWishListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.WishListItem
@@ -15,6 +16,7 @@ import com.eazyrento.customer.dashboard.view.adapter.DeleteAndViewDetails
 import com.eazyrento.customer.dashboard.view.adapter.WishListAdapter
 import com.eazyrento.customer.dashboard.viewmodel.CustomerWishDeleteViewModel
 import com.eazyrento.customer.dashboard.viewmodel.CustomerWishListViewModel
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.fragment_wish_list.*
@@ -44,6 +46,13 @@ class WishListFragment : BaseFragment(), DeleteAndViewDetails {
     override fun <T> onSuccessApiResult(data: T) {
 
         if( data is CustomerWishListResModel){
+
+            if (data.isEmpty())
+            {
+                Common.showToast(requireContext(),ValidationMessage.NO_DATA_FOUND)
+                return
+            }
+
             listWish = data
 
         rec_wishlist.layoutManager = LinearLayoutManager(requireActivity(),
@@ -73,7 +82,7 @@ class WishListFragment : BaseFragment(), DeleteAndViewDetails {
              callAPI()?.let {
                  it.observeApiResult(
                      it.callAPIFragment<CustomerWishDeleteViewModel>(this)
-                         .wishDelete(wishListItem.id)
+                         .wishDelete(wishListItem.product_id)
                      , viewLifecycleOwner, requireActivity()
                  )
              }
@@ -85,7 +94,7 @@ class WishListFragment : BaseFragment(), DeleteAndViewDetails {
             listPosition = pos
             MoveToAnotherComponent.moveToActivityWithIntentValue<ProductDetailsActivity>(
                 requireContext(),
-                Constant.VEHICLES_SUB_CATE, wishListItem.id
+                Constant.VEHICLES_SUB_CATE, wishListItem.product_id
             )
         }
     }

@@ -35,13 +35,11 @@ class ProductDetailsActivity : BaseActivity()
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_view_details)
+        topBarWithBackIconAndTitle(getString(R.string.details))
 
          product_id = intent.getIntExtra(Constant.VEHICLES_SUB_CATE,-1)
 
-
-        ViewVisibility.isVisibleOrNot(
-            this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.details))
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"productID--"+product_id)
 
      //Product details API calling
         isAddOrDeleteWish = false

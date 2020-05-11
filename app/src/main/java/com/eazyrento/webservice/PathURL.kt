@@ -49,7 +49,7 @@ class PathURL {
 
         const val MakePayment      = "/customer/payment/"
         const val PaymentList      = "/customer/payments"
-        const val PaymentListByID      = "/customer/payments{id}"
+        const val PaymentListByID      = "/customer/payments/{id}"
         const val CustomerFeedback = "/customer/feedback"
 
         const val CUSTOMER_MY_BOOKINGS = "/customer/bookings"

@@ -44,12 +44,25 @@ class Common {
             val datePickerDialog = DatePickerDialog(
                 context, R.style.TimePickerTheme,
                 DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                    val monthOnePlus = monthOfYear+1
 
                     // old format
 //                    txt.setText(dayOfMonth.toString() + " " + MONTHS[(monthOfYear)] + " " + year)
 
                     //server format
-                    txt.setText(year.toString() + "-" +monthOfYear  + "-" + dayOfMonth)
+                    /*var monthOfYearNew= ""
+
+                    if (monthOfYear<10){
+                        monthOfYear = "0"+monthOfYear
+                    }*/
+
+                    txt.setText(
+                        "$year-" +(if(monthOnePlus.compareTo(10)<0){
+                        "0$monthOnePlus"
+                    }else monthOnePlus)+""
+                        + "-" + (if(dayOfMonth.compareTo(10)<0){
+                        "0$dayOfMonth"
+                    }else dayOfMonth))
 
                 },
                 c.get(Calendar.YEAR),
