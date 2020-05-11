@@ -49,7 +49,7 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
             customerFeedbackReqModel.agent_id = orderRes.agent_detail.id
             customerFeedbackReqModel.merchant_id=merchant_ID
             customerFeedbackReqModel.order_id = orderRes.order_id
-            rateAndReviews(customerFeedbackReqModel)
+            rateAndReview(customerFeedbackReqModel)
         }
         customer_payment_button.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<PaymentActivity>(this) }
     }
@@ -130,7 +130,7 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
        merchant_ID=merchantId
 
     }
-    fun rateAndReviews(customerfeedbackReqModel: CustomerFeedbackRequestModel){
+    fun rateAndReview(customerfeedbackReqModel: CustomerFeedbackRequestModel){
 
         MoveToAnotherComponent.openActivityWithParcelableParam<CustomerFeedbackActivity,CustomerFeedbackRequestModel>(this,Constant.INTENT_RATE_REVIEWS,customerfeedbackReqModel)
     }

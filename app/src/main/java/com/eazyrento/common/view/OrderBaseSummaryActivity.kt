@@ -24,7 +24,6 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
     lateinit var orderRes:CustomerOrderDetailsResModel
 
-
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
