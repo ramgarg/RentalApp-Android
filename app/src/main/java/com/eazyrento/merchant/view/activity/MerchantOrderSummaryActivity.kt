@@ -2,29 +2,19 @@ package com.eazyrento.merchant.view.activity
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.*
-import com.eazyrento.customer.dashboard.view.activity.CustomerFeedbackActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
-import com.eazyrento.merchant.view.adapter.MerchantUsersOrderSummaryAdapter
-import kotlinx.android.synthetic.main.activity_agent_order_summary.*
-import kotlinx.android.synthetic.main.activity_agent_order_summary.agent_asign_merchant_btn
-import kotlinx.android.synthetic.main.activity_agent_order_summary.rec_user_order_summary
 import kotlinx.android.synthetic.main.activity_merchant_order_summary.*
-import kotlinx.android.synthetic.main.adapter_order_status_template.*
 import kotlinx.android.synthetic.main.adapter_user_order_summery.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
-import kotlinx.android.synthetic.main.order_summary_template.*
 import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.order_rate_review
-import kotlinx.android.synthetic.main.testingxml.*
 
 class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
