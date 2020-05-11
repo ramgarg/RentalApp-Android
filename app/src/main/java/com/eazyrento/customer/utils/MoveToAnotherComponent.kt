@@ -45,10 +45,7 @@ class MoveToAnotherComponent {
         fun moveToHomeActivity(context: Context){
             context.startActivity(Intent(context, CustomerMainActivity::class.java))
         }
-        // agent activity
-        fun moveToAgentHomeActivity(context: Context){
-            context.startActivity(Intent(context, AgentMainActivity::class.java))
-        }
+
 
         fun moveToNotificationActivity(context: Context){
             context.startActivity(Intent(context, NotificationActivity::class.java))

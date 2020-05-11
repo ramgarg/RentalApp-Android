@@ -27,6 +27,7 @@ open abstract class ShowAllBookingActivity :BaseActivity(),AcceptDecline {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.fragment_customer_bookings)
+        topBarWithBackIconAndTitle(resources.getString(R.string.booking))
         setBookingAdapterDashboard()
     }
 

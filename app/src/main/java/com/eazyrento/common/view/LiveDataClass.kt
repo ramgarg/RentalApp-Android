@@ -23,6 +23,10 @@ open abstract class LiveDataClass(val apiResult: ApiResult){
                     apiResult.onSuccessApiResult(data)
 
                 }
+
+                override fun onStatusCode(dataWrapper: DataWrapper<T>) {
+                    apiResult.statusCodeOfApi(dataWrapper)
+                }
             })
         )
     }
@@ -54,4 +58,5 @@ class LiveDataActivityClass( apiResultActivity: ApiResult):
 
 interface ApiResult{
     fun <T>onSuccessApiResult(data:T)
+    fun <T>statusCodeOfApi(data:T)
 }

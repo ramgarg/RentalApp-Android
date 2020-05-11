@@ -3,6 +3,10 @@ package com.eazyrento
 interface Constant{
     companion object
     {
+        const val REQUEST_CODE_FINISH_LOGIN_ON_BACK = 8001
+        const val LOGIN_KEY_FINISH ="FINISH"
+        const val LOGIN_VALUE = 1
+
         const val RC_SIGN_IN_GOOGLE = 9001
         const val PICK_PHOTO_FOR_AVATAR = 100
         const val  PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=1234

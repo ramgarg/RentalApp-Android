@@ -96,8 +96,7 @@ open class MyAddressListActivity : BaseActivity() {
             val addressInfo =
                 data?.getParcelableExtra<AddressInfo>(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST)
 
-            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, addressInfo.toString())
-
+            val isDelete =data?.getBooleanExtra("delete",false)
 
                 if (addressInfo?.id == updateAddressInfo?.id) {
 
@@ -107,7 +106,7 @@ open class MyAddressListActivity : BaseActivity() {
                 }
 
             //editing or crating .....
-            if (addressInfo!=null)
+            if (addressInfo!=null && isDelete==false)
                 listOfAddress.add(addressInfo)
 
             rec_my_address.adapter?.notifyDataSetChanged()

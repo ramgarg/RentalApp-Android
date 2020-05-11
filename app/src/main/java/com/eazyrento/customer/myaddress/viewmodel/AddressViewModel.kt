@@ -19,7 +19,7 @@ class AddressListViewModel : ViewModel() {
 
 class AddressCreateViewModel : ViewModel() {
 
-    fun createAddress(addressCreateReqModelItem: AddressInfo): LiveData<DataWrapper<JsonElement>> {
+    fun createAddress(addressCreateReqModelItem: AddressInfo): LiveData<DataWrapper<AddressInfo>> {
         return AddressCreateRepo()
             .addressCreate(addressCreateReqModelItem)
     }

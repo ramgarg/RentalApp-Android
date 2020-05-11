@@ -18,7 +18,7 @@ interface AddressApi {
     fun getAddressList(): Call<AddressListResModel>
 
     @POST(PathURL.ADDRESS_CREATE)
-    fun createAddress(@Body addressCreateReqModelItem: AddressInfo): Call<JsonElement>
+    fun createAddress(@Body addressCreateReqModelItem: AddressInfo): Call<AddressInfo>
 
     @PUT(PathURL.ADDRESS_UPDATE)
     fun updateAddress(@Path("id") id: Int, @Body addressCreateReqModelItem: AddressInfo): Call<JsonElement>

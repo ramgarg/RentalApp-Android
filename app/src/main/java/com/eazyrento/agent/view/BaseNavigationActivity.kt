@@ -1,5 +1,6 @@
 package com.eazyrento.agent.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.view.GravityCompat
@@ -42,6 +43,9 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
                     EazyRantoApplication.profileData = (data as ProfileModelReqRes).user_profile
 
                     EazyRantoApplication.profileData?.let { setTopHeaderData(it)}
+                }
+
+                override fun <T> statusCodeOfApi(data: T) {
                 }
 
             })
@@ -190,6 +194,10 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     abstract fun viewPaymentHistory()
     abstract fun viewMyAddress()
 
+    override fun onBackPressed() {
+        finishCurrentActivityWithResult(Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK, Intent())
+        super.onBackPressed()
+    }
 
 
 }

@@ -2,6 +2,7 @@ package com.eazyrento
 
 interface ValidationMessage{
     companion object{
+        const val ADD_PRODUCT_AT_LEAST_ONE = "Product list can not be empty.Please add at list one product."
         const val PLAY_SERVICE_APK_NOT_FOUND= "Please install the Google play service APK to get accurate location."
         const val CURRENT_LOCATION_NOT_GETTING= "There are some issue to getting location.Please restart your device or launch the Google Map once to get the location."
         const val SOCIAL_FAILED = "Auth failed.Please try after some time."

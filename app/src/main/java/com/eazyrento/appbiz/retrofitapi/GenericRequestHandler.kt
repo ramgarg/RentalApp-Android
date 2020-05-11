@@ -20,29 +20,31 @@ abstract  class GenericRequestHandler<R> {
 
          call.enqueue(object : AppbizAPICallback<R>() {
 
-            override fun handleResponseData(data: R) {
+            override fun handleResponseData(data: R,statusCode:Int) {
 
                 mutableLiveData.value =
                     DataWrapper(
                         data,
                         null,
-                        null
+                        null,
+                        statusCode
                     )
 
             }
 
-            override fun handleError(response: Response<R>) {
+            override fun handleError(response: Response<R>,statusCode:Int) {
                 mutableLiveData.value =
                     DataWrapper(
                         null,
                         response,
-                        null
+                        null,
+                        statusCode
                     )
             }
 
             override fun handleException(t: Throwable?) {
                 mutableLiveData.value =
-                    DataWrapper(null, null, t)
+                    DataWrapper(null, null, t,0)
             }
 
         })

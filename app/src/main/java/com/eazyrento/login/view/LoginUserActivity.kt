@@ -6,15 +6,18 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import com.eazyrento.*
+import com.eazyrento.agent.view.activity.AgentMainActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.appbiz.AppBizLogin
 import com.eazyrento.common.view.UserInfoAPP
+import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.login.model.modelclass.DeviceInfo
 import com.eazyrento.login.model.modelclass.LoginUserReqModel
 import com.eazyrento.login.model.modelclass.LoginUserResModel
 import com.eazyrento.login.viewmodel.LoginUserViewModel
+import com.eazyrento.merchant.view.activity.MerchantMainActivity
 import com.eazyrento.supporting.MyJsonParser
 import com.facebook.*
 import com.facebook.login.LoginManager
@@ -210,9 +213,15 @@ class LoginUserActivity : AppBizLogin() {
     private fun sendUserReleventPanel(userRole: String?) {
 
         when (userRole) {
-            UserInfoAPP.AGENT -> MoveToAnotherComponent.moveToAgentHomeActivity(this)
-            UserInfoAPP.CUSTOMER -> MoveToAnotherComponent.moveToHomeActivity(this)
-            UserInfoAPP.MERCHANT -> MoveToAnotherComponent.moveToMerchantMainActivity(this)
+
+            UserInfoAPP.AGENT -> MoveToAnotherComponent.startActivityForResult<AgentMainActivity>(this,
+                Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK,Constant.LOGIN_KEY_FINISH,Constant.LOGIN_VALUE)
+
+            UserInfoAPP.CUSTOMER ->  MoveToAnotherComponent.startActivityForResult<CustomerMainActivity>(this,
+                Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK,Constant.LOGIN_KEY_FINISH,Constant.LOGIN_VALUE)
+
+            UserInfoAPP.MERCHANT ->  MoveToAnotherComponent.startActivityForResult<MerchantMainActivity>(this,
+                Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK,Constant.LOGIN_KEY_FINISH,Constant.LOGIN_VALUE)
         }
 
     }
@@ -253,6 +262,11 @@ class LoginUserActivity : AppBizLogin() {
             AppBizLogger.LoggingType.DEBUG,
             "" + requestCode + "--" + resultCode + "---" + data.toString()
         )
+        // login finiching on back button press
+        if (requestCode == Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK && resultCode == Activity.RESULT_OK){
+             finishCurrentActivity(Activity.RESULT_OK)
+            return
+        }
         //gmail login
         if (requestCode == Constant.RC_SIGN_IN_GOOGLE){
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)

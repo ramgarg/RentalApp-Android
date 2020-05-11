@@ -1,6 +1,7 @@
 package com.eazyrento.merchant.view.fragment
 
 import android.os.Bundle
+import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.common.model.modelclass.Booking
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
@@ -37,12 +38,18 @@ class MerchantDashFragment : DashboardBaseFragment() {
         holder.tv__name.text=order_listing_obj.agent_detail?.full_name
         holder.tv__type.text=order_listing_obj.agent_detail?.mobile_number
         holder.tv__product_quantity.text=order_listing_obj.product_detail?.product_name+"- "+order_listing_obj.product_detail?.quantity
-        holder.btn__accept.setOnClickListener{
+
+        holder.btn__accept.visibility = View.GONE
+        holder.btn__decline.visibility = View.GONE
+
+       /* holder.btn__accept.setOnClickListener{
             acceptBooking(order_listing_obj,position,Constant.MERCHNAT_ACCEPTANCE)
         }
+
         holder.btn__decline.setOnClickListener{
             declineBooking(order_listing_obj,position,Constant.MERCHNAT_ACCEPTANCE)
-        }
+        }*/
+
         holder.phone_view.setOnClickListener {
             Common.phoneCallWithNumber(list.get(position).agent_detail?.mobile_number,requireContext())
         }

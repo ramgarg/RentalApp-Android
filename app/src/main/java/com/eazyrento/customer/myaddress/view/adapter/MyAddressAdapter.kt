@@ -57,7 +57,7 @@ class MyAddressAdapter(val items:List<AddressInfo>, val context: Activity):
         }
         holder.img_delete.setOnClickListener {
 
-            (context as MyAddressListActivity).deleteAddress(position)
+            //(context as MyAddressListActivity).deleteAddress(position)
 
         }
 

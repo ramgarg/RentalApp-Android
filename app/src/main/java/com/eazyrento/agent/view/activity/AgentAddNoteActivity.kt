@@ -2,7 +2,6 @@ package com.eazyrento.agent.view.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
@@ -12,6 +11,7 @@ import com.eazyrento.agent.view.adapter.AgentNotesListAdapter
 import com.eazyrento.agent.viewmodel.AgentDeleteNoteViewModel
 import com.eazyrento.agent.viewmodel.AgentNotesListViewModel
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.view.BaseActivity
 
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_agent_add_note.*
 class AgentAddNoteActivity: BaseActivity(){
 
      private var noteList:AgentNotesListResModel?=null
-     private var deleteID:Int= -1
+     private var deleteItemPos:Int =-1
 
     override fun <T> moveOnSelecetedItem(type: T) {
         MoveToAnotherComponent.openActivityWithParcelableParam<AgentWriteNoteActivity,AgentNotesListResModelItem>(this,Constant.INTENT_NOTE_EDIT,type as AgentNotesListResModelItem)
@@ -51,19 +51,24 @@ class AgentAddNoteActivity: BaseActivity(){
         }
     }
 
+    override fun <T> statusCodeOfApi(data: T) {
+        // delete cash
+        val data  = data as DataWrapper<T>
+
+        if (data.statusCode ==204 ) {
+                if (deleteItemPos!=-1) {
+                    noteList?.removeAt(deleteItemPos)
+                    rec_note_list.adapter?.notifyDataSetChanged()
+                }
+        }
+
+    }
+
     override fun <T> onSuccessApiResult(data: T) {
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,noteList.toString())
 
-        // delete cash
         if (data is JsonElement){
-            noteList?.let {
-                if(it.size>0) {
-                    it.removeAt(deleteID)
-                    rec_note_list.adapter?.notifyDataSetChanged()
-                }
-            }
-
             return
         }
          noteList = data as AgentNotesListResModel
@@ -96,13 +101,13 @@ class AgentAddNoteActivity: BaseActivity(){
 
     }
 
-    fun onDelete(id:Int){
-        deleteID = id
+    fun onDelete(pos: Int){
+        deleteItemPos = pos
 
        callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<AgentDeleteNoteViewModel>(this)
-                    .deleteNoteAPI(id),this,this)
+                    .deleteNoteAPI(noteList!!.get(pos).id),this,this)
         }
     }
 }
