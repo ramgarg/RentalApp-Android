@@ -70,7 +70,7 @@
                   android:fontFamily="@font/bree_serif"
                   android:textColor="@color/black"
                   android:maxLines="2"
-                  android:text="@string/downtown_dubai"
+                  android:text=""
                   android:layout_marginLeft="@dimen/_10sdp"
                   android:layout_marginRight="@dimen/_10sdp"
                   android:layout_height="wrap_content"/>

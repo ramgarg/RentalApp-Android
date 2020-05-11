@@ -194,6 +194,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         // Initialize the AutocompleteSupportFragment.
         val autocompleteFragment =
             supportFragmentManager.findFragmentById(R.id.autocomplete_fragment) as AutocompleteSupportFragment?
+        autocompleteFragment?.setCountries("AE")
 
 // Specify the types of place data to return.
         /*
@@ -242,9 +243,17 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         getLocation()
 
-       /* mMap.setOnMarkerDragListener(object:GoogleMap.OnMarkerDragListener{
+        mMap.setOnCameraIdleListener {
+            val latLng = mMap!!.cameraPosition.target
+            mMap.clear()
+            setData(latLng.latitude, latLng.longitude)
+        }
+
+        /*mMap.setOnMarkerDragListener(object:GoogleMap.OnMarkerDragListener{
             override fun onMarkerDragEnd(marker: Marker?) {
                 marker?.let {
+                    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onMarkerDragEnd")
+                    mMap.clear()
                     val latlong = marker.position
                     moveCamraAtLocation(latlong.latitude,latlong.longitude)
                 }
@@ -252,9 +261,12 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
             }
 
             override fun onMarkerDragStart(p0: Marker?) {
+                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onMarkerDragStart")
             }
 
             override fun onMarkerDrag(p0: Marker?) {
+                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onMarkerDrag")
+
             }
 
         })*/
@@ -453,6 +465,8 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     private fun placeMarkerOnMap(location: LatLng) {
         val markerOptions = MarkerOptions().position(location)
         mMap.addMarker(markerOptions)
+
+
     }
 
     private fun getAddressByLocation(lat:Double,lng:Double) {
