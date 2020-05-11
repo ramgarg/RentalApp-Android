@@ -1,11 +1,9 @@
 package com.eazyrento.agent.view.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.model.modelclass.AgentNotesListResModelItem
 import com.eazyrento.agent.view.activity.AgentAddNoteActivity
@@ -41,7 +39,7 @@ class AgentNotesListAdapter (val items:List<AgentNotesListResModelItem>, val con
         holder.tvNoteDesc?.text=items.get(position).description
         holder.imgEdit.setOnClickListener { context.moveOnSelecetedItem(items.get(position)) }
 
-        holder.imgdelet.setOnClickListener { (context as AgentAddNoteActivity).onDelete(items.get(position).id)  }
+        holder.imgdelet.setOnClickListener { (context as AgentAddNoteActivity).onDelete(position)  }
     }
 
 

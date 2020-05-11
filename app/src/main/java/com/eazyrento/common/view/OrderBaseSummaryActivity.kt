@@ -70,7 +70,10 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
         tv_end_date_sel.text=orderRes.product_detail.end_date
         tv_end_time_sel.text=orderRes.product_detail.end_time
         checkbox_with_driver.isChecked=orderRes.product_detail.with_driver
-        tv_work_location.text=orderRes.product_detail.work_location
+
+//        tv_work_location.text=orderRes.product_detail.work_location
+
+        tv_work_location.text=orderRes.address_detail?.address_line
 
         setOrderStatus(orderRes)
 

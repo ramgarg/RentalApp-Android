@@ -15,6 +15,8 @@ class ApiObserver<T>(val context: Context?,private val changedListener: ChangedL
 
        context?.let { if (it is BaseActivity){ it.hideProgress()} }
 
+         changedListener.onStatusCode(t)
+
         if(t.data==null)
         {
             // error In API
@@ -28,6 +30,6 @@ class ApiObserver<T>(val context: Context?,private val changedListener: ChangedL
 }
 interface ChangedListener<T>{
     fun onSuccess(dataWrapper: T)
-//    fun onError(dataWrapper: DataWrapper<T>)
+    fun onStatusCode(dataWrapper: DataWrapper<T>)
 
 }

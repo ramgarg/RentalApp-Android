@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.adapter_user_order_summery.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
+import kotlinx.android.synthetic.main.template_work_info.*
 
 
 class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
@@ -53,6 +54,7 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
     }
 
      fun orderStatus(orderRes: CustomerOrderDetailsResModel) {
+
          val merchantdetail=orderRes.merchant_detail
          val agentdetail=orderRes.agent_detail
 

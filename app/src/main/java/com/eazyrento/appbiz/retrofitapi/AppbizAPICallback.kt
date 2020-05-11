@@ -7,9 +7,9 @@ import retrofit2.Response
 
 open abstract class AppbizAPICallback<T> :retrofit2.Callback<T> {
 
-    protected abstract fun handleResponseData(data: T)
+    protected abstract fun handleResponseData(data: T,statusCode:Int)
 
-    protected abstract fun handleError(response: Response<T>)
+    protected abstract fun handleError(response: Response<T>,statusCode:Int)
 
     protected abstract fun handleException(t: Throwable?)
 
@@ -18,9 +18,9 @@ open abstract class AppbizAPICallback<T> :retrofit2.Callback<T> {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,response?.toString())
 
         if (response.body() != null) {
-            handleResponseData(response.body()!!)
+            handleResponseData(response.body()!!,response.code())
         } else {
-            handleError(response)
+            handleError(response,response.code())
         }
 
     }

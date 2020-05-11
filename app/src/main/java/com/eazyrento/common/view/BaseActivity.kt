@@ -118,6 +118,8 @@ open abstract class BaseActivity: AppCompatActivity(),
     override fun <T> onSuccessApiResult(data: T) {
 
     }
+    override fun <T> statusCodeOfApi(data: T) {
+    }
 
     override fun onClickDailog(int: Int) {
     }

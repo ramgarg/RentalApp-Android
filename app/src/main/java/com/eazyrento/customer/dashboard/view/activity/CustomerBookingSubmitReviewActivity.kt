@@ -72,6 +72,11 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
     }
 
     fun onSubmitButtonClick(view: View){
+
+        if(objListBookingItem.size<=0){
+            showToast(ValidationMessage.ADD_PRODUCT_AT_LEAST_ONE)
+            return
+        }
         showDialog(getString(R.string.payment),ValidationMessage.BOOKING_SUBMITTED,this,R.layout.thank_you_pop)
     }
 
@@ -85,6 +90,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
         holder.lyt_booking_details.visibility = View.VISIBLE
 
         holder.tv_remove.setOnClickListener{
+
             objListBookingItem.removeAt(position)
             rec_order_review.adapter?.notifyDataSetChanged()
         }

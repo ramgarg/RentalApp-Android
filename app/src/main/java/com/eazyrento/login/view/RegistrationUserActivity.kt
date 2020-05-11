@@ -73,7 +73,7 @@ class RegistrationUserActivity : AppBizLogin(){
     }
 
     private fun skipLogin(){
-        tv_skip.setOnClickListener { MoveToAnotherComponent.moveToHomeActivity(this) }
+        //tv_skip.setOnClickListener { MoveToAnotherComponent.moveToHomeActivity(this) }
     }
 
      fun assignRole(registartionType: String) {

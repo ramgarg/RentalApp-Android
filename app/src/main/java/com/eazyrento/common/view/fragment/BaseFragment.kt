@@ -13,6 +13,10 @@ open abstract class BaseFragment:Fragment(), ApiResult,
 
     override fun <T> onSuccessApiResult(data: T) {
     }
+
+    override fun <T> statusCodeOfApi(data: T) {
+    }
+
     protected fun callAPI(): LiveDataFragmentClass? {
         if (InternetNetworkConnection.isNetworkInternetAvailbale(requireContext())) {
             (requireActivity() as BaseActivity).showProgress()

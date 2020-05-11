@@ -11,6 +11,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.viewmodel.AddressCreateViewModel
 import com.eazyrento.customer.myaddress.viewmodel.AddressDeleteViewModel
@@ -28,15 +29,13 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.net.PlacesClient
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
+import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.add_new_address_activity.*
 import java.lang.Exception
 import java.util.*
@@ -46,7 +45,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     private val locationPermissionUser = LocationPermissionUser(this)
 
-    private var addressInfo :AddressInfo?=null
+    private lateinit  var addressInfo :AddressInfo
     private var isFlagAddressUpdateFromProfile:Int =0
     private var isDeletingAddress:Boolean =false
 
@@ -84,10 +83,12 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         topBarWithBackIconAndTitle(getString(R.string.add_new_address))
 
-        addressInfo = intent.getParcelableExtra(Constant.INTENT_ADDRESS_EDIT)
+        val tempAdd:AddressInfo?  = intent.getParcelableExtra<AddressInfo>(Constant.INTENT_ADDRESS_EDIT)
+
         isFlagAddressUpdateFromProfile = intent.getIntExtra(Constant.KEY_FROM_PROFILE,0)
 
-        if (addressInfo != null) {
+        if (tempAdd != null) {
+            addressInfo = tempAdd
             //enanled edit and delete functionlaty....
             enableUpdateDeleteFunctionalty()
         }else{
@@ -132,6 +133,14 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     fun enableUpdateDeleteFunctionalty(){
 
         btn_save.visibility = View.GONE
+
+        btn_delete.setOnClickListener {
+            onDeleteClick()
+        }
+        btn_update.setOnClickListener{
+            onUpdateClick()
+        }
+
         Common.showGroupViews(btn_delete, btn_update)
 //        Common.showGroupViews(btn_update)
         setUserAddressTypeEditMode()
@@ -233,6 +242,23 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         getLocation()
 
+       /* mMap.setOnMarkerDragListener(object:GoogleMap.OnMarkerDragListener{
+            override fun onMarkerDragEnd(marker: Marker?) {
+                marker?.let {
+                    val latlong = marker.position
+                    moveCamraAtLocation(latlong.latitude,latlong.longitude)
+                }
+
+            }
+
+            override fun onMarkerDragStart(p0: Marker?) {
+            }
+
+            override fun onMarkerDrag(p0: Marker?) {
+            }
+
+        })*/
+
     }
 
     private fun moveCamraAtLocation(lat: Double,lng: Double){
@@ -302,7 +328,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         if (checkValidation())
             return
         if (isFlagAddressUpdateFromProfile==1){
-            sendIntentToCallerAct(Constant.KEY_FROM_PROFILE,Constant.REQUEST_CODE_PROFILE_UPDATE)
+            sendIntentToCallerAct(Constant.KEY_FROM_PROFILE,Constant.REQUEST_CODE_PROFILE_UPDATE,false)
             return
         }
 
@@ -310,9 +336,10 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         callSaveAddressAPI()
     }
 
-    fun onDeleteClick(view: View){
+    fun onDeleteClick(){
 
         isDeletingAddress = true
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,addressInfo.toString())
 
         callAPI()?.let {
             it.observeApiResult(
@@ -322,7 +349,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
             )
         }
     }
-    fun onUpdateClick(view: View)
+    fun onUpdateClick()
     {
         if (checkValidation())
             return
@@ -384,28 +411,42 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
-    override fun <T> onSuccessApiResult(data: T) {
+    override fun <T> statusCodeOfApi(data: T) {
+        val dataWrapper = data as DataWrapper<T>
+        if(dataWrapper.statusCode ==204){
 
+            if (isDeletingAddress){
+
+//                addressInfo = null
+                isDeletingAddress =false
+
+
+                sendIntentToCallerAct(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST,Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST,true)
+            }
+
+        }
+    }
+    override fun <T> onSuccessApiResult(data: T) {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+
+        if (isDeletingAddress) {
+            return
+        }
+        if (data is AddressInfo){
+            addressInfo = data
+        }
 
         data?.let {
 
             showToast(ValidationMessage.ADDRESS_ADDED)
-
-           /* val intent= Intent()
-            intent.putExtra(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST,addressInfo)
-            finishCurrentActivityWithResult(Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST,intent)*/
-            if (isDeletingAddress){
-                addressInfo = null
-                isDeletingAddress =false
-            }
-
-            sendIntentToCallerAct(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST,Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST)
+            sendIntentToCallerAct(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST,Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST,false)
         }
     }
 
-    private fun sendIntentToCallerAct(key:String,requesCode:Int){
+    private fun sendIntentToCallerAct(key:String,requesCode:Int,isDelete:Boolean){
         val intent= Intent()
         intent.putExtra(key,addressInfo)
+        intent.putExtra("delete",isDelete)
         finishCurrentActivityWithResult(requesCode,intent)
     }
 
