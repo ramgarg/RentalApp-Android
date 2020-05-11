@@ -19,6 +19,8 @@ interface Constant{
         const val KEY_UPDATE_DELETE_CREATE_REQUEST ="addressmod"
         const val KEY_DATA_IS_CREATING="ceate"
 
+        const val KEY_FROM_PROFILE="profile"
+
         const val BOOKING_PRODECT_DETAILS = "ID"
 
         //intent key
@@ -49,6 +51,8 @@ interface Constant{
 
 
         const val INTENT_UPDATE_DELETE_CREATE_REQUEST = 5001
+
+        const val REQUEST_CODE_PROFILE_UPDATE =6001
 
 
         // Order status

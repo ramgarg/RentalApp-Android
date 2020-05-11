@@ -14,6 +14,7 @@ import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -63,8 +64,9 @@ class ProfileActivity : BaseActivity() {
         }
 
         btn_select_location.setOnClickListener {
-            MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,1)
+//            MoveToAnotherComponent.startActivityForResult<Address>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,1)
 
+            MoveToAnotherComponent.startActivityForResult<AddNewAddressActivity>(this,Constant.REQUEST_CODE_PROFILE_UPDATE,Constant.KEY_FROM_PROFILE,1)
         }
 
     }
@@ -234,31 +236,16 @@ class ProfileActivity : BaseActivity() {
             uploadImageFromDevice.onActivityResult(requestCode, resultCode, data)
             return
         }
-        if (resultCode== Activity.RESULT_OK && requestCode ==Constant.ADDRESS_REQUECT_CODE){
+        if (resultCode== Activity.RESULT_OK && requestCode ==Constant.REQUEST_CODE_PROFILE_UPDATE){
 
             userProfile?.let {
-                val addressInfo = data!!.getParcelableExtra<AddressInfo>(Constant.KEY_ADDRESS)
 
-                if(it.address_info==null) {
-                    it.address_info = AddressInfo(
-                        addressInfo.address_line,
-                        addressInfo.address_type,
-                        addressInfo.appartment,
-                        addressInfo.city,
-                        addressInfo.country,
-                        addressInfo.id,
-                        addressInfo.is_default,
-                        addressInfo.latitude,
-                        addressInfo.longitude,
-                        addressInfo.state
-                    )
-                }else{
-                     it.address_info = addressInfo.copy()
-                }
+                val addressInfo = data!!.getParcelableExtra<AddressInfo>(Constant.KEY_FROM_PROFILE)
 
+                 addressInfo?.let {inner->
+                     it.address_info =inner
+                 }
                 //testing purpose
-                it.address_info.id =null
-
                 setAddress()
 
             }

@@ -302,7 +302,6 @@
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"
                 android:onClick="onDeleteClick"
-                android:visibility="gone"
                 />
         <Button
                 android:id="@+id/btn_update"
@@ -312,7 +311,7 @@
                 android:background="@color/colorPrimary"
                 android:text="@string/update"
                 android:textAllCaps="false"
-                android:layout_weight="1"
+                android:layout_weight=".5"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"
                 android:onClick="onUpdateClick"

@@ -98,24 +98,20 @@ open class MyAddressListActivity : BaseActivity() {
 
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, addressInfo.toString())
 
-            addressInfo?.let {
 
-                if (it.id == updateAddressInfo?.id) {
+                if (addressInfo?.id == updateAddressInfo?.id) {
 
                     listOfAddress.remove(updateAddressInfo)
-                    listOfAddress.add(it)
                     updateAddressInfo = null
-                    AppBizLogger.log(
-                        AppBizLogger.LoggingType.DEBUG,
-                        "pointing the same objects...updating"
-                    )
-                } else {
-                    //creted new address
-                    listOfAddress.add(it)
-                }
-                rec_my_address.adapter?.notifyDataSetChanged()
 
-            }
+                }
+
+            //editing or crating .....
+            if (addressInfo!=null)
+                listOfAddress.add(addressInfo)
+
+            rec_my_address.adapter?.notifyDataSetChanged()
+
 
 
         }

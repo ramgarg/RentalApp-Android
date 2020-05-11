@@ -31,7 +31,8 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
 
     override fun onStart() {
         super.onStart()
-        getProfileAPI()
+        if (EazyRantoApplication.profileData==null)
+           getProfileAPI()
     }
     private fun getProfileAPI(){
         if(InternetNetworkConnection.isNetworkInternetAvailbale(this)) {

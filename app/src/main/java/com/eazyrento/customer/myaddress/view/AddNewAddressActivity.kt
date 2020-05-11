@@ -47,6 +47,9 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     private val locationPermissionUser = LocationPermissionUser(this)
 
     private var addressInfo :AddressInfo?=null
+    private var isFlagAddressUpdateFromProfile:Int =0
+    private var isDeletingAddress:Boolean =false
+
     private var mLocationPermissionGranted: Boolean = false
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -82,6 +85,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         topBarWithBackIconAndTitle(getString(R.string.add_new_address))
 
         addressInfo = intent.getParcelableExtra(Constant.INTENT_ADDRESS_EDIT)
+        isFlagAddressUpdateFromProfile = intent.getIntExtra(Constant.KEY_FROM_PROFILE,0)
 
         if (addressInfo != null) {
             //enanled edit and delete functionlaty....
@@ -128,8 +132,8 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     fun enableUpdateDeleteFunctionalty(){
 
         btn_save.visibility = View.GONE
-//        Common.showGroupViews(btn_delete, btn_update)
-        Common.showGroupViews(btn_update)
+        Common.showGroupViews(btn_delete, btn_update)
+//        Common.showGroupViews(btn_update)
         setUserAddressTypeEditMode()
         setAddressOnUI()
 
@@ -297,12 +301,18 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         if (checkValidation())
             return
+        if (isFlagAddressUpdateFromProfile==1){
+            sendIntentToCallerAct(Constant.KEY_FROM_PROFILE,Constant.REQUEST_CODE_PROFILE_UPDATE)
+            return
+        }
 
         addressInfo?.address_line = ed_address.text.toString()
         callSaveAddressAPI()
     }
 
     fun onDeleteClick(view: View){
+
+        isDeletingAddress = true
 
         callAPI()?.let {
             it.observeApiResult(
@@ -381,10 +391,22 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
             showToast(ValidationMessage.ADDRESS_ADDED)
 
-            val intent= Intent()
+           /* val intent= Intent()
             intent.putExtra(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST,addressInfo)
-            finishCurrentActivityWithResult(Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST,intent)
+            finishCurrentActivityWithResult(Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST,intent)*/
+            if (isDeletingAddress){
+                addressInfo = null
+                isDeletingAddress =false
+            }
+
+            sendIntentToCallerAct(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST,Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST)
         }
+    }
+
+    private fun sendIntentToCallerAct(key:String,requesCode:Int){
+        val intent= Intent()
+        intent.putExtra(key,addressInfo)
+        finishCurrentActivityWithResult(requesCode,intent)
     }
 
     private fun placeMarkerOnMap(location: LatLng) {
