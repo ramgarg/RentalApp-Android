@@ -5,11 +5,10 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.JsonElement
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.model.modelclass.ProductID
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerWishListResModel
+import com.eazyrento.customer.dashboard.model.modelclass.*
 import com.eazyrento.customer.dashboard.model.repositry.*
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
+import com.eazyrento.merchant.model.repository.MerchantFeedbackRepo
 
 class CustomerCreateBookingViewModel : ViewModel() {
 
@@ -57,4 +56,12 @@ class CustomerWishDeleteViewModel : ViewModel() {
         return CustomerWishDeleteRepo()
             .customerWishDelete(id)
     }
+}
+
+class CustomerFeedbackViewModel:ViewModel(){
+    fun customerFeedback(customerFeedbackRequestModel: CustomerFeedbackRequestModel): LiveData<DataWrapper<JsonElement>> {
+        return CustomerFeedbackRepo()
+            .customerFeedback(customerFeedbackRequestModel)
+    }
+
 }

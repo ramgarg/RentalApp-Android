@@ -6,23 +6,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
+import com.eazyrento.agent.model.modelclass.AgentFeedbackReqModel
 import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
-import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAdapter
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_order_summary.*
 import kotlinx.android.synthetic.main.activity_agent_order_summary.rec_user_order_summary
-import kotlinx.android.synthetic.main.activity_customer_order_summary.*
-import kotlinx.android.synthetic.main.adapter_user_order_summery.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
+
+    var merchant_ID=-1
+    var agentFeedbackReqModel = AgentFeedbackReqModel()
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -57,9 +58,21 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         }
         order_rate_review.setOnClickListener {
 
-            feedbackReqModel.customer_id = orderRes.customer_detail.id
-            rateAndReviews(feedbackReqModel)
+            agentFeedbackReqModel.customer_id = orderRes.customer_detail.id
+            agentFeedbackReqModel.merchant_id= merchant_ID
+            agentFeedbackReqModel.order_id = orderRes.order_id
+            rateAndReview(agentFeedbackReqModel)
         }
+    }
+
+    private fun rateAndReview(agentFeedbackReqModel: AgentFeedbackReqModel) {
+        MoveToAnotherComponent.openActivityWithParcelableParam<AgentFeedbackActivity, AgentFeedbackReqModel>(this,Constant.INTENT_RATE_REVIEWS,agentFeedbackReqModel)
+
+    }
+
+    fun sendMerchantID(merchantId: Int) {
+        merchant_ID=merchantId
+
     }
 
     override fun <T> onSuccessApiResult(data: T) {

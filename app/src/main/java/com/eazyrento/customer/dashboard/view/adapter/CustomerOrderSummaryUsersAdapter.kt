@@ -9,6 +9,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
+import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
 import kotlinx.android.synthetic.main.adapter_user_order_summery.view.*
 import kotlinx.android.synthetic.main.card_view_orders.view.*
 import kotlinx.android.synthetic.main.phone_view.view.*
@@ -44,6 +45,7 @@ class CustomerOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDe
             holder?.tv_user_name.text = order_listing_obj.full_name
             holder?.tv_user_type.text = Constant.MERCHANT
             holder?.img_user_call.visibility=View.INVISIBLE
+            (context as CustomerOrderSummaryActivity).sendMerchantID(order_listing_obj.merchant_id)
             //holder?.img_user_pic.setImageResource() = order_listing_obj
 
         }else{

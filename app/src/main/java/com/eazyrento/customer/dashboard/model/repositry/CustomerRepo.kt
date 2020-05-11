@@ -10,12 +10,10 @@ import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.common.view.UserInfoAPP
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerWishListResModel
+import com.eazyrento.customer.dashboard.model.modelclass.*
 import com.eazyrento.customer.dashboard.model.repositry.api.CustomerAPI
 import com.eazyrento.login.model.modelclass.UserInfo
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.merchant.model.repository.api.MerchantAPI
 import com.eazyrento.webservice.ServiceGenrator
 import retrofit2.Call
@@ -128,6 +126,18 @@ class CustomerWishDeleteRepo :
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             CustomerAPI::class.java).deleteWishList(id)
+        return doRequest(call)
+    }
+
+}
+
+class CustomerFeedbackRepo :
+    GenericRequestHandler<JsonElement>(){
+
+    fun customerFeedback(customerFeedbackRequestmodel: CustomerFeedbackRequestModel): LiveData<DataWrapper<JsonElement>> {
+
+        val call = ServiceGenrator.client.create(
+            CustomerAPI::class.java).customerFeedback(customerFeedbackRequestmodel)
         return doRequest(call)
     }
 

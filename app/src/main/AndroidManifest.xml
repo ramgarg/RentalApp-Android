@@ -56,6 +56,16 @@
 
                 />
 
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.CustomerFeedbackActivity"
+                android:screenOrientation="unspecified"
+
+                />
+
+        <activity android:name="com.eazyrento.agent.view.activity.AgentFeedbackActivity"
+                android:screenOrientation="unspecified"
+
+                />
+
 
         <activity android:name="com.eazyrento.login.view.ForgotPasswordActivity"
                   android:screenOrientation="unspecified"

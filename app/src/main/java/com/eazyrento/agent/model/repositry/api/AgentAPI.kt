@@ -4,6 +4,7 @@ import com.eazyrento.agent.model.modelclass.*
 import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.common.model.modelclass.BookingListResModel
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerFeedbackRequestModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
@@ -58,6 +59,6 @@ interface AgentAPI {
     @GET(PathURL.AgentBookingDetail)
     fun getAgentBookingDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
 
-
-
+    @POST(PathURL.AgentFeedback)
+    fun agentFeedback(@Body agentFeedbackReqModel: AgentFeedbackReqModel): Call<JsonElement>
 }

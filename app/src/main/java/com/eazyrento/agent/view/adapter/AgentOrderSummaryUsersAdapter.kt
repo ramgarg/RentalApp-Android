@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.agent.view.activity.AgentOrderSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
-import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAdapter
 import com.eazyrento.customer.utils.Common
 import kotlinx.android.synthetic.main.adapter_user_order_summery.view.*
 import kotlinx.android.synthetic.main.phone_view.view.*
@@ -44,6 +44,7 @@ class AgentOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDetai
             holder?.tv_user_name.text = order_listing_obj.full_name
             holder?.tv_user_type.text = order_listing_obj.mobile_number
             holder?.img_user_call.visibility=View.VISIBLE
+            (context as AgentOrderSummaryActivity).sendMerchantID(order_listing_obj.merchant_id)
             holder?.img_user_call.setOnClickListener {
                 Common.phoneCallWithNumber(order_listing_obj?.mobile_number, context)
             }

@@ -6,7 +6,9 @@ import com.eazyrento.agent.model.modelclass.*
 import com.eazyrento.agent.model.repositry.*
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.merchant.model.repository.MerchantDeleteProductRepo
+import com.eazyrento.merchant.model.repository.MerchantFeedbackRepo
 
 import com.google.gson.JsonElement
 
@@ -61,6 +63,14 @@ class AgentDeleteNoteViewModel:ViewModel(){
 class AgentUpdateNoteViewModel:ViewModel(){
     fun updateNoteAPI(id:Int,agentAddNoteReqModelItem: AgentAddNoteReqModelItem): LiveData<DataWrapper<AgentNotesListResModelItem>> {
         return AgentUpdateNoteRepo().updateNote(id,agentAddNoteReqModelItem)
+    }
+
+}
+
+class AgentFeedbackViewModel:ViewModel(){
+    fun agentFeedback(agentFeedbackReqModel: AgentFeedbackReqModel): LiveData<DataWrapper<JsonElement>> {
+        return AgentFeedbackRepo()
+            .agentFeedback(agentFeedbackReqModel)
     }
 
 }

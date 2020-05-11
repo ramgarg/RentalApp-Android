@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.toolbar.*
 open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
     lateinit var orderRes:CustomerOrderDetailsResModel
-    val feedbackReqModel = FeedbackReqModel()
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -93,11 +92,6 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
     }
 
-    fun rateAndReviews(feedbackReqModel: FeedbackReqModel){
 
-        feedbackReqModel.order_id = orderRes.order_id
-
-        MoveToAnotherComponent.openActivityWithParcelableParam<RateAndReviewActivity,FeedbackReqModel>(this,Constant.INTENT_RATE_REVIEWS,feedbackReqModel)
-    }
 
 }
