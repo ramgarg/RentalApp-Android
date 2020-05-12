@@ -185,7 +185,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 // Initialize the SDK
         // Initialize the SDK
 //        Places.initialize(applicationContext, "AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I")
-        Places.initialize(applicationContext, resources.getString(R.string.google_creditnital_key))
+        Places.initialize(applicationContext, resources.getString(R.string.google_credential_key))
 
 // Create a new Places client instance
 
@@ -195,7 +195,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         // Initialize the AutocompleteSupportFragment.
         val autocompleteFragment =
             supportFragmentManager.findFragmentById(R.id.autocomplete_fragment) as AutocompleteSupportFragment?
-        autocompleteFragment?.setCountries("AE")
+        autocompleteFragment?.setCountries(resources.getString(R.string.place_restriction_country_code))
 
 // Specify the types of place data to return.
         /*
