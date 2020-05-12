@@ -28,9 +28,11 @@ class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_merchant_all_product_home)
 
-        ViewVisibility.isVisibleOrNot(
+        topBarWithBackIconAndTitle(getString(R.string.view_product))
+
+        /*ViewVisibility.isVisibleOrNot(
             this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.view_product))
+            toolbar_title, getString(R.string.view_product))*/
 
         val merchantCatItem = intent.getParcelableExtra<MerchantCatItem>(
             Constant.INTENT_MERCHANT_PRODUCT_LIST

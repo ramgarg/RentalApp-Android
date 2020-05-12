@@ -173,10 +173,20 @@ open abstract class BaseActivity: AppCompatActivity(),
 
         toolbar_title.text=title
 
-        img_back.setOnClickListener { backImageIconClick(1) }
+        if (title.equals(getString(R.string.view_product)))
+         img_back.setOnClickListener { backImageIconClick(0) }
+        else
+            img_back.setOnClickListener { backImageIconClick(1) }
     }
 
     protected fun backImageIconClick(flag: Int){
+
+        if (flag==0) {
+            finishCurrentActivityWithResult(Activity.RESULT_OK, Intent())
+            return
+
+        }
+
         finishCurrentActivity(flag)
     }
 }

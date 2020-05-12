@@ -90,9 +90,10 @@ class MerchantMainActivity : BaseNavigationActivity() {
         // move to home fragemtn
         setHomeFragMent()
     }
+
     fun setHomeFragMent()
     {
-        bottom_navigation_view.selectedItemId = R.id.merchant_navigation_home
+        bottom_navigation_view.selectedItemId = R.id.navigation_home
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
