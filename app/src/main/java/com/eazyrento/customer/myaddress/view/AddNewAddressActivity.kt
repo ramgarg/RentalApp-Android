@@ -184,7 +184,8 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     private fun googlePlaceAPIinitlizing(){
 // Initialize the SDK
         // Initialize the SDK
-        Places.initialize(applicationContext, "AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I")
+//        Places.initialize(applicationContext, "AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I")
+        Places.initialize(applicationContext, resources.getString(R.string.google_creditnital_key))
 
 // Create a new Places client instance
 

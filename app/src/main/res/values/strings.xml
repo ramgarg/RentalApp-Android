@@ -233,13 +233,18 @@
     <string name="power">Power</string>
     <string name="resend_otp">Resend OTP</string>
 
+    <!--Google Map API key-->
+    <string name="google_creditnital_key">AIzaSyBpHL3PdTYMgPqXQzzc54IW3cd-SCMpNzg</string>
+
+
     <!--FB login-->
     <string name="facebook_app_id">1335125313346145</string>
     <string name="fb_login_protocol_scheme">fb1335125313346145</string>
 
     <!--Google gmail login QA env-->
-    <string name="G_client">743880735289-3vg6kdisc73cpi2u7v9j23ofbeqfme5i.apps.googleusercontent.com</string>
-    <string name="G_secret">eIEedNI905ZSO6fo70o8XDpV</string>
+    <!--<string name="G_client">743880735289-3vg6kdisc73cpi2u7v9j23ofbeqfme5i.apps.googleusercontent.com</string>
+    <string name="G_secret">eIEedNI905ZSO6fo70o8XDpV</string>-->
+
 
     <string-array name="SelectType">
     <item>Select Type</item>
