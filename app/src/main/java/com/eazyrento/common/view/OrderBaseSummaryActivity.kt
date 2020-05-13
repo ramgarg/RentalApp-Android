@@ -46,7 +46,7 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<CustomerOrderDetailsViewModel>(this)
-                    .getOrderDetails(id!!)
+                    .getOrderDetails(id)
                 , this, this
             )
         }

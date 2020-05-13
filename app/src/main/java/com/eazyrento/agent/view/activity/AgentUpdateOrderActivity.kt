@@ -6,26 +6,55 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
+import com.eazyrento.agent.viewmodel.AgentUpdateOrderViewModel
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.OrderBaseSummaryActivity
+import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.google.gson.JsonElement
+import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
+    private lateinit var mOrdersDetailsReqResModel:CustomerOrderDetailsResModel
 
     override fun <T> moveOnSelecetedItem(type: T) {
-        TODO("Not yet implemented")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agent_update_order_summary)
+
+        customer_payment_button.text =resources.getString(R.string.update)
+        customer_payment_button.setOnClickListener{
+            onUpdateClick()
+        }
+
+        setDataAndCallOrderDetailsAPI(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1))
+
+        topBarWithBackIconAndTitle(resources.getString(R.string.update_order))
+
         updateStatusSpinnerData()
 
+    }
 
-        /* ViewVisibility.isVisibleOrNot(this, img_back, img_menu, img_notification,
-             toolbar_title, getString(R.string.order_summary))
- */
-        //clickListenerOnViews()
+     private fun onUpdateClick(){
+         updateOrderByID(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1))
+     }
+    private fun updateOrderByID(orderID:Int){
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<AgentUpdateOrderViewModel>(this)
+                    .updateOrder(orderID,mOrdersDetailsReqResModel)
+                , this, this
+            )
+        }
+
+    }
+
+    private fun setDataOnUI(){
+
     }
 
     private fun updateStatusSpinnerData() {
@@ -42,7 +71,6 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
 
                     }
                     else{
-                        Toast.makeText(this@AgentUpdateOrderActivity, getString(R.string.selected_item) + " " + "" + update_Status[position], Toast.LENGTH_SHORT).show()
 
                     }
                 }
@@ -55,5 +83,12 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
     }
     override fun <T> onSuccessApiResult(data: T) {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+        //updated data
+        if (data is JsonElement){
+            showToast(ValidationMessage.REQUEST_SUCCESSED)
+            return
+        }
+        super.onSuccessApiResult(data)
+        mOrdersDetailsReqResModel = orderRes
     }
 }

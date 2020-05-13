@@ -29,6 +29,14 @@ class AgentAssignMerchantViewModel : ViewModel() {
     }
 }
 
+class AgentUpdateOrderViewModel : ViewModel() {
+
+    fun updateOrder(id:Int,updateOrderModel: CustomerOrderDetailsResModel): LiveData<DataWrapper<JsonElement>> {
+        return AgentUpdateOrderRepo().updateOrder(id,updateOrderModel)
+
+    }
+}
+
 class AgentMerchantNeearByViewModel : ViewModel() {
 
     fun nearMerchantBy(id: Int): LiveData<DataWrapper<AgentMerchantFindNearByResModel>> {

@@ -7,12 +7,9 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
 import com.eazyrento.agent.viewmodel.AgentBookingDetailsViewModel
-import com.eazyrento.agent.viewmodel.AgentMerchantNeearByViewModel
-import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.model.modelclass.BookingListItem
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
-import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_agent_order_summary.*

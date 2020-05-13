@@ -33,19 +33,6 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, TermsConditionActivity::class.java))
         }
 
-       /* fun moveToPaymentHistoryActivity(context: Context){
-            context.startActivity(Intent(context, PaymentHistoryActivity::class.java))
-        }*/
-
-        fun moveToAgentUpdateOrderSummaryActivity(context: Context){
-            context.startActivity(Intent(context, AgentUpdateOrderActivity::class.java))
-        }
-
-        fun moveToHomeActivity(context: Context){
-            context.startActivity(Intent(context, CustomerMainActivity::class.java))
-        }
-
-
         fun moveToNotificationActivity(context: Context){
             context.startActivity(Intent(context, NotificationActivity::class.java))
         }
@@ -73,6 +60,12 @@ class MoveToAnotherComponent {
         //normal
 
         inline fun <reified T>startActivityForResult(activity: Activity,requestCode: Int,key:String,value: Int) {
+            val intent = Intent(activity, T::class.java)
+            intent.putExtra(key,value)
+            activity.startActivityForResult(intent,requestCode)
+        }
+
+        inline fun <reified T>startActivityForResult(activity: Activity,requestCode: Int,key:String,value: String) {
             val intent = Intent(activity, T::class.java)
             intent.putExtra(key,value)
             activity.startActivityForResult(intent,requestCode)

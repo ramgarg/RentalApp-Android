@@ -56,6 +56,9 @@ interface AgentAPI {
     @GET(PathURL.AgentOrderDetail)
     fun getCustomerOrderDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
 
+    @PUT(PathURL.AgentOrderDetail)
+    fun updateCustomerOrderDetail(@Path("id") id: Int,@Body res:CustomerOrderDetailsResModel): Call<JsonElement>
+
     @GET(PathURL.AgentBookingDetail)
     fun getAgentBookingDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
 

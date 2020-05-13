@@ -27,6 +27,18 @@ class AgentMerchantsAssignRepo :
 
 }
 
+class AgentUpdateOrderRepo :
+    GenericRequestHandler<JsonElement>(){
+
+    fun updateOrder(id:Int,updateModel: CustomerOrderDetailsResModel): LiveData<DataWrapper<JsonElement>> {
+        val call = ServiceGenrator.client.create(
+            AgentAPI::class.java).updateCustomerOrderDetail(id,updateModel)
+        return doRequest(call)
+    }
+
+}
+
+
 class AgentBookingDetailsRepo :
     GenericRequestHandler<CustomerOrderDetailsResModel>(){
 
