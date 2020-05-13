@@ -52,7 +52,7 @@
     <!-- sun mon tus wed-->
     <style name="parent_days" parent="@android:style/Widget">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">@dimen/_50sdp</item>
+        <item name="android:layout_height">@dimen/_40sdp</item>
         <item name="android:layout_marginStart">@dimen/_2sdp</item>
         <item name="android:layout_marginEnd">@dimen/_2sdp</item>
         <item name="android:layout_weight">1</item>
@@ -69,9 +69,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">12sp</item>
         <item name="fontFamily">@font/bree_serif</item>
-        <item name="android:paddingTop">@dimen/_5sdp</item>
+        <!--<item name="android:paddingTop">@dimen/_5sdp</item>-->
 
-        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+
 
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

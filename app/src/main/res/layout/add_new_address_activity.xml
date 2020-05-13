@@ -27,7 +27,14 @@
                   android:layout_height="match_parent"
                   tools:context="com.eazyrento.customer.myaddress.view.AddNewAddressActivity"
                 />
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/mover_map_icon_"
+                android:layout_gravity="center"
+                />
     </FrameLayout>
+            <!--location moving on map icon-->
 
             <!--place fragment google-->
             <androidx.cardview.widget.CardView
@@ -96,7 +103,7 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/ed_address"
-                android:inputType="textMultiLine"
+                android:inputType="textPostalAddress"
                 android:nextFocusDown="@id/ed_password"
                 android:fontFamily="@font/bree_serif"
                 android:layout_height="wrap_content"/>

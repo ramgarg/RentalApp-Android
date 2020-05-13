@@ -240,8 +240,8 @@
 
 
     <!--FB login production-->
-    <string name="facebook_app_id">1335125313346145</string>
-    <string name="fb_login_protocol_scheme">fb1335125313346145</string>
+    <string name="facebook_app_id">216337653018960</string>
+    <string name="fb_login_protocol_scheme">fb216337653018960</string>
 
 
 

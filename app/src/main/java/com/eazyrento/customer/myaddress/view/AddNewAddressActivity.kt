@@ -3,6 +3,7 @@ package com.eazyrento.customer.myaddress.view
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.view.View
@@ -44,6 +45,8 @@ import java.util.*
 class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     private val locationPermissionUser = LocationPermissionUser(this)
+
+    private var mIsMapCameraMoveStated:Boolean = true
 
     private lateinit  var addressInfo :AddressInfo
     private var isFlagAddressUpdateFromProfile:Int =0
@@ -214,6 +217,8 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
                 //place.address
 
                 place.latLng?.let {
+
+                    moveCamraAtLocation(it.latitude,it.longitude)
                     setData(it.latitude, it.longitude)
                         return
                 }
@@ -245,32 +250,15 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         getLocation()
 
         mMap.setOnCameraIdleListener {
-            val latLng = mMap!!.cameraPosition.target
-            mMap.clear()
-            setData(latLng.latitude, latLng.longitude)
+
+                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,
+                    "setOnCameraIdleListener value--$mIsMapCameraMoveStated"
+                )
+
+                val latLng = mMap.cameraPosition.target
+
+                setData(latLng.latitude, latLng.longitude)
         }
-
-        /*mMap.setOnMarkerDragListener(object:GoogleMap.OnMarkerDragListener{
-            override fun onMarkerDragEnd(marker: Marker?) {
-                marker?.let {
-                    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onMarkerDragEnd")
-                    mMap.clear()
-                    val latlong = marker.position
-                    moveCamraAtLocation(latlong.latitude,latlong.longitude)
-                }
-
-            }
-
-            override fun onMarkerDragStart(p0: Marker?) {
-                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onMarkerDragStart")
-            }
-
-            override fun onMarkerDrag(p0: Marker?) {
-                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onMarkerDrag")
-
-            }
-
-        })*/
 
     }
 
@@ -289,7 +277,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
-        placeMarkerOnMap(LatLng(lat, lng))
+
     }
 
     private fun enbledLocationOnMap(){
@@ -299,7 +287,6 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     fun setData(lat: Double,lng: Double){
 
-        moveCamraAtLocation(lat,lng)
         getAddressByLocation(lat,lng)
         setAddressOnUI()
     }
@@ -312,6 +299,8 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
                 location?.let {
                     enbledLocationOnMap()
+                    placeMarkerOnMap(LatLng(location.latitude,  location.longitude))
+                    moveCamraAtLocation(it.latitude,it.longitude)
                     setData(location.latitude, location.longitude)
                     return@addOnSuccessListener
                 }
@@ -486,7 +475,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
                  it.address_line = address
 
-                splitAddress(address)
+                splitAddress( listOfAdress[0])
 
             }catch (ex:Exception){
                 ex.printStackTrace()
@@ -496,16 +485,15 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         }
 
-   private fun splitAddress(address: String) {
+   private fun splitAddress(address: Address) {
        try {
 
-       val listOfAdress = address.split(",")
-
        addressInfo?.let {
-       it.appartment = listOfAdress.component1()
-       it.city = listOfAdress.component2()
-       it.country = listOfAdress.component3()
-       it.state = listOfAdress.component4()
+       it.appartment = address.subThoroughfare.plus(address.thoroughfare).plus(address.featureName)
+       it.city = address.subLocality.plus(address.locality)
+       it.state = address.subAdminArea.plus(address.adminArea)
+       it.country = address.countryName
+
        }
        }catch (ex:Exception){
            ex.printStackTrace()
