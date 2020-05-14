@@ -30,6 +30,6 @@ interface PaymentApi {
     fun getAgentPaymentListByOrderID(@Path("id") id: String): Call<PaymentListResModel>
 
     @POST(PathURL.AgentRequestPayment)
-    fun requestPayment(@Path("id") id: Int,@Body requestModel: AgentMakePaymentReqModel): Call<JsonElement>
+    fun requestPayment(@Body requestModel: AgentMakePaymentReqModel): Call<JsonElement>
 
 }

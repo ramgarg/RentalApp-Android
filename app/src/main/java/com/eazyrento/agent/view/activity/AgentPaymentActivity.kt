@@ -33,9 +33,9 @@ class AgentPaymentActivity : PaymentBaseActivity() {
 
         topBarWithBackIconAndTitle(getString(R.string.requestpayment))
 
-        img_cash.visibility = View.GONE
+        payment_method_choose.visibility = View.GONE
 
-        img_paypal.visibility = View.GONE
+        tv_choose_mtd.visibility = View.GONE
 
     }
 

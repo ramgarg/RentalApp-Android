@@ -62,7 +62,7 @@ class MakePaymentRepo : GenericRequestHandler<JsonElement>() {
             val obj = req as AgentMakePaymentReqModel
             call = ServiceGenrator.client.create(
                 PaymentApi::class.java
-            ).requestPayment(bookingID, obj)
+            ).requestPayment(obj)
 
         }
         return doRequest(call)

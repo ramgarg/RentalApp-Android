@@ -164,6 +164,7 @@
             />
 
             <LinearLayout
+                    android:id="@+id/payment_method_choose"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:weightSum="1"
                     android:layout_marginTop="@dimen/_10sdp"
