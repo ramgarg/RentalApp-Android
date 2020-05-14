@@ -3,37 +3,13 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
-            android:id="@+id/lyt_update_status"
-            android:weightSum="100"
-            android:orientation="horizontal">
-        <TextView
-                android:id="@+id/order_product_quantity"
-                android:fontFamily="@font/bree_serif"
-                android:layout_weight="20"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
-                android:text="@string/status"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_35sdp"/>
-        <Spinner
-                android:id="@+id/status_spinner"
-                android:layout_width="0dp"
-                android:layout_weight="80"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:background="@drawable/spinner_dropdown"
-                android:layout_height="@dimen/_35sdp"/>
 
-    </LinearLayout>
 
 <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lyt_update_status"
-        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:background="@drawable/calender_bg">
 
     <TableRow
@@ -85,6 +61,7 @@
 
 
         <TextView
+                android:id="@+id/tv_name_user"
                 android:layout_width="0dp"
                 android:paddingTop="@dimen/_10sdp"
                 android:textStyle="bold"
@@ -92,7 +69,7 @@
                 android:layout_height="@dimen/_50sdp"
                 android:layout_weight="35"
                 android:textAlignment="center"
-                android:text="@string/test_merchant"/>
+                android:text=""/>
 
         <LinearLayout android:layout_width="0dp"
                 android:orientation="horizontal"
@@ -128,6 +105,9 @@
 
         </LinearLayout>
         <TextView
+
+                android:id="@+id/tv_total_booking_price"
+
                 android:layout_width="0dp"
                 android:paddingTop="@dimen/_10sdp"
                 android:layout_height="@dimen/_50sdp"
@@ -136,7 +116,7 @@
                 android:layout_weight="35"
                 android:textAlignment="center"
                 android:layout_gravity="center"
-                android:text="@string/_80"
+                android:text=""
                 android:textSize="16sp" >
         </TextView>
     </TableRow>

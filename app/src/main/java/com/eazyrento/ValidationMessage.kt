@@ -2,6 +2,10 @@ package com.eazyrento
 
 interface ValidationMessage{
     companion object{
+        const val ENTER_AMOUNT_PAYMENT = "Please enter the amount."
+        const val PAYMENT_MODE = "Please chose the payment method."
+        const val ENTER_AMOUNT_PAYMENT_LESS_THEN_TO = "Enter amount can not be grater then to total price"
+
         const val ADD_PRODUCT_AT_LEAST_ONE = "Product list can not be empty.Please add at list one product."
         const val PLAY_SERVICE_APK_NOT_FOUND= "Please install the Google play service APK to get accurate location."
         const val CURRENT_LOCATION_NOT_GETTING= "There are some issue to getting location.Please restart your device or launch the Google Map once to get the location."

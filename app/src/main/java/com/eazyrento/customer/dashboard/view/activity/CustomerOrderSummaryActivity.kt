@@ -13,16 +13,11 @@ import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAd
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
-import com.eazyrento.merchant.view.activity.RateAndReviewActivity
-import kotlinx.android.synthetic.main.activity_agent_order_summary.*
 import kotlinx.android.synthetic.main.activity_customer_order_summary.*
 import kotlinx.android.synthetic.main.activity_customer_order_summary.rec_user_order_summary
-import kotlinx.android.synthetic.main.adapter_user_order_summery.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
-import kotlinx.android.synthetic.main.template_work_info.*
 
 
 class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
@@ -55,7 +50,13 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
             customerFeedbackReqModel.order_id = orderRes.order_id
             rateAndReview(customerFeedbackReqModel)
         }
-        customer_payment_button.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<PaymentActivity>(this) }
+        customer_payment_button.setOnClickListener {
+
+            MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerPaymentActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
+                intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)!!)
+
+//            MoveToAnotherComponent.moveToActivityNormal<PaymentActivity>(this)
+        }
     }
 
     override fun <T> onSuccessApiResult(data: T) {

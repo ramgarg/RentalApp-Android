@@ -11,26 +11,33 @@
     <include layout="@layout/toolbar"
              android:id="@+id/include"/>
     <TextView
+            android:id="@+id/tv_order_id"
             android:layout_below="@+id/include"
             android:layout_marginStart="@dimen/_20sdp"
-            android:text="@string/orderid"
+            android:text=""
             android:textSize="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:textColor="#000"
             android:fontFamily="@font/bree_serif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_order_id"
+
     />
-    <TextView android:layout_width="wrap_content"
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
               android:text="@string/total_price"
-              android:textColor="#000"
+              android:textColor="@color/dark_grey"
               android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_5sdp"
               android:id="@+id/total_tile"
               android:layout_below="@+id/tv_order_id"
-              android:textSize="@dimen/_12sdp"
+              android:textSize="@dimen/_10sdp"
               android:fontFamily="@font/bree_serif"
-              android:layout_height="wrap_content"/>
+            android:gravity="center"
+
+
+            />
 
     <TextView android:layout_width="wrap_content"
               android:id="@+id/tv_total_price"
@@ -60,15 +67,17 @@
 
 
             <TextView
+                    android:id="@+id/tv_pending_amount"
+
                     android:layout_marginStart="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="@string/pending_amount"
+                    android:text=""
                     android:fontFamily="@font/bree_serif"
                     android:textColor="#000"
                     android:textSize="@dimen/_15sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_pending_amount"
+
             />
             <TextView android:layout_width="match_parent"
                        android:layout_height="wrap_content"
@@ -124,7 +133,7 @@
                     android:ems="10"
                     android:paddingStart="@dimen/_10sdp"
                     android:background="@drawable/ed_coupon_bg"
-                    android:hint="@string/enter_amount"
+                    android:hint="@string/enter_promo_code"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:id="@+id/ed_apply_copon"
             />
@@ -253,6 +262,8 @@
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_submit"/>
+            android:id="@+id/button_submit"
+            android:onClick="onSubmitClick"
+            />
 
 </RelativeLayout>

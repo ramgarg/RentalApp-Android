@@ -146,10 +146,15 @@
 
                 />
 
-        <activity android:name="com.eazyrento.customer.dashboard.view.activity.PaymentActivity"
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.CustomerPaymentActivity"
                   android:screenOrientation="unspecified"
 
         />
+
+        <activity android:name="com.eazyrento.agent.view.activity.AgentPaymentActivity"
+                android:screenOrientation="unspecified"
+
+                />
 
         <activity android:name="com.eazyrento.customer.dashboard.view.activity.ProductDetailsActivity"
                   android:screenOrientation="unspecified"

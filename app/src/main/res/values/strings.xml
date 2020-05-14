@@ -32,7 +32,7 @@
     <string name="support">Support</string>
     <string name="my_address">My Addresses</string>
     <string name="booking_details">Booking Details</string>
-    <string name="thank_you">Thank You!\n Your payment has been Successfully Processed.</string>
+    <string name="thank_you">Do you want to submit the payment?</string>
     <string name="vehicle_not_available">The vehicle you have searched is not available.You can notify admin to add this
         vehicle.
     </string>
@@ -49,6 +49,7 @@
     <string name="order_review">Order Review</string>
     <string name="order_summary">Order Summary</string>
     <string name="payment">Payment</string>
+    <string name="requestpayment">Request a Payment</string>
     <string name="details">Details</string>
     <string name="order_submit">Thank you for submitting your order.Our agent will call you shortly.</string>
 
@@ -92,8 +93,9 @@
     <string name="authentication_required">Authentication Required</string>
     <string name="orderid">OrderId - 356478484844848</string>
     <string name="total_price">Total \n Price</string>
-    <string name="pending_amount">Pending Amount $170</string>
+    <string name="pending_amount">Pending Amount-</string>
     <string name="enter_amount">Enter Amount</string>
+    <string name="enter_promo_code">Enter Promo Code</string>
     <string name="apply">Apply</string>
     <string name="choose_payment_method">Choose Payment Method</string>
     <string name="pay_via_cash">Pay Via Cash</string>

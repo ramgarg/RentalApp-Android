@@ -1,5 +1,7 @@
 package com.eazyrento.agent.view.activity
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,7 +49,12 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         payment_view_history.visibility = View.VISIBLE
         per_hour.visibility = View.INVISIBLE
 
-        agent_asign_merchant_btn.setOnClickListener { showToast(ValidationMessage.UNDER_DEVELOPMENT) }
+        agent_asign_merchant_btn.setOnClickListener {
+//            showToast(ValidationMessage.UNDER_DEVELOPMENT)
+
+            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentPaymentActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
+                intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)!!)
+        }
 
         payment_view_history.setOnClickListener {
             MoveToAnotherComponent.moveToActivityWithIntentValue<PaymentHistoryActivity>(this,
@@ -55,10 +62,12 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         }
         agent_update_order_btn.setOnClickListener {
 
-            MoveToAnotherComponent.startActivityForResult<AgentUpdateOrderActivity>(
+           /* MoveToAnotherComponent.startActivityForResult<AgentUpdateOrderActivity>(
                 this,Constant.REQUEST_CODE_FINISH_ORDER_DETAILS_ON_BACK,Constant.KEY_ORDER_DETAILS_ID,
                 intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)!!
-            )
+            )*/
+            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentUpdateOrderActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
+                intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)!!)
         }
         order_rate_review.setOnClickListener {
 
@@ -151,4 +160,13 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         rec_user_order_summary.adapter = recycleAdapterUsersHomeCard
     }
-    }
+
+   /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == Constant.REQUEST_CODE_FINISH_ORDER_DETAILS_ON_BACK){
+
+            rec_user_order_summary.adapter?.notifyDataSetChanged()
+        }
+    }*/
+
+}

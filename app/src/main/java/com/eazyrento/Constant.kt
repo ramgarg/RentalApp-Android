@@ -3,8 +3,10 @@ package com.eazyrento
 interface Constant{
     companion object
     {
+        const val INTENT_PAYMENT_SUCSESS = "payment_sucess"
         const val KEY_ORDER_DETAILS_ID ="order_details_key"
         const val REQUEST_CODE_FINISH_ORDER_DETAILS_ON_BACK = 7001
+        const val INTENT_UPDATE_ORDER_AGENT ="agent_update_order"
 
         const val DEFAULT_VALUE =""
         const val KEY_PAYMENT_HISTORY = "ORDER_ID"
@@ -84,8 +86,11 @@ interface Constant{
         const val MERCHNAT_ACCEPTANCE = 9
 
         //Payment History
+        const val PAYPAL ="paypal"
         const val CASH ="cash"
+
         const val PENDING="pending"
+
         const val PENDING_AMOUNT="Pending Amount"
         const val TOTAL_AMOUNT="Total Amount"
         const val BOOKING_PRICE="Booking Price"

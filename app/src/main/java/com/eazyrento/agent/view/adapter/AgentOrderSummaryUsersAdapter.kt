@@ -10,6 +10,7 @@ import com.eazyrento.R
 import com.eazyrento.agent.view.activity.AgentOrderSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.utils.Common
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_user_order_summery.view.*
 import kotlinx.android.synthetic.main.phone_view.view.*
 
@@ -49,6 +50,7 @@ class AgentOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDetai
                 Common.phoneCallWithNumber(order_listing_obj?.mobile_number, context)
             }
             //holder?.img_user_pic.setImageResource() = order_listing_obj
+//            Picasso.with(context).load(order_listing_obj.)holder.img_user_pic
 
         }else{
             holder?.tv_user_name!!.text= Constant.MERCHANT
