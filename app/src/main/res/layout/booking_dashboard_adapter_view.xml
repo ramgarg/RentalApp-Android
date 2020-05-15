@@ -30,6 +30,22 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycle_booking_home_adpter"
+            android:visibility="visible"
+            />
+    <TextView
+            android:id="@+id/tv_no_booking_available"
+            style="@style/AgentBoldTextCard"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/no_booking_avil"
+            android:textColor="@color/black"
+
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/agen_bottom_white_bg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycle_booking_home_adpter"
             />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

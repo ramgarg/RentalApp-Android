@@ -67,7 +67,8 @@ abstract class DashboardBaseFragment:
 
             if (bookingList.isEmpty()) {
                 btn_home_view_all.visibility = View.GONE
-                Common.showToast(requireContext(), ValidationMessage.NO_DATA_FOUND)
+                tv_no_booking_available.visibility =View.VISIBLE
+
             }
 
             Common.showToast(requireContext(),ValidationMessage.REQUEST_SUCCESSED)
@@ -77,8 +78,9 @@ abstract class DashboardBaseFragment:
         agentDashboardResponse= data as BookingDashboardResModel
 
         if(agentDashboardResponse.bookings.isEmpty()) {
-            Common.showToast(requireContext(), ValidationMessage.NO_DATA_FOUND)
+
             btn_home_view_all.visibility = View.GONE
+            tv_no_booking_available.visibility =View.VISIBLE
             return
         }
 
