@@ -53,7 +53,7 @@ class MoveToAnotherComponent {
             webView.getSettings().setDomStorageEnabled(true)
             webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER)
 //            webView.loadUrl("https://www.google.com")
-            webView.loadUrl ( "file:///android_asset/privacy.html" );
+            webView.loadUrl ( "file:///android_asset/privacy.html")
         }
 
         // start activity for result

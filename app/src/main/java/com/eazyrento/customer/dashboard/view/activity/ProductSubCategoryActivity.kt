@@ -26,7 +26,8 @@ class ProductSubCategoryActivity :
             Constant.VEHICLES_DATA_ITEM)
 
         val selectedString = masterResModelItem.category_name
-        AppBizLogger.log(AppBizLogger.LoggingType.INFO,masterResModelItem.toString())
+
+        setData(selectedString)
 
         callAPI()?.let {
             it.observeApiResult(

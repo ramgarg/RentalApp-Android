@@ -38,6 +38,9 @@ interface ValidationMessage{
 
         const val LOGOUT_MESSAGE = "You have been logout successfully"
         //sucessfully added
+
+        const val OPT_SUCCESSED = "OTP has sent.Please check your Email to verify."
+
         const val REQUEST_SUCCESSED = "Request has been submit successfully"
         const val PRODUCT_DELETE_SUCCESS = "Product has been deleted successfully"
 

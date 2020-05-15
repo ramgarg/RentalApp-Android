@@ -20,8 +20,8 @@ import java.lang.NumberFormatException
 
 class OTPActivity :BaseActivity(){
 
+    private var isResendOtpClcik:Boolean = false
 
-//    var otpRequest = OTPRequest()
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -35,6 +35,7 @@ class OTPActivity :BaseActivity(){
 
    fun onResendOTPClick(view:View){
         val userID=intent.getIntExtra(Constant.INTENT_OTP_USER_ID,-1)
+       isResendOtpClcik = true
 
        callAPI()?.let {
             it.observeApiResult(
@@ -47,6 +48,7 @@ class OTPActivity :BaseActivity(){
     }
 
     fun onContinueClick(view:View){
+
 
         val userID = intent.getIntExtra(Constant.INTENT_OTP_USER_ID,-1)
         var passcode:Int
@@ -63,6 +65,8 @@ class OTPActivity :BaseActivity(){
         if (checkValidationFailed(userID,passcode)){
             return
         }
+
+        isResendOtpClcik = false
 
         callAPI()?.let {
             it.observeApiResult(
@@ -86,13 +90,19 @@ class OTPActivity :BaseActivity(){
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
+        if (isResendOtpClcik){
+            isResendOtpClcik = false
+            showToast(ValidationMessage.OPT_SUCCESSED)
+            return
+        }
+
+
         if (data is OTPResponse){
 //             {"status":200}
             MoveToAnotherComponent.moveToActivityWithIntentValue<LoginUserActivity>(this,Constant.INTENT_OTP_TO_LOGIN,1)
 
         }
 
-//        MoveToAnotherComponent.moveToHomeActivity(this)
     }
 
 

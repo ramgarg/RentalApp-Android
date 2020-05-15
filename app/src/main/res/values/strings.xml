@@ -4,24 +4,27 @@
         email below to receive password reset instruction.
     </string>
     <string name="forgot_your_password">Forgot your password?</string>
+
     <string name="gdpr_rights">
-        <![CDATA[I agree to terms & conditions and GDPR rights.]]></string>
+         <u> I agree to terms &amp; conditions and GDPR rights.</u> </string>
+
     <string name="send">Send</string>
     <string name="enter_opt">Enter OTP</string>
     <string name="password">Password</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="login">Login</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="login"><u>Login</u></string>
     <string name="login_with">Login With:</string>
-    <string name="don_t_have_an_account">Don\'t have an account?Register</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+
     <string name="login_to_continue_as">Login to continue as</string>
     <string name="otp_sent">We have sent OTP to the email address</string>
-    <string name="register">Register</string>
+    <string name="register"><u>Register</u></string>
     <string name="agent">Agent</string>
     <string name="opt_detail">We\'ve sent OTP the email address p@g.com.please enter it below to complete
         verification
     </string>
     <string name="conti">Continue</string>
-    <string name="already_have_an_account">Already have an account?Login</string>
+    <string name="already_have_an_account">Already have an account?</string>
     <string name="full_name">Full Name</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -138,7 +141,7 @@
     <string name="document">Document</string>
     <string name="with_driver">With Driver</string>
     <string name="upload">Upload</string>
-    <string name="search_vehicles">Search Vehicles...</string>
+    <string name="search_vehicles">Search</string>
     <string name="are_you_sure">Are you sure you want delete this Product</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
@@ -235,7 +238,7 @@
     <string name="title_OTP">OTP</string>
     <string name="capacity">Capacity</string>
     <string name="power">Power</string>
-    <string name="resend_otp">Resend OTP</string>
+    <string name="resend_otp"><u>Resend OTP</u></string>
 
     <!--Google Map and Place API key production -->
     <string name="google_credential_key">AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I</string>

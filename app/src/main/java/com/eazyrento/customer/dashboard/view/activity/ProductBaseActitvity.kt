@@ -26,10 +26,13 @@ open abstract class ProductBaseActitvity: BaseActivity(),
 
         setContentView(R.layout.category_activity)
 
-        ViewVisibility.isVisibleOrNot(
-            this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.vehicle))
 
+
+    }
+    protected fun setData(name:String){
+
+        topBarWithBackIconAndTitle(name)
+        ed_search.hint = resources.getString(R.string.search_vehicles)+" "+name
     }
 
     protected fun <T>setSearch(arrayListOiginal: ArrayList<T>){

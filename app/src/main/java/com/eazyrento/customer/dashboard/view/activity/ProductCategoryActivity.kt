@@ -27,9 +27,9 @@ class ProductCategoryActivity : ProductBaseActitvity() {
             intent.getParcelableExtra<MasterResModelItem>(
                 Constant.MASTER_DATA_ITEM)
 
-        AppBizLogger.log(AppBizLogger.LoggingType.INFO, masterResModelItem.toString())
-
         selectedKey = masterResModelItem.name
+
+        setData(selectedKey)
 
         callAPI()?.let {
             it.observeApiResult(

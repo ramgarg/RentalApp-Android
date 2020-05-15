@@ -16,6 +16,7 @@ import com.eazyrento.appbiz.AppBizLogin
 import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.customer.webpages.TermsConditionActivity
 import com.eazyrento.login.model.modelclass.RegisterUserReqModel
 import com.eazyrento.login.model.modelclass.RegisterUserResModel
 import com.eazyrento.login.viewmodel.RegisterUserViewModel
@@ -49,6 +50,12 @@ class RegistrationUserActivity : AppBizLogin(){
             register(UserInfoAPP.BY_NORMAL)
         }
 
+    }
+    fun onLoginClick(view: View){
+        finishCurrentActivity(2)
+    }
+    fun onTermsAndConditionsClick(view: View){
+        MoveToAnotherComponent.moveToActivityNormal<TermsConditionActivity>(this)
     }
     private fun isDocumentUploaded():Boolean{
 

@@ -39,9 +39,8 @@ class CustomerHomeAdapter(val listMasterData: ArrayList<MasterResModelItem>, val
         holder.itemView.setOnClickListener {
 
             baseFragment.onViewClick(listMasterData.get(position),1)
-           /* val intent = Intent(context, ProductCategoryActivity::class.java).putExtra(Constant.MASTER_DATA_ITEM,listMasterData.get(position))
-            context.startActivity(intent)*/
         }
+
         Picasso.with(context).load(listMasterData.get(position).master_image_url)
             .into(holder.imgVeichle )
     }

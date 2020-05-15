@@ -117,7 +117,7 @@
             />
 
     <Button android:layout_width="match_parent"
-            android:text="@string/login"
+            android:text="Login"
             android:id="@+id/btn_login"
             android:textColor="#fff"
             android:fontFamily="@font/bree_serif"
@@ -163,17 +163,36 @@
 
     </LinearLayout>
 
+        <LinearLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
     <TextView
-            android:id="@+id/tv_registration"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:fontFamily="@font/bree_serif"
-            android:textSize="@dimen/_15sdp"
+
+            style="@style/AgentSmallTextCard"
+            android:textSize="@dimen/_12sdp"
             android:text="@string/don_t_have_an_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRegisterClick"
             />
+            <TextView
+                    android:id="@+id/tv_registration"
+                    android:layout_gravity="center"
+                    style="@style/AgentBoldTextCard"
+                    android:textSize="@dimen/_15sdp"
+                    android:paddingLeft="@dimen/_3sdp"
+                    android:text="@string/register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:onClick="onRegisterClick"
+                    />
+
+        </LinearLayout>
 </LinearLayout>
 
         </LinearLayout>

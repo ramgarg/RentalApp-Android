@@ -297,18 +297,23 @@
                   android:textSize="@dimen/_15sdp"
                   android:background="@drawable/custom_checkbox"
                   android:button="@null"
-                  android:layout_height="@dimen/_20sdp"/>
+                  android:layout_height="@dimen/_20sdp"
+                  android:layout_gravity="center"
+                />
 
             <TextView
                     android:fontFamily="@font/bree_serif"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textSize="@dimen/_15sdp"
-                      android:text="@string/gdpr_rights"
-                      android:layout_height="wrap_content"/>
+                    android:text="@string/gdpr_rights"
+                    android:textColor="@color/blue"
+                    android:onClick="onTermsAndConditionsClick"
+                    />
         </LinearLayout>
         <Button android:layout_width="match_parent"
-                android:text="@string/register"
+                android:text="Register"
                 android:textColor="#fff"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/btn_register"
@@ -320,16 +325,37 @@
                 android:onClick="onRegisterButtonClick"
                 />
 
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:layout_gravity="center"
+                >
 
         <TextView
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:fontFamily="@font/bree_serif"
-                android:textSize="@dimen/_15sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:text="@string/already_have_an_account"
+
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                style="@style/AgentSmallTextCard"
+
+                android:textSize="@dimen/_12sdp"
+
+                android:text="@string/already_have_an_account"
+               />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AgentBoldTextCard"
+                    android:paddingLeft="@dimen/_3sdp"
+
+                    android:textSize="@dimen/_15sdp"
+                    android:text="@string/login"
+                    android:onClick="onLoginClick"
+
+                    />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
