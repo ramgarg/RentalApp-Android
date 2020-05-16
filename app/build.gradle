@@ -98,5 +98,11 @@ dependencies {
     //Place API
     implementation 'com.google.android.libraries.places:places:2.2.0'
 
+    // circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    // phone number and country code piker
+//    implementation 'com.hbb20:ccp:X.Y.Z'
+    implementation 'net.rimoto:intlphoneinput:0.9.3'
+
 
 }

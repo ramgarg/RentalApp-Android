@@ -32,7 +32,9 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
 
     override fun onStart() {
         super.onStart()
-        if (EazyRantoApplication.profileData==null)
+
+        //if (EazyRantoApplication.profileData==null)
+
            getProfileAPI()
     }
     private fun getProfileAPI(){
@@ -109,8 +111,8 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     private fun setTopHeaderData(user_profile: UserProfile) {
 
     val header = navigation_view.getHeaderView(0)
-    header.user_name_menu.text=user_profile.full_name
-    header.user_type_menu.text =Session.getInstance(this)?.getUserRole()
+    header.user_name_menu.text=user_profile.full_name.capitalize()
+    header.user_type_menu.text =Session.getInstance(this)?.getUserRole()?.capitalize()
 
     Picasso.with(this).load(user_profile.profile_image).into(header.profile_img_menu)
 

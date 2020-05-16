@@ -5,35 +5,36 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <ImageView android:layout_width="@dimen/_80sdp"
-               android:id="@+id/profile_img_menu"
-               android:src="@mipmap/profile_pic"
-               android:layout_marginStart="@dimen/_10sdp"
-               android:layout_marginTop="@dimen/_30sdp"
-               android:layout_height="@dimen/_80sdp"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+
+                android:id="@+id/profile_img_menu"
+
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+
+                style="@style/profile_pic"
+            />
 
     <TextView
-            android:text=""
-            android:fontFamily="@font/bree_serif"
-            android:textColor="@color/black"
+
             android:id="@+id/user_name_menu"
-            android:textSize="@dimen/_15sdp"
+
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_width="wrap_content"
-              android:layout_below="@id/profile_img_menu"
-              android:layout_height="wrap_content"/>
+            android:layout_below="@id/profile_img_menu"
+
+            style="@style/UserRole"
+            android:textColor="@color/black"
+
+            />
     <TextView
-            android:text="@string/customer"
             android:id="@+id/user_type_menu"
-            android:fontFamily="@font/bree_serif"
-            android:textColor="@color/text_green"
-            android:textSize="@dimen/_12sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_width="wrap_content"
             android:layout_below="@id/user_name_menu"
-            android:layout_height="wrap_content"/>
+            style="@style/UserRole"
+
+            />
     <ImageView android:layout_width="@dimen/_30sdp"
                android:id="@+id/edit_profile_menu"
                android:src="@mipmap/edit"

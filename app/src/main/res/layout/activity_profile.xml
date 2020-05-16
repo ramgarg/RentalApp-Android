@@ -22,12 +22,18 @@
                 android:layout_margin="@dimen/_20sdp"
                 android:orientation="vertical">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/img_profile"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_height="@dimen/_80sdp"
-                    android:src="@mipmap/profile_pic" />
+                    style="@style/profile_pic"
+                    />
+            <TextView
+                    android:id="@+id/tv_user_name_profile"
+                    android:layout_toEndOf="@+id/img_profile"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:layout_marginLeft="@dimen/_25sdp"
+
+                    style="@style/UserRole"
+                    />
 
             <ImageView
                     android:id="@+id/img_edit"
@@ -72,7 +78,9 @@
 
                     android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    android:visibility="gone"
+                    >
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ed_user_name"

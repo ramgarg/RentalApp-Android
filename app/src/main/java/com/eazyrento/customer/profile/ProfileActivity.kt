@@ -8,10 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import com.eazyrento.Constant
-import com.eazyrento.EazyRantoApplication
-import com.eazyrento.R
-import com.eazyrento.ValidationMessage
+import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
@@ -22,6 +19,7 @@ import com.eazyrento.customer.utils.Validator
 import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
+import com.eazyrento.supporting.CircleTransform
 import com.eazyrento.supporting.OnPiclImageToBase64
 import com.eazyrento.supporting.UploadImageFromDevice
 import com.squareup.picasso.Picasso
@@ -53,6 +51,7 @@ class ProfileActivity : BaseActivity() {
         topBarWithBackIconAndTitle("Profile")
 
         userProfile = EazyRantoApplication.profileData
+
         documentSpinnerData()
         genderSpinnerData()
 
@@ -73,14 +72,16 @@ class ProfileActivity : BaseActivity() {
 
     private fun setProfileData(userProfile: UserProfile?) {
 
+        tv_user_name_profile.text = Session.getInstance(this)?.getUserRole()?.capitalize()
         ed_full_name.setText(userProfile?.full_name)
-        ed_user_name.setText(userProfile?.username_choice)
+        ed_user_name.setText(userProfile?.full_name)
         ed_email.setText(userProfile?.email)
         ed_country.setText(userProfile?.country_code)
         ed_phone.setText(userProfile?.mobile_number)
         ed_dob.setText(userProfile?.dob)
         ed_company_name.setText(userProfile?.buisness)
         ed_des.setText(userProfile?.description)
+
         setAddress()
 
 

@@ -261,7 +261,25 @@
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+<!--Profile pic style-->
+    <style name="profile_pic">
+        <item name="android:layout_width">@dimen/_80sdp</item>
+        <item name="android:layout_height">@dimen/_80sdp</item>
+        <item name="android:src">@mipmap/profile_pic</item>
 
+        <item name="civ_border_width">2dp</item>
+        <item name="civ_border_color">#FF000000</item>
+
+    </style>
+
+    <style name="UserRole" parent="android:Widget.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_green</item>
+        <item name="android:textSize">@dimen/_18sdp</item>
+        <item name="fontFamily">@font/bree_serif</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
 
 </resources>
