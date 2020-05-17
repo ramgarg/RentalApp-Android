@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:orientation="vertical"
-              android:focusable="true"
-              android:focusableInTouchMode="true"
-              android:layout_height="match_parent">
-    <include layout="@layout/toolbar"
-             android:id="@+id/toolbar"
-    />
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+    <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
 
     <ScrollView
             android:layout_width="match_parent"
@@ -18,22 +20,21 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/_20sdp"
                 android:layout_margin="@dimen/_20sdp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_20sdp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/img_profile"
-                    style="@style/profile_pic"
-                    />
+                    style="@style/profile_pic" />
+
             <TextView
                     android:id="@+id/tv_user_name_profile"
-                    android:layout_toEndOf="@+id/img_profile"
-                    android:layout_marginTop="@dimen/_35sdp"
-                    android:layout_marginLeft="@dimen/_25sdp"
-
                     style="@style/UserRole"
-                    />
+                    android:layout_marginLeft="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_35sdp"
+
+                    android:layout_toEndOf="@+id/img_profile" />
 
             <ImageView
                     android:id="@+id/img_edit"
@@ -41,8 +42,7 @@
                     android:layout_height="@dimen/_25sdp"
                     android:layout_alignEnd="@+id/img_profile"
                     android:layout_alignBottom="@+id/img_profile"
-                    android:src="@mipmap/add_image"
-                    />
+                    android:src="@mipmap/add_image" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -68,6 +68,7 @@
                         android:nextFocusDown="@id/ed_password" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_username"
                     android:layout_width="match_parent"
@@ -78,9 +79,8 @@
 
                     android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                     android:visibility="gone"
-                    >
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ed_user_name"
@@ -118,8 +118,28 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <net.rimoto.intlphoneinput.IntlPhoneInput
 
-            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_phone"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_email"
+                    android:layout_marginTop="@dimen/_10sdp"
+
+
+                    app:textSize="20sp"
+                    app:textColor="#000000"
+                    app:flagPaddingBottom="4dp"
+                    app:flagPaddingEnd="4dp"
+                    app:flagPaddingStart="4dp"
+                    app:flagPaddingTop="4dp"
+
+
+                    />
+
+
+            <!--<com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_country"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="wrap_content"
@@ -163,7 +183,7 @@
                         android:maxLines="1"
                         android:nextFocusDown="@id/ed_password" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_dob"
@@ -180,9 +200,9 @@
                         android:id="@+id/ed_dob"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
-                        android:fontFamily="@font/bree_serif"
                         android:clickable="true"
                         android:editable="false"
+                        android:fontFamily="@font/bree_serif"
                         android:lines="1"
                         android:maxLines="1"
                         android:nextFocusDown="@id/ed_password" />
@@ -211,6 +231,7 @@
                         android:nextFocusDown="@id/ed_password" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_des"
                     android:layout_width="match_parent"
@@ -234,71 +255,76 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:id="@+id/layout_gender"
-                android:layout_below="@id/layout_des"
-                android:visibility="visible">
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:id="@+id/tv_gender"
-                    android:text="@string/select_gender"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_16sdp">
-
-            </TextView>
-            <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_below="@+id/tv_gender"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@drawable/spinner_dropdown"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:fontFamily="@font/bree_serif"
-                    android:id="@+id/sp_gender">
-
-            </Spinner>
-        </RelativeLayout>
-
             <RelativeLayout
+                    android:id="@+id/layout_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lyt_select_document"
+                    android:layout_below="@id/layout_des"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_below="@id/layout_gender"
                     android:visibility="visible">
+
                 <TextView
+                        android:id="@+id/tv_gender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_select_document"
-                        android:text="@string/select_document"
-                        android:textColor="@color/black"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:fontFamily="@font/bree_serif"
+                        android:text="@string/select_gender"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/_16sdp">
 
                 </TextView>
+
                 <Spinner
+                        android:id="@+id/sp_gender"
                         android:layout_width="match_parent"
-                        android:layout_below="@+id/tv_select_document"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_gender"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:background="@drawable/spinner_dropdown"
-                        android:fontFamily="@font/bree_serif"
-                        android:id="@+id/sp_select_document">
+                        android:fontFamily="@font/bree_serif">
 
                 </Spinner>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/lyt_select_document"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_gender"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:visibility="visible">
+
+                <TextView
+                        android:id="@+id/tv_select_document"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:text="@string/select_document"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16sdp">
+
+                </TextView>
+
+                <Spinner
+                        android:id="@+id/sp_select_document"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_select_document"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/spinner_dropdown"
+                        android:fontFamily="@font/bree_serif">
+
+                </Spinner>
+
                 <ImageView
+                        android:id="@+id/document_pic"
                         android:layout_width="@dimen/_35sdp"
                         android:layout_height="@dimen/_40sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
                         android:layout_below="@+id/sp_select_document"
-                        android:id="@+id/document_pic"
+                        android:layout_marginTop="@dimen/_5sdp"
                         android:src="@mipmap/attachment">
 
                 </ImageView>
@@ -306,65 +332,73 @@
 
 
             <RelativeLayout
+                    android:id="@+id/layout_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/lyt_select_document"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:id="@+id/layout_location">
+                    android:layout_marginTop="@dimen/_5sdp">
+
                 <TextView
+                        android:id="@+id/tv_select_location"
                         android:layout_width="@dimen/_125sdp"
                         android:layout_height="@dimen/_30sdp"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_16sdp"
-                        android:fontFamily="@font/bree_serif"
-                        android:id="@+id/tv_select_location"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:text="@string/select_location_">
+                        android:fontFamily="@font/bree_serif"
+                        android:text="@string/select_location_"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_16sdp">
 
                 </TextView>
+
                 <Button
+                        android:id="@+id/btn_select_location"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
-                        android:layout_toEndOf="@id/tv_select_location"
                         android:layout_alignParentEnd="true"
-                        android:id="@+id/btn_select_location"
                         android:layout_marginStart="@dimen/_50sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:textColor="@color/white"
-                        android:text="@string/change"
+                        android:layout_toEndOf="@id/tv_select_location"
                         android:background="@drawable/payment_status"
                         android:paddingLeft="@dimen/_10sdp"
-                        android:paddingRight="@dimen/_10sdp">
+                        android:paddingRight="@dimen/_10sdp"
+                        android:text="@string/change"
+                        android:textColor="@color/white">
 
                 </Button>
-                <TextView android:layout_width="@dimen/_120sdp"
-                        android:text="@string/downtown_dubai"
-                        android:layout_below="@+id/tv_select_location"
+
+                <TextView
                         android:id="@+id/tv_add_line"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp"
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_below="@+id/tv_select_location"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:layout_height="@dimen/_20sdp"/>
-                <TextView android:layout_width="@dimen/_140sdp"
                         android:text="@string/downtown_dubai"
-                        android:id="@+id/tv_add_city"
                         android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                        android:id="@+id/tv_add_city"
+                        android:layout_width="@dimen/_140sdp"
+                        android:layout_height="@dimen/_20sdp"
                         android:layout_below="@id/tv_select_location"
-                        android:layout_toRightOf="@+id/tv_add_line"
-                        android:textSize="@dimen/_12sdp"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_toRightOf="@+id/tv_add_line"
                         android:fontFamily="@font/bree_serif"
-                        android:layout_height="@dimen/_20sdp"/>
-            <TextView android:layout_width="match_parent"
-                    android:text="@string/downtown_dubai"
-                    android:id="@+id/tv_add_country"
-                    android:textColor="@color/black"
-                    android:layout_below="@+id/tv_add_line"
-                    android:textSize="@dimen/_12sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/bree_serif"
-                    android:layout_height="@dimen/_20sdp"/>
+                        android:text="@string/downtown_dubai"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                        android:id="@+id/tv_add_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_below="@+id/tv_add_line"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:text="@string/downtown_dubai"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
 
             </RelativeLayout>
 

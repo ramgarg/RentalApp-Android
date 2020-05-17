@@ -242,7 +242,9 @@
 
     <!--Google Map and Place API key production -->
     <string name="google_credential_key">AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I</string>
+
     <string name="place_restriction_country_code">AE</string>
+    <string name="iso_phone_number">AE</string>
 
 
 

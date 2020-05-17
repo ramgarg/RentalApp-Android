@@ -24,6 +24,7 @@ import com.eazyrento.supporting.OnPiclImageToBase64
 import com.eazyrento.supporting.UploadImageFromDevice
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profile.*
+import net.rimoto.intlphoneinput.IntlPhoneInput
 
 class ProfileActivity : BaseActivity() {
     var userProfile: UserProfile? = null
@@ -49,6 +50,9 @@ class ProfileActivity : BaseActivity() {
         setContentView(R.layout.activity_profile)
 
         topBarWithBackIconAndTitle("Profile")
+
+
+        layout_phone.setEmptyDefault(resources.getString(R.string.iso_phone_number))
 
         userProfile = EazyRantoApplication.profileData
 
@@ -76,8 +80,10 @@ class ProfileActivity : BaseActivity() {
         ed_full_name.setText(userProfile?.full_name)
         ed_user_name.setText(userProfile?.full_name)
         ed_email.setText(userProfile?.email)
-        ed_country.setText(userProfile?.country_code)
-        ed_phone.setText(userProfile?.mobile_number)
+
+//        layout_phone.text= (userProfile?.country_code)
+        layout_phone.number = (userProfile?.mobile_number)
+
         ed_dob.setText(userProfile?.dob)
         ed_company_name.setText(userProfile?.buisness)
         ed_des.setText(userProfile?.description)
@@ -155,10 +161,13 @@ class ProfileActivity : BaseActivity() {
             showToast(ValidationMessage.VALID_EMAIL_ID)
             ed_email.requestFocus()
         }
-        else if(ed_country.text.toString().isEmpty()){
+      /*  else if(ed_country.text.toString().isEmpty()){
             showToast(ValidationMessage.COUNTRY_CODE)
         }
         else if(ed_phone.text.toString().isEmpty()){
+            showToast(ValidationMessage.PHONE_NUMBER)
+        }*/
+        else if(!layout_phone.isValid){
             showToast(ValidationMessage.PHONE_NUMBER)
         }
         else if(ed_dob.text.toString().isEmpty()){
@@ -187,12 +196,18 @@ class ProfileActivity : BaseActivity() {
             it.gender = "" + sp_gender.selectedItem
             it.email = "" + ed_email.text
             it.description = "" + ed_des.text
-            it.country_code = "" + ed_country.text
+
+            /*it.country_code = "" + ed_country.text
+            it.mobile_number = "" + ed_phone.text*/
+
+            it.country_code = ""+layout_phone.selectedCountry
+            it.mobile_number = layout_phone.number
+
             it.buisness = "" + ed_company_name.text
             it.attached_document = "" + selectBase64StringAttachedDoc
 
             it.id_proof_title = "" + sp_select_document.selectedItem
-            it.mobile_number = "" + ed_phone.text
+
             it.profile_image = "" + img_profile
             it.username_choice = "" + ed_user_name.text
 
