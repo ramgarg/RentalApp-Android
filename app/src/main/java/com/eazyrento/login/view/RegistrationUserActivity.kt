@@ -47,6 +47,7 @@ class RegistrationUserActivity : AppBizLogin(){
     fun onRegisterButtonClick(view: View){
 
         if(checkValidation(ed_full_name,ed_email_phone,ed_password,checkbox_terms,user_role) && isDocumentUploaded()){
+
             register(UserInfoAPP.BY_NORMAL)
         }
 
@@ -72,6 +73,11 @@ class RegistrationUserActivity : AppBizLogin(){
         btn_merchant_inactive.setOnClickListener { assignRole(UserInfoAPP.MERCHANT) }
         btn_customer_inactive.setOnClickListener { assignRole(UserInfoAPP.CUSTOMER)  }
         btn_agent_inactive.setOnClickListener { assignRole(UserInfoAPP.AGENT) }
+
+        user_role = UserInfoAPP.CUSTOMER
+        Common.showGroupViews(btn_customer_active,btn_merchant_inactive,btn_agent_inactive)
+        Common.hideGroupViews(btn_agent_active,btn_merchant_active,btn_customer_inactive)
+        lyt_select_document.visibility=View.INVISIBLE
 
         documentSpinnerData()
 
@@ -132,8 +138,7 @@ class RegistrationUserActivity : AppBizLogin(){
         return RegisterUserReqModel(
             "",
             ed_full_name.text.toString(),
-            ed_password.text.toString()
-            ,
+            ed_password.text.toString(),
             UserInfoAPP.REGISTRATIONS_SOURCE!!,
             user_role!!,
             ed_email_phone.text.toString(),
@@ -203,6 +208,7 @@ class RegistrationUserActivity : AppBizLogin(){
                 ?.saveUserID(data.user_id)*/
 
             MoveToAnotherComponent.moveToActivityWithIntentValue<OTPActivity>(this,Constant.INTENT_OTP_USER_ID,data.user_id)
+            //intent.putExtra(Constant.INTENT_USER_EMAIL,ed_email_phone.text.toString())
 
         }
     }

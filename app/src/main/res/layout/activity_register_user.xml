@@ -233,7 +233,6 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:hint="@string/password"
                 android:textColor="@color/black"
-                android:fontFamily="@font/bree_serif"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 android:layout_height="wrap_content"
                 app:passwordToggleEnabled="true"
@@ -243,6 +242,7 @@
                     android:layout_width="match_parent"
                     android:inputType="textPassword"
                     android:id="@+id/ed_password"
+                    android:textStyle="bold"
                     android:fontFamily="@font/bree_serif"
                     android:layout_height="@dimen/_40sdp"/>
 
@@ -286,9 +286,8 @@
         </RelativeLayout>
         <LinearLayout android:layout_width="wrap_content"
                       android:orientation="horizontal"
-                      android:gravity="top"
                       android:layout_marginTop="@dimen/_10sdp"
-                      android:layout_height="@dimen/_40sdp">
+                      android:layout_height="@dimen/_30sdp">
 
         <CheckBox android:layout_width="@dimen/_20sdp"
                   android:textColor="@color/black"
@@ -306,6 +305,39 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="@string/i_agree"
+                    android:textColor="@color/black"
+                    />
+            <TextView
+                    android:fontFamily="@font/bree_serif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="@string/t_and_c"
+                    android:textColor="@color/blue"
+                    android:onClick="onTermsAndConditionsClick"
+                    />
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_height="@dimen/_30sdp">
+            <TextView
+                    android:fontFamily="@font/bree_serif"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_15sdp"
+                    android:text="@string/and"
+                    android:textColor="@color/black"
+                    />
+            <TextView
+                    android:fontFamily="@font/bree_serif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:textSize="@dimen/_15sdp"
                     android:text="@string/gdpr_rights"
                     android:textColor="@color/blue"

@@ -30,34 +30,13 @@
                 android:layout_marginRight="@dimen/_20sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
         <Button
-                android:layout_width="wrap_content"
-                android:layout_weight=".5"
-                android:id="@+id/btn_cancel"
-                android:text="@string/cancel"
-                android:background="@drawable/button_no"
-                android:layout_height="@dimen/_60sdp">
-
-        </Button>
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
                 android:id="@+id/btn_ok"
-                android:background="@drawable/button_yes"
-                android:text="@string/ok"
-                android:layout_weight=".5">
+                android:background="@drawable/ok"
+                android:text="@string/ok">
         </Button>
-
-    </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 

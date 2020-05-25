@@ -40,7 +40,7 @@ open  abstract class AppBizLogin: BaseActivity(){
     //user validation
     fun failCheckValdationLoginCredintitial(email: EditText,password: EditText):Boolean{
         if(email.text.toString().isEmpty() && password.text.toString().isEmpty()){
-            showToast(ValidationMessage.ENTER_ALL_FIELDS)
+            showToast(ValidationMessage.ENTER_EMAIL_PHONE)
         }
        else if (!Validator.isEmailValid(email.text.toString())) {
             showToast(ValidationMessage.VALID_EMAIL_ID)

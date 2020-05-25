@@ -39,66 +39,81 @@
     <TextView
             android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/bree_serif"
-          android:id="@+id/otp_message"
+            android:id="@+id/otp_message"
             android:textSize="@dimen/_15sdp"
+            android:textColor="@color/black"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-    <LinearLayout
+    <RelativeLayout
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_30sdp"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputLayout
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:id="@+id/otp_title"
+                android:fontFamily="@font/bree_serif"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/enter_opt">
+
+        </TextView>
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:hint="@string/enter_opt"
-                android:textColor="#000"
-                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
-
-                android:textColorHint="@color/cardview_shadow_start"
-                android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:id="@+id/ed_otp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/otp_title"
+                android:weightSum="100"
+                android:orientation="horizontal">
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_weight="70"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    android:textColorHint="@color/cardview_shadow_start"
+                    android:layout_height="wrap_content"
                     android:inputType="number"
                     android:fontFamily="@font/bree_serif"
-                    android:layout_height="@dimen/_40sdp"
+                    android:hint="@string/title_OTP"
+                    android:id="@+id/ed_otp">
+
+            </EditText>
+            <Button android:layout_width="0dp"
+                    android:layout_weight="30"
+                    android:layout_gravity="end"
+                    android:textColor="@color/white"
+                    android:id="@+id/btn_resend_otp"
+                    android:fontFamily="@font/bree_serif"
+                    android:textSize="@dimen/_12sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:background="@drawable/button_gradient"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/resend_otp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:onClick="onResendOTPClick"
                     />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
+        </LinearLayout>
 
 
-        <Button android:layout_width="match_parent"
-                android:text="@string/conti"
-                android:id="@+id/btn_continue"
-                android:textColor="#fff"
-                android:fontFamily="@font/bree_serif"
-                android:textAllCaps="false"
-                android:textSize="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/button_gradient"
-                android:layout_height="@dimen/_40sdp"
-                android:onClick="onContinueClick"
-                />
-
-        <TextView android:layout_width="wrap_content"
-                android:layout_gravity="end"
-                android:textColor="@color/black"
-                android:id="@+id/tv_forgot_password"
-                android:fontFamily="@font/bree_serif"
-                android:textSize="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="@string/resend_otp"
-                android:layout_height="wrap_content"
-                android:onClick="onResendOTPClick"
-                />
-
-    </LinearLayout>
+    </RelativeLayout>
+    <Button android:layout_width="match_parent"
+            android:text="@string/conti"
+            android:id="@+id/btn_continue"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bree_serif"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@drawable/button_gradient"
+            android:layout_height="@dimen/_40sdp"
+            android:onClick="onContinueClick"
+            />
 
 </LinearLayout>

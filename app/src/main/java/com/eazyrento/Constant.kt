@@ -50,6 +50,7 @@ interface Constant{
         const val INTENT_RATE_REVIEWS ="sucess"
 
         const val INTENT_OTP_USER_ID ="user_id"
+        const val INTENT_USER_EMAIL="user_email"
         const val INTENT_OTP_TO_LOGIN ="otp"
 
 

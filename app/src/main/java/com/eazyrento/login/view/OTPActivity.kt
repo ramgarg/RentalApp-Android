@@ -14,7 +14,6 @@ import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.login.model.modelclass.ResendOTPRequest
 import com.eazyrento.login.viewmodel.LoginOTPViewModel
 import com.eazyrento.login.viewmodel.ResendOTPViewModel
-import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_otp.*
 import java.lang.NumberFormatException
 
@@ -30,6 +29,8 @@ class OTPActivity :BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp)
         topBarWithBackIconAndTitle(resources.getString(R.string.title_OTP))
+        //val userEmail=intent.getStringExtra(Constant.INTENT_USER_EMAIL)
+        //otp_message.setText(ValidationMessage.OTP_MESSAGE_START+" ("+"${userEmail}"+"). "+ValidationMessage.OTP_MESSAGE_END)
 
     }
 
@@ -99,6 +100,7 @@ class OTPActivity :BaseActivity(){
 
         if (data is OTPResponse){
 //             {"status":200}
+            showToast(ValidationMessage.REGISTRATION_SUCCESS)
             MoveToAnotherComponent.moveToActivityWithIntentValue<LoginUserActivity>(this,Constant.INTENT_OTP_TO_LOGIN,1)
 
         }

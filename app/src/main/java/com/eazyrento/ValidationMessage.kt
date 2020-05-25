@@ -13,14 +13,18 @@ interface ValidationMessage{
         const val CHECK_INTERNET = "Please check internet connectivity"
         const val VALID_PASSWORD_LENGTH= "Invalid Password! minimum length 8"
         const val VALID_PASSWORD= "Please Enter Valid Password"
+        const val REGISTRATION_SUCCESS= "Registration successfull. Please login now to continue"
         const val VALID_EMAIL_ID = "Please Enter Valid Email"
         const val ENTER_ALL_FIELDS = "Please Enter all fields"
+        const val ENTER_EMAIL_PHONE= "Please Enter Email/Phone Number"
         const val CHECK_TERMS_POLICY= "Please Check Terms and Condition"
         const val VALID_USER_NAME= "Please Enter User Name Field"
         const val SELECT_USER_ROLE = "Please select user role"
         const val NO_DATA_FOUND = "No data found"
         const val VALID_OTD="Please Enter Valid OTP"
         const val OTP_SENT="OTP have been sent"
+        const val OTP_MESSAGE_START= "We've sent OTP to the email"
+        const val OTP_MESSAGE_END= "Please enter it below to complete verification."
 
         //merchant add product validation
         const val DOC_IS_NOT_UPLOADED = "Doc is not uploaded.Please try it again."

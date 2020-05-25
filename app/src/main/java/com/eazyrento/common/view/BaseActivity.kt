@@ -74,7 +74,7 @@ open abstract class BaseActivity: AppCompatActivity(),
         dialog .setCancelable(false)
         dialog .setContentView(layout)
 
-        dialog.btn_cancel.visibility = View.VISIBLE
+        //dialog.btn_cancel.visibility = View.VISIBLE
 
         dialog.tv_msg.text=msg
 
@@ -82,10 +82,10 @@ open abstract class BaseActivity: AppCompatActivity(),
             dialog.cancel()
             this.onClickDailog(Constant.OK)
         }
-        dialog.btn_cancel.setOnClickListener {
+        /*dialog.btn_cancel.setOnClickListener {
             dialog.cancel()
             this.onClickDailog(Constant.CANCEL)
-        }
+        }*/
 
 
         /*if(title.equals("Payment"))
