@@ -51,7 +51,6 @@ class ProfileActivity : BaseActivity() {
 
         topBarWithBackIconAndTitle("Profile")
 
-
         layout_phone.setEmptyDefault(resources.getString(R.string.iso_phone_number))
 
         userProfile = EazyRantoApplication.profileData
@@ -82,7 +81,12 @@ class ProfileActivity : BaseActivity() {
         ed_email.setText(userProfile?.email)
 
 //        layout_phone.text= (userProfile?.country_code)
-        layout_phone.number = (userProfile?.mobile_number)
+        try {
+            layout_phone.number = userProfile?.mobile_number
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+
 
         ed_dob.setText(userProfile?.dob)
         ed_company_name.setText(userProfile?.buisness)
