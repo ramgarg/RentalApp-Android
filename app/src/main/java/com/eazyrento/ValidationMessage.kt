@@ -23,6 +23,7 @@ interface ValidationMessage{
         const val NO_DATA_FOUND = "No data found"
         const val VALID_OTD="Please Enter Valid OTP"
         const val OTP_SENT="OTP have been sent"
+        const val FORGOT_PASSWORD="Password reset link is sent over mail"
         const val OTP_MESSAGE_START= "We've sent OTP to the email"
         const val OTP_MESSAGE_END= "Please enter it below to complete verification."
 

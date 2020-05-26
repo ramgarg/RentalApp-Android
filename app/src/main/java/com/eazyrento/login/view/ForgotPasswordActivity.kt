@@ -61,7 +61,7 @@ class ForgotPasswordActivity :BaseActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
 
-        Toast.makeText(this,ValidationMessage.OTP_SENT,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,ValidationMessage.FORGOT_PASSWORD,Toast.LENGTH_SHORT).show()
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
@@ -70,7 +70,7 @@ class ForgotPasswordActivity :BaseActivity() {
             MoveToAnotherComponent.moveToActivityWithIntentValue<LoginUserActivity>(this,
                 Constant.INTENT_RESET_SUCCESSFULY,1)
 
-            showToast(ValidationMessage.REQUEST_SUCCESSED)
+           // showToast(ValidationMessage.REQUEST_SUCCESSED)
         }
 
     }
