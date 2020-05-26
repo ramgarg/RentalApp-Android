@@ -21,21 +21,13 @@ class MoveToAnotherComponent {
 
     companion object{
 
-        
-        fun moveToMerchantMainActivity(context: Context){
-            context.startActivity(Intent(context, MerchantMainActivity::class.java))
-        }
-
-        fun moveToAboutActivity(context: Context){
-            context.startActivity(Intent(context, AboutActivity::class.java))
-        }
         fun moveToTermsActivity(context: Context){
             context.startActivity(Intent(context, TermsConditionActivity::class.java))
         }
 
-        fun moveToNotificationActivity(context: Context){
+       /* fun moveToNotificationActivity(context: Context){
             context.startActivity(Intent(context, NotificationActivity::class.java))
-        }
+        }*/
 
         fun moveToNotifyAdminActivity(context: Context){
             context.startActivity(Intent(context, NotifyToAdminActivity::class.java))
@@ -47,13 +39,13 @@ class MoveToAnotherComponent {
         }
 
 
-        fun openWebPage(webView: WebView){
+        fun openWebPage(webView: WebView,url:String){
             webView.setWebViewClient(WebViewClient())
             webView.getSettings().setJavaScriptEnabled(true)
             webView.getSettings().setDomStorageEnabled(true)
             webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER)
 //            webView.loadUrl("https://www.google.com")
-            webView.loadUrl ( "file:///android_asset/privacy.html")
+            webView.loadUrl(url)
         }
 
         // start activity for result

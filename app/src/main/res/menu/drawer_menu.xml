@@ -7,14 +7,22 @@
             android:checkableBehavior="none">
 
         <item
-                android:icon="@mipmap/dashboard"
+                android:icon="@mipmap/home_inactive"
                 android:id="@+id/nav_dashboard"
-                android:title="Dashboard" />
+                android:title="Home" />
 
         <item
                 android:icon="@mipmap/about"
                 android:id="@+id/nav_about"
-                android:title="About App" />
+                android:title="About Us" />
+
+        <!--only for customer and agent -->
+        <item
+                android:id="@+id/profile"
+                android:icon="@mipmap/profile_inactive"
+                android:title="@string/profile"
+                android:visible="false"
+                />
 
         <!--only for agent module-->
         <item
@@ -46,7 +54,9 @@
         <item
                 android:id="@+id/nav_help"
                 android:icon="@mipmap/help_support"
-                android:title="Help &amp; Support" />
+                android:title="Help &amp; Support"
+                android:visible="false"
+                />
 
         <item
                 android:id="@+id/nav_logout"

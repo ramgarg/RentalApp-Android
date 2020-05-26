@@ -30,6 +30,7 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
 
         navigation_view.menu.findItem(R.id.nav_payment).isVisible = true
         navigation_view.menu.findItem(R.id.nav_my_address).isVisible = true
+        navigation_view.menu.findItem(R.id.profile).isVisible = true
     }
 
     override fun onNewIntent(intent: Intent?) {

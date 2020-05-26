@@ -9,7 +9,7 @@ import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.agent.view.fragment.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import kotlinx.android.synthetic.main.activity_agent_home_.*
+import kotlinx.android.synthetic.main.activity_agent_home_.navigation_view
 import kotlinx.android.synthetic.main.toolbar.*
 
 class AgentMainActivity : BaseNavigationActivity(){
@@ -23,6 +23,7 @@ class AgentMainActivity : BaseNavigationActivity(){
         setBottomNavigationItemsDynamic()
 
         navigation_view.menu.findItem(R.id.nav_add_note).isVisible = true
+        navigation_view.menu.findItem(R.id.profile).isVisible = true
 
 
     }

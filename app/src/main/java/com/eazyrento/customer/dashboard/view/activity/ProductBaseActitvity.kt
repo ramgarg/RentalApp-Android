@@ -31,7 +31,7 @@ open abstract class ProductBaseActitvity: BaseActivity(),
     }
     protected fun setData(name:String){
 
-        topBarWithBackIconAndTitle(name)
+        topBarWithBackIconAndTitle(name.capitalize())
         ed_search.hint = resources.getString(R.string.search_vehicles)+" "+name
     }
 

@@ -8,6 +8,7 @@ import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.login.model.modelclass.ProfileModelReqRes
+import com.eazyrento.login.view.ProfileData
 import com.eazyrento.login.viewmodel.ProfileUserViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.merchant_fragment_profile.*
@@ -24,12 +25,14 @@ class MerchantProfileFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        callAPI()?.let {
+        ProfileData().setData(requireActivity())
+
+       /* callAPI()?.let {
             it.observeApiResult(
                 it.callAPIFragment<ProfileUserViewModel>(this).getProfileUser()
                 , viewLifecycleOwner, requireActivity()
             )
-        }
+        }*/
 
     }
 

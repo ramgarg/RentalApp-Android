@@ -127,7 +127,7 @@
                 android:launchMode="singleTask"
 
         />
-        <activity android:name="com.eazyrento.customer.profile.ProfileActivity"
+        <activity android:name="com.eazyrento.customer.profile.UpdateProfileActivity"
                   android:screenOrientation="unspecified"/>
 
         <!--/>-->
@@ -226,6 +226,10 @@
                 />
         <activity
                 android:name="com.eazyrento.agent.view.activity.AgentFinalAsignMerchantActivity"
+                android:screenOrientation="unspecified"
+                />
+        <activity
+                android:name="com.eazyrento.login.view.UserProfileActivity"
                 android:screenOrientation="unspecified"
                 />
 
