@@ -11,6 +11,7 @@ import com.eazyrento.common.view.fragment.MyBookingBaseFragment
 import com.eazyrento.customer.dashboard.view.adapter.RecycleAdapterCustomerBookings
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import kotlinx.android.synthetic.main.row_customer_bookings.*
 
 class AgentBookingsFragment : MyBookingBaseFragment() {
 
@@ -22,6 +23,7 @@ class AgentBookingsFragment : MyBookingBaseFragment() {
         super.onActivityCreated(savedInstanceState)
 
         callMyBookingAPI(Constant.BOOKING_LIST_AGENT)
+
     }
 
     override fun setDataHolder(
@@ -31,10 +33,12 @@ class AgentBookingsFragment : MyBookingBaseFragment() {
 
         //agent details
         holder.tv_booking__name.text=listCustomerBooking.get(position).customer_detail.full_name
-        holder.tv_booking_type.text=listCustomerBooking.get(position).customer_detail.mobile_number
+        holder.tv_booking_type.text=Constant.CUSTOMER
         holder.img_booking__call.setOnClickListener {
             Common.phoneCallWithNumber(listCustomerBooking.get(position)?.customer_detail.mobile_number, requireContext())
         }
+        holder.btn_accept_booking.visibility=View.VISIBLE
+        holder.btn_decline_booking.visibility=View.VISIBLE
          //holder?.img_booking__pic.setImageURI("https://eazyrento-qa.s3.amazonaws.com/media/default_profile_pic.png")
         holder?.tv_customer_order_id.text = Constant.ORDER_ID + listCustomerBooking.get(position).order_id
 
