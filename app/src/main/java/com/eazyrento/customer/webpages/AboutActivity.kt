@@ -18,9 +18,9 @@ class AboutActivity : BaseActivity() {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_about)
 
-            MoveToAnotherComponent.openWebPage(webview)
-            ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,toolbar_title,
-                "About")
+            MoveToAnotherComponent.openWebPage(webview, "https://www.eazyrento.com/")
+            topBarWithBackIconAndTitle("About us")
+
         }
 
 }

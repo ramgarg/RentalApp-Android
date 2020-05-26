@@ -12,21 +12,18 @@ import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
-import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.Validator
 import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
-import com.eazyrento.supporting.CircleTransform
 import com.eazyrento.supporting.OnPiclImageToBase64
 import com.eazyrento.supporting.UploadImageFromDevice
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profile.*
-import net.rimoto.intlphoneinput.IntlPhoneInput
 
-class ProfileActivity : BaseActivity() {
+class UpdateProfileActivity : BaseActivity() {
     var userProfile: UserProfile? = null
 
     private val uploadImageFromDevice = UploadImageFromDevice()
@@ -301,10 +298,10 @@ class ProfileActivity : BaseActivity() {
                             isEditableDocumentSpinner =0
                             return
                         }
-                        uploadImageFromDevice.pickImage(this@ProfileActivity,
+                        uploadImageFromDevice.pickImage(this@UpdateProfileActivity,
                             object : OnPiclImageToBase64 {
                                 override fun onBase64(image64: String?) {
-                                    selectProfID = this@ProfileActivity.resources.getStringArray(R.array.RegistrationDocument)[position]
+                                    selectProfID = this@UpdateProfileActivity.resources.getStringArray(R.array.RegistrationDocument)[position]
                                     selectBase64StringAttachedDoc =image64
                                 }
 
@@ -336,7 +333,7 @@ class ProfileActivity : BaseActivity() {
                         selectGender=null
                     }
                     else{
-                        selectGender = this@ProfileActivity.resources.getStringArray(R.array.Gender)[position]
+                        selectGender = this@UpdateProfileActivity.resources.getStringArray(R.array.Gender)[position]
                     }
                 }
 

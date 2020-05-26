@@ -16,7 +16,10 @@ import com.eazyrento.Constant
 import com.eazyrento.InternetNetworkConnection
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
+import com.eazyrento.customer.notification.view.NotificationActivity
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.activity.MerchantAddVehicleActivity
+import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -162,6 +165,9 @@ open abstract class BaseActivity: AppCompatActivity(),
         toolbar_title.text=title
 
         img_back.visibility = View.GONE
+
+       /* img_notification.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<NotificationActivity>(this) }
+        img_menu.setOnClickListener { drawer_layout.openDrawer(GravityCompat.START)}*/
 
 
     }

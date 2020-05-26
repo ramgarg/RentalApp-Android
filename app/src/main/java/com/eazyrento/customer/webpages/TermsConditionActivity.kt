@@ -17,7 +17,7 @@ class TermsConditionActivity : BaseActivity() {
         setContentView(R.layout.activity_terms_cond)
         topBarWithBackIconAndTitle("Terms & Conditions")
 
-        MoveToAnotherComponent.openWebPage(webview)
+        MoveToAnotherComponent.openWebPage(webview,"file:///android_asset/privacy.html")
 
 
     }

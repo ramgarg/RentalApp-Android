@@ -11,10 +11,13 @@ import com.google.android.material.navigation.NavigationView
 import com.eazyrento.common.view.ApiResult
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.view.LiveDataActivityClass
-import com.eazyrento.customer.profile.ProfileActivity
+import com.eazyrento.customer.notification.view.NotificationActivity
+import com.eazyrento.customer.profile.UpdateProfileActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.customer.webpages.AboutActivity
 import com.eazyrento.login.model.modelclass.ProfileModelReqRes
 import com.eazyrento.login.model.modelclass.UserProfile
+import com.eazyrento.login.view.UserProfileActivity
 import com.eazyrento.login.viewmodel.ProfileUserViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_agent_home_.*
@@ -80,7 +83,7 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
       fun topBarWithMenuIconAndTitleMessage(title:String){
         super.topBarWithMenuIconAndNotificationWithTitleMessage(title)
 
-        img_notification.setOnClickListener { MoveToAnotherComponent.moveToNotificationActivity(this) }
+        img_notification.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<NotificationActivity>(this) }
         img_menu.setOnClickListener { drawer_layout.openDrawer(GravityCompat.START)}
 
     }
@@ -117,7 +120,7 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     Picasso.with(this).load(user_profile.profile_image).into(header.profile_img_menu)
 
         header.edit_profile_menu.setOnClickListener {
-            MoveToAnotherComponent.moveToActivityNormal<ProfileActivity>(this)
+            MoveToAnotherComponent.moveToActivityNormal<UpdateProfileActivity>(this)
             drawer_layout.closeDrawer(GravityCompat.START)
         }
     }
@@ -149,12 +152,17 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
             R.id.nav_dashboard -> {
-//                MoveToAnotherComponent.moveToAgentHomeActivity(this)
                 setHomeFragment()
             }
 
             R.id.nav_about -> {
-                MoveToAnotherComponent.moveToAboutActivity(this)
+
+                MoveToAnotherComponent.moveToActivityNormal<AboutActivity>(this)
+            }
+
+            R.id.profile -> {
+
+                MoveToAnotherComponent.moveToActivityNormal<UserProfileActivity>(this)
             }
 
             R.id.nav_help -> {
