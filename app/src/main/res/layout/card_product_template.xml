@@ -46,6 +46,7 @@
                     android:layout_width="@dimen/_90sdp"
                     android:layout_height="@dimen/_90sdp"
                     android:background="@android:color/transparent"
+                    android:padding="@dimen/_10sdp"
                     android:src="@mipmap/truck"
 
                     app:layout_constraintEnd_toEndOf="parent"

@@ -81,10 +81,21 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/_15sdp"
-                        android:textColor="#000"
+                        android:textColor="@color/black"
                         android:text="@string/do_you_want_driver"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
+            <TextView
+                    android:fontFamily="@font/bree_serif"
+                    android:layout_marginStart="@dimen/_7sdp"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:id="@+id/select_work_start"
+                    android:layout_below="@+id/layout_driver"
+                    android:textColor="@color/black"
+                    android:text="@string/select_work_start"
+                    android:layout_height="wrap_content"/>
 
             <LinearLayout android:layout_width="match_parent"
                           android:id="@+id/layout_start"
@@ -93,7 +104,7 @@
                           android:orientation="horizontal"
                           android:gravity="center_vertical"
                           android:background="@drawable/calender_bg"
-                          android:layout_below="@+id/layout_driver"
+                          android:layout_below="@+id/select_work_start"
                           android:layout_height="@dimen/_50sdp">
 
                 <RelativeLayout

@@ -6,10 +6,12 @@
 
     <TextView
             android:id="@+id/pro_name"
-
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            style="@style/AgentBoldTextCard"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_20sdp"
+            android:fontFamily="@font/bree_serif"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
@@ -29,8 +31,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/booking_n_price"
-
-                style="@style/AgentSmallTextCard"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/bree_serif"
                 />
         <TextView
                 android:id="@+id/pro_booking_price"
@@ -38,7 +41,10 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/booking_price"
-                style="@style/AgentBoldTextCard"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/_26sdp"
+                android:fontFamily="@font/bree_serif"
 
                 android:layout_marginStart="@dimen/_5sdp"
 
@@ -53,7 +59,8 @@
 
                 android:layout_marginStart="@dimen/_5sdp"
                 android:text="@string/per_hour"
-                style="@style/AgentSmallTextCard"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/bree_serif"
                 />
 
     </LinearLayout>

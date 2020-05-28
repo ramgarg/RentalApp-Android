@@ -58,7 +58,7 @@ interface ValidationMessage{
         const val DATE_VALIDATION = "Start date can not be less then end date"
         const val SELECT_ADRESS = "Please select address"
 
-        const val BOOKING_SUBMITTED = "Thank you for submitting your order.Our agent will call you shortly."
+        const val BOOKING_SUBMITTED = "Thank you for submitting. We will contact you shortly."
 
         //agent note
         const val UNDER_DEVELOPMENT = "Under Development"
