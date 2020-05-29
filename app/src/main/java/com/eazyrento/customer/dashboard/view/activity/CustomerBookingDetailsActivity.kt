@@ -54,7 +54,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
     private fun setData(prodDetailsObj: ProductDetailsResModel) {
 
-        pro_booking_price.text = ""+prodDetailsObj.base_price
+        pro_booking_price.text = Constant.DOLLAR+prodDetailsObj.base_price
         pro_name.text = prodDetailsObj.name
     }
 

@@ -9,28 +9,33 @@
     <ImageView
                 android:id="@+id/pro_image"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_300sdp"
+                android:layout_height="@dimen/_320sdp"
+                android:paddingLeft="@dimen/_20sdp"
+            android:paddingRight="@dimen/_20sdp"
                 android:scaleType="centerCrop"
-               android:layout_marginTop="@dimen/_20sdp"
+               android:layout_marginTop="@dimen/_25sdp"
                />
 
     <include layout="@layout/toolbar"/>
 
     <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="@dimen/_200sdp"
+                    android:layout_height="@dimen/_250sdp"
                     android:paddingLeft="@dimen/_20sdp"
                     android:paddingRight="@dimen/_20sdp"
-                    android:paddingTop="@dimen/_15sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:background="@drawable/shap_rectangle_agent_bottom_home"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:layout_above="@id/btn_next"
-                    android:background="@drawable/product_detail"
                     >
 
         <ImageView
                 android:id="@+id/pro_wish"
-                android:layout_width="@dimen/_25sdp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:layout_alignParentEnd="true"
                 android:onClick="onWishIconClick"
-                android:layout_height="@dimen/_25sdp"/>
+                android:layout_height="@dimen/_35sdp"/>
 
 
         <!--product main view-->
