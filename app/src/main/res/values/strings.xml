@@ -84,6 +84,10 @@
     <string name="start_time">Start Time</string>
     <string name="end_date">End Date</string>
     <string name="end_time">End Time</string>
+    <string name="start_date_hint">2020-05-12</string>
+    <string name="start_time_hint">8:00 AM</string>
+    <string name="end_date_hint">2020-05-21</string>
+    <string name="end_time_hint">8:00 PM</string>
     <string name="truck_quantity">Item Quantity</string>
     <string name="one">1</string>
     <string name="work_location">Work Location</string>

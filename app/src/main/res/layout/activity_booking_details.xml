@@ -11,7 +11,8 @@
             android:layout_above="@+id/btn_next"
             style="@style/ScrollViewParent">
         <RelativeLayout
-                style="@style/BookingDetailsParentRelativeLayout">
+                style="@style/BookingDetailsParentRelativeLayout"
+                android:paddingBottom="@dimen/_40sdp">
 
             <!--<TextView
                     android:id="@+id/tv_vehicle_name"
@@ -74,12 +75,13 @@
                           android:textSize="@dimen/_15sdp"
                           android:background="@drawable/custom_checkbox"
                           android:button="@null"
-                          android:layout_height="@dimen/_20sdp"/>
+                          android:layout_height="@dimen/_18sdp"/>
 
                 <TextView
                         android:fontFamily="@font/bree_serif"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_width="wrap_content"
+                        android:paddingTop="@dimen/_2sdp"
                         android:textSize="@dimen/_15sdp"
                         android:textColor="@color/black"
                         android:text="@string/do_you_want_driver"
@@ -133,6 +135,7 @@
                               android:layout_height="wrap_content"/>
                     <TextView android:layout_width="wrap_content"
                               android:layout_marginStart="@dimen/_10sdp"
+                              android:hint="@string/start_date_hint"
                               android:id="@+id/tv_st_date_book"
                               android:layout_below="@+id/tv_st_date"
                               android:layout_toEndOf="@+id/img_calender"
@@ -163,12 +166,13 @@
                               android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_st_time"
                               android:layout_toEndOf="@+id/img_time"
-                              android:textColor="#000"
+                              android:textColor="@color/black"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>
                     <TextView android:layout_width="wrap_content"
                               android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_st_time_book"
+                            android:hint="@string/start_time_hint"
                               android:layout_below="@+id/tv_st_time"
                               android:layout_toEndOf="@+id/img_time"
                               android:fontFamily="@font/bree_serif"
@@ -212,6 +216,7 @@
                     <TextView android:layout_width="wrap_content"
                               android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_end_date_book"
+                            android:hint="@string/end_date_hint"
                               android:layout_below="@+id/tv_end_date"
                               android:layout_toEndOf="@+id/img_en_calender"
                               android:fontFamily="@font/bree_serif"
@@ -248,6 +253,7 @@
                               android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_end_time_book"
                               android:layout_below="@+id/tv_end_time"
+                            android:hint="@string/end_time_hint"
                               android:layout_toEndOf="@+id/img_end_time"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>
@@ -317,14 +323,13 @@
                       android:text="@string/work_location"
                       android:layout_height="wrap_content"/>
 
-            <TextView android:layout_width="@dimen/_200sdp"
+            <TextView android:layout_width="@dimen/_180sdp"
                       android:layout_below="@+id/tv_work_title"
                       android:layout_marginTop="@dimen/_10sdp"
                       android:textSize="@dimen/_15sdp"
                       android:id="@+id/tv_work_location"
                       android:fontFamily="@font/bree_serif"
                       android:layout_height="wrap_content"
-                     android:singleLine="true"
                     />
 
             <TextView android:layout_width="wrap_content"
@@ -334,7 +339,7 @@
                       android:layout_marginTop="@dimen/_10sdp"
                       android:textSize="@dimen/_15sdp"
                       android:id="@+id/change_add"
-                      android:textColor="#fff"
+                      android:textColor="@color/white"
                       android:paddingLeft="@dimen/_10sdp"
                       android:paddingRight="@dimen/_10sdp"
                       android:layout_marginEnd="@dimen/_10sdp"
@@ -350,7 +355,7 @@
             <TextView android:layout_width="match_parent"
                       android:id="@+id/view_1"
                       android:layout_marginTop="@dimen/_20sdp"
-                      android:layout_below="@+id/change_add"
+                      android:layout_below="@+id/tv_work_location"
                       android:background="@android:color/darker_gray"
                       android:layout_height="@dimen/_1sdp"/>
 
@@ -366,8 +371,9 @@
 
             <TextView
                     android:text="@string/add_another_product"
-                    android:textColor="#000"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:fontFamily="@font/bree_serif"
                     android:layout_width="wrap_content"
                       android:layout_marginStart="@dimen/_10sdp"
@@ -388,7 +394,7 @@
             android:id="@+id/btn_next"
             android:textAllCaps="false"
             android:fontFamily="@font/bree_serif"
-            android:textColor="#fff"
+            android:textColor="@color/white"
             android:background="@drawable/ripple"
             android:layout_alignParentBottom="true"
             android:layout_height="@dimen/_40sdp"
