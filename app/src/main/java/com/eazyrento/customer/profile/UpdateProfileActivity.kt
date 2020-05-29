@@ -46,7 +46,7 @@ class UpdateProfileActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        topBarWithBackIconAndTitle("Profile")
+        topBarWithBackIconAndTitle(resources.getString(R.string.profile))
 
         layout_phone.setEmptyDefault(resources.getString(R.string.iso_phone_number))
 
@@ -79,7 +79,7 @@ class UpdateProfileActivity : BaseActivity() {
 
 //        layout_phone.text= (userProfile?.country_code)
         try {
-            layout_phone.number = userProfile?.mobile_number
+            //layout_phone.number = userProfile?.mobile_number
         }catch (e:Exception){
             e.printStackTrace()
         }

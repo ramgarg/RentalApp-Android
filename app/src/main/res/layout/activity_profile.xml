@@ -100,11 +100,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/layout_username"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:hint="@string/email"
-
+                    android:hint="@string/email_address"
                     android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+
+                    >
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ed_email"
@@ -114,7 +115,9 @@
                         android:inputType="textEmailAddress"
                         android:lines="1"
                         android:maxLines="1"
-                        android:nextFocusDown="@id/ed_password" />
+                        android:nextFocusDown="@id/ed_password"
+                        android:enabled="false"
+                        />
 
             </com.google.android.material.textfield.TextInputLayout>
 

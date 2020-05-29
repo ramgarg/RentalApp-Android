@@ -19,6 +19,7 @@ import com.eazyrento.login.model.modelclass.ProfileModelReqRes
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.view.UserProfileActivity
 import com.eazyrento.login.viewmodel.ProfileUserViewModel
+import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.header.view.*
@@ -102,6 +103,7 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     protected fun setBottomNavigationListener(){
         // Bottom set listener bottom navigation view
         bottom_navigation_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        bottom_navigation_view.labelVisibilityMode =LABEL_VISIBILITY_LABELED
 
 
     }

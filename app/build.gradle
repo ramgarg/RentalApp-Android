@@ -104,5 +104,7 @@ dependencies {
 //    implementation 'com.hbb20:ccp:X.Y.Z'
     implementation 'net.rimoto:intlphoneinput:1.0.1'
 
+    implementation 'io.michaelrocks:libphonenumber-android:8.12.3'
+
 
 }

@@ -107,6 +107,7 @@
     <string name="pay_via_paypal">Pay Via Paypal</string>
     <string name="customer">Customer</string>
     <string name="email">Email</string>
+    <string name="email_address">Email Address</string>
     <string name="phone_number">Phone Number</string>
     <string name="company_name">Company Name</string>
     <string name="gender">Gender</string>
