@@ -3,11 +3,14 @@ package com.eazyrento.customer.profile
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.os.Build
 import android.os.Bundle
+import android.telephony.PhoneNumberFormattingTextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.annotation.RequiresApi
 import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
@@ -19,6 +22,7 @@ import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
 import com.eazyrento.supporting.OnPiclImageToBase64
+import com.eazyrento.supporting.PhoneNumberFormat
 import com.eazyrento.supporting.UploadImageFromDevice
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -37,6 +41,7 @@ class UpdateProfileActivity : BaseActivity() {
 
     private var isEditableDocumentSpinner:Int =0
 
+    private lateinit var phoneNumberFormat:PhoneNumberFormat
 
     override fun <T> moveOnSelecetedItem(type: T) {
 
@@ -48,7 +53,9 @@ class UpdateProfileActivity : BaseActivity() {
 
         topBarWithBackIconAndTitle(resources.getString(R.string.profile))
 
-        layout_phone.setEmptyDefault(resources.getString(R.string.iso_phone_number))
+        phoneNumberFormat = PhoneNumberFormat(this)
+
+        //layout_phone.setEmptyDefault(resources.getString(R.string.iso_phone_number))
 
         userProfile = EazyRantoApplication.profileData
 
@@ -56,6 +63,10 @@ class UpdateProfileActivity : BaseActivity() {
         genderSpinnerData()
 
         setProfileData(userProfile)
+
+        phoneNumberFormat.phoneNumberListener(this,ed_phone,ed_country)
+        phoneNumberFormat.phoneCountryCodeNumberListener(ed_country)
+
 
         btn_save.setOnClickListener { onClickSaveButton() }
         ed_dob.setOnClickListener {
@@ -74,16 +85,21 @@ class UpdateProfileActivity : BaseActivity() {
 
         tv_user_name_profile.text = Session.getInstance(this)?.getUserRole()?.capitalize()
         ed_full_name.setText(userProfile?.full_name)
-        ed_user_name.setText(userProfile?.full_name)
+       // ed_user_name.setText(userProfile?.full_name)
         ed_email.setText(userProfile?.email)
 
-//        layout_phone.text= (userProfile?.country_code)
+
         try {
-            //layout_phone.number = userProfile?.mobile_number
+            if (userProfile?.country_code.isNullOrEmpty())
+                ed_country.setText(""+phoneNumberFormat.getCountryCodeForLocalRegion())
+            else
+                ed_country.setText(userProfile?.country_code)
+
+            ed_phone.setText(userProfile?.mobile_number)
+
         }catch (e:Exception){
             e.printStackTrace()
         }
-
 
         ed_dob.setText(userProfile?.dob)
         ed_company_name.setText(userProfile?.buisness)
@@ -149,12 +165,12 @@ class UpdateProfileActivity : BaseActivity() {
         if (img_profile.drawable == null) {
             showToast(ValidationMessage.VALID_IMAGE)
         }
-        else if(ed_user_name.text.toString().isEmpty()){
+       /* else if(ed_user_name.text.toString().isEmpty()){
             showToast(ValidationMessage.VALID_USER_NAME)
         }
         else if(ed_user_name.text.toString().length<Constant.LENGTH){
             showToast(ValidationMessage.VALID_USER_NAME)
-        }
+        }*/
         else if(ed_email.text.toString().isEmpty()){
             showToast(ValidationMessage.VALID_EMAIL_ID)
         }
@@ -162,15 +178,17 @@ class UpdateProfileActivity : BaseActivity() {
             showToast(ValidationMessage.VALID_EMAIL_ID)
             ed_email.requestFocus()
         }
-      /*  else if(ed_country.text.toString().isEmpty()){
+
+        else if(!phoneNumberFormat.isValidCountryCode(ed_country.text.toString())){
             showToast(ValidationMessage.COUNTRY_CODE)
         }
-        else if(ed_phone.text.toString().isEmpty()){
-            showToast(ValidationMessage.PHONE_NUMBER)
-        }*/
-        else if(!layout_phone.isValid){
+        else if(!phoneNumberFormat.isValidPhoneNumber(ed_phone.text.toString())){
             showToast(ValidationMessage.PHONE_NUMBER)
         }
+
+      /*  else if(true*//*!layout_phone.isValid*//*){
+            showToast("ValidationMessagePHONE_NUMBER")
+        }*/
         else if(ed_dob.text.toString().isEmpty()){
             showToast(ValidationMessage.DATE_OF_BIRTH)
         }
@@ -192,17 +210,15 @@ class UpdateProfileActivity : BaseActivity() {
     private fun updateProfileData() {
 
         userProfile?.let { it ->
-            it.full_name = "" + ed_user_name.text
+            //it.full_name = "" + ed_user_name.text
             it.dob = "" + ed_dob.text
             it.gender = "" + sp_gender.selectedItem
             it.email = "" + ed_email.text
             it.description = "" + ed_des.text
 
-            /*it.country_code = "" + ed_country.text
-            it.mobile_number = "" + ed_phone.text*/
+            it.country_code = "" + ed_country.text
+            it.mobile_number = "" + ed_phone.text
 
-            it.country_code = ""+layout_phone.selectedCountry
-            it.mobile_number = layout_phone.number
 
             it.buisness = "" + ed_company_name.text
             it.attached_document = "" + selectBase64StringAttachedDoc
@@ -210,7 +226,7 @@ class UpdateProfileActivity : BaseActivity() {
             it.id_proof_title = "" + sp_select_document.selectedItem
 
             it.profile_image = "" + img_profile
-            it.username_choice = "" + ed_user_name.text
+            //it.username_choice = "" + ed_user_name.text
 
            // selectBase64StringProfilePic?.let {inner_base64->
                 it.profile_image = selectBase64StringProfilePic
@@ -343,4 +359,7 @@ class UpdateProfileActivity : BaseActivity() {
             }
         }
     }
+
+
+
 }

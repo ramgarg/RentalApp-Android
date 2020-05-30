@@ -65,11 +65,11 @@
                         android:inputType="textEmailAddress"
                         android:lines="1"
                         android:maxLines="1"
-                        android:nextFocusDown="@id/ed_password" />
+                        android:nextFocusDown="@id/ed_country" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!--<com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -92,13 +92,13 @@
                         android:maxLines="1"
                         android:nextFocusDown="@id/ed_password" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/layout_username"
+                    android:layout_below="@+id/layout_full_name"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:hint="@string/email_address"
                     android:textColor="@color/black"
@@ -115,38 +115,23 @@
                         android:inputType="textEmailAddress"
                         android:lines="1"
                         android:maxLines="1"
-                        android:nextFocusDown="@id/ed_password"
+                        android:nextFocusDown="@id/ed_country"
                         android:enabled="false"
                         />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <net.rimoto.intlphoneinput.IntlPhoneInput
-
+            <LinearLayout
                     android:id="@+id/layout_phone"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/layout_email"
                     android:layout_marginTop="@dimen/_10sdp"
-
-
-                    app:textSize="20sp"
-                    app:textColor="#000000"
-                    app:flagPaddingBottom="4dp"
-                    app:flagPaddingEnd="4dp"
-                    app:flagPaddingStart="4dp"
-                    app:flagPaddingTop="4dp"
-
-
-                    />
-
-
-            <!--<com.google.android.material.textfield.TextInputLayout
+                    android:orientation="horizontal"
+                    >
+            <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_country"
-                    android:layout_width="@dimen/_80sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/layout_email"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:hint="@string/code"
                     android:textColor="@color/black"
@@ -155,17 +140,18 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ed_country"
-                        android:layout_width="@dimen/_80sdp"
+                        android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:inputType="textEmailAddress"
+                        android:inputType="numberSigned"
                         android:lines="1"
                         android:maxLines="1"
-                        android:nextFocusDown="@id/ed_password" />
+                        android:maxLength="4"
+                        android:nextFocusDown="@id/ed_phone" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layout_phone"
+                    android:id="@+id/layout_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/layout_email"
@@ -181,12 +167,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:inputType="textEmailAddress"
+                        android:inputType="phone"
                         android:lines="1"
                         android:maxLines="1"
-                        android:nextFocusDown="@id/ed_password" />
+                        android:nextFocusDown="@id/ed_dob"
+                        android:maxLength="15"
+                        />
 
-            </com.google.android.material.textfield.TextInputLayout>-->
+            </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_dob"
@@ -204,11 +194,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:clickable="true"
-                        android:editable="false"
                         android:fontFamily="@font/bree_serif"
                         android:lines="1"
                         android:maxLines="1"
-                        android:nextFocusDown="@id/ed_password" />
+                        android:nextFocusDown="@id/ed_company_name" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -231,7 +220,7 @@
                         android:inputType="textEmailAddress"
                         android:lines="1"
                         android:maxLines="1"
-                        android:nextFocusDown="@id/ed_password" />
+                        android:nextFocusDown="@id/ed_des" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -254,7 +243,7 @@
                         android:inputType="textEmailAddress"
                         android:lines="1"
                         android:maxLines="1"
-                        android:nextFocusDown="@id/ed_password" />
+                        android:nextFocusDown="@id/sp_gender" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

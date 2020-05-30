@@ -92,6 +92,8 @@ interface ValidationMessage{
         const val DOCUMENT="Select Document"
         const val COMPANY="Enter Company"
 
+        const val COUNTRY_CODE_VALIDATION="Please enter valid country code"
+
 
     }
 }
