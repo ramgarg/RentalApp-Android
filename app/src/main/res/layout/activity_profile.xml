@@ -187,17 +187,22 @@
                     android:hint="@string/date_of_birth"
                     android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+                    android:clickable="true"
+                    android:onClick="dobClick"
+                    android:focusable="false"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    >
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ed_dob"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
-                        android:clickable="true"
                         android:fontFamily="@font/bree_serif"
-                        android:lines="1"
-                        android:maxLines="1"
-                        android:nextFocusDown="@id/ed_company_name" />
+                        android:drawableEnd="@mipmap/calender"
+                        android:focusable="false"
+                        android:nextFocusDown="@id/ed_company_name"
+                        android:onClick="dobClick"
+                        />
 
             </com.google.android.material.textfield.TextInputLayout>
 

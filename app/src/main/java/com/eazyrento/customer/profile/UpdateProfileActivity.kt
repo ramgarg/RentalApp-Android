@@ -3,27 +3,21 @@ package com.eazyrento.customer.profile
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
-import android.os.Build
 import android.os.Bundle
-import android.telephony.PhoneNumberFormattingTextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import androidx.annotation.RequiresApi
 import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
-import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.Validator
 import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
-import com.eazyrento.supporting.OnPiclImageToBase64
-import com.eazyrento.supporting.PhoneNumberFormat
-import com.eazyrento.supporting.UploadImageFromDevice
+import com.eazyrento.supporting.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profile.*
 
@@ -42,6 +36,8 @@ class UpdateProfileActivity : BaseActivity() {
     private var isEditableDocumentSpinner:Int =0
 
     private lateinit var phoneNumberFormat:PhoneNumberFormat
+
+    private val commonDatePiker = CommonDatePiker(this)
 
     override fun <T> moveOnSelecetedItem(type: T) {
 
@@ -69,9 +65,10 @@ class UpdateProfileActivity : BaseActivity() {
 
 
         btn_save.setOnClickListener { onClickSaveButton() }
-        ed_dob.setOnClickListener {
-            Common.dateSelector(this,ed_dob)
-        }
+
+       /* layout_dob.setOnClickListener {
+
+        }*/
 
         btn_select_location.setOnClickListener {
 //            MoveToAnotherComponent.startActivityForResult<Address>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,1)
@@ -80,7 +77,24 @@ class UpdateProfileActivity : BaseActivity() {
         }
 
     }
+  fun dobClick(view: View){
+    // Common.dateSelector(this,ed_dob)
 
+//    val commonDatePiker = CommonDatePiker(this)
+
+    commonDatePiker.createDatePicker(EnumDateType.DOB, object : OnSelectDate {
+        override fun onDate(dateType: EnumDateType, year: Int, month: Int, day: Int) {
+
+            ed_dob.tag = commonDatePiker.getDateInServerFormate(year,month,day)
+            dobDate(year,month,day)
+        }
+    }).dobPiker().show()
+}
+
+    private fun dobDate(year: Int, month: Int, day: Int) {
+
+        ed_dob.setText(commonDatePiker.getDateInDobFormat(year,month-1,day))
+    }
     private fun setProfileData(userProfile: UserProfile?) {
 
         tv_user_name_profile.text = Session.getInstance(this)?.getUserRole()?.capitalize()
@@ -102,11 +116,11 @@ class UpdateProfileActivity : BaseActivity() {
         }
 
         ed_dob.setText(userProfile?.dob)
+        ed_dob.tag = userProfile?.dob
         ed_company_name.setText(userProfile?.buisness)
         ed_des.setText(userProfile?.description)
 
         setAddress()
-
 
         Picasso.with(this).load(userProfile?.profile_image).into(img_profile)
         Picasso.with(this).load(userProfile?.attached_document).into(document_pic)
@@ -127,7 +141,7 @@ class UpdateProfileActivity : BaseActivity() {
             })
         }
 
-        ed_dob.setOnClickListener {  Common.dateSelector(this,ed_dob) }
+      //  ed_dob.setOnClickListener {  Common.dateSelector(this,ed_dob) }
 
     }
 
@@ -211,7 +225,7 @@ class UpdateProfileActivity : BaseActivity() {
 
         userProfile?.let { it ->
             //it.full_name = "" + ed_user_name.text
-            it.dob = "" + ed_dob.text
+            it.dob = "" + ed_dob.tag
             it.gender = "" + sp_gender.selectedItem
             it.email = "" + ed_email.text
             it.description = "" + ed_des.text
