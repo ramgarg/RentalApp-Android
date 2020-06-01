@@ -42,14 +42,14 @@
         <item
                 android:id="@+id/nav_my_address"
                 android:icon="@mipmap/my_address"
-                android:title="My Address"
+                android:title="My Addresses"
                 android:visible="false"
                 />
 
         <item
                 android:id="@+id/nav_tc"
                 android:icon="@mipmap/t_c"
-                android:title="Terms &amp; Conditions" />
+                android:title="Terms of Services" />
 
         <item
                 android:id="@+id/nav_help"
