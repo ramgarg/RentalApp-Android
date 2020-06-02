@@ -57,11 +57,11 @@ class CommonDatePiker(private val context: Context) {
     }
 
     fun dobPiker():CommonDatePiker{
-
-        currentDate.add(Calendar.YEAR,-DateConstant.MIN_AGE)
-        datePickerDialog.datePicker.maxDate = currentDate.timeInMillis
-        currentDate.add(Calendar.YEAR,-DateConstant.MAX_DATE)
-        datePickerDialog.datePicker.minDate = currentDate.timeInMillis
+        val c = Calendar.getInstance()
+        c.add(Calendar.YEAR,-DateConstant.MIN_AGE)
+        datePickerDialog.datePicker.maxDate = c.timeInMillis
+        c.add(Calendar.YEAR,-DateConstant.MAX_DATE)
+        datePickerDialog.datePicker.minDate = c.timeInMillis
 
         return this
     }

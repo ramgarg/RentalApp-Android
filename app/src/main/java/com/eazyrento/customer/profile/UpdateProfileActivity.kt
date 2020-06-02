@@ -115,8 +115,20 @@ class UpdateProfileActivity : BaseActivity() {
             e.printStackTrace()
         }
 
-        ed_dob.setText(userProfile?.dob)
-        ed_dob.tag = userProfile?.dob
+        try {
+
+            ed_dob.tag = userProfile?.dob
+
+            val list = ed_dob.tag.toString().split("-")
+
+            dobDate(list[0].toInt(),list[1].toInt(),list[2].toInt())
+
+
+        }catch (e:java.lang.Exception){
+            e.printStackTrace()
+        }
+
+
         ed_company_name.setText(userProfile?.buisness)
         ed_des.setText(userProfile?.description)
 
