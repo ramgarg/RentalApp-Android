@@ -56,11 +56,32 @@
                         android:id="@+id/pro_booking_days"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
                         android:text="@string/_14_days"
                         android:paddingLeft="@dimen/_3sdp"
 
                         />
                 </LinearLayout>
+                    <TextView android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:textSize="@dimen/_16sdp"
+                            android:id="@+id/tv_work_title"
+                            android:fontFamily="@font/bree_serif"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="@string/work_location"
+                            android:layout_height="wrap_content"/>
+
+                    <TextView android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:textSize="@dimen/_14sdp"
+                            android:id="@+id/tv_work_location"
+                            android:fontFamily="@font/bree_serif"
+                            android:text="@string/work_location"
+                            android:layout_height="wrap_content"/>
             </LinearLayout>
             <!--Below button layout-->
     <LinearLayout

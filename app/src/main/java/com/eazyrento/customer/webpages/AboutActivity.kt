@@ -5,6 +5,7 @@ import com.eazyrento.R
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
+import com.eazyrento.webservice.PathURL
 import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -18,7 +19,7 @@ class AboutActivity : BaseActivity() {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_about)
 
-            MoveToAnotherComponent.openWebPage(webview, "https://www.eazyrento.com/")
+            MoveToAnotherComponent.openWebPage(webview, PathURL.BASE_URL)
             topBarWithBackIconAndTitle("About us")
 
         }

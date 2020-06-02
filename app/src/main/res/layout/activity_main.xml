@@ -40,6 +40,7 @@
                 android:layout_height="@dimen/_60sdp"
                 android:layout_alignParentBottom="true"
                 app:menu="@menu/bottom_menu"
+                android:theme="@style/BottomNavigationTheme"
                 app:itemTextColor="@drawable/item_selector"
                 app:itemIconTint="@drawable/item_selector"
                 android:background="@drawable/bottom_navigation_gradient"
@@ -56,8 +57,11 @@
             android:theme="@style/NavigationTheme"
             app:menu="@menu/drawer_menu"
             app:headerLayout="@layout/header"
-            android:layout_gravity="start"
-            />
+            android:layout_gravity="start">
+
+       <include layout="@layout/footer_menu" />
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

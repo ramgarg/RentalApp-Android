@@ -76,8 +76,11 @@
             android:theme="@style/NavigationTheme"
             app:menu="@menu/drawer_menu"
             app:headerLayout="@layout/header"
-            android:layout_gravity="start"
-            />
+            android:layout_gravity="start">
+
+        <include layout="@layout/footer_menu" />
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

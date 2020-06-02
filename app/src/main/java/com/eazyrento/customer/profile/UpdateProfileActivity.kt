@@ -295,6 +295,7 @@ class UpdateProfileActivity : BaseActivity() {
         super.onSuccessApiResult(data)
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+        showToast(ValidationMessage.PROFILE_UPDATE)
         //first time user
         if (intent.getIntExtra(Constant.KEY_FINISH_FIRST_TIME_USER,0)==Constant.VALUE_FINISH_FIRST_TIME_USER){
             finishCurrentActivityWithResult(Activity.RESULT_OK, Intent())
