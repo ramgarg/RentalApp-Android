@@ -237,6 +237,10 @@
         <item name="listPreferredItemHeightSmall">@dimen/_40sdp</item>
         <item name="fontFamily">@font/bree_serif</item><!-- menu item height- vary as u need -->
     </style>
+    <style name="BottomNavigationTheme" parent="AppTheme">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="fontFamily">@font/bree_serif</item><!-- menu item height- vary as u need -->
+    </style>
 
     <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
         <item name="android:textColor">@color/black</item>

@@ -26,6 +26,7 @@ interface ValidationMessage{
         const val FORGOT_PASSWORD="Password reset link is sent over mail"
         const val OTP_MESSAGE_START= "We've sent OTP to the email"
         const val OTP_MESSAGE_END= "Please enter it below to complete verification."
+        const val PROFILE_UPDATE="Profile updated successfully!"
 
         //merchant add product validation
         const val DOC_IS_NOT_UPLOADED = "Doc is not uploaded.Please try it again."

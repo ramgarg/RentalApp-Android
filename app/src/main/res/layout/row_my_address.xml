@@ -51,8 +51,7 @@
         <ImageView android:layout_width="@dimen/_25sdp"
                 android:src="@mipmap/edit"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_alignParentTop="true"
                 android:id="@+id/img_edit"
                 android:layout_below="@+id/img_delete"
                 android:layout_height="@dimen/_25sdp"/>

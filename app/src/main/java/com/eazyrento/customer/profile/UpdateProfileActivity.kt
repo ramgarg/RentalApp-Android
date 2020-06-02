@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
@@ -285,8 +286,10 @@ class UpdateProfileActivity : BaseActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
+        showToast(ValidationMessage.PROFILE_UPDATE)
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
         finishCurrentActivity(Activity.RESULT_OK)
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

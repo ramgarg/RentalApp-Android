@@ -33,11 +33,11 @@
         <TextView
                 android:id="@+id/item_quantity"
                 android:text="0"
-                android:textColor="#000"
+                android:textColor="@color/black"
                 android:fontFamily="@font/bree_serif"
                 android:paddingLeft="@dimen/_10sdp"
                 android:paddingRight="@dimen/_10sdp"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_35sdp"
                 android:gravity="center"
                 android:background="@drawable/itemquantity_bg"
                 android:layout_height="@dimen/_25sdp"/>

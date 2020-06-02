@@ -75,6 +75,7 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
                 users_view.visibility = View.VISIBLE
                 tv_users_name.text = agentdetail.full_name
                 tv_users_tag.text = agentdetail.mobile_number
+                phone_view.visibility=View.VISIBLE
                 phone_view.setOnClickListener {
                     Common.phoneCallWithNumber(agentdetail.mobile_number, this) }
                 //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
@@ -96,6 +97,7 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
                 users_view.visibility = View.VISIBLE
                 tv_users_name.text = agentdetail.full_name
                 tv_users_tag.text = agentdetail.mobile_number
+                phone_view.visibility=View.VISIBLE
                 phone_view.setOnClickListener {
                     Common.phoneCallWithNumber(agentdetail.mobile_number, this) }
 

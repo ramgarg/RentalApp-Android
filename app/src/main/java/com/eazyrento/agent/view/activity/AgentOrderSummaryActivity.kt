@@ -47,7 +47,7 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
     private fun clickListenerOnViews() {
         customer_payment_button.visibility = View.INVISIBLE
         payment_view_history.visibility = View.VISIBLE
-        per_hour.visibility = View.INVISIBLE
+        //per_hour.visibility = View.INVISIBLE
 
         agent_asign_merchant_btn.setOnClickListener {
 //            showToast(ValidationMessage.UNDER_DEVELOPMENT)

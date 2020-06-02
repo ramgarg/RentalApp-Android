@@ -85,8 +85,8 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
         holder.tv_pro_name?.text=objListBookingItem.get(position).projectDetails?.name
         holder.tv_booking_price?.text= Constant.DOLLAR +objListBookingItem.get(position).projectDetails?.base_price
         holder.tv_quantity.text = ""+objListBookingItem.get(position).quantity
-        holder.pro_booking_days.text = ""+objListBookingItem.get(position).booking_days +" days"
-
+        holder.pro_booking_days.text = ""+objListBookingItem.get(position).booking_days +" day"
+        holder.tv_work_location.text = ""+objListBookingItem.get(position).address_id
         holder.lyt_booking_details.visibility = View.VISIBLE
 
         holder.tv_remove.setOnClickListener{

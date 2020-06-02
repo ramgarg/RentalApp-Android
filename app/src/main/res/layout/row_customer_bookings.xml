@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
+                android:paddingTop="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_12sdp"
                 android:layout_marginRight="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_1sdp"
@@ -28,8 +28,8 @@
 
             <ImageView
                     android:id="@+id/img_booking__pic"
-                    android:layout_width="@dimen/_60sdp"
-                    android:layout_height="@dimen/_60sdp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
                     android:background="@android:color/transparent"
                     android:src="@mipmap/profile_pic"
                     app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="wrap_content"
                     android:text="@string/app_name"
-                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginStart="@dimen/_5sdp"
                     style="@style/AgentBoldTextCard"
                     app:layout_constraintStart_toEndOf="@+id/img_booking__pic"
@@ -140,8 +140,8 @@
 
             <ImageView
                     android:id="@+id/img_customer_calnder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:src="@mipmap/calender"
@@ -156,9 +156,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/_24_jun_1212"
                     android:gravity="center_vertical"
-                    style="@style/AgentSmallTextCard"
-                    android:layout_marginStart="@dimen/_6sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    style="@style/AgentBoldTextCard"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
                     app:layout_constraintStart_toEndOf="@id/img_customer_calnder"
                     app:layout_constraintTop_toBottomOf="@id/tv_order_date"
 

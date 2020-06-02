@@ -22,6 +22,7 @@ class WishListAdapter<T> (val orderListing: MutableList<T>, val context: Context
         val pro_booking_days = view.pro_booking_days
         val tv_remove =view.tv_remove
         val lyt_booking_details = view.lyt_booking_details
+        val tv_work_location = view.tv_work_location
 
     }
 
