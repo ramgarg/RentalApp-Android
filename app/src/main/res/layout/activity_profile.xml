@@ -144,8 +144,6 @@
                         android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
                         android:inputType="numberSigned"
-                        android:lines="1"
-                        android:maxLines="1"
                         android:maxLength="4"
                         android:nextFocusDown="@id/ed_phone" />
 
@@ -168,8 +166,6 @@
                         android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
                         android:inputType="phone"
-                        android:lines="1"
-                        android:maxLines="1"
                         android:nextFocusDown="@id/ed_dob"
                         android:maxLength="15"
                         />
@@ -359,6 +355,7 @@
                         android:paddingLeft="@dimen/_10sdp"
                         android:paddingRight="@dimen/_10sdp"
                         android:text="@string/change"
+                        android:textAllCaps="false"
                         android:textColor="@color/white">
 
                 </Button>
@@ -370,7 +367,6 @@
                         android:layout_below="@+id/tv_select_location"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:text="@string/downtown_dubai"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 
@@ -382,7 +378,6 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_toRightOf="@+id/tv_add_line"
                         android:fontFamily="@font/bree_serif"
-                        android:text="@string/downtown_dubai"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 
@@ -393,7 +388,6 @@
                         android:layout_below="@+id/tv_add_line"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:text="@string/downtown_dubai"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 

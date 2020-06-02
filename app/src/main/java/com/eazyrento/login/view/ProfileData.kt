@@ -1,12 +1,18 @@
 package com.eazyrento.login.view
 
 import android.app.Activity
-import android.content.Context
 import android.widget.ImageView
 import android.widget.TextView
-import com.eazyrento.EazyRantoApplication
-import com.eazyrento.R
-import com.eazyrento.Session
+import androidx.fragment.app.FragmentActivity
+import com.eazyrento.*
+import com.eazyrento.common.view.ApiResult
+import com.eazyrento.common.view.LiveDataActivityClass
+import com.eazyrento.customer.profile.UpdateProfileActivity
+import com.eazyrento.customer.utils.Common
+import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.login.model.modelclass.ProfileModelReqRes
+import com.eazyrento.login.model.modelclass.UserProfile
+import com.eazyrento.login.viewmodel.ProfileUserViewModel
 import com.squareup.picasso.Picasso
 
 class ProfileData {
@@ -25,4 +31,75 @@ class ProfileData {
         Picasso.with(context).load(it.profile_image).into(context.findViewById<ImageView>(R.id.profile_img))
       }
     }
+
+    fun profileAPFromILogin(activity:FragmentActivity,loginUserStatus: LoginUserStatus){
+
+        callProfileAPI(activity,object :ProfileDataAPILisetner{
+
+            override fun onSuccessProfileDataAPI(userProfile: UserProfile?) {
+
+                userProfile?.let {
+
+                        //if user first time login
+                        if (userFirstTime(it)) {
+                            openUpdateProfileActivity(activity)
+                            loginUserStatus.onUser(LoginUserStatus.UserStatus.FIRST_TIME)
+                        } else {
+                            loginUserStatus.onUser(LoginUserStatus.UserStatus.NOT_FIRST_TIME)
+                        }
+
+                    }
+            }
+
+        })
+    }
+      fun callProfileAPI(
+         activity: FragmentActivity,
+         profileDataAPILisetner: ProfileDataAPILisetner
+     ){
+        if(InternetNetworkConnection.isNetworkInternetAvailbale(activity)) {
+
+            val livedata = LiveDataActivityClass(object : ApiResult {
+                override fun <T> onSuccessApiResult(data: T) {
+
+                    EazyRantoApplication.profileData = (data as ProfileModelReqRes).user_profile
+                    profileDataAPILisetner.onSuccessProfileDataAPI(EazyRantoApplication.profileData)
+
+                }
+
+                override fun <T> statusCodeOfApi(data: T) {
+                }
+
+            })
+            livedata.observeApiResult(
+                livedata.callAPIActivity<ProfileUserViewModel>(activity).getProfileUser(),activity,activity
+            )
+        }
+         else{
+            Common.showToast(activity,ValidationMessage.CHECK_INTERNET)
+        }
+    }
+
+
+    private fun userFirstTime(it: UserProfile):Boolean{
+
+        if(it.address_info ==null || it.address_info.id ==null){
+            return true
+        }
+        return false
+    }
+
+    private fun openUpdateProfileActivity(activity: Activity){
+        MoveToAnotherComponent.startActivityForResult<UpdateProfileActivity>(activity,Constant.REQUEST_CODE_FINISH_FIRST_TIME_USER,
+            Constant.KEY_FINISH_FIRST_TIME_USER,Constant.VALUE_FINISH_FIRST_TIME_USER)
+    }
+}
+interface LoginUserStatus{
+   enum class UserStatus{
+       FIRST_TIME,NOT_FIRST_TIME
+   }
+    fun onUser(user:UserStatus)
+}
+interface ProfileDataAPILisetner{
+    fun onSuccessProfileDataAPI(userProfile: UserProfile?)
 }

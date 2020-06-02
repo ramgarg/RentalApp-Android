@@ -7,15 +7,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
+import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.Validator
 import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.model.modelclass.UserProfile
+import com.eazyrento.login.view.ProfileData
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
 import com.eazyrento.supporting.*
 import com.squareup.picasso.Picasso
@@ -71,9 +74,12 @@ class UpdateProfileActivity : BaseActivity() {
         }*/
 
         btn_select_location.setOnClickListener {
-//            MoveToAnotherComponent.startActivityForResult<Address>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,1)
 
-            MoveToAnotherComponent.startActivityForResult<AddNewAddressActivity>(this,Constant.REQUEST_CODE_PROFILE_UPDATE,Constant.KEY_FROM_PROFILE,1)
+            if ((it as Button).text==(resources.getString(R.string.select_address))){
+                MoveToAnotherComponent.startActivityForResult<AddNewAddressActivity>(this,Constant.REQUEST_CODE_PROFILE_UPDATE,Constant.KEY_FROM_PROFILE,Constant.FIRST_TIME_USER_LOGIN)
+                return@setOnClickListener
+            }
+            MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,1)
         }
 
     }
@@ -105,7 +111,7 @@ class UpdateProfileActivity : BaseActivity() {
 
         try {
             if (userProfile?.country_code.isNullOrEmpty())
-                ed_country.setText(""+phoneNumberFormat.getCountryCodeForLocalRegion())
+                ed_country.setText("+"+phoneNumberFormat.getCountryCodeForLocalRegion())
             else
                 ed_country.setText(userProfile?.country_code)
 
@@ -188,15 +194,9 @@ class UpdateProfileActivity : BaseActivity() {
         if (ed_full_name.text.toString().isEmpty()) {
             showToast(ValidationMessage.VALID_PROFILE_NAME)
         }
-        if (img_profile.drawable == null) {
+        else if (img_profile.drawable == null) {
             showToast(ValidationMessage.VALID_IMAGE)
         }
-       /* else if(ed_user_name.text.toString().isEmpty()){
-            showToast(ValidationMessage.VALID_USER_NAME)
-        }
-        else if(ed_user_name.text.toString().length<Constant.LENGTH){
-            showToast(ValidationMessage.VALID_USER_NAME)
-        }*/
         else if(ed_email.text.toString().isEmpty()){
             showToast(ValidationMessage.VALID_EMAIL_ID)
         }
@@ -212,20 +212,28 @@ class UpdateProfileActivity : BaseActivity() {
             showToast(ValidationMessage.PHONE_NUMBER)
         }
 
-      /*  else if(true*//*!layout_phone.isValid*//*){
-            showToast("ValidationMessagePHONE_NUMBER")
-        }*/
         else if(ed_dob.text.toString().isEmpty()){
             showToast(ValidationMessage.DATE_OF_BIRTH)
         }
         else if(ed_company_name.text.toString().isEmpty()){
             showToast(ValidationMessage.COMPANY)
         }
+        else if(ed_des.text.toString().isEmpty()){
+            showToast(ValidationMessage.DESCRIPTON)
+        }
         else if(sp_gender.selectedItemPosition==0){
             showToast(ValidationMessage.GENDER)
         }
         else if(sp_select_document.selectedItemPosition==0){
             showToast(ValidationMessage.DOCUMENT)
+        }
+        else if (tv_add_line.text.isNullOrEmpty()){
+
+           /* tv_add_country.setText(it.address_info?.country)
+            tv_add_city.setText(it.address_info?.city)
+            tv_add_line.setText(it.address_info?.address_line)*/
+            showToast(ValidationMessage.SELECT_ADRESS)
+
         }
         else{
             return true
@@ -285,7 +293,13 @@ class UpdateProfileActivity : BaseActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
+
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+        //first time user
+        if (intent.getIntExtra(Constant.KEY_FINISH_FIRST_TIME_USER,0)==Constant.VALUE_FINISH_FIRST_TIME_USER){
+            finishCurrentActivityWithResult(Activity.RESULT_OK, Intent())
+            return
+        }
         finishCurrentActivity(Activity.RESULT_OK)
     }
 
@@ -295,7 +309,23 @@ class UpdateProfileActivity : BaseActivity() {
             uploadImageFromDevice.onActivityResult(requestCode, resultCode, data)
             return
         }
-        if (resultCode== Activity.RESULT_OK && requestCode ==Constant.REQUEST_CODE_PROFILE_UPDATE){
+
+       else if (resultCode== Activity.RESULT_OK && requestCode ==Constant.ADDRESS_REQUECT_CODE){
+
+            userProfile?.let {
+
+                val addressInfo = data!!.getParcelableExtra<AddressInfo>(Constant.KEY_ADDRESS)
+
+                addressInfo?.let {inner->
+                    it.address_info =inner
+                }
+
+                setAddress()
+
+            }
+
+        }
+       else if (resultCode== Activity.RESULT_OK && requestCode ==Constant.REQUEST_CODE_PROFILE_UPDATE){
 
             userProfile?.let {
 
@@ -304,20 +334,27 @@ class UpdateProfileActivity : BaseActivity() {
                  addressInfo?.let {inner->
                      it.address_info =inner
                  }
-                //testing purpose
+
                 setAddress()
 
             }
 
-            /*tv_work_location.text = address.address_line+","+address.address_type
-            objBookingReqModelItem.address_id = address.id*/
         }
     }
 
     fun setAddress(){
-        tv_add_country.setText(userProfile?.address_info?.country)
-        tv_add_city.setText(userProfile?.address_info?.city)
-        tv_add_line.setText(userProfile?.address_info?.address_line)
+        userProfile?.let {
+
+            if(it.address_info==null){
+                btn_select_location.text = resources.getString(R.string.select_address)
+                return
+            }
+
+            tv_add_country.setText(it.address_info?.country)
+            tv_add_city.setText(it.address_info?.city)
+            tv_add_line.setText(it.address_info?.address_line)
+        }
+
     }
 
     private fun documentSpinnerData() {
@@ -386,6 +423,8 @@ class UpdateProfileActivity : BaseActivity() {
         }
     }
 
+    override fun <T> statusCodeOfApi(data: T) {
 
+    }
 
 }

@@ -17,16 +17,23 @@ class EazyRantoApplication : Application() {
         // profile data in session
         var profileData: UserProfile?=null
 
+        fun saveAccesesToken(userInfo: UserInfo){
+            ServiceGenrator.retrofit =null
+            Session.getInstance(context)
+                ?.saveAccessToken(userInfo.access_token)
+
+        }
         fun onLoginUpdateSession(userInfo: UserInfo){
             // one time set null b/c from now we will add header in retrofit app APIs
-            ServiceGenrator.retrofit =null
+            //ServiceGenrator.retrofit =null
 
             Session.getInstance(context)
                 ?.saveUserRole(userInfo.user_role)
             Session.getInstance(context)
                 ?.saveUserID(userInfo.user_id)
-            Session.getInstance(context)
-                ?.saveAccessToken(userInfo.access_token)
+
+            /*Session.getInstance(context)
+                ?.saveAccessToken(userInfo.access_token)*/
 
 //            UserInfoAPP.user_role = userInfo.user_role
 

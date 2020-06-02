@@ -17,6 +17,8 @@ import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.webpages.AboutActivity
 import com.eazyrento.login.model.modelclass.ProfileModelReqRes
 import com.eazyrento.login.model.modelclass.UserProfile
+import com.eazyrento.login.view.ProfileData
+import com.eazyrento.login.view.ProfileDataAPILisetner
 import com.eazyrento.login.view.UserProfileActivity
 import com.eazyrento.login.viewmodel.ProfileUserViewModel
 import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_LABELED
@@ -32,34 +34,23 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        getProfileAPI()
     }
 
     override fun onStart() {
         super.onStart()
 
-        //if (EazyRantoApplication.profileData==null)
+        ProfileData().callProfileAPI(this, object : ProfileDataAPILisetner {
+            override fun onSuccessProfileDataAPI(userProfile: UserProfile?) {
+                setTopHeaderData(userProfile)
+            }
+        })
 
-           getProfileAPI()
+
     }
-    private fun getProfileAPI(){
-        if(InternetNetworkConnection.isNetworkInternetAvailbale(this)) {
 
-            val livedata = LiveDataActivityClass(object :ApiResult{
-                override fun <T> onSuccessApiResult(data: T) {
-                    EazyRantoApplication.profileData = (data as ProfileModelReqRes).user_profile
 
-                    EazyRantoApplication.profileData?.let { setTopHeaderData(it)}
-                }
-
-                override fun <T> statusCodeOfApi(data: T) {
-                }
-
-            })
-            livedata.observeApiResult(
-                livedata.callAPIActivity<ProfileUserViewModel>(this).getProfileUser(),this,this
-            )
-     }
-    }
 
     fun setHomeFragment(){
         bottom_navigation_view.selectedItemId = R.id.navigation_home
@@ -112,17 +103,22 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         navigation_view.setNavigationItemSelectedListener(this)
     }
 
+    private fun openUpdateProfileActivity(){
+        MoveToAnotherComponent.moveToActivityNormal<UpdateProfileActivity>(this)
+    }
+
 // profile view
-    private fun setTopHeaderData(user_profile: UserProfile) {
+    private fun setTopHeaderData(user_profile:UserProfile?) {
+    //val user_profile = EazyRantoApplication.profileData
 
     val header = navigation_view.getHeaderView(0)
-    header.user_name_menu.text=user_profile.full_name.capitalize()
+    header.user_name_menu.text=user_profile?.full_name?.capitalize()
     header.user_type_menu.text =Session.getInstance(this)?.getUserRole()?.capitalize()
 
-    Picasso.with(this).load(user_profile.profile_image).into(header.profile_img_menu)
+    Picasso.with(this).load(user_profile?.profile_image).into(header.profile_img_menu)
 
         header.edit_profile_menu.setOnClickListener {
-            MoveToAnotherComponent.moveToActivityNormal<UpdateProfileActivity>(this)
+            openUpdateProfileActivity()
             drawer_layout.closeDrawer(GravityCompat.START)
         }
     }

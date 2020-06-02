@@ -49,7 +49,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     private var mIsMapCameraMoveStated:Boolean = true
 
     private lateinit  var addressInfo :AddressInfo
-    private var isFlagAddressUpdateFromProfile:Int =0
+//    private var isFlagAddressUpdateFromProfile:Int =0
     private var isDeletingAddress:Boolean =false
 
     private var mLocationPermissionGranted: Boolean = false
@@ -88,7 +88,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         val tempAdd:AddressInfo?  = intent.getParcelableExtra<AddressInfo>(Constant.INTENT_ADDRESS_EDIT)
 
-        isFlagAddressUpdateFromProfile = intent.getIntExtra(Constant.KEY_FROM_PROFILE,0)
+//        isFlagAddressUpdateFromProfile = intent.getIntExtra(Constant.KEY_FROM_PROFILE,0)
 
         if (tempAdd != null) {
             addressInfo = tempAdd
@@ -329,7 +329,8 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         if (checkValidation())
             return
-        if (isFlagAddressUpdateFromProfile==1){
+
+        if (intent.getIntExtra(Constant.KEY_FROM_PROFILE,0)==Constant.FIRST_TIME_USER_LOGIN){
             sendIntentToCallerAct(Constant.KEY_FROM_PROFILE,Constant.REQUEST_CODE_PROFILE_UPDATE,false)
             return
         }

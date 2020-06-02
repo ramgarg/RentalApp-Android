@@ -42,6 +42,9 @@ class LoginUserActivity : AppBizLogin() {
     //google
     private var mGoogleSignInClient:GoogleSignInClient?=null
 
+    //user login sucess
+    private lateinit var loginUserResModel:LoginUserResModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -249,26 +252,43 @@ class LoginUserActivity : AppBizLogin() {
 
         if (data is LoginUserResModel) {
 
-            EazyRantoApplication.onLoginUpdateSession(data.user_info)
+            loginUserResModel = data
 
-            sendUserReleventPanel(data.user_info.user_role)
+            EazyRantoApplication.saveAccesesToken(loginUserResModel.user_info)
 
-
+            ProfileData().profileAPFromILogin(this, object : LoginUserStatus {
+                override fun onUser(user: LoginUserStatus.UserStatus) {
+                        when(user){
+                            LoginUserStatus.UserStatus.NOT_FIRST_TIME ->onLoginSucess()
+                            else -> {
+                                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"First time user")
+                            }
+                        }
+                }
+            })
         }
     }
 
+    private fun onLoginSucess(){
+
+        EazyRantoApplication.onLoginUpdateSession(loginUserResModel.user_info)
+        sendUserReleventPanel(loginUserResModel.user_info.user_role)
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        AppBizLogger.log(
-            AppBizLogger.LoggingType.DEBUG,
-            "" + requestCode + "--" + resultCode + "---" + data.toString()
-        )
+
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onActivityResult--".plus(requestCode))
         // login finiching on back button press
         if (requestCode == Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK && resultCode == Activity.RESULT_OK){
              finishCurrentActivity(Activity.RESULT_OK)
-            return
+        }
+        // first time user
+        else if(resultCode ==Activity.RESULT_OK && requestCode==Constant.REQUEST_CODE_FINISH_FIRST_TIME_USER){
+            // first time user profile update
+            onLoginSucess()
         }
         //gmail login
-        if (requestCode == Constant.RC_SIGN_IN_GOOGLE){
+       else if (requestCode == Constant.RC_SIGN_IN_GOOGLE){
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
@@ -283,9 +303,10 @@ class LoginUserActivity : AppBizLogin() {
 
         }
         //fb login
-        if (resultCode == Activity.RESULT_OK && mCallbackManager != null) {
+       else if (resultCode == Activity.RESULT_OK && mCallbackManager != null) {
             mCallbackManager!!.onActivityResult(requestCode, resultCode, data)
         }
+
         super.onActivityResult(requestCode, resultCode, data)
     }
 }

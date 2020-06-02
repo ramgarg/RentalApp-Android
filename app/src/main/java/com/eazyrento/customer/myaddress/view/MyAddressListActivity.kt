@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModel
@@ -82,6 +83,13 @@ open class MyAddressListActivity : BaseActivity() {
         }
 
         listOfAddress = data as AddressListResModel
+
+// no address found
+
+        if(listOfAddress.size==0){
+            showToast(ValidationMessage.NO_ADRESS_FOUND)
+        }
+
         rec_my_address.adapter =
             MyAddressAdapter(
                 listOfAddress,

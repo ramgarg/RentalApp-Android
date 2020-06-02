@@ -91,8 +91,11 @@ interface ValidationMessage{
         const val GENDER="Select Gender"
         const val DOCUMENT="Select Document"
         const val COMPANY="Enter Company"
+        const val DESCRIPTON="Enter Description"
 
         const val COUNTRY_CODE_VALIDATION="Please enter valid country code"
+
+        const val NO_ADRESS_FOUND = "No address found.Please add new address."
 
 
     }

@@ -11,6 +11,13 @@ interface Constant{
         const val DEFAULT_VALUE =""
         const val KEY_PAYMENT_HISTORY = "ORDER_ID"
         const val REQUEST_CODE_FINISH_LOGIN_ON_BACK = 8001
+
+        const val REQUEST_CODE_FINISH_FIRST_TIME_USER = 3001
+
+        const val VALUE_FINISH_FIRST_TIME_USER = 1011
+
+        const val KEY_FINISH_FIRST_TIME_USER = "first_time"
+
         const val LOGIN_KEY_FINISH ="FINISH"
         const val LOGIN_VALUE = 1
 
@@ -31,6 +38,7 @@ interface Constant{
         const val KEY_DATA_IS_CREATING="ceate"
 
         const val KEY_FROM_PROFILE="profile"
+        const val FIRST_TIME_USER_LOGIN= 2123
 
         const val BOOKING_PRODECT_DETAILS = "ID"
 
