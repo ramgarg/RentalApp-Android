@@ -1,9 +1,12 @@
 package com.eazyrento.supporting
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MotionEvent
+import android.view.View
 import android.widget.EditText
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
@@ -41,25 +44,49 @@ class PhoneNumberFormat(val context: Context) {
        return util?.parse(number,region)
    }
 
+    private fun addTextListener(ed_phone:EditText,ed_code: EditText){
+        if (phoneFormattingTW == null) {
+
+            val code = removePlusChar(ed_code)
+
+            phoneFormattingTW = PhoneNumberFormattingTextWatcher(
+                getRegionCodeForCountryCode(
+                    code.toInt()
+                )
+            )
+            ed_phone.addTextChangedListener(phoneFormattingTW)
+        }
+    }
+
     //Phone number wather edit text
     fun phoneNumberListener(context:Context,ed_phone:EditText,ed_code: EditText){
 
-        ed_phone.setOnClickListener {
+        ed_phone.setOnFocusChangeListener{
+            v: View?, hasFocus: Boolean ->
 
-           if (isValidCountryCode(ed_code.text.toString())) {
-                if (phoneFormattingTW==null) {
-
-                    val code = removePlusChar(ed_code)
-
-                     phoneFormattingTW = PhoneNumberFormattingTextWatcher(
-                            getRegionCodeForCountryCode(
-                            code.toInt()
-                            )
-                        )
-                    ed_phone.addTextChangedListener(phoneFormattingTW)
-                }
+            if (isValidCountryCode(ed_code.text.toString())) {
+                addTextListener(ed_phone,ed_code)
             }
+
         }
+
+       /* ed_phone.setOnTouchListener(object :View.OnTouchListener {
+            @SuppressLint("ClickableViewAccessibility")
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                if (event?.action == MotionEvent.ACTION_DOWN) {
+                    if (isValidCountryCode(ed_code.text.toString())) {
+
+                        addTextListener(ed_phone,ed_code)
+
+                    }
+                    return false
+                }
+                return false
+            }
+
+        })*/
+
+
 
     }
 
@@ -71,7 +98,8 @@ class PhoneNumberFormat(val context: Context) {
     //Phone number wather edit text
     fun phoneCountryCodeNumberListener(ed_code:EditText){
 
-        ed_code.setOnClickListener {
+        ed_code.setOnFocusChangeListener{
+                v: View?, hasFocus: Boolean ->
             phoneFormattingTW = null
         }
 
