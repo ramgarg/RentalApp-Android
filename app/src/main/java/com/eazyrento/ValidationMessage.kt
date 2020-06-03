@@ -1,5 +1,7 @@
 package com.eazyrento
 
+import com.eazyrento.supporting.TimeConstant
+
 interface ValidationMessage{
     companion object{
         const val ENTER_AMOUNT_PAYMENT = "Please enter the amount."
@@ -57,6 +59,7 @@ interface ValidationMessage{
         const val END_TIME = "Please select end time"
 
         const val DATE_VALIDATION = "Start date can not be less then end date"
+        const val SAME_DATE_TIME_VALIDATION = "The time gap between start time and end time should be more then "+TimeConstant.TIME_GAP_BETWEEN_SAME_DATE+" hour for same date"
         const val SELECT_ADRESS = "Please select address"
 
         const val BOOKING_SUBMITTED = "Thank you for submitting. We will contact you shortly."

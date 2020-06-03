@@ -80,7 +80,7 @@ class ProductDetailsActivity : BaseActivity()
     private fun onsetDataUI(data: ProductDetailsResModel) {
 
             pro_booking_price.text =Constant.DOLLAR_NOTATION+data.base_price
-            pro_name.text = data.name
+            pro_name.text = data.name.capitalize()
             setWishProductImage(data)
 //            pro_wish.setImageResource(if(data.is_wishlisted) R.mipmap.like else R.mipmap.unlike)
             setProductImage(data.product_image_url)

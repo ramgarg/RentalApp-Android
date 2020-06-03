@@ -2,17 +2,17 @@ package com.eazyrento.supporting
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.widget.TextView
 import com.eazyrento.R
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class CommonDatePiker(private val context: Context) {
 
     private val currentDate = Calendar.getInstance()
-    private var currentYear: Int = 0
-    private var currentMonthOfYear: Int = 0
-    private var currentDayOfMonth: Int = 0
+    private var mYear: Int = 0
+    private var mMonthOfYear: Int = 0
+    private var mDayOfMonth: Int = 0
 
     private lateinit var enumDateType: EnumDateType
     private lateinit var dateListener:OnSelectDate
@@ -30,11 +30,11 @@ class CommonDatePiker(private val context: Context) {
 
     }
 
-   private fun currentDate():CommonDatePiker {
+    fun currentDate():CommonDatePiker {
 
-        currentYear = currentDate.get(Calendar.YEAR)
-        currentMonthOfYear = currentDate.get(Calendar.MONTH)
-        currentDayOfMonth = currentDate.get(Calendar.DAY_OF_MONTH)
+        mYear = currentDate.get(Calendar.YEAR)
+        mMonthOfYear = currentDate.get(Calendar.MONTH)
+        mDayOfMonth = currentDate.get(Calendar.DAY_OF_MONTH)
 
         return this
 
@@ -49,27 +49,63 @@ class CommonDatePiker(private val context: Context) {
             context,
             R.style.TimePickerTheme,
             selectDatePiker,
-            currentYear,
-            currentMonthOfYear,
-            currentDayOfMonth
+            mYear,
+            mMonthOfYear,
+            mDayOfMonth
         )
         return this
     }
 
-    fun dobPiker():CommonDatePiker{
+    private fun setCalenderLimit(min: Int, max: Int) {
+
         val c = Calendar.getInstance()
-        c.add(Calendar.YEAR,-DateConstant.MIN_AGE)
-        datePickerDialog.datePicker.maxDate = c.timeInMillis
-        c.add(Calendar.YEAR,-DateConstant.MAX_DATE)
+
+        c.add(Calendar.YEAR,min)
         datePickerDialog.datePicker.minDate = c.timeInMillis
+
+        c.add(Calendar.YEAR,max)
+        datePickerDialog.datePicker.maxDate = c.timeInMillis
+    }
+    fun dobPiker():CommonDatePiker{
+
+        setCalenderLimit(DateConstant.MIN_AGE,DateConstant.MAX_AGE)
 
         return this
     }
+
+    fun bookingDatePiker():CommonDatePiker{
+
+        if (enumDateType==EnumDateType.BOOKING_END_DATE){
+
+            val c = Calendar.getInstance()
+
+            c.set(mYear,mMonthOfYear,mDayOfMonth)
+
+            datePickerDialog.datePicker.minDate = c.timeInMillis
+
+            c.add(Calendar.YEAR,DateConstant.MAX_BOOKING)
+            datePickerDialog.datePicker.maxDate = c.timeInMillis
+        }
+        else{
+            setCalenderLimit(DateConstant.MIN_BOOKING,DateConstant.MAX_BOOKING)
+        }
+
+        return this
+    }
+    fun bookingEndDateTime(year: Int, month: Int, day: Int):CommonDatePiker{
+
+        this.mYear = year
+        this.mMonthOfYear =month-1
+        this.mDayOfMonth = day
+
+        return this
+    }
+
     fun show(){
         datePickerDialog.show()
     }
 
-//set Date in View
+//set Date in server format for sending
     fun getDateInServerFormate(year:Int, monthOfYear:Int, dayOfMonth:Int):String{
 
         return(
@@ -82,12 +118,33 @@ class CommonDatePiker(private val context: Context) {
     }
     //set 01-jan-1900
 
-    fun getDateInDobFormat(year:Int, monthOfYear:Int, dayOfMonth:Int):String{
+    fun getDateInDisplayFormat(year:Int, monthOfYear:Int, dayOfMonth:Int):String{
+
          val c = Calendar.getInstance()
          c.set(year,monthOfYear,dayOfMonth)
-         val sdf = SimpleDateFormat(DateConstant.DOB_FORMAT)
-        val date = sdf.format(c.timeInMillis)
+
+         val sdf = SimpleDateFormat(DateConstant.DISPLAY_FORMAT)
+
+         val date = sdf.format(c.timeInMillis)
+
         return date
+    }
+
+    fun calculateDatesDiffWithString(startDate:String, endDate:String):Long{
+        val myFormat = SimpleDateFormat(DateConstant.SEVER_FORMAT)
+
+        try {
+            val startDate = myFormat.parse(startDate)
+            val endDate = myFormat.parse(endDate)
+
+            val diff = endDate.time - startDate.time
+
+            return(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS))
+
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+        return -1
     }
 }
 
@@ -98,13 +155,17 @@ interface OnSelectDate {
 }
 
 enum class EnumDateType {
-    DOB, START_DATE, END_DATE
+    DOB, BOOKING_START_DATE,BOOKING_END_DATE
 }
 interface DateConstant{
     companion object{
-        const val MIN_AGE =18
-        const val MAX_DATE =70
+        const val MIN_AGE =-70
+        const val MAX_AGE = 52
 
-        const val DOB_FORMAT ="dd-MMM-yyyy"
+        const val MIN_BOOKING =0
+        const val MAX_BOOKING =1
+
+        const val DISPLAY_FORMAT ="dd-MMM-yyyy"
+        const val SEVER_FORMAT ="yyyy-MM-dd"
     }
 }

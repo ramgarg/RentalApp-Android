@@ -34,7 +34,7 @@ class CustomerHomeAdapter(val listMasterData: ArrayList<MasterResModelItem>, val
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.tvVeichleName?.text=listMasterData.get(position).name
+        holder.tvVeichleName?.text=listMasterData.get(position).name.capitalize()
 
         holder.itemView.setOnClickListener {
 

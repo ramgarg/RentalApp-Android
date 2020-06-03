@@ -84,10 +84,10 @@
     <string name="start_time">Start Time</string>
     <string name="end_date">End Date</string>
     <string name="end_time">End Time</string>
-    <string name="start_date_hint">2020-05-12</string>
+    <string name="start_date_hint">01-Jan-2020</string>
     <string name="start_time_hint">8:00 AM</string>
-    <string name="end_date_hint">2020-05-21</string>
-    <string name="end_time_hint">8:00 PM</string>
+    <string name="end_date_hint">01-Jan-2020</string>
+    <string name="end_time_hint">9:00 AM</string>
     <string name="truck_quantity">Item Quantity</string>
     <string name="one">1</string>
     <string name="work_location">Work Location</string>
@@ -251,8 +251,12 @@
     <!--Google Map and Place API key production -->
     <string name="google_credential_key">AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I</string>
 
-    <string name="place_restriction_country_code">AE</string>
-    <string name="iso_phone_number">AE</string>
+    <string-array name="place_restriction_country_code">
+            <item>AE</item>
+            <item>SA</item>
+    </string-array>
+
+    <!--<string name="iso_phone_number">AE</string>-->
 
 
 

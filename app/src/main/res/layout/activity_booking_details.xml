@@ -14,41 +14,6 @@
                 style="@style/BookingDetailsParentRelativeLayout"
                 android:paddingBottom="@dimen/_40sdp">
 
-            <!--<TextView
-                    android:id="@+id/tv_vehicle_name"
-                    style="@style/BookingDetailsVehicleName"/>
-
-            <TextView android:layout_width="wrap_content"
-                      android:text="@string/totalprice"
-                      android:textColor="@color/black"
-                      android:id="@+id/booking_title"
-                      android:layout_below="@+id/tv_vehicle_name"
-                      android:textSize="@dimen/_12sdp"
-                      android:fontFamily="@font/bree_serif"
-                      android:layout_height="wrap_content"/>
-            <TextView android:layout_width="wrap_content"
-                      android:id="@+id/booking_price"
-                      android:textColor="@color/black"
-                      android:fontFamily="@font/bree_serif"
-                      android:textSize="@dimen/_20sdp"
-                      android:text="@string/booking_price"
-                      android:layout_marginStart="@dimen/_5sdp"
-                      android:layout_toEndOf="@+id/booking_title"
-                      android:layout_below="@+id/tv_vehicle_name"
-                      android:layout_height="wrap_content"/>
-
-
-            <TextView android:layout_width="wrap_content"
-                      android:text="@string/per_hour"
-                      android:layout_marginTop="@dimen/_10sdp"
-                      android:layout_marginStart="@dimen/_5sdp"
-                      android:layout_toEndOf="@+id/booking_price"
-                      android:id="@+id/per_hour"
-                      android:layout_below="@+id/tv_vehicle_name"
-                      android:textSize="@dimen/_12sdp"
-                      android:fontFamily="@font/bree_serif"
-                      android:layout_height="wrap_content"/>-->
-
             <!--product main view-->
             <include
                     android:id="@+id/lyt_price_details"
@@ -136,6 +101,7 @@
                     <TextView android:layout_width="wrap_content"
                               android:layout_marginStart="@dimen/_10sdp"
                               android:hint="@string/start_date_hint"
+                              android:tag=""
                               android:id="@+id/tv_st_date_book"
                               android:layout_below="@+id/tv_st_date"
                               android:layout_toEndOf="@+id/img_calender"
@@ -172,7 +138,8 @@
                     <TextView android:layout_width="wrap_content"
                               android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_st_time_book"
-                            android:hint="@string/start_time_hint"
+                              android:hint="@string/start_time_hint"
+                              android:tag=""
                               android:layout_below="@+id/tv_st_time"
                               android:layout_toEndOf="@+id/img_time"
                               android:fontFamily="@font/bree_serif"
@@ -216,7 +183,8 @@
                     <TextView android:layout_width="wrap_content"
                               android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_end_date_book"
-                            android:hint="@string/end_date_hint"
+                              android:hint="@string/end_date_hint"
+                              android:tag=""
                               android:layout_below="@+id/tv_end_date"
                               android:layout_toEndOf="@+id/img_en_calender"
                               android:fontFamily="@font/bree_serif"
@@ -253,7 +221,8 @@
                               android:layout_marginStart="@dimen/_10sdp"
                               android:id="@+id/tv_end_time_book"
                               android:layout_below="@+id/tv_end_time"
-                            android:hint="@string/end_time_hint"
+                              android:hint="@string/end_time_hint"
+                              android:tag=""
                               android:layout_toEndOf="@+id/img_end_time"
                               android:fontFamily="@font/bree_serif"
                               android:layout_height="wrap_content"/>

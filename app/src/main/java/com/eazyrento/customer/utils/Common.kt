@@ -34,46 +34,9 @@ class Common {
 
     companion object {
 
-        //crating an arraylist to store users using the data class user
+        //val c = Calendar.getInstance()
 
-        val MONTHS =
-            arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-
-        val c = Calendar.getInstance()
-        fun dateSelector(context: Context,txt:TextView) {
-            val datePickerDialog = DatePickerDialog(
-                context, R.style.TimePickerTheme,
-                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                    val monthOnePlus = monthOfYear+1
-
-                    // old format
-//                    txt.setText(dayOfMonth.toString() + " " + MONTHS[(monthOfYear)] + " " + year)
-
-                    //server format
-                    /*var monthOfYearNew= ""
-
-                    if (monthOfYear<10){
-                        monthOfYear = "0"+monthOfYear
-                    }*/
-
-                    txt.setText(
-                        "$year-" +(if(monthOnePlus.compareTo(10)<0){
-                        "0$monthOnePlus"
-                    }else monthOnePlus)+""
-                        + "-" + (if(dayOfMonth.compareTo(10)<0){
-                        "0$dayOfMonth"
-                    }else dayOfMonth))
-
-                },
-                c.get(Calendar.YEAR),
-                c.get(Calendar.MONTH),
-                c.get(Calendar.DAY_OF_MONTH)
-            )
-            datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
-            datePickerDialog.show()
-        }
-
-        fun timeSelector(context: Context,txt:TextView){
+        /*fun timeSelector(context: Context,txt:TextView){
             val timePickerDialog = TimePickerDialog(
                 context,R.style.TimePickerTheme,
                 TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
@@ -92,9 +55,9 @@ class Common {
                 false
             )
             timePickerDialog.show()
-        }
+        }*/
 
-        fun calculateDatesWithString(startDate:String , endDate:String):Long{
+       /* fun calculateDatesDiffWithString(startDate:String, endDate:String):Long{
             val myFormat = SimpleDateFormat("yyyy-MM-dd")
 
             try {
@@ -108,7 +71,9 @@ class Common {
                 e.printStackTrace()
             }
             return -1
-        }
+        }*/
+
+
         fun initDailog(context: Context,layout: Int):Dialog{
             val dialog = Dialog(context)
             dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)

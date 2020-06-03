@@ -18,7 +18,6 @@ import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.Validator
 import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.model.modelclass.UserProfile
-import com.eazyrento.login.view.ProfileData
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
 import com.eazyrento.supporting.*
 import com.squareup.picasso.Picasso
@@ -99,7 +98,7 @@ class UpdateProfileActivity : BaseActivity() {
 
     private fun dobDate(year: Int, month: Int, day: Int) {
 
-        ed_dob.setText(commonDatePiker.getDateInDobFormat(year,month-1,day))
+        ed_dob.setText(commonDatePiker.getDateInDisplayFormat(year,month-1,day))
     }
     private fun setProfileData(userProfile: UserProfile?) {
 

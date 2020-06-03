@@ -198,7 +198,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         // Initialize the AutocompleteSupportFragment.
         val autocompleteFragment =
             supportFragmentManager.findFragmentById(R.id.autocomplete_fragment) as AutocompleteSupportFragment?
-        autocompleteFragment?.setCountries(resources.getString(R.string.place_restriction_country_code))
+        autocompleteFragment?.setCountries(resources.getStringArray(R.array.place_restriction_country_code).asList())
 
 // Specify the types of place data to return.
         /*

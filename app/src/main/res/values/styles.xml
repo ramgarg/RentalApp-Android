@@ -79,6 +79,25 @@
         <item name="android:layout_height">wrap_content</item>
 
     </style>
+    <!--product details-->
+    <style name="name_heading" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/bree_serif</item>
+    </style>
+
+    <style name="pro_details_heading" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/bree_serif</item>
+    </style>
+
+    <style name="pro_details_inner_heading" parent="android:Widget.TextView">
+        <!--<item name="android:textColor">@color/light_grey</item>-->
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/bree_serif</item>
+    </style>
     <!--agent module-->
 
     <style name="AgentBoldTextCard" parent="android:Widget.TextView">
