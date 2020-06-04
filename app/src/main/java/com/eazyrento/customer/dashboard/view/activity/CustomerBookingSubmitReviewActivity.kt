@@ -31,8 +31,9 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
         setContentView(R.layout.activity_order_review)
 
-        ViewVisibility.isVisibleOrNot(this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.order_review))
+        /*ViewVisibility.isVisibleOrNot(this, img_back, img_menu, img_notification,
+            toolbar_title, getString(R.string.order_review))*/
+        topBarWithBackIconAndTitle(getString(R.string.order_review))
 
         //creating our adapter
         val adapter =
@@ -57,9 +58,9 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
         }
     }
 
-    override fun onClickDailog(int: Int) {
+    override fun onClickDailog(ok: Int) {
 
-        if(int==Constant.OK) {
+        if(ok==Constant.OK) {
             callAPI()?.let {
                 it.observeApiResult(
                     it.callAPIActivity<CustomerCreateBookingViewModel>(this)
@@ -82,11 +83,15 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
     override fun setHolderOnView(holder: WishListAdapter.CardViewHolder, position: Int) {
 
-        holder.tv_pro_name?.text=objListBookingItem.get(position).projectDetails?.name
+        holder.tv_pro_name?.text=objListBookingItem.get(position).projectDetails?.name?.capitalize()
         holder.tv_booking_price?.text= Constant.DOLLAR +objListBookingItem.get(position).projectDetails?.base_price
         holder.tv_quantity.text = ""+objListBookingItem.get(position).quantity
         holder.pro_booking_days.text = ""+objListBookingItem.get(position).booking_days +" day"
-        holder.tv_work_location.text = ""+objListBookingItem.get(position).address_id
+
+        objListBookingItem.get(position).address?.let {
+            holder.tv_work_location.text = it.address_line+","+it.address_type
+        }
+
         holder.lyt_booking_details.visibility = View.VISIBLE
 
         holder.tv_remove.setOnClickListener{

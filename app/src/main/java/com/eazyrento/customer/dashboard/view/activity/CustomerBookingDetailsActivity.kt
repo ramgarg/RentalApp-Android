@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.template_product_main_view.*
 class CustomerBookingDetailsActivity : BaseActivity() {
 
     private val objBookingReqModelItem = CustomerCreateBookingReqModelItem()
-    private var defaultID:Int =-1
+    private var mProductIDByIntent:Int =-1
     private val commonDatePiker = CommonDatePiker(this)
     private val mCommonTimePiker = CommonTimePiker(this)
 
@@ -40,7 +40,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
         val prodDetailsObj = intent.getParcelableExtra<ProductDetailsResModel>(Constant.BOOKING_PRODECT_DETAILS)
         objBookingReqModelItem.projectDetails =prodDetailsObj
-        defaultID = prodDetailsObj.id
+        mProductIDByIntent = prodDetailsObj.id
 
         prodDetailsObj?.let{setData(it)}
         clickListenerOnViews()
@@ -54,7 +54,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
     private fun setData(prodDetailsObj: ProductDetailsResModel) {
 
         pro_booking_price.text = Constant.DOLLAR+prodDetailsObj.base_price
-        pro_name.text = prodDetailsObj.name
+        pro_name.text = prodDetailsObj.name.capitalize()
     }
 
     private fun bookingDatePicker(
@@ -166,7 +166,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
     }
 
     fun onChangeAddressClick(view:View){
-       MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,defaultID)
+       MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,mProductIDByIntent)
     }
     fun moveToAddAnOther(view: View){
 
@@ -177,7 +177,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
         MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_ADD_ANOTHER,1)
 
     }
-
+// next button click
     fun moveTOFinalReview(view: View){
         if (isNotRequiredValidation())
             return
@@ -196,12 +196,14 @@ class CustomerBookingDetailsActivity : BaseActivity() {
         objBookingReqModelItem.quantity = item_quantity.text.toString().toInt()
         objBookingReqModelItem.with_driver = checkbox_with_driver.isChecked
 
-        if (isContains()) {
-            objBookingReqModelItem.product_id = defaultID
+        if (isSameProductHavingSameAdressContains()) {
+            showToast(ValidationMessage.ITEM_IS_IN_LIST)
+        }
+        else {
+            objBookingReqModelItem.product_id = mProductIDByIntent
             CustomerBookingSubmitReviewActivity.setBookingItem(objBookingReqModelItem)
         }
-        else
-            showToast(ValidationMessage.ITEM_IS_IN_LIST)
+
 
     }
 
@@ -224,13 +226,16 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
         tv_work_location.text = address.address_line+","+address.address_type
         objBookingReqModelItem.address_id = address.id
+        objBookingReqModelItem.address =address
     }
-    fun isContains():Boolean{
+    private fun isSameProductHavingSameAdressContains():Boolean{
+
         for (obj in CustomerBookingSubmitReviewActivity.objListBookingItem) {
-            if (defaultID== obj.product_id)
-                return false
+            if (mProductIDByIntent== obj.product_id && obj.address_id == objBookingReqModelItem.address_id) {
+                return true
+            }
         }
-        return true
+        return false
     }
 
 }

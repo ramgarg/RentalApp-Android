@@ -69,12 +69,25 @@ class CommonTimePiker(private val context: Context) {
         return getTimeFormatByPattern(hourOfDay,minute,second,TimeConstant.TIME_FORMAT_SERVER)
     }
     fun calculateTimeDiff(startTime: String, endTime: String):Boolean{
+        val startC = Calendar.getInstance()
+        val endC = Calendar.getInstance()
+
         try {
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"startTime-".plus(startTime).plus("-endTime-").plus(endTime))
+
             val st_list = startTime.split(":")
             val end_list = endTime.split(":")
 
-            return end_list[0].toInt() - st_list[0].toInt() >=1 && end_list[1].toInt() - st_list[1].toInt()>=0
+            startC.set(Calendar.HOUR_OF_DAY,st_list[0].toInt())
+            startC.set(Calendar.MINUTE,st_list[1].toInt())
+
+            endC.set(Calendar.HOUR_OF_DAY,end_list[0].toInt())
+            endC.set(Calendar.MINUTE,end_list[1].toInt())
+
+             val diff = endC.timeInMillis-startC.timeInMillis
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"diff--"+diff)
+            return diff<=TimeConstant.TIME_GAP_BETWEEN_SAME_DATE
+            //return end_list[0].toInt() - st_list[0].toInt() >=1 && end_list[1].toInt() - st_list[1].toInt()>=0
 
         }catch (e:Exception){
             e.printStackTrace()
@@ -88,8 +101,8 @@ enum class TimeTypeEnum{
 }
     companion object{
         const val TIME_GAP_BETWEEN_SAME_DATE = 1
-        const val TIME_FORMAT_SERVER="hh:mm:ss"
-        const val TIME_FORMAT_DISPLAY = "h:mm a"
+        const val TIME_FORMAT_SERVER="HH:mm:ss"
+        const val TIME_FORMAT_DISPLAY = "HH:mm a"
 
         const val is24HourView = true
     }
