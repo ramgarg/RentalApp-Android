@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.eazyrento.Constant
 import com.eazyrento.R
 import kotlinx.android.synthetic.main.row_wishlist.view.*
 import kotlinx.android.synthetic.main.template_product_main_view.view.*
@@ -23,6 +22,8 @@ class WishListAdapter<T> (val orderListing: MutableList<T>, val context: Context
         val tv_remove =view.tv_remove
         val lyt_booking_details = view.lyt_booking_details
         val tv_work_location = view.tv_work_location
+        val add_quantity = view.add_quantity
+        val minus_quantity = view.minus_quantity
 
     }
 

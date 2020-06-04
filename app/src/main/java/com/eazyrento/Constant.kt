@@ -42,8 +42,10 @@ interface Constant{
 
         const val BOOKING_PRODECT_DETAILS = "ID"
 
-        //intent key
-         const val INTENT_SUCCESS_ORDER_BOOKING = "success"
+        //intent key,value
+        const val KEY_INTENT_SUCCESS_ORDER_BOOKING = "success"
+        const val VALUE_INTENT_SUCCESS_ORDER_BOOKING = 1
+
         const val INTENT_MERCHANT_PRODUCT_LIST = "list"
         const val INTENT_MERCHANT_PRODUCT_ADD = "add"
         const val INTENT_MERCHANT_PRODUCT_EDIT = "edit"

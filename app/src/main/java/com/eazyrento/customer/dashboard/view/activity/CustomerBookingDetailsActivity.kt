@@ -24,6 +24,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
     private val objBookingReqModelItem = CustomerCreateBookingReqModelItem()
     private var mProductIDByIntent:Int =-1
+    private var mAddressOBJ:AddressInfo?=null
     private val commonDatePiker = CommonDatePiker(this)
     private val mCommonTimePiker = CommonTimePiker(this)
 
@@ -34,9 +35,9 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
         topBarWithBackIconAndTitle(getString(R.string.booking_details))
 
-        val addresss = EazyRantoApplication.profileData?.address_info
+        mAddressOBJ = EazyRantoApplication.profileData?.address_info
 
-        addresss?.let { setAddressOnUI(it) }
+        setAddressOnUI()
 
         val prodDetailsObj = intent.getParcelableExtra<ProductDetailsResModel>(Constant.BOOKING_PRODECT_DETAILS)
         objBookingReqModelItem.projectDetails =prodDetailsObj
@@ -125,7 +126,11 @@ class CustomerBookingDetailsActivity : BaseActivity() {
         }
 
         minus_quantity.setOnClickListener {
-            item_quantity.text= ""+(--objBookingReqModelItem.quantity)
+
+            if (objBookingReqModelItem.quantity-1 <=0){
+                showToast(ValidationMessage.FILL_QUANTITY)
+            }
+            else item_quantity.text= ""+(--objBookingReqModelItem.quantity)
         }
 
 
@@ -200,7 +205,11 @@ class CustomerBookingDetailsActivity : BaseActivity() {
             showToast(ValidationMessage.ITEM_IS_IN_LIST)
         }
         else {
+            objBookingReqModelItem.address_id = mAddressOBJ?.id
+            objBookingReqModelItem.address =mAddressOBJ
+
             objBookingReqModelItem.product_id = mProductIDByIntent
+
             CustomerBookingSubmitReviewActivity.setBookingItem(objBookingReqModelItem)
         }
 
@@ -213,25 +222,23 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
         if (resultCode== Activity.RESULT_OK && requestCode ==Constant.ADDRESS_REQUECT_CODE){
 
-            val address =data!!.getParcelableExtra<AddressInfo>(Constant.KEY_ADDRESS)
+            mAddressOBJ =data!!.getParcelableExtra<AddressInfo>(Constant.KEY_ADDRESS)
 
-            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,address.toString())
-
-            setAddressOnUI(address)
+            setAddressOnUI()
 
         }
     }
 
-    private fun setAddressOnUI(address:AddressInfo){
+    private fun setAddressOnUI(){
+        mAddressOBJ?.let {
+            tv_work_location.text = it.address_line+","+it.address_type
+        }
 
-        tv_work_location.text = address.address_line+","+address.address_type
-        objBookingReqModelItem.address_id = address.id
-        objBookingReqModelItem.address =address
     }
     private fun isSameProductHavingSameAdressContains():Boolean{
 
         for (obj in CustomerBookingSubmitReviewActivity.objListBookingItem) {
-            if (mProductIDByIntent== obj.product_id && obj.address_id == objBookingReqModelItem.address_id) {
+            if (mProductIDByIntent== obj.product_id && obj.address_id == mAddressOBJ?.id) {
                 return true
             }
         }

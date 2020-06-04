@@ -35,8 +35,14 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        val value = intent?.getIntExtra(Constant.INTENT_SUCCESS_ORDER_BOOKING,-1)
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onNewIntent "+value)
+
+        val value = intent?.getIntExtra(Constant.KEY_INTENT_SUCCESS_ORDER_BOOKING,-1)
+
+        if (value ==Constant.VALUE_INTENT_SUCCESS_ORDER_BOOKING) {
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "onNewIntent " + value)
+            //booking
+            setForthPosFragment()
+        }
     }
 
 

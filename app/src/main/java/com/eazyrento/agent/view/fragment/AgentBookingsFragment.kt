@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.eazyrento.Constant
+import com.eazyrento.R
 import com.eazyrento.agent.view.activity.AgentBookingReviewSummeryActivity
 import com.eazyrento.common.model.modelclass.BookingListItem
 import com.eazyrento.common.view.fragment.MyBookingBaseFragment
 import com.eazyrento.customer.dashboard.view.adapter.RecycleAdapterCustomerBookings
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.row_customer_bookings.*
 
 class AgentBookingsFragment : MyBookingBaseFragment() {
@@ -30,25 +32,26 @@ class AgentBookingsFragment : MyBookingBaseFragment() {
         holder: RecycleAdapterCustomerBookings.CardViewHolder,
         position: Int
     ) {
-
+        val obj = listCustomerBooking.get(position)
         //agent details
-        holder.tv_booking__name.text=listCustomerBooking.get(position).customer_detail.full_name
+        holder.tv_booking__name.text=obj.customer_detail.full_name
         holder.tv_booking_type.text=Constant.CUSTOMER
+        Picasso.with(requireContext()).load(obj.customer_detail.profile_image).into(holder.img_booking__pic)
         holder.img_booking__call.setOnClickListener {
-            Common.phoneCallWithNumber(listCustomerBooking.get(position)?.customer_detail.mobile_number, requireContext())
+            Common.phoneCallWithNumber(obj.customer_detail.mobile_number, requireContext())
         }
+
         holder.btn_accept_booking.visibility=View.VISIBLE
         holder.btn_decline_booking.visibility=View.VISIBLE
-         //holder?.img_booking__pic.setImageURI("https://eazyrento-qa.s3.amazonaws.com/media/default_profile_pic.png")
-        holder?.tv_customer_order_id.text = Constant.ORDER_ID + listCustomerBooking.get(position).order_id
+        holder.tv_customer_order_id.text = Constant.ORDER_ID + obj.order_id
 
         // product details
-        holder?.tv_customer_date_show.text = listCustomerBooking.get(position).product_detail.start_date
-        holder?.tv_customer_product_quantity.text = listCustomerBooking.get(position).product_detail.product_name + "-" + listCustomerBooking.get(position).product_detail.quantity
+        holder.tv_customer_date_show.text = obj.product_detail.start_date
+        holder.tv_customer_product_quantity.text = resources.getString(R.string.quantity).plus(obj.product_detail.quantity)
 
-      holder?.itemView.setOnClickListener {
+      holder.itemView.setOnClickListener {
 
-          MoveToAnotherComponent.openActivityWithParcelableParam<AgentBookingReviewSummeryActivity,BookingListItem>(requireContext(),Constant.BOOKING_SUMMERY_KEY,listCustomerBooking.get(position))
+          MoveToAnotherComponent.openActivityWithParcelableParam<AgentBookingReviewSummeryActivity,BookingListItem>(requireContext(),Constant.BOOKING_SUMMERY_KEY,obj)
       }
     }
 

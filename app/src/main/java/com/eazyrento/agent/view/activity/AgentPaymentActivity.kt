@@ -50,7 +50,7 @@ class AgentPaymentActivity : PaymentBaseActivity() {
 
 
     override fun requestPaymentObjectBuilder():BaseMakePaymentModel {
-        agentMakePaymentReqModel.requested_amount = ed_enter_amount.text.toString().toDouble()
+        agentMakePaymentReqModel.requested_amount = convertAmountIntoDoubleFromEditText()
         return agentMakePaymentReqModel
     }
 

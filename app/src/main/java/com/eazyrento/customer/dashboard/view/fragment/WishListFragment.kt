@@ -104,7 +104,7 @@ class WishListFragment : BaseFragment(), DeleteAndViewDetails {
 
     override fun setHolderOnView(holder: WishListAdapter.CardViewHolder, position: Int) {
 
-        holder.tv_pro_name?.text=listWish.get(position).product_name
+        holder.tv_pro_name?.text=listWish.get(position).product_name.capitalize()
         holder.tv_booking_price?.text= Constant.DOLLAR+listWish.get(position).price
         holder.lyt_booking_details.visibility = View.GONE
 

@@ -56,6 +56,10 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         bottom_navigation_view.selectedItemId = R.id.navigation_home
     }
 
+    fun setForthPosFragment(){
+        bottom_navigation_view.selectedItemId = R.id.navigation_common_fourth_pos
+    }
+
     // dynamic title
     fun setNavigationIconAndTitle(hashMap:HashMap<Int, MenuData>){
 

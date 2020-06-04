@@ -33,7 +33,7 @@ interface ValidationMessage{
         //merchant add product validation
         const val DOC_IS_NOT_UPLOADED = "Doc is not uploaded.Please try it again."
         const val SELECT_AT_LIST_ONE_DAYS = "Please select at list one day."
-        const val FILL_QUANTITY = "Please fill quantity."
+        const val FILL_QUANTITY = "Quantity can not be zero or less then of zero."
         const val FILL_BOOKING_PRICE ="Booking price can not be zero or empty."
         const val SELECT_FUEL_TYPE_SPINNER = "Please select fuel type."
         const val SELECT_DOCUMENT = "Please select document."

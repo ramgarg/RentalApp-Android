@@ -1,5 +1,6 @@
 package com.eazyrento.customer.dashboard.view.activity
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
@@ -13,6 +14,7 @@ import com.eazyrento.customer.dashboard.view.adapter.WishListAdapter
 import com.eazyrento.customer.dashboard.viewmodel.CustomerCreateBookingViewModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
+import kotlinx.android.synthetic.main.activity_booking_details.*
 import kotlinx.android.synthetic.main.activity_order_review.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -51,10 +53,14 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
     override fun <T> onSuccessApiResult(data: T) {
         data?.let {
+
             showToast(ValidationMessage.BOOKING_SUBMITTED)
 
+            if (objListBookingItem.size>0){
+                objListBookingItem.clear()
+            }
             MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,
-                Constant.INTENT_SUCCESS_ORDER_BOOKING,1)
+                Constant.KEY_INTENT_SUCCESS_ORDER_BOOKING,Constant.VALUE_INTENT_SUCCESS_ORDER_BOOKING)
         }
     }
 
@@ -85,6 +91,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
         holder.tv_pro_name?.text=objListBookingItem.get(position).projectDetails?.name?.capitalize()
         holder.tv_booking_price?.text= Constant.DOLLAR +objListBookingItem.get(position).projectDetails?.base_price
+
         holder.tv_quantity.text = ""+objListBookingItem.get(position).quantity
         holder.pro_booking_days.text = ""+objListBookingItem.get(position).booking_days +" day"
 
@@ -101,11 +108,25 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
         }
 
         holder.tv_view_detail.setOnClickListener{
-            MoveToAnotherComponent.moveToActivityWithIntentValue<ProductDetailsActivity>(
+            /*MoveToAnotherComponent.moveToActivityWithIntentValue<ProductDetailsActivity>(
                 this,
-                Constant.VEHICLES_SUB_CATE,objListBookingItem.get(position).projectDetails!!.id)
+                Constant.VEHICLES_SUB_CATE,objListBookingItem.get(position).projectDetails!!.id)*/
+            finishCurrentActivity(Activity.RESULT_OK)
 
         }
+
+        holder.add_quantity.setOnClickListener {
+
+            item_quantity.text= ""+(++objListBookingItem.get(position).quantity)
+        }
+
+        holder.minus_quantity.setOnClickListener {
+           if (objListBookingItem.get(position).quantity-1 <=0){
+               showToast(ValidationMessage.FILL_QUANTITY)
+           }
+            else item_quantity.text= ""+(--objListBookingItem.get(position).quantity)
+        }
+
      }
 
 

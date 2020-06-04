@@ -74,7 +74,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
 
     override fun requestPaymentObjectBuilder():BaseMakePaymentModel {
 
-        customerMakePaymentReqModel.amount_paid = ed_enter_amount.text.toString().toDouble()
+        customerMakePaymentReqModel.amount_paid = convertAmountIntoDoubleFromEditText()
         customerMakePaymentReqModel.mode_of_payment = modeOfPayment
         customerMakePaymentReqModel.is_tip =false
         customerMakePaymentReqModel.transaction_id=""

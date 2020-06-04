@@ -2,6 +2,7 @@ package com.eazyrento.customer.payment.view
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
@@ -59,7 +60,7 @@ open abstract class PaymentBaseActivity : BaseActivity() {
                 showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT)
                 return false
             }
-        else if (totalPrice.compareTo(ed_enter_amount.text.toString().toDouble())<0){
+        else if (totalPrice.compareTo(removeDollarSign(ed_enter_amount.text.toString()).toDouble())<0){
                 showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT_LESS_THEN_TO)
                 return false
             }
@@ -99,6 +100,13 @@ open abstract class PaymentBaseActivity : BaseActivity() {
 
 
         totalPrice = customerOrderDetailsResModel.total_order_amount
+    }
+
+    protected fun convertAmountIntoDoubleFromEditText():Double{
+        return removeDollarSign(ed_enter_amount.text.toString()).toDouble()
+    }
+    fun removeDollarSign(amount:String):String{
+        return amount.removePrefix(Constant.DOLLAR)
     }
 
 }

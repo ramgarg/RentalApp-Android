@@ -26,7 +26,18 @@
                 android:layout_marginBottom="@dimen/_12sdp"
                 >
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+
+                    android:id="@+id/img_booking__pic"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    style="@style/profile_pic"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    />
+           <!-- <ImageView
                     android:id="@+id/img_booking__pic"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"
@@ -34,7 +45,7 @@
                     android:src="@mipmap/profile_pic"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    />
+                    />-->
 
             <TextView
                     android:id="@+id/tv_booking__name"
@@ -162,6 +173,21 @@
                     app:layout_constraintStart_toEndOf="@id/img_customer_calnder"
                     app:layout_constraintTop_toBottomOf="@id/tv_order_date"
 
+                    />
+            <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/_30sdp"
+                    style="@style/AgentOrderStatusTop"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:paddingBottom="@dimen/_3sdp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_10sdp"
+                    android:background="@drawable/button_gradient"
+                    android:visibility="visible"
                     />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
