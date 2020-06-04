@@ -61,15 +61,16 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         val customerDetail = orderRes.customer_detail
         val agentDetail = orderRes.agent_detail
         if (orderRes.order_status == Constant.COMPLETED) {
-            order_rate_review.visibility=View.VISIBLE
+            //order_rate_review.visibility=View.VISIBLE
             payment_view_history.visibility=View.INVISIBLE
 
             if (agentDetail != null) {
                 merchant_user1_view.visibility = View.VISIBLE
                 tv_user_name.text = agentDetail.full_name
-                tv_user_tag.text = agentDetail.mobile_number
-                phone_view.visibility = View.VISIBLE
-                phone_view.setOnClickListener {
+                tv_user_tag.text = Constant.AGENT
+                phone_view.visibility = View.GONE
+                user_rating.visibility= View.VISIBLE
+                user_rating.setOnClickListener {
                     Common.phoneCallWithNumber(agentDetail.mobile_number, this)
                 }
 
@@ -81,19 +82,20 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
                 merchant_user2_view.visibility= View.VISIBLE
                 tv_users_name.text=customerDetail.full_name
-                tv_users_tag.text=customerDetail.mobile_number
-                phone_view.visibility=View.INVISIBLE
+                tv_users_tag.text=Constant.CUSTOMER
+                phone_view.visibility=View.GONE
+                user_rating.visibility=View.VISIBLE
             } else {
                 merchant_user2_view.visibility = View.INVISIBLE
             }
         } else if (orderRes.order_status != Constant.COMPLETED) {
             order_rate_review.visibility=View.INVISIBLE
             pending_amount.visibility = View.VISIBLE
-            pending_amount.text = Constant.PENDING_AMOUNT + "- " + orderRes.pending_order_amount
+            pending_amount.text = Constant.PENDING_AMOUNT + orderRes.pending_order_amount
             if (agentDetail != null) {
                 merchant_user1_view.visibility = View.VISIBLE
                 tv_user_name.text = agentDetail.full_name
-                tv_user_tag.text = agentDetail.mobile_number
+                tv_user_tag.text = Constant.AGENT
                 phone_view.visibility = View.VISIBLE
                 phone_view.setOnClickListener {
                     Common.phoneCallWithNumber(agentDetail.mobile_number, this)}
@@ -106,7 +108,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
                 merchant_user2_view.visibility = View.VISIBLE
                 tv_users_name.text=customerDetail.full_name
-                tv_users_tag.text=customerDetail.mobile_number
+                tv_users_tag.text=Constant.CUSTOMER
                 phone_view.visibility=View.INVISIBLE
             } else {
                 merchant_user2_view.visibility = View.INVISIBLE

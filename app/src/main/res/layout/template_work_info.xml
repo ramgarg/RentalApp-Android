@@ -212,6 +212,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:textSize="@dimen/_15sdp"
             android:id="@+id/tv_work_location"
+            android:paddingBottom="@dimen/_20sdp"
             android:fontFamily="@font/bree_serif"
             android:text="@string/work_location"
             android:layout_height="wrap_content"/>

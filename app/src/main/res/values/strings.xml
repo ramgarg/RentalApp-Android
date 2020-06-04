@@ -124,7 +124,7 @@
     <string name="welcome">Welcome</string>
     <string name="register_to_continue">Register to continue as</string>
     <string name="email_phonenumber">Email/Phone Number</string>
-    <string name="booking_n_price">Booking\nPrice</string>
+    <string name="booking_n_price">Total\nPrice</string>
     <string name="downtown_dubai">Downtown, Dubai,United Arab Emirates</string>
     <string name="address_line1">Address Line1</string>
     <string name="save_as">Save As</string>
@@ -274,6 +274,7 @@
     <!--Google gmail login production env-->
     <string name="G_client">1093222661773-ea0su3f12mls27rbt195qcok1b8n4ne8.apps.googleusercontent.com</string>
     <string name="G_secret">0HD7pDHrzHBMcbGX3fO3yl16</string>
+    <string name="rate">Rate</string>
 
     <string-array name="SelectType">
     <item>Select Type</item>

@@ -73,7 +73,7 @@ open abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
 
         holder.tvOrderProductName?.text=listOrderItems.get(position).product_detail?.product_name
         holder.tvBookingPrice?.text= Constant.DOLLAR+listOrderItems.get(position).product_detail?.starting_price
-        holder.tvOrderQuantity?.text=listOrderItems.get(position).product_detail?.product_name+"-"+listOrderItems.get(position).product_detail?.quantity
+        holder.tvOrderQuantity?.text=Constant.QUANTITY+listOrderItems.get(position).product_detail?.quantity
 
         holder.tvOrderId?.text= Constant.ORDER_ID+listOrderItems.get(position).order_id
 
