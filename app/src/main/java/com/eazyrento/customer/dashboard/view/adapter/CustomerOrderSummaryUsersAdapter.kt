@@ -44,7 +44,7 @@ class CustomerOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDe
 
             holder?.tv_user_name.text = order_listing_obj.full_name
             holder?.tv_user_type.text = Constant.MERCHANT
-            holder?.img_user_call.visibility=View.INVISIBLE
+            holder?.img_user_call.visibility=View.GONE
             (context as CustomerOrderSummaryActivity).sendMerchantID(order_listing_obj.merchant_id)
             //holder?.img_user_pic.setImageResource() = order_listing_obj
 

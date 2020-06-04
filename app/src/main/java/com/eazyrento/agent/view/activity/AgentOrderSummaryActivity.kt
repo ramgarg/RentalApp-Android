@@ -97,14 +97,15 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         val merchantDetail= orderRes.merchant_detail
         val customerDetail = orderRes.customer_detail
         if (orderRes.order_status == Constant.COMPLETED) {
-            agent_update_order_btn.visibility=View.INVISIBLE
-            agent_asign_merchant_btn.visibility=View.INVISIBLE
+            agent_update_order_btn.visibility=View.GONE
+            agent_asign_merchant_btn.visibility=View.GONE
 
             if (customerDetail != null) {
                 agent_customer_view.visibility = View.VISIBLE
                 tv_users_name.text = customerDetail.full_name
-                tv_users_tag.text = customerDetail.mobile_number
-                phone_view.visibility=View.VISIBLE
+                tv_users_tag.text = Constant.CUSTOMER
+                phone_view.visibility=View.GONE
+                user_rating.visibility=View.VISIBLE
                 phone_view.setOnClickListener {
                     Common.phoneCallWithNumber(customerDetail.mobile_number, this)
                 }
@@ -112,7 +113,8 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
             }
             if (merchantDetail != null) {
                 rec_user_order_summary.visibility = View.VISIBLE
-                phone_view.visibility = View.VISIBLE
+                phone_view.visibility = View.GONE
+                user_rating.visibility=View.VISIBLE
                 setUsersAdapter(orderRes)
             } else {
                 rec_user_order_summary.visibility = View.INVISIBLE
@@ -120,11 +122,11 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         }
         else if(orderRes.order_status!= Constant.COMPLETED) {
             pending_amount.visibility = View.VISIBLE
-            pending_amount.text = Constant.PENDING_AMOUNT + "- " + orderRes.pending_order_amount
+            pending_amount.text = Constant.PENDING_AMOUNT + orderRes.pending_order_amount
             if (customerDetail != null) {
                 agent_customer_view.visibility = View.VISIBLE
                 tv_users_name.text = customerDetail.full_name
-                tv_users_tag.text = customerDetail.mobile_number
+                tv_users_tag.text = Constant.CUSTOMER
                 phone_view.visibility = View.VISIBLE
                 phone_view.setOnClickListener {
                     Common.phoneCallWithNumber(customerDetail.mobile_number, this)

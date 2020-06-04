@@ -11,10 +11,12 @@ import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
 import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.merchant.view.activity.RateAndReviewActivity
+import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.order_summary_template.tv_end_date_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_end_time_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_st_date_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_st_time_sel
+import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_work_info.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -63,7 +65,7 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
         tv_order_product_name.text=orderRes.product_detail.product_name
         tv_booking_price.text= Constant.DOLLAR+orderRes.product_detail.starting_price
         tv_order_id.text= Constant.ORDER_ID+orderRes.order_id
-        order_product_quantity.text=orderRes.product_detail.product_name+"-"+orderRes.product_detail.quantity
+        order_product_quantity.text=Constant.QUANTITY+orderRes.product_detail.quantity
         tv_st_date_sel.text=orderRes.product_detail.start_date
         tv_st_time_sel.text=orderRes.product_detail.start_time
         tv_end_date_sel.text=orderRes.product_detail.end_date
@@ -82,11 +84,14 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
         when(orderRes.order_status){
             Constant.COMPLETED ->{
-                customer_payment_button.visibility=View.INVISIBLE
+                customer_payment_button.visibility=View.GONE
                 payment_view_history.visibility=View.VISIBLE
-                order_rate_review.visibility=View.VISIBLE
+                user_rating.visibility=View.VISIBLE
+                phone_view.visibility=View.GONE
+                //order_rate_review.visibility=View.VISIBLE
             }
             Constant.PENDING ->{
+                pending_amount.visibility=View.VISIBLE
             }
         }
 

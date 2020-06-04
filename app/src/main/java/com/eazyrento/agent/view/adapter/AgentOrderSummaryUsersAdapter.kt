@@ -43,7 +43,7 @@ class AgentOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDetai
         if (order_listing_obj!=null) {
 
             holder?.tv_user_name.text = order_listing_obj.full_name
-            holder?.tv_user_type.text = order_listing_obj.mobile_number
+            holder?.tv_user_type.text = Constant.MERCHANT
             holder?.img_user_call.visibility=View.VISIBLE
             (context as AgentOrderSummaryActivity).sendMerchantID(order_listing_obj.merchant_id)
             holder?.img_user_call.setOnClickListener {
