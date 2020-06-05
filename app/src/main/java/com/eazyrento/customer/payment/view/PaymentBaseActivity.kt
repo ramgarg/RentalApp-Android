@@ -1,6 +1,8 @@
 package com.eazyrento.customer.payment.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import com.eazyrento.Constant
@@ -32,6 +34,23 @@ open abstract class PaymentBaseActivity : BaseActivity() {
         baseMakePaymentModel = getReqPaymentModel()
 
         callAPIOrderList(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1))
+
+        ed_enter_amount.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (!s.toString().contains(Constant.DOLLAR) && count==0){
+                    ed_enter_amount.setText(s.toString().plus(Constant.DOLLAR))
+                    ed_enter_amount.setSelection(1)
+                }
+            }
+
+        })
 
     }
 
@@ -108,5 +127,8 @@ open abstract class PaymentBaseActivity : BaseActivity() {
     fun removeDollarSign(amount:String):String{
         return amount.removePrefix(Constant.DOLLAR)
     }
+
+
+
 
 }
