@@ -71,7 +71,7 @@ open abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
 
     override fun setDataHolderBinder(holder: OrderListBaseAdapter.ViewHolder, position: Int) {
 
-        holder.tvOrderProductName?.text=listOrderItems.get(position).product_detail?.product_name
+        holder.tvOrderProductName?.text=listOrderItems.get(position).product_detail?.product_name?.capitalize()
         holder.tvBookingPrice?.text= Constant.DOLLAR+listOrderItems.get(position).product_detail?.starting_price
         holder.tvOrderQuantity?.text=Constant.QUANTITY+listOrderItems.get(position).product_detail?.quantity
 

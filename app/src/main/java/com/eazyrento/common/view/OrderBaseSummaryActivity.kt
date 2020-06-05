@@ -62,7 +62,7 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
-        tv_order_product_name.text=orderRes.product_detail.product_name
+        tv_order_product_name.text=orderRes.product_detail.product_name.capitalize()
         tv_booking_price.text= Constant.DOLLAR+orderRes.product_detail.starting_price
         tv_order_id.text= Constant.ORDER_ID+orderRes.order_id
         order_product_quantity.text=Constant.QUANTITY+orderRes.product_detail.quantity

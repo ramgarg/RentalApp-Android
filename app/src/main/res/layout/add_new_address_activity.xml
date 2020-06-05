@@ -270,12 +270,23 @@
         </LinearLayout>
 
     </RelativeLayout>
+        <!--defualt Adreess-->
+        <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/chk_box_defalut_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+
+                android:text="@string/default_address"
+                style="@style/AgentSmallTextCard"
+                />
     </LinearLayout>
         </RelativeLayout>
     </ScrollView>
     <include layout="@layout/toolbar"
             android:visibility="gone"
     />
+
     <Button android:layout_width="match_parent"
             android:text="@string/save"
             android:id="@+id/btn_save"

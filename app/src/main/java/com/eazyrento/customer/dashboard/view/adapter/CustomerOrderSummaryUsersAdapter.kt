@@ -10,6 +10,7 @@ import com.eazyrento.R
 import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_user_order_summery.view.*
 import kotlinx.android.synthetic.main.card_view_orders.view.*
 import kotlinx.android.synthetic.main.phone_view.view.*
@@ -26,7 +27,7 @@ class CustomerOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDe
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val card_view =
-            CustomerOrderSummaryUsersAdapter.CardViewHolder(
+            CardViewHolder(
                 LayoutInflater.from(context).inflate(R.layout.adapter_user_order_summery, parent, false)
             )
         return card_view
@@ -40,18 +41,20 @@ class CustomerOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDe
         val order_listing_obj =  orderListing.get(position)
 
         //user details
-        if (holder?.tv_user_name!=null) {
+       // if (holder.tv_user_name!=null) {
 
-            holder?.tv_user_name.text = order_listing_obj.full_name
-            holder?.tv_user_type.text = Constant.MERCHANT
-            holder?.img_user_call.visibility=View.GONE
+            holder.tv_user_name.text = order_listing_obj.full_name
+            holder.tv_user_type.text = Constant.MERCHANT
+            holder.img_user_call.visibility=View.GONE
+           // Picasso.with(context).load(order_listing_obj.)
+           // holder.img_user_pic
             (context as CustomerOrderSummaryActivity).sendMerchantID(order_listing_obj.merchant_id)
             //holder?.img_user_pic.setImageResource() = order_listing_obj
 
-        }else{
-            holder?.tv_user_name!!.text= Constant.MERCHANT
-            holder?.tv_user_type!!.text=Constant.MERCHANT
-        }
+        /*}else{
+            holder.tv_user_name.text= Constant.MERCHANT
+            holder.tv_user_type.text=Constant.MERCHANT
+        }*/
 
 
 

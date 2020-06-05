@@ -104,7 +104,7 @@
     <string name="authentication_required">Authentication Required</string>
     <string name="orderid">OrderId - 356478484844848</string>
     <string name="total_price">Total \n Price</string>
-    <string name="pending_amount">Pending Amount-</string>
+    <string name="pending_amount">Pending Amount - </string>
     <string name="enter_amount">Enter Amount</string>
     <string name="enter_promo_code">Enter Promo Code</string>
     <string name="apply">Apply</string>
@@ -192,6 +192,8 @@
     <string name="remove">Remove</string>
     <string name="payment_pending">Payment Pending</string>
     <string name="_02_feb_2020">02 Feb 2020</string>
+    <string name="default_address">Default Address</string>
+
     <string name="full_power">Full Power</string>
     <string name="view_details">View Details</string>
     <string name="ok">Ok</string>

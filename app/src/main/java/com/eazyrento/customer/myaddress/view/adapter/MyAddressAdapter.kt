@@ -47,6 +47,11 @@ class MyAddressAdapter(val items:List<AddressInfo>, val context: Activity):
         holder.tvAddressType?.text=items.get(position).address_type
         holder.tvCountry?.text=items.get(position).country
 
+        if (items.get(position).is_default)
+             holder.imgSelected?.visibility = View.VISIBLE
+        else
+            holder.imgSelected?.visibility = View.INVISIBLE
+
         holder.itemView.setOnClickListener {
             /*if (holder.imgSelected?.visibility!=View.INVISIBLE) {
                 holder.imgSelected?.visibility = View.INVISIBLE
