@@ -7,13 +7,18 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:orientation="horizontal">
 
-    <ImageView
-            android:layout_width="@dimen/_40sdp"
+    <de.hdodenhof.circleimageview.CircleImageView
+
             android:id="@+id/img_user_pic"
+
             android:layout_weight="10"
-            android:src="@mipmap/profile_pic"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+
             android:layout_margin="@dimen/_4sdp"
-            android:layout_height="@dimen/_40sdp"/>
+            style="@style/profile_pic"
+
+            />
 
 
     <LinearLayout

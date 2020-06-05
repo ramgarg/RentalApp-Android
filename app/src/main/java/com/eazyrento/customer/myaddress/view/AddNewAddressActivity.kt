@@ -131,6 +131,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         addressInfo?.let {
         tv_current_address.text = it.address_line
         ed_address.setText(it.address_line)
+        chk_box_defalut_address.isChecked =it.is_default
         }
     }
     fun enableUpdateDeleteFunctionalty(){
@@ -330,13 +331,20 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         if (checkValidation())
             return
 
+        getAddressFromView()
+
         if (intent.getIntExtra(Constant.KEY_FROM_PROFILE,0)==Constant.FIRST_TIME_USER_LOGIN){
             sendIntentToCallerAct(Constant.KEY_FROM_PROFILE,Constant.REQUEST_CODE_PROFILE_UPDATE,false)
             return
         }
 
-        addressInfo?.address_line = ed_address.text.toString()
+
         callSaveAddressAPI()
+    }
+    private fun getAddressFromView(){
+
+        addressInfo.address_line = ed_address.text.toString()
+        addressInfo.is_default =chk_box_defalut_address.isChecked
     }
 
     fun onDeleteClick(){
@@ -357,7 +365,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
         if (checkValidation())
             return
 
-        addressInfo?.address_line = ed_address.text.toString()
+        getAddressFromView()
 
         callAPI()?.let {
             it.observeApiResult(
@@ -369,20 +377,6 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     }
 
-
-    /*private fun addressObjectBuilder() {
-
-        if (btn_home_active.visibility == View.VISIBLE) {
-            addressModelItem.address_type = Constant.Address_Home
-        } else if (btn_work_active.visibility == View.VISIBLE) {
-            addressModelItem.address_type = Constant.Address_Work
-        } else if (btn_other_active.visibility == View.VISIBLE) {
-            addressModelItem.address_type = Constant.Address_Other
-        }
-
-
-
-    }*/
 
     fun onHomeTypeClick(view: View?){
             addressInfo?.address_type = Constant.Address_Home

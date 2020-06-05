@@ -317,7 +317,12 @@ class UpdateProfileActivity : BaseActivity() {
                 val addressInfo = data!!.getParcelableExtra<AddressInfo>(Constant.KEY_ADDRESS)
 
                 addressInfo?.let {inner->
+
                     it.address_info =inner
+
+                    if (intent.getIntExtra(Constant.KEY_FINISH_FIRST_TIME_USER,0)==Constant.VALUE_FINISH_FIRST_TIME_USER) {
+                        it.address_info.is_default = true
+                    }
                 }
 
                 setAddress()

@@ -64,7 +64,7 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
         orderStatus(orderRes)
     }
 
-     fun orderStatus(orderRes: CustomerOrderDetailsResModel) {
+     private fun orderStatus(orderRes: CustomerOrderDetailsResModel) {
 
          val merchantdetail=orderRes.merchant_detail
          val agentdetail=orderRes.agent_detail
@@ -78,8 +78,8 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
                 phone_view.visibility=View.GONE
                 user_rating.visibility=View.VISIBLE
                 user_rating.setOnClickListener {
-                    Common.phoneCallWithNumber(agentdetail.mobile_number, this) }
-                //img_users_call.contentDescription=orderRes.agent_detail.mobile_number
+                    Common.phoneCallWithNumber(agentdetail.mobile_number, this)
+                }
 
             }
             if(merchantdetail != null) {

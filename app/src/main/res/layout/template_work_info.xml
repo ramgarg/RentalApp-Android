@@ -19,21 +19,23 @@
                 android:checked="true"
                 android:background="@drawable/custom_checkbox"
                 android:button="@null"
+                android:clickable="false"
                 android:layout_height="@dimen/_20sdp"/>
 
         <TextView
                 android:text="@string/with_driver"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_height="@dimen/_25sdp"
-                android:textSize="@dimen/_16sdp"/>
+                style="@style/pro_details_heading"
+                />
 
     </LinearLayout>
     <TextView
             style="@style/DocumentTextView"
-            android:text="@string/work_start_and">
+            android:text="@string/work_start_and"
+            android:layout_marginLeft="@dimen/_1sdp"
+            >
 
     </TextView>
     <LinearLayout android:layout_width="match_parent"
@@ -201,12 +203,11 @@
     </LinearLayout>
     <TextView android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_10sdp"
-            android:textSize="@dimen/_15sdp"
             android:id="@+id/tv_work_title"
-            android:fontFamily="@font/bree_serif"
-            android:textColor="@color/black"
             android:text="@string/work_location"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            style="@style/name_heading"
+            />
 
     <TextView android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_10sdp"
