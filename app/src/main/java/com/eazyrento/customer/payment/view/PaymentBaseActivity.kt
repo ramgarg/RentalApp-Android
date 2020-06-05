@@ -35,7 +35,7 @@ open abstract class PaymentBaseActivity : BaseActivity() {
 
         callAPIOrderList(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1))
 
-        ed_enter_amount.addTextChangedListener(object : TextWatcher{
+        /*ed_enter_amount.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -50,7 +50,7 @@ open abstract class PaymentBaseActivity : BaseActivity() {
                 }
             }
 
-        })
+        })*/
 
     }
 
@@ -126,7 +126,8 @@ open abstract class PaymentBaseActivity : BaseActivity() {
         return removeDollarSign(ed_enter_amount.text.toString()).toDouble()
     }
     fun removeDollarSign(amount:String):String{
-        return amount.removePrefix(Constant.DOLLAR)
+        return amount
+        //return amount.removePrefix(Constant.DOLLAR)
     }
 
 
