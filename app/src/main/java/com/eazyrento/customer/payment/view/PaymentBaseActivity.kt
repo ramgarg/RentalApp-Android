@@ -110,12 +110,13 @@ open abstract class PaymentBaseActivity : BaseActivity() {
     protected fun setDataOnUI(customerOrderDetailsResModel: CustomerOrderDetailsResModel) {
 
          customerOrderDetailsResModel.order_id.let {
-             tv_order_id.text =it
+             tv_order_id.text =Constant.ORDER_ID+it
              baseMakePaymentModel.order_id =it
          }
 
-        tv_pending_amount.text = resources.getString(R.string.pending_amount)+customerOrderDetailsResModel.pending_order_amount
-        tv_total_price.text =resources.getString(R.string.booking_price)+customerOrderDetailsResModel.total_order_amount
+        tv_pending_amount.text = Constant.DOLLAR+customerOrderDetailsResModel.pending_order_amount
+        tv_total_price.text =Constant.DOLLAR+customerOrderDetailsResModel.total_order_amount
+     //   tv_pending_approval.text=Constant.DOLLAR+customerOrderDetailsResModel
 
 
         totalPrice = customerOrderDetailsResModel.total_order_amount

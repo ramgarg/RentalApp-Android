@@ -34,6 +34,9 @@ class AgentPaymentActivity : PaymentBaseActivity() {
         topBarWithBackIconAndTitle(getString(R.string.requestpayment))
 
         payment_method_choose.visibility = View.GONE
+        lyt_approval.visibility=View.GONE
+        lyt_customer_amount.visibility=View.GONE
+        lyt_agent_amount.visibility=View.VISIBLE
 
         tv_choose_mtd.visibility = View.GONE
 

@@ -4,130 +4,225 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:background="@color/light_grey"
+        android:background="@color/white"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:layout_height="match_parent">
 
     <include layout="@layout/toolbar"
              android:id="@+id/include"/>
-    <TextView
-            android:id="@+id/tv_order_id"
-            android:layout_below="@+id/include"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:text=""
-            android:textSize="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:textColor="#000"
-            android:fontFamily="@font/bree_serif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-    />
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-              android:text="@string/total_price"
-              android:textColor="@color/dark_grey"
-              android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-              android:id="@+id/total_tile"
-              android:layout_below="@+id/tv_order_id"
-              android:textSize="@dimen/_10sdp"
-              android:fontFamily="@font/bree_serif"
-            android:gravity="center"
-
-
-            />
-
-    <TextView android:layout_width="wrap_content"
-              android:id="@+id/tv_total_price"
-              android:textColor="#000"
-              android:fontFamily="@font/bree_serif"
-              android:textSize="@dimen/_20sdp"
-              android:text="@string/booking_price"
-              android:layout_marginStart="@dimen/_5sdp"
-              android:layout_toEndOf="@+id/total_tile"
-              android:layout_below="@+id/tv_order_id"
-              android:layout_height="wrap_content"/>
-
-
 
     <ScrollView
             android:layout_above="@+id/button_submit"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_below="@+id/tv_total_price"
+            android:layout_below="@+id/include"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-
             <TextView
-                    android:id="@+id/tv_pending_amount"
-
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text=""
+                    android:id="@+id/tv_order_id"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:text="@string/orderid"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/bree_serif"
-                    android:textColor="#000"
-                    android:textSize="@dimen/_15sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-            />
-            <TextView android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                      android:id="@+id/view_1"
-                  android:layerType="software"
-                  android:background="@drawable/dotted_line_horizon"
-                      android:layout_marginTop="@dimen/_20sdp"
-                      android:layout_marginLeft="@dimen/_20sdp"
-                      android:layout_marginRight="@dimen/_20sdp"
-                      android:layout_below="@+id/tv_pending_amount"
-                      />
+                    />
 
-            <ImageView
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="100"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:id="@+id/lyt_total"
+                    android:layout_below="@+id/tv_order_id"
+                    android:orientation="horizontal">
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="50"
+                    android:text="@string/totalPrice"
+                    style="@style/PaymentTextView"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/total_title"
+                    />
+
+            <TextView android:layout_width="0dp"
+                    android:layout_weight="50"
+                    android:id="@+id/tv_total_price"
+                    android:text="@string/booking_price"
+                    style="@style/PaymentTextView"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:weightSum="100"
+                    android:id="@+id/lyt_pending"
+                    android:layout_below="@+id/lyt_total"
+                    android:orientation="horizontal">
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="50"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pendingAmount"
+                        android:id="@+id/pending_title"
+                        style="@style/PaymentTextView" />
+
+                <TextView android:layout_width="0dp"
+                        android:layout_weight="50"
+                        android:id="@+id/tv_pending_amount"
+                        style="@style/PaymentTextView"
+                        android:text="@string/booking_price"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:weightSum="100"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:id="@+id/lyt_approval"
+                    android:layout_below="@+id/lyt_pending"
+                    android:orientation="horizontal">
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="50"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pending_approval"
+                        android:id="@+id/approval_title"
+                        style="@style/PaymentTextView"
+                        />
+
+                <TextView android:layout_width="0dp"
+                        android:layout_weight="50"
+                        android:id="@+id/tv_pending_approval"
+                        android:text="$0.00"
+                        android:layout_height="wrap_content"
+                        style="@style/PaymentTextView"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/lyt_line"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_below="@+id/view_1"
-                    android:visibility="gone"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    app:srcCompat="@mipmap/amount"
-                    android:id="@+id/imageView"
-            />
+                    android:layout_below="@+id/lyt_approval"
+                    android:background="@color/colorGrey" />
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lyt_line"
+                    android:id="@+id/layout_main">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lyt_customer_amount"
+                    android:visibility="visible"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:orientation="horizontal">
+                <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/payment">
+                </ImageView>
+
+                <TextView android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:textSize="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:text="@string/booking_price"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_height="wrap_content"/>
+
             <EditText
                     android:drawablePadding="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_below="@+id/view_1"
-                    android:layout_toEndOf="@+id/imageView"
                     android:layout_width="match_parent"
-                    android:background="@null"
                     android:inputType="number"
+                    android:layout_gravity="center"
                     android:hint="@string/enter_amount"
-                    android:text="@string/booking_price"
-                    android:drawableStart="@mipmap/amount_en"
+                    android:text=""
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_height="wrap_content"
                     android:id="@+id/ed_enter_amount"
             />
+            </LinearLayout>
 
-            <TextView android:layout_width="match_parent"
-                      android:background="#a9a9a9"
-                      android:id="@+id/view_2"
-                      android:layout_marginTop="@dimen/_5sdp"
-                      android:layout_marginLeft="@dimen/_20sdp"
-                      android:layout_marginRight="@dimen/_20sdp"
-                      android:layout_below="@+id/ed_enter_amount"
-                      android:layout_height="1dp"/>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:id="@+id/lyt_agent_amount"
+                    android:layout_marginStart="@dimen/_15sdp">
+                <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:id="@+id/img_amount"
+                        android:layout_height="@dimen/_25sdp"
+                        android:src="@mipmap/amount">
+
+                </ImageView>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/amount_dollar"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_toEndOf="@id/img_amount"
+                        style="@style/PaymentTextView">
+
+                </TextView>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dollar"
+                        android:id="@+id/tv_dollar"
+                        android:fontFamily="@font/bree_serif"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_below="@+id/img_amount"
+                        android:textSize="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp">
+
+                </TextView>
+                <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:layout_toEndOf="@+id/tv_dollar"
+                        android:fontFamily="@font/bree_serif"
+                        android:hint="@string/enter_amount"
+                        android:textSize="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_below="@+id/img_amount">
+
+                </EditText>
+
+            </RelativeLayout>
+            </RelativeLayout>
+
             <EditText
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_below="@+id/view_2"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_below="@+id/layout_main"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_40sdp"
                     android:inputType="textPersonName"
@@ -141,13 +236,13 @@
             <Button android:layout_width="match_parent"
                     android:background="@drawable/apply"
                     android:layout_marginEnd="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_below="@id/layout_main"
                     android:text="@string/apply"
                     android:textAllCaps="false"
                     android:textColor="#fff"
                     android:fontFamily="@font/bree_serif"
                     android:textSize="@dimen/_15sdp"
-                    android:layout_below="@+id/view_2"
                     android:layout_toEndOf="@+id/ed_apply_copon"
                     android:layout_height="@dimen/_40sdp"/>
 
@@ -155,7 +250,8 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:text="@string/choose_payment_method"
                     android:layout_below="@+id/ed_apply_copon"
-                    android:textSize="@dimen/_15sdp"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold"
                     android:textColor="#000"
                     android:fontFamily="@font/bree_serif"
                     android:layout_width="wrap_content"
@@ -167,6 +263,7 @@
             <LinearLayout
                     android:id="@+id/payment_method_choose"
                     android:layout_marginBottom="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_20sdp"
                     android:weightSum="1"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:gravity="center"
@@ -177,12 +274,12 @@
 
 
                 <RelativeLayout
-                        android:background="@drawable/button_open_order"
+                        android:background="@drawable/calender_bg"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:layout_weight=".5"
                         android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                        android:layout_height="wrap_content">
 
 
                 <ImageView
@@ -215,7 +312,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                        android:background="@drawable/button_open_order"
+                        android:background="@drawable/calender_bg"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_weight=".5"

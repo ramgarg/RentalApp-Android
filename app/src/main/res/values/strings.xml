@@ -104,7 +104,9 @@
     <string name="authentication_required">Authentication Required</string>
     <string name="orderid">OrderId - 356478484844848</string>
     <string name="total_price">Total \n Price</string>
+    <string name="totalPrice">Total Price</string>
     <string name="pending_amount">Pending Amount-</string>
+    <string name="pendingAmount">Pending Amount</string>
     <string name="enter_amount">Enter Amount</string>
     <string name="enter_promo_code">Enter Promo Code</string>
     <string name="apply">Apply</string>
@@ -275,6 +277,9 @@
     <string name="G_client">1093222661773-ea0su3f12mls27rbt195qcok1b8n4ne8.apps.googleusercontent.com</string>
     <string name="G_secret">0HD7pDHrzHBMcbGX3fO3yl16</string>
     <string name="rate">Rate</string>
+    <string name="pending_approval">Pending Approval</string>
+    <string name="amount_dollar">Amount($)</string>
+    <string name="dollar">$</string>
 
     <string-array name="SelectType">
     <item>Select Type</item>
