@@ -6,7 +6,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.payment.model.modelclass.BaseMakePaymentModel
 import com.eazyrento.customer.payment.model.modelclass.CustomerMakePaymentReqModel
 import com.eazyrento.customer.payment.view.PaymentBaseActivity
@@ -112,7 +112,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
             MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
             return
         }
-        val obj = data as CustomerOrderDetailsResModel
+        val obj = data as OrderDetailsResModel
         super.setDataOnUI(obj)
         customerMakePaymentReqModel.status = obj.order_status
     }

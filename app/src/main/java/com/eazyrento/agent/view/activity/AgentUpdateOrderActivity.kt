@@ -16,7 +16,7 @@ import com.eazyrento.agent.viewmodel.AgentUpdateOrderViewModel
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.view.OrderBaseSummaryActivity
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.google.gson.JsonElement
@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_update_quantity.view.*
 
 class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
-    private var mOrdersDetailsReqResModel:CustomerOrderDetailsResModel?=null
+    private var mOrdersDetailsReqResModel:OrderDetailsResModel?=null
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -117,7 +117,7 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
     }
 }
 
-class MerchantListAdapter(val activity:BaseActivity,val list:List<MerchantDetail>,val objMerc:CustomerOrderDetailsResModel):RecyclerView.Adapter<MerchantListAdapter.CardViewHolder>(){
+class MerchantListAdapter(val activity:BaseActivity,val list:List<MerchantDetail>,val objMerc:OrderDetailsResModel):RecyclerView.Adapter<MerchantListAdapter.CardViewHolder>(){
 
     class CardViewHolder(view: View): RecyclerView.ViewHolder(view){
         val tv_name_user = view.tv_name_user

@@ -5,11 +5,10 @@ import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.payment.model.modelclass.AgentMakePaymentReqModel
 import com.eazyrento.customer.payment.model.modelclass.BaseMakePaymentModel
 import com.eazyrento.customer.payment.view.PaymentBaseActivity
-import com.eazyrento.customer.payment.viewmodel.MakePaymentViewModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_payment.*
@@ -71,7 +70,7 @@ class AgentPaymentActivity : PaymentBaseActivity() {
             MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
             return
         }
-        val obj = data as CustomerOrderDetailsResModel
+        val obj = data as OrderDetailsResModel
 
         super.setDataOnUI(obj)
     }

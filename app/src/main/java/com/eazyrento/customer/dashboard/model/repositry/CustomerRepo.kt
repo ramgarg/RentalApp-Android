@@ -1,7 +1,6 @@
 package com.eazyrento.customer.dashboard.model.repositry
 
 import androidx.lifecycle.LiveData
-import com.eazyrento.Constant
 import com.eazyrento.EazyRantoApplication
 import com.eazyrento.Session
 import com.eazyrento.agent.model.repositry.api.AgentAPI
@@ -12,8 +11,6 @@ import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.customer.dashboard.model.modelclass.*
 import com.eazyrento.customer.dashboard.model.repositry.api.CustomerAPI
-import com.eazyrento.login.model.modelclass.UserInfo
-import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.merchant.model.repository.api.MerchantAPI
 import com.eazyrento.webservice.ServiceGenrator
 import retrofit2.Call
@@ -62,11 +59,11 @@ class CustomerOrderBookingOrderListRepo :
 }
 
 class CustomerOrderDetailsRepo :
-    GenericRequestHandler<CustomerOrderDetailsResModel>(){
+    GenericRequestHandler<OrderDetailsResModel>(){
 
-    fun getCustomerOrderDetail(value: Int): LiveData<DataWrapper<CustomerOrderDetailsResModel>> {
+    fun getCustomerOrderDetail(value: Int): LiveData<DataWrapper<OrderDetailsResModel>> {
 
-        lateinit var call: Call<CustomerOrderDetailsResModel>
+        lateinit var call: Call<OrderDetailsResModel>
 
         when{
             Session.getInstance(EazyRantoApplication.context)?.getUserRole().equals(UserInfoAPP.CUSTOMER)-> {

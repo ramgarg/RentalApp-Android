@@ -4,8 +4,6 @@ import com.google.gson.JsonElement
 import com.eazyrento.common.model.modelclass.BookingListResModel
 import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.customer.dashboard.model.modelclass.*
-import com.eazyrento.login.model.modelclass.LoginRequest
-import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.webservice.PathURL
 import retrofit2.Call
 import retrofit2.http.*
@@ -46,7 +44,7 @@ interface CustomerAPI {
       *customer orders details
       * */
     @GET(PathURL.CustomnerOrderDetail)
-    fun getCustomerOrderDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
+    fun getCustomerOrderDetail(@Path("id") id: Int): Call<OrderDetailsResModel>
 
     /*Customer booking list*/
 

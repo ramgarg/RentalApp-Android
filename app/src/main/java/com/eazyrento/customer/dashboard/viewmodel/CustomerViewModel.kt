@@ -7,8 +7,6 @@ import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.customer.dashboard.model.modelclass.*
 import com.eazyrento.customer.dashboard.model.repositry.*
-import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
-import com.eazyrento.merchant.model.repository.MerchantFeedbackRepo
 
 class CustomerCreateBookingViewModel : ViewModel() {
 
@@ -28,7 +26,7 @@ class CustomerOrderListViewModel : ViewModel() {
 
 class CustomerOrderDetailsViewModel : ViewModel() {
 
-    fun getOrderDetails(id: Int): LiveData<DataWrapper<CustomerOrderDetailsResModel>> {
+    fun getOrderDetails(id: Int): LiveData<DataWrapper<OrderDetailsResModel>> {
         return CustomerOrderDetailsRepo()
             .getCustomerOrderDetail(id)
     }

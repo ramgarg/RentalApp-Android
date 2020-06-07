@@ -20,7 +20,7 @@ class RateAndReviewActivity :BaseActivity() {
         topBarWithBackIconAndTitle(resources.getString(R.string.feedback))
          initView()
 
-        feedbackModelItem = intent.getParcelableExtra<FeedbackReqModel>(Constant.INTENT_RATE_REVIEWS)
+        feedbackModelItem = intent.getParcelableExtra(Constant.INTENT_RATE_REVIEWS)
     }
 
     private fun initView() {
@@ -36,6 +36,9 @@ class RateAndReviewActivity :BaseActivity() {
     }
 
     private fun sendFeedback() {
+        when{
+
+        }
         feedbackModelItem.review=ed_rating.text.toString()
         feedbackModelItem.rating=rating_bar.rating
 

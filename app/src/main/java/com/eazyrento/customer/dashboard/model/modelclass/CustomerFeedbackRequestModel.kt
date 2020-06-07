@@ -6,8 +6,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class CustomerFeedbackRequestModel(
     var order_id: String?,
+
     var agent_id: Int?,
     var merchant_id: Int?,
+
     var review: String?,
     var rating: Float?
 

@@ -2,17 +2,14 @@ package com.eazyrento.agent.view.activity
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
 import com.eazyrento.agent.viewmodel.AgentBookingDetailsViewModel
 import com.eazyrento.common.model.modelclass.BookingListItem
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
-import kotlinx.android.synthetic.main.activity_agent_order_summary.*
+import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -60,11 +57,11 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
 
     }
 
-    private fun bookingsDetail(orderRes: CustomerOrderDetailsResModel) {
+    private fun bookingsDetail(orderRes: OrderDetailsResModel) {
 
     }
 
-    private fun setUsersAdapter(customerOderDetailsResponse: CustomerOrderDetailsResModel) {
+    /*private fun setUsersAdapter(customerOderDetailsResponse: OrderDetailsResModel) {
         rec_user_order_summary.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.VERTICAL, false
         )
@@ -78,6 +75,6 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
                 customerOderDetailsResponse.merchant_detail as MutableList<MerchantDetail>,this)
 
         rec_user_order_summary.adapter = recycleAdapterUsersHomeCard
-    }
+    }*/
 
 }

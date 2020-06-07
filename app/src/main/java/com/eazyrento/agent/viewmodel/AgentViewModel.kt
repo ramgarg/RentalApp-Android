@@ -5,17 +5,14 @@ import androidx.lifecycle.ViewModel
 import com.eazyrento.agent.model.modelclass.*
 import com.eazyrento.agent.model.repositry.*
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
-import com.eazyrento.merchant.model.repository.MerchantDeleteProductRepo
-import com.eazyrento.merchant.model.repository.MerchantFeedbackRepo
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 
 import com.google.gson.JsonElement
 
 
 class AgentBookingDetailsViewModel : ViewModel() {
 
-    fun agentBookingDetails(id: Int): LiveData<DataWrapper<CustomerOrderDetailsResModel>> {
+    fun agentBookingDetails(id: Int): LiveData<DataWrapper<OrderDetailsResModel>> {
         return AgentBookingDetailsRepo().agentBookingDetails(id)
 
     }
@@ -31,7 +28,7 @@ class AgentAssignMerchantViewModel : ViewModel() {
 
 class AgentUpdateOrderViewModel : ViewModel() {
 
-    fun updateOrder(id:Int,updateOrderModel: CustomerOrderDetailsResModel): LiveData<DataWrapper<JsonElement>> {
+    fun updateOrder(id:Int,updateOrderModel: OrderDetailsResModel): LiveData<DataWrapper<JsonElement>> {
         return AgentUpdateOrderRepo().updateOrder(id,updateOrderModel)
 
     }

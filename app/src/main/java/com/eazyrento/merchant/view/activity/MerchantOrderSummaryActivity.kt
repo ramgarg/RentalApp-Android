@@ -4,21 +4,14 @@ import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.common.view.OrderBaseSummaryActivity
-import com.eazyrento.customer.dashboard.model.modelclass.*
-import com.eazyrento.customer.utils.Common
-import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
-import kotlinx.android.synthetic.main.activity_merchant_order_summary.*
-import kotlinx.android.synthetic.main.adapter_user_order_summery.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
+import kotlinx.android.synthetic.main.maintance_layout.*
 import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
-import kotlinx.android.synthetic.main.template_order_summery_top_view.order_rate_review
 
 class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
-
-    val feedbackReqModel = FeedbackReqModel()
 
 //    lateinit var orderSummaryViewModel: OrderSummaryViewModel
 
@@ -29,7 +22,9 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         // order details
         setDataAndCallOrderDetailsAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
-        clickListenerOnViews()
+        customer_payment_button.visibility=View.INVISIBLE
+
+        //clickListenerOnViews()
 
     }
 
@@ -38,25 +33,31 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
     private fun clickListenerOnViews(){
 
-        customer_payment_button.visibility=View.INVISIBLE
+
         //agent_update_order_btn.setOnClickListener { MoveToAnotherComponent.moveToAgentUpdateOrderSummaryActivity(this) }
         //payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
         //tv_pay_now.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
-        order_rate_review.setOnClickListener {
+        /*order_rate_review.setOnClickListener {
             feedbackReqModel.customer_id = orderRes.customer_detail.id
             feedbackReqModel.agent_id = orderRes.agent_detail.id
             feedbackReqModel.order_id=orderRes.order_id
             rateAndReviews(feedbackReqModel)
-        }
+        }*/
     }
 
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
-        orderStatus(orderRes)
+        recyle_merchant_list_maintance.visibility =View.GONE
+
+        setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.customer_detail.let { it.userRole =Constant.CUSTOMER
+            it})
+        setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.agent_detail.let { it.userRole =Constant.AGENT
+            it})
+        //orderStatus(orderRes)
 
     }
-    private fun orderStatus(orderRes: CustomerOrderDetailsResModel) {
+    /*private fun orderStatus(orderRes: OrderDetailsResModel) {
 
         val customerDetail = orderRes.customer_detail
         val agentDetail = orderRes.agent_detail
@@ -66,8 +67,8 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
             if (agentDetail != null) {
                 merchant_user1_view.visibility = View.VISIBLE
-                tv_user_name.text = agentDetail.full_name
-                tv_user_tag.text = Constant.AGENT
+                tv_users_name.text = agentDetail.full_name
+                tv_users_tag.text = Constant.AGENT
                 phone_view.visibility = View.GONE
                 user_rating.visibility= View.VISIBLE
                 user_rating.setOnClickListener {
@@ -94,8 +95,8 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
             pending_amount.text = Constant.PENDING_AMOUNT + orderRes.pending_order_amount
             if (agentDetail != null) {
                 merchant_user1_view.visibility = View.VISIBLE
-                tv_user_name.text = agentDetail.full_name
-                tv_user_tag.text = Constant.AGENT
+                tv_users_name.text = agentDetail.full_name
+                tv_users_tag.text = Constant.AGENT
                 phone_view.visibility = View.VISIBLE
                 phone_view.setOnClickListener {
                     Common.phoneCallWithNumber(agentDetail.mobile_number, this)}
@@ -117,11 +118,11 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         }
 
 
-    }
+    }*/
 
-    fun rateAndReviews(feedbackReqModel: FeedbackReqModel){
+    /*fun rateAndReviews(feedbackReqModel: FeedbackReqModel){
 
         MoveToAnotherComponent.openActivityWithParcelableParam<RateAndReviewActivity, FeedbackReqModel>(this,Constant.INTENT_RATE_REVIEWS,feedbackReqModel)
-    }
+    }*/
 
 }

@@ -120,14 +120,15 @@ class CommonDatePiker(private val context: Context) {
 
     fun getDateInDisplayFormat(year:Int, monthOfYear:Int, dayOfMonth:Int):String{
 
-         val c = Calendar.getInstance()
+        return getDisplayDate(year,monthOfYear,dayOfMonth)
+         /*val c = Calendar.getInstance()
          c.set(year,monthOfYear,dayOfMonth)
 
          val sdf = SimpleDateFormat(DateConstant.DISPLAY_FORMAT)
 
          val date = sdf.format(c.timeInMillis)
 
-        return date
+        return date*/
     }
 
     fun calculateDatesDiffWithString(startDate:String, endDate:String):Long{
@@ -146,9 +147,22 @@ class CommonDatePiker(private val context: Context) {
         }
         return -1
     }
+
 }
+ fun splitDateServerFormat(date:String):List<String>{
+    return date.split("-")
+}
+fun getDisplayDate(year:Int, monthOfYear:Int, dayOfMonth:Int):String{
 
+    val c = Calendar.getInstance()
+    c.set(year,monthOfYear,dayOfMonth)
 
+    val sdf = SimpleDateFormat(DateConstant.DISPLAY_FORMAT)
+
+    val date = sdf.format(c.timeInMillis)
+
+    return date
+}
 
 interface OnSelectDate {
     fun onDate(dateType: EnumDateType, year: Int, month: Int, day: Int)
@@ -167,5 +181,7 @@ interface DateConstant{
 
         const val DISPLAY_FORMAT ="dd-MMM-yyyy"
         const val SEVER_FORMAT ="yyyy-MM-dd"
+
+
     }
 }

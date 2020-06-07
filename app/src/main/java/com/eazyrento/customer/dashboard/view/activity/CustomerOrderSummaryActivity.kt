@@ -2,28 +2,19 @@ package com.eazyrento.customer.dashboard.view.activity
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.common.view.OrderBaseSummaryActivity
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerFeedbackRequestModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
-import com.eazyrento.customer.dashboard.view.adapter.CustomerOrderSummaryUsersAdapter
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
-import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import kotlinx.android.synthetic.main.activity_customer_order_summary.*
-import kotlinx.android.synthetic.main.activity_customer_order_summary.rec_user_order_summary
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
+import kotlinx.android.synthetic.main.maintance_layout.*
 import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 
 class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
-
-    var merchant_ID=-1
-    val customerFeedbackReqModel = CustomerFeedbackRequestModel()
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -31,25 +22,26 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_customer_order_summary)
+        //setContentView(R.layout.activity_customer_order_summary)
 
         setDataAndCallOrderDetailsAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
         clickListenerOnViews()
     }
 
     private fun clickListenerOnViews(){
-       payment_view_history.setOnClickListener {
+
+        payment_view_history.setOnClickListener {
 
            MoveToAnotherComponent.moveToActivityWithIntentValue<PaymentHistoryActivity>(this,
                Constant.KEY_PAYMENT_HISTORY,orderRes.order_id)
        }
-        order_rate_review.setOnClickListener {
+        /*order_rate_review.setOnClickListener {
 
             customerFeedbackReqModel.agent_id = orderRes.agent_detail.id
             customerFeedbackReqModel.merchant_id=merchant_ID
             customerFeedbackReqModel.order_id = orderRes.order_id
             rateAndReview(customerFeedbackReqModel)
-        }
+        }*/
         customer_payment_button.setOnClickListener {
 
             MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerPaymentActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
@@ -61,10 +53,16 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
-        orderStatus(orderRes)
+        customer_maintance_view.visibility =View.GONE
+        setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.agent_detail.let { it.userRole =Constant.AGENT
+         it})
+
+        setMaintanceMerchantAdapter(orderRes.merchant_detail)
+
+        //orderStatus(orderRes)
     }
 
-     private fun orderStatus(orderRes: CustomerOrderDetailsResModel) {
+     /*private fun orderStatus(orderRes: OrderDetailsResModel) {
 
          val merchantdetail=orderRes.merchant_detail
          val agentdetail=orderRes.agent_detail
@@ -119,10 +117,10 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
                 }
             }
         }
-    }
+    }*/
 
 
-    private fun setUsersAdapter(customerOderDetailsResponse: CustomerOrderDetailsResModel) {
+   /* private fun setUsersAdapter(customerOderDetailsResponse: OrderDetailsResModel) {
         rec_user_order_summary.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.VERTICAL, false
         )
@@ -136,15 +134,15 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
                 customerOderDetailsResponse.merchant_detail as MutableList<MerchantDetail>,this)
 
         rec_user_order_summary.adapter = recycleAdapterUsersHomeCard
-    }
+    }*/
 
-    fun sendMerchantID(merchantId: Int) {
+    /*fun sendMerchantID(merchantId: Int) {
        merchant_ID=merchantId
 
-    }
-    fun rateAndReview(customerfeedbackReqModel: CustomerFeedbackRequestModel){
+    }*/
+    /*fun rateAndReview(customerfeedbackReqModel: CustomerFeedbackRequestModel){
 
         MoveToAnotherComponent.openActivityWithParcelableParam<CustomerFeedbackActivity,CustomerFeedbackRequestModel>(this,Constant.INTENT_RATE_REVIEWS,customerfeedbackReqModel)
-    }
+    }*/
 
 }

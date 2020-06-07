@@ -71,7 +71,7 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/merchant_user1_view"
                                 android:visibility="invisible"
-                                layout="@layout/adapter_user_order_summery"
+                                layout="@layout/adapter_users_order_summary"
                                 />
                         <include
                                 android:layout_width="match_parent"

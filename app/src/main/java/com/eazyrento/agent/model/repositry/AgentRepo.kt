@@ -6,11 +6,7 @@ import com.eazyrento.agent.model.repositry.api.AgentAPI
 
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerFeedbackRequestModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.eazyrento.customer.dashboard.model.repositry.api.CustomerAPI
-import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
-import com.eazyrento.merchant.model.repository.api.MerchantAPI
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
 
@@ -30,7 +26,7 @@ class AgentMerchantsAssignRepo :
 class AgentUpdateOrderRepo :
     GenericRequestHandler<JsonElement>(){
 
-    fun updateOrder(id:Int,updateModel: CustomerOrderDetailsResModel): LiveData<DataWrapper<JsonElement>> {
+    fun updateOrder(id:Int,updateModel: OrderDetailsResModel): LiveData<DataWrapper<JsonElement>> {
         val call = ServiceGenrator.client.create(
             AgentAPI::class.java).updateCustomerOrderDetail(id,updateModel)
         return doRequest(call)
@@ -40,9 +36,9 @@ class AgentUpdateOrderRepo :
 
 
 class AgentBookingDetailsRepo :
-    GenericRequestHandler<CustomerOrderDetailsResModel>(){
+    GenericRequestHandler<OrderDetailsResModel>(){
 
-    fun agentBookingDetails(id: Int): LiveData<DataWrapper<CustomerOrderDetailsResModel>> {
+    fun agentBookingDetails(id: Int): LiveData<DataWrapper<OrderDetailsResModel>> {
         val call = ServiceGenrator.client.create(
             AgentAPI::class.java).getAgentBookingDetail(id)
         return doRequest(call)

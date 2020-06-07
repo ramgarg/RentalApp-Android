@@ -2,7 +2,7 @@ package com.eazyrento.merchant.model.repository.api
 
 import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
@@ -49,7 +49,7 @@ interface MerchantAPI {
      *customer orders details
      * */
     @GET(PathURL.MerchantOrderDetail)
-    fun getCustomerOrderDetail(@Path("id") id: Int): Call<CustomerOrderDetailsResModel>
+    fun getCustomerOrderDetail(@Path("id") id: Int): Call<OrderDetailsResModel>
 
     @POST(PathURL.MerchantNotifyAdmin)
     fun notifyAdmin(@Body merchantNotifyAdminReqModelItem: MerchantNotifyAdminReqModelItem): Call<JsonElement>

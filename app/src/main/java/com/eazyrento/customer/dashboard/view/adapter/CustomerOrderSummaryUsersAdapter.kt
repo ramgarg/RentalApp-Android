@@ -7,20 +7,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.adapter_user_order_summery.view.*
-import kotlinx.android.synthetic.main.card_view_orders.view.*
+import kotlinx.android.synthetic.main.adapter_users_order_summary.view.*
 import kotlinx.android.synthetic.main.phone_view.view.*
 
+/*
 class CustomerOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDetail>, val context: Context) : RecyclerView.Adapter<CustomerOrderSummaryUsersAdapter.CardViewHolder>() {
 
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
         val img_user_pic = view.img_user_pic
-        val tv_user_name = view.tv_user_name
-        val tv_user_type = view.tv_user_tag
+        val tv_user_name = view.tv_users_name
+        val tv_user_type = view.tv_users_tag
         val img_user_call= view.phone_view
 
     }
@@ -28,7 +26,7 @@ class CustomerOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDe
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val card_view =
             CardViewHolder(
-                LayoutInflater.from(context).inflate(R.layout.adapter_user_order_summery, parent, false)
+                LayoutInflater.from(context).inflate(R.layout.adapter_users_order_summary, parent, false)
             )
         return card_view
     }
@@ -51,14 +49,16 @@ class CustomerOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDe
             (context as CustomerOrderSummaryActivity).sendMerchantID(order_listing_obj.merchant_id)
             //holder?.img_user_pic.setImageResource() = order_listing_obj
 
-        /*}else{
+        */
+/*}else{
             holder.tv_user_name.text= Constant.MERCHANT
             holder.tv_user_type.text=Constant.MERCHANT
-        }*/
+        }*//*
+
 
 
 
     }
 
 
-}
+}*/

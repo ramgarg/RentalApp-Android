@@ -1,7 +1,7 @@
 package com.eazyrento.customer.payment.model.modelclass
 
 
-abstract  class BaseMakePaymentModel{
+abstract class BaseMakePaymentModel {
     abstract var order_id: String
 
 }
@@ -15,6 +15,8 @@ data class CustomerMakePaymentReqModel(
     var status: String,
     var transaction_id: String
 
-):BaseMakePaymentModel()
+) : BaseMakePaymentModel()
 
-data class AgentMakePaymentReqModel(override var order_id: String,var requested_amount:Double):BaseMakePaymentModel()
+data class AgentMakePaymentReqModel(
+    override var order_id: String, var requested_amount: Double
+) : BaseMakePaymentModel()

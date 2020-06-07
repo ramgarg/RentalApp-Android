@@ -1,16 +1,13 @@
 package com.eazyrento.customer.payment.view
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
-import android.widget.EditText
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
 import com.eazyrento.customer.payment.model.modelclass.BaseMakePaymentModel
 import com.eazyrento.customer.payment.viewmodel.MakePaymentViewModel
@@ -104,10 +101,10 @@ open abstract class PaymentBaseActivity : BaseActivity() {
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
-        setDataOnUI(data as CustomerOrderDetailsResModel)
+        setDataOnUI(data as OrderDetailsResModel)
     }
 
-    protected fun setDataOnUI(customerOrderDetailsResModel: CustomerOrderDetailsResModel) {
+    protected fun setDataOnUI(customerOrderDetailsResModel: OrderDetailsResModel) {
 
          customerOrderDetailsResModel.order_id.let {
              tv_order_id.text =Constant.ORDER_ID+it

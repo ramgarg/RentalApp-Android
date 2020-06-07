@@ -1,3 +1,4 @@
+/*
 package com.eazyrento.agent.view.adapter
 
 import android.content.Context
@@ -10,8 +11,8 @@ import com.eazyrento.R
 import com.eazyrento.agent.view.activity.AgentOrderSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.utils.Common
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.adapter_user_order_summery.view.*
+import kotlinx.android.synthetic.main.adapter_users_order_summary.view.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.android.synthetic.main.phone_view.view.*
 
 class AgentOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDetail>, val context: Context) : RecyclerView.Adapter<AgentOrderSummaryUsersAdapter.CardViewHolder>() {
@@ -19,15 +20,15 @@ class AgentOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDetai
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
         val img_user_pic = view.img_user_pic
         val tv_user_name = view.tv_user_name
-        val tv_user_type = view.tv_user_tag
+        val tv_user_type = view.tv_user_type
         val img_user_call= view.phone_view
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val card_view =
-            AgentOrderSummaryUsersAdapter.CardViewHolder(
-                LayoutInflater.from(context).inflate(R.layout.adapter_user_order_summery, parent, false)
+            CardViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.adapter_users_order_summary, parent, false)
             )
         return card_view
     }
@@ -60,4 +61,4 @@ class AgentOrderSummaryUsersAdapter (val orderListing: MutableList<MerchantDetai
 
 
     }
-}
+}*/

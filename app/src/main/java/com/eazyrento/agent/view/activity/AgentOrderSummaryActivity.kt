@@ -1,31 +1,21 @@
 package com.eazyrento.agent.view.activity
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.model.modelclass.AgentFeedbackReqModel
-import com.eazyrento.agent.view.adapter.AgentOrderSummaryUsersAdapter
+import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.common.view.OrderBaseSummaryActivity
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderDetailsResModel
-import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
-import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import kotlinx.android.synthetic.main.activity_agent_order_summary.*
-import kotlinx.android.synthetic.main.activity_agent_order_summary.rec_user_order_summary
+import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
+import kotlinx.android.synthetic.main.maintance_layout.*
 import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
-
-    var merchant_ID=-1
-    var agentFeedbackReqModel = AgentFeedbackReqModel()
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -33,8 +23,7 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_agent_order_summary)
-
+        agent_asign_merchant_btn.visibility = View.VISIBLE
 
         val booking_id = intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)
 
@@ -45,13 +34,8 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
     }
 
     private fun clickListenerOnViews() {
-        customer_payment_button.visibility = View.INVISIBLE
-        payment_view_history.visibility = View.VISIBLE
-        //per_hour.visibility = View.INVISIBLE
 
         agent_asign_merchant_btn.setOnClickListener {
-//            showToast(ValidationMessage.UNDER_DEVELOPMENT)
-
             MoveToAnotherComponent.moveToActivityWithIntentValue<AgentPaymentActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
                 intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)!!)
         }
@@ -69,16 +53,16 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
             MoveToAnotherComponent.moveToActivityWithIntentValue<AgentUpdateOrderActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
                 intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)!!)
         }
-        order_rate_review.setOnClickListener {
+        /*order_rate_review.setOnClickListener {
 
             agentFeedbackReqModel.customer_id = orderRes.customer_detail.id
             agentFeedbackReqModel.merchant_id= merchant_ID
             agentFeedbackReqModel.order_id = orderRes.order_id
             rateAndReview(agentFeedbackReqModel)
-        }
+        }*/
     }
 
-    private fun rateAndReview(agentFeedbackReqModel: AgentFeedbackReqModel) {
+    /*private fun rateAndReview(agentFeedbackReqModel: AgentFeedbackReqModel) {
         MoveToAnotherComponent.openActivityWithParcelableParam<AgentFeedbackActivity, AgentFeedbackReqModel>(this,Constant.INTENT_RATE_REVIEWS,agentFeedbackReqModel)
 
     }
@@ -86,14 +70,22 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
     fun sendMerchantID(merchantId: Int) {
         merchant_ID=merchantId
 
-    }
+    }*/
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
-        orderStatus(orderRes)
+
+        agent_maintance_view.visibility =View.GONE
+
+        setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.customer_detail.let { it.userRole =Constant.CUSTOMER
+            it})
+
+        setMaintanceMerchantAdapter(orderRes.merchant_detail)
+
+        //orderStatus(orderRes)
         }
 
-    private fun orderStatus(orderRes: CustomerOrderDetailsResModel) {
+    /*private fun orderStatus(orderRes: OrderDetailsResModel) {
         val merchantDetail= orderRes.merchant_detail
         val customerDetail = orderRes.customer_detail
         if (orderRes.order_status == Constant.COMPLETED) {
@@ -101,7 +93,7 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
             agent_asign_merchant_btn.visibility=View.GONE
 
             if (customerDetail != null) {
-                agent_customer_view.visibility = View.VISIBLE
+                rec_user_order_summary.visibility = View.VISIBLE
                 tv_users_name.text = customerDetail.full_name
                 tv_users_tag.text = Constant.CUSTOMER
                 phone_view.visibility=View.GONE
@@ -145,13 +137,13 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         }
 
 
-    }
+    }*/
 
-    private fun setUsersAdapter(customerOderDetailsResponse: CustomerOrderDetailsResModel) {
-        rec_user_order_summary.layoutManager = LinearLayoutManager(this,
+    /*private fun setUsersAdapter(customerOderDetailsResponse: OrderDetailsResModel) {
+        recyle_merchant_list_maintance.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.VERTICAL, false
         )
-        (rec_user_order_summary.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
+        (recyle_merchant_list_maintance.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
             1,
             1
         )
@@ -160,8 +152,8 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
             AgentOrderSummaryUsersAdapter(
                 customerOderDetailsResponse.merchant_detail as MutableList<MerchantDetail>,this)
 
-        rec_user_order_summary.adapter = recycleAdapterUsersHomeCard
-    }
+        recyle_merchant_list_maintance.adapter = recycleAdapterUsersHomeCard
+    }*/
 
    /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

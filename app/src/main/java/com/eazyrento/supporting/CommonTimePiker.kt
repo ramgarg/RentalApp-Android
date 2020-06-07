@@ -55,12 +55,11 @@ class CommonTimePiker(private val context: Context) {
     }
 
     fun getTimeFormatByPattern(hourOfDay:Int,minute:Int,second:Int,pattern:String): String {
-        //val c = Calendar.getInstance()
-        val tme = Time(hourOfDay, minute, second) //seconds by default set to zero
-        //val formatter: Format
+        return getTimeByPattern(hourOfDay,minute,second,pattern)
+        /*val tme = Time(hourOfDay, minute, second) //seconds by default set to zero
         val  formatter = SimpleDateFormat(pattern)
         val time = formatter.format(tme)
-        return time
+        return time*/
     }
     fun getDisplayTimeFormat(hourOfDay:Int,minute:Int,second:Int):String{
         return getTimeFormatByPattern(hourOfDay,minute,second,TimeConstant.TIME_FORMAT_DISPLAY)
@@ -94,7 +93,21 @@ class CommonTimePiker(private val context: Context) {
         }
         return false
     }
+
 }
+fun splitTimeServerFormat(time:String):List<String>{
+    return time.split(":")
+}
+
+fun getTimeByPattern(hourOfDay: Int,minute: Int,second: Int,pattern: String): String {
+
+    val tme = Time(hourOfDay, minute, second)
+    val  formatter = SimpleDateFormat(pattern)
+    val time = formatter.format(tme)
+    return time
+
+}
+
 interface TimeConstant{
 enum class TimeTypeEnum{
     START_TIME,END_TIME
