@@ -59,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_60sdp"
                 android:layout_alignParentBottom="true"
+                android:theme="@style/BottomNavigationTheme"
                 app:menu="@menu/bottom_menu"
                 app:itemTextColor="@drawable/item_selector"
                 app:itemIconTint="@drawable/item_selector"

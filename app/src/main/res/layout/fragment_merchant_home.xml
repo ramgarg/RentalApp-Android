@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_5sdp"
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/merchant__recycl_cate_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -22,18 +22,18 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:scaleType="center"
-                android:src="@drawable/add_green"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                app:borderWidth="0dp"
+                app:useCompatPadding="true"
+                android:src="@mipmap/add_green"
                 android:visibility="visible"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:maxImageSize="@dimen/_65sdp"
+                app:backgroundTint="@android:color/transparent"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_100sdp"
+                android:layout_marginBottom="@dimen/_40sdp"
                 android:clickable="true"
                 android:focusable="true"
                 android:id="@+id/merchant_add_vehicle_btn"
-                app:backgroundTint="@null"
                 app:fabSize="normal">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
