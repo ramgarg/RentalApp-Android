@@ -70,6 +70,8 @@ class PathURL {
         const val MerchantFeedback     = "/merchant/feedback"
         const val MERCHANT_ACCEPTANCE_DECLINE = "/merchant/booking_action"
 
+        const val DYNAMIC_FEEDBACK = "/{name}/feedback"
+
 
         //agent module
         const val AgentDashboard                = "/agent/agent_dashboard"

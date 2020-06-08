@@ -1,3 +1,4 @@
+/*
 package com.eazyrento.common.model.modelclass
 
 import android.os.Parcelable
@@ -10,4 +11,4 @@ data class AgentDetail(
     val id: Int,
     val mobile_number: String,
     val profile_image: String
-) : Parcelable
+) : Parcelable*/

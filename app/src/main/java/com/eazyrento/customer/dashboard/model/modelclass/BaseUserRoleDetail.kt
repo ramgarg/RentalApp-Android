@@ -1,14 +1,15 @@
 package com.eazyrento.customer.dashboard.model.modelclass
 
-import com.eazyrento.Constant
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-abstract class BaseUserRoleDetail(val user_id: Int){
+abstract class BaseUserRoleDetail(var user_id: Int){
     abstract val full_name: String
-    abstract val userRole:String?
+    abstract var userRole:String?
     abstract val mobile_number: String
     abstract val profile_image: String
 }
-
+@Parcelize
 data class MerchantDetail(
 
     override val full_name: String,
@@ -22,8 +23,8 @@ data class MerchantDetail(
     var price: Double,
     var quantity: Int
 
-):BaseUserRoleDetail(merchant_id)
-
+):BaseUserRoleDetail(merchant_id), Parcelable
+@Parcelize
 data class CustomerDetailX(
 
     override val full_name: String,
@@ -32,8 +33,9 @@ data class CustomerDetailX(
     override val profile_image: String,
 
     val id: Int
-):BaseUserRoleDetail(id)
+):BaseUserRoleDetail(id), Parcelable
 
+@Parcelize
 data class AgentDetail(
 
     override val full_name: String,
@@ -42,4 +44,4 @@ data class AgentDetail(
     override val profile_image: String,
 
     val id: Int
-):BaseUserRoleDetail(id)
+):BaseUserRoleDetail(id), Parcelable

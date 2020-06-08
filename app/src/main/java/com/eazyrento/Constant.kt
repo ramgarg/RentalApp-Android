@@ -101,16 +101,20 @@ interface Constant{
         const val CASH ="cash"
 
         const val PENDING="pending"
+        const val COMPLETED="completed"
+        const val RECEIVED="received"
+        const val FAILED="failed"
+        const val REJECTED = "rejected"
+
 
         const val PENDING_AMOUNT="Pending Amount - "
         const val TOTAL_AMOUNT="Total Amount"
         const val BOOKING_PRICE="Booking Price"
-        const val RECEIVED="received"
-        const val FAILED="failed"
+
         const val DOLLAR="$"
         const val QUANTITY="Quantity - "
         const val ORDER_ID="Order ID - "
-        const val COMPLETED="completed"
+
 
         const val MERCHANT="Merchant"
         const val AGENT="Agent"

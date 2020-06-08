@@ -33,15 +33,6 @@ class RecycleAdapterCustomerBookings (val bookingDataHolderBinder:BookingDataHol
 
         bookingDataHolderBinder.setDataHolder(holder,position)
 
-        /*//agent details
-        holder.tv_booking__name.text=bookingListItem.get(position).agent_detail.full_name
-        holder.img_booking__call.contentDescription=bookingListItem.get(position).agent_detail.mobile_number
-        //holder?.img_booking__pic.setImageURI("https://eazyrento-qa.s3.amazonaws.com/media/default_profile_pic.png")
-        holder?.tv_customer_order_id.text = Constant.ORDER_ID + bookingListItem.get(position).order_id
-
-        // product details
-        holder?.tv_customer_date_show.text = bookingListItem.get(position).product_detail.start_date
-        holder?.tv_customer_product_quantity.text = bookingListItem.get(position).product_detail.product_name + "-" + bookingListItem.get(position).product_detail.quantity*/
     }
 
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){

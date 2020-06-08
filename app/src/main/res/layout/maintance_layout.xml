@@ -23,7 +23,9 @@
                     android:orientation="vertical"
                     android:layout_marginTop="@dimen/_3sdp"
                     >
-                <include
+
+
+                <!--<include
                         android:id="@+id/agent_maintance_view"
 
                         android:layout_width="match_parent"
@@ -38,10 +40,10 @@
                         android:layout_height="wrap_content"
                         android:visibility="visible"
                         layout="@layout/adapter_users_order_summary"
-                        />
+                        />-->
                 <androidx.recyclerview.widget.RecyclerView
 
-                        android:id="@+id/recyle_merchant_list_maintance"
+                        android:id="@+id/maintance_reclye_view_user_role"
 
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_80sdp"

@@ -20,6 +20,7 @@ import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
 import com.eazyrento.merchant.view.activity.RateAndReviewActivity
 import com.eazyrento.supporting.*
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.view.*
 import kotlinx.android.synthetic.main.maintance_layout.*
 import kotlinx.android.synthetic.main.order_summary_template.tv_end_date_sel
@@ -29,12 +30,12 @@ import kotlinx.android.synthetic.main.order_summary_template.tv_st_time_sel
 import kotlinx.android.synthetic.main.phone_view.view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_work_info.*
-import java.lang.Exception
 
 
 open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
     lateinit var orderRes:OrderDetailsResModel
+    var listBaseUserRoleDetail = ArrayList<BaseUserRoleDetail>()
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -86,8 +87,11 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
         setOrderStatus()
 
     }
+
+
     private fun setDateTime(){
         try {
+
             tv_st_date_sel.text=splitDateServerFormat(orderRes.product_detail.start_date).let {
                 getDisplayDate(it[0].toInt(),it[1].toInt(),it[2].toInt())
             }
@@ -107,62 +111,87 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
         }
     }
 
-     fun setUserRoleDetailsForMaintance(maintanceUserRoleView: MaintanceUserRoleView,baseUserRoleDetail: BaseUserRoleDetail?){
+     fun setUserRoleDetailsForMaintance(maintanceUserRoleView: MaintanceUserRoleView,base: BaseUserRoleDetail){
 
-
-        baseUserRoleDetail?.let { base ->
             maintanceUserRoleView.tv_user_name.text = base.full_name.capitalize()
 
             maintanceUserRoleView.tv_users_role.text = base.userRole
 
-            maintanceUserRoleView.phone_view.setOnClickListener {
-                Common.phoneCallWithNumber(base.mobile_number, this)
-            }
-            maintanceUserRoleView.user_rating.setOnClickListener {
-
-                val  feedbackReqModel = FeedbackReqModel(orderRes.order_id,null,null,null,"",0.0f)
-
-                when (base) {
-                    is MerchantDetail -> feedbackReqModel.merchant_id =base.user_id
-                    is CustomerDetailX -> feedbackReqModel.customer_id = base.user_id
-                    is AgentDetail -> feedbackReqModel.agent_id = base.user_id
-                }
-                rateAndReview(feedbackReqModel)
-            }
+           phoneViewClickListener(maintanceUserRoleView,base)
+           rattingAndReviewClickListener(maintanceUserRoleView,base)
 
             maintanceUserOrderStatus(maintanceUserRoleView)
 
             Picasso.with(this).load(base.profile_image).into(maintanceUserRoleView.img_user_pic)
+    }
+
+    private fun phoneViewClickListener(
+        maintanceUserRoleView: MaintanceUserRoleView,
+        base: BaseUserRoleDetail
+    ) {
+        maintanceUserRoleView.phone_view.setOnClickListener {
+            Common.phoneCallWithNumber(base.mobile_number, this)
+        }
+    }
+    private fun rattingAndReviewClickListener(
+        maintanceUserRoleView: MaintanceUserRoleView,
+        base: BaseUserRoleDetail
+    ) {
+        maintanceUserRoleView.user_rating.setOnClickListener {
+
+            val  feedbackReqModel = FeedbackReqModel(orderRes.order_id,null,null,null,"",0.0f)
+
+            when (base) {
+                is MerchantDetail -> feedbackReqModel.merchant_id =base.user_id
+                is CustomerDetailX -> feedbackReqModel.customer_id = base.user_id
+                is AgentDetail -> feedbackReqModel.agent_id = base.user_id
+            }
+            rateAndReview(feedbackReqModel)
         }
     }
 
-    //merchannt adapter
-    protected fun setMaintanceMerchantAdapter(listMerchantDetail: List<MerchantDetail>) {
+    private fun setBaseUserRoleDetails(baseUserRoleDetail:BaseUserRoleDetail,userRole:String,id: Int){
 
-        if(listMerchantDetail.isEmpty()){
-            recyle_merchant_list_maintance.visibility = View.GONE
-            return
+        baseUserRoleDetail.userRole =userRole
+        baseUserRoleDetail.user_id = id
+        listBaseUserRoleDetail.add(baseUserRoleDetail)
+
+    }
+    //merchannt adapter
+    protected fun setMaintanceUserRoleAdapter(cus: CustomerDetailX?,agent: AgentDetail?,merchantDetail: List<MerchantDetail>?) {
+
+        listBaseUserRoleDetail.clear()
+
+        if (cus!=null) {
+            setBaseUserRoleDetails(cus,Constant.CUSTOMER,cus.id)
 
         }
+        if (agent!=null){
+            setBaseUserRoleDetails(agent,Constant.AGENT,agent.id)
+        }
+        if (merchantDetail!=null && merchantDetail.isNotEmpty()){
+            for (obj in merchantDetail){
+                setBaseUserRoleDetails(obj,Constant.MERCHANT,obj.merchant_id)
+            }
+        }
+
         setInitialPramsForRecycle()
 
-        recyle_merchant_list_maintance.adapter =
-            MerchantMaintanceAdapter(listMerchantDetail,this)
+        maintance_reclye_view_user_role.adapter =
+            MerchantMaintanceAdapter(listBaseUserRoleDetail,this)
 
     }
     private fun setInitialPramsForRecycle(){
-        recyle_merchant_list_maintance.layoutManager = LinearLayoutManager(this,
+        maintance_reclye_view_user_role.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.VERTICAL, false
         )
-       /* (recyle_merchant_list_maintance.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
-            1,
-            1
-        )*/
     }
 
     private fun maintanceUserOrderStatus(maintanceUserRoleView: MaintanceUserRoleView) {
         when(orderRes.order_status){
-            Constant.COMPLETED -> maintanceUserRoleView.phone_view.visibility = View.GONE
+            Constant.COMPLETED ->{ maintanceUserRoleView.phone_view.visibility = View.GONE
+                maintanceUserRoleView.user_rating.visibility = View.VISIBLE
+            }
             else->maintanceUserRoleView.user_rating.visibility = View.GONE
         }
     }
@@ -170,12 +199,14 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
         when(orderRes.order_status){
             Constant.COMPLETED ->{
-                customer_payment_button.visibility=View.GONE
-                payment_view_history.visibility=View.VISIBLE
 
-                //user_rating.visibility=View.VISIBLE
-                //phone_view.visibility=View.GONE
-                //order_rate_review.visibility=View.VISIBLE
+                customer_payment_button.visibility=View.GONE
+
+                // agent
+                payment_view_history.visibility=View.VISIBLE
+                agent_asign_merchant_and_request_payment.visibility = View.GONE
+                agent_update_order_btn.visibility=View.GONE
+
             }
             Constant.PENDING ->{
                 pending_amount.visibility=View.VISIBLE
@@ -203,7 +234,7 @@ data class MaintanceUserRoleView(
 )
 
 // merchant maintance adapter
-class MerchantMaintanceAdapter(val orderListing:List<MerchantDetail>, val context: Context) : RecyclerView.Adapter<MerchantMaintanceAdapter.CardViewHolder>() {
+class MerchantMaintanceAdapter(val orderListing:List<BaseUserRoleDetail>, val context: Context) : RecyclerView.Adapter<MerchantMaintanceAdapter.CardViewHolder>() {
 
     class CardViewHolder(view: View): RecyclerView.ViewHolder(view){
         val maintanceUserRoleView = MaintanceUserRoleView(view.img_user_pic,view.tv_user_name,view.tv_users_role,view.phone_view,view.user_rating)
@@ -225,8 +256,7 @@ class MerchantMaintanceAdapter(val orderListing:List<MerchantDetail>, val contex
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val order_listing_obj =  orderListing.get(position)
 
-        (context as OrderBaseSummaryActivity).setUserRoleDetailsForMaintance(holder.maintanceUserRoleView,order_listing_obj.let { it.userRole =Constant.MERCHANT
-            it })
+        (context as OrderBaseSummaryActivity).setUserRoleDetailsForMaintance(holder.maintanceUserRoleView,order_listing_obj)
 
     }
 }

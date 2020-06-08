@@ -6,6 +6,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.common.view.OrderBaseSummaryActivity
+import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
@@ -52,14 +53,19 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
     }
 
     override fun <T> onSuccessApiResult(data: T) {
+
         super.onSuccessApiResult(data)
-        customer_maintance_view.visibility =View.GONE
-        setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.agent_detail.let { it.userRole =Constant.AGENT
-         it})
 
-        setMaintanceMerchantAdapter(orderRes.merchant_detail)
+        setMaintanceUserRoleAdapter(null,orderRes.agent_detail,orderRes.merchant_detail)
 
-        //orderStatus(orderRes)
+        //customer_maintance_view.visibility =View.GONE
+
+        //setMaintaniceUserRoleVisiblity(setUserRoleFlag(orderRes.agent_detail,Constant.AGENT,agent_maintance_view))
+
+       /* setMaintaniceUserRoleVisiblity(maintanceLayoutInflater(R.layout.adapter_users_order_summary),orderRes.agent_detail.let {  it.userRole =Constant.AGENT
+            it
+        })
+*/
     }
 
      /*private fun orderStatus(orderRes: OrderDetailsResModel) {

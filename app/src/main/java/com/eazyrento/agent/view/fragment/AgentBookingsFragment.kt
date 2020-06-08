@@ -32,7 +32,18 @@ class AgentBookingsFragment : MyBookingBaseFragment() {
         holder: RecycleAdapterCustomerBookings.CardViewHolder,
         position: Int
     ) {
-        val obj = listCustomerBooking.get(position)
+        setBaseDataHolder(holder,position,listCustomerBooking[position].customer_detail)
+
+        holder.btn_accept_booking.visibility=View.GONE
+        holder.btn_decline_booking.visibility=View.GONE
+
+        holder.itemView.setOnClickListener {
+
+            MoveToAnotherComponent.openActivityWithParcelableParam<AgentBookingReviewSummeryActivity,BookingListItem>(requireContext(),
+                Constant.BOOKING_SUMMERY_KEY,listCustomerBooking.get(position))
+
+        }
+        /*val obj = listCustomerBooking.get(position)
         //agent details
         holder.tv_booking__name.text=obj.customer_detail.full_name
         holder.tv_booking_type.text=Constant.CUSTOMER
@@ -41,18 +52,22 @@ class AgentBookingsFragment : MyBookingBaseFragment() {
             Common.phoneCallWithNumber(obj.customer_detail.mobile_number, requireContext())
         }
 
-        holder.btn_accept_booking.visibility=View.VISIBLE
-        holder.btn_decline_booking.visibility=View.VISIBLE
-        holder.tv_customer_order_id.text = Constant.ORDER_ID + obj.order_id
+
+
+        holder.tv_customer_order_id.text = Constant.ORDER_ID.plus(obj.order_id)
 
         // product details
         holder.tv_customer_date_show.text = obj.product_detail.start_date
         holder.tv_customer_product_quantity.text = resources.getString(R.string.quantity).plus(obj.product_detail.quantity)
 
-      holder.itemView.setOnClickListener {
+        holder.btn_accept_booking.visibility=View.GONE
+        holder.btn_decline_booking.visibility=View.GONE
+
+        holder.itemView.setOnClickListener {
 
           MoveToAnotherComponent.openActivityWithParcelableParam<AgentBookingReviewSummeryActivity,BookingListItem>(requireContext(),Constant.BOOKING_SUMMERY_KEY,obj)
-      }
+
+        }*/
     }
 
 

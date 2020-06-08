@@ -24,13 +24,13 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
         ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
             toolbar_title,getString(R.string.booking_details))
 
-        agent_asign_merchant_btn.text = resources.getString(R.string.assign_merchant)
+        agent_asign_merchant_and_request_payment.text = resources.getString(R.string.assign_merchant)
         customer_payment_button.visibility = View.INVISIBLE
         payment_view_history.visibility = View.INVISIBLE
         agent_update_order_btn.visibility=View.INVISIBLE
         pending_amount.visibility=View.INVISIBLE
 
-        agent_asign_merchant_btn.setOnClickListener {
+        agent_asign_merchant_and_request_payment.setOnClickListener {
 
             MoveToAnotherComponent.openActivityWithParcelableParam<AgentFinalAsignMerchantActivity,BookingListItem>(this,Constant.BOOKING_SUMMERY_KEY,bookingITem)
         }

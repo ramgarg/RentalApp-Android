@@ -23,7 +23,10 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        agent_asign_merchant_btn.visibility = View.VISIBLE
+        agent_asign_merchant_and_request_payment.visibility = View.VISIBLE
+        payment_view_history.visibility=View.VISIBLE
+        agent_update_order_btn.visibility=View.VISIBLE
+        customer_payment_button.visibility = View.GONE
 
         val booking_id = intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)
 
@@ -35,7 +38,7 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
 
     private fun clickListenerOnViews() {
 
-        agent_asign_merchant_btn.setOnClickListener {
+        agent_asign_merchant_and_request_payment.setOnClickListener {
             MoveToAnotherComponent.moveToActivityWithIntentValue<AgentPaymentActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
                 intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)!!)
         }
@@ -53,36 +56,14 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
             MoveToAnotherComponent.moveToActivityWithIntentValue<AgentUpdateOrderActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
                 intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)!!)
         }
-        /*order_rate_review.setOnClickListener {
-
-            agentFeedbackReqModel.customer_id = orderRes.customer_detail.id
-            agentFeedbackReqModel.merchant_id= merchant_ID
-            agentFeedbackReqModel.order_id = orderRes.order_id
-            rateAndReview(agentFeedbackReqModel)
-        }*/
-    }
-
-    /*private fun rateAndReview(agentFeedbackReqModel: AgentFeedbackReqModel) {
-        MoveToAnotherComponent.openActivityWithParcelableParam<AgentFeedbackActivity, AgentFeedbackReqModel>(this,Constant.INTENT_RATE_REVIEWS,agentFeedbackReqModel)
 
     }
-
-    fun sendMerchantID(merchantId: Int) {
-        merchant_ID=merchantId
-
-    }*/
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
-        agent_maintance_view.visibility =View.GONE
+        setMaintanceUserRoleAdapter(orderRes.customer_detail,null,orderRes.merchant_detail)
 
-        setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.customer_detail.let { it.userRole =Constant.CUSTOMER
-            it})
-
-        setMaintanceMerchantAdapter(orderRes.merchant_detail)
-
-        //orderStatus(orderRes)
         }
 
     /*private fun orderStatus(orderRes: OrderDetailsResModel) {

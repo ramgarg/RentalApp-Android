@@ -3,12 +3,8 @@ package com.eazyrento.merchant.view.activity
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
-import com.eazyrento.R
-import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.common.view.OrderBaseSummaryActivity
-import kotlinx.android.synthetic.main.adapter_users_order_summary.*
-import kotlinx.android.synthetic.main.maintance_layout.*
-import kotlinx.android.synthetic.main.phone_view.*
+import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
@@ -18,7 +14,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_merchant_order_summary)
+       // setContentView(R.layout.activity_merchant_order_summary)
 
         // order details
         setDataAndCallOrderDetailsAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
@@ -45,18 +41,29 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         }*/
     }
 
-
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
-        recyle_merchant_list_maintance.visibility =View.GONE
 
-        setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.customer_detail.let { it.userRole =Constant.CUSTOMER
+        setMaintanceUserRoleAdapter(orderRes.customer_detail,orderRes.agent_detail,null)
+
+        /*setMaintaniceUserRoleVisiblity(maintanceLayoutInflater(R.layout.adapter_users_order_summary),orderRes.agent_detail.let {  it.userRole =Constant.AGENT
+        it
+        })
+
+        setMaintaniceUserRoleVisiblity(maintanceLayoutInflater(R.layout.adapter_users_order_summary_delete),orderRes.customer_detail.let {  it.userRole =Constant.CUSTOMER
+            it
+        })*/
+        //setMaintaniceUserRoleVisiblity(setUserRoleFlag(orderRes.customer_detail,Constant.CUSTOMER,customer_maintance_view))
+
+        /*setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.customer_detail.let { it.userRole =Constant.CUSTOMER
             it})
         setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.agent_detail.let { it.userRole =Constant.AGENT
-            it})
+            it})*/
         //orderStatus(orderRes)
 
     }
+
+
     /*private fun orderStatus(orderRes: OrderDetailsResModel) {
 
         val customerDetail = orderRes.customer_detail

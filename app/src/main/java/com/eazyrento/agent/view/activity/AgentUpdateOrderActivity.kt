@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
@@ -18,14 +19,32 @@ import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.MerchantDetail
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.supporting.*
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_agent_update_order_summary.*
+import kotlinx.android.synthetic.main.order_summary_template.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_update_quantity.view.*
+import kotlinx.android.synthetic.main.template_update_quantity.view.add_quantity
+import kotlinx.android.synthetic.main.template_update_quantity.view.item_quantity
+import kotlinx.android.synthetic.main.template_update_quantity.view.minus_quantity
+import kotlinx.android.synthetic.main.template_work_info.*
+import kotlinx.android.synthetic.main.template_work_info.checkbox_with_driver
+import kotlinx.android.synthetic.main.template_work_info.layout_end_date
+import kotlinx.android.synthetic.main.template_work_info.layout_end_time
+import kotlinx.android.synthetic.main.template_work_info.layout_st_date
+import kotlinx.android.synthetic.main.template_work_info.layout_st_time
+import kotlinx.android.synthetic.main.template_work_info.tv_end_date_sel
+import kotlinx.android.synthetic.main.template_work_info.tv_end_time_sel
+import kotlinx.android.synthetic.main.template_work_info.tv_st_date_sel
+import kotlinx.android.synthetic.main.template_work_info.tv_st_time_sel
 
 class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
-    private var mOrdersDetailsReqResModel:OrderDetailsResModel?=null
+   // private var mOrdersDetailsReqResModel:OrderDetailsResModel?=null
+   private val commonDatePiker = CommonDatePiker(this)
+   private val mCommonTimePiker = CommonTimePiker(this)
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -41,6 +60,7 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
         btn_update_agent_booking.setOnClickListener {
             onUpdateClick()
         }
+        clickListenerOnViews()
 
         setDataAndCallOrderDetailsAPI(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1))
 
@@ -48,17 +68,69 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
 
         updateStatusSpinnerData()
 
+        checkbox_with_driver.isClickable = true
+
     }
 
      private fun onUpdateClick(){
-         updateOrderByID(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1))
+         if (validationCorrect()) {
+             updateOrderBookingObject()
+             updateOrderByID(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID, -1))
+         }
      }
+    private fun updateOrderBookingObject(){
+        orderRes.product_detail.start_date = tv_st_date_sel.tag.toString()
+        orderRes.product_detail.start_time = tv_st_time_sel.tag.toString()
+
+        orderRes.product_detail.end_date = tv_end_date_sel.tag.toString()
+        orderRes.product_detail.end_time = tv_end_time_sel.tag.toString()
+
+        orderRes.product_detail.with_driver = checkbox_with_driver.isSelected
+
+    }
+    private fun validationCorrect():Boolean{
+        // end date can not be less then start date and calclulate days
+        var bookingDays = 0L;
+       return(when {
+
+           tv_st_date_sel.tag.toString().isEmpty()->{showToast(ValidationMessage.START_DATE)
+               false }
+           tv_st_time_sel.tag.toString().isEmpty()->{ showToast(ValidationMessage.START_TIME)
+               false }
+           tv_end_date_sel.tag.toString().isEmpty()->{ showToast(ValidationMessage.END_DATE)
+               false }
+           tv_end_time_sel.tag.toString().isEmpty()->{ showToast(ValidationMessage.END_TIME)
+               false }
+
+            commonDatePiker.calculateDatesDiffWithString(
+                tv_st_date_sel.tag.toString(),
+                tv_end_date_sel.tag.toString()
+            ).let {
+                bookingDays = it
+                bookingDays
+            } < 0L -> {
+                showToast(ValidationMessage.DATE_VALIDATION)
+                false
+            }
+
+            //same time and end time diffrance calculation
+            bookingDays == 0L && mCommonTimePiker.calculateTimeDiff(
+                tv_st_time_sel.tag.toString(),
+                tv_end_time_sel.tag.toString()
+            ) -> {
+                showToast(ValidationMessage.SAME_DATE_TIME_VALIDATION)
+               false
+            }
+            else ->true
+        })
+
+    }
 
     private fun updateOrderByID(orderID:Int){
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<AgentUpdateOrderViewModel>(this)
-                    .updateOrder(orderID,mOrdersDetailsReqResModel!!)
+                    .updateOrder(orderID,orderRes)
                 , this, this
             )
         }
@@ -80,7 +152,7 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
 
                     }
                     else{
-                        mOrdersDetailsReqResModel?.order_status = update_Status[position]
+                        orderRes.order_status = update_Status[position]
                     }
                 }
 
@@ -99,25 +171,86 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
             return
         }
         super.onSuccessApiResult(data)
-        mOrdersDetailsReqResModel = orderRes
 
-        setMerchatDataOnUI()
+        tv_st_date_sel.tag = orderRes.product_detail.start_date
+        tv_end_date_sel.tag = orderRes.product_detail.end_date
+        tv_st_time_sel.tag = orderRes.product_detail.start_time
+        tv_end_time_sel.tag = orderRes.product_detail.end_time
+
+        merchatDataUpdate()
     }
 
-    private fun setMerchatDataOnUI() {
+    private fun merchatDataUpdate() {
 
         lyt_middle_view.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.VERTICAL, false
         )
-        (lyt_middle_view.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
-            1,
-            1
-        )
-        mOrdersDetailsReqResModel?.let { lyt_middle_view.adapter = MerchantListAdapter(this, it.merchant_detail,it)  }
+
+        orderRes.let { lyt_middle_view.adapter = MerchantUpdateAdapter(this, it.merchant_detail,it)  }
+    }
+
+    private fun bookingDatePicker(
+        textView: TextView,
+        bookingDate: EnumDateType
+    ){
+        commonDatePiker.createDatePicker(bookingDate, object : OnSelectDate {
+            override fun onDate(dateType: EnumDateType, year: Int, month: Int, day: Int) {
+
+                textView.tag = commonDatePiker.getDateInServerFormate(year,month,day)
+                textView.text = commonDatePiker.getDateInDisplayFormat(year,month-1,day)
+            }
+        }).bookingDatePiker().show()
+    }
+
+    private fun bookingTimePicker(
+        textView: TextView,
+        time: TimeConstant.TimeTypeEnum
+    ){
+        mCommonTimePiker.createTimePiker(time, object : TimeListener {
+
+            override fun onTime(timeType: TimeConstant.TimeTypeEnum, hour_of_day: Int, min: Int) {
+
+                textView.tag = mCommonTimePiker.getServerTimeFormat(hour_of_day,min,0)
+                textView.text = mCommonTimePiker.getDisplayTimeFormat(hour_of_day,min,0)
+            }
+        }).show()
+    }
+
+    private fun clickListenerOnViews(){
+        layout_st_date.setOnClickListener {
+            commonDatePiker.currentDate()
+            bookingDatePicker(tv_st_date_sel, EnumDateType.BOOKING_START_DATE)
+        }
+
+        layout_end_date.setOnClickListener {
+            try {
+
+                val list = tv_st_date_sel.tag.toString().split("-")
+
+                commonDatePiker.bookingEndDateTime(list[0].toInt(),list[1].toInt(),list[2].toInt())
+                bookingDatePicker(tv_end_date_sel, EnumDateType.BOOKING_END_DATE)
+
+            }catch (e:java.lang.Exception){
+                showToast(ValidationMessage.START_DATE)
+                e.printStackTrace()
+            }
+        }
+
+        // time set
+        layout_st_time.setOnClickListener {
+            mCommonTimePiker.currentTime()
+            bookingTimePicker(tv_st_time_sel, TimeConstant.TimeTypeEnum.START_TIME)
+        }
+
+        layout_end_time.setOnClickListener {
+            mCommonTimePiker.currentTime()
+            bookingTimePicker(tv_end_time_sel, TimeConstant.TimeTypeEnum.END_TIME)
+        }
+
     }
 }
 
-class MerchantListAdapter(val activity:BaseActivity,val list:List<MerchantDetail>,val objMerc:OrderDetailsResModel):RecyclerView.Adapter<MerchantListAdapter.CardViewHolder>(){
+class MerchantUpdateAdapter(val activity:BaseActivity, val list:List<MerchantDetail>, val objMerc:OrderDetailsResModel):RecyclerView.Adapter<MerchantUpdateAdapter.CardViewHolder>(){
 
     class CardViewHolder(view: View): RecyclerView.ViewHolder(view){
         val tv_name_user = view.tv_name_user
@@ -143,12 +276,20 @@ class MerchantListAdapter(val activity:BaseActivity,val list:List<MerchantDetail
         holder.tv_total_booking_price.text = ""+item.amount
 
         holder.img_minus.setOnClickListener{
-           item.quantity = item.quantity-1
-            holder.item_quantity.text = ""+item.quantity
+
+            if (item.quantity-1 <=0){
+                Common.showToast(activity,ValidationMessage.FILL_QUANTITY)
+            }
+           else {
+                item.quantity = item.quantity-1
+                holder.item_quantity.text = ""+item.quantity
+            }
         }
         holder.img_plus.setOnClickListener{
             item.quantity = item.quantity+1
             holder.item_quantity.text = ""+item.quantity
         }
     }
+
+
 }

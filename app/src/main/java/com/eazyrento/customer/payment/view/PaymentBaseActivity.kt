@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_payment.*
 
 open abstract class PaymentBaseActivity : BaseActivity() {
 
-    private var totalPrice:Double = 0.0
+    protected var totalPrice:Double = 0.0
     private lateinit var baseMakePaymentModel: BaseMakePaymentModel
     abstract fun getReqPaymentModel():BaseMakePaymentModel
     abstract fun requestPaymentObjectBuilder():BaseMakePaymentModel

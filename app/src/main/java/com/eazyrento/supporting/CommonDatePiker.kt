@@ -3,6 +3,7 @@ package com.eazyrento.supporting
 import android.app.DatePickerDialog
 import android.content.Context
 import com.eazyrento.R
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -151,6 +152,14 @@ class CommonDatePiker(private val context: Context) {
 }
  fun splitDateServerFormat(date:String):List<String>{
     return date.split("-")
+}
+fun convertToDisplayDate(list: List<String>):String{
+    try {
+        return getDisplayDate(list[0].toInt(),list[1].toInt(),list[1].toInt())
+    }catch (e:Exception){
+        e.printStackTrace()
+    }
+    return ""
 }
 fun getDisplayDate(year:Int, monthOfYear:Int, dayOfMonth:Int):String{
 

@@ -307,10 +307,13 @@
         <item>Other</item>
     </string-array>
     <string-array name="UpdateStatus">
-        <item>Update Status</item>
-        <item>Pending</item>
-        <item>Paid</item>
-        <item>Cancelled</item>
+        <item>update status</item>
+        <item>pending</item>
+        <item>started</item>
+        <item>ongoing</item>
+        <item>completed</item>
+        <item>paid</item>
+        <item>cancelled</item>
     </string-array>
     <string-array name="RegistrationDocument">
         <item>Select Document</item>

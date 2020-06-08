@@ -1,3 +1,4 @@
+/*
 package com.eazyrento.customer.dashboard.model.modelclass
 
 data class CustomerDetail(
@@ -5,4 +6,4 @@ data class CustomerDetail(
     val id: Int,
     val mobile_number: String,
     val profile_image: String
-)
+)*/

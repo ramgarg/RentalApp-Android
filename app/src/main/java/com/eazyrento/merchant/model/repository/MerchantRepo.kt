@@ -73,8 +73,21 @@ class MerchantFeedbackRepo :
 
     fun merchantFeedback(feedbackReqmodel: FeedbackReqModel): LiveData<DataWrapper<JsonElement>> {
 
+        /*val call = ServiceGenrator.client.create(
+            MerchantAPI::class.java).merchantFeedback(feedbackReqmodel)*/
+
+       val name =  if (feedbackReqmodel.merchant_id !=null){
+           "merchant"
+       }else if (feedbackReqmodel.agent_id !=null){
+           "agent"
+       } else{
+           "customer"
+       }
+
         val call = ServiceGenrator.client.create(
-            MerchantAPI::class.java).merchantFeedback(feedbackReqmodel)
+            MerchantAPI::class.java).dynamicFeedback(feedbackReqmodel,name)
+
+
         return doRequest(call)
     }
 

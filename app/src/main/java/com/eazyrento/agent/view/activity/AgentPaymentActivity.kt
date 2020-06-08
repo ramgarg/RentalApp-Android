@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.payment.model.modelclass.AgentMakePaymentReqModel
@@ -52,13 +53,21 @@ class AgentPaymentActivity : PaymentBaseActivity() {
 
 
     override fun requestPaymentObjectBuilder():BaseMakePaymentModel {
-        agentMakePaymentReqModel.requested_amount = convertAmountIntoDoubleFromEditText()
+        agentMakePaymentReqModel.requested_amount = ed_enter_amount_agent.text.toString().toDouble()/*convertAmountIntoDoubleFromEditText()*/
         return agentMakePaymentReqModel
     }
 
 
       override fun checkValidation(): Boolean {
-              return  super.checkValidation()
+          if (ed_enter_amount_agent.text.isEmpty()) {
+              showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT)
+              return false
+          }
+          else if (totalPrice.compareTo(removeDollarSign(ed_enter_amount_agent.text.toString()).toDouble())<0){
+              showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT_LESS_THEN_TO)
+              return false
+          }
+          return true
     }
 
 

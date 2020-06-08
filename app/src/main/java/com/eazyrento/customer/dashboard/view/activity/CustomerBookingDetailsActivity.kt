@@ -9,7 +9,6 @@ import com.eazyrento.Constant
 import com.eazyrento.EazyRantoApplication
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
-import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem

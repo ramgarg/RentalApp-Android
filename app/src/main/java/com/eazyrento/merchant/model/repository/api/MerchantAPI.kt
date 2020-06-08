@@ -57,5 +57,8 @@ interface MerchantAPI {
     @POST(PathURL.MerchantFeedback)
     fun merchantFeedback(@Body merchantfeedbackReqModel: FeedbackReqModel): Call<JsonElement>
 
+    @POST(PathURL.DYNAMIC_FEEDBACK)
+    fun dynamicFeedback(@Body merchantfeedbackReqModel: FeedbackReqModel,@Path("name") name: String): Call<JsonElement>
+
 
 }

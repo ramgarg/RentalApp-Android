@@ -50,7 +50,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     >
             <TextView
-                    android:id="@+id/agent_asign_merchant_btn"
+                    android:id="@+id/agent_asign_merchant_and_request_payment"
                     android:layout_width="@dimen/_250sdp"
                     android:layout_height="@dimen/_40sdp"
 
