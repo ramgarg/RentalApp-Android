@@ -7,5 +7,6 @@ data class Details(
     val merchant_id: Int,
     val mobile_number: String,
     val price: Double,
-    var quantity_available: Int
+    var quantity_available: Int,
+    val profile_image:String
 )

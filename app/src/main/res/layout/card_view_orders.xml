@@ -20,7 +20,18 @@
             android:layout_marginBottom="@dimen/_6sdp"
             >
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+
+                android:id="@+id/img__pic"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+
+                style="@style/profile_pic"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+        <!--<ImageView
                 android:id="@+id/img__pic"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
@@ -28,7 +39,7 @@
                 android:src="@mipmap/profile_pic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+                />-->
 
         <TextView
                 android:id="@+id/tv__name"

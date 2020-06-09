@@ -2,6 +2,7 @@ package com.eazyrento.agent.view.activity
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
@@ -40,6 +41,8 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
         assignMerchantsReqModel.booking_id =bookingITem.id
         assignMerchantsReqModel.order_id =bookingITem.order_id
 
+        required_quantity.text = getString(R.string.req_quantity).plus(bookingITem.product_detail.quantity.toString())
+
         callNearByMerchantAPI(bookingITem.id)
 
     }
@@ -65,11 +68,13 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
         merchantListItem = data.merchants_list
 
         rec_agent_assign_merchant.adapter =AssignMerchnatAdapter(this,data.merchants_list,this)
+
+        rec_agent_assign_merchant.layoutManager = GridLayoutManager(this,2)
     }
 
     override fun setDataHolder(holder: AssignMerchnatAdapter.CardViewHolder, position: Int) {
         holder.assign_merchant_name.text =merchantListItem.get(position).details.full_name
-        holder.booking_price.text = ""+merchantListItem.get(position).details.price
+        holder.booking_price.text = merchantListItem.get(position).details.price.toString()
 //        holder.booking_total_prcie = merchantListItem
 //        holder.layout_truck_quantity.text =""+merchantListItem.get(position).details.quantity_available
 
@@ -94,28 +99,43 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
     }
 
     private fun fillAssignMerchantReqModel(details: Details) {
-
-
         //merchantdetails
-
         assignMerchantsReqModel.merchant_list.add(Merchant(details.price,details.merchant_id,details.price,details.quantity_available))
 
     }
-
-    //
-    fun assignMerchant(view:View){
-
-        if (assignMerchantsReqModel.merchant_list.size==0)
+    private fun isNotQuantityCorrect():Boolean{
+        var tempQuantity = 0
+          for (item in assignMerchantsReqModel.merchant_list){
+              tempQuantity+=item.quantity
+          }
+        return when{
+            bookingITem.product_detail.quantity < tempQuantity ->true
+            else ->false
+        }
+    }
+    private fun isvalidationCorrect():Boolean{
+        if (assignMerchantsReqModel.merchant_list.isEmpty())
         {
             showToast(ValidationMessage.SELECT_MERCHANT)
-            return
-        }
+            return false
+        }else if (isNotQuantityCorrect()){
+            showToast(ValidationMessage.QUANTITY_LIMIT)
+              return false
+        }else
+           return true
+    }
+    //
+    fun assignMerchant(view:View) {
 
-        callAPI()?.let {
-            it.observeApiResult(
-                it.callAPIActivity<AgentAssignMerchantViewModel>(this).assignMerchants(assignMerchantsReqModel)
-                , this, this
-            )
+        if (isvalidationCorrect()) {
+
+            callAPI()?.let {
+                it.observeApiResult(
+                    it.callAPIActivity<AgentAssignMerchantViewModel>(this)
+                        .assignMerchants(assignMerchantsReqModel)
+                    , this, this
+                )
+            }
         }
     }
 }

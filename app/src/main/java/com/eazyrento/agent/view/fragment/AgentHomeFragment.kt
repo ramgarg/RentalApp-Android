@@ -1,9 +1,11 @@
 package com.eazyrento.agent.view.fragment
 
 import android.os.Bundle
+import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.agent.view.activity.AgentShowAllBookingActivity
 import com.eazyrento.common.model.modelclass.Booking
+import com.eazyrento.common.model.modelclass.BookingAdapterModel
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.common.view.fragment.DashboardBaseFragment
@@ -29,6 +31,33 @@ class AgentHomeFragment : DashboardBaseFragment() {
     override fun setBookingHolder(
         holder: DashboardBookingCardAdapter.CardViewHolder,
         list: List<Booking>,
+        position: Int,
+        modelBooking: BookingAdapterModel
+    ) {
+        val order_listing_obj = list.get(position)
+
+        val baseUserRoleDetail = order_listing_obj.customer_detail
+
+        baseUserRoleDetail?.let {
+            it.userRole = Constant.CUSTOMER
+            setBaseDataHolder(position,it,modelBooking)
+        }
+
+        modelBooking.btn_accept_booking.visibility = View.VISIBLE
+        modelBooking.btn_decline_booking.visibility = View.VISIBLE
+
+        modelBooking.btn_accept_booking.setOnClickListener {
+            acceptBooking(order_listing_obj, position, Constant.AGENT_ACCEPTANCE)
+        }
+        modelBooking.btn_decline_booking.setOnClickListener {
+            declineBooking(order_listing_obj, position, Constant.AGENT_ACCEPTANCE)
+        }
+
+    }
+
+    /*override fun setBookingHolder(
+        holder: DashboardBookingCardAdapter.CardViewHolder,
+        list: List<Booking>,
         position: Int
     ) {
 
@@ -47,20 +76,15 @@ class AgentHomeFragment : DashboardBaseFragment() {
             Picasso.with(context).load(order_listing_obj.customer_detail?.profile_image)
                 .into(holder.img__pic)
 
-            holder.btn__accept.setOnClickListener {
+            *//*holder.btn__accept.setOnClickListener {
                 acceptBooking(order_listing_obj, position, Constant.AGENT_ACCEPTANCE)
             }
             holder.btn__decline.setOnClickListener {
                 declineBooking(order_listing_obj, position, Constant.AGENT_ACCEPTANCE)
-            }
-            holder.phone_view.setOnClickListener {
-                Common.phoneCallWithNumber(
-                    list.get(position).customer_detail?.mobile_number,
-                    requireContext()
-                )
-            }
+            }*//*
+
         }
-    }
+    }*/
 
 
 }

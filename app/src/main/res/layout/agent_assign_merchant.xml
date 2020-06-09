@@ -8,20 +8,35 @@
     <RelativeLayout
 
             android:layout_width="@dimen/_170sdp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/calender_bg"
-            android:layout_height="wrap_content">
+            >
            <CheckBox
                    android:id="@+id/chkbox_assign_merchnat"
                    android:layout_width="@dimen/_30sdp"
                    android:layout_height="@dimen/_30sdp"/>
 
-            <ImageView android:layout_width="@dimen/_60sdp"
+        <de.hdodenhof.circleimageview.CircleImageView
+
+                android:id="@+id/customer_profile_pic"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_centerHorizontal="true"
+
+                style="@style/profile_pic"
+                />
+            <!--<ImageView
                     android:id="@+id/customer_profile_pic"
-                    android:src="@mipmap/profile_pic"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_70sdp"
                     android:layout_centerHorizontal="true"
-                    android:layout_height="@dimen/_70sdp"/>
+
+                    android:src="@mipmap/profile_pic"
+
+
+                    />-->
 
         <include
                 layout="@layout/phone_view"
@@ -83,7 +98,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/layout_truck_quantity"
+                android:id="@+id/__quantity"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -99,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_below="@+id/layout_truck_quantity"
+                android:layout_below="@+id/__quantity"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
@@ -123,7 +138,7 @@
                     android:gravity="center"
                     android:paddingLeft="@dimen/_10sdp"
                     android:paddingRight="@dimen/_10sdp"
-                    android:text="@string/quantity_value"
+                    android:text="1"
                     android:textColor="@color/black" />
 
             <ImageView

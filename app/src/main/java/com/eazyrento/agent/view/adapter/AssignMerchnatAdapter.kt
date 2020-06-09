@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.model.modelclass.Merchants
 import com.eazyrento.customer.utils.Common
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.agent_assign_merchant.view.*
 import kotlinx.android.synthetic.main.phone_view.view.*
 import kotlinx.android.synthetic.main.row_customer_bookings.view.*
+import java.lang.Exception
 
 class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolderBinder, val merchantListItem: List<Merchants>, val context: Context) : RecyclerView.Adapter<AssignMerchnatAdapter.CardViewHolder>()  {
 
@@ -37,26 +39,56 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
 
         assignMerchantDataHolderBinder.setDataHolder(holder,position)
 
-        holder.assign_merchant_name.text =merchantListItem.get(position).details.full_name
-        holder.booking_price.text = Constant.BOOKING_PRICE+"- "+merchantListItem.get(position).details.price
+        val itemMerchant = merchantListItem[position]
+        
+        holder.assign_merchant_name.text =itemMerchant.details.full_name
+        holder.booking_price.text = Constant.BOOKING_PRICE.plus(itemMerchant.details.price)
 //        holder.booking_total_prcie = merchantListItem
-//        holder.layout_truck_quantity.text =Constant.QUANTITY+merchantListItem.get(position).details.quantity_available
-        holder.merchant_distance.text=" "+merchantListItem.get(position).details.distance+Constant.KM
+//        holder.layout_truck_quantity.text =Constant.QUANTITY+itemMerchant.details.quantity_available
+        holder.merchant_distance.text=itemMerchant.details.distance.toString().plus(Constant.KM)
 
-        holder.item_quantity.text = ""+merchantListItem.get(position).details.quantity_available
+        holder.__quantity.text = context.resources.getString(R.string.truck_quantity).plus(itemMerchant.details.quantity_available)
+
         holder.img_call.setOnClickListener {
-            Common.phoneCallWithNumber(merchantListItem.get(position).details.mobile_number, context) }
+            Common.phoneCallWithNumber(itemMerchant.details.mobile_number, context) }
 
         holder.plusIcon.setOnClickListener {
-            merchantListItem.get(position).details.quantity_available++
-            holder.item_quantity.text =  ""+merchantListItem.get(position).details.quantity_available
+
+            val value = convertToInt( holder.item_quantity.text.toString())
+
+            if (value == convertToInt(holder.__quantity.text.removePrefix(context.resources.getString(R.string.truck_quantity)).toString())){
+                Common.showToast(context,ValidationMessage.QUANTITY_SET_LIMIT)
+            }
+            else {
+                holder.item_quantity.text = (value + 1).toString()
+                itemMerchant.details.quantity_available = value+1
+            }
          }
 
         holder.minusIcon.setOnClickListener {
-            merchantListItem.get(position).details.quantity_available--
-            holder.item_quantity.text =  ""+merchantListItem.get(position).details.quantity_available
+
+            val value = convertToInt( holder.item_quantity.text.toString())
+
+            if (value-1<1){
+                Common.showToast(context,ValidationMessage.FILL_QUANTITY)
+
+            }else {
+
+                holder.item_quantity.text = (value-1).toString()
+                itemMerchant.details.quantity_available = value-1
+            }
         }
 
+        Picasso.with(context).load(itemMerchant.details.profile_image).into(holder.customer_profile_pic)
+
+    }
+    private fun convertToInt(value:String):Int{
+        try {
+            return value.toInt()
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+        return 0
     }
 
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
@@ -67,6 +99,7 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
         val assign_merchant_name = view.assign_merchant_name
         val merchant_distance = view.merchant_distatnce
         val item_quantity = view.item_quantity
+        val __quantity = view.__quantity
         val plusIcon = view.add_quantity
         val minusIcon =view.minus_quantity
         val img_call= view.phone_view

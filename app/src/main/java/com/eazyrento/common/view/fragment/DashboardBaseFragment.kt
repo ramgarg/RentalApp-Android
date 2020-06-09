@@ -9,14 +9,15 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
+import com.eazyrento.common.model.modelclass.*
 import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.customer.utils.Common
-import com.eazyrento.common.model.modelclass.Booking
-import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.common.view.adapter.AcceptDecline
 import com.eazyrento.common.viewmodel.AcceptanceDeleteViewModel
 import com.eazyrento.common.viewmodel.BookingDashboardViewModel
+import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
+import com.eazyrento.supporting.convertToDisplayDate
+import com.eazyrento.supporting.splitDateServerFormat
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
 import kotlinx.android.synthetic.main.booking_deshboard_bottom_view.*
@@ -132,5 +133,22 @@ abstract class DashboardBaseFragment:
         callAPIAcceptanceDecline(AcceptanceDeclineReqModel(type.id,false), flagCustomerType)
     }
 
+    protected fun setBaseDataHolder(
+        pos: Int,
+        obj: BaseUserRoleDetail,
+        modelBooking: BookingAdapterModel
+    ) {
+        bookingModelHolder(
+            pos,
+            obj,
+            modelBooking,
+            bookingList.get(pos),
+            requireContext()
+        )
+
+        bookingList.get(pos).start_date?.let {
+            modelBooking.tv_date_show.text = convertToDisplayDate(splitDateServerFormat(it))
+        }
+    }
 
 }

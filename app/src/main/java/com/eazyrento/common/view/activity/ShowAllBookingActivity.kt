@@ -6,13 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
-import com.eazyrento.common.model.modelclass.AcceptanceDeclineReqModel
-import com.eazyrento.common.model.modelclass.Booking
-import com.eazyrento.common.model.modelclass.BookingDashboardResModel
+import com.eazyrento.common.model.modelclass.*
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.view.adapter.AcceptDecline
 import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.common.viewmodel.AcceptanceDeleteViewModel
+import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
+import com.eazyrento.customer.dashboard.view.adapter.RecycleAdapterCustomerBookings
+import com.eazyrento.supporting.convertToDisplayDate
+import com.eazyrento.supporting.splitDateServerFormat
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
 import kotlinx.android.synthetic.main.fragment_customer_bookings.*
@@ -39,19 +41,6 @@ open abstract class ShowAllBookingActivity :BaseActivity(),AcceptDecline {
 
         bookingDashboardResModel= intent.getParcelableExtra<BookingDashboardResModel>(Constant.INTENT_BOOKING_LIST)
 
-        // recycle view params
-
-        /* rec_customer_bookings.layoutManager = LinearLayoutManager(
-             this,
-             LinearLayoutManager.HORIZONTAL, false
-         )
-
-         (rec_customer_bookings.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
-             1,
-             1
-         )*/
-
-        // booking adapter
 
         val recyleAdapterAgentHomeCard =
             DashboardBookingCardAdapter(
@@ -96,6 +85,24 @@ open abstract class ShowAllBookingActivity :BaseActivity(),AcceptDecline {
 
             showToast(ValidationMessage.REQUEST_SUCCESSED)
             return
+        }
+    }
+
+    protected fun setBaseDataHolder(
+        pos: Int,
+        obj: BaseUserRoleDetail,
+        modelBooking: BookingAdapterModel,
+        list: List<Booking>
+    ) {
+        bookingModelHolder(
+            pos,
+            obj,
+            modelBooking,
+            list.get(pos),
+            this
+        )
+        list.get(pos).start_date?.let {
+            modelBooking.tv_date_show.text = convertToDisplayDate(splitDateServerFormat(it))
         }
     }
 

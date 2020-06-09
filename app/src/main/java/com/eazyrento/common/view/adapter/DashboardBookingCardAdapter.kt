@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.model.modelclass.Booking
-import com.eazyrento.customer.dashboard.view.adapter.WishListAdapter
-import com.squareup.picasso.Picasso
+import com.eazyrento.common.model.modelclass.BookingAdapterModel
 import kotlinx.android.synthetic.main.card_view_orders.view.*
+import kotlinx.android.synthetic.main.card_view_orders.view.tv_show_date
 import kotlinx.android.synthetic.main.phone_view.view.*
 
 class DashboardBookingCardAdapter (val orderListing: List<Booking>, val context: Context,val acceptDecline:AcceptDecline) : RecyclerView.Adapter<DashboardBookingCardAdapter.CardViewHolder>() {
@@ -28,28 +27,19 @@ class DashboardBookingCardAdapter (val orderListing: List<Booking>, val context:
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        acceptDecline.setBookingHolder(holder,orderListing,position)
+        acceptDecline.setBookingHolder(holder,orderListing,position,holder.bookingAdapterModel)
         //
     }
    
    
     class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
 
-        
-        val tv__name = view.tv__name
-        val tv__type = view.tv__type
-        val tv__order = view.tv__order
-        val tv__product_quantity = view.tv__quantiity
-        val tv__date_show = view.tv_show_date
-
-        val img__pic = view.img__pic
-        val btn__accept = view.btn__accept
-        val btn__decline = view.btn__decline
-        val phone_view = view.phone_view
+        val bookingAdapterModel = BookingAdapterModel(view.tv__name,view.tv__type,view.img__pic, view.phone_view,
+            view.tv__quantiity,view.tv_show_date,view.tv__order,null,view.btn__accept,view.btn__decline)
 
     }
 }
 
 interface AcceptDecline{
-    fun setBookingHolder(holder: DashboardBookingCardAdapter.CardViewHolder,list: List<Booking>, position: Int)
+    fun setBookingHolder(holder: DashboardBookingCardAdapter.CardViewHolder,list: List<Booking>, position: Int,modelBooking: BookingAdapterModel)
 }

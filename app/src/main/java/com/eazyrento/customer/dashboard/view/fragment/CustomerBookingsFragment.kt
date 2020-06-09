@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.common.model.modelclass.BookingAdapterModel
 import com.eazyrento.common.view.fragment.MyBookingBaseFragment
 import com.eazyrento.customer.dashboard.view.adapter.RecycleAdapterCustomerBookings
 import com.eazyrento.customer.utils.Common
@@ -28,10 +29,15 @@ class CustomerBookingsFragment: MyBookingBaseFragment() {
 
     override fun setDataHolder(
         holder: RecycleAdapterCustomerBookings.CardViewHolder,
+        modelBooking: BookingAdapterModel,
         position: Int
 
     ) {
-        setBaseDataHolder(holder,position,listCustomerBooking[position].agent_detail)
+        setBaseDataHolder(holder,position,listCustomerBooking[position].agent_detail.let {
+            it.userRole = Constant.AGENT
+            it
+        },modelBooking)
+//        setBaseDataHolder(holder,position,listCustomerBooking[position].agent_detail)
 
         /*  //agent details
          holder.tv_booking__name.text=obj.agent_detail.full_name.capitalize()

@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
-import com.eazyrento.common.model.modelclass.BookingListItem
+import com.eazyrento.common.model.modelclass.BookingAdapterModel
 import com.eazyrento.common.model.modelclass.BookingListResModel
+import com.eazyrento.common.model.modelclass.bookingModelHolder
 import com.eazyrento.common.viewmodel.MyBookingViewModel
 import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
 import com.eazyrento.customer.dashboard.view.adapter.BookingDataHolderBinder
@@ -67,27 +68,30 @@ abstract class MyBookingBaseFragment: BaseFragment(), BookingDataHolderBinder {
     }
 
      protected fun setBaseDataHolder(
-        holder: RecycleAdapterCustomerBookings.CardViewHolder,
-        pos: Int,
-        obj:BaseUserRoleDetail
-
+         holder: RecycleAdapterCustomerBookings.CardViewHolder,
+         pos: Int,
+         obj:BaseUserRoleDetail,
+        modelBooking: BookingAdapterModel
     ) {
-        //val obj = listCustomerBooking.get(pos) as BaseUserRoleDetail
+         bookingModelHolder(pos,obj,modelBooking,listCustomerBooking.get(pos),requireContext())
+
+       /* //val obj = listCustomerBooking.get(pos) as BaseUserRoleDetail
         //agent details
-        holder.tv_booking__name.text=obj.full_name.capitalize()
-        holder.tv_booking_type.text= Constant.AGENT
-        Picasso.with(requireContext()).load(obj.profile_image).into(holder.img_booking__pic)
-        holder.img_booking__call.setOnClickListener {
+         modelBooking.tv_user_name.text=obj.full_name.capitalize()
+//         modelBooking.tv_user_role.text= Constant.AGENT 11
+        Picasso.with(requireContext()).load(obj.profile_image).into(modelBooking.img_profile_pic)
+         modelBooking.img_phone_call.setOnClickListener {
             Common.phoneCallWithNumber(obj.mobile_number, requireContext())
         }
 
-        holder.tv_customer_order_id.text = Constant.ORDER_ID + listCustomerBooking.get(pos).order_id
+         modelBooking.tv_order_id.text = Constant.BOOKING_ID + listCustomerBooking.get(pos).order_id
 
         // product details
-        holder.tv_customer_date_show.text = convertToDisplayDate(splitDateServerFormat(listCustomerBooking.get(pos).product_detail.start_date))
+         modelBooking.tv_date_show.text = convertToDisplayDate(splitDateServerFormat(listCustomerBooking.get(pos).product_detail.start_date))
 //        holder?.tv_customer_product_quantity.text = listCustomerBooking.get(position).product_detail.product_name + "-" + listCustomerBooking.get(position).product_detail.quantity
-        holder.tv_customer_product_quantity.text = resources.getString(R.string.quantity)+listCustomerBooking.get(pos).product_detail.quantity
-        holder.tv_status.let {
+         modelBooking.tv_product_quantity.text = resources.getString(R.string.quantity)+listCustomerBooking.get(pos).product_detail.quantity
+
+         modelBooking.tv_status?.let {
             it.visibility = View.VISIBLE
             it.text = listCustomerBooking.get(pos).status
             val bg = when(listCustomerBooking.get(pos).status){
@@ -97,7 +101,7 @@ abstract class MyBookingBaseFragment: BaseFragment(), BookingDataHolderBinder {
                 else-> R.drawable.payment_success
             }
             it.setBackgroundResource(bg)
-        }
+        }*/
 
 
     }
