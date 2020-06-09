@@ -72,7 +72,10 @@
                     android:layout_height="wrap_content"/>
             <TextView android:layout_width="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:background="@drawable/itemquantity_bg"
                     android:id="@+id/tv_st_date_sel"
+                    android:paddingStart="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_3sdp"
                     android:tag=""
                     android:layout_below="@+id/tv_st_date"
                     android:layout_toEndOf="@+id/img_calender"
@@ -116,6 +119,9 @@
             <TextView android:layout_width="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:id="@+id/tv_st_time_sel"
+                    android:background="@drawable/itemquantity_bg"
+                    android:paddingStart="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_3sdp"
                     android:tag=""
                     android:layout_below="@+id/tv_st_time"
                     android:layout_toEndOf="@+id/img_time"
@@ -162,6 +168,9 @@
                     android:id="@+id/tv_end_date_sel"
                     android:tag=""
                     android:layout_below="@+id/tv_end_date"
+                    android:paddingStart="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_3sdp"
+                    android:background="@drawable/itemquantity_bg"
                     android:layout_toEndOf="@+id/img_en_calender"
                     android:fontFamily="@font/bree_serif"
                     android:layout_height="wrap_content"/>
@@ -199,10 +208,13 @@
             <TextView android:layout_width="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:id="@+id/tv_end_time_sel"
+                    android:paddingStart="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_3sdp"
                     android:tag=""
                     android:layout_below="@+id/tv_end_time"
                     android:layout_toEndOf="@+id/img_end_time"
                     android:fontFamily="@font/bree_serif"
+                    android:background="@drawable/itemquantity_bg"
                     android:layout_height="wrap_content"/>
         </RelativeLayout>
 

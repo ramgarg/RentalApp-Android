@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.order_summary_template.tv_end_date_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_end_time_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_st_date_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_st_time_sel
+import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.phone_view.view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_work_info.*
