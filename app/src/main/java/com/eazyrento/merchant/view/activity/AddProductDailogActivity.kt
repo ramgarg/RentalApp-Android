@@ -42,6 +42,9 @@ class AddProductDailogActivity:BaseActivity() {
         setContentView(R.layout.add_vehicle_dialog)
         this.setFinishOnTouchOutside(false)
 
+        item_quantity_static_text.text =getString(R.string.truck_quantity).plus("1")
+        merchantAddProductReqModel.quantity =1
+
         //edit functionalty
          edit_product_ID = intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_EDIT,DEFUALT_VALUE)
 
@@ -130,13 +133,19 @@ class AddProductDailogActivity:BaseActivity() {
 
 
     fun onMinusClick(view: View){
-        merchantAddProductReqModel.quantity--
-        item_quantity.text =""+merchantAddProductReqModel.quantity
+        if (item_quantity.text.toString().toInt()-1 < 1){
+            showToast(ValidationMessage.FILL_QUANTITY)
+        }else {
+            merchantAddProductReqModel.quantity--
+            item_quantity.text = merchantAddProductReqModel.quantity.toString()
+            item_quantity_static_text.text =getString(R.string.truck_quantity).plus(merchantAddProductReqModel.quantity.toString())
+        }
 
     }
     fun onPlusClick(view: View){
         merchantAddProductReqModel.quantity++
-        item_quantity.text =""+merchantAddProductReqModel.quantity
+        item_quantity.text =merchantAddProductReqModel.quantity.toString()
+        item_quantity_static_text.text =getString(R.string.truck_quantity).plus(merchantAddProductReqModel.quantity.toString())
 
     }
     fun onUploadClick(view: View){
@@ -195,7 +204,7 @@ class AddProductDailogActivity:BaseActivity() {
             showToast(ValidationMessage.FILL_QUANTITY)
             return true
         }
-        if (ed_price.text.toString().isEmpty() && ed_price.text.toString().toDouble()==0.0){
+        if (ed_price.text.isEmpty() || ed_price.text.toString().toDouble()==0.0){
             showToast(ValidationMessage.FILL_BOOKING_PRICE)
             return true
         }
@@ -335,6 +344,7 @@ class AddProductDailogActivity:BaseActivity() {
         merchantAddProductReqModel.availability_days = productDetails.product_info.availability_days
         merchantAddProductReqModel.document_name =productDetails.product_info.document_name
         merchantAddProductReqModel.quantity = productDetails.product_info.quantity
+        item_quantity_static_text.text =getString(R.string.truck_quantity).plus( productDetails.product_info.quantity)
         merchantAddProductReqModel.price =productDetails.product_info.price
         merchantAddProductReqModel.variant = productDetails.product_info.product_details.fuel_type
         merchantAddProductReqModel.with_driver =productDetails.product_info.with_driver

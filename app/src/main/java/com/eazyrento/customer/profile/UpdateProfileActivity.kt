@@ -12,6 +12,7 @@ import android.widget.Spinner
 import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -40,6 +41,7 @@ class UpdateProfileActivity : BaseActivity() {
     private lateinit var phoneNumberFormat:PhoneNumberFormat
 
     private val commonDatePiker = CommonDatePiker(this)
+    private val isCustomer = Session.getInstance(EazyRantoApplication.context)?.getUserRole().equals(UserInfoAPP.CUSTOMER)
 
     override fun <T> moveOnSelecetedItem(type: T) {
 
@@ -50,6 +52,11 @@ class UpdateProfileActivity : BaseActivity() {
         setContentView(R.layout.activity_profile)
 
         topBarWithBackIconAndTitle(resources.getString(R.string.profile))
+
+        if (isCustomer){
+            layout_dob.visibility = View.GONE
+            lyt_select_document.visibility = View.GONE
+        }
 
         phoneNumberFormat = PhoneNumberFormat(this)
 
@@ -211,9 +218,7 @@ class UpdateProfileActivity : BaseActivity() {
             showToast(ValidationMessage.PHONE_NUMBER)
         }
 
-        else if(ed_dob.text.toString().isEmpty()){
-            showToast(ValidationMessage.DATE_OF_BIRTH)
-        }
+
         else if(ed_company_name.text.toString().isEmpty()){
             showToast(ValidationMessage.COMPANY)
         }
@@ -223,16 +228,21 @@ class UpdateProfileActivity : BaseActivity() {
         else if(sp_gender.selectedItemPosition==0){
             showToast(ValidationMessage.GENDER)
         }
-        else if(sp_select_document.selectedItemPosition==0){
-            showToast(ValidationMessage.DOCUMENT)
-        }
-        else if (tv_add_line.text.isNullOrEmpty()){
 
-           /* tv_add_country.setText(it.address_info?.country)
-            tv_add_city.setText(it.address_info?.city)
-            tv_add_line.setText(it.address_info?.address_line)*/
+        else if (tv_add_line.text.isNullOrEmpty()){
             showToast(ValidationMessage.SELECT_ADRESS)
 
+        }
+        //not customer
+        else if (isCustomer.not()) {
+            if (ed_dob.text.toString().isEmpty()) {
+                showToast(ValidationMessage.DATE_OF_BIRTH)
+            } else if (sp_select_document.selectedItemPosition == 0) {
+                showToast(ValidationMessage.DOCUMENT)
+            }
+            else {
+                return true
+            }
         }
         else{
             return true
