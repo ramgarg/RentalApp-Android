@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/booking_price"
-                style="@style/name_heading"
+                style="@style/booking_price"
 
                 android:layout_marginStart="@dimen/_7sdp"
 

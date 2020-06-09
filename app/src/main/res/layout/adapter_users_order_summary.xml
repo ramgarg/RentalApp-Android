@@ -9,8 +9,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_user_pic"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
             android:layout_margin="@dimen/_4sdp"
             style="@style/profile_pic"
 
@@ -19,7 +19,8 @@
     <LinearLayout
             android:id="@+id/lnr_name"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_40sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_toEndOf="@+id/img_user_pic"
             >
@@ -28,9 +29,10 @@
                 android:id="@+id/tv_user_name"
                 android:text=""
                 android:singleLine="true"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:textStyle="bold"
+                android:fontFamily="@font/bree_serif"
                 android:textColor="@color/black"
-
                 android:layout_width="wrap_content"
                 android:textSize="@dimen/_14sdp"
                 android:layout_height="wrap_content"/>
@@ -38,9 +40,10 @@
         <TextView
                 android:text=""
                 android:id="@+id/tv_users_role"
+                android:fontFamily="@font/bree_serif"
                 android:textColor="@color/mdtp_transparent_black"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"/>
 
@@ -62,13 +65,14 @@
 
             android:textColor="@color/white"
             android:fontFamily="@font/bree_serif"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/_14sdp"
             android:text="@string/rate"
 
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:paddingStart="@dimen/_7sdp"
-            android:paddingEnd="@dimen/_7sdp"
+            android:layout_width="@dimen/_70sdp"
+            android:textAlignment="center"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
             android:paddingTop="@dimen/_4sdp"
             android:paddingBottom="@dimen/_4sdp"
 

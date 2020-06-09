@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:paddingStart="@dimen/_5sdp"
         android:layout_height="wrap_content"
         android:gravity="top"
         >
@@ -22,7 +23,7 @@
 
         <TextView
                 android:id="@+id/booking_price"
-                android:layout_weight="25"
+                android:layout_weight="20"
                 android:layout_width="0dp"
                 android:text="@string/booking_n_price"
                 android:layout_height="@dimen/_55sdp"
@@ -33,12 +34,11 @@
                 android:id="@+id/tv_booking_price"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:layout_weight="65"
-
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_weight="79"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:text="@string/booking_price"
-                style="@style/name_heading"
+                style="@style/booking_price"
                 />
 
         <LinearLayout
@@ -46,13 +46,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_weight="10">
+                android:layout_weight="1">
         <Button
                 android:id="@+id/customer_payment_button"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:layout_gravity="end"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:textAllCaps="false"
+                android:textSize="@dimen/_12sdp"
                 android:paddingLeft="@dimen/_7sdp"
                 android:paddingRight="@dimen/_7sdp"
                 android:background="@drawable/button_gradient"
@@ -62,10 +64,10 @@
         </Button>
             <Button
                     android:id="@+id/payment_view_history"
-                    android:paddingLeft="@dimen/_7sdp"
-                    android:paddingRight="@dimen/_7sdp"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_5sdp"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_30sdp"
+                    android:layout_height="@dimen/_25sdp"
                     android:layout_gravity="end"
                     android:textAllCaps="false"
                     android:visibility="gone"
