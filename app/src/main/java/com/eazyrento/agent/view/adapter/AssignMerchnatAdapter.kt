@@ -42,12 +42,12 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
         val itemMerchant = merchantListItem[position]
         
         holder.assign_merchant_name.text =itemMerchant.details.full_name
-        holder.booking_price.text = Constant.BOOKING_PRICE.plus(itemMerchant.details.price)
+        holder.booking_price.text = context.resources.getString(R.string.dollar).plus(itemMerchant.details.price)
 //        holder.booking_total_prcie = merchantListItem
 //        holder.layout_truck_quantity.text =Constant.QUANTITY+itemMerchant.details.quantity_available
         holder.merchant_distance.text=itemMerchant.details.distance.toString().plus(Constant.KM)
 
-        holder.__quantity.text = context.resources.getString(R.string.truck_quantity).plus(itemMerchant.details.quantity_available)
+        holder.__quantity.text = ""+itemMerchant.details.quantity_available
 
         holder.img_call.setOnClickListener {
             Common.phoneCallWithNumber(itemMerchant.details.mobile_number, context) }

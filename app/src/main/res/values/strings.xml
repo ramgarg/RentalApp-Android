@@ -146,6 +146,7 @@
     <string name="fri">Fri</string>
     <string name="sat">Sat</string>
     <string name="booking_price_text">Booking Price</string>
+    <string name="booking_price_">Booking\nPrice</string>
     <string name="fuel_type">Fuel Type</string>
     <string name="diesel">Diesel</string>
     <string name="document">Document</string>

@@ -110,13 +110,13 @@
     <style name="AgentBoldTextCard" parent="android:Widget.TextView">
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/bree_serif</item>
     </style>
 
     <style name="AgentSmallTextCard" parent="android:Widget.TextView">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">normal</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">12sp</item>
         <item name="fontFamily">@font/bree_serif</item>
     </style>
