@@ -100,7 +100,7 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
 
     private fun fillAssignMerchantReqModel(details: Details) {
         //merchantdetails
-        assignMerchantsReqModel.merchant_list.add(Merchant(details.price,details.merchant_id,details.price,details.quantity_available))
+        assignMerchantsReqModel.merchant_list.add(Merchant(details.price,details.merchant_id,details.price,details.assign_quantity))
 
     }
     private fun isNotQuantityCorrect():Boolean{

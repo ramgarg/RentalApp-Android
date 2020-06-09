@@ -41,6 +41,18 @@ class ProductSubCategoriesRepo : GenericRequestHandler<ProductSubCategoriesResMo
     }
 }
 
+/*product list by sub cat*/
+
+class ProductListByCatRepo : GenericRequestHandler<JsonElement>(){
+
+    fun getProductListBySubCateg(name:String ): LiveData<DataWrapper<JsonElement>> {
+//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+        val call = ServiceGenrator.client.create(
+            MasterAPI::class.java).getProductListBySubCat(name)
+        return doRequest(call)
+    }
+}
+
 /*
 * product deatils
 * */

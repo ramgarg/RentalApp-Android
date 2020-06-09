@@ -13,6 +13,7 @@ import com.eazyrento.common.model.modelclass.*
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.viewmodel.MasterDataViewModel
 import com.eazyrento.common.viewmodel.ProductCategoriesViewModel
+import com.eazyrento.common.viewmodel.ProductListBySubCategViewModel
 import com.eazyrento.common.viewmodel.ProductSubCategoriesViewModel
 import com.eazyrento.customer.dashboard.view.adapter.InfalterViewAdapter
 import com.eazyrento.customer.dashboard.view.adapter.ProductVehiclesAdapter
@@ -27,6 +28,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
     InfalterViewAdapter {
 
     private var selectMasterCatName:String =""
+    private var isNotProductListBySubCat = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +58,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
             setSpinnerAdapter(data,R.id.sp_select_type)
             return
         }
-         if(data is JsonElement){
+         if(data is JsonElement && isNotProductListBySubCat){
              val list:ArrayList<ProductCateItem>? = MyJsonParser.convertJSONListIntoList(MyJsonParser.JsonArrayFromJsonObject(data.asJsonObject,selectMasterCatName))
                // adding others option
              list!!.add(ProductCateItem("","","",resources.getString(R.string.others),-1))
@@ -69,7 +71,9 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
 
             setSpinnerAdapter(data,R.id.sp_select_subcategory)
              //recycler in bottom add
-             setRecyclerAdapter(data)
+             val listRemoveLastItemsOthers = data.toMutableList()
+             listRemoveLastItemsOthers.removeAt(listRemoveLastItemsOthers.size-1)
+             setRecyclerAdapter(listRemoveLastItemsOthers)
              return
         }
 
@@ -81,7 +85,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
             showToast(ValidationMessage.NO_DATA_FOUND)
             return
         }
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, list)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)
         val spinnerSelectType = findViewById<Spinner>(id)
         spinnerSelectType.adapter = adapter
         spinnerSelectType.onItemSelectedListener = this
@@ -102,7 +106,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
             {
                 R.id.sp_select_type ->{
                    val masterResModelItem = parent?.getItemAtPosition(position) as MasterResModelItem
-
+                    isNotProductListBySubCat = true
                     selectMasterCatName = masterResModelItem.name
                     getProductByMasterCateName(selectMasterCatName)
                 }
@@ -110,20 +114,23 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
 
                     val vehicle = parent?.getItemAtPosition(position) as ProductCateItem
 
-                    if (vehicle.id==-1) {
+                    if (position!=0 && vehicle.id==-1) {
                         notifyToAdmin()
                         return
                     }
+                    isNotProductListBySubCat = true
                     getProSubcategoryByProName(vehicle.category_name)
                 }
                 R.id.sp_select_subcategory ->{
 
                     val subCategories = parent?.getItemAtPosition(position) as ProductSubCategoriesModelResItem
 
-                    if (subCategories.id==-1) {
+                    if (position!=0 && subCategories.id==-1) {
                         notifyToAdmin()
                         return
                     }
+                    isNotProductListBySubCat = false
+                    getProductListBySubcategName(""+subCategories.subcategory_image_url)
 
                 }
             }
@@ -175,6 +182,20 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
             )
         }
     }
+/*
+* get product list by sub cat name
+*
+* */
+
+    private fun getProductListBySubcategName(name: String) {
+
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<ProductListBySubCategViewModel>(this).getProductListBySubCate(name)
+                , this, this
+            )
+        }
+    }
 
     /*
     *
@@ -182,17 +203,12 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
     * */
   private fun <T>setRecyclerAdapter(list: List<T>){
 
-        //if(rec_add_veichle.adapter==null) {
             rec_add_veichle.adapter =
                 ProductVehiclesAdapter(
                     list,
                     this@MerchantAddVehicleActivity,
                     this
                 )
-        /*}else{
-            rec_add_veichle.adapter!!.notifyDataSetChanged()
-        }*/
-
     }
 
     override fun getInflaterViewIDAdapter(): Int {

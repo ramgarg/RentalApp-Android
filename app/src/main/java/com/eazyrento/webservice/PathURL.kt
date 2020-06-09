@@ -33,7 +33,7 @@ class PathURL {
         const val MasterCategory      = "/product/masters"
         const val ProductCategory     = "/product/{master_name}/categories"
         const val ProductSubCategory  = "/product/{category_name}/subcategories"
-        const val Product             = "/product/"
+        const val Product             = "/product/{sub_category_name}"
         const val ProductDetail       = "product/product_detail/{id}"
 
         //Customer

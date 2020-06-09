@@ -8,5 +8,6 @@ data class Details(
     val mobile_number: String,
     val price: Double,
     var quantity_available: Int,
+    var assign_quantity:Int,
     val profile_image:String
 )

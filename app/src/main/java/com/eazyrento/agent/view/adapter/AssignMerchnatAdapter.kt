@@ -47,7 +47,8 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
 //        holder.layout_truck_quantity.text =Constant.QUANTITY+itemMerchant.details.quantity_available
         holder.merchant_distance.text=itemMerchant.details.distance.toString().plus(Constant.KM)
 
-        holder.__quantity.text = ""+itemMerchant.details.quantity_available
+        holder.__quantity.text = itemMerchant.details.quantity_available.toString()
+        itemMerchant.details.assign_quantity = 1
 
         holder.img_call.setOnClickListener {
             Common.phoneCallWithNumber(itemMerchant.details.mobile_number, context) }
@@ -61,7 +62,7 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
             }
             else {
                 holder.item_quantity.text = (value + 1).toString()
-                itemMerchant.details.quantity_available = value+1
+                itemMerchant.details.assign_quantity = value+1
             }
          }
 
@@ -75,7 +76,7 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
             }else {
 
                 holder.item_quantity.text = (value-1).toString()
-                itemMerchant.details.quantity_available = value-1
+                itemMerchant.details.assign_quantity = value-1
             }
         }
 

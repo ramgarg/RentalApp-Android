@@ -29,6 +29,14 @@ class ProductSubCategoriesViewModel : ViewModel() {
     }
 }
 
+class ProductListBySubCategViewModel : ViewModel() {
+
+    fun getProductListBySubCate(name: String): LiveData<DataWrapper<JsonElement>> {
+        return ProductListByCatRepo().getProductListBySubCateg(name)
+    }
+}
+
+
 class ProductDetailsViewModel : ViewModel() {
 
     fun getProductDetails(id: Int): LiveData<DataWrapper<JsonElement>> {

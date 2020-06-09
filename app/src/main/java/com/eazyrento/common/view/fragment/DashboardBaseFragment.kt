@@ -92,9 +92,9 @@ abstract class DashboardBaseFragment:
     }
 
     private fun setBookingStatus(bookingDashboardResponse: BookingDashboardResModel) {
-        complete_value.text = ""+bookingDashboardResponse.completed_orders_count
-        in_progress_value.text = ""+bookingDashboardResponse.in_progress_orders_count
-        reject_value.text = ""+bookingDashboardResponse.rejected_orders_count
+        complete_value.text = bookingDashboardResponse.completed_orders_count.toString()
+        in_progress_value.text = bookingDashboardResponse.in_progress_orders_count.toString()
+        reject_value.text = bookingDashboardResponse.rejected_orders_count.toString()
     }
 
     private fun setBookingAdapterDashboard(agentDashboardResponse: BookingDashboardResModel) {

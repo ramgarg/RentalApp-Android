@@ -11,7 +11,7 @@
 
             <item android:width="@dimen/_25sdp"
                     android:height="@dimen/_25sdp"
-                    android:gravity="right"
+                    android:gravity="center|end"
                     android:drawable="@drawable/spinner_drop_down">
             </item>
 
