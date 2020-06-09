@@ -114,6 +114,7 @@ interface Constant{
         const val DOLLAR="$"
         const val QUANTITY="Quantity - "
         const val ORDER_ID="Order ID - "
+        const val BOOKING_ID="Booking ID - "
 
 
         const val MERCHANT="Merchant"

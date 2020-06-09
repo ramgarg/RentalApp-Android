@@ -3,6 +3,7 @@ package com.eazyrento.agent.view.activity
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.model.modelclass.Booking
+import com.eazyrento.common.model.modelclass.BookingAdapterModel
 import com.eazyrento.common.view.activity.ShowAllBookingActivity
 import com.eazyrento.common.view.adapter.DashboardBookingCardAdapter
 import com.eazyrento.customer.utils.Common
@@ -13,31 +14,25 @@ class AgentShowAllBookingActivity:ShowAllBookingActivity() {
     override fun setBookingHolder(
         holder: DashboardBookingCardAdapter.CardViewHolder,
         list: List<Booking>,
-        position: Int
+        position: Int,
+        modelBooking:BookingAdapterModel
     ) {
-
         val order_listing_obj = list.get(position)
 
-        holder?.tv__name.text = order_listing_obj.customer_detail?.full_name
-        holder?.tv__type.text = Constant.CUSTOMER
+        val baseUserRoleDetail = order_listing_obj.customer_detail
 
-        // prodect details
-        holder?.tv__product_quantity.text = order_listing_obj.product_detail?.product_name+ "-"+order_listing_obj.product_detail?.quantity
-        holder.tv__date_show.text = order_listing_obj.product_detail?.start_date
-        holder.tv__order.text = order_listing_obj.order_id
+        baseUserRoleDetail?.let {
+            it.userRole = Constant.CUSTOMER
+            setBaseDataHolder(position,it,modelBooking,list)
+        }
 
-        Picasso.with(this).load(order_listing_obj.customer_detail?.profile_image).into(holder.img__pic)
-
-        holder.btn__accept.setOnClickListener{
+        modelBooking.btn_accept_booking.setOnClickListener{
             acceptBooking(order_listing_obj,position, Constant.MERCHNAT_ACCEPTANCE)
         }
-        holder.btn__decline.setOnClickListener{
+        modelBooking.btn_decline_booking.setOnClickListener{
             declineBooking(order_listing_obj,position, Constant.MERCHNAT_ACCEPTANCE)
         }
 
-        holder.phone_view.setOnClickListener {
-            Common.phoneCallWithNumber(order_listing_obj.customer_detail?.mobile_number,this)
-        }
     }
 
 }

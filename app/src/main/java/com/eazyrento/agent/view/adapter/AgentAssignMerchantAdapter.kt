@@ -1,3 +1,4 @@
+/*
 package com.eazyrento.agent.view.adapter
 
 import android.content.Context
@@ -64,4 +65,4 @@ class AgentAssignMerchantAdapter (val orderListing: MutableList<Order_listing>, 
         val btn__decline = view.btn__decline
 
     }
-}
+}*/

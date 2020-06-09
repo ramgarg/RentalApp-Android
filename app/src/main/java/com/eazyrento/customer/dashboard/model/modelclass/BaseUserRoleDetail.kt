@@ -45,3 +45,11 @@ data class AgentDetail(
 
     val id: Int
 ):BaseUserRoleDetail(id), Parcelable
+
+@Parcelize
+data class MerchantOrderDetail(
+ val product_name:String,
+ val booking_price:String,
+ val merchant_quantity:Int
+
+):Parcelable

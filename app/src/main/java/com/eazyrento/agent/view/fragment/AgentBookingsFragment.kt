@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.view.activity.AgentBookingReviewSummeryActivity
+import com.eazyrento.common.model.modelclass.BookingAdapterModel
 import com.eazyrento.common.model.modelclass.BookingListItem
 import com.eazyrento.common.view.fragment.MyBookingBaseFragment
 import com.eazyrento.customer.dashboard.view.adapter.RecycleAdapterCustomerBookings
@@ -30,12 +31,15 @@ class AgentBookingsFragment : MyBookingBaseFragment() {
 
     override fun setDataHolder(
         holder: RecycleAdapterCustomerBookings.CardViewHolder,
+        modelBooking:BookingAdapterModel,
         position: Int
     ) {
-        setBaseDataHolder(holder,position,listCustomerBooking[position].customer_detail)
+        setBaseDataHolder(holder,position,listCustomerBooking[position].customer_detail.let { it.userRole =Constant.CUSTOMER
+        it
+        },modelBooking)
 
-        holder.btn_accept_booking.visibility=View.GONE
-        holder.btn_decline_booking.visibility=View.GONE
+        modelBooking.btn_accept_booking.visibility=View.GONE
+        modelBooking.btn_decline_booking.visibility=View.GONE
 
         holder.itemView.setOnClickListener {
 

@@ -9,20 +9,29 @@
     <include layout="@layout/toolbar"
             android:id="@+id/toolbar"
             />
-
+      <TextView
+              android:id="@+id/required_quantity"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/req_quantity"
+              android:layout_below="@+id/toolbar"
+              style="@style/name_heading"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="@dimen/_7sdp"
+              />
     <androidx.recyclerview.widget.RecyclerView
 
-            android:layout_below="@+id/toolbar"
+            android:layout_below="@+id/required_quantity"
             android:layout_above="@+id/btn_assign"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_10sdp"
             android:id="@+id/rec_agent_assign_merchant"
+
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
             android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             >
 
     </androidx.recyclerview.widget.RecyclerView>
