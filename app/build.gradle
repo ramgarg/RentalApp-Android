@@ -8,7 +8,7 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.1"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.eazyrento"
         minSdkVersion 24
@@ -43,6 +43,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    //reqiured hippo chat sdk
+    packagingOptions{
+        ('META-INF/LICENSE')
+        pickFirst('META-INF/LICENSE.txt')
     }
 }
 
@@ -106,5 +112,7 @@ dependencies {
 
     implementation 'io.michaelrocks:libphonenumber-android:8.12.3'
 
-
+    //hipo chat sdk
+    implementation 'com.fugu:fugu:1.66.3'
+    implementation 'org.jsoup:jsoup:1.10.3'
 }

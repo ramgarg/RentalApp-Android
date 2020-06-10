@@ -8,21 +8,18 @@ import androidx.fragment.app.Fragment
 import com.eazyrento.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import com.eazyrento.common.view.ApiResult
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.common.view.LiveDataActivityClass
 import com.eazyrento.customer.notification.view.NotificationActivity
 import com.eazyrento.customer.profile.UpdateProfileActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.webpages.AboutActivity
-import com.eazyrento.login.model.modelclass.ProfileModelReqRes
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.view.ProfileData
 import com.eazyrento.login.view.ProfileDataAPILisetner
 import com.eazyrento.login.view.UserProfileActivity
-import com.eazyrento.login.viewmodel.ProfileUserViewModel
 import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 import com.squareup.picasso.Picasso
+import initHippoWithUserData
 import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -34,8 +31,6 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        getProfileAPI()
     }
 
     override fun onStart() {
@@ -85,6 +80,10 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     }
 
     protected fun setInitData(){
+        //hippo chat
+
+        initHippoWithUserData(this)
+
         setBottomNavigationListener()
         setLeftSliderNavigationListener()
 

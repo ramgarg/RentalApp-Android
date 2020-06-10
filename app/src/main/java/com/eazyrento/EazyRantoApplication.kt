@@ -7,6 +7,7 @@ import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.webservice.ServiceGenrator
 import com.facebook.AccessToken
 import com.facebook.login.LoginManager
+import io.paperdb.Paper
 
 
 class EazyRantoApplication : Application() {
@@ -75,6 +76,7 @@ class EazyRantoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         context = this
+        Paper.init(applicationContext)
     }
 
 

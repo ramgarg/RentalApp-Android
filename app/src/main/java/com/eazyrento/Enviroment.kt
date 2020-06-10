@@ -10,5 +10,10 @@ interface Env{
        private const val SERVER_URL = "http://qa.eazyrento.com:8000"
         const val BASE_URL = SERVER_URL
 
+        //Hipppo chat
+        const val HIPPO_APP_KEY = "02fde7e9accd26a58283350da5ef0e2a"
+        const val HIPPO_APP_TYPE ="MobileAndroid"
+        const val HIPPO_CHAT_TITLE = "EazyRento support"
+
     }
 }
