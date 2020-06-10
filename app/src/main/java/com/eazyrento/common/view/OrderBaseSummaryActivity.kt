@@ -13,10 +13,12 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.dashboard.model.modelclass.*
+import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
+import com.eazyrento.merchant.view.activity.MerchantOrderSummaryActivity
 import com.eazyrento.merchant.view.activity.RateAndReviewActivity
 import com.eazyrento.supporting.*
 import com.squareup.picasso.Picasso
@@ -130,9 +132,16 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
         maintanceUserRoleView: MaintanceUserRoleView,
         base: BaseUserRoleDetail
     ) {
-        maintanceUserRoleView.phone_view.setOnClickListener {
-            Common.phoneCallWithNumber(base.mobile_number, this)
+        when{
+
+            this is CustomerOrderSummaryActivity && base is MerchantDetail -> maintanceUserRoleView.phone_view.visibility =View.GONE
+            this is MerchantOrderSummaryActivity && base is CustomerDetailX -> maintanceUserRoleView.phone_view.visibility =View.GONE
+
+            else -> maintanceUserRoleView.phone_view.setOnClickListener {
+                Common.phoneCallWithNumber(base.mobile_number, this)
+            }
         }
+
     }
     private fun rattingAndReviewClickListener(
         maintanceUserRoleView: MaintanceUserRoleView,

@@ -45,7 +45,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
     * */
     override fun <T> moveOnSelecetedItem(type: T) {
         MoveToAnotherComponent.moveToActivityWithIntentValue<AddProductDailogActivity>(this,
-            Constant.INTENT_MERCHANT_PRODUCT_ADD,(type as ProductSubCategoriesModelResItem).id)
+            Constant.INTENT_MERCHANT_PRODUCT_ADD,(type as ProductListBySubCateModelResItem).id)
     }
 
     override fun <T> onSuccessApiResult(data: T) {
@@ -71,11 +71,14 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
 
             setSpinnerAdapter(data,R.id.sp_select_subcategory)
              //recycler in bottom add
-             val listRemoveLastItemsOthers = data.toMutableList()
-             listRemoveLastItemsOthers.removeAt(listRemoveLastItemsOthers.size-1)
-             setRecyclerAdapter(listRemoveLastItemsOthers)
+             //val listRemoveLastItemsOthers = data.toMutableList()
+             //listRemoveLastItemsOthers.removeAt(listRemoveLastItemsOthers.size-1)
+//             setRecyclerAdapter(listRemoveLastItemsOthers)
              return
         }
+        else if (data is ProductListBySubCategoriesResModel && isNotProductListBySubCat.not()){
+             setRecyclerAdapter(data)
+         }
 
     }
 /* spinner set adapter*/
@@ -130,7 +133,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
                         return
                     }
                     isNotProductListBySubCat = false
-                    getProductListBySubcategName(""+subCategories.subcategory_image_url)
+                    getProductListBySubcategName(subCategories.subcategory_name)
 
                 }
             }

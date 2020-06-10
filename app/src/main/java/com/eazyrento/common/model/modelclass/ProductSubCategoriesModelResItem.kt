@@ -13,3 +13,10 @@ data class ProductSubCategoriesModelResItem(
 {
     override fun toString(): String = subcategory_name
 }
+
+@Parcelize
+data class ProductListBySubCateModelResItem(
+    val id:Int,
+    val name:String,
+    val product_image_url:String
+) : Parcelable

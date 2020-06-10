@@ -3,10 +3,7 @@ package com.eazyrento.common.model.repositry
 import androidx.lifecycle.LiveData
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
-import com.eazyrento.common.model.modelclass.MasterResModel
-import com.eazyrento.common.model.modelclass.ProductCategoriesResModel
-import com.eazyrento.common.model.modelclass.ProductDetailsResModel
-import com.eazyrento.common.model.modelclass.ProductSubCategoriesResModel
+import com.eazyrento.common.model.modelclass.*
 import com.eazyrento.common.model.repositry.api.MasterAPI
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
@@ -43,9 +40,9 @@ class ProductSubCategoriesRepo : GenericRequestHandler<ProductSubCategoriesResMo
 
 /*product list by sub cat*/
 
-class ProductListByCatRepo : GenericRequestHandler<JsonElement>(){
+class ProductListByCatRepo : GenericRequestHandler<ProductListBySubCategoriesResModel>(){
 
-    fun getProductListBySubCateg(name:String ): LiveData<DataWrapper<JsonElement>> {
+    fun getProductListBySubCateg(name:String ): LiveData<DataWrapper<ProductListBySubCategoriesResModel>> {
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             MasterAPI::class.java).getProductListBySubCat(name)

@@ -254,6 +254,9 @@ class LoginUserActivity : AppBizLogin() {
 
             loginUserResModel = data
 
+            Session.getInstance(EazyRantoApplication.context)
+                ?.saveUserRole(loginUserResModel.user_info.user_role)
+
             EazyRantoApplication.saveAccesesToken(loginUserResModel.user_info)
 
             ProfileData().profileAPFromILogin(this, object : LoginUserStatus {

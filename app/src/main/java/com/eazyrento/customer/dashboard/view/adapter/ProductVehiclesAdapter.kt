@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.common.model.modelclass.ProductSubCategoriesModelResItem
 import com.eazyrento.common.model.modelclass.ProductCateItem
+import com.eazyrento.common.model.modelclass.ProductListBySubCateModelResItem
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.merchant.model.modelclass.MerchantProductItem
 import com.squareup.picasso.Picasso
@@ -51,13 +52,17 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
 
         objProduct.let { if (it is ProductCateItem){itemName=it.display_name
                                     imageUrl =it.category_image_url}
-                   if (it is ProductSubCategoriesModelResItem)
+                   else if (it is ProductSubCategoriesModelResItem)
                                 { itemName = it.subcategory_name
                                  imageUrl = it.subcategory_image_url}
 
-                    if (it is MerchantProductItem)
+                    else if (it is MerchantProductItem)
                         { itemName = it.product_name
                             imageUrl = it.product_image_url}
+            else if (it is ProductListBySubCateModelResItem)
+            { itemName = it.name
+                imageUrl = it.product_image_url}
+
         }
 
         holder.tvVeichleName?.text=itemName

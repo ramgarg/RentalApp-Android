@@ -1,9 +1,6 @@
 package com.eazyrento.common.model.repositry.api
 
-import com.eazyrento.common.model.modelclass.MasterResModel
-import com.eazyrento.common.model.modelclass.ProductCategoriesResModel
-import com.eazyrento.common.model.modelclass.ProductDetailsResModel
-import com.eazyrento.common.model.modelclass.ProductSubCategoriesResModel
+import com.eazyrento.common.model.modelclass.*
 import com.eazyrento.login.model.modelclass.LoginRequest
 import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement
@@ -32,7 +29,7 @@ interface MasterAPI{
     //product name
     // sub categories lsit by product name
     @GET(PathURL.Product)
-    fun getProductListBySubCat(@Path("sub_category_name") cat_name: String): Call<JsonElement>
+    fun getProductListBySubCat(@Path("sub_category_name") cat_name: String): Call<ProductListBySubCategoriesResModel>
 
     // sub categories lsit by product name
     @GET(PathURL.ProductDetail)
