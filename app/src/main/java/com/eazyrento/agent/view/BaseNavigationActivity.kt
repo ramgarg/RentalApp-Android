@@ -2,6 +2,7 @@ package com.eazyrento.agent.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.MenuItem
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -23,6 +24,7 @@ import initHippoWithUserData
 import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
+import showHippoConversation
 
 open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -208,6 +210,15 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     override fun onBackPressed() {
         finishCurrentActivityWithResult(Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK, Intent())
         super.onBackPressed()
+    }
+
+    protected fun showHippoSupport(){
+        showProgress()
+        Handler().postDelayed(
+            {hideProgress()}
+            ,Env.HIPPO_LOADER_TIME)
+
+        showHippoConversation(this)
     }
 
 

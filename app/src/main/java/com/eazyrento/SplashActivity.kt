@@ -13,10 +13,12 @@ class SplashActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_splash)
 
+
+
         Handler().postDelayed({
             // This method will be executed once the timer is over
             // Start your app main activity
-
+            fcmTokenByFirebaseInstanceId(this)
             startActivity(Intent(this, LoginUserActivity::class.java))
 
             // close this activity

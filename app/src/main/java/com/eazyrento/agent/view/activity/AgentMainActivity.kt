@@ -85,9 +85,11 @@ class AgentMainActivity : BaseNavigationActivity(){
                 toolbar_title.text=getString(R.string.bookings)
             }
             R.id.navigation_support -> {
-                fragment =
+                /*fragment =
                     AgentSupportFragment()
-                toolbar_title.text=getString(R.string.help)
+                toolbar_title.text=getString(R.string.help)*/
+                showHippoSupport()
+                fragment =null
             }
             else -> {
                 return null

@@ -13,7 +13,7 @@ import com.fugu.FuguConfig
 class SupportFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View{
-        val view = inflater.inflate(R.layout.fragment_support, container, false)
+        val view = inflater.inflate(R.layout.fragment_hippo_chat_lyt, container, false)
        // (activity as CustomerMainActivity).layout_loading.visibility=View.GONE
         return view
     }

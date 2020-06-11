@@ -2,6 +2,7 @@ package com.eazyrento.login.view
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
@@ -236,8 +237,9 @@ class LoginUserActivity : AppBizLogin() {
     ): LoginUserReqModel {
 
         val deviceInfo = DeviceInfo(
-            Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
-        )
+            Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID),BuildConfig.VERSION_NAME,null,
+                Build.VERSION.CODENAME,Constant.PLATFORM, Session.getInstance(this)?.getPushNotificationToken())
+
         return LoginUserReqModel(
             deviceInfo,
             password,
@@ -247,6 +249,7 @@ class LoginUserActivity : AppBizLogin() {
         )
 
     }
+
 
     override fun <T> onSuccessApiResult(data: T) {
 

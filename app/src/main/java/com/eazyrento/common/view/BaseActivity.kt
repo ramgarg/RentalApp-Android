@@ -67,6 +67,10 @@ open abstract class BaseActivity: AppCompatActivity(),
 
         dialogProgrss?.hide()
     }
+    fun dismissProgress(){
+        dialogProgrss?.dismiss()
+        dialogProgrss = null
+    }
     protected fun showToast(msg: String){
         Toast.makeText(this,msg, Toast.LENGTH_LONG).show()
     }
@@ -129,15 +133,16 @@ open abstract class BaseActivity: AppCompatActivity(),
 
     //dismissed progrss barr before leave the activity....
     override fun onDestroy() {
-        dialogProgrss?.dismiss()
+        dismissProgress()
         super.onDestroy()
     }
 
     //dismissed progrss barr before Pause the activity....
     override fun onPause() {
-        dialogProgrss?.dismiss()
+        dismissProgress()
         super.onPause()
     }
+
 
     //finish current activity
     protected fun finishCurrentActivity(flag:Int)

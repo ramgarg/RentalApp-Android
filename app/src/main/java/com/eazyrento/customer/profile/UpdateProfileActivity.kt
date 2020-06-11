@@ -67,7 +67,7 @@ class UpdateProfileActivity : BaseActivity() {
         documentSpinnerData()
         genderSpinnerData()
 
-        setProfileData(userProfile)
+        userProfile?.let { setProfileData(it) }
 
         phoneNumberFormat.phoneNumberListener(this,ed_phone,ed_country)
         phoneNumberFormat.phoneCountryCodeNumberListener(ed_country)
@@ -107,21 +107,24 @@ class UpdateProfileActivity : BaseActivity() {
 
         ed_dob.setText(commonDatePiker.getDateInDisplayFormat(year,month-1,day))
     }
-    private fun setProfileData(userProfile: UserProfile?) {
+    private fun setProfileData(userProfile: UserProfile) {
 
         tv_user_name_profile.text = Session.getInstance(this)?.getUserRole()?.capitalize()
-        ed_full_name.setText(userProfile?.full_name)
+        ed_full_name.setText(userProfile.full_name)
        // ed_user_name.setText(userProfile?.full_name)
-        ed_email.setText(userProfile?.email)
+        if(userProfile.email.isNullOrEmpty())
+            ed_email.isEnabled = true
+        else
+            ed_email.setText(userProfile.email)
 
 
         try {
-            if (userProfile?.country_code.isNullOrEmpty())
-                ed_country.setText("+"+phoneNumberFormat.getCountryCodeForLocalRegion())
+            if (userProfile.country_code.isNullOrEmpty())
+                ed_country.setText("+".plus(phoneNumberFormat.getCountryCodeForLocalRegion()))
             else
-                ed_country.setText(userProfile?.country_code)
+                ed_country.setText(userProfile.country_code)
 
-            ed_phone.setText(userProfile?.mobile_number)
+            ed_phone.setText(userProfile.mobile_number)
 
         }catch (e:Exception){
             e.printStackTrace()
@@ -129,7 +132,7 @@ class UpdateProfileActivity : BaseActivity() {
 
         try {
 
-            ed_dob.tag = userProfile?.dob
+            ed_dob.tag = userProfile.dob
 
             val list = ed_dob.tag.toString().split("-")
 
@@ -141,22 +144,22 @@ class UpdateProfileActivity : BaseActivity() {
         }
 
 
-        ed_company_name.setText(userProfile?.buisness)
-        ed_des.setText(userProfile?.description)
+        ed_company_name.setText(userProfile.buisness)
+        ed_des.setText(userProfile.description)
 
         setAddress()
 
-        Picasso.with(this).load(userProfile?.profile_image).into(img_profile)
-        Picasso.with(this).load(userProfile?.attached_document).into(document_pic)
+        Picasso.with(this).load(userProfile.profile_image).into(img_profile)
+        Picasso.with(this).load(userProfile.attached_document).into(document_pic)
 
-        sp_gender.setSelection(getComparedPostion(getSpinnerDataByID(R.array.Gender),userProfile?.gender))
-        isEditableDocumentSpinner = getComparedPostion(getSpinnerDataByID(R.array.RegistrationDocument),userProfile?.id_proof_title)
+        sp_gender.setSelection(getComparedPostion(getSpinnerDataByID(R.array.Gender),userProfile.gender))
+        isEditableDocumentSpinner = getComparedPostion(getSpinnerDataByID(R.array.RegistrationDocument),userProfile.id_proof_title)
         sp_select_document.setSelection(isEditableDocumentSpinner)
 
         img_edit.setOnClickListener {
             uploadImageFromDevice.pickImage(this,object :OnPiclImageToBase64{
-                override fun onBase64(stringBase64: String?) {
-                    selectBase64StringProfilePic = stringBase64
+                override fun onBase64(string: String?) {
+                    selectBase64StringProfilePic = string
                 }
 
                 override fun onBitmap(bm: Bitmap?) {
@@ -165,7 +168,6 @@ class UpdateProfileActivity : BaseActivity() {
             })
         }
 
-      //  ed_dob.setOnClickListener {  Common.dateSelector(this,ed_dob) }
 
     }
 

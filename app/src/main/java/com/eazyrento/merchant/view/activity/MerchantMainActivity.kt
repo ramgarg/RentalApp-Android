@@ -66,9 +66,11 @@ class MerchantMainActivity : BaseNavigationActivity() {
                 toolbar_title.text=getString(R.string.profile)
             }
             R.id.navigation_support-> {
-                fragment =
+                /*fragment =
                     MerchantSupportFragment()
-                toolbar_title.text=getString(R.string.support)
+                toolbar_title.text=getString(R.string.support)*/
+                showHippoSupport()
+                fragment = null
             }
 
             else -> {

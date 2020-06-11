@@ -3,6 +3,7 @@ package com.eazyrento
 interface Env{
     companion object{
 
+
         const val SPLASH_TIME_OUT:Long = 2*1000 // 3 sec
         const val isLogging = true
 
@@ -14,6 +15,7 @@ interface Env{
         const val HIPPO_APP_KEY = "02fde7e9accd26a58283350da5ef0e2a"
         const val HIPPO_APP_TYPE ="MobileAndroid"
         const val HIPPO_CHAT_TITLE = "EazyRento support"
+        const val HIPPO_LOADER_TIME:Long = 700 //MS
 
     }
 }

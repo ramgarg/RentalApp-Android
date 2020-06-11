@@ -2,8 +2,6 @@ package com.eazyrento.customer.dashboard.view.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.eazyrento.Constant
@@ -14,8 +12,6 @@ import com.eazyrento.customer.dashboard.view.fragment.*
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import kotlinx.android.synthetic.main.activity_agent_home_.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.navigation_view
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -49,7 +45,7 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
 
     override fun bottomNavigationListener(menuItemID: Int): Fragment? {
 
-        var fragment:Fragment?
+        val fragment:Fragment?
         
         when (menuItemID) {
 
@@ -79,10 +75,11 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
                 toolbar_title.text=getString(R.string.bookings)
             }
             R.id.navigation_support -> {
-                toolbar_title.text=getString(R.string.help)
-                fragment=
-                    SupportFragment()
+                /*toolbar_title.text=getString(R.string.help)
+                fragment=SupportFragment()*/
+                showHippoSupport()
 
+                fragment =null
             }
             else ->{
                 return null

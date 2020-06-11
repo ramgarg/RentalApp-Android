@@ -56,4 +56,15 @@ class Session private constructor(context: Context?){
     fun getAccessToken():String?{
         return sSharedPreferences?.getString(PrefKey.ACCESS_TOKEN,null)
     }
+
+    /*save push token for send to server*/
+    fun savePushNotificationToken(value:String?){
+        val edit = sSharedPreferences?.edit()
+        edit?.putString(PrefKey.PUSH_NOTIFICATION_TOKEN, value)
+        edit?.apply()
+    }
+    /*get push token and send to server*/
+    fun getPushNotificationToken():String?{
+        return sSharedPreferences?.getString(PrefKey.PUSH_NOTIFICATION_TOKEN,null)
+    }
 }
