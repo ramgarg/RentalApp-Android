@@ -114,8 +114,13 @@ open class MyAddressListActivity : BaseActivity() {
                 }
 
             //editing or crating .....
-            if (addressInfo!=null && isDelete==false)
+            if (addressInfo!=null && isDelete==false){
+                if(addressInfo.is_default && listOfAddress.isNotEmpty()){
+                    listOfAddress.filter { obj->obj.is_default==true }.single().is_default =false
+                }
                 listOfAddress.add(addressInfo)
+
+            }
 
             rec_my_address.adapter?.notifyDataSetChanged()
 
