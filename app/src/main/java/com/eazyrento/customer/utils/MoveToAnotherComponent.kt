@@ -49,15 +49,23 @@ class MoveToAnotherComponent {
         }
 
         // start activity for result
-        //normal
+        //normal int value
 
         inline fun <reified T>startActivityForResult(activity: Activity,requestCode: Int,key:String,value: Int) {
             val intent = Intent(activity, T::class.java)
             intent.putExtra(key,value)
             activity.startActivityForResult(intent,requestCode)
         }
+        //string params value
 
         inline fun <reified T>startActivityForResult(activity: Activity,requestCode: Int,key:String,value: String) {
+            val intent = Intent(activity, T::class.java)
+            intent.putExtra(key,value)
+            activity.startActivityForResult(intent,requestCode)
+        }
+
+        // Bollean value
+        inline fun <reified T>startActivityForResult(activity: Activity,requestCode: Int,key:String,value: Boolean) {
             val intent = Intent(activity, T::class.java)
             intent.putExtra(key,value)
             activity.startActivityForResult(intent,requestCode)

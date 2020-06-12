@@ -19,7 +19,7 @@ interface Constant{
 
         const val KEY_FINISH_FIRST_TIME_USER = "first_time"
 
-        const val LOGIN_KEY_FINISH ="FINISH"
+        const val LOGIN_WITH_DEEPLINK ="deeplink"
         const val LOGIN_VALUE = 1
 
         const val RC_SIGN_IN_GOOGLE = 9001
@@ -150,6 +150,9 @@ interface Constant{
         const val INTENT_LOGOUT_KEY = "logout"
         const val LOGOUT_VALUE = 1001
 
+        //notification
+        const val DEEPLINK_VALUE = "deep_link"
+        const val REQUEST_CODE_PENDING_INTENT = 2011
 
     }
 }

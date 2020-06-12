@@ -7,10 +7,13 @@ import android.view.MenuItem
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.eazyrento.*
+import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.appbiz.AppBizLogin
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.notification.view.NotificationActivity
+import com.eazyrento.customer.payment.view.PaymentBaseActivity
 import com.eazyrento.customer.profile.UpdateProfileActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.webpages.AboutActivity
@@ -18,6 +21,11 @@ import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.view.ProfileData
 import com.eazyrento.login.view.ProfileDataAPILisetner
 import com.eazyrento.login.view.UserProfileActivity
+import com.eazyrento.supporting.DeeplinkEvents
+import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_DEEPLINK
+import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_ORDER_ID
+import com.eazyrento.supporting.isDeeplinkingFromNotification
+import com.eazyrento.supporting.onDeeplinking
 import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 import com.squareup.picasso.Picasso
 import initHippoWithUserData
@@ -57,6 +65,19 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         bottom_navigation_view.selectedItemId = R.id.navigation_common_fourth_pos
     }
 
+    fun setOrderListing(){
+        bottom_navigation_view.selectedItemId = R.id.navigation_order
+    }
+    fun setBooking(){
+        setForthPosFragment()
+    }
+    fun setPaymentActivity(orderID:String){
+        paymentActivity(orderID)
+    }
+    fun setOrderSummeryActivity(orderID:String){
+        orderSummeryActivity(orderID)
+    }
+
     // dynamic title
     fun setNavigationIconAndTitle(hashMap:HashMap<Int, MenuData>){
 
@@ -89,11 +110,32 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         setBottomNavigationListener()
         setLeftSliderNavigationListener()
 
-
         topBarWithMenuIconAndTitleMessage(resources.getString(R.string.title_home))
 
-        // select home fragment
-        setHomeFragment()
+        if (isDeeplinkingFromNotification(intent))
+            pageNavigationAtDeeplink()
+        else
+            setHomeFragment()
+
+
+
+
+    }
+    protected fun pageNavigationAtDeeplink(){
+        val value_deeplink = DeeplinkEvents.mapPayLoadDataDeeplink?.get(KEY_DEEPLINK)
+        val value_order_id = DeeplinkEvents.mapPayLoadDataDeeplink?.get(KEY_ORDER_ID)
+
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"value deeplink: $value_deeplink")
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"value_order_id: $value_order_id")
+
+        when{
+            value_deeplink==DeeplinkEvents.BOOKINGS -> {setBooking()}
+            value_deeplink==DeeplinkEvents.ORDER_LISTING->{setOrderListing()}
+            value_deeplink==DeeplinkEvents.ORDER_SUMMARY && value_order_id!=null->{setOrderSummeryActivity(value_order_id)}
+            value_deeplink==DeeplinkEvents.PAYMENT && value_order_id!=null->{setPaymentActivity(value_order_id)}
+            else->setHomeFragment()
+        }
+
     }
 
     protected fun setBottomNavigationListener(){
@@ -133,7 +175,7 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
 
         BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
 
-            var fragment = bottomNavigationListener(menuItem.itemId)
+            val fragment = bottomNavigationListener(menuItem.itemId)
 
             fragment?.let {
                 moveToSelectedFragment(it)
@@ -206,6 +248,8 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     abstract fun addNotes()
     abstract fun viewPaymentHistory()
     abstract fun viewMyAddress()
+    abstract fun paymentActivity(orderID: String)
+    abstract fun orderSummeryActivity(orderID: String)
 
     override fun onBackPressed() {
         finishCurrentActivityWithResult(Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK, Intent())

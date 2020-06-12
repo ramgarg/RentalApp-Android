@@ -105,6 +105,8 @@ interface ValidationMessage{
 
         const val QUANTITY_SET_LIMIT = "You can't set value beyond limit."
 
+        const val USER_NEED_LOGIN = "User need to login"
+
 
     }
 }

@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.view.BaseNavigationActivity
+import com.eazyrento.agent.view.activity.AgentMainActivity
+import com.eazyrento.agent.view.activity.AgentOrderSummaryActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -119,5 +121,13 @@ class MerchantMainActivity : BaseNavigationActivity() {
     override fun viewMyAddress() {
         MoveToAnotherComponent.moveToActivityNormal<MyAddressListActivity>(this)
     }
+    override fun paymentActivity(orderID: String) {
+        MoveToAnotherComponent.moveToActivityWithIntentValue<MerchantMainActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
+            orderID)
+    }
 
+    override fun orderSummeryActivity(orderID: String) {
+        MoveToAnotherComponent.moveToActivityWithIntentValue<MerchantOrderSummaryActivity>(this, Constant.ORDER_SUMMERY_KEY,
+            orderID)
+    }
 }

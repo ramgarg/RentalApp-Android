@@ -8,6 +8,8 @@ import com.eazyrento.R
 import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.agent.view.fragment.*
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
+import com.eazyrento.customer.dashboard.view.activity.CustomerPaymentActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_home_.navigation_view
 import kotlinx.android.synthetic.main.toolbar.*
@@ -73,7 +75,6 @@ class AgentMainActivity : BaseNavigationActivity(){
             }
 
             R.id.navigation_home -> {
-                //setVisibleToolbarHeader(View.GONE)
                 toolbar_title.text=getString(R.string.home)
                 fragment =
                     AgentHomeFragment()
@@ -112,6 +113,14 @@ class AgentMainActivity : BaseNavigationActivity(){
 
     override fun viewMyAddress() {
     }
+    override fun paymentActivity(orderID: String) {
+        MoveToAnotherComponent.moveToActivityWithIntentValue<AgentPaymentActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
+            orderID)
+    }
 
+    override fun orderSummeryActivity(orderID: String) {
+        MoveToAnotherComponent.moveToActivityWithIntentValue<AgentOrderSummaryActivity>(this, Constant.ORDER_SUMMERY_KEY,
+            orderID)
+    }
 
 }

@@ -20,6 +20,7 @@ import com.eazyrento.login.model.modelclass.LoginUserResModel
 import com.eazyrento.login.viewmodel.LoginUserViewModel
 import com.eazyrento.merchant.view.activity.MerchantMainActivity
 import com.eazyrento.supporting.MyJsonParser
+import com.eazyrento.supporting.isDeeplinkingFromNotification
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -29,6 +30,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import kotlinx.android.synthetic.main.activity_login.*
+import java.lang.Exception
 
 
 class LoginUserActivity : AppBizLogin() {
@@ -52,16 +54,25 @@ class LoginUserActivity : AppBizLogin() {
         setContentView(R.layout.activity_login)
 
         // vallidation for if user is already login
+         isLoginUser(intent)
+
+
+    }
+
+    private fun isLoginUser(intent:Intent){
         if (EazyRantoApplication.isUserLogin())
-            sendUserReleventPanel(Session.getInstance(EazyRantoApplication.context)?.getUserRole())
-
-
+            sendUserReleventPanel(intent,Session.getInstance(EazyRantoApplication.context)?.getUserRole())
+        else
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,ValidationMessage.USER_NEED_LOGIN)
     }
 
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "onNewIntent")
+        if (isDeeplinkingFromNotification(intent)){
+            isLoginUser(intent!!)
+        }
     }
 
     // lisetner
@@ -214,18 +225,18 @@ class LoginUserActivity : AppBizLogin() {
 
     }
 
-    private fun sendUserReleventPanel(userRole: String?) {
+    private fun sendUserReleventPanel(intent:Intent,userRole: String?) {
 
         when (userRole) {
 
             UserInfoAPP.AGENT -> MoveToAnotherComponent.startActivityForResult<AgentMainActivity>(this,
-                Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK,Constant.LOGIN_KEY_FINISH,Constant.LOGIN_VALUE)
+                Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK,Constant.DEEPLINK_VALUE,isDeeplinkingFromNotification(intent))
 
             UserInfoAPP.CUSTOMER ->  MoveToAnotherComponent.startActivityForResult<CustomerMainActivity>(this,
-                Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK,Constant.LOGIN_KEY_FINISH,Constant.LOGIN_VALUE)
+                Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK,Constant.DEEPLINK_VALUE,isDeeplinkingFromNotification(intent))
 
             UserInfoAPP.MERCHANT ->  MoveToAnotherComponent.startActivityForResult<MerchantMainActivity>(this,
-                Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK,Constant.LOGIN_KEY_FINISH,Constant.LOGIN_VALUE)
+                Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK,Constant.DEEPLINK_VALUE,isDeeplinkingFromNotification(intent))
         }
 
     }
@@ -278,7 +289,7 @@ class LoginUserActivity : AppBizLogin() {
     private fun onLoginSucess(){
 
         EazyRantoApplication.onLoginUpdateSession(loginUserResModel.user_info)
-        sendUserReleventPanel(loginUserResModel.user_info.user_role)
+        sendUserReleventPanel(intent,loginUserResModel.user_info.user_role)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
