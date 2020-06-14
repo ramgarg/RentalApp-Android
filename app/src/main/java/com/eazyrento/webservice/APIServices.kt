@@ -2,7 +2,6 @@ package com.eazyrento.webservice
 
 import com.eazyrento.customer.dashboard.model.modelclass.HomeResponse
 import com.eazyrento.customer.dashboard.model.modelclass.OrderSummaryResponseModel
-import com.eazyrento.customer.notification.model.NotificationResponse
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -16,8 +15,6 @@ interface APIServices {
     fun getOrderSummary():Call<OrderSummaryResponseModel>
 //
 
-    @GET(PathURL.NOTIFICATION)
-    fun getNotification(): Call<NotificationResponse>
 
 
     /*// Customer API

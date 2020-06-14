@@ -10,6 +10,7 @@ import com.eazyrento.agent.view.fragment.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
 import com.eazyrento.customer.dashboard.view.activity.CustomerPaymentActivity
+import com.eazyrento.customer.notification.view.NotificationFragment
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_home_.navigation_view
 import kotlinx.android.synthetic.main.toolbar.*
@@ -63,8 +64,9 @@ class AgentMainActivity : BaseNavigationActivity(){
 
             R.id.navigation_common_first_pos-> {
 
-                fragment =
-                    AgentNotificationFragment()
+                /*fragment =
+                    AgentNotificationFragment()*/
+                fragment = NotificationFragment()
                 toolbar_title.text=getString(R.string.title_notification)
             }
 
@@ -72,6 +74,7 @@ class AgentMainActivity : BaseNavigationActivity(){
                 fragment =
                     AgentOrderListFragment()
                 toolbar_title.text=getString(R.string.order)
+
             }
 
             R.id.navigation_home -> {

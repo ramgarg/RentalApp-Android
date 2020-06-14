@@ -57,7 +57,8 @@ class WishListFragment : BaseFragment(), DeleteAndViewDetails {
 
         rec_wishlist.layoutManager = LinearLayoutManager(requireActivity(),
             LinearLayoutManager.VERTICAL,false)
-        (rec_wishlist.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(1,1)
+
+//        (rec_wishlist.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(1,1)
 
         val recyleAdapterWishlist=
             WishListAdapter(

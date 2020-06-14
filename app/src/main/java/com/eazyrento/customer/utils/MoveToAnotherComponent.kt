@@ -8,13 +8,9 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.eazyrento.EazyRantoApplication
 import com.eazyrento.ValidationMessage
-import com.eazyrento.agent.view.activity.*
 import com.eazyrento.customer.dashboard.view.activity.*
-import com.eazyrento.customer.notification.view.NotificationActivity
-import com.eazyrento.customer.webpages.AboutActivity
 import com.eazyrento.customer.webpages.TermsConditionActivity
 import com.eazyrento.login.view.LoginUserActivity
-import com.eazyrento.merchant.view.activity.*
 
 
 class MoveToAnotherComponent {

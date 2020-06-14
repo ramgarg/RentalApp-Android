@@ -11,15 +11,10 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import com.eazyrento.Constant
 import com.eazyrento.InternetNetworkConnection
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
-import com.eazyrento.customer.notification.view.NotificationActivity
-import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.merchant.view.activity.MerchantAddVehicleActivity
-import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -95,7 +90,7 @@ open abstract class BaseActivity: AppCompatActivity(),
         }*/
 
 
-        /*if(title.equals("Payment"))
+        /*if(title.equals("payment_noti"))
             Common.thankYou(dialog, msg)
         else if(title.equals("UserType"))
             Common.userDialog(context, dialog)

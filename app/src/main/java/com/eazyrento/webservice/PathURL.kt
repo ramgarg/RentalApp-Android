@@ -10,7 +10,8 @@ class PathURL {
         const val BASE_URL = Env.BASE_URL
 
         const val DASHBOARD = "users?page=2"
-        const val NOTIFICATION = "users?page=2"
+
+
 
         //Login
         //Login Module
@@ -28,6 +29,8 @@ class PathURL {
         const val UserUpdateNote    = "/user/notes/update/{id}"
         const val UserDeleteNote    = "/user/notes/delete/{id}"
 
+        //notification
+        const val NOTIFICATION = "/user/notification/list"
 
         // Common
         const val MasterCategory      = "/product/masters"

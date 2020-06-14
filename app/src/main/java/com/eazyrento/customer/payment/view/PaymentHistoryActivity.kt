@@ -20,7 +20,7 @@ class PaymentHistoryActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment_history)
-        topBarWithBackIconAndTitle("Payment History")
+        topBarWithBackIconAndTitle("payment_noti History")
 
         val orderID = intent.getStringExtra(Constant.KEY_PAYMENT_HISTORY)
 

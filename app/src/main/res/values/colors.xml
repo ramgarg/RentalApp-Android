@@ -19,4 +19,8 @@
     <color name="cardview_shadow_start">#37000000</color>
     <color name="transparent">#00000000</color>
 
+    <color name="notifiction_read">#F3F4F5</color>
+    <color name="notifiction_unread">#EAF4FE</color>
+
+
 </resources>

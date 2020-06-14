@@ -4,16 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
+import android.view.View
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.appbiz.AppBizLogin
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.customer.notification.view.NotificationActivity
-import com.eazyrento.customer.payment.view.PaymentBaseActivity
+import com.eazyrento.customer.notification.view.NotificationFragment
 import com.eazyrento.customer.profile.UpdateProfileActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.webpages.AboutActivity
@@ -25,7 +24,6 @@ import com.eazyrento.supporting.DeeplinkEvents
 import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_DEEPLINK
 import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_ORDER_ID
 import com.eazyrento.supporting.isDeeplinkingFromNotification
-import com.eazyrento.supporting.onDeeplinking
 import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 import com.squareup.picasso.Picasso
 import initHippoWithUserData
@@ -77,6 +75,13 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     fun setOrderSummeryActivity(orderID:String){
         orderSummeryActivity(orderID)
     }
+    fun setNotification(){
+
+        toolbar_title.text=getString(R.string.title_notification)
+
+        moveToSelectedFragment(NotificationFragment())
+
+    }
 
     // dynamic title
     fun setNavigationIconAndTitle(hashMap:HashMap<Int, MenuData>){
@@ -94,14 +99,22 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     }
 
     // top bar
-      fun topBarWithMenuIconAndTitleMessage(title:String){
+     private fun topBarWithMenuIconListenerAndTitleMessage(title:String){
         super.topBarWithMenuIconAndNotificationWithTitleMessage(title)
 
-        img_notification.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<NotificationActivity>(this) }
-        img_menu.setOnClickListener { drawer_layout.openDrawer(GravityCompat.START)}
+        img_notification.setOnClickListener {
+            //MoveToAnotherComponent.moveToActivityNormal<NotificationFragment>(this)
+            setNotification()
+        }
+        img_menu.setOnClickListener {
+            drawer_layout.openDrawer(GravityCompat.START)
+        }
 
     }
 
+    fun setVisiblity(vis:Int){
+        img_notification.visibility = vis
+    }
     protected fun setInitData(){
         //hippo chat
 
@@ -110,20 +123,18 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         setBottomNavigationListener()
         setLeftSliderNavigationListener()
 
-        topBarWithMenuIconAndTitleMessage(resources.getString(R.string.title_home))
+        topBarWithMenuIconListenerAndTitleMessage(resources.getString(R.string.title_home))
 
         if (isDeeplinkingFromNotification(intent))
-            pageNavigationAtDeeplink()
+            pageNavigationAtDeeplink(DeeplinkEvents.mapPayLoadDataDeeplink)
         else
             setHomeFragment()
-
-
-
-
     }
-    protected fun pageNavigationAtDeeplink(){
-        val value_deeplink = DeeplinkEvents.mapPayLoadDataDeeplink?.get(KEY_DEEPLINK)
-        val value_order_id = DeeplinkEvents.mapPayLoadDataDeeplink?.get(KEY_ORDER_ID)
+
+     fun pageNavigationAtDeeplink(mapPayLoadDataDeeplink:Map<String,String>?){
+
+        val value_deeplink = mapPayLoadDataDeeplink?.get(KEY_DEEPLINK)
+        val value_order_id = mapPayLoadDataDeeplink?.get(KEY_ORDER_ID)
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"value deeplink: $value_deeplink")
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"value_order_id: $value_order_id")

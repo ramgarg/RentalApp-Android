@@ -97,7 +97,7 @@ interface Constant{
         const val AGENT_ACCEPTANCE = 8
         const val MERCHNAT_ACCEPTANCE = 9
 
-        //Payment History
+        //payment_noti History
         const val PAYPAL ="paypal"
         const val CASH ="cash"
 

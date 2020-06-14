@@ -2,23 +2,15 @@ package com.eazyrento.customer.notification.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.eazyrento.customer.notification.model.NotificationRepository
-import com.eazyrento.customer.notification.model.NotificationResponse
+import com.eazyrento.appbiz.retrofitapi.DataWrapper
+import com.eazyrento.customer.notification.model.NotificationList
+import com.eazyrento.customer.notification.model.NotificationModel
+import com.eazyrento.customer.notification.model.repositry.NotificationRepo
 
-class NotificationViewModel :ViewModel() {
+class NotificationViewModel : ViewModel() {
 
-    var  notificationRepository: NotificationRepository
-    var responseNotificationLiveData:LiveData<NotificationResponse>
-
-    init {
-        notificationRepository=
-            NotificationRepository()
-        responseNotificationLiveData=notificationRepository.getNotificationList()
+    fun getNotificationList(): LiveData<DataWrapper<NotificationList>> {
+        return NotificationRepo()
+            .getNotificationList()
     }
-
-    fun getNotificationResponse():LiveData<NotificationResponse>{
-
-      return  responseNotificationLiveData
-    }
-
 }

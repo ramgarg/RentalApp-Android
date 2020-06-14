@@ -86,7 +86,7 @@ class Common {
 
             val dialog = initDailog(context,layout)
 
-            if(title.equals("Payment"))
+            if(title.equals("payment_noti"))
                 thankYou(
                     dialog,
                     msg

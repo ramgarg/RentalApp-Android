@@ -130,11 +130,11 @@
         <activity android:name="com.eazyrento.customer.profile.UpdateProfileActivity"
                   android:screenOrientation="unspecified"/>
 
-        <!--/>-->
-        <activity android:name="com.eazyrento.customer.notification.view.NotificationActivity"
+
+       <!-- <activity android:name="com.eazyrento.customer.notification.view.NotificationActivity"
                   android:screenOrientation="unspecified"
 
-        />
+        />-->
         <activity android:name="com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity"
                   android:screenOrientation="unspecified"
 
