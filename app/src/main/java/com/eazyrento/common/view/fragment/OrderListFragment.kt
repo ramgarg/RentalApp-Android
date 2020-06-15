@@ -5,12 +5,14 @@ import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.common.view.activity.OrderFilter
 import com.eazyrento.common.view.adapter.OrderListBaseAdapter
 import com.eazyrento.common.view.adapter.ViewInflaterAndBinder
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderListViewModel
 import com.eazyrento.customer.utils.Common
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
 
@@ -21,6 +23,9 @@ import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
         super.onActivityCreated(savedInstanceState)
 
         callAPIOrderList(Constant.OPEN_ORDER)
+        img_filter.setOnClickListener {
+            MoveToAnotherComponent.moveToActivityNormal<OrderFilter>(requireContext())
+        }
 
     }
 

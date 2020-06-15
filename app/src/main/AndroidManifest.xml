@@ -42,6 +42,11 @@
 
         />
 
+        <activity android:name="com.eazyrento.common.view.activity.OrderFilter"
+                android:screenOrientation="unspecified"
+
+                />
+
 
         <activity android:name="com.eazyrento.merchant.view.activity.MerchantAddVehicleActivity"
                 android:screenOrientation="unspecified"

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    <Button
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_reset"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/_14sdp"
+            android:layout_below="@+id/toolbar"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bree_serif"
+            android:text="@string/reset"
+            android:textAllCaps="false"
+            android:background="@drawable/shap_blue_ractangle"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp">
+
+    </Button>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_reset"
+            android:id="@+id/tv_customer_name"
+            android:text="@string/customer_name"
+            style="@style/pro_details_heading"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp">
+
+    </TextView>
+
+    <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_below="@id/tv_customer_name"
+            style="@style/mySpinnerItemStyle"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:id="@+id/sp_customer_name"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sp_customer_name"
+            android:id="@+id/tv_order_id"
+            android:text="@string/order_id"
+            style="@style/pro_details_heading"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp">
+
+    </TextView>
+
+    <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/tv_order_id"
+            android:layout_marginStart="@dimen/_10sdp"
+            style="@style/mySpinnerItemStyle"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:id="@+id/sp_order_id"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_below="@+id/sp_order_id"
+            android:weightSum="1"
+            android:orientation="horizontal">
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight=".5">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/service_date"
+                    style="@style/pro_details_heading">
+
+            </TextView>
+
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    style="@style/mySpinnerItemStyle"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:id="@+id/sp_service_date"/>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight=".5">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status_text"
+                    style="@style/pro_details_heading">
+
+            </TextView>
+
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    style="@style/mySpinnerItemStyle"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:id="@+id/sp_status"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_apply"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bree_serif"
+            android:text="@string/apply"
+            android:textAllCaps="false"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button_save"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp">
+
+    </Button>
+
+
+</RelativeLayout>

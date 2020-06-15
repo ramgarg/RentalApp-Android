@@ -33,6 +33,7 @@
     <string name="orders">Orders</string>
     <string name="title_notification">Notification</string>
     <string name="profile">Profile</string>
+    <string name="filter">Filter</string>
     <string name="support">Support</string>
     <string name="my_address">My Addresses</string>
     <string name="booking_details">Booking Details</string>
@@ -286,6 +287,11 @@
     <string name="pending_approval">Pending Approval</string>
     <string name="amount_dollar">Amount($)</string>
     <string name="dollar">$</string>
+    <string name="reset">Reset</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="order_id">Order ID</string>
+    <string name="service_date">Service Date</string>
+    <string name="status_text">Status</string>
 
     <string-array name="SelectType">
     <item>Select Type</item>
@@ -330,5 +336,23 @@
         <item>Petrol</item>
         <item>Diesel</item>
         <item>Gasoline</item>
+    </string-array>
+    <string-array name="CustomerName">
+        <item>Select Customer Name</item>
+        <item>Rahul</item>
+        <item>Rohit</item>
+        <item>Ajay</item>
+    </string-array>
+    <string-array name="OrderId">
+        <item>Select Order ID</item>
+        <item>11</item>
+        <item>22</item>
+        <item>33</item>
+    </string-array>
+    <string-array name="ServiceDate">
+        <item>Select Date</item>
+        <item>12 Jan 2020</item>
+        <item>14 May 2020</item>
+        <item>12 June 2020</item>
     </string-array>
 </resources>
