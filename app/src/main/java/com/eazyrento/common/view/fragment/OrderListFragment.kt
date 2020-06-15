@@ -14,7 +14,7 @@ import com.eazyrento.customer.utils.Common
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
 
-open abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
+ abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
     lateinit var listOrderItems:CustomerOrderListResModel
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
