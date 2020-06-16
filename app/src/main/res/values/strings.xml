@@ -255,6 +255,7 @@
     <string name="title_forgot_pass">Forgot password</string>
     <string name="title_OTP">OTP</string>
     <string name="capacity">Capacity</string>
+    <string name="capacity_">Capacity*</string>
     <string name="power">Power</string>
     <string name="resend_otp"><u>Resend OTP</u></string>
 
@@ -292,6 +293,8 @@
     <string name="order_id">Order ID</string>
     <string name="service_date">Service Date</string>
     <string name="status_text">Status</string>
+    <string name="enter_product_name">Enter Product Name</string>
+    <string name="enter_product_capacity">Enter Product Capacity</string>
 
     <string-array name="SelectType">
     <item>Select Type</item>

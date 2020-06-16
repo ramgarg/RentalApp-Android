@@ -19,86 +19,46 @@
                   android:layout_height="match_parent">
 
         <TextView android:layout_width="wrap_content"
-                  android:text="@string/select_category"
-                  android:textSize="@dimen/_15sdp"
-                  android:fontFamily="@font/bree_serif"
-                  android:textColor="#000"
-                  android:layout_height="wrap_content"
-                 android:visibility="gone"
-                />
-
-        <Spinner
-                android:id="@+id/vehicle_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:drawableEnd="@mipmap/expand"
-                android:textSize="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:visibility="gone"
-                />
-
-        <View android:layout_width="match_parent"
-              android:layout_height="@dimen/_1sdp"
-              android:background="@android:color/darker_gray"
-                android:visibility="gone"
-                />
-
-        <TextView android:layout_width="wrap_content"
-                  android:text="@string/truck_name"
+                  android:text="@string/name"
                   android:layout_marginTop="@dimen/_15sdp"
-                  android:textSize="@dimen/_15sdp"
-                  android:fontFamily="@font/bree_serif"
-                  android:textColor="#000"
+                 style="@style/pro_details_heading"
                   android:layout_height="wrap_content"/>
 
         <EditText android:layout_width="match_parent"
-                  android:textSize="@dimen/_15sdp"
-                  android:hint=""
+                android:id="@+id/ed_product_name"
+                  android:textSize="@dimen/_16sdp"
                   android:layout_marginTop="@dimen/_10sdp"
                   android:fontFamily="@font/bree_serif"
-                  android:layout_height="@dimen/_40sdp"/>
-
-
-        <TextView android:layout_width="wrap_content"
-                  android:text="@string/truck_capacity"
-                  android:layout_marginTop="@dimen/_15sdp"
-                  android:textSize="@dimen/_15sdp"
-                  android:fontFamily="@font/bree_serif"
-                  android:textColor="#000"
                   android:layout_height="wrap_content"/>
 
-        <TextView android:layout_width="match_parent"
-                  android:text="@string/na"
-                  android:textSize="@dimen/_15sdp"
-                  android:layout_marginTop="@dimen/_10sdp"
-                  android:fontFamily="@font/bree_serif"
-                  android:layout_height="@dimen/_40sdp"/>
-        <View android:layout_width="match_parent"
-              android:layout_height="@dimen/_1sdp"
-              android:background="@android:color/darker_gray"/>
-
         <TextView android:layout_width="wrap_content"
-                  android:text="@string/details"
+                  android:text="@string/capacity_"
+                style="@style/pro_details_heading"
                   android:layout_marginTop="@dimen/_15sdp"
-                  android:textSize="@dimen/_15sdp"
-                  android:fontFamily="@font/bree_serif"
-                  android:textColor="#000"
                   android:layout_height="wrap_content"/>
 
-        <TextView android:layout_width="match_parent"
-                  android:text="@string/details"
-                  android:textSize="@dimen/_15sdp"
-                  android:layout_marginTop="@dimen/_10sdp"
-                  android:fontFamily="@font/bree_serif"
-                  android:layout_height="@dimen/_40sdp"/>
+        <EditText android:layout_width="match_parent"
+                android:textSize="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:id="@+id/ed_product_capacity"
+                android:fontFamily="@font/bree_serif"
+                android:layout_height="wrap_content"/>
 
-        <View android:layout_width="match_parent"
-              android:layout_height="@dimen/_1sdp"
-              android:background="@android:color/darker_gray"/>
+        <TextView android:layout_width="wrap_content"
+                android:text="@string/details"
+                style="@style/pro_details_heading"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_height="wrap_content"/>
+
+        <EditText android:layout_width="match_parent"
+                android:textSize="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:singleLine="false"
+                android:lines="4"
+                android:gravity="top"
+                android:fontFamily="@font/bree_serif"
+                android:id="@+id/ed_product_details"
+                android:layout_height="@dimen/_100sdp"/>
 
     </LinearLayout>
 
@@ -107,7 +67,7 @@
             android:id="@+id/btn_submit"
             android:textColor="#fff"
             android:textAllCaps="false"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_16sdp"
             android:fontFamily="@font/bree_serif"
             android:background="@drawable/button_save"
             android:layout_alignParentBottom="true"

@@ -1,5 +1,6 @@
 package com.eazyrento.customer.dashboard.view.activity
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -15,11 +16,10 @@ import com.eazyrento.customer.payment.viewmodel.PaymentHistoryViewModel
 import com.eazyrento.customer.utils.ViewVisibility
 import com.eazyrento.merchant.viewModel.MerchantNotifyAdminViewModel
 import kotlinx.android.synthetic.main.activity_notify_admin.*
+import kotlinx.android.synthetic.main.activity_rate_and_review.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class NotifyToAdminActivity :BaseActivity(){
-
-    var notifyAdminProductUnavailble = NotifyAdminProductUnavailble("xyz","11","dsd")
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -34,15 +34,34 @@ class NotifyToAdminActivity :BaseActivity(){
     fun onSubmitClick(view:View){
 
         // validation to check
+        if (checkValidation())
+            return
 
         sendDataToServer()
     }
 
+    private fun checkValidation(): Boolean {
+        if (ed_product_name.text.toString().isEmpty()){
+            showToast(ValidationMessage.VALID_NAME)
+            return true
+        }else if (ed_product_capacity.text.toString().isEmpty()) {
+            showToast(ValidationMessage.VALID_CAPACITY)
+            return true
+        }
+        return false
+
+    }
+
     private fun sendDataToServer(){
+
+        var name = ed_product_name.text.toString()
+        var capacity = ed_product_capacity.text.toString()
+        var description = ed_product_details.text.toString()
+
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<NotifyAdminProdUnavailbleViewModel>(this)
-                    .notifyAdmin(notifyAdminProductUnavailble)
+                    .notifyAdmin(NotifyAdminProductUnavailble(name,capacity,description))
                 , this, this
             )
         }
@@ -51,5 +70,6 @@ class NotifyToAdminActivity :BaseActivity(){
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
         showToast(ValidationMessage.REQUEST_SUCCESSED)
+        finishCurrentActivity(Activity.RESULT_OK)
     }
 }
