@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
 
         callAPIOrderList(Constant.OPEN_ORDER)
         img_filter.setOnClickListener {
+            // send list to OrdedrFilter ......listOrderItems
             MoveToAnotherComponent.moveToActivityNormal<OrderFilter>(requireContext())
         }
 

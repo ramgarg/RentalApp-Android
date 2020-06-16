@@ -26,6 +26,10 @@ class OrderFilter : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_filter)
 
+        // get list from intent  listOrderItems from OrderListFragment......
+
+
+
         setSppinerData( R.array.UpdateStatus,R.id.sp_status)
         setSppinerData( R.array.ServiceDate,R.id.sp_service_date)
         setSppinerData( R.array.CustomerName,R.id.sp_customer_name)
