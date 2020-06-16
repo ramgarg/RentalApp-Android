@@ -10,6 +10,7 @@ import com.eazyrento.common.view.adapter.OrderListBaseAdapter
 import com.eazyrento.common.view.adapter.ViewInflaterAndBinder
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
+import com.eazyrento.customer.dashboard.view.activity.ProductCategoryActivity
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderListViewModel
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
 
  abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
-    lateinit var listOrderItems:CustomerOrderListResModel
+    lateinit var listOrderItems : CustomerOrderListResModel
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -25,7 +26,8 @@ import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
         callAPIOrderList(Constant.OPEN_ORDER)
         img_filter.setOnClickListener {
             // send list to OrdedrFilter ......listOrderItems
-            MoveToAnotherComponent.moveToActivityNormal<OrderFilter>(requireContext())
+            MoveToAnotherComponent.openActivityWithParcelableParam<OrderFilter,CustomerOrderListResModel>(requireContext(),
+                Constant.INTENT_FILTER_LIST,listOrderItems)
         }
 
     }

@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
@@ -28,17 +29,33 @@ class OrderFilter : BaseActivity() {
 
         // get list from intent  listOrderItems from OrderListFragment......
 
+         listOrderItems = intent.getParcelableExtra<CustomerOrderListResModel>(Constant.INTENT_FILTER_LIST)
 
 
         setSppinerData( R.array.UpdateStatus,R.id.sp_status)
         setSppinerData( R.array.ServiceDate,R.id.sp_service_date)
-        setSppinerData( R.array.CustomerName,R.id.sp_customer_name)
+        setSppinerData( R.array.OrderName,R.id.sp_order_name)
         setSppinerData( R.array.OrderId,R.id.sp_order_id)
 
         topBarWithBackIconAndTitle(resources.getString(R.string.filter))
 
     }
-    
+
+   /* private fun setSpinnerData(merchantAddProductReqModel: CustomerOrderListResModel) {
+        sp_order_id.setSelection(getComparedPostion(getSpinnerDataByID(R.array.OrderId),merchantAddProductReqModel.variant))
+        sp_select_document.setSelection(getComparedPostion(getSpinnerDataByID(R.array.RegistrationDocument),merchantAddProductReqModel.document_name))
+    }*/
+
+    private fun getComparedPostion(spinnerDataByID: Array<String>, variant: String): Int {
+
+        for (i in spinnerDataByID.indices){
+            if (spinnerDataByID[i] == variant)
+                return i
+        }
+        return 0
+    }
+
+
     fun getSpinnerDataByID(int: Int): Array<String> {
         return resources.getStringArray(int)
     }
@@ -64,18 +81,20 @@ class OrderFilter : BaseActivity() {
             }
             else{
                 when(parent.id){
-                    R.id.sp_customer_name ->{
-                       // merchantAddProductReqModel.variant = getSpinnerDataByID(R.array.FuelType)[position]
-                    }
                     R.id.sp_order_id ->{
-
+                       selectOrder = getSpinnerDataByID(R.array.OrderId)[position]
+                    }
+                    R.id.sp_order_name ->{
+                        selectName = getSpinnerDataByID(R.array.OrderName)[position]
                        }
                     R.id.sp_status ->{
+                        selectStatus = getSpinnerDataByID(R.array.UpdateStatus)[position]
+
+                    }
+                    R.id.sp_service_date -> {
+                            selectService = getSpinnerDataByID(R.array.ServiceDate)[position]
 
                         }
-                    R.id.sp_service_date ->{
-
-                       }
                 }
 
             }

@@ -34,8 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/btn_reset"
-            android:id="@+id/tv_customer_name"
-            android:text="@string/customer_name"
+            android:id="@+id/tv_order_name"
+            android:text="@string/order_name"
             style="@style/pro_details_heading"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp">
@@ -47,14 +47,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_below="@id/tv_customer_name"
+            android:layout_below="@id/tv_order_name"
             style="@style/mySpinnerItemStyle"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:id="@+id/sp_customer_name"/>
+            android:id="@+id/sp_order_name"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/sp_customer_name"
+            android:layout_below="@+id/sp_order_name"
             android:id="@+id/tv_order_id"
             android:text="@string/order_id"
             style="@style/pro_details_heading"
