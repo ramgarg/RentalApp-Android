@@ -21,14 +21,6 @@ class MoveToAnotherComponent {
             context.startActivity(Intent(context, TermsConditionActivity::class.java))
         }
 
-       /* fun moveToNotificationActivity(context: Context){
-            context.startActivity(Intent(context, NotificationActivity::class.java))
-        }*/
-
-        fun moveToNotifyAdminActivity(context: Context){
-            context.startActivity(Intent(context, NotifyToAdminActivity::class.java))
-        }
-
 
         fun moveToCategoryActivity(context: Context){
             context.startActivity(Intent(context, ProductCategoryActivity::class.java))

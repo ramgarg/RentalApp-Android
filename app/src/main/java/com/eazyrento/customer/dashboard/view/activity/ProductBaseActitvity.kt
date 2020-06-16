@@ -61,7 +61,7 @@ open abstract class ProductBaseActitvity: BaseActivity(),
                     layout_vehicle_not_found.visibility= View.VISIBLE
                     sv.scrollTo(5, resources.getDimension(R.dimen._300sdp).roundToInt())
                     notify_admin.setOnClickListener {
-                        MoveToAnotherComponent.moveToNotifyAdminActivity(this@ProductBaseActitvity)
+                        MoveToAnotherComponent.moveToActivityNormal<NotifyToAdminActivity>(this@ProductBaseActitvity)
                     }
                 }else
                     layout_vehicle_not_found.visibility= View.GONE
