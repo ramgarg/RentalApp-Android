@@ -26,112 +26,59 @@ class OrderFilter : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_filter)
 
-        customerSpinnerData()
-        orderSpinnerData()
-        statusSpinnerData()
-        serviceDateSpinnerData()
+        setSppinerData( R.array.UpdateStatus,R.id.sp_status)
+        setSppinerData( R.array.ServiceDate,R.id.sp_service_date)
+        setSppinerData( R.array.CustomerName,R.id.sp_customer_name)
+        setSppinerData( R.array.OrderId,R.id.sp_order_id)
 
         topBarWithBackIconAndTitle(resources.getString(R.string.filter))
 
     }
+    
+    fun getSpinnerDataByID(int: Int): Array<String> {
+        return resources.getStringArray(int)
+    }
 
-    private fun customerSpinnerData() {
-        val sp_name = resources.getStringArray(R.array.CustomerName)
+    private fun setSppinerData(spinerDataReSource:Int,spinerName:Int) {
+//        R.array.RegistrationDocument
+        //R.id.sp_select_document
+        val data = getSpinnerDataByID(spinerDataReSource)
+        val spinner = findViewById<Spinner>(spinerName)
 
-        val spinner = findViewById<Spinner>(R.id.sp_customer_name)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sp_name)
-            spinner.adapter = adapter
+        spinner?.let {
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, data)
+            it.adapter = adapter
 
-            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    if(position==0){
-                        selectName=null
-                    }
-                    else{
-                        selectName = this@OrderFilter.resources.getStringArray(R.array.CustomerName)[position]
-                    }
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
+            it.onItemSelectedListener = spinnerListnere
         }
     }
 
-    private fun orderSpinnerData() {
-        val sp_order = resources.getStringArray(R.array.OrderId)
+    val spinnerListnere = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+            if(position==0){
 
-        val spinner = findViewById<Spinner>(R.id.sp_order_id)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sp_order)
-            spinner.adapter = adapter
+            }
+            else{
+                when(parent.id){
+                    R.id.sp_customer_name ->{
+                       // merchantAddProductReqModel.variant = getSpinnerDataByID(R.array.FuelType)[position]
+                    }
+                    R.id.sp_order_id ->{
 
-            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    if(position==0){
-                        selectOrder=null
-                    }
-                    else{
-                        selectOrder = this@OrderFilter.resources.getStringArray(R.array.OrderId)[position]
-                    }
+                       }
+                    R.id.sp_status ->{
+
+                        }
+                    R.id.sp_service_date ->{
+
+                       }
                 }
 
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
             }
         }
-    }
 
-    private fun serviceDateSpinnerData() {
-        val sp_service_date = resources.getStringArray(R.array.ServiceDate)
-
-        val spinner = findViewById<Spinner>(R.id.sp_service_date)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sp_service_date)
-            spinner.adapter = adapter
-
-            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    if(position==0){
-                        selectService=null
-                    }
-                    else{
-                        selectService = this@OrderFilter.resources.getStringArray(R.array.ServiceDate)[position]
-                    }
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
-        }
-    }
-
-    private fun statusSpinnerData() {
-        val sp_status = resources.getStringArray(R.array.UpdateStatus)
-
-        val spinner = findViewById<Spinner>(R.id.sp_status)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sp_status)
-            spinner.adapter = adapter
-
-            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    if(position==0){
-                        selectStatus=null
-                    }
-                    else{
-                        selectStatus = this@OrderFilter.resources.getStringArray(R.array.UpdateStatus)[position]
-                    }
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
+        override fun onNothingSelected(parent: AdapterView<*>) {
+            // write code to perform some action
         }
     }
 
