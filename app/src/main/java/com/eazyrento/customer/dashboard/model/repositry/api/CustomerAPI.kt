@@ -53,4 +53,7 @@ interface CustomerAPI {
 
     @POST(PathURL.CustomerFeedback)
     fun customerFeedback(@Body customerfeedbackRequestModel: CustomerFeedbackRequestModel): Call<JsonElement>
+
+    @POST(PathURL.CustomerProductUnavailable)
+    fun notifyAdminProdUnavail(@Body notifyAdminProductUnavailble: NotifyAdminProductUnavailble): Call<JsonElement>
 }

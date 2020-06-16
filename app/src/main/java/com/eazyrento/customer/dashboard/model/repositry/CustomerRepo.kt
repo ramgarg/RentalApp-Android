@@ -140,4 +140,16 @@ class CustomerFeedbackRepo :
 
 }
 
+class NotifyAdminProdUnavailableRepo :
+    GenericRequestHandler<JsonElement>(){
+
+    fun notifyAdmin(notifyAdminProductUnavailble: NotifyAdminProductUnavailble): LiveData<DataWrapper<JsonElement>> {
+
+        val call = ServiceGenrator.client.create(
+            CustomerAPI::class.java).notifyAdminProdUnavail(notifyAdminProductUnavailble)
+        return doRequest(call)
+    }
+
+}
+
 

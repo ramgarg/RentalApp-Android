@@ -7,6 +7,8 @@ import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.customer.dashboard.model.modelclass.*
 import com.eazyrento.customer.dashboard.model.repositry.*
+import com.eazyrento.merchant.model.modelclass.MerchantNotifyAdminReqModelItem
+import com.eazyrento.merchant.model.repository.MerchantNotifyAdminRepo
 
 class CustomerCreateBookingViewModel : ViewModel() {
 
@@ -60,6 +62,15 @@ class CustomerFeedbackViewModel:ViewModel(){
     fun customerFeedback(customerFeedbackRequestModel: CustomerFeedbackRequestModel): LiveData<DataWrapper<JsonElement>> {
         return CustomerFeedbackRepo()
             .customerFeedback(customerFeedbackRequestModel)
+    }
+
+}
+
+// product unavailble.....
+class NotifyAdminProdUnavailbleViewModel:ViewModel(){
+    fun notifyAdmin(notifyAdminProductUnavailble: NotifyAdminProductUnavailble): LiveData<DataWrapper<JsonElement>> {
+        return NotifyAdminProdUnavailableRepo()
+            .notifyAdmin(notifyAdminProductUnavailble)
     }
 
 }

@@ -23,7 +23,9 @@
                   android:textSize="@dimen/_15sdp"
                   android:fontFamily="@font/bree_serif"
                   android:textColor="#000"
-                  android:layout_height="wrap_content"/>
+                  android:layout_height="wrap_content"
+                 android:visibility="gone"
+                />
 
         <Spinner
                 android:id="@+id/vehicle_spinner"
@@ -35,11 +37,15 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"
+                />
 
         <View android:layout_width="match_parent"
               android:layout_height="@dimen/_1sdp"
-              android:background="@android:color/darker_gray"/>
+              android:background="@android:color/darker_gray"
+                android:visibility="gone"
+                />
 
         <TextView android:layout_width="wrap_content"
                   android:text="@string/truck_name"
@@ -49,9 +55,9 @@
                   android:textColor="#000"
                   android:layout_height="wrap_content"/>
 
-        <TextView android:layout_width="match_parent"
-                  android:text="@string/volvo_fh_truck"
+        <EditText android:layout_width="match_parent"
                   android:textSize="@dimen/_15sdp"
+                  android:hint=""
                   android:layout_marginTop="@dimen/_10sdp"
                   android:fontFamily="@font/bree_serif"
                   android:layout_height="@dimen/_40sdp"/>
@@ -105,6 +111,8 @@
             android:fontFamily="@font/bree_serif"
             android:background="@drawable/button_save"
             android:layout_alignParentBottom="true"
-            android:layout_height="@dimen/_40sdp"/>
+            android:layout_height="@dimen/_40sdp"
+            android:onClick="onSubmitClick"
+            />
 
 </RelativeLayout>

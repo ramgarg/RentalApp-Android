@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.eazyrento.R
 import com.eazyrento.customer.dashboard.model.modelclass.Data
-import com.eazyrento.customer.dashboard.viewmodel.CustomerHomeViewModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.RecyclerViewItemClick
 
 class AgentSupportFragment : Fragment(),
     RecyclerViewItemClick {
-
-    private lateinit var customerHomeViewModel: CustomerHomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
