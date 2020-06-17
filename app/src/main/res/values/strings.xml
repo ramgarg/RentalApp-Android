@@ -288,7 +288,7 @@
     <string name="amount_dollar">Amount($)</string>
     <string name="dollar">$</string>
     <string name="reset">Reset</string>
-    <string name="order_name">Order Name</string>
+    <string name="product_name">Product Name</string>
     <string name="order_id">Order ID</string>
     <string name="service_date">Service Date</string>
     <string name="status_text">Status</string>

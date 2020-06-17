@@ -13,6 +13,7 @@ import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.utils.Common
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import io.michaelrocks.libphonenumber.android.Phonenumber
+import kotlinx.android.synthetic.main.activity_register_user.*
 
 class PhoneNumberFormat(val context: Context) {
 
@@ -138,11 +139,21 @@ class PhoneNumberFormat(val context: Context) {
         }else
             return true
     }
-    fun isValidPhoneNumber(phone: String):Boolean{
 
-       val bool =  android.util.Patterns.PHONE.matcher(phone).matches()
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"vlue----"+bool)
-        return bool
+}
 
-    }
+fun isValidPhoneNumber(phone: String):Boolean{
+
+    val bool =  android.util.Patterns.PHONE.matcher(phone).matches()
+    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"vlue----"+bool)
+    return bool
+
+}
+
+fun parseCoutryCodeInNumber(number:String,ctx:Context){
+
+    val phn = PhoneNumberUtil.createInstance(ctx)
+    val phoneNumber =  phn.parse(number,"")
+
+    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"phoneNumber:".plus(phoneNumber.toString()).plus("-Country code:".plus(phoneNumber.countryCode)))
 }

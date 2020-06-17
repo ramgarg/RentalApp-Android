@@ -1,33 +1,41 @@
 package com.eazyrento.common.view.fragment
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.common.view.activity.FilterKeyValue.Companion.ORDER_ID
+import com.eazyrento.common.view.activity.FilterKeyValue.Companion.PRODUCT_NAME
+import com.eazyrento.common.view.activity.FilterKeyValue.Companion.START_DATE
+import com.eazyrento.common.view.activity.FilterKeyValue.Companion.STATUS
 import com.eazyrento.common.view.activity.OrderFilter
 import com.eazyrento.common.view.adapter.OrderListBaseAdapter
 import com.eazyrento.common.view.adapter.ViewInflaterAndBinder
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
-import com.eazyrento.customer.dashboard.view.activity.ProductCategoryActivity
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderListViewModel
 import com.eazyrento.customer.utils.Common
-import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
 
- abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
+abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
     lateinit var listOrderItems : CustomerOrderListResModel
+    lateinit var filterListItems:MutableList<CustomerOrderListResModelItem>
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         callAPIOrderList(Constant.OPEN_ORDER)
+
+
         img_filter.setOnClickListener {
-            // send list to OrdedrFilter ......listOrderItems
-            MoveToAnotherComponent.openActivityWithParcelableParam<OrderFilter,CustomerOrderListResModel>(requireContext(),
-                Constant.INTENT_FILTER_LIST,listOrderItems)
+
+            val intent = Intent(requireActivity(),OrderFilter::class.java)
+            intent.putParcelableArrayListExtra(Constant.INTENT_FILTER_LIST,listOrderItems)
+            startActivityForResult(intent,Constant.REQUEST_CODE_FILTER_ORDER_LIST)
         }
 
     }
@@ -67,9 +75,15 @@ import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
         listOrderItems = data as CustomerOrderListResModel
+        filterListItems = listOrderItems.toMutableList()
+
+        setAdapter(filterListItems)
+    }
+    private fun setAdapter(listOrderItemsFilter: List<CustomerOrderListResModelItem>) {
+
         rec_order.adapter=
             OrderListBaseAdapter(
-                listOrderItems,
+                listOrderItemsFilter,
                 requireActivity(),
                 this
             )
@@ -79,16 +93,18 @@ import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
 
     override fun setDataHolderBinder(holder: OrderListBaseAdapter.ViewHolder, position: Int) {
 
-        holder.tvOrderProductName?.text=listOrderItems.get(position).product_detail?.product_name?.capitalize()
-        holder.tvBookingPrice?.text= Constant.DOLLAR+listOrderItems.get(position).product_detail?.starting_price
-        holder.tvOrderQuantity?.text=Constant.QUANTITY+listOrderItems.get(position).product_detail?.quantity
+        val item = filterListItems[position]
 
-        holder.tvOrderId?.text= Constant.ORDER_ID+listOrderItems.get(position).order_id
+        holder.tvOrderProductName?.text=item.product_detail?.product_name?.capitalize()
+        holder.tvBookingPrice?.text= Constant.DOLLAR.plus(item.product_detail?.starting_price)
+        holder.tvOrderQuantity?.text=Constant.QUANTITY.plus(item.product_detail?.quantity)
+
+        holder.tvOrderId?.text= Constant.ORDER_ID.plus(item.order_id)
 
         changeOrderStatusUI(holder,position)
 
         holder.itemView.setOnClickListener {
-            onViewClick<CustomerOrderListResModelItem,Int>(listOrderItems.get(position),1)
+            onViewClick(item,1)
         }
     }
 
@@ -96,8 +112,9 @@ import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
         holder:OrderListBaseAdapter.ViewHolder,
         position: Int
     ) {
-        val status = listOrderItems.get(position).status
-        var imageSrc:Int
+       val item =  filterListItems[position]
+        val status = item.status
+        val imageSrc:Int
 
        when(status){
            Constant.PENDING-> imageSrc =R.drawable.payment_pending
@@ -113,27 +130,50 @@ import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
         holder.tvPaymentStatus?.text = status
         holder.tvPaymentStatus?.setBackgroundResource(imageSrc)
 
-       /* if(listOrderItems.get(position).status== Constant.PENDING){
-            holder.tvPaymentStatus?.text=listOrderItems.get(position).status
-            holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_pending)
-        }
-
-        else if(listOrderItems.get(position).status== Constant.FAILED){
-            holder.tvPaymentStatus?.text=listOrderItems.get(position).status
-            holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_failed)
-        }
-        else if(listOrderItems.get(position).status== Constant.COMPLETED){
-            holder.tvPaymentStatus?.text=listOrderItems.get(position).status
-            holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_success)
-            holder.tvOrderRateReview?.visibility=View.VISIBLE
-            holder.tvPaymentStatus?.visibility=View.INVISIBLE
-        }
-
-        else{
-            holder.tvPaymentStatus?.text=listOrderItems.get(position).status
-            holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_success)
-        }*/
-
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        if (resultCode== Activity.RESULT_OK && requestCode==Constant.REQUEST_CODE_FILTER_ORDER_LIST) {
+
+            val map = data?.getSerializableExtra(Constant.INTENT_FILTER_APPLY)
+
+            AppBizLogger.log(
+                AppBizLogger.LoggingType.DEBUG,
+                "requestCode:".plus(requestCode).plus(" data:").plus(map?. toString ()
+            ))
+
+            map?.let {
+                  filterApply(map as HashMap<String,String>)
+            }
+        }
+
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+    private fun filterApply(hashMapFilterData: HashMap<String, String>) {
+          val list = listOrderItems.filter {
+              it.order_id==hashMapFilterData[ORDER_ID] ||
+                      it.status ==hashMapFilterData[STATUS]||
+                      it.product_detail?.product_name ==hashMapFilterData[PRODUCT_NAME]||
+                      it.product_detail?.start_date ==hashMapFilterData[START_DATE]
+          }
+
+
+
+        if (list.isNotEmpty()) {
+            // filtered list
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"Filtered List:".plus(list.toString()))
+            resetListAndAdapter(list)
+        }
+        else
+            //reset filter
+            resetListAndAdapter(listOrderItems)
+    }
+  private fun resetListAndAdapter(list: List<CustomerOrderListResModelItem>){
+
+      filterListItems.clear()
+      filterListItems = list.toMutableList()
+      setAdapter(filterListItems)
+
+  }
 }

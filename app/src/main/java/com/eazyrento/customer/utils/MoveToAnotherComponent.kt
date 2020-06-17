@@ -11,6 +11,7 @@ import com.eazyrento.ValidationMessage
 import com.eazyrento.customer.dashboard.view.activity.*
 import com.eazyrento.customer.webpages.TermsConditionActivity
 import com.eazyrento.login.view.LoginUserActivity
+import java.util.ArrayList
 
 
 class MoveToAnotherComponent {
@@ -70,6 +71,13 @@ class MoveToAnotherComponent {
             val intent = Intent(context, T::class.java)
             intent.putExtra(key,type as Parcelable)
             context.startActivity(intent)
+        }
+
+        // send list to onter Actiivity
+        inline fun <reified T>startActivityResultWithParcelableList(activity: Activity, key: String,type: ArrayList<Parcelable>,requestCode: Int) {
+            val intent = Intent(activity, T::class.java)
+            intent.putParcelableArrayListExtra(key,type)
+            activity.startActivityForResult(intent,requestCode)
         }
 
         // log out user

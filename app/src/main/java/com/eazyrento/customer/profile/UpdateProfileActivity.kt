@@ -216,7 +216,7 @@ class UpdateProfileActivity : BaseActivity() {
         else if(!phoneNumberFormat.isValidCountryCode(ed_country.text.toString())){
             showToast(ValidationMessage.COUNTRY_CODE)
         }
-        else if(!phoneNumberFormat.isValidPhoneNumber(ed_phone.text.toString())){
+        else if(!isValidPhoneNumber(ed_phone.text.toString())){
             showToast(ValidationMessage.PHONE_NUMBER)
         }
 

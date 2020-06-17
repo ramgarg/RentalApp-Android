@@ -200,24 +200,34 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:nextFocusDown="@id/email_phone_lyt"
 
+                >
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/ed_full_name"
                     android:hint="@string/full_name"
                     android:textColor="@color/black"
-                    android:inputType="text"
+                    android:inputType="textPersonName"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:fontFamily="@font/bree_serif"
-                    android:layout_height="@dimen/_40sdp"/>
-
+                    android:layout_height="@dimen/_40sdp"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
+                    />
         </com.google.android.material.textfield.TextInputLayout>
+
+
         <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_phone_lyt"
                 android:layout_width="match_parent"
                 android:textColor="@color/black"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+
+                >
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -226,7 +236,9 @@
                     android:hint="@string/email_phonenumber"
                     android:textColor="@color/black"
                     android:fontFamily="@font/bree_serif"
-                    android:layout_height="@dimen/_40sdp"/>
+                    android:layout_height="@dimen/_40sdp"
+
+                    />
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout

@@ -13,5 +13,9 @@ class Validator {
                 return true
             return false
         }
+
+        fun isPhoneValid(phone:String):Boolean{
+            return android.util.Patterns.PHONE.matcher(phone).matches()
+        }
     }
 }

@@ -17,8 +17,8 @@ interface ValidationMessage{
         const val VALID_PASSWORD= "Please enter a valid password."
         const val REGISTRATION_SUCCESS= "Registration successful. Please Login now to continue."
         const val VALID_EMAIL_ID = "Please enter a valid email address."
+        const val VALID_EMAIL_PHONE = "Please enter a valid email address or mobile number."
         const val ENTER_ALL_FIELDS = "Please enter all fields"
-        const val ENTER_EMAIL_PHONE= "Please enter email address or mobile number."
         const val CHECK_TERMS_POLICY= "Please agree to the terms and conditions."
         const val VALID_USER_NAME= "Please enter user name."
         const val SELECT_USER_ROLE = "Please select user role"
@@ -106,6 +106,13 @@ interface ValidationMessage{
         const val QUANTITY_SET_LIMIT = "You can't set value beyond limit."
 
         const val USER_NEED_LOGIN = "User need to login"
+
+        // filter validation and message
+        const val SELECT_DATE = "Select order date"
+        const val SELECT_STATUS = "Select order status"
+        const val SELECT_ORDER_ID = "Select order ID"
+        const val SELECT_PRODUCT_NAME = "Select product name"
+
 
 
     }

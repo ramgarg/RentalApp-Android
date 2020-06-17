@@ -15,6 +15,8 @@ interface Constant{
 
         const val REQUEST_CODE_FINISH_FIRST_TIME_USER = 3001
 
+        const val REQUEST_CODE_FILTER_ORDER_LIST = 1101
+
         const val VALUE_FINISH_FIRST_TIME_USER = 1011
 
         const val KEY_FINISH_FIRST_TIME_USER = "first_time"
@@ -32,6 +34,7 @@ interface Constant{
         // key name
         const val MASTER_DATA_ITEM ="master_data_item"
         const val INTENT_FILTER_LIST ="filter_list_item"
+        const val INTENT_FILTER_APPLY ="filter_apply"
         const val VEHICLES_DATA_ITEM ="vehicles"
         const val VEHICLES_SUB_CATE = "vehicle_sub"
         const val KEY_ADDRESS ="addr_id"

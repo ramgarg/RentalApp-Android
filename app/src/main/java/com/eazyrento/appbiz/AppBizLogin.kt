@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.utils.Validator
+import com.eazyrento.supporting.isValidPhoneNumber
 
 open  abstract class AppBizLogin: BaseActivity(){
 
@@ -40,18 +41,28 @@ open  abstract class AppBizLogin: BaseActivity(){
     //user validation
     fun failCheckValdationLoginCredintitial(email: EditText,password: EditText):Boolean{
         if(email.text.toString().isEmpty() && password.text.toString().isEmpty()){
-            showToast(ValidationMessage.ENTER_EMAIL_PHONE)
-        }
-       else if (!Validator.isEmailValid(email.text.toString())) {
-            showToast(ValidationMessage.VALID_EMAIL_ID)
+            showToast(ValidationMessage.VALID_EMAIL_PHONE)
             email.requestFocus()
-
-        } else if (password.text.toString().isEmpty()) {
+        }
+      else if (password.text.toString().isEmpty()) {
             password.requestFocus()
             showToast(ValidationMessage.VALID_PASSWORD)
         } else if (!Validator.isPasswordValid(password.text.toString())) {
             showToast(ValidationMessage.VALID_PASSWORD_LENGTH)
-        }else
+        }
+        else if (Validator.isEmailValid(email.text.toString()).not()) {
+            return if (isValidPhoneNumber(email.text.toString()).not()) {
+
+                showToast(ValidationMessage.VALID_EMAIL_PHONE)
+                email.requestFocus()
+
+                true
+            }
+            else{
+                false
+            }
+        }
+        else
         {
             return false
         }
