@@ -22,6 +22,7 @@ import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
 import com.eazyrento.supporting.*
 import com.squareup.picasso.Picasso
+import io.michaelrocks.libphonenumber.android.Phonenumber
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class UpdateProfileActivity : BaseActivity() {
@@ -29,19 +30,20 @@ class UpdateProfileActivity : BaseActivity() {
 
     private val uploadImageFromDevice = UploadImageFromDevice()
 
-    private var selectProfID:String?=null
-    private var selectBase64StringAttachedDoc:String?=null
+    private var selectProfID: String? = null
+    private var selectBase64StringAttachedDoc: String? = null
 
-    private var selectGender:String?=null
+    private var selectGender: String? = null
 
-    private var selectBase64StringProfilePic:String?=null
+    private var selectBase64StringProfilePic: String? = null
 
-    private var isEditableDocumentSpinner:Int =0
+    private var isEditableDocumentSpinner: Int = 0
 
-    private lateinit var phoneNumberFormat:PhoneNumberFormat
+    private lateinit var phoneNumberFormat: PhoneNumberFormat
 
     private val commonDatePiker = CommonDatePiker(this)
-    private val isCustomer = Session.getInstance(EazyRantoApplication.context)?.getUserRole().equals(UserInfoAPP.CUSTOMER)
+    private val isCustomer = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
+        .equals(UserInfoAPP.CUSTOMER)
 
     override fun <T> moveOnSelecetedItem(type: T) {
 
@@ -53,7 +55,7 @@ class UpdateProfileActivity : BaseActivity() {
 
         topBarWithBackIconAndTitle(resources.getString(R.string.profile))
 
-        if (isCustomer){
+        if (isCustomer) {
             layout_dob.visibility = View.GONE
             lyt_select_document.visibility = View.GONE
         }
@@ -69,50 +71,62 @@ class UpdateProfileActivity : BaseActivity() {
 
         userProfile?.let { setProfileData(it) }
 
-        phoneNumberFormat.phoneNumberListener(this,ed_phone,ed_country)
+        phoneNumberFormat.phoneNumberListener(this, ed_phone, ed_country)
         phoneNumberFormat.phoneCountryCodeNumberListener(ed_country)
 
 
         btn_save.setOnClickListener { onClickSaveButton() }
 
-       /* layout_dob.setOnClickListener {
+        /* layout_dob.setOnClickListener {
 
-        }*/
+         }*/
 
         btn_select_location.setOnClickListener {
 
-            if ((it as Button).text==(resources.getString(R.string.select_address))){
-                MoveToAnotherComponent.startActivityForResult<AddNewAddressActivity>(this,Constant.REQUEST_CODE_PROFILE_UPDATE,Constant.KEY_FROM_PROFILE,Constant.FIRST_TIME_USER_LOGIN)
+            if ((it as Button).text == (resources.getString(R.string.select_address))) {
+                MoveToAnotherComponent.startActivityForResult<AddNewAddressActivity>(
+                    this,
+                    Constant.REQUEST_CODE_PROFILE_UPDATE,
+                    Constant.KEY_FROM_PROFILE,
+                    Constant.FIRST_TIME_USER_LOGIN
+                )
                 return@setOnClickListener
             }
-            MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(this,Constant.ADDRESS_REQUECT_CODE,Constant.INTENT_ADDR_LIST,1)
+            MoveToAnotherComponent.startActivityForResult<MyAddressListActivity>(
+                this,
+                Constant.ADDRESS_REQUECT_CODE,
+                Constant.INTENT_ADDR_LIST,
+                1
+            )
         }
 
     }
-  fun dobClick(view: View){
-    // Common.dateSelector(this,ed_dob)
+
+    fun dobClick(view: View) {
+        // Common.dateSelector(this,ed_dob)
 
 //    val commonDatePiker = CommonDatePiker(this)
 
-    commonDatePiker.createDatePicker(EnumDateType.DOB, object : OnSelectDate {
-        override fun onDate(dateType: EnumDateType, year: Int, month: Int, day: Int) {
+        commonDatePiker.createDatePicker(EnumDateType.DOB, object : OnSelectDate {
+            override fun onDate(dateType: EnumDateType, year: Int, month: Int, day: Int) {
 
-            ed_dob.tag = commonDatePiker.getDateInServerFormate(year,month,day)
-            dobDate(year,month,day)
-        }
-    }).dobPiker().show()
-}
+                ed_dob.tag = commonDatePiker.getDateInServerFormate(year, month, day)
+                dobDate(year, month, day)
+            }
+        }).dobPiker().show()
+    }
 
     private fun dobDate(year: Int, month: Int, day: Int) {
 
-        ed_dob.setText(commonDatePiker.getDateInDisplayFormat(year,month-1,day))
+        ed_dob.setText(commonDatePiker.getDateInDisplayFormat(year, month - 1, day))
     }
+
     private fun setProfileData(userProfile: UserProfile) {
 
         tv_user_name_profile.text = Session.getInstance(this)?.getUserRole()?.capitalize()
         ed_full_name.setText(userProfile.full_name)
-       // ed_user_name.setText(userProfile?.full_name)
-        if(userProfile.email.isNullOrEmpty())
+        // ed_user_name.setText(userProfile?.full_name)
+        if (userProfile.email.isNullOrEmpty())
             ed_email.isEnabled = true
         else
             ed_email.setText(userProfile.email)
@@ -124,9 +138,32 @@ class UpdateProfileActivity : BaseActivity() {
             else
                 ed_country.setText(userProfile.country_code)
 
-            ed_phone.setText(userProfile.mobile_number)
+            if (userProfile.mobile_number.isNullOrEmpty() || userProfile.mobile_number.equals("unknown")) {
+                //ed_phone.hint ="000-000-0000"
+            } else {
+                val code = phoneNumberFormat.getRegionCodeForCountryCode(
+                    phoneNumberFormat.removePlusChar(ed_country).toInt()
+                )
 
-        }catch (e:Exception){
+                val parseNumber = if (code == null) {
+                    phoneNumberFormat.parseNumberWithoutCountryCode(
+                        userProfile.mobile_number
+                    )
+                } else {
+
+                    phoneNumberFormat.parseNumberWithCountryCode(
+                        userProfile.mobile_number,
+                        code
+                    )
+                }
+
+                if (parseNumber == null)
+                    ed_phone.setText(userProfile.mobile_number)
+                else
+                    ed_phone.setText("".plus(parseNumber.nationalNumber))
+            }
+
+        } catch (e: Exception) {
             e.printStackTrace()
         }
 
@@ -136,10 +173,10 @@ class UpdateProfileActivity : BaseActivity() {
 
             val list = ed_dob.tag.toString().split("-")
 
-            dobDate(list[0].toInt(),list[1].toInt(),list[2].toInt())
+            dobDate(list[0].toInt(), list[1].toInt(), list[2].toInt())
 
 
-        }catch (e:java.lang.Exception){
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
 
@@ -150,14 +187,24 @@ class UpdateProfileActivity : BaseActivity() {
         setAddress()
 
         Picasso.with(this).load(userProfile.profile_image).into(img_profile)
-        Picasso.with(this).load(userProfile.attached_document).into(document_pic)
 
-        sp_gender.setSelection(getComparedPostion(getSpinnerDataByID(R.array.Gender),userProfile.gender))
-        isEditableDocumentSpinner = getComparedPostion(getSpinnerDataByID(R.array.RegistrationDocument),userProfile.id_proof_title)
+        if (userProfile.attached_document.isNullOrEmpty().not())
+            Picasso.with(this).load(userProfile.attached_document).into(document_pic)
+
+        sp_gender.setSelection(
+            getComparedPostion(
+                getSpinnerDataByID(R.array.Gender),
+                userProfile.gender
+            )
+        )
+        isEditableDocumentSpinner = getComparedPostion(
+            getSpinnerDataByID(R.array.RegistrationDocument),
+            userProfile.id_proof_title
+        )
         sp_select_document.setSelection(isEditableDocumentSpinner)
 
         img_edit.setOnClickListener {
-            uploadImageFromDevice.pickImage(this,object :OnPiclImageToBase64{
+            uploadImageFromDevice.pickImage(this, object : OnPiclImageToBase64 {
                 override fun onBase64(string: String?) {
                     selectBase64StringProfilePic = string
                 }
@@ -173,7 +220,7 @@ class UpdateProfileActivity : BaseActivity() {
 
     private fun getComparedPostion(spinnerDataByID: Array<String>, variant: String?): Int {
 
-        for (i in spinnerDataByID.indices){
+        for (i in spinnerDataByID.indices) {
             if (spinnerDataByID[i] == variant) {
 
                 return i
@@ -191,47 +238,34 @@ class UpdateProfileActivity : BaseActivity() {
         updateProfileData()
         userProfile?.let {
             //validation
-            if(checkProfileValidation()) {
+            if (checkProfileValidation()) {
                 updateProfileUserAPI(it)
             }
 
         }
     }
 
-    private fun checkProfileValidation():Boolean {
+    private fun checkProfileValidation(): Boolean {
         if (ed_full_name.text.toString().isEmpty()) {
             showToast(ValidationMessage.VALID_PROFILE_NAME)
-        }
-        else if (img_profile.drawable == null) {
+        } else if (img_profile.drawable == null) {
             showToast(ValidationMessage.VALID_IMAGE)
-        }
-        else if(ed_email.text.toString().isEmpty()){
+        } else if (ed_email.text.toString().isEmpty()) {
             showToast(ValidationMessage.VALID_EMAIL_ID)
-        }
-        else if (!Validator.isEmailValid(ed_email.text.toString())) {
+        } else if (!Validator.isEmailValid(ed_email.text.toString())) {
             showToast(ValidationMessage.VALID_EMAIL_ID)
             ed_email.requestFocus()
-        }
-
-        else if(!phoneNumberFormat.isValidCountryCode(ed_country.text.toString())){
+        } else if (!phoneNumberFormat.isValidCountryCode(ed_country.text.toString())) {
             showToast(ValidationMessage.COUNTRY_CODE)
-        }
-        else if(!isValidPhoneNumber(ed_phone.text.toString())){
+        } else if (!isValidPhoneNumber(ed_phone.text.toString())) {
             showToast(ValidationMessage.PHONE_NUMBER)
-        }
-
-
-        else if(ed_company_name.text.toString().isEmpty()){
+        } else if (ed_company_name.text.toString().isEmpty()) {
             showToast(ValidationMessage.COMPANY)
-        }
-        else if(ed_des.text.toString().isEmpty()){
+        } else if (ed_des.text.toString().isEmpty()) {
             showToast(ValidationMessage.DESCRIPTON)
-        }
-        else if(sp_gender.selectedItemPosition==0){
+        } else if (sp_gender.selectedItemPosition == 0) {
             showToast(ValidationMessage.GENDER)
-        }
-
-        else if (tv_add_line.text.isNullOrEmpty()){
+        } else if (tv_add_line.text.isNullOrEmpty()) {
             showToast(ValidationMessage.SELECT_ADRESS)
 
         }
@@ -241,12 +275,10 @@ class UpdateProfileActivity : BaseActivity() {
                 showToast(ValidationMessage.DATE_OF_BIRTH)
             } else if (sp_select_document.selectedItemPosition == 0) {
                 showToast(ValidationMessage.DOCUMENT)
-            }
-            else {
+            } else {
                 return true
             }
-        }
-        else{
+        } else {
             return true
         }
         return false
@@ -255,33 +287,40 @@ class UpdateProfileActivity : BaseActivity() {
     private fun updateProfileData() {
 
         userProfile?.let { it ->
-            //it.full_name = "" + ed_user_name.text
-            it.dob = "" + ed_dob.tag
+
             it.gender = "" + sp_gender.selectedItem
             it.email = "" + ed_email.text
             it.description = "" + ed_des.text
 
-            it.country_code = "" + ed_country.text
-            it.mobile_number = "" + ed_phone.text
+            it.country_code = ed_country.text.toString()
+            it.mobile_number = ed_phone.text.toString()
 
 
             it.buisness = "" + ed_company_name.text
-            it.attached_document = "" + selectBase64StringAttachedDoc
+
 
             it.id_proof_title = "" + sp_select_document.selectedItem
 
             it.profile_image = "" + img_profile
-            //it.username_choice = "" + ed_user_name.text
 
-           // selectBase64StringProfilePic?.let {inner_base64->
-                it.profile_image = selectBase64StringProfilePic
+            // selectBase64StringProfilePic?.let {inner_base64->
+            it.profile_image = selectBase64StringProfilePic
             //}
 
-            selectBase64StringAttachedDoc?.let { inner ->
-                it.attached_document = inner
-                it.id_proof_title = selectProfID!!
-            }
+            // if not customer
+            if (isCustomer) {
+                it.dob = null
+                it.attached_document = null
+            } else {
+                it.dob = "" + ed_dob.tag
 
+                it.attached_document = "" + selectBase64StringAttachedDoc
+
+                selectBase64StringAttachedDoc?.let { inner ->
+                    it.attached_document = inner
+                    it.id_proof_title = selectProfID!!
+                }
+            }
         }
     }
 
@@ -305,10 +344,14 @@ class UpdateProfileActivity : BaseActivity() {
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, data.toString())
         showToast(ValidationMessage.PROFILE_UPDATE)
         //first time user
-        if (intent.getIntExtra(Constant.KEY_FINISH_FIRST_TIME_USER,0)==Constant.VALUE_FINISH_FIRST_TIME_USER){
+        if (intent.getIntExtra(
+                Constant.KEY_FINISH_FIRST_TIME_USER,
+                0
+            ) == Constant.VALUE_FINISH_FIRST_TIME_USER
+        ) {
             finishCurrentActivityWithResult(Activity.RESULT_OK, Intent())
             return
         }
@@ -320,19 +363,21 @@ class UpdateProfileActivity : BaseActivity() {
         if (requestCode == Constant.PICK_PHOTO_FOR_AVATAR && resultCode == Activity.RESULT_OK) {
             uploadImageFromDevice.onActivityResult(requestCode, resultCode, data)
             return
-        }
-
-       else if (resultCode== Activity.RESULT_OK && requestCode ==Constant.ADDRESS_REQUECT_CODE){
+        } else if (resultCode == Activity.RESULT_OK && requestCode == Constant.ADDRESS_REQUECT_CODE) {
 
             userProfile?.let {
 
                 val addressInfo = data!!.getParcelableExtra<AddressInfo>(Constant.KEY_ADDRESS)
 
-                addressInfo?.let {inner->
+                addressInfo?.let { inner ->
 
-                    it.address_info =inner
+                    it.address_info = inner
 
-                    if (intent.getIntExtra(Constant.KEY_FINISH_FIRST_TIME_USER,0)==Constant.VALUE_FINISH_FIRST_TIME_USER) {
+                    if (intent.getIntExtra(
+                            Constant.KEY_FINISH_FIRST_TIME_USER,
+                            0
+                        ) == Constant.VALUE_FINISH_FIRST_TIME_USER
+                    ) {
                         it.address_info.is_default = true
                     }
                 }
@@ -341,16 +386,15 @@ class UpdateProfileActivity : BaseActivity() {
 
             }
 
-        }
-       else if (resultCode== Activity.RESULT_OK && requestCode ==Constant.REQUEST_CODE_PROFILE_UPDATE){
+        } else if (resultCode == Activity.RESULT_OK && requestCode == Constant.REQUEST_CODE_PROFILE_UPDATE) {
 
             userProfile?.let {
 
                 val addressInfo = data!!.getParcelableExtra<AddressInfo>(Constant.KEY_FROM_PROFILE)
 
-                 addressInfo?.let {inner->
-                     it.address_info =inner
-                 }
+                addressInfo?.let { inner ->
+                    it.address_info = inner
+                }
 
                 setAddress()
 
@@ -359,10 +403,10 @@ class UpdateProfileActivity : BaseActivity() {
         }
     }
 
-    fun setAddress(){
+    fun setAddress() {
         userProfile?.let {
 
-            if(it.address_info==null){
+            if (it.address_info == null) {
                 btn_select_location.text = resources.getString(R.string.select_address)
                 return
             }
@@ -383,22 +427,27 @@ class UpdateProfileActivity : BaseActivity() {
             spinner.adapter = adapter
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    if(position==0){
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    if (position == 0) {
                         selectBase64StringAttachedDoc = null
                         selectProfID = null
-                    }
-                    else{
+                    } else {
                         // alreday selected the document spiiner
-                        if( isEditableDocumentSpinner!=0){
-                            isEditableDocumentSpinner =0
+                        if (isEditableDocumentSpinner != 0) {
+                            isEditableDocumentSpinner = 0
                             return
                         }
                         uploadImageFromDevice.pickImage(this@UpdateProfileActivity,
                             object : OnPiclImageToBase64 {
                                 override fun onBase64(image64: String?) {
-                                    selectProfID = this@UpdateProfileActivity.resources.getStringArray(R.array.RegistrationDocument)[position]
-                                    selectBase64StringAttachedDoc =image64
+                                    selectProfID =
+                                        this@UpdateProfileActivity.resources.getStringArray(R.array.RegistrationDocument)[position]
+                                    selectBase64StringAttachedDoc = image64
                                 }
 
                                 override fun onBitmap(bm: Bitmap?) {
@@ -424,12 +473,17 @@ class UpdateProfileActivity : BaseActivity() {
             spinner.adapter = adapter
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    if(position==0){
-                        selectGender=null
-                    }
-                    else{
-                        selectGender = this@UpdateProfileActivity.resources.getStringArray(R.array.Gender)[position]
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    if (position == 0) {
+                        selectGender = null
+                    } else {
+                        selectGender =
+                            this@UpdateProfileActivity.resources.getStringArray(R.array.Gender)[position]
                     }
                 }
 

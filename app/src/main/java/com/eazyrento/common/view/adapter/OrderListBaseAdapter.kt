@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import kotlinx.android.synthetic.main.adapter_order_status_template.view.*
 
 
-open class OrderListBaseAdapter(val customerOrdrListItems:List<CustomerOrderListResModelItem>, open val context: Context, open val infalterBinderInterface: ViewInflaterAndBinder):
+open class OrderListBaseAdapter(val customerOrdrListItems:List<OrderDetailsResModel>, open val context: Context, open val infalterBinderInterface: ViewInflaterAndBinder):
     RecyclerView.Adapter<OrderListBaseAdapter.ViewHolder>() {
 
      class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {

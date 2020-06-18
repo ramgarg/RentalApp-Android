@@ -119,7 +119,7 @@ class NotificationAdapter(val activity: Activity,val listNotification:List<Notif
         setNotificationIcon(listNotification[position],holder.img_notification_icon)
 
         val listFormat = splitDateServerFormat(listNotification[position].added_on)
-        holder.tv_notification_date.text = getDisplayDate(listFormat[0].toInt(),listFormat[1].toInt(),listFormat[2].toInt())
+        holder.tv_notification_date.text = convertToDisplayDate(listFormat)
 
         }
         catch (e:Exception){
@@ -134,7 +134,7 @@ class NotificationAdapter(val activity: Activity,val listNotification:List<Notif
             DeeplinkEvents.ORDER_SUMMARY->{imgNotificationIcon.setImageResource(R.mipmap.order_updated)}
             DeeplinkEvents.ORDER_LISTING->{imgNotificationIcon.setImageResource(R.mipmap.order_updated)}
             DeeplinkEvents.PAYMENT ->{imgNotificationIcon.setImageResource(R.mipmap.payment_noti)}
-            else->{imgNotificationIcon.setImageResource(R.mipmap.notification)}
+            else->{imgNotificationIcon.setImageResource(R.drawable.alert)}
 
         }
     }

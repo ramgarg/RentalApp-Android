@@ -29,7 +29,6 @@ import kotlinx.android.synthetic.main.order_summary_template.tv_end_date_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_end_time_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_st_date_sel
 import kotlinx.android.synthetic.main.order_summary_template.tv_st_time_sel
-import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.phone_view.view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_work_info.*
@@ -76,14 +75,16 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
-        tv_order_product_name.text=orderRes.product_detail.product_name.capitalize()
-        tv_booking_price.text= Constant.DOLLAR.plus(orderRes.product_detail.starting_price)
         tv_order_id.text= Constant.ORDER_ID.plus(orderRes.order_id)
-        order_product_quantity.text=Constant.QUANTITY.plus(orderRes.product_detail.quantity)
+        tv_booking_price.text= Constant.DOLLAR.plus(orderRes.order_amount_with_commission)
 
-         setDateTime()
+        orderRes.product_detail?.let {
+            tv_order_product_name.text=it.product_name?.capitalize()
+            order_product_quantity.text=Constant.QUANTITY.plus(it.quantity)
+            checkbox_with_driver.isChecked=it.with_driver
 
-        checkbox_with_driver.isChecked=orderRes.product_detail.with_driver
+            setDateTime(it)
+        }
 
         tv_work_location.text=orderRes.address_detail?.address_line
 
@@ -92,23 +93,16 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
     }
 
 
-    private fun setDateTime(){
+    private fun setDateTime(prodet: ProductDetailX) {
         try {
 
-            tv_st_date_sel.text=splitDateServerFormat(orderRes.product_detail.start_date).let {
-                getDisplayDate(it[0].toInt(),it[1].toInt(),it[2].toInt())
-            }
-            tv_end_date_sel.text=splitDateServerFormat(orderRes.product_detail.end_date).let {
-                getDisplayDate(it[0].toInt(),it[1].toInt(),it[2].toInt())
-            }
+            tv_st_date_sel.text= convertToDisplayDate(splitDateServerFormat(prodet.start_date))
+            tv_end_date_sel.text= convertToDisplayDate(splitDateServerFormat(prodet.end_date))
 
-            tv_st_time_sel.text= splitTimeServerFormat(orderRes.product_detail.start_time).let {
-                getTimeByPattern(it[0].toInt(),it[1].toInt(),it[2].toInt(), TimeConstant.TIME_FORMAT_DISPLAY)
-            }
+            tv_st_time_sel.text= convertToDisplayTime(splitTimeServerFormat(prodet.start_time))
 
-            tv_end_time_sel.text= splitTimeServerFormat(orderRes.product_detail.end_time).let {
-                getTimeByPattern(it[0].toInt(),it[1].toInt(),it[2].toInt(), TimeConstant.TIME_FORMAT_DISPLAY)
-            }
+            tv_end_time_sel.text= convertToDisplayTime(splitTimeServerFormat(prodet.end_time))
+
         }catch (e:Exception){
             e.printStackTrace()
         }

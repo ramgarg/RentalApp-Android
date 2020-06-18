@@ -33,15 +33,22 @@ open class MyAddressListActivity : BaseActivity() {
             intent.putExtra(Constant.KEY_ADDRESS, type as AddressInfo)
             finishCurrentActivityWithResult(Constant.ADDRESS_REQUECT_CODE, intent)
         } else {
-            updateAddressInfo = type as AddressInfo
-            MoveToAnotherComponent.startActivityResultWithParcelable<AddNewAddressActivity, AddressInfo>(
-                this,
-                Constant.INTENT_ADDRESS_EDIT,
-                updateAddressInfo!!,
-                Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST
-            )
+//            updateAddressInfo = type as AddressInfo
+            editUpdateAddress(type as AddressInfo)
 
         }
+    }
+
+    fun editUpdateAddress(addressInfo:AddressInfo){
+
+        updateAddressInfo = addressInfo
+
+        MoveToAnotherComponent.startActivityResultWithParcelable<AddNewAddressActivity, AddressInfo>(
+            this,
+            Constant.INTENT_ADDRESS_EDIT,
+            updateAddressInfo!!,
+            Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

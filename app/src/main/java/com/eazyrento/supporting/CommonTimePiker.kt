@@ -96,8 +96,22 @@ class CommonTimePiker(private val context: Context) {
     }
 
 }
-fun splitTimeServerFormat(time:String):List<String>{
+fun splitTimeServerFormat(time:String?):List<String>?{
+    if (time==null)
+        return null
     return time.split(":")
+}
+
+fun convertToDisplayTime(list: List<String>?):String{
+    if (list==null)
+        return ""
+    try {
+
+        return getTimeByPattern(list[0].toInt(),list[1].toInt()-1,list[1].toInt(),TimeConstant.TIME_FORMAT_DISPLAY)
+    }catch (e:Exception){
+        e.printStackTrace()
+    }
+    return ""
 }
 
 fun getTimeByPattern(hourOfDay: Int,minute: Int,second: Int,pattern: String): String {

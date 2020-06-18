@@ -9,11 +9,11 @@
         android:padding="@dimen/_12sdp"
         >
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
             android:id="@+id/img_notification_icon"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
-            android:src="@mipmap/notification"/>
+            android:src="@drawable/alert"/>
 
     <TextView
             android:id="@+id/tv_noti_msg"

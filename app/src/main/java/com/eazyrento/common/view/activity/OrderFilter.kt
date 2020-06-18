@@ -18,13 +18,13 @@ import com.eazyrento.common.view.activity.FilterKeyValue.Companion.PRODUCT_NAME
 import com.eazyrento.common.view.activity.FilterKeyValue.Companion.START_DATE
 import com.eazyrento.common.view.activity.FilterKeyValue.Companion.STATUS
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import kotlinx.android.synthetic.main.activity_filter.*
 import java.lang.Exception
 
 class OrderFilter : BaseActivity() {
 
-    private var listOrderItems: List<CustomerOrderListResModelItem>? = null
+    private var listOrderItems: List<OrderDetailsResModel>? = null
     private lateinit var arrayStatus: Array<String>
     private lateinit var arrayOrderID: Array<String>
     private lateinit var arrayProductName: Array<String>
@@ -43,7 +43,8 @@ class OrderFilter : BaseActivity() {
 
         // get list from intent  listOrderItems from OrderListFragment......
 
-         listOrderItems = intent.getParcelableArrayListExtra<CustomerOrderListResModelItem>(Constant.INTENT_FILTER_LIST)
+         listOrderItems = intent.getParcelableArrayListExtra(Constant.INTENT_FILTER_LIST)
+
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,listOrderItems.toString())
 
 
@@ -77,7 +78,7 @@ class OrderFilter : BaseActivity() {
 
                     it[i].product_detail?.let { inner ->
                         arrayProductName[i+1] = inner.product_name
-                        arrayDate[i+1] = inner.start_date
+                        arrayDate[i+1] = ""+inner.start_date
                     }
 
                 }

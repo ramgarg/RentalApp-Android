@@ -107,16 +107,17 @@ open abstract class PaymentBaseActivity : BaseActivity() {
     protected fun setDataOnUI(customerOrderDetailsResModel: OrderDetailsResModel) {
 
          customerOrderDetailsResModel.order_id.let {
-             tv_order_id.text =Constant.ORDER_ID+it
+             tv_order_id.text =Constant.ORDER_ID.plus(it)
              baseMakePaymentModel.order_id =it
          }
 
-        tv_pending_amount.text = Constant.DOLLAR+customerOrderDetailsResModel.pending_order_amount
-        tv_total_price.text =Constant.DOLLAR+customerOrderDetailsResModel.total_order_amount
-     //   tv_pending_approval.text=Constant.DOLLAR+customerOrderDetailsResModel
+        tv_total_price.text =Constant.DOLLAR.plus(customerOrderDetailsResModel.order_amount_with_commission)
+        tv_pending_amount.text = Constant.DOLLAR.plus(customerOrderDetailsResModel.pending_order_amount)
+
+        tv_pending_approval.text=Constant.DOLLAR.plus(customerOrderDetailsResModel.amount_pending_for_approval)
 
 
-        totalPrice = customerOrderDetailsResModel.total_order_amount
+        totalPrice = customerOrderDetailsResModel.order_amount_with_commission
     }
 
     protected fun convertAmountIntoDoubleFromEditText():Double{

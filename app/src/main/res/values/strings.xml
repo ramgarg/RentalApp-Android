@@ -296,6 +296,8 @@
     <string name="enter_product_name">Enter Product Name</string>
     <string name="enter_product_capacity">Enter Product Capacity</string>
 
+    <string name="defualt_phone_format">000-000-0000</string>
+
     <string-array name="SelectType">
     <item>Select Type</item>
     <item>Equipments</item>

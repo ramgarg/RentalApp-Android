@@ -15,7 +15,7 @@ import com.eazyrento.common.view.activity.OrderFilter
 import com.eazyrento.common.view.adapter.OrderListBaseAdapter
 import com.eazyrento.common.view.adapter.ViewInflaterAndBinder
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderListViewModel
 import com.eazyrento.customer.utils.Common
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
 
 abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
     lateinit var listOrderItems : CustomerOrderListResModel
-    lateinit var filterListItems:MutableList<CustomerOrderListResModelItem>
+    lateinit var filterListItems:MutableList<OrderDetailsResModel>
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -79,7 +79,7 @@ abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
 
         setAdapter(filterListItems)
     }
-    private fun setAdapter(listOrderItemsFilter: List<CustomerOrderListResModelItem>) {
+    private fun setAdapter(listOrderItemsFilter: List<OrderDetailsResModel>) {
 
         rec_order.adapter=
             OrderListBaseAdapter(
@@ -96,7 +96,7 @@ abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
         val item = filterListItems[position]
 
         holder.tvOrderProductName?.text=item.product_detail?.product_name?.capitalize()
-        holder.tvBookingPrice?.text= Constant.DOLLAR.plus(item.product_detail?.starting_price)
+        holder.tvBookingPrice?.text= Constant.DOLLAR.plus(item.order_amount_with_commission)
         holder.tvOrderQuantity?.text=Constant.QUANTITY.plus(item.product_detail?.quantity)
 
         holder.tvOrderId?.text= Constant.ORDER_ID.plus(item.order_id)
@@ -169,7 +169,7 @@ abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
             //reset filter
             resetListAndAdapter(listOrderItems)
     }
-  private fun resetListAndAdapter(list: List<CustomerOrderListResModelItem>){
+  private fun resetListAndAdapter(list: List<OrderDetailsResModel>){
 
       filterListItems.clear()
       filterListItems = list.toMutableList()

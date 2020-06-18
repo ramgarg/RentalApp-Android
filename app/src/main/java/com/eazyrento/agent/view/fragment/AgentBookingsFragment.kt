@@ -43,6 +43,9 @@ class AgentBookingsFragment : MyBookingBaseFragment() {
 
         holder.itemView.setOnClickListener {
 
+            if (listCustomerBooking[position].status==Constant.REJECTED)
+                return@setOnClickListener
+
             MoveToAnotherComponent.openActivityWithParcelableParam<AgentBookingReviewSummeryActivity,BookingListItem>(requireContext(),
                 Constant.BOOKING_SUMMERY_KEY,listCustomerBooking.get(position))
 

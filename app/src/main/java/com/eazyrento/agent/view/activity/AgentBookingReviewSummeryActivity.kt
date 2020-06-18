@@ -52,14 +52,11 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
-        bookingsDetail(orderRes)
 
-
-    }
-
-    private fun bookingsDetail(orderRes: OrderDetailsResModel) {
+        tv_booking_price.text= Constant.DOLLAR.plus(orderRes.product_detail?.starting_price)
 
     }
+
 
     /*private fun setUsersAdapter(customerOderDetailsResponse: OrderDetailsResModel) {
         rec_user_order_summary.layoutManager = LinearLayoutManager(this,

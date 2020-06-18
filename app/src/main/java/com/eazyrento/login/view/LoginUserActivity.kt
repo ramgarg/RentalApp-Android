@@ -20,6 +20,8 @@ import com.eazyrento.login.model.modelclass.LoginUserResModel
 import com.eazyrento.login.viewmodel.LoginUserViewModel
 import com.eazyrento.merchant.view.activity.MerchantMainActivity
 import com.eazyrento.supporting.MyJsonParser
+import com.eazyrento.supporting.PhoneNumberFormat
+import com.eazyrento.supporting.PhoneTextWatcher
 import com.eazyrento.supporting.isDeeplinkingFromNotification
 import com.facebook.*
 import com.facebook.login.LoginManager
@@ -30,6 +32,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.ed_password
+import kotlinx.android.synthetic.main.activity_register_user.*
 import java.lang.Exception
 
 
@@ -52,6 +56,10 @@ class LoginUserActivity : AppBizLogin() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
+
+        phoneNumberFormat = PhoneNumberFormat(this)
+
+        ed_email.addTextChangedListener(PhoneTextWatcher(phoneNumberFormat,ed_email))
 
         // vallidation for if user is already login
          isLoginUser(intent)

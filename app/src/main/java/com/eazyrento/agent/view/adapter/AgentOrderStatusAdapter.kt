@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import com.eazyrento.R
 import com.eazyrento.common.view.adapter.OrderListBaseAdapter
 import com.eazyrento.common.view.fragment.BaseFragment
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 
 /*
-class AgentOrderStatusAdapter (val items: List<CustomerOrderListResModelItem>, override  val context: Context, override val infalterBinderInterface: BaseFragment):
+class AgentOrderStatusAdapter (val items: List<OrderDetailsResModel>, override  val context: Context, override val infalterBinderInterface: BaseFragment):
        OrderListBaseAdapter(items,context,infalterBinderInterface){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

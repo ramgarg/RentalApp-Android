@@ -103,13 +103,13 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
         assignMerchantsReqModel.merchant_list.add(Merchant(details.price,details.merchant_id,details.price,details.assign_quantity))
 
     }
-    private fun isNotQuantityCorrect():Boolean{
+    private fun isQuantitiyCorrect():Boolean{
         var tempQuantity = 0
           for (item in assignMerchantsReqModel.merchant_list){
               tempQuantity+=item.quantity
           }
         return when{
-            bookingITem.product_detail.quantity < tempQuantity ->true
+            bookingITem.product_detail.quantity == tempQuantity ->true
             else ->false
         }
     }
@@ -118,7 +118,7 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
         {
             showToast(ValidationMessage.SELECT_MERCHANT)
             return false
-        }else if (isNotQuantityCorrect()){
+        }else if (isQuantitiyCorrect().not()){
             showToast(ValidationMessage.QUANTITY_LIMIT)
               return false
         }else

@@ -150,17 +150,23 @@ class CommonDatePiker(private val context: Context) {
     }
 
 }
- fun splitDateServerFormat(date:String):List<String>{
+ fun splitDateServerFormat(date:String?):List<String>?{
+     if (date==null)
+         return null
     return date.split("-")
 }
-fun convertToDisplayDate(list: List<String>):String{
+fun convertToDisplayDate(list: List<String>?):String{
+    if (list==null)
+        return ""
     try {
-        return getDisplayDate(list[0].toInt(),list[1].toInt(),list[1].toInt())
+        return getDisplayDate(list[0].toInt(),list[1].toInt()-1,list[1].toInt())
     }catch (e:Exception){
         e.printStackTrace()
     }
     return ""
 }
+
+
 fun getDisplayDate(year:Int, monthOfYear:Int, dayOfMonth:Int):String{
 
     val c = Calendar.getInstance()

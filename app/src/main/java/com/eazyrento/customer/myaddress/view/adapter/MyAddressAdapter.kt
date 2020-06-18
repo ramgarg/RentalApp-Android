@@ -43,11 +43,11 @@ class MyAddressAdapter(val items:List<AddressInfo>, val context: Activity):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.tvAddressLine?.text=items.get(position).address_line
-        holder.tvAddressType?.text=items.get(position).address_type
-        holder.tvCountry?.text=items.get(position).country
+        holder.tvAddressLine?.text= items[position].address_line
+        holder.tvAddressType?.text= items[position].address_type
+        holder.tvCountry?.text= items[position].country
 
-        if (items.get(position).is_default)
+        if (items[position].is_default)
              holder.imgSelected?.visibility = View.VISIBLE
         else
             holder.imgSelected?.visibility = View.INVISIBLE
@@ -58,7 +58,7 @@ class MyAddressAdapter(val items:List<AddressInfo>, val context: Activity):
             }else{
                 holder.imgSelected?.visibility=View.VISIBLE
             }*/
-            (context as BaseActivity).moveOnSelecetedItem(items.get(position))
+            (context as BaseActivity).moveOnSelecetedItem(items[position])
         }
         holder.img_delete.setOnClickListener {
 
@@ -68,7 +68,9 @@ class MyAddressAdapter(val items:List<AddressInfo>, val context: Activity):
 
         holder.img_edit.setOnClickListener {
 
-            (context as BaseActivity).moveOnSelecetedItem(items.get(position))
+//            (context as BaseActivity).moveOnSelecetedItem(items.get(position))
+
+            (context as MyAddressListActivity).editUpdateAddress(items[position])
 
         }
 

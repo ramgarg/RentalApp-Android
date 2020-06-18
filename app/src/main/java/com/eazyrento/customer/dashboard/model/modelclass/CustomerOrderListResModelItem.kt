@@ -4,8 +4,9 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 
+/*
 @Parcelize
-data class CustomerOrderListResModelItem(
+data class OrderDetailsResModel(
 
     val customer_detail: CustomerDetailX?,
     val id: Int,
@@ -15,4 +16,4 @@ data class CustomerOrderListResModelItem(
     val merchant_order_detail:MerchantProductDetails?,
     val agent_detail: AgentDetail?
 
-) : Parcelable
+) : Parcelable*/

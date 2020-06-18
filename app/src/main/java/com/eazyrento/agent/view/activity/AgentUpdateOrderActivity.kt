@@ -79,13 +79,16 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
          }
      }
     private fun updateOrderBookingObject(){
-        orderRes.product_detail.start_date = tv_st_date_sel.tag.toString()
-        orderRes.product_detail.start_time = tv_st_time_sel.tag.toString()
+        orderRes.product_detail?.let {
+            it.start_date = tv_st_date_sel.tag.toString()
+            it.start_time = tv_st_time_sel.tag.toString()
 
-        orderRes.product_detail.end_date = tv_end_date_sel.tag.toString()
-        orderRes.product_detail.end_time = tv_end_time_sel.tag.toString()
+            it.end_date = tv_end_date_sel.tag.toString()
+            it.end_time = tv_end_time_sel.tag.toString()
 
-        orderRes.product_detail.with_driver = checkbox_with_driver.isSelected
+            it.with_driver = checkbox_with_driver.isSelected
+        }
+
 
     }
     private fun validationCorrect():Boolean{
@@ -172,10 +175,13 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
         }
         super.onSuccessApiResult(data)
 
-        tv_st_date_sel.tag = orderRes.product_detail.start_date
-        tv_end_date_sel.tag = orderRes.product_detail.end_date
-        tv_st_time_sel.tag = orderRes.product_detail.start_time
-        tv_end_time_sel.tag = orderRes.product_detail.end_time
+        orderRes.product_detail?.let {
+            tv_st_date_sel.tag = it.start_date
+            tv_end_date_sel.tag = it.end_date
+            tv_st_time_sel.tag = it.start_time
+            tv_end_time_sel.tag = it.end_time
+        }
+
 
         merchatDataUpdate()
     }
@@ -186,7 +192,7 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
             LinearLayoutManager.VERTICAL, false
         )
 
-        orderRes.let { lyt_middle_view.adapter = MerchantUpdateAdapter(this, it.merchant_detail,it)  }
+        orderRes.let { lyt_middle_view.adapter = MerchantUpdateAdapter(this, it.merchant_detail!!,it)  }
     }
 
     private fun bookingDatePicker(

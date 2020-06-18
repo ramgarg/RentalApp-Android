@@ -8,12 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.utils.Validator
+import com.eazyrento.supporting.PhoneNumberFormat
 import com.eazyrento.supporting.isValidPhoneNumber
 
-open  abstract class AppBizLogin: BaseActivity(){
+
+abstract class AppBizLogin: BaseActivity(){
+
+    protected lateinit var phoneNumberFormat: PhoneNumberFormat
 
     fun checkValidation(editTextUserName: EditText, email: EditText, password: EditText,
-                                  checkBoxTerms: CheckBox,user_role:String?): Boolean {
+                        checkBoxTerms: CheckBox, user_role:String?): Boolean {
 
         if(failCheckValdationLoginCredintitial(email,password)){
             return false
@@ -51,7 +55,7 @@ open  abstract class AppBizLogin: BaseActivity(){
             showToast(ValidationMessage.VALID_PASSWORD_LENGTH)
         }
         else if (Validator.isEmailValid(email.text.toString()).not()) {
-            return if (isValidPhoneNumber(email.text.toString()).not()) {
+            return if (isValidPhoneNumber(email.text.toString()).not()/*phoneNumberFormat.isValidPhoneNumber(phoneNumberFormat.parseNumberWithoutCountryCode(email.text.toString())).not()*/){
 
                 showToast(ValidationMessage.VALID_EMAIL_PHONE)
                 email.requestFocus()

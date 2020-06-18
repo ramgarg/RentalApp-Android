@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.telephony.PhoneNumberFormattingTextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -21,6 +22,8 @@ import com.eazyrento.login.model.modelclass.RegisterUserReqModel
 import com.eazyrento.login.model.modelclass.RegisterUserResModel
 import com.eazyrento.login.viewmodel.RegisterUserViewModel
 import com.eazyrento.supporting.OnPiclImageToBase64
+import com.eazyrento.supporting.PhoneNumberFormat
+import com.eazyrento.supporting.PhoneTextWatcher
 import com.eazyrento.supporting.UploadImageFromDevice
 import kotlinx.android.synthetic.main.activity_register_user.*
 import kotlinx.android.synthetic.main.activity_register_user.btn_agent_active
@@ -35,10 +38,15 @@ class RegistrationUserActivity : AppBizLogin(){
     private var selectProfID:String?=null
     private var selectBase64String:String?=null
     private var user_role:String?=null
+//    private  val phoneNumberFormat = PhoneNumberFormat(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_user)
+
+        phoneNumberFormat = PhoneNumberFormat(this)
+
+        ed_email_phone.addTextChangedListener(PhoneTextWatcher(phoneNumberFormat,ed_email_phone))
 
         initialize()
 
@@ -135,8 +143,18 @@ class RegistrationUserActivity : AppBizLogin(){
     }
 
     private fun createRegisterUserReqModel(): RegisterUserReqModel {
+
+        var countryCode = ""
+
+       try {
+           if (phoneNumberFormat.phoneNumber!=null)
+               countryCode =  ""+phoneNumberFormat.phoneNumber?.countryCode
+       }catch (e:Exception){
+
+       }
+
         return RegisterUserReqModel(
-            "",
+            countryCode,
             ed_full_name.text.toString(),
             ed_password.text.toString(),
             UserInfoAPP.REGISTRATIONS_SOURCE!!,

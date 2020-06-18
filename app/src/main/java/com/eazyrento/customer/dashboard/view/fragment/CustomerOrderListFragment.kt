@@ -8,7 +8,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.adapter.OrderListBaseAdapter
 import com.eazyrento.common.view.fragment.OrderListFragment
-import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModelItem
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 
@@ -26,7 +26,7 @@ class CustomerOrderListFragment : OrderListFragment() {
 
 
     override fun <T, K> onViewClick(type: T, where: K) {
-        val item =  type as CustomerOrderListResModelItem
+        val item =  type as OrderDetailsResModel
         MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerOrderSummaryActivity>(requireContext(), Constant.ORDER_SUMMERY_KEY,
             item.id)
     }

@@ -1,28 +1,29 @@
 package com.eazyrento.supporting
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.utils.Common
+import io.michaelrocks.libphonenumber.android.NumberParseException
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import io.michaelrocks.libphonenumber.android.Phonenumber
-import kotlinx.android.synthetic.main.activity_register_user.*
+import java.lang.Exception
+import java.util.regex.Pattern
 
 class PhoneNumberFormat(val context: Context) {
 
+     var phoneNumber: Phonenumber.PhoneNumber?=null
     private var util: PhoneNumberUtil? = null
-    private lateinit var countryRegionCode:String
-    private var phoneFormattingTW:PhoneNumberFormattingTextWatcher?=null
+     lateinit var countryRegionCode: String
+    private var phoneFormattingTW: PhoneNumberFormattingTextWatcher? = null
 
     init {
-        if (util==null){
+        if (util == null) {
             util = PhoneNumberUtil.createInstance(context)
             countryRegionCode = context.resources.configuration.locales[0].country
 
@@ -30,22 +31,22 @@ class PhoneNumberFormat(val context: Context) {
     }
 
 
-   fun getCountryCodeForLocalRegion():Int?{
+    fun getCountryCodeForLocalRegion(): Int? {
 
         val code = util?.getCountryCodeForRegion(countryRegionCode)
         return code
-   }
+    }
 
-    fun getRegionCodeForCountryCode(intCode:Int): String? {
+    fun getRegionCodeForCountryCode(intCode: Int): String? {
         return util?.getRegionCodeForCountryCode(intCode)
     }
 
 
-   fun parseNumber(number:String,region:String): Phonenumber.PhoneNumber? {
-       return util?.parse(number,region)
-   }
+    fun parseNumber(number: String, region: String): Phonenumber.PhoneNumber? {
+        return util?.parse(number, region)
+    }
 
-    private fun addTextListener(ed_phone:EditText,ed_code: EditText){
+    private fun addTextListener(ed_phone: EditText, ed_code: EditText) {
         if (phoneFormattingTW == null) {
 
             val code = removePlusChar(ed_code)
@@ -60,51 +61,31 @@ class PhoneNumberFormat(val context: Context) {
     }
 
     //Phone number wather edit text
-    fun phoneNumberListener(context:Context,ed_phone:EditText,ed_code: EditText){
+    fun phoneNumberListener(context: Context, ed_phone: EditText, ed_code: EditText) {
 
-        ed_phone.setOnFocusChangeListener{
-            v: View?, hasFocus: Boolean ->
+        ed_phone.setOnFocusChangeListener { v: View?, hasFocus: Boolean ->
 
             if (isValidCountryCode(ed_code.text.toString())) {
-                addTextListener(ed_phone,ed_code)
+                addTextListener(ed_phone, ed_code)
             }
 
         }
 
-       /* ed_phone.setOnTouchListener(object :View.OnTouchListener {
-            @SuppressLint("ClickableViewAccessibility")
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                if (event?.action == MotionEvent.ACTION_DOWN) {
-                    if (isValidCountryCode(ed_code.text.toString())) {
-
-                        addTextListener(ed_phone,ed_code)
-
-                    }
-                    return false
-                }
-                return false
-            }
-
-        })*/
-
-
-
     }
 
-    private fun removePlusChar(ed_code: EditText): String {
+     fun removePlusChar(ed_code: EditText): String {
         return ed_code.text.removePrefix("+").toString()
 
     }
 
     //Phone number wather edit text
-    fun phoneCountryCodeNumberListener(ed_code:EditText){
+    fun phoneCountryCodeNumberListener(ed_code: EditText) {
 
-        ed_code.setOnFocusChangeListener{
-                v: View?, hasFocus: Boolean ->
+        ed_code.setOnFocusChangeListener { v: View?, hasFocus: Boolean ->
             phoneFormattingTW = null
         }
 
-        ed_code.addTextChangedListener(object :TextWatcher{
+        ed_code.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable?) {
             }
@@ -114,9 +95,13 @@ class PhoneNumberFormat(val context: Context) {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,s.toString().plus("-start-").plus(start).plus("-after-").plus(before).plus("-count-").plus(count))
+                AppBizLogger.log(
+                    AppBizLogger.LoggingType.DEBUG,
+                    s.toString().plus("-start-").plus(start).plus("-after-").plus(before)
+                        .plus("-count-").plus(count)
+                )
 
-                if (start==0 && s!=null && !s.contains("+")) {
+                if (start == 0 && s != null && !s.contains("+")) {
                     ed_code.setText("+")
                     ed_code.setSelection(1)
                 }
@@ -125,35 +110,109 @@ class PhoneNumberFormat(val context: Context) {
         })
     }
 
-    fun parsePhoneNumberWithCountryCode(ed_code: EditText,ed_phone: EditText){
-         val code = removePlusChar(ed_code)
-        if (isValidCountryCode(code)) {
-           val phonenumber =  parseNumber(ed_phone.text.toString(),code)
 
-        }
-    }
-    fun isValidCountryCode(code:String):Boolean{
-        if (code.isEmpty() || code.length<=1){
-            Common.showToast(context,ValidationMessage.COUNTRY_CODE_VALIDATION)
+    fun isValidCountryCode(code: String): Boolean {
+        if (code.isEmpty() || code.length <= 1) {
+            Common.showToast(context, ValidationMessage.COUNTRY_CODE_VALIDATION)
             return false
-        }else
+        } else
             return true
     }
 
+    fun parseNumberWithoutCountryCode(number: String):Phonenumber.PhoneNumber? {
+
+        try {
+
+             phoneNumber = util?.parse(number, "")
+
+            AppBizLogger.log(
+                AppBizLogger.LoggingType.DEBUG,
+                "phoneNumber:".plus(phoneNumber.toString())
+                    .plus("-Country code:".plus(phoneNumber?.countryCode))
+            )
+
+            return phoneNumber
+
+        } catch (e: NumberParseException) {
+            Common.showToast(context, e.toString())
+            return null
+        }
+
+    }
+
+    fun parseNumberWithCountryCode(number: String,region: String): Phonenumber.PhoneNumber? {
+
+        try {
+//            val util = PhoneNumberUtil.createInstance(ctx)
+
+             phoneNumber = util?.parse(number, region)
+
+            AppBizLogger.log(
+                AppBizLogger.LoggingType.DEBUG,
+                "phoneNumber:".plus(phoneNumber.toString())
+                    .plus("-Country code:".plus(phoneNumber?.countryCode))
+            )
+
+            return phoneNumber
+
+        } catch (e: NumberParseException) {
+            Common.showToast(context, e.toString())
+            return null
+        }
+
+    }
+
+    fun  isValidPhoneNumber(number:Phonenumber.PhoneNumber?): Boolean {
+        if (number==null)
+            return false
+
+        util?.let {
+            return  it.isValidNumber(number)
+
+        }
+      return false
+    }
+
+
 }
 
-fun isValidPhoneNumber(phone: String):Boolean{
+fun isValidPhoneNumber(phone: String): Boolean {
 
-    val bool =  android.util.Patterns.PHONE.matcher(phone).matches()
-    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"vlue----"+bool)
+    val bool = android.util.Patterns.PHONE.matcher(phone).matches()
+    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "mob number is valid----" + bool)
     return bool
 
 }
 
-fun parseCoutryCodeInNumber(number:String,ctx:Context){
 
-    val phn = PhoneNumberUtil.createInstance(ctx)
-    val phoneNumber =  phn.parse(number,"")
+class PhoneTextWatcher(val phoneNumberFormat: PhoneNumberFormat, val editText: EditText) :
+    PhoneNumberFormattingTextWatcher() {
 
-    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"phoneNumber:".plus(phoneNumber.toString()).plus("-Country code:".plus(phoneNumber.countryCode)))
+    private val pattern = "[0-9]+"
+
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        super.onTextChanged(s, start, before, count)
+
+    }
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        super.beforeTextChanged(s, start, count, after)
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+        super.afterTextChanged(s)
+        try {
+            if (Pattern.matches(pattern, s.toString())) {
+                editText.setText(
+                    "+".plus(phoneNumberFormat.getCountryCodeForLocalRegion()).plus(s.toString())
+                )
+                editText.setSelection(editText.text.toString().length)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+    }
+
 }

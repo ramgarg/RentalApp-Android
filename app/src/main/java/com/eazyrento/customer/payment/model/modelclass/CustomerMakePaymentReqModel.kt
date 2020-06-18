@@ -12,7 +12,7 @@ data class CustomerMakePaymentReqModel(
     var is_tip: Boolean,
     var mode_of_payment: String,
 
-    var status: String,
+    var status: String?,
     var transaction_id: String
 
 ) : BaseMakePaymentModel()
