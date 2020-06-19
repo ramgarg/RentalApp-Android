@@ -159,7 +159,7 @@ fun convertToDisplayDate(list: List<String>?):String{
     if (list==null)
         return ""
     try {
-        return getDisplayDate(list[0].toInt(),list[1].toInt()-1,list[1].toInt())
+        return getDisplayDate(list[0].toInt(),list[1].toInt()-1,list[2].toInt())
     }catch (e:Exception){
         e.printStackTrace()
     }

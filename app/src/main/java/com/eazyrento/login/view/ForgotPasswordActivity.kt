@@ -12,8 +12,13 @@ import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.Validator
 import com.eazyrento.login.model.modelclass.ForgotPasswordRequest
 import com.eazyrento.login.viewmodel.ForgotPasswordViewModel
+import com.eazyrento.supporting.PhoneNumberFormat
+import com.eazyrento.supporting.PhoneTextWatcher
+import com.eazyrento.supporting.isValidPhoneNumber
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_forgot_password.*
+import kotlinx.android.synthetic.main.activity_forgot_password.ed_email
+import kotlinx.android.synthetic.main.activity_login.*
 
 class ForgotPasswordActivity :BaseActivity() {
 
@@ -26,9 +31,11 @@ class ForgotPasswordActivity :BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
-//        initialize()
-
         topBarWithBackIconAndTitle(resources.getString(R.string.title_forgot_pass))
+
+        val phoneNumberFormat = PhoneNumberFormat(this)
+
+        ed_email.addTextChangedListener(PhoneTextWatcher(phoneNumberFormat,ed_email))
 
     }
     fun onSendButtonClick(view:View){
@@ -52,11 +59,19 @@ class ForgotPasswordActivity :BaseActivity() {
 
 
     private fun isCheckValidationFailed(email: String): Boolean {
-        if (email.isEmpty() || !Validator.isEmailValid(email)) {
-            Toast.makeText(this,ValidationMessage.VALID_EMAIL_ID, Toast.LENGTH_SHORT).show()
+
+        return when{
+           email.isNotEmpty() && (Validator.isEmailValid(email) || isValidPhoneNumber(email)) -> false
+           else->{Toast.makeText(this,ValidationMessage.VALID_EMAIL_PHONE, Toast.LENGTH_SHORT).show()
+               true}
+        }
+
+      /*  if (email.isEmpty() || Validator.isEmailValid(email).not()) {
+            if (isValidPhoneNumber(email).not())
+                Toast.makeText(this,ValidationMessage.VALID_EMAIL_PHONE, Toast.LENGTH_SHORT).show()
             return true
         }
-        return false
+        return false*/
     }
 
     override fun <T> onSuccessApiResult(data: T) {

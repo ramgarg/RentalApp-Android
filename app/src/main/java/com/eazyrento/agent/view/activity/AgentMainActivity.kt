@@ -123,7 +123,7 @@ class AgentMainActivity : BaseNavigationActivity(){
 
     override fun orderSummeryActivity(orderID: String) {
         MoveToAnotherComponent.moveToActivityWithIntentValue<AgentOrderSummaryActivity>(this, Constant.ORDER_SUMMERY_KEY,
-            orderID)
+            orderID.toInt())
     }
 
 }
