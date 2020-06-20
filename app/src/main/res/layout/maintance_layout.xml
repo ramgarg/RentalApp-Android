@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-            >
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -11,36 +11,12 @@
                 android:text="@string/for_maintenance"
                 style="@style/name_heading"
                 />
-
- <!--       <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_5sdp"
-                >-->
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginTop="@dimen/_3sdp"
                     >
-
-
-                <!--<include
-                        android:id="@+id/agent_maintance_view"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="visible"
-                        layout="@layout/adapter_users_order_summary"
-                        />
-                <include
-                        android:id="@+id/customer_maintance_view"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="visible"
-                        layout="@layout/adapter_users_order_summary"
-                        />-->
                 <androidx.recyclerview.widget.RecyclerView
 
                         android:id="@+id/maintance_reclye_view_user_role"
@@ -52,5 +28,16 @@
                 </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
-       <!-- </androidx.core.widget.NestedScrollView>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/recycle_sub_order"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            >
+    </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>

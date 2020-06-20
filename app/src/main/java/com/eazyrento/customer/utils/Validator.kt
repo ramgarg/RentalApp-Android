@@ -9,7 +9,7 @@ class Validator {
         }
 
         fun isPasswordValid(password:String):Boolean{
-            if(password.length>6)
+            if(password.length in 8..15)
                 return true
             return false
         }

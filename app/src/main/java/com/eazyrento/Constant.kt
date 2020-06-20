@@ -87,6 +87,8 @@ interface Constant{
         const val CLOSE_ORDER =3
         const val ORDER_SUMMERY_KEY ="orders_id"
 
+        //Agent sub order
+        const val INTENT_AGENT_SUB_ORDER = "sub_order"
         //Booking Dashboard
         const val BOOKING_DASHBOARD_AGENT =4
         const val BOOKING_DASHBOARD_MERCHANT =5

@@ -51,7 +51,7 @@ abstract class AppBizLogin: BaseActivity(){
       else if (password.text.toString().isEmpty()) {
             password.requestFocus()
             showToast(ValidationMessage.VALID_PASSWORD)
-        } else if (!Validator.isPasswordValid(password.text.toString())) {
+        } else if (Validator.isPasswordValid(password.text.toString()).not()) {
             showToast(ValidationMessage.VALID_PASSWORD_LENGTH)
         }
         else if (Validator.isEmailValid(email.text.toString()).not()) {

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+        >
+    <include layout="@layout/toolbar"
+            android:id="@+id/toolbar"
+            />
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        >
+    <include
+            android:id="@+id/lyt_top_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/template_order_summery_top_view"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:id="@+id/lyt_update_status"
+            android:weightSum="100"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/lyt_top_view"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingStart="@dimen/_5sdp"
+
+            >
+        <TextView
+                android:id="@+id/order_product_quantity"
+                android:fontFamily="@font/bree_serif"
+                android:layout_weight="20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                android:text="@string/status"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_35sdp"/>
+        <Spinner
+                android:id="@+id/status_spinner"
+                android:layout_width="0dp"
+                android:layout_weight="80"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/spinner_dropdown"
+                android:layout_height="@dimen/_35sdp"/>
+
+    </LinearLayout>
+    <include
+            android:id="@+id/sub_order_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/template_quantity_view"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lyt_update_status"
+            android:layout_marginTop="@dimen/_15sdp"
+
+            android:layout_marginStart="@dimen/_5sdp"
+            />
+   <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/sub_order_quantity"
+           android:layout_marginTop="@dimen/_10sdp"
+
+           android:layout_marginStart="@dimen/_5sdp"
+           >
+       <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               style="@style/pro_details_heading"
+               android:text="@string/sub_order_merchnat"
+               />
+    <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/adapter_users_order_summary"
+            android:layout_marginTop="@dimen/_10sdp"
+
+            />
+   </LinearLayout>
+
+    <Button
+            android:id="@+id/btn_update_agent_booking"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAllCaps="false"
+            android:background="@drawable/button_gradient"
+            android:textColor="@color/white"
+            android:text="@string/update"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            android:padding="@dimen/_5sdp"
+
+            android:onClick="onUpdateButtonClick"
+
+            />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

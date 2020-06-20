@@ -102,6 +102,8 @@
     <string name="truck_capacity">Truck Capacity</string>
     <string name="na">NA</string>
     <string name="submit">Submit</string>
+    <string name="sub_order">Sub Order</string>
+    <string name="sub_order_merchnat">Merchant</string>
     <string name="authentication_required">Authentication Required</string>
     <string name="orderid">OrderId - 356478484844848</string>
     <string name="total_price">Total \n Price</string>

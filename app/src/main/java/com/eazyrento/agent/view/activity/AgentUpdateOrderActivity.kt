@@ -192,7 +192,7 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
             LinearLayoutManager.VERTICAL, false
         )
 
-        orderRes.let { lyt_middle_view.adapter = MerchantUpdateAdapter(this, it.merchant_detail!!,it)  }
+        orderRes.merchant_detail?.let { lyt_middle_view.adapter = MerchantUpdateAdapter(this, it,orderRes)  }
     }
 
     private fun bookingDatePicker(
@@ -278,8 +278,8 @@ class MerchantUpdateAdapter(val activity:BaseActivity, val list:List<MerchantDet
         val item = list[position]
 
         holder.tv_name_user.text = item.full_name
-        holder.item_quantity.text = ""+item.quantity
-        holder.tv_total_booking_price.text = ""+item.amount
+        holder.item_quantity.text = item.quantity.toString()
+        holder.tv_total_booking_price.text = item.amount.toString()
 
         holder.img_minus.setOnClickListener{
 
@@ -288,12 +288,12 @@ class MerchantUpdateAdapter(val activity:BaseActivity, val list:List<MerchantDet
             }
            else {
                 item.quantity = item.quantity-1
-                holder.item_quantity.text = ""+item.quantity
+                holder.item_quantity.text = item.quantity.toString()
             }
         }
         holder.img_plus.setOnClickListener{
             item.quantity = item.quantity+1
-            holder.item_quantity.text = ""+item.quantity
+            holder.item_quantity.text = item.quantity.toString()
         }
     }
 

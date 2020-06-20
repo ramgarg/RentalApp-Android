@@ -7,6 +7,7 @@ import com.eazyrento.agent.model.repositry.api.AgentAPI
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.modelclass.SubOrderReqResModel
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
 
@@ -114,4 +115,30 @@ class AgentFeedbackRepo :
 
 }
 
+//get sub order details bu
 
+class AgentSubOrderDetailRepo :
+    GenericRequestHandler<SubOrderReqResModel>(){
+
+    fun agentSubOrderBySubOrderID(sub_order_id: Int): LiveData<DataWrapper<SubOrderReqResModel>> {
+
+        val call = ServiceGenrator.client.create(
+            AgentAPI::class.java).getSubOrderDetail(sub_order_id)
+        return doRequest(call)
+    }
+
+}
+
+class AgentSubOrderUpdateRepo:GenericRequestHandler<JsonElement>() {
+
+    fun agentSubOrderUpdate(
+        sub_order_id: Int,
+        req: SubOrderReqResModel
+    ): LiveData<DataWrapper<JsonElement>> {
+
+        val call = ServiceGenrator.client.create(
+            AgentAPI::class.java
+        ).updateSubOrderDetail(sub_order_id, req)
+        return doRequest(call)
+    }
+}

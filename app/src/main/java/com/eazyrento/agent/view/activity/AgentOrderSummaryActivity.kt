@@ -1,15 +1,21 @@
 package com.eazyrento.agent.view.activity
 
+import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.model.modelclass.AgentFeedbackReqModel
 import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.common.view.OrderBaseSummaryActivity
+import com.eazyrento.customer.dashboard.model.modelclass.SubOrderReqResModel
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
+import kotlinx.android.synthetic.main.adapter_suborder_row.view.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.maintance_layout.*
 import kotlinx.android.synthetic.main.phone_view.*
@@ -62,7 +68,14 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
-        setMaintanceUserRoleAdapter(orderRes.customer_detail,null,orderRes.merchant_detail)
+//        before changes
+//        setMaintanceUserRoleAdapter(orderRes.customer_detail,null,orderRes.merchant_detail)
+
+        // after changes in agent update flow on 19 jun 2020.....now added sub order here
+          setMaintanceUserRoleAdapter(orderRes.customer_detail,null,null)
+
+        // sub order horizontal list
+        orderRes.sub_orders?.let { recycle_sub_order.adapter = AdapterSubOrder(this,it) }
 
         }
 
@@ -145,3 +158,29 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
     }*/
 
 }
+
+class AdapterSubOrder(val context: Context,val subOrderList:List<Int>):RecyclerView.Adapter<AdapterSubOrder.HolderSubOrder>(){
+
+    class HolderSubOrder(view: View):RecyclerView.ViewHolder(view){
+          val tv_suborder = view.tv_suborder
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderSubOrder {
+        return HolderSubOrder(LayoutInflater.from(context).inflate(R.layout.adapter_suborder_row,parent,false))
+    }
+
+    override fun getItemCount(): Int {
+        return subOrderList.size
+    }
+
+    override fun onBindViewHolder(holder: HolderSubOrder, position: Int) {
+        holder.tv_suborder.text =context.resources.getString(R.string.sub_order).plus(" ").plus(position+1)
+        holder.tv_suborder.setOnClickListener{
+            // sub order activity call
+             MoveToAnotherComponent.moveToActivityWithIntentValue<AgentSubOrderActivity>(context,Constant.INTENT_AGENT_SUB_ORDER,subOrderList[position])
+        }
+    }
+
+}
+
+

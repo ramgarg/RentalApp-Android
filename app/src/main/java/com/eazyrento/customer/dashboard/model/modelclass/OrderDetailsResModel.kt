@@ -5,9 +5,9 @@ import com.eazyrento.login.model.modelclass.AddressInfo
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-open  class OrderDetailsResModel(
+open class OrderDetailsResModel(
 
-    var id:Int,
+    var id: Int,
     var order_id: String,
     var order_status: String?,
     val status: String,
@@ -15,19 +15,34 @@ open  class OrderDetailsResModel(
     var agent_detail: AgentDetail?,
     var customer_detail: CustomerDetailX?,
     var merchant_detail: List<MerchantDetail>?,
+    //sub order only for agent
+    var sub_orders: List<Int>?,
 
-    var address_detail:AddressInfo?,
+    var address_detail: AddressInfo?,
     var product_detail: ProductDetailX?,
 
-    val merchant_order_detail:MerchantProductDetails?,
+    val merchant_order_detail: MerchantProductDetails?,
 
     var amount_pending_for_approval: Double,
-    var pending_order_amount:Double,
-    var order_amount_with_commission:Double,
+    var pending_order_amount: Double,
+    var order_amount_with_commission: Double,
 
-    var amount_to_pay:Double,
-    var tip_amount:Double,
+    var amount_to_pay: Double,
+    var tip_amount: Double,
     var total_order_amount: Double,
     var order_amount_paid: Double
 
+) : Parcelable
+
+// sub order
+@Parcelize
+data class SubOrderReqResModel(
+    val id: Int,
+    val order_id: String,
+    var merchant_detail: MerchantDetail?,
+    var product_detail: ProductDetailX?,
+    var amount: Double,
+    var quantity: Int,
+    var price: Double,
+    var order_status: String
 ) : Parcelable

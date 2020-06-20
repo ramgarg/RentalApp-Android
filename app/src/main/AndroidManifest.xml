@@ -115,6 +115,11 @@
 
                 />
 
+        <activity android:name="com.eazyrento.agent.view.activity.AgentSubOrderActivity"
+                android:screenOrientation="unspecified"
+
+                />
+
        <!-- <activity android:name="com.eazyrento.merchant.view.activity.MerchantProfileActivity"
                 android:screenOrientation="unspecified"
 

@@ -6,6 +6,7 @@ import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.common.model.modelclass.BookingListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerOrderListResModel
+import com.eazyrento.customer.dashboard.model.modelclass.SubOrderReqResModel
 import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement
 import retrofit2.Call
@@ -49,13 +50,21 @@ interface AgentAPI {
     fun getCustomerOrdersList(@Path ("value") value:Int): Call<CustomerOrderListResModel>
 
     /*
-     *customer orders details
+     *agent orders details
      * */
     @GET(PathURL.AgentOrderDetail)
     fun getCustomerOrderDetail(@Path("id") id: Int): Call<OrderDetailsResModel>
 
+    //update agent order
     @PUT(PathURL.AgentOrderDetail)
     fun updateCustomerOrderDetail(@Path("id") id: Int,@Body res:OrderDetailsResModel): Call<JsonElement>
+
+    // get sub order details
+    @GET(PathURL.AgentSubOrderDetail)
+    fun getSubOrderDetail(@Path("sub_order_id") sub_order_id: Int): Call<SubOrderReqResModel>
+    // update sub order details
+    @PUT(PathURL.AgentSubOrderDetail)
+    fun updateSubOrderDetail(@Path("sub_order_id") sub_order_id: Int,@Body req: SubOrderReqResModel): Call<JsonElement>
 
     @GET(PathURL.AgentBookingDetail)
     fun getAgentBookingDetail(@Path("id") id: Int): Call<OrderDetailsResModel>

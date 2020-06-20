@@ -6,6 +6,7 @@ import com.eazyrento.agent.model.modelclass.*
 import com.eazyrento.agent.model.repositry.*
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
+import com.eazyrento.customer.dashboard.model.modelclass.SubOrderReqResModel
 
 import com.google.gson.JsonElement
 
@@ -78,4 +79,16 @@ class AgentFeedbackViewModel:ViewModel(){
             .agentFeedback(agentFeedbackReqModel)
     }
 
+}
+
+class AgentSubOrderViewModel:ViewModel(){
+    fun agentSubOrder(sub_order_id:Int): LiveData<DataWrapper<SubOrderReqResModel>> {
+        return AgentSubOrderDetailRepo()
+            .agentSubOrderBySubOrderID(sub_order_id)
+    }
+
+    fun agentSubOrderUpdate(sub_order_id:Int,resModel: SubOrderReqResModel): LiveData<DataWrapper<JsonElement>> {
+        return AgentSubOrderUpdateRepo()
+            .agentSubOrderUpdate(sub_order_id,resModel)
+    }
 }
