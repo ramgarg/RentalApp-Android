@@ -117,10 +117,10 @@ class AgentUpdateOrderActivity : OrderBaseSummaryActivity() {
             }
 
             //same time and end time diffrance calculation
-            bookingDays == 0L && mCommonTimePiker.calculateTimeDiff(
-                tv_st_time_sel.tag.toString(),
-                tv_end_time_sel.tag.toString()
-            ) -> {
+            bookingDays == 0L && mCommonTimePiker.isValidatedForXHour(
+                tv_st_date_sel.tag.toString(),tv_st_time_sel.tag.toString(),
+                tv_end_date_sel.tag.toString(),tv_end_time_sel.tag.toString()
+            ).not() -> {
                 showToast(ValidationMessage.SAME_DATE_TIME_VALIDATION)
                false
             }

@@ -153,9 +153,16 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
             //same time and end time diffrance calculation
             objBookingReqModelItem.booking_days==0L && mCommonTimePiker.
-            calculateTimeDiff(tv_st_time_book.tag.toString(),tv_end_time_book.tag.toString())/*<TimeConstant.TIME_GAP_BETWEEN_SAME_DATE*/ ->{
+            isValidatedForXHour(tv_st_date_book.tag.toString(),tv_st_time_book.tag.toString(),
+                tv_end_date_book.tag.toString(),tv_end_time_book.tag.toString()).not()/*<TimeConstant.TIME_GAP_BETWEEN_SAME_DATE*/ ->{
                 showToast(ValidationMessage.SAME_DATE_TIME_VALIDATION)
             }
+
+            // booking not acceptal at prev time......
+            commonDatePiker.diffranceBetweenCureentTimeAndPreviousTimeSameDate(tv_st_date_book.tag.toString(),tv_st_time_book.tag.toString())->{
+                showToast(ValidationMessage.PREVIOSE_TIME_BUT_SAME_DATE_TIME)
+            }
+
 
             item_quantity.text.toString().toInt()<=0 ->showToast(ValidationMessage.FILL_QUANTITY)
             tv_work_location.text.isEmpty() ->showToast(ValidationMessage.SELECT_ADRESS)

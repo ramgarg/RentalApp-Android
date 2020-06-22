@@ -60,6 +60,8 @@ interface ValidationMessage{
 
         const val DATE_VALIDATION = "Please select valid start and end date time."
         const val SAME_DATE_TIME_VALIDATION = "The time gap between start time and end time should be more then "+TimeConstant.TIME_GAP_BETWEEN_SAME_DATE+" hour for same date"
+        const val PREVIOSE_TIME_BUT_SAME_DATE_TIME = "Booking can not be accepted of same start date but time before the current time."
+
         const val SELECT_ADRESS = "Please select your address."
 
         const val BOOKING_SUBMITTED = "Thank you for submitting the order. Our agent will contact you shortly."

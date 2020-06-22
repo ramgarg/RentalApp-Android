@@ -68,25 +68,46 @@ class CommonTimePiker(private val context: Context) {
     fun getServerTimeFormat(hourOfDay:Int,minute:Int,second:Int):String{
         return getTimeFormatByPattern(hourOfDay,minute,second,TimeConstant.TIME_FORMAT_SERVER)
     }
-    fun calculateTimeDiff(startTime: String, endTime: String):Boolean{
+    fun isValidatedForXHour(startDate:String,startTime: String,endDate:String, endTime: String):Boolean{
         val startC = Calendar.getInstance()
         val endC = Calendar.getInstance()
 
         try {
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"startTime-".plus(startTime).plus("-endTime-").plus(endTime))
 
-            val st_list = startTime.split(":")
-            val end_list = endTime.split(":")
+            val st_list_time = startTime.split(":")
+            val st_date_list = startDate.split("-")
 
-            startC.set(Calendar.HOUR_OF_DAY,st_list[0].toInt())
-            startC.set(Calendar.MINUTE,st_list[1].toInt())
+            val end_list_time = endTime.split(":")
+            val end_date_list  = endDate.split("-")
 
-            endC.set(Calendar.HOUR_OF_DAY,end_list[0].toInt())
-            endC.set(Calendar.MINUTE,end_list[1].toInt())
+
+            startC.set(Calendar.YEAR,st_date_list[0].toInt())
+            startC.set(Calendar.MONTH,st_date_list[1].toInt()-1)
+            startC.set(Calendar.DAY_OF_MONTH,st_date_list[2].toInt())
+
+            startC.set(Calendar.HOUR_OF_DAY,st_list_time[0].toInt())
+            startC.set(Calendar.MINUTE,st_list_time[1].toInt())
+
+            endC.set(Calendar.YEAR,end_date_list[0].toInt())
+            endC.set(Calendar.MONTH,end_date_list[1].toInt()-1)
+            endC.set(Calendar.DAY_OF_MONTH,end_date_list[2].toInt())
+
+            endC.set(Calendar.HOUR_OF_DAY,end_list_time[0].toInt())
+            endC.set(Calendar.MINUTE,end_list_time[1].toInt())
 
              val diff = endC.timeInMillis-startC.timeInMillis
-            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"diff--"+diff)
-            return diff<=TimeConstant.TIME_GAP_BETWEEN_SAME_DATE
+
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"diff:".plus(diff))
+
+             val diffESInMin = (diff/(1000*60))
+             val gapInMin = TimeConstant.TIME_GAP_BETWEEN_SAME_DATE *60
+
+
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"diff:".plus(diff).plus(",diffESInMin:")
+                .plus(diffESInMin).plus(",gapInMin:".plus(gapInMin)))
+
+            return diffESInMin>=gapInMin
             //return end_list[0].toInt() - st_list[0].toInt() >=1 && end_list[1].toInt() - st_list[1].toInt()>=0
 
         }catch (e:Exception){
@@ -128,7 +149,7 @@ enum class TimeTypeEnum{
     START_TIME,END_TIME
 }
     companion object{
-        const val TIME_GAP_BETWEEN_SAME_DATE = 1
+        const val TIME_GAP_BETWEEN_SAME_DATE = 1  // hour
         const val TIME_FORMAT_SERVER="HH:mm:ss"
         const val TIME_FORMAT_DISPLAY = "HH:mm a"
 

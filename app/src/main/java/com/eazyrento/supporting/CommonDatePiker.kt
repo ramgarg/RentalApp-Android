@@ -3,6 +3,7 @@ package com.eazyrento.supporting
 import android.app.DatePickerDialog
 import android.content.Context
 import com.eazyrento.R
+import com.eazyrento.appbiz.AppBizLogger
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
@@ -149,7 +150,35 @@ class CommonDatePiker(private val context: Context) {
         return -1
     }
 
+    fun diffranceBetweenCureentTimeAndPreviousTimeSameDate(todayDate:String,previousTime:String): Boolean {
+        try {
+            val currentDateTime = Calendar.getInstance()
+            val todatDatePrevTime = Calendar.getInstance()
+
+            val prev_time_list = previousTime.split(":")
+            val todayDate = todayDate.split("-")
+
+            todatDatePrevTime.set(Calendar.HOUR_OF_DAY,prev_time_list[0].toInt())
+            //todatDatePrevTime.set(Calendar.MINUTE,prev_time_list[1].toInt())
+
+            todatDatePrevTime.set(Calendar.YEAR,todayDate[0].toInt())
+            todatDatePrevTime.set(Calendar.MONTH,todayDate[1].toInt()-1)
+            todatDatePrevTime.set(Calendar.DAY_OF_MONTH,todayDate[2].toInt())
+
+            val diff = todatDatePrevTime.timeInMillis-currentDateTime.timeInMillis
+
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"same date time diff:"+diff)
+
+            return diff<0
+
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+        return false
+    }
+
 }
+
  fun splitDateServerFormat(date:String?):List<String>?{
      if (date==null)
          return null
