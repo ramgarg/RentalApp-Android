@@ -54,6 +54,8 @@
     <string name="order_review">Order Review</string>
     <string name="order_summary">Order Summary</string>
     <string name="payment">Payment</string>
+    <string name="payment_history">Payment History</string>
+    <string name="payment_received">Are you sure? You have received the payment.</string>
     <string name="requestpayment">Request a Payment</string>
     <string name="details">Details</string>
     <string name="order_submit">Thank you for submitting your order.Our agent will call you shortly.</string>

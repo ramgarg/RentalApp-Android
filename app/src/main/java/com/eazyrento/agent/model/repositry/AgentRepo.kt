@@ -142,3 +142,16 @@ class AgentSubOrderUpdateRepo:GenericRequestHandler<JsonElement>() {
         return doRequest(call)
     }
 }
+
+
+class AgentPaymentRecivedOrDeclineRepo :
+    GenericRequestHandler<JsonElement>(){
+
+    fun agentPaymentRecivedOrDecline(paymentRecivedOrNotReqModel: PaymentRecivedOrNotReqModel): LiveData<DataWrapper<JsonElement>> {
+
+        val call = ServiceGenrator.client.create(
+            AgentAPI::class.java).paymentRecivedOrNot(paymentRecivedOrNotReqModel)
+        return doRequest(call)
+    }
+
+}

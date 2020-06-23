@@ -92,3 +92,13 @@ class AgentSubOrderViewModel:ViewModel(){
             .agentSubOrderUpdate(sub_order_id,resModel)
     }
 }
+
+class AgentPaymentRecivedOrDeclineViewModel:ViewModel(){
+
+    fun paymentAcceptOrDecline(paymentRecivedOrNotReqModel: PaymentRecivedOrNotReqModel): LiveData<DataWrapper<JsonElement>> {
+        return AgentPaymentRecivedOrDeclineRepo()
+            .agentPaymentRecivedOrDecline(paymentRecivedOrNotReqModel)
+    }
+}
+
+

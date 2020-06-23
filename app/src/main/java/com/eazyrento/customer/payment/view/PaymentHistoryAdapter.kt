@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.payment.model.modelclass.PaymentListResModelItem
 import kotlinx.android.synthetic.main.row_payment_history.view.*
 
@@ -22,23 +23,43 @@ class PaymentHistoryAdapter(val items:List<PaymentListResModelItem>, val context
         val imgPaymentMode=view.img_payment_mode
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
 
-        if(items.get(position).status== Constant.PENDING){
+        when(item.status){
+            Constant.PENDING -> {
+                holder.tvPaymentStatus?.text=item.status
+                holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_pending)
+
+                // if module agent and payment is panding then agent can confirm if paymnet is recvied or not..
+                holder.itemView.setOnClickListener {
+                    (context as BaseActivity).moveOnSelecetedItem<PaymentListResModelItem>(item)
+                }
+            }
+            Constant.FAILED ->{holder.tvPaymentStatus?.text=item.status
+                holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_failed)}
+            else ->{holder.tvPaymentStatus?.text=item.status
+                holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_success)}
+
+        }
+
+      /*  if(items.get(position).status== Constant.PENDING){
             holder.tvPaymentStatus?.text=items.get(position).status
             holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_pending)
-        }
-        else if(items.get(position).status== Constant.FAILED){
+        }*/
+        /*else if(items.get(position).status== Constant.FAILED){
             holder.tvPaymentStatus?.text=items.get(position).status
             holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_failed)
         }else{
             holder.tvPaymentStatus?.text=items.get(position).status
             holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_success)
-        }
+        }*/
 
-        holder.tvPayment?.text= Constant.DOLLAR+items.get(position).amount_paid
-        holder.tvOrderId?.text= Constant.ORDER_ID+items.get(position).order_id
-        holder.tvDate?.text=items.get(position).added_on
-        if(items.get(position).mode_of_payment== Constant.CASH){
+        holder.tvPayment?.text= Constant.DOLLAR.plus(item.amount_paid)
+        holder.tvOrderId?.text= Constant.ORDER_ID.plus(item.order_id)
+
+        holder.tvDate?.text=item.added_on
+
+        if(item.mode_of_payment== Constant.CASH){
             holder.imgPaymentMode?.setImageResource(R.mipmap.cash)
         }
         else{

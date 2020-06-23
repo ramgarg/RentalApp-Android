@@ -4,6 +4,7 @@ import com.eazyrento.supporting.TimeConstant
 
 interface ValidationMessage{
     companion object{
+        const val THANKYOU_FOR_CONFIRMING = "Thank you for confirming!"
         const val ENTER_AMOUNT_PAYMENT = "Please enter valid amount!"
         const val PAYMENT_MODE = "Please choose the payment method."
         const val ENTER_AMOUNT_PAYMENT_LESS_THEN_TO = "Please enter valid amount!"

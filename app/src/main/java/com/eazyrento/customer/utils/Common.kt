@@ -197,11 +197,6 @@ class Common {
             }
         }
 
-        fun showLoading(context: Context,layout_loading:RelativeLayout,img_gif:ImageView){
-           /* layout_loading.visibility= View.VISIBLE
-            Glide.with(context).load(R.mipmap.loading_ic).into(img_gif)*/
-        }
-
         fun showToast(context: Context,msg: String){
             Toast.makeText(context,msg,Toast.LENGTH_LONG).show()
         }

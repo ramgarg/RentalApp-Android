@@ -84,22 +84,28 @@ open abstract class BaseActivity: AppCompatActivity(),
             dialog.cancel()
             this.onClickDailog(Constant.OK)
         }
-        /*dialog.btn_cancel.setOnClickListener {
-            dialog.cancel()
-            this.onClickDailog(Constant.CANCEL)
-        }*/
-
-
-        /*if(title.equals("payment_noti"))
-            Common.thankYou(dialog, msg)
-        else if(title.equals("UserType"))
-            Common.userDialog(context, dialog)
-        else if(title.equals("UserDay"))
-            Common.userDayDialog(context, dialog)
-        else
-            Common.rating(dialog)*/
 
         dialog .show()
+
+    }
+
+    protected fun showDialogCustomDialog(context: Activity):Dialog {
+        val dialog = Dialog(context)
+
+        dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
+        dialog .setCancelable(false)
+        dialog .setContentView(R.layout.thank_you_pop)
+
+//        dialog.tv_msg.text=msg
+
+    /*    dialog.btn_ok.setOnClickListener {
+            dialog.cancel()
+            this.onClickDailog(Constant.OK)
+        }*/
+
+        //dialog .show()
+        return dialog
 
     }
 

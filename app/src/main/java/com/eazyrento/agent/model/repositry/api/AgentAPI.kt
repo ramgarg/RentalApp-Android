@@ -71,4 +71,8 @@ interface AgentAPI {
 
     @POST(PathURL.AgentFeedback)
     fun agentFeedback(@Body agentFeedbackReqModel: AgentFeedbackReqModel): Call<JsonElement>
+
+    // payment recived or not
+    @POST(PathURL.AgentCollectCashPayment)
+    fun paymentRecivedOrNot(@Body paymentRecivedOrNotReqModel: PaymentRecivedOrNotReqModel): Call<JsonElement>
 }
