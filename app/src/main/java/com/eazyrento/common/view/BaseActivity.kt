@@ -40,15 +40,17 @@ open abstract class BaseActivity: AppCompatActivity(),
 
    private fun setProgressBar(){
        dialogProgrss = Dialog(this)
-       dialogProgrss?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-       dialogProgrss?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+       //dialogProgrss?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+       //dialogProgrss?.requestWindowFeature(Window.FEATURE_NO_TITLE)
        dialogProgrss?.window?.setBackgroundDrawable(ColorDrawable(0))
        dialogProgrss?.setContentView(R.layout.progress_bar_api)
        val lp = WindowManager.LayoutParams()
        lp.copyFrom(dialogProgrss?.window?.attributes)
-       lp.width = WindowManager.LayoutParams.MATCH_PARENT
-       lp.height = WindowManager.LayoutParams.MATCH_PARENT
+       lp.width = WindowManager.LayoutParams.WRAP_CONTENT
+       lp.height = WindowManager.LayoutParams.WRAP_CONTENT
        dialogProgrss?.window?.attributes = lp
+
+       dialogProgrss?.setCancelable(true)
 
    }
     fun showProgress(){
@@ -56,15 +58,26 @@ open abstract class BaseActivity: AppCompatActivity(),
         if(dialogProgrss == null){
             setProgressBar()
         }
-        dialogProgrss?.show()
+        dialogProgrss?.let {
+            if (it.isShowing.not())
+                it.show()
+        }
     }
     fun hideProgress(){
-
-        dialogProgrss?.hide()
+        dismissProgress()
+       /* dialogProgrss?.let {
+            it.hide()
+            it.dismiss()
+            dialogProgrss =null
+        }*/
     }
+
     fun dismissProgress(){
-        dialogProgrss?.dismiss()
-        dialogProgrss = null
+        dialogProgrss?.let {
+            it.hide()
+            it.dismiss()
+            dialogProgrss =null
+        }
     }
     protected fun showToast(msg: String){
         Toast.makeText(this,msg, Toast.LENGTH_LONG).show()

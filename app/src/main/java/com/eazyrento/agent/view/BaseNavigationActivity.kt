@@ -28,6 +28,7 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VI
 import com.squareup.picasso.Picasso
 import initHippoWithUserData
 import kotlinx.android.synthetic.main.activity_agent_home_.*
+import kotlinx.android.synthetic.main.footer_menu.*
 import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import showHippoConversation
@@ -116,10 +117,13 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         img_notification.visibility = vis
     }
     protected fun setInitData(){
+
         //hippo chat
 
         initHippoWithUserData(this)
 
+        //set app version
+        setAppVersion()
         setBottomNavigationListener()
         setLeftSliderNavigationListener()
 
@@ -129,6 +133,9 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
             pageNavigationAtDeeplink(DeeplinkEvents.mapPayLoadDataDeeplink)
         else
             setHomeFragment()
+    }
+    private fun setAppVersion(){
+        app_version.text = "V".plus(BuildConfig.VERSION_NAME).plus("-").plus(BuildConfig.VERSION_CODE)
     }
 
      fun pageNavigationAtDeeplink(mapPayLoadDataDeeplink:Map<String,String>?){
