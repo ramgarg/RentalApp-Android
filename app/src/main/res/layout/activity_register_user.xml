@@ -210,11 +210,11 @@
                     android:hint="@string/full_name"
                     android:textColor="@color/black"
                     android:inputType="textPersonName"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:fontFamily="@font/bree_serif"
                     android:layout_height="@dimen/_40sdp"
                     android:maxLines="1"
                     android:imeOptions="actionNext"
+                    android:maxLength="@integer/full_name_max_len"
                     />
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -20,13 +20,13 @@ import kotlinx.android.synthetic.main.activity_agent_add_note.*
 
 
 
-class AgentAddNoteActivity: BaseActivity(){
+class AgentAddNoteListActivity: BaseActivity(){
 
      private var noteList:AgentNotesListResModel?=null
      private var deleteItemPos:Int =-1
 
     override fun <T> moveOnSelecetedItem(type: T) {
-        MoveToAnotherComponent.openActivityWithParcelableParam<AgentWriteNoteActivity,AgentNotesListResModelItem>(this,Constant.INTENT_NOTE_EDIT,type as AgentNotesListResModelItem)
+        MoveToAnotherComponent.openActivityWithParcelableParam<AgentAddUpdateNoteActivity,AgentNotesListResModelItem>(this,Constant.INTENT_NOTE_EDIT,type as AgentNotesListResModelItem)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,7 @@ class AgentAddNoteActivity: BaseActivity(){
 
         topBarWithBackIconAndTitle(getString(R.string.mynotes))
 
-        agent_add_note_btn.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<AgentWriteNoteActivity>(this) }
+        agent_add_note_btn.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<AgentAddUpdateNoteActivity>(this) }
 
         fetchMyNotes()
 
@@ -92,11 +92,24 @@ class AgentAddNoteActivity: BaseActivity(){
         super.onNewIntent(intent)
 
         val addedNote = intent?.getParcelableExtra<AgentNotesListResModelItem>(Constant.INTENT_NOTE_ADDED)
+        val updateNote = intent?.getParcelableExtra<AgentNotesListResModelItem>(Constant.INTENT_NOTE_UPDATED)
+
         if(noteList==null) {
             noteList = AgentNotesListResModel()
             setNotesAdapter(noteList!!)
         }
-        noteList!!.add(0,addedNote!!)
+        if (addedNote!=null)
+            noteList!!.add(0,addedNote)
+        else if (updateNote!=null){
+
+            val obj = noteList!!.single {
+                it.id == updateNote.id
+            }
+
+            obj.description = updateNote.description
+            obj.header =updateNote.header
+        }
+
         rec_note_list.adapter?.notifyDataSetChanged()
 
     }

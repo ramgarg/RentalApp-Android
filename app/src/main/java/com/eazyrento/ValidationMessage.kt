@@ -21,7 +21,7 @@ interface ValidationMessage{
         const val VALID_EMAIL_PHONE = "Please enter a valid email address or mobile number."
         const val ENTER_ALL_FIELDS = "Please enter all fields"
         const val CHECK_TERMS_POLICY= "Please agree to the terms and conditions."
-        const val VALID_USER_NAME= "Please enter user name."
+        const val VALID_USER_NAME= "Please enter valid user name.It should be between 4 and 50 characters."
         const val SELECT_USER_ROLE = "Please select user role"
         const val NO_DATA_FOUND = "No Record Found..."
         const val VALID_OTD="Please enter valid OTP"

@@ -24,6 +24,11 @@ import com.eazyrento.supporting.*
 import com.squareup.picasso.Picasso
 import io.michaelrocks.libphonenumber.android.Phonenumber
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.activity_profile.document_pic
+import kotlinx.android.synthetic.main.activity_profile.ed_full_name
+import kotlinx.android.synthetic.main.activity_profile.lyt_select_document
+import kotlinx.android.synthetic.main.activity_profile.sp_select_document
+import kotlinx.android.synthetic.main.activity_register_user.*
 
 class UpdateProfileActivity : BaseActivity() {
     var userProfile: UserProfile? = null
@@ -52,6 +57,10 @@ class UpdateProfileActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
+        ed_full_name.filters = filterAs(FilterEnum.FULL_NAME)
+        ed_company_name.filters = filterAs(FilterEnum.ALPHANUMERIC)
+        ed_des.filters =  filterAs(FilterEnum.ALPHANUMERIC)
 
         topBarWithBackIconAndTitle(resources.getString(R.string.profile))
 
@@ -246,8 +255,8 @@ class UpdateProfileActivity : BaseActivity() {
     }
 
     private fun checkProfileValidation(): Boolean {
-        if (ed_full_name.text.toString().isEmpty()) {
-            showToast(ValidationMessage.VALID_PROFILE_NAME)
+        if (ed_full_name.text.toString().isEmpty() || ed_full_name.text.toString().length< resources.getInteger(R.integer.full_name_min_len)) {
+            showToast(ValidationMessage.VALID_USER_NAME)
         } else if (img_profile.drawable == null) {
             showToast(ValidationMessage.VALID_IMAGE)
         } else if (ed_email.text.toString().isEmpty()) {

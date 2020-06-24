@@ -5,6 +5,8 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.eazyrento.Constant
+import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.utils.Validator
@@ -32,7 +34,7 @@ abstract class AppBizLogin: BaseActivity(){
              showToast(ValidationMessage.VALID_USER_NAME)
         }
 
-        else if (editTextUserName.text.toString().length<4) {
+        else if (editTextUserName.text.toString().length< resources.getInteger(R.integer.full_name_min_len)) {
              showToast(ValidationMessage.VALID_USER_NAME)
         } else if(!checkBoxTerms.isChecked){
              showToast(ValidationMessage.CHECK_TERMS_POLICY)

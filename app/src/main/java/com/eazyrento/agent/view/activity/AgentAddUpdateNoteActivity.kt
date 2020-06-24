@@ -9,11 +9,12 @@ import com.eazyrento.agent.model.modelclass.AgentAddNoteReqModelItem
 import com.eazyrento.agent.model.modelclass.AgentNotesListResModelItem
 import com.eazyrento.agent.viewmodel.AgentCreateNotesViewModel
 import com.eazyrento.agent.viewmodel.AgentUpdateNoteViewModel
+import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_write_note.*
 
-class AgentWriteNoteActivity : BaseActivity() {
+class AgentAddUpdateNoteActivity : BaseActivity() {
 
     var edit_Note_ID = -1
 
@@ -32,6 +33,7 @@ class AgentWriteNoteActivity : BaseActivity() {
             edit_Note_ID = obj.id
             ed_agent_note_heading.setText(obj.header)
             ed_agent_note_desc.setText(obj.description)
+
         } else {
             topBarWithBackIconAndTitle(getString(R.string.add_a_note))
         }
@@ -100,11 +102,20 @@ class AgentWriteNoteActivity : BaseActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
 
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+
         val agentAddNoteReqModelItem = data as AgentNotesListResModelItem
 
-        MoveToAnotherComponent.openActivityWithParcelableParam<AgentAddNoteActivity, AgentNotesListResModelItem>(
+        // on update note
+        var flag = Constant.INTENT_NOTE_ADDED
+
+        if (edit_Note_ID!=-1){
+
+            flag = Constant.INTENT_NOTE_UPDATED
+        }
+        MoveToAnotherComponent.openActivityWithParcelableParam<AgentAddNoteListActivity, AgentNotesListResModelItem>(
             this,
-            Constant.INTENT_NOTE_ADDED,
+            flag,
             agentAddNoteReqModelItem
         )
 

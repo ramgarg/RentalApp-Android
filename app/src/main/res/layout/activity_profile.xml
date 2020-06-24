@@ -65,7 +65,9 @@
                         android:inputType="textEmailAddress"
                         android:lines="1"
                         android:maxLines="1"
-                        android:nextFocusDown="@id/ed_country" />
+                        android:nextFocusDown="@id/ed_country"
+                        android:maxLength="@integer/full_name_max_len"
+                        />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -221,7 +223,9 @@
                         android:inputType="textEmailAddress"
                         android:lines="1"
                         android:maxLines="1"
-                        android:nextFocusDown="@id/ed_des" />
+                        android:nextFocusDown="@id/ed_des"
+                        android:maxLength="@integer/full_name_max_len"
+                        />
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="full_name_min_len">4</integer>
+    <integer name="full_name_max_len">50</integer>
+
+</resources>

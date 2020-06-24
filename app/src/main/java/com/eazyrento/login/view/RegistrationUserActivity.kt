@@ -5,14 +5,13 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.text.InputFilter
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import com.eazyrento.Constant
-import com.eazyrento.R
-import com.eazyrento.ValidationMessage
+import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogin
 import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.customer.utils.Common
@@ -43,6 +42,8 @@ class RegistrationUserActivity : AppBizLogin(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_user)
+
+        ed_full_name.filters = filterAs(FilterEnum.FULL_NAME)
 
         phoneNumberFormat = PhoneNumberFormat(this)
 

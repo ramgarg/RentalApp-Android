@@ -8,8 +8,6 @@ import com.eazyrento.R
 import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.agent.view.fragment.*
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
-import com.eazyrento.customer.dashboard.view.activity.CustomerPaymentActivity
 import com.eazyrento.customer.notification.view.NotificationFragment
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_agent_home_.navigation_view
@@ -107,7 +105,7 @@ class AgentMainActivity : BaseNavigationActivity(){
     }
 
     override fun addNotes() {
-        MoveToAnotherComponent.moveToActivityNormal<AgentAddNoteActivity>(this)
+        MoveToAnotherComponent.moveToActivityNormal<AgentAddNoteListActivity>(this)
 //        toolbar_title.text=getString(R.string.mynotes)
     }
 

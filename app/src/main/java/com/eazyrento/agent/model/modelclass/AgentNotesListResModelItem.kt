@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class AgentNotesListResModelItem(
     val id: Int,
-    val header: String,
-    val description: String
+    var header: String,
+    var description: String
 ) : Parcelable {
 }

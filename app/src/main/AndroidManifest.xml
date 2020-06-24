@@ -182,13 +182,13 @@
 
         />
 
-        <activity android:name="com.eazyrento.agent.view.activity.AgentAddNoteActivity"
+        <activity android:name="com.eazyrento.agent.view.activity.AgentAddNoteListActivity"
                 android:screenOrientation="unspecified"
                 android:launchMode="singleTask"
 
                 />
 
-        <activity android:name="com.eazyrento.agent.view.activity.AgentWriteNoteActivity"
+        <activity android:name="com.eazyrento.agent.view.activity.AgentAddUpdateNoteActivity"
                 android:screenOrientation="unspecified"
 
                 />

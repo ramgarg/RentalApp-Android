@@ -61,6 +61,7 @@ interface Constant{
         const val INTENT_NEW_ADDRESS_ADD = "add"
         const val INTENT_RESET_SUCCESSFULY ="reset"
         const val INTENT_NOTE_ADDED ="sucess"
+        const val INTENT_NOTE_UPDATED ="note_update"
 
         const val INTENT_RATE_REVIEWS ="sucess"
 
@@ -159,6 +160,7 @@ interface Constant{
         //notification
         const val DEEPLINK_VALUE = "deep_link"
         const val REQUEST_CODE_PENDING_INTENT = 2011
+
 
     }
 }
