@@ -100,7 +100,7 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
 
     private fun fillAssignMerchantReqModel(details: Details) {
         //merchantdetails
-        assignMerchantsReqModel.merchant_list.add(Merchant(details.price,details.merchant_id,details.price,details.assign_quantity))
+        assignMerchantsReqModel.merchant_list.add(Merchant((details.price*details.assign_quantity),details.merchant_id,details.price,details.assign_quantity))
 
     }
     private fun isQuantitiyCorrect():Boolean{
@@ -124,8 +124,21 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
         }else
            return true
     }
+    private fun updateTotalAmountAndQuantity(){
+
+        for (itemAssigned in assignMerchantsReqModel.merchant_list){
+            val merchant = merchantListItem.single {
+                it.details.merchant_id == itemAssigned.merchant_id
+            }
+            itemAssigned.quantity = merchant.details.assign_quantity
+            itemAssigned.amount = merchant.details.assign_quantity*merchant.details.price
+
+        }
+    }
     //
     fun assignMerchant(view:View) {
+
+        updateTotalAmountAndQuantity()
 
         if (isvalidationCorrect()) {
 

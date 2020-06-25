@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_customer_bookings.*
 open abstract class ShowAllBookingActivity :BaseActivity(),AcceptDecline {
 
     lateinit  var bookingDashboardResModel:BookingDashboardResModel
-    protected lateinit var bookingList:List<Booking>
+   // protected lateinit var bookingList:List<Booking>
     protected var positionAccetDecline:Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,11 +75,12 @@ open abstract class ShowAllBookingActivity :BaseActivity(),AcceptDecline {
 
         if (data is JsonElement){
 
-            (bookingList as MutableList).removeAt(positionAccetDecline)
+            (bookingDashboardResModel.bookings as MutableList).removeAt(positionAccetDecline)
+
             rec_customer_bookings.adapter?.notifyDataSetChanged()
 
-            if (bookingList.isEmpty()) {
-                btn_home_view_all.visibility = View.GONE
+            if (bookingDashboardResModel.bookings.isEmpty()) {
+                btn_home_view_all?.visibility = View.GONE
                 showToast(ValidationMessage.NO_DATA_FOUND)
             }
 

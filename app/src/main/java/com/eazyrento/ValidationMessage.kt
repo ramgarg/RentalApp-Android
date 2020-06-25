@@ -104,7 +104,7 @@ interface ValidationMessage{
 
         const val NO_ADRESS_FOUND = "No address found. Please add new address."
 
-        const val QUANTITY_LIMIT = "Assign quantity can't be grater then booking quantity."
+        const val QUANTITY_LIMIT = "Assign quantity can't be grater then or less then of booking quantity."
 
         const val QUANTITY_SET_LIMIT = "You can't set value beyond limit."
 

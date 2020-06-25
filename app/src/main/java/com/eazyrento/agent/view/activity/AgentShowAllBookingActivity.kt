@@ -27,10 +27,10 @@ class AgentShowAllBookingActivity:ShowAllBookingActivity() {
         }
 
         modelBooking.btn_accept_booking.setOnClickListener{
-            acceptBooking(order_listing_obj,position, Constant.MERCHNAT_ACCEPTANCE)
+            acceptBooking(order_listing_obj,position, Constant.AGENT_ACCEPTANCE)
         }
         modelBooking.btn_decline_booking.setOnClickListener{
-            declineBooking(order_listing_obj,position, Constant.MERCHNAT_ACCEPTANCE)
+            declineBooking(order_listing_obj,position, Constant.AGENT_ACCEPTANCE)
         }
 
     }
