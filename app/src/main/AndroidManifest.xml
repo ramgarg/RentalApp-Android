@@ -107,13 +107,13 @@
 
         <activity android:name="com.eazyrento.agent.view.activity.AgentOrderSummaryActivity"
                 android:screenOrientation="unspecified"
-
+                android:launchMode="singleTask"
                 />
 
-        <activity android:name="com.eazyrento.agent.view.activity.AgentUpdateOrderActivity"
+        <!--<activity android:name="com.eazyrento.agent.view.activity.AgentUpdateOrderActivity"
                 android:screenOrientation="unspecified"
 
-                />
+                />-->
 
         <activity android:name="com.eazyrento.agent.view.activity.AgentSubOrderActivity"
                 android:screenOrientation="unspecified"

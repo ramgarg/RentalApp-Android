@@ -1,6 +1,7 @@
 package com.eazyrento.agent.view.activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -12,10 +13,11 @@ import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.viewmodel.AgentSubOrderViewModel
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
 import com.eazyrento.customer.dashboard.model.modelclass.SubOrderReqResModel
+import com.eazyrento.customer.dashboard.model.modelclass.SubOrderUpdateReqModel
 import com.eazyrento.customer.utils.Common
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.google.gson.JsonElement
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
@@ -24,8 +26,11 @@ import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_quantity_view.*
 
 class AgentSubOrderActivity :BaseActivity() {
-    private var subOrderReqResModel: SubOrderReqResModel?=null
-    private var id: Int = 0
+   // private var subOrderReqResModel: SubOrderReqResModel?=null
+    private var mId: Int = 0
+    private var mStatus:String?=null
+//    private var price:Double =0.0
+
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
@@ -37,8 +42,8 @@ class AgentSubOrderActivity :BaseActivity() {
 
         customer_payment_button.visibility = View.GONE
 
-        id = intent.extras?.getInt(Constant.INTENT_AGENT_SUB_ORDER,0)!!
-        callSubOrderAPIOrderList(id)
+        mId = intent.extras?.getInt(Constant.INTENT_AGENT_SUB_ORDER,0)!!
+        callSubOrderAPIOrderList(mId)
     }
 
     // order details
@@ -59,18 +64,19 @@ class AgentSubOrderActivity :BaseActivity() {
         super.onSuccessApiResult(data)
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+
         if (data is JsonElement){
             showToast(ValidationMessage.REQUEST_SUCCESSED)
-            finishCurrentActivity(Activity.RESULT_OK)
+            MoveToAnotherComponent.moveToActivityNormal<AgentOrderSummaryActivity>(this)
             return
         }
 
         if (data is SubOrderReqResModel) {
-            subOrderReqResModel = data
+//            subOrderReqResModel = data
             setTopView(data)
             setQunatity(data)
             data.merchant_detail?.let {  setMerchantView(it) }
-            updateStatusSpinnerData()
+            updateStatusSpinnerData(data)
 
 
         }
@@ -124,10 +130,12 @@ class AgentSubOrderActivity :BaseActivity() {
     }
     // update order status
 
-    private fun updateStatusSpinnerData() {
-        val update_Status = resources.getStringArray(R.array.UpdateStatus)
+    private fun updateStatusSpinnerData(data: SubOrderReqResModel) {
 
+        val update_Status = resources.getStringArray(R.array.UpdateStatusAgent)
         val spinner = findViewById<Spinner>(R.id.status_spinner)
+
+
         if (spinner != null) {
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, update_Status)
             spinner.adapter = adapter
@@ -135,10 +143,10 @@ class AgentSubOrderActivity :BaseActivity() {
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                     if(position==0){
-
+                        mStatus = null
                     }
                     else{
-                        subOrderReqResModel?.order_status = update_Status[position]
+                        mStatus = update_Status[position]
                     }
                 }
 
@@ -147,24 +155,47 @@ class AgentSubOrderActivity :BaseActivity() {
                 }
             }
         }
+
+        // set spinner data which alrday
+        spinner.setSelection(
+            getComparedPostion(
+                update_Status,
+                data.order_status
+            )
+        )
+    }
+
+    private fun getComparedPostion(spinnerDataByID: Array<String>, variant: String?): Int {
+
+        for (i in spinnerDataByID.indices) {
+            if (spinnerDataByID[i] == variant) {
+
+                return i
+            }
+        }
+        return 0
     }
 
     fun onUpdateButtonClick(view: View){
 
-        subOrderReqResModel?.let{outer->
+        if(isValidated().not()) return
 
-            outer.quantity = item_quantity.text.toString().toInt()
+        val subOrderUpdateReqModel = SubOrderUpdateReqModel(tv_booking_price.text.toString().removePrefix(Constant.DOLLAR)
+            .toDouble(),item_quantity.text.toString().toInt(),mStatus!!)
 
             callAPI()?.let {
                 it.observeApiResult(
                     it.callAPIActivity<AgentSubOrderViewModel>(this)
-                        .agentSubOrderUpdate(id,outer)
+                        .agentSubOrderUpdate(mId,subOrderUpdateReqModel)
                     , this, this
                 )
-            }
         }
 
 
+    }
+
+    private fun isValidated():Boolean{
+        return if(mStatus== null) {showToast(ValidationMessage.SELECT_STATUS);false } else true
     }
 
 }

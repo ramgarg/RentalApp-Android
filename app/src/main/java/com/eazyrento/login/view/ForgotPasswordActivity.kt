@@ -61,7 +61,7 @@ class ForgotPasswordActivity :BaseActivity() {
     private fun isCheckValidationFailed(email: String): Boolean {
 
         return when{
-           email.isNotEmpty() && (Validator.isEmailValid(email) || isValidPhoneNumber(email)) -> false
+           email.isNotEmpty() && (Validator.isEmailValid(email) || isValidPhoneNumber(email,this)) -> false
            else->{Toast.makeText(this,ValidationMessage.VALID_EMAIL_PHONE, Toast.LENGTH_SHORT).show()
                true}
         }

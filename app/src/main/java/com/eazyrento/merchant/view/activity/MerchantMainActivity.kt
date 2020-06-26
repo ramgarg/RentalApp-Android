@@ -7,14 +7,10 @@ import androidx.fragment.app.Fragment
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.view.BaseNavigationActivity
-import com.eazyrento.agent.view.activity.AgentMainActivity
-import com.eazyrento.agent.view.activity.AgentOrderSummaryActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.fragment.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.merchant_activity_main.*
 import kotlinx.android.synthetic.main.merchant_activity_main.bottom_navigation_view
 import kotlinx.android.synthetic.main.merchant_activity_main.navigation_view
 import kotlinx.android.synthetic.main.toolbar.*

@@ -27,24 +27,20 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
-    private fun clickListenerOnViews(){
-
-
-        //agent_update_order_btn.setOnClickListener { MoveToAnotherComponent.moveToAgentUpdateOrderSummaryActivity(this) }
-        //payment_view_history.setOnClickListener { MoveToAnotherComponent.moveToPaymentHistoryActivity(this) }
-        //tv_pay_now.setOnClickListener { MoveToAnotherComponent.moveToPaymentActivity(this) }
-        /*order_rate_review.setOnClickListener {
-            feedbackReqModel.customer_id = orderRes.customer_detail.id
-            feedbackReqModel.agent_id = orderRes.agent_detail.id
-            feedbackReqModel.order_id=orderRes.order_id
-            rateAndReviews(feedbackReqModel)
-        }*/
-    }
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
         setMaintanceUserRoleAdapter(orderRes.customer_detail,orderRes.agent_detail,null)
+
+        orderRes.merchant_order_detail?.let {
+            tv_booking_price.text= Constant.DOLLAR.plus(it.booking_price)
+
+            order_product_quantity.text=Constant.QUANTITY.plus(it.merchant_quantity)
+
+            pending_amount.visibility=View.GONE
+        }
+
 
         /*setMaintaniceUserRoleVisiblity(maintanceLayoutInflater(R.layout.adapter_users_order_summary),orderRes.agent_detail.let {  it.userRole =Constant.AGENT
         it

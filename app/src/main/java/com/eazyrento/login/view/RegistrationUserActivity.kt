@@ -4,13 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.telephony.PhoneNumberFormattingTextWatcher
-import android.text.InputFilter
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogin
 import com.eazyrento.common.view.UserInfoAPP
@@ -146,12 +143,19 @@ class RegistrationUserActivity : AppBizLogin(){
     private fun createRegisterUserReqModel(): RegisterUserReqModel {
 
         var countryCode = ""
+        var emailOrPhoneNumber = ed_email_phone.text.toString()
 
        try {
-           if (phoneNumberFormat.phoneNumber!=null)
-               countryCode =  ""+phoneNumberFormat.phoneNumber?.countryCode
-       }catch (e:Exception){
+           if (phoneNumberFormat.phoneNumber==null) {
 
+               phoneNumberFormat.parseNumberWithoutCountryCode(ed_email_phone.text.toString())
+           }
+           phoneNumberFormat.phoneNumber?.let {
+               countryCode = "+" +it.countryCode
+               emailOrPhoneNumber =""+it.nationalNumber
+           }
+       }catch (e:Exception){
+                e.printStackTrace()
        }
 
         return RegisterUserReqModel(
@@ -160,7 +164,7 @@ class RegistrationUserActivity : AppBizLogin(){
             ed_password.text.toString(),
             UserInfoAPP.REGISTRATIONS_SOURCE!!,
             user_role!!,
-            ed_email_phone.text.toString(),
+            emailOrPhoneNumber,
             selectProfID,
             selectBase64String
         )

@@ -7,6 +7,7 @@ import com.eazyrento.agent.model.repositry.*
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.SubOrderReqResModel
+import com.eazyrento.customer.dashboard.model.modelclass.SubOrderUpdateReqModel
 
 import com.google.gson.JsonElement
 
@@ -29,7 +30,7 @@ class AgentAssignMerchantViewModel : ViewModel() {
 
 class AgentUpdateOrderViewModel : ViewModel() {
 
-    fun updateOrder(id:Int,updateOrderModel: OrderDetailsResModel): LiveData<DataWrapper<JsonElement>> {
+    fun updateOrder(id:Int,updateOrderModel: AgentUpdateOrderReqModel): LiveData<DataWrapper<JsonElement>> {
         return AgentUpdateOrderRepo().updateOrder(id,updateOrderModel)
 
     }
@@ -87,7 +88,7 @@ class AgentSubOrderViewModel:ViewModel(){
             .agentSubOrderBySubOrderID(sub_order_id)
     }
 
-    fun agentSubOrderUpdate(sub_order_id:Int,resModel: SubOrderReqResModel): LiveData<DataWrapper<JsonElement>> {
+    fun agentSubOrderUpdate(sub_order_id:Int,resModel: SubOrderUpdateReqModel): LiveData<DataWrapper<JsonElement>> {
         return AgentSubOrderUpdateRepo()
             .agentSubOrderUpdate(sub_order_id,resModel)
     }

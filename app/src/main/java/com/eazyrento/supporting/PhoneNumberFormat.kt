@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
+import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.utils.Common
@@ -134,7 +135,7 @@ class PhoneNumberFormat(val context: Context) {
             return phoneNumber
 
         } catch (e: NumberParseException) {
-            Common.showToast(context, e.toString())
+            //Common.showToast(context, e.toString())
             return null
         }
 
@@ -176,10 +177,14 @@ class PhoneNumberFormat(val context: Context) {
 
 }
 
-fun isValidPhoneNumber(phone: String): Boolean {
+fun isValidPhoneNumber(phone: String,context: Context): Boolean {
 
-    val bool = android.util.Patterns.PHONE.matcher(phone).matches()
-    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "mob number is valid----" + bool)
+    val bool = android.util.Patterns.PHONE.matcher(phone).matches() &&
+    phone.length>context.resources.getInteger(R.integer.phone_min_len) &&
+            phone.length<=context.resources.getInteger(R.integer.phone_max_len)
+
+    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "phone no length: ${phone.length}")
+    AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "isValidPhoneNumber: $bool")
     return bool
 
 }

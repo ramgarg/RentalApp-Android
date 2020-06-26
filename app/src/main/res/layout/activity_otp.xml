@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/otp_title"
-                android:weightSum="100"
+
                 android:orientation="horizontal">
             <EditText
                     android:layout_width="0dp"
@@ -78,7 +78,9 @@
                     android:inputType="number"
                     android:fontFamily="@font/bree_serif"
                     android:hint="@string/title_OTP"
-                    android:id="@+id/ed_otp">
+                    android:id="@+id/ed_otp"
+                    android:maxLength="4"
+                    >
 
             </EditText>
             <Button android:layout_width="0dp"
@@ -96,11 +98,23 @@
                     android:text="@string/resend_otp"
                     android:layout_height="@dimen/_30sdp"
                     android:onClick="onResendOTPClick"
+                    android:visibility="gone"
                     />
         </LinearLayout>
 
 
     </RelativeLayout>
+    <TextView
+            android:id="@+id/resend_otp_timer_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/otp_timer"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            style="@style/pro_details_heading"
+            android:visibility="gone"
+            />
     <Button android:layout_width="match_parent"
             android:text="@string/conti"
             android:id="@+id/btn_continue"

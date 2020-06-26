@@ -46,3 +46,11 @@ data class SubOrderReqResModel(
     var price: Double,
     var order_status: String
 ) : Parcelable
+
+data class SubOrderUpdateReqModel(
+ 
+    val price: Double,
+    val quantity: Int,
+    val status: String
+    
+)

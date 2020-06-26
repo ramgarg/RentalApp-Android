@@ -8,6 +8,7 @@ import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.SubOrderReqResModel
+import com.eazyrento.customer.dashboard.model.modelclass.SubOrderUpdateReqModel
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
 
@@ -27,7 +28,7 @@ class AgentMerchantsAssignRepo :
 class AgentUpdateOrderRepo :
     GenericRequestHandler<JsonElement>(){
 
-    fun updateOrder(id:Int,updateModel: OrderDetailsResModel): LiveData<DataWrapper<JsonElement>> {
+    fun updateOrder(id:Int,updateModel: AgentUpdateOrderReqModel): LiveData<DataWrapper<JsonElement>> {
         val call = ServiceGenrator.client.create(
             AgentAPI::class.java).updateCustomerOrderDetail(id,updateModel)
         return doRequest(call)
@@ -133,7 +134,7 @@ class AgentSubOrderUpdateRepo:GenericRequestHandler<JsonElement>() {
 
     fun agentSubOrderUpdate(
         sub_order_id: Int,
-        req: SubOrderReqResModel
+        req: SubOrderUpdateReqModel
     ): LiveData<DataWrapper<JsonElement>> {
 
         val call = ServiceGenrator.client.create(

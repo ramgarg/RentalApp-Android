@@ -4,6 +4,7 @@ import com.eazyrento.supporting.TimeConstant
 
 interface ValidationMessage{
     companion object{
+        const val ORDER_UPDATE_BUTTON_CLICK_CONFIRM = "Before clicking update button please update any data."
         const val THANKYOU_FOR_CONFIRMING = "Thank you for confirming!"
         const val ENTER_AMOUNT_PAYMENT = "Please enter valid amount!"
         const val PAYMENT_MODE = "Please choose the payment method."

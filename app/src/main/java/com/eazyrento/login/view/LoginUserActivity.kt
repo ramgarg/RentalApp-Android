@@ -33,8 +33,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.ed_password
-import kotlinx.android.synthetic.main.activity_register_user.*
-import java.lang.Exception
 
 
 class LoginUserActivity : AppBizLogin() {
@@ -94,7 +92,7 @@ class LoginUserActivity : AppBizLogin() {
 
     fun onLoginClick(view: View) {
 
-        if (failCheckValdationLoginCredintitial(ed_email, ed_password)) {
+        if (isValidCredintitial(ed_email, ed_password).not()) {
             return
         }
 

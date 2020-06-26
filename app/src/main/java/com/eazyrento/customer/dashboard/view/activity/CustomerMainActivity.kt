@@ -7,7 +7,6 @@ import com.google.android.material.navigation.NavigationView
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.view.BaseNavigationActivity
-import com.eazyrento.agent.view.activity.AgentPaymentActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.dashboard.view.fragment.*
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity

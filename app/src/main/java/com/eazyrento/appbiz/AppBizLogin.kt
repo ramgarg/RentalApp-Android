@@ -1,11 +1,7 @@
 package com.eazyrento.appbiz
 
-import android.content.Context
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.BaseActivity
@@ -21,7 +17,7 @@ abstract class AppBizLogin: BaseActivity(){
     fun checkValidation(editTextUserName: EditText, email: EditText, password: EditText,
                         checkBoxTerms: CheckBox, user_role:String?): Boolean {
 
-        if(failCheckValdationLoginCredintitial(email,password)){
+        if(isValidCredintitial(email,password).not()){
             return false
         }
 
@@ -45,35 +41,39 @@ abstract class AppBizLogin: BaseActivity(){
     }
 
     //user validation
-    fun failCheckValdationLoginCredintitial(email: EditText,password: EditText):Boolean{
-        if(email.text.toString().isEmpty() && password.text.toString().isEmpty()){
-            showToast(ValidationMessage.VALID_EMAIL_PHONE)
-            email.requestFocus()
-        }
-      else if (password.text.toString().isEmpty()) {
-            password.requestFocus()
-            showToast(ValidationMessage.VALID_PASSWORD)
-        } else if (Validator.isPasswordValid(password.text.toString()).not()) {
-            showToast(ValidationMessage.VALID_PASSWORD_LENGTH)
-        }
-        else if (Validator.isEmailValid(email.text.toString()).not()) {
-            return if (isValidPhoneNumber(email.text.toString()).not()/*phoneNumberFormat.isValidPhoneNumber(phoneNumberFormat.parseNumberWithoutCountryCode(email.text.toString())).not()*/){
+    fun isValidCredintitial(email: EditText, password: EditText):Boolean{
 
-                showToast(ValidationMessage.VALID_EMAIL_PHONE)
+        when{
+
+            email.text.toString().isEmpty()->{
                 email.requestFocus()
-
-                true
+                showToast(ValidationMessage.VALID_EMAIL_PHONE)
             }
-            else{
-                false
-            }
-        }
-        else
-        {
-            return false
-        }
 
-        return true
+            password.text.toString().isEmpty() || Validator.isPasswordValid(password.text.toString()).not()->{
+                password.requestFocus()
+                showToast(ValidationMessage.VALID_PASSWORD_LENGTH)
+            }
+
+            Validator.isEmailValid(email.text.toString()).not()->{
+
+                phoneNumberFormat.parseNumberWithoutCountryCode(email.text.toString())
+
+                if (isValidPhoneNumber(""+phoneNumberFormat.phoneNumber?.nationalNumber,this).not()){
+
+                    showToast(ValidationMessage.VALID_EMAIL_PHONE)
+                    email.requestFocus()
+                }
+                else{
+                    return true
+                }
+
+            }
+
+            else-> return true
+        }
+        return false
+
     }
 
     // chk validation for profile

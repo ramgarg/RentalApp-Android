@@ -1,3 +1,4 @@
+/*
 package com.eazyrento.agent.view.activity
 
 import android.os.Bundle
@@ -298,4 +299,4 @@ class MerchantUpdateAdapter(val activity:BaseActivity, val list:List<MerchantDet
     }
 
 
-}
+}*/

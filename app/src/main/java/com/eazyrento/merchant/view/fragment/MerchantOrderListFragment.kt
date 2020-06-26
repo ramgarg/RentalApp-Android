@@ -39,9 +39,11 @@ class MerchantOrderListFragment : OrderListFragment() {
     override fun setDataHolderBinder(holder: OrderListBaseAdapter.ViewHolder, position: Int) {
         super.setDataHolderBinder(holder, position)
 
-        holder.tvOrderProductName?.text=listOrderItems.get(position).merchant_order_detail?.product_name
-        holder.tvBookingPrice?.text= Constant.DOLLAR+listOrderItems.get(position).merchant_order_detail?.booking_price
-        holder.tvOrderQuantity?.text=listOrderItems.get(position).merchant_order_detail?.product_name+"-"+listOrderItems.get(position).merchant_order_detail?.merchant_quantity
+        val item = listOrderItems[position]
+
+        holder.tvOrderProductName?.text=item.merchant_order_detail?.product_name
+        holder.tvBookingPrice?.text= Constant.DOLLAR.plus(item.merchant_order_detail?.booking_price)
+        holder.tvOrderQuantity?.text=item.merchant_order_detail?.product_name.plus("-").plus(item.merchant_order_detail?.merchant_quantity)
         
     }
 

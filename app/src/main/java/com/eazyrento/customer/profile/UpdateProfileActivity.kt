@@ -49,6 +49,8 @@ class UpdateProfileActivity : BaseActivity() {
     private val commonDatePiker = CommonDatePiker(this)
     private val isCustomer = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
         .equals(UserInfoAPP.CUSTOMER)
+    private val isAgent = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
+        .equals(UserInfoAPP.AGENT)
 
     override fun <T> moveOnSelecetedItem(type: T) {
 
@@ -67,6 +69,10 @@ class UpdateProfileActivity : BaseActivity() {
         if (isCustomer) {
             layout_dob.visibility = View.GONE
             lyt_select_document.visibility = View.GONE
+        }
+        if (isAgent){
+            lyt_select_document.visibility = View.GONE
+            layout_company.visibility = View.GONE
         }
 
         phoneNumberFormat = PhoneNumberFormat(this)
@@ -148,9 +154,9 @@ class UpdateProfileActivity : BaseActivity() {
                 ed_country.setText(userProfile.country_code)
 
             if (userProfile.mobile_number.isNullOrEmpty() || userProfile.mobile_number.equals("unknown")) {
-                //ed_phone.hint ="000-000-0000"
+                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"Mobile no is Empty")
             } else {
-                val code = phoneNumberFormat.getRegionCodeForCountryCode(
+                /*val code = phoneNumberFormat.getRegionCodeForCountryCode(
                     phoneNumberFormat.removePlusChar(ed_country).toInt()
                 )
 
@@ -164,7 +170,8 @@ class UpdateProfileActivity : BaseActivity() {
                         userProfile.mobile_number,
                         code
                     )
-                }
+                }*/
+                val parseNumber = parseMobileNumber(userProfile.mobile_number)
 
                 if (parseNumber == null)
                     ed_phone.setText(userProfile.mobile_number)
@@ -227,6 +234,26 @@ class UpdateProfileActivity : BaseActivity() {
 
     }
 
+    private fun parseMobileNumber(mobileNumber:String): Phonenumber.PhoneNumber? {
+        val code = phoneNumberFormat.getRegionCodeForCountryCode(
+            phoneNumberFormat.removePlusChar(ed_country).toInt()
+        )
+
+        val parseNumber = if (code == null) {
+            phoneNumberFormat.parseNumberWithoutCountryCode(
+                mobileNumber
+            )
+        } else {
+
+            phoneNumberFormat.parseNumberWithCountryCode(
+                mobileNumber,
+                code
+            )
+        }
+
+        return parseNumber
+    }
+
     private fun getComparedPostion(spinnerDataByID: Array<String>, variant: String?): Int {
 
         for (i in spinnerDataByID.indices) {
@@ -255,42 +282,29 @@ class UpdateProfileActivity : BaseActivity() {
     }
 
     private fun checkProfileValidation(): Boolean {
-        if (ed_full_name.text.toString().isEmpty() || ed_full_name.text.toString().length< resources.getInteger(R.integer.full_name_min_len)) {
-            showToast(ValidationMessage.VALID_USER_NAME)
-        } else if (img_profile.drawable == null) {
-            showToast(ValidationMessage.VALID_IMAGE)
-        } else if (ed_email.text.toString().isEmpty()) {
-            showToast(ValidationMessage.VALID_EMAIL_ID)
-        } else if (!Validator.isEmailValid(ed_email.text.toString())) {
-            showToast(ValidationMessage.VALID_EMAIL_ID)
-            ed_email.requestFocus()
-        } else if (!phoneNumberFormat.isValidCountryCode(ed_country.text.toString())) {
-            showToast(ValidationMessage.COUNTRY_CODE)
-        } else if (!isValidPhoneNumber(ed_phone.text.toString())) {
-            showToast(ValidationMessage.PHONE_NUMBER)
-        } else if (ed_company_name.text.toString().isEmpty()) {
-            showToast(ValidationMessage.COMPANY)
-        } else if (ed_des.text.toString().isEmpty()) {
-            showToast(ValidationMessage.DESCRIPTON)
-        } else if (sp_gender.selectedItemPosition == 0) {
-            showToast(ValidationMessage.GENDER)
-        } else if (tv_add_line.text.isNullOrEmpty()) {
-            showToast(ValidationMessage.SELECT_ADRESS)
+        when{
+
+            ed_full_name.text.toString().isEmpty() || ed_full_name.text.toString().length< resources.getInteger(R.integer.full_name_min_len)->showToast(ValidationMessage.VALID_USER_NAME)
+            ed_email.text.toString().isEmpty()||Validator.isEmailValid(ed_email.text.toString()).not() ->showToast(ValidationMessage.VALID_EMAIL_ID)
+
+            phoneNumberFormat.isValidCountryCode(ed_country.text.toString()).not()->ValidationMessage.COUNTRY_CODE
+            isValidPhoneNumber(""+parseMobileNumber(ed_phone.text.toString())?.nationalNumber,this).not()->showToast(ValidationMessage.PHONE_NUMBER)
+
+            ed_des.text.toString().isEmpty()->showToast(ValidationMessage.DESCRIPTON)
+            sp_gender.selectedItemPosition == 0->showToast(ValidationMessage.GENDER)
+            tv_add_line.text.isNullOrEmpty() -> showToast(ValidationMessage.SELECT_ADRESS)
+
+            isAgent.not() && ed_company_name.text.toString().isEmpty()->showToast(ValidationMessage.COMPANY)
+            isCustomer.not() && ed_dob.text.toString().isEmpty()-> showToast(ValidationMessage.DATE_OF_BIRTH)
+            isCustomer.not() && isAgent.not() && sp_select_document.selectedItemPosition == 0 ->showToast(ValidationMessage.DOCUMENT)
+
+            else ->return true
 
         }
-        //not customer
-        else if (isCustomer.not()) {
-            if (ed_dob.text.toString().isEmpty()) {
-                showToast(ValidationMessage.DATE_OF_BIRTH)
-            } else if (sp_select_document.selectedItemPosition == 0) {
-                showToast(ValidationMessage.DOCUMENT)
-            } else {
-                return true
-            }
-        } else {
-            return true
-        }
         return false
+        /*else if (img_profile.drawable == null) {
+            showToast(ValidationMessage.VALID_IMAGE)
+        }*/
     }
 
     private fun updateProfileData() {
@@ -320,6 +334,13 @@ class UpdateProfileActivity : BaseActivity() {
             if (isCustomer) {
                 it.dob = null
                 it.attached_document = null
+            }else if (isAgent){
+
+                it.dob = "" + ed_dob.tag
+
+                it.attached_document = null
+                it.buisness = null
+
             } else {
                 it.dob = "" + ed_dob.tag
 

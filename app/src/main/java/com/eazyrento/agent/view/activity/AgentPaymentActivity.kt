@@ -76,7 +76,8 @@ class AgentPaymentActivity : PaymentBaseActivity() {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
         if (data is JsonElement){
-            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
+//            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
+            MoveToAnotherComponent.moveToActivityNormal<AgentOrderSummaryActivity>(this)
             return
         }
         val obj = data as OrderDetailsResModel

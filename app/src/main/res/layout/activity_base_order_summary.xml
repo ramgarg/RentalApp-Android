@@ -22,7 +22,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 >
-            <TextView
+           <!-- <TextView
                     android:id="@+id/agent_update_order_btn"
                     android:layout_width="@dimen/_70sdp"
                     android:layout_height="@dimen/_25sdp"
@@ -34,7 +34,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp"
                     android:fontFamily="@font/bree_serif"
-                    />
+                    />-->
             <include
                     android:id="@+id/lyt_top_view"
                     android:layout_width="match_parent"
@@ -86,7 +86,20 @@
                     layout="@layout/template_work_info"
                     android:layout_marginTop="@dimen/_16sdp"
                     />
-
+            <TextView
+                    android:id="@+id/agent_update_order_btn"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:background="@drawable/payment_status"
+                    android:text="@string/update"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp"
+                    android:fontFamily="@font/bree_serif"
+                    android:layout_marginTop="-110dp"
+                    />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
