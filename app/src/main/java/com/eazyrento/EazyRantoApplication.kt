@@ -36,8 +36,6 @@ class EazyRantoApplication : Application() {
             /*Session.getInstance(context)
                 ?.saveAccessToken(userInfo.access_token)*/
 
-//            UserInfoAPP.user_role = userInfo.user_role
-
         }
 
         fun onLogoutUpdateSession(){

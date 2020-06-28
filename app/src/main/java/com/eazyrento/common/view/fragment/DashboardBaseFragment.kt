@@ -82,10 +82,10 @@ abstract class DashboardBaseFragment:
 
             btn_home_view_all.visibility = View.GONE
             tv_no_booking_available.visibility =View.VISIBLE
-            return
-        }
 
-        setBookingAdapterDashboard(agentDashboardResponse)
+        }else {
+            setBookingAdapterDashboard(agentDashboardResponse)
+        }
         setBookingStatus(agentDashboardResponse)
 
 

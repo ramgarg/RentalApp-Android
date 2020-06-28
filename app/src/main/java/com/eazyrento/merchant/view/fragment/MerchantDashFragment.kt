@@ -11,6 +11,7 @@ import com.eazyrento.common.view.fragment.DashboardBaseFragment
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.activity.MerchantShowAllBooking
 import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
+import kotlinx.android.synthetic.main.booking_deshboard_bottom_view.*
 
 class MerchantDashFragment : DashboardBaseFragment() {
 
@@ -23,6 +24,9 @@ class MerchantDashFragment : DashboardBaseFragment() {
         btn_home_view_all.setOnClickListener {
             MoveToAnotherComponent.openActivityWithParcelableParam<MerchantShowAllBooking, BookingDashboardResModel>(requireContext(),Constant.INTENT_BOOKING_LIST,agentDashboardResponse)
         }
+
+        // rejected count disable for thr merchants...
+        lnr_third.visibility = View.GONE
     }
 
     override fun setBookingHolder(

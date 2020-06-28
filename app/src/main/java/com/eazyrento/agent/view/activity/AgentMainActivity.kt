@@ -124,4 +124,8 @@ class AgentMainActivity : BaseNavigationActivity(){
             orderID.toInt())
     }
 
+    override fun openUpdateProfileActivity() {
+            MoveToAnotherComponent.moveToActivityNormal<AgentProfileUpdateActivity>(this)
+    }
+
 }

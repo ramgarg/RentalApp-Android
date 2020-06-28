@@ -137,8 +137,13 @@
                 android:launchMode="singleTask"
 
         />
-        <activity android:name="com.eazyrento.customer.profile.UpdateProfileActivity"
-                  android:screenOrientation="unspecified"/>
+
+        <activity android:name="com.eazyrento.agent.view.activity.AgentProfileUpdateActivity"
+                android:screenOrientation="unspecified"/>
+        <activity android:name="com.eazyrento.customer.dashboard.view.activity.CustomerProfileUpdateActivity"
+                android:screenOrientation="unspecified"/>
+        <activity android:name="com.eazyrento.merchant.view.activity.MerchantProfileUpdateActivity"
+                android:screenOrientation="unspecified"/>
 
 
        <!-- <activity android:name="com.eazyrento.customer.notification.view.NotificationActivity"

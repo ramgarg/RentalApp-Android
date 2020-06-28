@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
-import android.view.View
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.eazyrento.*
@@ -13,7 +12,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.notification.view.NotificationFragment
-import com.eazyrento.customer.profile.UpdateProfileActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.webpages.AboutActivity
 import com.eazyrento.login.model.modelclass.UserProfile
@@ -53,8 +51,6 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
 
 
     }
-
-
 
     fun setHomeFragment(){
         bottom_navigation_view.selectedItemId = R.id.navigation_home
@@ -167,11 +163,6 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         // Left side set listener drawer
         navigation_view.setNavigationItemSelectedListener(this)
     }
-
-    private fun openUpdateProfileActivity(){
-        MoveToAnotherComponent.moveToActivityNormal<UpdateProfileActivity>(this)
-    }
-
 // profile view
     private fun setTopHeaderData(user_profile:UserProfile?) {
     //val user_profile = EazyRantoApplication.profileData
@@ -268,6 +259,7 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
     abstract fun viewMyAddress()
     abstract fun paymentActivity(orderID: String)
     abstract fun orderSummeryActivity(orderID: String)
+    abstract fun openUpdateProfileActivity()
 
     override fun onBackPressed() {
         finishCurrentActivityWithResult(Constant.REQUEST_CODE_FINISH_LOGIN_ON_BACK, Intent())

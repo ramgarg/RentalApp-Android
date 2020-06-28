@@ -5,7 +5,7 @@ data class UserProfile(
     var attached_document: String?,
     var buisness: String?,
     var country_code: String,
-    var description: String,
+    var description: String?,
     var dob: String?,
     var email: String,
     var full_name: String,

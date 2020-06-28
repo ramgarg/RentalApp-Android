@@ -5,14 +5,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import com.eazyrento.*
+import com.eazyrento.agent.view.activity.AgentProfileUpdateActivity
 import com.eazyrento.common.view.ApiResult
 import com.eazyrento.common.view.LiveDataActivityClass
-import com.eazyrento.customer.profile.UpdateProfileActivity
+import com.eazyrento.common.view.UserInfoAPP
+import com.eazyrento.customer.dashboard.view.activity.CustomerProfileUpdateActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.login.model.modelclass.ProfileModelReqRes
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.viewmodel.ProfileUserViewModel
+import com.eazyrento.merchant.view.activity.MerchantProfileUpdateActivity
 import com.squareup.picasso.Picasso
 
 class ProfileData {
@@ -90,9 +93,24 @@ class ProfileData {
     }
 
     private fun openUpdateProfileActivity(activity: Activity){
-        MoveToAnotherComponent.startActivityForResult<UpdateProfileActivity>(activity,Constant.REQUEST_CODE_FINISH_FIRST_TIME_USER,
-            Constant.KEY_FINISH_FIRST_TIME_USER,Constant.VALUE_FINISH_FIRST_TIME_USER)
+
+        val cls= when(Session.getInstance(EazyRantoApplication.context)?.getUserRole()){
+
+            UserInfoAPP.CUSTOMER ->CustomerProfileUpdateActivity::class.java
+            UserInfoAPP.AGENT -> AgentProfileUpdateActivity::class.java
+            UserInfoAPP.MERCHANT -> MerchantProfileUpdateActivity::class.java
+            else ->null
+
+        }
+
+        cls?.let {
+            MoveToAnotherComponent.startActivityForResult(activity,it,Constant.REQUEST_CODE_FINISH_FIRST_TIME_USER,
+                Constant.KEY_FINISH_FIRST_TIME_USER,Constant.VALUE_FINISH_FIRST_TIME_USER)
+        }
+
     }
+
+
 }
 interface LoginUserStatus{
    enum class UserStatus{

@@ -53,6 +53,13 @@ class MoveToAnotherComponent {
             activity.startActivityForResult(intent,requestCode)
         }
 
+        // without inline function
+        fun <T>startActivityForResult(activity: Activity,cls:Class<T>,requestCode: Int,key:String,value: Int) {
+            val intent = Intent(activity, cls)
+            intent.putExtra(key,value)
+            activity.startActivityForResult(intent,requestCode)
+        }
+
         // Bollean value
         inline fun <reified T>startActivityForResult(activity: Activity,requestCode: Int,key:String,value: Boolean) {
             val intent = Intent(activity, T::class.java)

@@ -12,7 +12,6 @@ import android.widget.Spinner
 import com.eazyrento.*
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
-import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -26,17 +25,15 @@ import io.michaelrocks.libphonenumber.android.Phonenumber
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile.document_pic
 import kotlinx.android.synthetic.main.activity_profile.ed_full_name
-import kotlinx.android.synthetic.main.activity_profile.lyt_select_document
 import kotlinx.android.synthetic.main.activity_profile.sp_select_document
-import kotlinx.android.synthetic.main.activity_register_user.*
 
-class UpdateProfileActivity : BaseActivity() {
-    var userProfile: UserProfile? = null
+open class UpdateProfileActivity : BaseActivity() {
+    protected var userProfile: UserProfile? = null
 
     private val uploadImageFromDevice = UploadImageFromDevice()
 
-    private var selectProfID: String? = null
-    private var selectBase64StringAttachedDoc: String? = null
+    protected var selectProfID: String? = null
+    protected var selectBase64StringAttachedDoc: String? = null
 
     private var selectGender: String? = null
 
@@ -47,10 +44,12 @@ class UpdateProfileActivity : BaseActivity() {
     private lateinit var phoneNumberFormat: PhoneNumberFormat
 
     private val commonDatePiker = CommonDatePiker(this)
-    private val isCustomer = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
-        .equals(UserInfoAPP.CUSTOMER)
-    private val isAgent = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
-        .equals(UserInfoAPP.AGENT)
+
+   /* private val isCustomer = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
+        .equals(UserInfoAPP.CUSTOMER)*/
+
+   /* private val isAgent = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
+        .equals(UserInfoAPP.AGENT)*/
 
     override fun <T> moveOnSelecetedItem(type: T) {
 
@@ -66,14 +65,14 @@ class UpdateProfileActivity : BaseActivity() {
 
         topBarWithBackIconAndTitle(resources.getString(R.string.profile))
 
-        if (isCustomer) {
+        /*if (isCustomer) {
             layout_dob.visibility = View.GONE
             lyt_select_document.visibility = View.GONE
-        }
-        if (isAgent){
+        }*/
+       /* if (isAgent){
             lyt_select_document.visibility = View.GONE
             layout_company.visibility = View.GONE
-        }
+        }*/
 
         phoneNumberFormat = PhoneNumberFormat(this)
 
@@ -274,14 +273,16 @@ class UpdateProfileActivity : BaseActivity() {
         updateProfileData()
         userProfile?.let {
             //validation
-            if (checkProfileValidation()) {
+            if (isProfileValidationCorrect()) {
                 updateProfileUserAPI(it)
             }
+
+
 
         }
     }
 
-    private fun checkProfileValidation(): Boolean {
+    open protected fun isProfileValidationCorrect(): Boolean {
         when{
 
             ed_full_name.text.toString().isEmpty() || ed_full_name.text.toString().length< resources.getInteger(R.integer.full_name_min_len)->showToast(ValidationMessage.VALID_USER_NAME)
@@ -290,13 +291,13 @@ class UpdateProfileActivity : BaseActivity() {
             phoneNumberFormat.isValidCountryCode(ed_country.text.toString()).not()->ValidationMessage.COUNTRY_CODE
             isValidPhoneNumber(""+parseMobileNumber(ed_phone.text.toString())?.nationalNumber,this).not()->showToast(ValidationMessage.PHONE_NUMBER)
 
-            ed_des.text.toString().isEmpty()->showToast(ValidationMessage.DESCRIPTON)
+//            ed_des.text.toString().isEmpty()->showToast(ValidationMessage.DESCRIPTON)
             sp_gender.selectedItemPosition == 0->showToast(ValidationMessage.GENDER)
             tv_add_line.text.isNullOrEmpty() -> showToast(ValidationMessage.SELECT_ADRESS)
 
-            isAgent.not() && ed_company_name.text.toString().isEmpty()->showToast(ValidationMessage.COMPANY)
-            isCustomer.not() && ed_dob.text.toString().isEmpty()-> showToast(ValidationMessage.DATE_OF_BIRTH)
-            isCustomer.not() && isAgent.not() && sp_select_document.selectedItemPosition == 0 ->showToast(ValidationMessage.DOCUMENT)
+//            isAgent.not() && ed_company_name.text.toString().isEmpty()->showToast(ValidationMessage.COMPANY)
+//            isCustomer.not() && ed_dob.text.toString().isEmpty()-> showToast(ValidationMessage.DATE_OF_BIRTH)
+//            isCustomer.not() && isAgent.not() && sp_select_document.selectedItemPosition == 0 ->showToast(ValidationMessage.DOCUMENT)
 
             else ->return true
 
@@ -307,7 +308,7 @@ class UpdateProfileActivity : BaseActivity() {
         }*/
     }
 
-    private fun updateProfileData() {
+    open protected fun updateProfileData() {
 
         userProfile?.let { it ->
 
@@ -331,17 +332,17 @@ class UpdateProfileActivity : BaseActivity() {
             //}
 
             // if not customer
-            if (isCustomer) {
+           /* if (isCustomer) {
                 it.dob = null
                 it.attached_document = null
-            }else if (isAgent){
+            }else */ /*if (isAgent){
 
                 it.dob = "" + ed_dob.tag
 
                 it.attached_document = null
                 it.buisness = null
 
-            } else {
+            }*/ /*else {
                 it.dob = "" + ed_dob.tag
 
                 it.attached_document = "" + selectBase64StringAttachedDoc
@@ -350,7 +351,7 @@ class UpdateProfileActivity : BaseActivity() {
                     it.attached_document = inner
                     it.id_proof_title = selectProfID!!
                 }
-            }
+            }*/
         }
     }
 

@@ -98,7 +98,8 @@ interface ValidationMessage{
         const val DATE_OF_BIRTH="Please enter your date of birth."
         const val GENDER="Please select your gender."
         const val DOCUMENT="Please select document type."
-        const val COMPANY="Enter Company"
+        const val COMPANY="Enter Company "
+        const val BUSINESS="Enter Business"
         const val DESCRIPTON="Enter Description"
 
         const val COUNTRY_CODE_VALIDATION="Please enter a valid dailing code."

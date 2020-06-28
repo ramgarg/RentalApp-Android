@@ -123,6 +123,7 @@
     <string name="email_address">Email Address</string>
     <string name="phone_number">Phone Number</string>
     <string name="company_name">Company Name</string>
+    <string name="business_name">Your Business</string>
     <string name="gender">Gender</string>
     <string name="description">Description</string>
     <string name="description_star">Description*</string>
