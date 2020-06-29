@@ -29,17 +29,17 @@ class PaymentHistoryActivity : BaseActivity() {
         dialog.tv_msg.text = getString(R.string.payment_received)
 
         dialog.btn_cancle.let {
-            dialog.cancel()
             it.visibility = View.VISIBLE
             it.text = getString(R.string.no)
             it.setOnClickListener {
+                dialog.cancel()
                 paymentReceviedOrNot(PaymentRecivedOrNotReqModel(paymentListResModelItem.id, false))
             }
         }
         dialog.btn_ok.let {
-            dialog.cancel()
             it.text = getString(R.string.yes)
             it.setOnClickListener {
+                dialog.cancel()
                 paymentReceviedOrNot(PaymentRecivedOrNotReqModel(paymentListResModelItem.id, true))
             }
         }

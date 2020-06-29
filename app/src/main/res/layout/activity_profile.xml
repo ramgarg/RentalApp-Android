@@ -220,11 +220,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:inputType="textEmailAddress"
+                        android:inputType="text"
                         android:lines="1"
                         android:maxLines="1"
                         android:nextFocusDown="@id/ed_des"
-                        android:maxLength="@integer/full_name_max_len"
+                        android:maxLength="40"
                         />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -245,7 +245,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:fontFamily="@font/bree_serif"
-                        android:inputType="textEmailAddress"
+                        android:inputType="text"
                         android:lines="1"
                         android:maxLines="1"
                         android:nextFocusDown="@id/sp_gender" />

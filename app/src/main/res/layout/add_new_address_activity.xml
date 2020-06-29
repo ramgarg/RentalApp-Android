@@ -56,7 +56,7 @@
             </androidx.cardview.widget.CardView>
 
     <ScrollView android:layout_width="match_parent"
-            android:layout_above="@+id/btn_save"
+            android:layout_above="@+id/rel_bottom_button_lyt"
             android:layout_below="@+id/frame_map"
             android:layout_height="match_parent">
 
@@ -293,27 +293,36 @@
     <include layout="@layout/toolbar"
             android:visibility="gone"
     />
+<RelativeLayout
+        android:id="@+id/rel_bottom_button_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        >
 
-    <Button android:layout_width="match_parent"
-            android:text="@string/save"
+    <Button
             android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/save"
+
             android:textColor="@color/white"
-            android:layout_alignParentBottom="true"
             android:fontFamily="@font/bree_serif"
             android:textAllCaps="false"
             android:textSize="@dimen/_15sdp"
             android:background="@drawable/ripple"
-            android:layout_height="@dimen/_40sdp"
+
             android:onClick="onSaveAddressClick"
             android:visibility="visible"
             />
     <LinearLayout
             android:id="@+id/layout_update"
-            android:weightSum="1"
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1"
             android:orientation="horizontal"
-            android:layout_height="@dimen/_40sdp">
+
+            >
 
         <Button
                 android:id="@+id/btn_delete"
@@ -341,7 +350,7 @@
                 android:layout_height="match_parent"
                 />
     </LinearLayout>
-
+</RelativeLayout>
 
 
 

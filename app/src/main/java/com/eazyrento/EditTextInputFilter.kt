@@ -3,20 +3,23 @@ package com.eazyrento
 import android.text.InputFilter
 import com.eazyrento.FilterPattern.Companion.ALLOW_ALPHA_NUMERIC_CHAR
 import com.eazyrento.FilterPattern.Companion.ALLOW_ONLY_ALPHA_CHAR
+import com.eazyrento.FilterPattern.Companion.COMPNY_NAME_MAX_LENGHT
 
 class EditTextInputFilter {
 
-    val filter_full_name = InputFilter {
+    val filterFullName = InputFilter {
             source, start, end, dest, dstart, dend ->
             val bool = source.matches(ALLOW_ONLY_ALPHA_CHAR.toRegex())
             if(bool) source else ""
     }
 
-    val filter_Compny_discription = InputFilter {
+    val filterCompnyDiscription = InputFilter {
             source, start, end, dest, dstart, dend ->
         val bool = source.matches(ALLOW_ALPHA_NUMERIC_CHAR.toRegex())
         if(bool) source else ""
     }
+
+    val inputMaxLenghtFilter = InputFilter.LengthFilter(COMPNY_NAME_MAX_LENGHT)
 }
 
 fun filterAs(enum: FilterEnum): Array<InputFilter> {
@@ -25,8 +28,8 @@ fun filterAs(enum: FilterEnum): Array<InputFilter> {
 
    return when(enum){
 
-        FilterEnum.FULL_NAME->arrayOf(editTextInputFilter.filter_full_name)
-        FilterEnum.ALPHANUMERIC->arrayOf(editTextInputFilter.filter_Compny_discription)
+        FilterEnum.FULL_NAME->arrayOf(editTextInputFilter.filterFullName,editTextInputFilter.inputMaxLenghtFilter)
+        FilterEnum.ALPHANUMERIC->arrayOf(editTextInputFilter.filterCompnyDiscription,editTextInputFilter.inputMaxLenghtFilter)
 
     }
 }
@@ -45,6 +48,8 @@ interface FilterPattern{
 
         const val ALLOW_ALPHA_NUMERIC_CHAR =  "^[a-zA-Z0-9_ ]*$"
         const val ALLOW_ONLY_ALPHA_CHAR =  "^[a-zA-Z ]*$"
+
+        const val COMPNY_NAME_MAX_LENGHT = 90
     }
 
 }

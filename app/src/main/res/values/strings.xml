@@ -56,6 +56,7 @@
     <string name="payment">Payment</string>
     <string name="payment_history">Payment History</string>
     <string name="payment_received">Are you sure? You have received the payment.</string>
+    <string name="delete_notification">Do you want to delete this notification?</string>
     <string name="requestpayment">Request a Payment</string>
     <string name="details">Details</string>
     <string name="order_submit">Thank you for submitting your order.Our agent will call you shortly.</string>
@@ -218,6 +219,8 @@
     <string name="select_type">Select Type</string>
 
     <string name="otp_timer">Resend code after</string>
+
+    <string name="notif_clear_all">Clear All</string>
 
 
 <string name="selected_item">Selected item:</string>

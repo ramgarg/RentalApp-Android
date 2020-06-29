@@ -29,8 +29,11 @@ class PathURL {
         const val UserUpdateNote    = "/user/notes/update/{id}"
         const val UserDeleteNote    = "/user/notes/delete/{id}"
 
-        //notification
+        //notification list
         const val NOTIFICATION = "/user/notification/list"
+        // delete notification
+        const val DELETE_NOTIFICATION = "/user/notification/delete"
+        const val READ_NOTIFICATION   = "/user/notification/read"
 
         // Common
         const val MasterCategory      = "/product/masters"

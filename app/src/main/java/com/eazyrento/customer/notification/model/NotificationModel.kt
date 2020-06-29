@@ -14,9 +14,15 @@ data class NotificationModel(
     override val obj_id: String,
     val sent_message:String,
     val requested_amount:Double,
-    val is_read:Boolean,
+    var is_read:Boolean,
     val added_on:String
 
 ) : BaseNoticationModel()
 
 class NotificationList:ArrayList<NotificationModel>()
+
+abstract class BaseNotificationOpration{abstract val notification_id:Int?}
+
+data class NotificationDeleteModel(override val notification_id:Int?,val delete_option:String):BaseNotificationOpration()
+data class NotificationReadModel(override val notification_id:Int,val read_option:String):BaseNotificationOpration()
+

@@ -3,10 +3,10 @@ package com.eazyrento.customer.dashboard.view.activity
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.ValidationMessage
-import com.eazyrento.customer.profile.UpdateProfileActivity
+import com.eazyrento.customer.profile.UpdateProfileBase
 import kotlinx.android.synthetic.main.activity_profile.*
 
-class CustomerProfileUpdateActivity : UpdateProfileActivity() {
+class CustomerProfileUpdateActivity : UpdateProfileBase() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

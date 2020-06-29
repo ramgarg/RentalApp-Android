@@ -7,7 +7,6 @@ import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
-import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModel
 import com.eazyrento.customer.myaddress.view.adapter.MyAddressAdapter

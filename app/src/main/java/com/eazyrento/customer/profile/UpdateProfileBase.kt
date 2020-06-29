@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.activity_profile.document_pic
 import kotlinx.android.synthetic.main.activity_profile.ed_full_name
 import kotlinx.android.synthetic.main.activity_profile.sp_select_document
 
-open class UpdateProfileActivity : BaseActivity() {
+open class UpdateProfileBase : BaseActivity() {
     protected var userProfile: UserProfile? = null
 
     private val uploadImageFromDevice = UploadImageFromDevice()
@@ -473,11 +473,11 @@ open class UpdateProfileActivity : BaseActivity() {
                             isEditableDocumentSpinner = 0
                             return
                         }
-                        uploadImageFromDevice.pickImage(this@UpdateProfileActivity,
+                        uploadImageFromDevice.pickImage(this@UpdateProfileBase,
                             object : OnPiclImageToBase64 {
                                 override fun onBase64(image64: String?) {
                                     selectProfID =
-                                        this@UpdateProfileActivity.resources.getStringArray(R.array.RegistrationDocument)[position]
+                                        this@UpdateProfileBase.resources.getStringArray(R.array.RegistrationDocument)[position]
                                     selectBase64StringAttachedDoc = image64
                                 }
 
@@ -514,7 +514,7 @@ open class UpdateProfileActivity : BaseActivity() {
                         selectGender = null
                     } else {
                         selectGender =
-                            this@UpdateProfileActivity.resources.getStringArray(R.array.Gender)[position]
+                            this@UpdateProfileBase.resources.getStringArray(R.array.Gender)[position]
                     }
                 }
 
