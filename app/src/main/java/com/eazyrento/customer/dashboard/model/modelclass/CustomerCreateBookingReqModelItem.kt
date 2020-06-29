@@ -17,7 +17,9 @@ data class CustomerCreateBookingReqModelItem(
 
     // it is only for showing data
     var projectDetails: ProductDetailsResModel?,
-    var booking_days:Long
+    var booking_days:Long,
+    var bookingTimeInMin:Long?
+
 ){
-    constructor():this(null,-1,"","","","",-1,0,false,null,-1)
+    constructor():this(null,-1,"","","","",-1,0,false,null,-1,null)
 }

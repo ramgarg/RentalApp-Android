@@ -88,15 +88,19 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
     }
 
     override fun setHolderOnView(holder: WishListAdapter.CardViewHolder, position: Int) {
+        val item = objListBookingItem[position]
+        holder.tv_pro_name?.text=item.projectDetails?.name?.capitalize()
+        holder.tv_booking_price?.text= Constant.DOLLAR.plus(item.projectDetails?.base_price)
 
-        holder.tv_pro_name?.text=objListBookingItem.get(position).projectDetails?.name?.capitalize()
-        holder.tv_booking_price?.text= Constant.DOLLAR +objListBookingItem.get(position).projectDetails?.base_price
+        holder.tv_quantity.text = item.quantity.toString()
 
-        holder.tv_quantity.text = ""+objListBookingItem.get(position).quantity
-        holder.pro_booking_days.text = ""+objListBookingItem.get(position).booking_days +" day"
+        holder.pro_booking_days.text = convertInDaysAndHour(item.bookingTimeInMin)
+
+//        holder.pro_booking_days.text = item.booking_days.toString() +" day"
+
 
         objListBookingItem.get(position).address?.let {
-            holder.tv_work_location.text = it.address_line+","+it.address_type
+            holder.tv_work_location.text = it.address_line.plus(",").plus(it.address_type)
         }
 
         holder.lyt_booking_details.visibility = View.VISIBLE
@@ -117,17 +121,41 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
         holder.add_quantity.setOnClickListener {
 
-            item_quantity.text= ""+(++objListBookingItem.get(position).quantity)
+            item_quantity.text= (++item.quantity).toString()
         }
 
         holder.minus_quantity.setOnClickListener {
            if (objListBookingItem.get(position).quantity-1 <=0){
                showToast(ValidationMessage.FILL_QUANTITY)
            }
-            else item_quantity.text= ""+(--objListBookingItem.get(position).quantity)
+            else item_quantity.text= (--item.quantity).toString()
         }
 
      }
+
+    private fun convertInDaysAndHour(inMin:Long?):String{
+        var stringTimes=""
+        inMin?.let {
+
+            var hour = it/60
+            val min = it%60
+
+            if(hour>=24) {
+                val days = hour / 24
+                hour %= 24
+
+                stringTimes=  stringTimes.plus(days).plus(" Days ").plus(hour).plus(" Hour ").plus(min).plus(" Minute")
+                return stringTimes
+            }
+
+            stringTimes=  stringTimes.plus(hour).plus(" Hour ").plus(min).plus(" Minute")
+
+            return stringTimes
+
+
+        }
+        return stringTimes
+    }
 
 
     }

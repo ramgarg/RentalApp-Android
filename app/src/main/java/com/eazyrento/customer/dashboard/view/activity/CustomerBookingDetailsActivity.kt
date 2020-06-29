@@ -199,6 +199,14 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
     private fun prepareBookingObjectList() {
 
+        // save booking days and time....
+       val diff =  mCommonTimePiker.diffBetweenTwoDates(tv_st_date_book.tag.toString(),tv_st_time_book.tag.toString(),
+            tv_end_date_book.tag.toString(),tv_end_time_book.tag.toString())
+
+        diff?.let {
+            objBookingReqModelItem.bookingTimeInMin = it
+        }
+
         objBookingReqModelItem.start_date = tv_st_date_book.tag.toString()
         objBookingReqModelItem.start_time = tv_st_time_book.tag.toString()
         objBookingReqModelItem.end_date = tv_end_date_book.tag.toString()

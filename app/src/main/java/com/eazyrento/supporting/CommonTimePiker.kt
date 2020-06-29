@@ -8,7 +8,6 @@ import java.lang.Exception
 import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class CommonTimePiker(private val context: Context) {
 
@@ -68,7 +67,12 @@ class CommonTimePiker(private val context: Context) {
     fun getServerTimeFormat(hourOfDay:Int,minute:Int,second:Int):String{
         return getTimeFormatByPattern(hourOfDay,minute,second,TimeConstant.TIME_FORMAT_SERVER)
     }
-    fun isValidatedForXHour(startDate:String,startTime: String,endDate:String, endTime: String):Boolean{
+    fun diffBetweenTwoDates(
+        startDate: String,
+        startTime: String,
+        endDate: String,
+        endTime: String
+    ): Long? {
         val startC = Calendar.getInstance()
         val endC = Calendar.getInstance()
 
@@ -96,24 +100,34 @@ class CommonTimePiker(private val context: Context) {
             endC.set(Calendar.HOUR_OF_DAY,end_list_time[0].toInt())
             endC.set(Calendar.MINUTE,end_list_time[1].toInt())
 
-             val diff = endC.timeInMillis-startC.timeInMillis
+            val diff = endC.timeInMillis-startC.timeInMillis
 
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"diff:".plus(diff))
 
-             val diffESInMin = (diff/(1000*60))
-             val gapInMin = TimeConstant.TIME_GAP_BETWEEN_SAME_DATE *60
+            val diffESInMin = (diff/(1000*60))
+
 
 
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"diff:".plus(diff).plus(",diffESInMin:")
-                .plus(diffESInMin).plus(",gapInMin:".plus(gapInMin)))
+                .plus(diffESInMin))
 
-            return diffESInMin>=gapInMin
+            return diffESInMin
+
+
             //return end_list[0].toInt() - st_list[0].toInt() >=1 && end_list[1].toInt() - st_list[1].toInt()>=0
 
         }catch (e:Exception){
             e.printStackTrace()
+            return null
         }
-        return false
+    }
+    fun isValidatedForXHour(startDate:String,startTime: String,endDate:String, endTime: String):Boolean{
+
+        val diffESInMin = diffBetweenTwoDates(startDate,startTime,endDate,endTime)
+        val gapInMin = TimeConstant.TIME_GAP_BETWEEN_SAME_DATE *60
+
+        return if (diffESInMin==null) false else diffESInMin>=gapInMin
+
     }
 
 }
