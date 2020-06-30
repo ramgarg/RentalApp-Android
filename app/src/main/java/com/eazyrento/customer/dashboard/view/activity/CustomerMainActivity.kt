@@ -105,13 +105,28 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
     }
 
     override fun paymentActivity(orderID: String) {
+        var value:Int =-1
+        try {
+            value = orderID.toInt()
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+
         MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerPaymentActivity>(this,Constant.KEY_ORDER_DETAILS_ID,
-            orderID)
+            value)
     }
 
     override fun orderSummeryActivity(orderID: String) {
+
+        var value:Int =-1
+        try {
+            value = orderID.toInt()
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+
         MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerOrderSummaryActivity>(this, Constant.ORDER_SUMMERY_KEY,
-            orderID)
+            value)
     }
 
     override fun openUpdateProfileActivity() {

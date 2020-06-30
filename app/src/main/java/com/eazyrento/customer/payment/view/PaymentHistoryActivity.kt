@@ -7,13 +7,16 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.model.modelclass.PaymentRecivedOrNotReqModel
+import com.eazyrento.agent.view.activity.AgentOrderSummaryActivity
 import com.eazyrento.agent.viewmodel.AgentPaymentRecivedOrDeclineViewModel
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
 import com.eazyrento.customer.payment.model.modelclass.PaymentListResModel
 import com.eazyrento.customer.payment.model.modelclass.PaymentListResModelItem
 import com.eazyrento.customer.payment.viewmodel.PaymentHistoryViewModel
 import com.eazyrento.customer.payment.viewmodel.PaymentListViewModel
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_payment_history.*
@@ -21,6 +24,7 @@ import kotlinx.android.synthetic.main.thank_you_pop.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class PaymentHistoryActivity : BaseActivity() {
+    //private  var mOrderID:String? =null
 
     override fun <T> moveOnSelecetedItem(type: T) {
         val paymentListResModelItem = type as PaymentListResModelItem
@@ -53,9 +57,12 @@ class PaymentHistoryActivity : BaseActivity() {
         setContentView(R.layout.activity_payment_history)
         topBarWithBackIconAndTitle(getString(R.string.payment_history))
 
-        val orderID = intent.getStringExtra(Constant.KEY_PAYMENT_HISTORY)
+        var mOrderID = intent.getStringExtra(Constant.KEY_PAYMENT_HISTORY_CUSTOMER)
 
-        getPaymentList(orderID)
+        if (mOrderID == null)
+            mOrderID = intent.getStringExtra(Constant.KEY_PAYMENT_HISTORY_AGENT)
+
+        getPaymentList(mOrderID)
 
     }
 
@@ -87,7 +94,13 @@ class PaymentHistoryActivity : BaseActivity() {
         if (data is JsonElement){
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
             showToast(ValidationMessage.THANKYOU_FOR_CONFIRMING)
-            finishCurrentActivity(Activity.RESULT_OK)
+            if (intent.getStringExtra(Constant.KEY_PAYMENT_HISTORY_CUSTOMER)!=null){
+                MoveToAnotherComponent.moveToActivityNormal<CustomerOrderSummaryActivity>(this)
+            }
+            else if (intent.getStringExtra(Constant.KEY_PAYMENT_HISTORY_AGENT)!=null){
+                MoveToAnotherComponent.moveToActivityNormal<AgentOrderSummaryActivity>(this)
+            }
+            else finishCurrentActivity(Activity.RESULT_OK)
             return
         }
 

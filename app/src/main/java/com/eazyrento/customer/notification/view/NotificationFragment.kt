@@ -16,6 +16,8 @@ import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.customer.notification.model.*
+import com.eazyrento.customer.notification.view.OprationNotification.Companion.ALL_OPTION
+import com.eazyrento.customer.notification.view.OprationNotification.Companion.DEFUALT_NOTIFACTION_ID
 import com.eazyrento.customer.notification.view.OprationNotification.Companion.SINGLE_OPTION
 import com.eazyrento.customer.notification.viewmodel.NotificationViewModel
 import com.eazyrento.customer.utils.Common
@@ -32,6 +34,7 @@ import java.lang.Exception
 
 class NotificationFragment : BaseFragment(),OprationNotification {
     private var mNotifcationID:Int?=null
+    private var mIsDeleteAll:Boolean =false
     private var mNotificationList:NotificationList?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -45,8 +48,10 @@ class NotificationFragment : BaseFragment(),OprationNotification {
         super.onActivityCreated(savedInstanceState)
 
         notificationIconVisility(View.INVISIBLE)
+
         btn_clear_all_notification.setOnClickListener {
-            deleteNotificationAPI(NotificationDeleteModel(null,"all"))
+            mIsDeleteAll = true
+            deleteNotificationAPI(NotificationDeleteModel(DEFUALT_NOTIFACTION_ID, ALL_OPTION))
         }
 
         callAPI()?.let {
@@ -124,14 +129,24 @@ class NotificationFragment : BaseFragment(),OprationNotification {
         // delete item from list
         if (mNotifcationID!=null && mNotificationList.isNullOrEmpty().not()){
             try {
+
                 val notificationModel = mNotificationList?.single { notificationModel -> notificationModel.id==mNotifcationID }
                 mNotificationList?.remove(notificationModel)
 
                 rec_notification.adapter?.notifyDataSetChanged()
 
+                mNotifcationID = null
+
             }catch (e:Exception){
                 e.printStackTrace()
             }
+        }
+        else if (mIsDeleteAll && mNotificationList.isNullOrEmpty().not()){
+            mNotificationList?.clear()
+            rec_notification.adapter?.notifyDataSetChanged()
+            mIsDeleteAll = false
+
+            btn_clear_all_notification.visibility = View.GONE
 
         }
         return
@@ -250,6 +265,8 @@ interface OprationNotification{
         const val  READ = 1
 
         const val SINGLE_OPTION ="single"
+        const val ALL_OPTION ="all"
+        const val DEFUALT_NOTIFACTION_ID =-1
 
 
     }

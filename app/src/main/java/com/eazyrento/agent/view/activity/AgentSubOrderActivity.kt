@@ -104,7 +104,7 @@ class AgentSubOrderActivity :BaseActivity() {
     private fun setTopView(data: SubOrderReqResModel) {
 
         tv_order_id.text= Constant.ORDER_ID.plus(data.order_id)
-        tv_booking_price.text= Constant.DOLLAR.plus(data.amount)
+        tv_booking_price.text= Constant.DOLLAR.plus(data.price)
         order_product_quantity.text = Constant.QUANTITY.plus(data.quantity)
 
 

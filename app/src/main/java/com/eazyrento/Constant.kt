@@ -10,7 +10,10 @@ interface Constant{
         const val INTENT_UPDATE_ORDER_AGENT ="agent_update_order"
 
         const val DEFAULT_VALUE =""
-        const val KEY_PAYMENT_HISTORY = "ORDER_ID"
+
+        const val KEY_PAYMENT_HISTORY_AGENT = "ORDER_ID_AGENT"
+        const val KEY_PAYMENT_HISTORY_CUSTOMER = "ORDER_ID_CUSTOMER"
+
         const val REQUEST_CODE_FINISH_LOGIN_ON_BACK = 8001
 
         const val REQUEST_CODE_FINISH_FIRST_TIME_USER = 3001

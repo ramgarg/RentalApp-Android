@@ -152,6 +152,7 @@
         />-->
         <activity android:name="com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity"
                   android:screenOrientation="unspecified"
+                android:launchMode="singleTask"
 
         />
 

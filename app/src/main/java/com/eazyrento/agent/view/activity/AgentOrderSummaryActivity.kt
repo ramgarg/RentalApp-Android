@@ -69,7 +69,7 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         payment_view_history.setOnClickListener {
 
             MoveToAnotherComponent.moveToActivityWithIntentValue<PaymentHistoryActivity>(this,
-                Constant.KEY_PAYMENT_HISTORY,orderRes.order_id)
+                Constant.KEY_PAYMENT_HISTORY_AGENT,orderRes.order_id)
         }
         agent_update_order_btn.setOnClickListener {
 

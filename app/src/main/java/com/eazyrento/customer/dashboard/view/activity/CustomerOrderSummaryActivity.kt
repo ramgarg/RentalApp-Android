@@ -1,9 +1,11 @@
 package com.eazyrento.customer.dashboard.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
@@ -16,6 +18,7 @@ import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 
 class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
+    private var mBookingID:Int = -1
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -25,8 +28,16 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         //setContentView(R.layout.activity_customer_order_summary)
 
-        setDataAndCallOrderDetailsAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
+        mBookingID = intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!
+        setDataAndCallOrderDetailsAPI(mBookingID)
+
         clickListenerOnViews()
+    }
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onNewIntent")
+        if (mBookingID != -1)
+            setDataAndCallOrderDetailsAPI(mBookingID)
     }
 
     private fun clickListenerOnViews(){
@@ -34,7 +45,7 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
         payment_view_history.setOnClickListener {
 
            MoveToAnotherComponent.moveToActivityWithIntentValue<PaymentHistoryActivity>(this,
-               Constant.KEY_PAYMENT_HISTORY,orderRes.order_id)
+               Constant.KEY_PAYMENT_HISTORY_CUSTOMER,orderRes.order_id)
        }
         /*order_rate_review.setOnClickListener {
 
