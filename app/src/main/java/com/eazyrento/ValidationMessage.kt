@@ -8,7 +8,7 @@ interface ValidationMessage{
         const val THANKYOU_FOR_CONFIRMING = "Thank you for confirming!"
         const val ENTER_AMOUNT_PAYMENT = "Please enter valid amount!"
         const val PAYMENT_MODE = "Please choose the payment method."
-        const val ENTER_AMOUNT_PAYMENT_LESS_THEN_TO = "Please enter valid amount!"
+        const val ENTER_AMOUNT_PAYMENT_LESS_THEN_TO = "Entered amount can not be grater then of pending amount!"
 
         const val ADD_PRODUCT_AT_LEAST_ONE = "Product list is empty..."
         const val PLAY_SERVICE_APK_NOT_FOUND= "Please install the Google play service APK to get accurate location."
@@ -77,6 +77,7 @@ interface ValidationMessage{
         const val VALID_ADDRESS = "Please enter your Address Line."
         const val VALID_ADDRESS_TYPE = "Please select address as type"
         const val ADDRESS_ADDED = "Address has been saved successfully!"
+        const val ADRESS_SEPREATED_BYCOMMA ="Please enter a valid address like apartment,city,state and country name,separated by comma."
          const val LOCATION ="Please turn your location on."
         const val ITEM_IS_IN_LIST = "The product is already in list."
 

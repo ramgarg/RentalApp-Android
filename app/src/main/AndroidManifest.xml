@@ -88,8 +88,9 @@
 
         <activity android:name="com.eazyrento.customer.myaddress.view.AddNewAddressActivity"
                   android:screenOrientation="unspecified"
+                  android:windowSoftInputMode="adjustPan"
 
-        />
+                />
         <activity android:name="com.eazyrento.customer.webpages.AboutActivity"
                   android:screenOrientation="unspecified"
 
@@ -160,15 +161,18 @@
         <activity android:name="com.eazyrento.merchant.view.activity.MerchantOrderSummaryActivity"
                 android:screenOrientation="unspecified"
 
+
                 />
 
         <activity android:name="com.eazyrento.customer.dashboard.view.activity.CustomerPaymentActivity"
                   android:screenOrientation="unspecified"
+                android:windowSoftInputMode="adjustPan"
 
         />
 
         <activity android:name="com.eazyrento.agent.view.activity.AgentPaymentActivity"
                 android:screenOrientation="unspecified"
+                android:windowSoftInputMode="adjustPan"
 
                 />
 

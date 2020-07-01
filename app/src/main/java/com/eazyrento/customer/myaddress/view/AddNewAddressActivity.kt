@@ -36,7 +36,6 @@ import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.net.PlacesClient
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
-import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.add_new_address_activity.*
 import java.lang.Exception
 import java.util.*
@@ -48,7 +47,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     private var mIsMapCameraMoveStated:Boolean = true
 
-    private lateinit  var addressInfo :AddressInfo
+    private var addressInfo :AddressInfo?=null
 //    private var isFlagAddressUpdateFromProfile:Int =0
     private var isDeletingAddress:Boolean =false
 
@@ -312,26 +311,24 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
 
 
-    private fun checkValidation(): Boolean {
+    private fun isValidationCorrect(): Boolean {
         if (ed_address.text.toString().isEmpty() ){
             showToast(ValidationMessage.VALID_ADDRESS)
-            return true
+            return false
         }
         if (btn_home_active.visibility != View.VISIBLE && btn_other_active.visibility != View.VISIBLE && btn_work_active.visibility != View.VISIBLE){
             showToast(ValidationMessage.VALID_ADDRESS_TYPE)
-            return true
+            return false
         }
-        return false
+        return true
 
     }
 
 
     fun onSaveAddressClick(view: View) {
 
-        if (checkValidation())
+        if (isValidationCorrect().not() || isAddressFromViewCorrect().not())
             return
-
-        getAddressFromView()
 
         if (intent.getIntExtra(Constant.KEY_FROM_PROFILE,0)==Constant.FIRST_TIME_USER_LOGIN){
             sendIntentToCallerAct(Constant.KEY_FROM_PROFILE,Constant.REQUEST_CODE_PROFILE_UPDATE,false)
@@ -341,10 +338,31 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         callSaveAddressAPI()
     }
-    private fun getAddressFromView(){
+    private fun isAddressFromViewCorrect():Boolean{
 
-        addressInfo.address_line = ed_address.text.toString()
-        addressInfo.is_default =chk_box_defalut_address.isChecked
+        addressInfo?.let {
+            it.address_line = ed_address.text.toString()
+            it.is_default = chk_box_defalut_address.isChecked
+
+            // when user type munaly the address
+            if (it.city.isNullOrBlank() || it.state.isNullOrBlank() || it.country.isNullOrBlank()) {
+                try {
+                    val list = ed_address.text.toString().split(",")
+                    it.appartment = list[0]
+                    it.city = list[1]
+                    it.state =list[2]
+                    it.country= list[3]
+
+                }catch (e:Exception){
+                    showToast(ValidationMessage.ADRESS_SEPREATED_BYCOMMA)
+                    e.printStackTrace()
+                    return false
+                }
+            }
+            return true
+        }
+        return false
+
     }
 
     fun onDeleteClick(){
@@ -362,10 +380,8 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     }
     fun onUpdateClick()
     {
-        if (checkValidation())
+        if (isValidationCorrect().not() || isAddressFromViewCorrect().not())
             return
-
-        getAddressFromView()
 
         callAPI()?.let {
             it.observeApiResult(
@@ -409,18 +425,13 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     override fun <T> statusCodeOfApi(data: T) {
+
         val dataWrapper = data as DataWrapper<T>
-        if(dataWrapper.statusCode ==204){
 
-            if (isDeletingAddress){
+        if(dataWrapper.statusCode ==204 && isDeletingAddress) {
 
-//                addressInfo = null
-                isDeletingAddress =false
-
-
-                sendIntentToCallerAct(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST,Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST,true)
-            }
-
+            isDeletingAddress =false
+            sendIntentToCallerAct(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST,Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST,true)
         }
     }
     override fun <T> onSuccessApiResult(data: T) {

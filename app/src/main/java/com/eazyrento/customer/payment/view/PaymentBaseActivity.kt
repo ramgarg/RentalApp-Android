@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_payment.*
 
 open abstract class PaymentBaseActivity : BaseActivity() {
 
-    protected var totalPrice:Double = 0.0
+    protected var amountToPay:Double = 0.0
     private lateinit var baseMakePaymentModel: BaseMakePaymentModel
     abstract fun getReqPaymentModel():BaseMakePaymentModel
     abstract fun requestPaymentObjectBuilder():BaseMakePaymentModel
@@ -76,7 +76,7 @@ open abstract class PaymentBaseActivity : BaseActivity() {
                 showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT)
                 return false
             }
-        else if (totalPrice.compareTo(removeDollarSign(ed_enter_amount.text.toString()).toDouble())<0){
+        else if (amountToPay.compareTo(removeDollarSign(ed_enter_amount.text.toString()).toDouble())<0){
                 showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT_LESS_THEN_TO)
                 return false
             }
@@ -112,12 +112,12 @@ open abstract class PaymentBaseActivity : BaseActivity() {
          }
 
         tv_total_price.text =Constant.DOLLAR.plus(customerOrderDetailsResModel.order_amount_with_commission)
-        tv_pending_amount.text = Constant.DOLLAR.plus(customerOrderDetailsResModel.pending_order_amount)
+        tv_pending_amount.text = Constant.DOLLAR.plus(customerOrderDetailsResModel.amount_to_pay)
 
         tv_pending_approval.text=Constant.DOLLAR.plus(customerOrderDetailsResModel.amount_pending_for_approval)
 
 
-        totalPrice = customerOrderDetailsResModel.order_amount_with_commission
+        amountToPay = customerOrderDetailsResModel.amount_to_pay
     }
 
     protected fun convertAmountIntoDoubleFromEditText():Double{

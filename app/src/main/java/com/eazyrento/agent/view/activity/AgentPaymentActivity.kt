@@ -61,7 +61,7 @@ class AgentPaymentActivity : PaymentBaseActivity() {
               showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT)
               return false
           }
-          else if (totalPrice.compareTo(removeDollarSign(ed_enter_amount_agent.text.toString()).toDouble())<0){
+          else if (amountToPay.compareTo(removeDollarSign(ed_enter_amount_agent.text.toString()).toDouble())<0){
               showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT_LESS_THEN_TO)
               return false
           }

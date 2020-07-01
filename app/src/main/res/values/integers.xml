@@ -6,4 +6,6 @@
     <integer name="phone_min_len">7</integer>
     <integer name="phone_max_len">13</integer>
 
+    <integer name="payment_amount_max_len">13</integer>
+
 </resources>

@@ -214,7 +214,7 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
             }
             Constant.PENDING ->{
                 pending_amount.visibility=View.VISIBLE
-                pending_amount.text= Constant.PENDING_AMOUNT.plus(orderRes.pending_order_amount)
+                pending_amount.text= Constant.PENDING_AMOUNT.plus(orderRes.amount_to_pay)
             }
         }
 

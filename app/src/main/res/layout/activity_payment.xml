@@ -162,6 +162,7 @@
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_height="wrap_content"
                     android:id="@+id/ed_enter_amount"
+                    android:maxLength="@integer/payment_amount_max_len"
             />
             </LinearLayout>
 
@@ -214,7 +215,9 @@
                         android:hint="@string/enter_amount"
                         android:textSize="@dimen/_16sdp"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_below="@+id/img_amount">
+                        android:layout_below="@+id/img_amount"
+                        android:maxLength="@integer/payment_amount_max_len"
+                        >
 
                 </EditText>
 

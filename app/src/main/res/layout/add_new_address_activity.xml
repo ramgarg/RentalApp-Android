@@ -93,18 +93,26 @@
                    android:layout_height="@dimen/_20sdp"/>
     </LinearLayout>
 
+     <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/address_line1"
+             android:layout_marginTop="@dimen/_10sdp"
+             android:layout_marginStart="@dimen/_10sdp"
+             android:textColor="@color/black"
+             style="@style/pro_details_heading"
+             />
     <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:id="@+id/layout_ed_address"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:hint="@string/address_line1"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:textColor="@color/black"
-            android:inputType="textMultiLine"
-            app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+            android:layout_height="wrap_content"
+            android:hint="@string/address_hint"
             android:textColorHint="@android:color/darker_gray"
-            android:layout_height="wrap_content">
+            app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+            >
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -112,7 +120,9 @@
                 android:inputType="textPostalAddress"
                 android:nextFocusDown="@id/ed_password"
                 android:fontFamily="@font/bree_serif"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+
+                />
 
     </com.google.android.material.textfield.TextInputLayout>
 

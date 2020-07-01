@@ -135,7 +135,8 @@
     <string name="email_phonenumber">Email/Phone Number</string>
     <string name="booking_n_price">Total\nPrice</string>
     <string name="downtown_dubai">Downtown, Dubai,United Arab Emirates</string>
-    <string name="address_line1">Address Line1</string>
+    <string name="address_line1">Address Line</string>
+    <string name="address_hint">Apartment,city,state,country name</string>
     <string name="save_as">Save As</string>
     <string name="home">Home</string>
     <string name="bookings">Bookings</string>

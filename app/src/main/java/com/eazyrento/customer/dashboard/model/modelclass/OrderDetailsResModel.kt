@@ -26,8 +26,8 @@ open class OrderDetailsResModel(
     var amount_pending_for_approval: Double,
     var pending_order_amount: Double,
     var order_amount_with_commission: Double,
-
     var amount_to_pay: Double,
+
     var tip_amount: Double,
     var total_order_amount: Double,
     var order_amount_paid: Double
