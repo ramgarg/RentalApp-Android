@@ -3,18 +3,22 @@ package com.eazyrento.customer.dashboard.view.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.common.view.OrderBaseSummaryActivity
+import com.eazyrento.common.view.TipActivity
 import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.maintance_layout.*
 import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
+import kotlinx.android.synthetic.main.template_tip.*
 
 
 class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
@@ -61,13 +65,27 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
 //            MoveToAnotherComponent.moveToActivityNormal<PaymentActivity>(this)
         }
+
+
     }
 
     override fun <T> onSuccessApiResult(data: T) {
 
         super.onSuccessApiResult(data)
+        val status=orderRes.order_status
 
         setMaintanceUserRoleAdapter(null,orderRes.agent_detail,orderRes.merchant_detail)
+
+        if(status==Constant.COMPLETED) {
+
+            lyt_tip.visibility = View.VISIBLE
+            btn_tip.setOnClickListener {
+                MoveToAnotherComponent.moveToActivityWithIntentValue<TipActivity>(
+                    this, Constant.KEY_ORDER_DETAILS_ID,
+                    intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY, -1)!!
+                )
+            }
+        }
 
         //customer_maintance_view.visibility =View.GONE
 

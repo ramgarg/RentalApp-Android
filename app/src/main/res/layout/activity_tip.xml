@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <include
+
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            />
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@mipmap/tip"
+            android:id="@+id/img_tip_background"
+            android:layout_below="@id/toolbar">
+
+    </ImageView>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:text="@string/order_id"
+            android:id="@+id/tv_order_id"
+            style="@style/pro_details_heading"
+            android:layout_below="@id/img_tip_background">
+
+    </TextView>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_order_id"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:id="@+id/tv_tip_amount"
+            style="@style/AgentBoldTextCard"
+            android:text="@string/tip_amount">
+
+    </TextView>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:fontFamily="@font/bree_serif"
+            android:textColor="@color/black"
+            android:id="@+id/ed_tip"
+            android:hint="@string/price_in_dollar"
+            android:layout_below="@id/tv_order_id"
+            android:layout_toEndOf="@+id/tv_tip_amount">
+
+    </EditText>
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_below="@+id/ed_tip"
+            android:layout_margin="@dimen/_10sdp"
+            android:textColor="@color/mdtp_white"
+            android:textSize="@dimen/_14sdp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/bree_serif"
+            android:text="@string/give_a_tip"
+            android:background="@drawable/button_gradient">
+
+    </Button>
+
+</RelativeLayout>

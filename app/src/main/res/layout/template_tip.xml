@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="@string/happy_with_the_service"
+            android:id="@+id/tv_happy"
+            style="@style/pro_details_heading">
+
+    </TextView>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_below="@+id/tv_happy"
+            android:text="@string/price_in_dollar"
+            style="@style/name_heading">
+
+    </TextView>
+    <TextView
+            android:id="@+id/btn_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/_5sdp"
+            android:gravity="center"
+            android:layout_below="@+id/tv_happy"
+            android:background="@drawable/payment_status"
+            android:text="@string/give_a_tip"
+            android:textAllCaps="false"
+            android:textColor="@color/mdtp_white"
+            android:textSize="@dimen/_12sdp"
+            android:fontFamily="@font/bree_serif"
+            android:layout_marginTop="@dimen/_5sdp"
+            />
+</RelativeLayout>

@@ -195,7 +195,6 @@
     <string name="_9995hh">9995hh</string>
     <string name="for_maintenance">For Maintenance</string>
     <string name="happy_with_the_service">Happy with the service?</string>
-    <string name="give_a_tip">Give a Tip</string>
     <string name="rating">Rating</string>
     <string name="review">Review</string>
     <string name="choose_to_login_as">Choose to login as,</string>
@@ -308,6 +307,10 @@
     <string name="enter_product_capacity">Enter Product Capacity</string>
 
     <string name="defualt_phone_format">000-000-0000</string>
+    <string name="tip_amount">Tip Amount</string>
+    <string name="tip">Tip</string>
+    <string name="give_a_tip">Give a Tip</string>
+    <string name="price_in_dollar"> </string>
 
     <string-array name="SelectType">
     <item>Select Type</item>
