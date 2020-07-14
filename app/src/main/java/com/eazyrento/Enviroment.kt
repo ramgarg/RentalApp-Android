@@ -9,8 +9,11 @@ interface Env{
 
         // private const val SERVER_URL = "http://qa.eazyrento.com:8000"
 
-        private const val SERVER_URL = "http://test.eazyrento.com"
+//        private const val SERVER_URL = "http://test.eazyrento.com"
 //        private const val SERVER_URL = "http://qa.eazyrento.com"
+
+        private const val SERVER_URL = "https://www.eazyrento.com"
+
 
         const val BASE_URL = SERVER_URL
 
