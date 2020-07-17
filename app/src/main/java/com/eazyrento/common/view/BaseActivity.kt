@@ -82,7 +82,7 @@ open abstract class BaseActivity: AppCompatActivity(),
     protected fun showToast(msg: String){
         Toast.makeText(this,msg, Toast.LENGTH_LONG).show()
     }
-    protected fun showDialog(title: String, msg:String, context: Activity, layout:Int) {
+    protected fun showDialog(title: String, msg:String, context: Activity, layout:Int):Dialog {
         val dialog = Dialog(context)
         dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
@@ -99,6 +99,8 @@ open abstract class BaseActivity: AppCompatActivity(),
         }
 
         dialog .show()
+
+        return dialog
 
     }
 

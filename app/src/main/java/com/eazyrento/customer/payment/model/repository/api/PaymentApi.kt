@@ -1,8 +1,6 @@
 package com.eazyrento.customer.payment.model.repository.api
 
-import com.eazyrento.customer.payment.model.modelclass.AgentMakePaymentReqModel
-import com.eazyrento.customer.payment.model.modelclass.CustomerMakePaymentReqModel
-import com.eazyrento.customer.payment.model.modelclass.PaymentListResModel
+import com.eazyrento.customer.payment.model.modelclass.*
 import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement
 import retrofit2.Call
@@ -23,7 +21,8 @@ interface PaymentApi {
     @POST(PathURL.MakePayment)
     fun makePayment(@Path("id") id: Int,@Body customerMakePaymentReqModel: CustomerMakePaymentReqModel): Call<JsonElement>
 
-
+    @POST(PathURL.PAYMENT_GETWAY_CHECKOUT_ID)
+    fun paymentGetwayCheckoutID(@Path("order_id") order_id: Int,@Body req: PaymentGetwayCheckoutIDReqModel): Call<PaymentGetwayCheckoutIDResModel>
 
     //agent
     @GET(PathURL.AgentPayments)

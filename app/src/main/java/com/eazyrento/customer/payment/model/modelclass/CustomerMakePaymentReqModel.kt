@@ -20,3 +20,16 @@ data class CustomerMakePaymentReqModel(
 data class AgentMakePaymentReqModel(
     override var order_id: String, var requested_amount: Double
 ) : BaseMakePaymentModel()
+
+// payment Getway
+data class PaymentGetwayCheckoutIDReqModel(
+    var amount_paid: Double
+)
+
+data class PaymentGetwayCheckoutIDResModel(
+    val status: Int,
+    val checkout_id:String,
+    val order_id:Int,
+    val user_id:Int
+)
+

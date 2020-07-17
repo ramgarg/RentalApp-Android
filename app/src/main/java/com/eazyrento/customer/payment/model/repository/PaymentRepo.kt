@@ -11,10 +11,7 @@ import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.customer.myaddress.model.modelclass.AddressListResModel
 import com.eazyrento.customer.myaddress.model.repostory.api.AddressApi
 import com.eazyrento.customer.payment.model.PaymentResponseModel
-import com.eazyrento.customer.payment.model.modelclass.AgentMakePaymentReqModel
-import com.eazyrento.customer.payment.model.modelclass.BaseMakePaymentModel
-import com.eazyrento.customer.payment.model.modelclass.CustomerMakePaymentReqModel
-import com.eazyrento.customer.payment.model.modelclass.PaymentListResModel
+import com.eazyrento.customer.payment.model.modelclass.*
 import com.eazyrento.customer.payment.model.repository.api.PaymentApi
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
@@ -65,6 +62,18 @@ class MakePaymentRepo : GenericRequestHandler<JsonElement>() {
             ).requestPayment(obj)
 
         }
+        return doRequest(call)
+    }
+}
+
+class PaymentGetwayRepo : GenericRequestHandler<PaymentGetwayCheckoutIDResModel>() {
+
+    fun paymentGetway(bookingID: Int,req: PaymentGetwayCheckoutIDReqModel): LiveData<DataWrapper<PaymentGetwayCheckoutIDResModel>> {
+
+           val  call = ServiceGenrator.client.create(
+                PaymentApi::class.java
+            ).paymentGetwayCheckoutID(bookingID, req)
+
         return doRequest(call)
     }
 }

@@ -10,13 +10,18 @@ import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
 import com.eazyrento.customer.payment.model.modelclass.BaseMakePaymentModel
+import com.eazyrento.customer.payment.model.modelclass.CustomerMakePaymentReqModel
+import com.eazyrento.customer.payment.model.modelclass.PaymentGetwayCheckoutIDReqModel
+import com.eazyrento.customer.payment.model.modelclass.PaymentGetwayCheckoutIDResModel
 import com.eazyrento.customer.payment.viewmodel.MakePaymentViewModel
 import kotlinx.android.synthetic.main.activity_payment.*
+import kotlinx.android.synthetic.main.thank_you_pop.*
 
 open abstract class PaymentBaseActivity : BaseActivity() {
 
     protected var amountToPay:Double = 0.0
     private lateinit var baseMakePaymentModel: BaseMakePaymentModel
+    private lateinit var paymentGetwayCheckoutIDResModel: PaymentGetwayCheckoutIDResModel
     abstract fun getReqPaymentModel():BaseMakePaymentModel
     abstract fun requestPaymentObjectBuilder():BaseMakePaymentModel
 
@@ -32,33 +37,38 @@ open abstract class PaymentBaseActivity : BaseActivity() {
 
         callAPIOrderList(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1))
 
-        /*ed_enter_amount.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (!s.toString().contains(Constant.DOLLAR) && count==0){
-                    ed_enter_amount.setText(s.toString().plus(Constant.DOLLAR))
-                    ed_enter_amount.setSelection(1)
-                }
-            }
-
-        })*/
-
     }
 
     protected fun submitPayment(){
 
-        val obj = requestPaymentObjectBuilder()
 
+        baseMakePaymentModel = requestPaymentObjectBuilder()
+        if (baseMakePaymentModel is CustomerMakePaymentReqModel){
+           val cusObj = baseMakePaymentModel as CustomerMakePaymentReqModel
+            if(cusObj.mode_of_payment==Constant.PAYPAL) {
+                callPaymentGetway(cusObj.amount_paid)
+                return
+            }
+        }
+             callAPIMakePayment()
+    }
+    private fun callPaymentGetway(amountPaid: Double) {
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<MakePaymentViewModel>(this)
-                    .makePayment(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1),obj)
+                    .paymentGetwayCheckOutID(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1),
+                        PaymentGetwayCheckoutIDReqModel(1.0)
+                    )
+                , this, this
+            )
+        }
+    }
+
+    private fun callAPIMakePayment(){
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<MakePaymentViewModel>(this)
+                    .makePayment(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1),baseMakePaymentModel)
                 , this, this
             )
         }
@@ -67,7 +77,15 @@ open abstract class PaymentBaseActivity : BaseActivity() {
     fun onSubmitClick(view: View){
         if (checkValidation()){
             
-            showDialog(getString(R.string.payment),getString(R.string.thank_you),this,R.layout.thank_you_pop)
+            showDialog(getString(R.string.payment),getString(R.string.thank_you),this,R.layout.thank_you_pop).let {dailog->
+                dailog.btn_cancle.run {
+                    visibility = View.VISIBLE
+                    setOnClickListener {
+                        dailog.cancel()
+                    }
+                }
+            }
+
         }
     }
 
@@ -98,8 +116,6 @@ open abstract class PaymentBaseActivity : BaseActivity() {
     }
 
     override fun <T> onSuccessApiResult(data: T) {
-
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
         setDataOnUI(data as OrderDetailsResModel)
     }

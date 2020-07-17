@@ -56,6 +56,12 @@ class PathURL {
         const val MakePayment      = "/customer/payment/{id}"
         const val PaymentList      = "/customer/payments"
         const val PaymentListByID      = "/customer/payments/{id}"
+
+        // payment getway
+        const val PAYMENT_GETWAY_CHECKOUT_ID     = "/customer/hyperpay_checkout/{order_id}"
+        const val PAYMENT_GETWAY_URL     = "/web/customer/payment_form/mobile/"
+        const val PAYMENT_GETWAY_CALLBACK_URL = "/customer/hyperpay_callback/"
+
         const val CustomerFeedback = "/customer/feedback"
 
         const val CUSTOMER_MY_BOOKINGS = "/customer/bookings"

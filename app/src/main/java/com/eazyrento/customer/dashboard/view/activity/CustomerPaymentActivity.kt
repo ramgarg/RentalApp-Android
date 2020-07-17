@@ -2,15 +2,20 @@ package com.eazyrento.customer.dashboard.view.activity
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.eazyrento.Constant
+import com.eazyrento.Env
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.payment.model.modelclass.BaseMakePaymentModel
 import com.eazyrento.customer.payment.model.modelclass.CustomerMakePaymentReqModel
+import com.eazyrento.customer.payment.model.modelclass.PaymentGetwayCheckoutIDResModel
 import com.eazyrento.customer.payment.view.PaymentBaseActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.paymentgetway.PaymentCheckout
+import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_payment.*
 
@@ -30,12 +35,10 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        setContentView(R.layout.activity_payment)
+        //MoveToAnotherComponent.moveToActivityNormal<PaymentCheckout>(this)
 
         topBarWithBackIconAndTitle(getString(R.string.payment))
 
-
-//        callAPIOrderList(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1))
 
         img_cash.setOnClickListener {
             check_cash.visibility=View.VISIBLE
@@ -54,23 +57,12 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
     override fun onClickDailog(int: Int) {
         when(int){
 
-            Constant.OK ->submitPayment()
+            Constant.OK ->{
+                submitPayment()
+            }
 
         }
     }
-
-    /*private fun submitPayment(){
-
-        requestPaymentObjectBuilder()
-
-        callAPI()?.let {
-            it.observeApiResult(
-                it.callAPIActivity<MakePaymentViewModel>(this)
-                    .makePayment(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1),customerMakePaymentReqModel)
-                , this, this
-            )
-        }
-    }*/
 
     override fun requestPaymentObjectBuilder():BaseMakePaymentModel {
 
@@ -83,13 +75,6 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
 
     }
 
-
-  /*  fun onSubmitClick(view: View){
-        if (checkValidation()){
-            
-            showDialog(getString(R.string.payment),getString(R.string.thank_you),this,R.layout.thank_you_pop)
-        }
-    }*/
 
       override fun checkValidation(): Boolean {
 
@@ -108,26 +93,32 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
     override fun <T> onSuccessApiResult(data: T) {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
+        if (data is PaymentGetwayCheckoutIDResModel){
+//            paymentGetwayCheckoutIDResModel = data
+            openPaymentGetWayPage(data)
+            return
+        }
+
         if (data is JsonElement){
             MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
             return
         }
         val obj = data as OrderDetailsResModel
-        super.setDataOnUI(obj)
+        super.onSuccessApiResult(obj)
         customerMakePaymentReqModel.status = obj.order_status
     }
 
-    /*private fun setDataOnUI(customerOrderDetailsResModel: CustomerOrderDetailsResModel) {
+    private fun openPaymentGetWayPage(data: PaymentGetwayCheckoutIDResModel) {
+        //MoveToAnotherComponent.moveToActivityNormal<PaymentCheckout>(this)
+//        <user_id>/<checkout_id>/<order_id>
 
-         customerOrderDetailsResModel.order_id.let {
-             tv_order_id.text =it
-             customerMakePaymentReqModel.order_id =it
-         }
-        tv_pending_amount.text = resources.getString(R.string.pending_amount)+customerOrderDetailsResModel.pending_order_amount
-        tv_total_price.text =resources.getString(R.string.booking_price)+customerOrderDetailsResModel.total_order_amount
+        PaymentCheckout(this,webview_payment_getway,Env.BASE_URL.plus(PathURL.PAYMENT_GETWAY_URL)
+            .plus(data.user_id).plus("/").plus(data.checkout_id).plus("/").plus(data.order_id),data.order_id)
+    }
 
-        customerMakePaymentReqModel.status = customerOrderDetailsResModel.order_status
-        totalPrice = customerOrderDetailsResModel.total_order_amount
-    }*/
+    fun paymentGetwayCallback(msg:String){
+        showToast(msg)
+        MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
+    }
 
 }
