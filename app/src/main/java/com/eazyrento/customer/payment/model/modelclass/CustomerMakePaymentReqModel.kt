@@ -30,6 +30,7 @@ data class PaymentGetwayCheckoutIDResModel(
     val status: Int,
     val checkout_id:String,
     val order_id:Int,
-    val user_id:Int
+    val user_id:Int,
+    val trnx_id:String
 )
 

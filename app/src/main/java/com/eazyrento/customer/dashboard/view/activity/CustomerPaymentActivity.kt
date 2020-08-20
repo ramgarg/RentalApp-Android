@@ -95,6 +95,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
 
         if (data is PaymentGetwayCheckoutIDResModel){
 //            paymentGetwayCheckoutIDResModel = data
+
             openPaymentGetWayPage(data)
             return
         }
@@ -112,8 +113,10 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
         //MoveToAnotherComponent.moveToActivityNormal<PaymentCheckout>(this)
 //        <user_id>/<checkout_id>/<order_id>
 
+        button_submit.visibility = View.GONE
         PaymentCheckout(this,webview_payment_getway,Env.BASE_URL.plus(PathURL.PAYMENT_GETWAY_URL)
-            .plus(data.user_id).plus("/").plus(data.checkout_id).plus("/").plus(data.order_id),data.order_id)
+            .plus(data.user_id).plus("/").plus(data.checkout_id).plus("/").plus(data.order_id).plus("/").plus(data.trnx_id)
+            ,data.order_id)
     }
 
     fun paymentGetwayCallback(msg:String){
