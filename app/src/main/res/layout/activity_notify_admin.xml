@@ -28,6 +28,8 @@
                 android:id="@+id/ed_product_name"
                   android:textSize="@dimen/_16sdp"
                   android:layout_marginTop="@dimen/_10sdp"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                   android:fontFamily="@font/bree_serif"
                   android:layout_height="wrap_content"/>
 
@@ -40,6 +42,8 @@
         <EditText android:layout_width="match_parent"
                 android:textSize="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 android:id="@+id/ed_product_capacity"
                 android:fontFamily="@font/bree_serif"
                 android:layout_height="wrap_content"/>
@@ -54,6 +58,7 @@
                 android:textSize="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:singleLine="false"
+                android:layout_gravity="start"
                 android:lines="4"
                 android:gravity="top"
                 android:fontFamily="@font/bree_serif"

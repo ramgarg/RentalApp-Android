@@ -76,6 +76,8 @@
                     android:textColorHint="@color/cardview_shadow_start"
                     android:layout_height="wrap_content"
                     android:inputType="number"
+                    android:layout_gravity="start"
+                    android:textAlignment="viewStart"
                     android:fontFamily="@font/bree_serif"
                     android:hint="@string/title_OTP"
                     android:id="@+id/ed_otp"

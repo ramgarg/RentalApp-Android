@@ -20,6 +20,8 @@
             android:paddingLeft="@dimen/_10sdp"
             android:inputType="text"
             android:id="@+id/ed_search"
+            android:layout_gravity="start"
+            android:textAlignment="viewStart"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"

@@ -28,6 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:inputType="textPersonName"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 android:paddingStart="@dimen/_10sdp"
                 android:background="@drawable/search"
                 android:hint="@string/title"
@@ -39,6 +41,8 @@
         <EditText
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_below="@+id/ed_support_title"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_100sdp"
                 android:inputType="textMultiLine"
