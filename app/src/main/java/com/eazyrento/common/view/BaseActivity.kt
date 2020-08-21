@@ -2,6 +2,7 @@ package com.eazyrento.common.view
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.ColorDrawable
@@ -15,6 +16,7 @@ import com.eazyrento.Constant
 import com.eazyrento.InternetNetworkConnection
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
+import com.eazyrento.supporting.LocalManager
 import kotlinx.android.synthetic.main.thank_you_pop.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -22,10 +24,14 @@ import kotlinx.android.synthetic.main.toolbar.*
 open abstract class BaseActivity: AppCompatActivity(),
     ApiResult,
     ClickDailogListener {
+
     private var dialogProgrss: Dialog? =null
 
     abstract fun <T>moveOnSelecetedItem(type:T)
 
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocalManager.updateResources(newBase!!, LocalManager.arebic_lang_code))
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)

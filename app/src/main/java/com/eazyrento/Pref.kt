@@ -67,4 +67,15 @@ class Session private constructor(context: Context?){
     fun getPushNotificationToken():String?{
         return sSharedPreferences?.getString(PrefKey.PUSH_NOTIFICATION_TOKEN,null)
     }
+
+    /*save local language*/
+    fun saveLocalLanguage(language:String){
+        val edit = sSharedPreferences?.edit()
+        edit?.putString(PrefKey.LOCAL_LANGUAGE, language)
+        edit?.apply()
+    }
+    /*get local language*/
+    fun getLocalLanguage():String?{
+        return sSharedPreferences?.getString(PrefKey.LOCAL_LANGUAGE,null)
+    }
 }

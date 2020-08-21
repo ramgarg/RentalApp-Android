@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.eazyrento.login.model.modelclass.UserInfo
 import com.eazyrento.login.model.modelclass.UserProfile
+import com.eazyrento.supporting.LocalManager
 import com.eazyrento.webservice.ServiceGenrator
 import com.facebook.AccessToken
 import com.facebook.login.LoginManager
@@ -11,6 +12,10 @@ import io.paperdb.Paper
 
 
 class EazyRantoApplication : Application() {
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(LocalManager.updateResources(base!!,LocalManager.arebic_lang_code))
+    }
 
     companion object{
         var context:Context?=null

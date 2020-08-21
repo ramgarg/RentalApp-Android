@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Eazyrento</string>
+    <string name="password_reset_instruction">Enter your registered Email/Phone Number below to receive password reset instruction.
+    </string>
+    <string name="forgot_your_password">Forgot your Password?</string>
+
+    <string name="i_agree">I agree to </string>
+    <string name="and">and </string>
+    <string name="t_and_c">Terms &amp; Conditions</string>
+    <string name="gdpr_rights">GDPR rights</string>
+
+    <string name="send">Send</string>
+    <string name="enter_opt">Enter OTP</string>
+    <string name="password">Password</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="login"><u>Login</u></string>
+    <string name="login_with">Login With:</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+
+    <string name="login_to_continue_as">Login to continue as</string>
+    <string name="otp_sent">We have sent OTP to the email address</string>
+    <string name="register"><u>Register</u></string>
+    <string name="agent">Agent</string>
+    <string name="opt_detail">We\'ve sent OTP the email address p@g.com.please enter it below to complete
+        verification
+    </string>
+    <string name="conti">Continue</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="full_name">Full Name</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="wishlist">WishList</string>
+    <string name="orders">Orders</string>
+    <string name="title_notification">Notification</string>
+    <string name="profile">Profile</string>
+    <string name="filter">Filter</string>
+    <string name="support">Support</string>
+    <string name="my_address">My Addresses</string>
+    <string name="booking_details">Booking Details</string>
+    <string name="thank_you">Do you want to submit the payment?</string>
+    <string name="vehicle_not_available">The vehicle you have searched is not available.You can notify admin to add this
+        vehicle.
+    </string>
+    <string name="order">Order</string>
+    <string name="profie">Profile</string>
+    <string name="help"><![CDATA[Help & Support]]></string>
+    <string name="select_category">Select Category</string>
+    <string name="under_development">Under Development</string>
+    <string name="vehicle">Vehicles</string>
+    <string name="add_product">"Add Product"</string>
+    <string name="product_list">"List of Product"</string>
+    <string name="others">"Others"</string>
+    <string name="view_product">"View Product"</string>
+    <string name="order_review">Order Review</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="payment">Payment</string>
+    <string name="payment_history">Payment History</string>
+    <string name="payment_received">Are you sure? You have received the payment.</string>
+    <string name="delete_notification">Do you want to delete this notification?</string>
+    <string name="requestpayment">Request a Payment</string>
+    <string name="details">Details</string>
+    <string name="order_submit">Thank you for submitting your order.Our agent will call you shortly.</string>
+
+
+    <!--agent value-->
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="agent_message">Let\'s get work done!</string>
+    <string name="view_all">View All</string>
+    <string name="no_booking_avil">No booking available</string>
+    <string name="total_booking">Total Bookings</string>
+    <string name="complete">Completed</string>
+    <string name="in_progress">In Progress</string>
+    <string name="rejected">Rejected</string>
+    <!---->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--customer value-->
+    <string name="sendbutton">Send</string>
+    <string name="volvo_fh_truck"> </string>
+    <string name="totalprice">Total \n Price</string>
+    <string name="booking_price">$</string>
+    <string name="hint_enter_booking_price">Enter booking price</string>
+    <string name="per_hour">Per Hour</string>
+    <string name="do_you_want_driver">Do you want vehicle with driver?</string>
+    <string name="select_work_start">Select work start time and date</string>
+    <string name="start_date">Start Date</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_date">End Date</string>
+    <string name="end_time">End Time</string>
+    <string name="start_date_hint">01-Jan-2020</string>
+    <string name="start_time_hint">8:00 AM</string>
+    <string name="end_date_hint">01-Jan-2020</string>
+    <string name="end_time_hint">9:00 AM</string>
+    <string name="truck_quantity">Item Quantity-</string>
+    <string name="one">1</string>
+    <string name="work_location">Work Location</string>
+    <string name="change">Change</string>
+    <string name="select_address">Select</string>
+    <string name="add_another_product">Add Another Product</string>
+    <string name="next">Next</string>
+    <string name="no_notification">No Notification</string>
+    <string name="at_vero_os">At vero os et accusamus et iusto odio dignissimos ducimus</string>
+    <string name="truck_name">Truck Name</string>
+    <string name="truck_capacity">Truck Capacity</string>
+    <string name="na">NA</string>
+    <string name="submit">Submit</string>
+    <string name="sub_order">Sub Order</string>
+    <string name="sub_order_merchnat">Merchant</string>
+    <string name="authentication_required">Authentication Required</string>
+    <string name="orderid">OrderId - 356478484844848</string>
+    <string name="total_price">Total \n Price</string>
+    <string name="pending_amount">Pending Amount - </string>
+    <string name="totalPrice">Total Price</string>
+    <string name="pendingAmount">Pending Amount</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="enter_promo_code">Enter Promo Code</string>
+    <string name="apply">Apply</string>
+    <string name="choose_payment_method">Choose Payment Method</string>
+    <string name="pay_via_cash">Pay Via Cash</string>
+    <string name="pay_via_paypal">Pay Via Paypal</string>
+    <string name="customer">Customer</string>
+    <string name="email">Email</string>
+    <string name="email_address">Email Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="company_name">Company Name</string>
+    <string name="business_name">Your Business</string>
+    <string name="gender">Gender</string>
+    <string name="description">Description</string>
+    <string name="description_star">Description*</string>
+    <string name="save">Save</string>
+    <string name="skip">Skip</string>
+    <string name="welcome">Welcome</string>
+    <string name="register_to_continue">Register to continue as</string>
+    <string name="email_phonenumber">Email/Phone Number</string>
+    <string name="booking_n_price">Total\nPrice</string>
+    <string name="downtown_dubai">Downtown, Dubai,United Arab Emirates</string>
+    <string name="address_line1">Address Line</string>
+    <string name="address_hint">Apartment,city,state,country name</string>
+    <string name="save_as">Save As</string>
+    <string name="home">Home</string>
+    <string name="bookings">Bookings</string>
+    <string name="work">Work</string>
+    <string name="other">Other</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
+    <string name="update_order">Update Order</string>
+    <string name="select_availability">Select Availability</string>
+    <string name="sun">Sun</string>
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+    <string name="booking_price_text">Booking Price</string>
+    <string name="booking_price_">Booking\nPrice</string>
+    <string name="fuel_type">Fuel Type</string>
+    <string name="diesel">Diesel</string>
+    <string name="document">Document</string>
+    <string name="with_driver">With Driver</string>
+    <string name="upload">Upload</string>
+    <string name="search_vehicles">Search</string>
+    <string name="are_you_sure">Are you sure you want delete this Product</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="hello_this_is">Hello this is \n demo home page for merchant....\n Thank you!!</string>
+    <string name="open_orders">Open Orders</string>
+    <string name="fathi_asfour">Fathi Asfour</string>
+    <string name="fathi_asfour_gmail">fathi.asfour@gmail.com</string>
+    <string name="phone_no">+966-000-000-0000</string>
+    <string name="rental_company">Rental Company</string>
+    <string name="we_denounce">We denounce with righteous indignation and dislike men who are so beguiled.</string>
+    <string name="bilad_al">Bilad Al</string>
+    <string name="merchant">Merchant</string>
+    <string name="select_location">Select Location</string>
+    <string name="select_sub_category">Select Sub Category</string>
+    <string name="truck_power_kv">125kw(170)@2500rpm</string>
+    <string name="price">Price</string>
+    <string name="petrol">Petrol</string>
+    <string name="write_any_other">Write any other details \n \n</string>
+    <string name="notify_admin">Notify Admin</string>
+    <string name="feedback">Feedback</string>
+    <string name="no_result_found">No Result Found</string>
+    <string name="add_new_address">Add New Address</string>
+    <string name="hi_ajeer">Hi,Ajeer</string>
+    <string name="_45">0</string>
+    <string name="tax_included">Tax Included</string>
+    <string name="rate_amp_review"><![CDATA[Rate & Review]]></string>
+    <string name="delivered_on">* Delivered on 12 Dec 2019</string>
+    <string name="ajeer_mohammed">Ajeer Mohammed</string>
+    <string name="view_history">View History</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="_14_days">14 days</string>
+    <string name="_9995hh">9995hh</string>
+    <string name="for_maintenance">For Maintenance</string>
+    <string name="happy_with_the_service">Happy with the service?</string>
+    <string name="rating">Rating</string>
+    <string name="review">Review</string>
+    <string name="choose_to_login_as">Choose to login as,</string>
+    <string name="truck">Truck</string>
+    <string name="remove">Remove</string>
+    <string name="payment_pending">Payment Pending</string>
+    <string name="_02_feb_2020">02 Feb 2020</string>
+    <string name="default_address">Default Address</string>
+
+    <string name="full_power">Full Power</string>
+    <string name="view_details">View Details</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="title">Title</string>
+    <string name="add_your_notes_here">Add your notes here.</string>
+    <string name="heading">Heading</string>
+    <string name="note_added">Note Added</string>
+    <string name="mynotes">My Notes</string>
+    <string name="assign_merchant">Assign Merchant</string>
+    <string name="distance_3km">Distance, 3km</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="select_type">Select Type</string>
+
+    <string name="otp_timer">Resend code after</string>
+
+    <string name="notif_clear_all">Clear All</string>
+
+
+    <string name="selected_item">Selected item:</string>
+    <string name="order_date">Order Date</string>
+    <string name="_24_jun_1212">24-jun-1212</string>
+
+    <string name="day">Day</string>
+    <string name="closed_orders">Closed Orders</string>
+    <string name="please_wait">Please wait ...</string>
+    <string name="lorem_ipsum">Lorem Ipsum is simply too is and setting industry.</string>
+    <string name="submit_request">Submit Request</string>
+    <string name="work_start_and">Work Start And End Date</string>
+    <string name="request_a_payment">Request a Payment</string>
+    <string name="status">Status:</string>
+    <string name="quantity">Quantity - </string>
+    <string name="quantity_value">0</string>
+
+    <string name="req_quantity">Required Quantity - </string>
+
+    <string name="_80">$80</string>
+    <string name="test_merchant">Test Merchant</string>
+    <string name="select_document">Select Document</string>
+    <string name="view_all_"><![CDATA[View all->]]></string>
+    <string name="equipments">Equipments</string>
+    <string name="add">Add</string>
+    <string name="default_notification_channel_id">com.eazyrento</string>
+    <string name="dob">DOB</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="user_name">User Name</string>
+    <string name="name">Name*</string>
+    <string name="code">Code</string>
+    <string name="select_location_">Select Location*</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="booking_price_dollar">Booking Price($)</string>
+    <string name="add_a_note">Add a Note</string>
+    <string name="update_note">Update Note</string>
+    <string name="booking">Bookings</string>
+
+    <string name="assign">Assign</string>
+
+    <!--Activity and view title-->
+    <string name="title_forgot_pass">Forgot password</string>
+    <string name="title_OTP">OTP</string>
+    <string name="capacity">Capacity</string>
+    <string name="capacity_">Capacity*</string>
+    <string name="power">Power</string>
+    <string name="resend_otp"><u>Resend OTP</u></string>
+
+    <!--Google Map and Place API key production -->
+    <string name="google_credential_key">AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I</string>
+
+    <string-array name="place_restriction_country_code">
+        <item>AE</item>
+        <item>SA</item>
+    </string-array>
+
+    <!--<string name="iso_phone_number">AE</string>-->
+
+
+
+    <!--FB login production-->
+    <string name="facebook_app_id">216337653018960</string>
+    <string name="fb_login_protocol_scheme">fb216337653018960</string>
+
+
+
+    <!--Google gmail login QA env-->
+    <!--<string name="G_client">743880735289-3vg6kdisc73cpi2u7v9j23ofbeqfme5i.apps.googleusercontent.com</string>
+    <string name="G_secret">eIEedNI905ZSO6fo70o8XDpV</string>-->
+
+    <!--Google gmail login production env-->
+    <string name="G_client">1093222661773-ea0su3f12mls27rbt195qcok1b8n4ne8.apps.googleusercontent.com</string>
+    <string name="G_secret">0HD7pDHrzHBMcbGX3fO3yl16</string>
+    <string name="rate">Rate</string>
+    <string name="pending_approval">Pending Approval</string>
+    <string name="amount_dollar">Amount($)</string>
+    <string name="dollar">$</string>
+    <string name="reset">Reset</string>
+    <string name="product_name">Product Name</string>
+    <string name="order_id">Order ID</string>
+    <string name="service_date">Service Date</string>
+    <string name="status_text">Status</string>
+    <string name="enter_product_name">Enter Product Name</string>
+    <string name="enter_product_capacity">Enter Product Capacity</string>
+
+    <string name="defualt_phone_format">000-000-0000</string>
+    <string name="tip_amount">Tip Amount</string>
+    <string name="tip">Tip</string>
+    <string name="give_a_tip">Give a Tip</string>
+    <string name="price_in_dollar"> </string>
+
+    <string-array name="SelectType">
+        <item>Select Type</item>
+        <item>Equipments</item>
+        <item>Vehicles</item>
+        <item>All</item>
+    </string-array>
+    <string-array name="Gender">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="SelectCategory">
+        <item>Select Category</item>
+        <item>Big-Equipment</item>
+        <item>Small-Equipment</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="SelectSubCategory">
+        <item>Select Sub Category</item>
+        <item>Big-Equipment</item>
+        <item>Small-Equipment</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="UpdateStatus">
+        <item>update status</item>
+        <item>pending</item>
+        <item>started</item>
+        <item>ongoing</item>
+        <item>completed</item>
+        <item>paid</item>
+        <item>cancelled</item>
+    </string-array>
+
+    <string-array name="UpdateStatusAgent">
+        <item>update status</item>
+        <item>pending</item>
+        <item>started</item>
+        <item>completed</item>
+        <item>cancelled</item>
+    </string-array>
+
+    <string-array name="RegistrationDocument">
+        <item>Select Document</item>
+        <item>Driving Licence</item>
+        <item>ID</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="FuelType">
+        <item>Fuel Type</item>
+        <item>Petrol</item>
+        <item>Diesel</item>
+        <item>Gasoline</item>
+    </string-array>
+    <string-array name="OrderName">
+        <item>Select Order Name</item>
+        <item>Vehicle</item>
+        <item>Large Equipments</item>
+        <item>Small Equipments</item>
+    </string-array>
+    <string-array name="OrderId">
+        <item>Select Order ID</item>
+        <item>11</item>
+        <item>22</item>
+        <item>33</item>
+    </string-array>
+    <string-array name="ServiceDate">
+        <item>Select Date</item>
+        <item>12 Jan 2020</item>
+        <item>14 May 2020</item>
+        <item>12 June 2020</item>
+    </string-array>
+
+    <!--Validation messages all here-->
+
+    <string name="ORDER_UPDATE_BUTTON_CLICK_CONFIRM">Before clicking update button please update any data.</string>
+    <string name="THANKYOU_FOR_CONFIRMING">Thank you for confirming!</string>
+    <string name="ENTER_AMOUNT_PAYMENT">Please enter valid amount!</string>
+    <string name="PAYMENT_MODE">Please choose the payment method.</string>
+    <string name="ENTER_AMOUNT_PAYMENT_LESS_THEN_TO">Entered amount can not be grater then of pending amount!</string>
+    <string name="ADD_PRODUCT_AT_LEAST_ONE">Product list is empty...</string>
+    <string name="PLAY_SERVICE_APK_NOT_FOUND">Please install the Google play service APK to get accurate location.</string>
+    <string name="CURRENT_LOCATION_NOT_GETTING">There are some issue to getting location.Please restart your device or launch the Google Map once to get the location.</string>
+    <string name="SOCIAL_FAILED">Auth failed.Please try after some time.</string>
+    <string name="CHECK_INTERNET">Please check internet connectivity</string>
+    <string name="VALID_PASSWORD_LENGTH">Password must be between 8 and 15 characters.</string>
+    <string name="REGISTRATION_SUCCESS">Registration successful. Please Login now to continue.</string>
+    <string name="VALID_EMAIL_ID">Please enter a valid email address.</string>
+    <string name="VALID_EMAIL_PHONE">Please enter a valid email address or mobile number.</string>
+    <string name="ENTER_ALL_FIELDS">Please enter all fields</string>
+    <string name="CHECK_TERMS_POLICY">Please agree to the terms and conditions.</string>
+    <string name="VALID_USER_NAME">Please enter valid user name.It should be between 4 and 50 characters.</string>
+    <string name="SELECT_USER_ROLE">Please select user role</string>
+    <string name="NO_DATA_FOUND">No Record Found...</string>
+    <string name="VALID_OTD">Please enter valid OTP</string>
+    <string name="FORGOT_PASSWORD">Password reset instruction has been sent to your email/mobile number.</string>
+    <string name="PROFILE_UPDATE">Profile updated successfully!</string>
+    <string name="DOC_IS_NOT_UPLOADED">Doc is not uploaded.Please try it again.</string>
+    <string name="SELECT_AT_LIST_ONE_DAYS">Please select at list one day.</string>
+
+    <string name="FILL_QUANTITY">Assign quantity can\'t be zero.</string>
+    <string name="FILL_BOOKING_PRICE">Please enter booking price.</string>
+    <string name="SELECT_FUEL_TYPE_SPINNER">Please select fuel type.</string>
+    <string name="SELECT_DOCUMENT">Please select document type.</string>
+    <string name="UPLOAD_DOCUMENT">Please upload document.</string>
+    <string name="ON_SUBMIT_BUTTON_CLICK">Do you want to submit the product info?</string>
+    <string name="SUBMIT_TITLE">Submit</string>
+    <string name="LOGOUT_MESSAGE">You have been logout successfully</string>
+    <string name="OPT_SUCCESSED">OTP has sent.Please check your email to verify.</string>
+    <string name="REQUEST_SUCCESSED">Request has been submitted successfully!</string>
+    <string name="PRODUCT_DELETE_SUCCESS">Product has been deleted successfully!</string>
+    <string name="START_DATE">Please add start date.</string>
+    <string name="START_TIME">Please add start time.</string>
+    <string name="END_DATE">Please add end date.</string>
+    <string name="END_TIME">Please add end time.</string>
+    <string name="DATE_VALIDATION">Please select valid start and end date time.</string>
+    <string name="PREVIOSE_TIME_BUT_SAME_DATE_TIME">Booking can not be accepted of same start date but time before the current time.</string>
+    <string name="SELECT_ADRESS">Please select your address.</string>
+    <string name="BOOKING_SUBMITTED">Thank you for submitting the order. Our agent will contact you shortly.</string>
+    <string name="VALID_DESC">Write description</string>
+    <string name="VALID_ADDRESS">Please enter your Address Line.</string>
+    <string name="VALID_ADDRESS_TYPE">Please select address as type</string>
+    <string name="ADDRESS_ADDED">Address has been saved successfully!</string>
+    <string name="ADRESS_SEPREATED_BYCOMMA">Please enter a valid address like apartment,city,state and country name,separated by comma.</string>
+
+    <string name="ITEM_IS_IN_LIST">The product is already in list.</string>
+    <string name="SELECT_MERCHANT">Please assign merchant.</string>
+    <string name="OTP_VALID_NUMBER">Please enter verification code.</string>
+    <string name="VALID_NAME">Please enter product name.</string>
+    <string name="VALID_POWER">Please enter product power.</string>
+    <string name="VALID_PRICE">Please enter product price.</string>
+    <string name="VALID_FUEL_TYPE">Please enter fuel type.</string>
+    <string name="VALID_CAPACITY">Please enter capacity.</string>
+    <string name="ADMIN_NOTIFY">Detail has been sent to admin successfully!</string>
+    <string name="VALID_RATING">Please add some rating.</string>
+    <string name="FEEDBACK_SENT">Thanks for rating. Your feedback is valuable for us!</string>
+    <string name="PHONE_NUMBER">Please enter a valid mobile number.</string>
+    <string name="COUNTRY_CODE">Please enter country code.</string>
+    <string name="DATE_OF_BIRTH">Please enter your date of birth.</string>
+    <string name="GENDER">Please select your gender.</string>
+    <string name="DOCUMENT">Please select document type.</string>
+    <string name="COMPANY">Enter Company </string>
+    <string name="BUSINESS">Enter Business</string>
+    <string name="DESCRIPTON">Enter Description</string>
+    <string name="COUNTRY_CODE_VALIDATION">Please enter a valid dailing code.</string>
+    <string name="NO_ADRESS_FOUND">No address found. Please add new address.</string>
+    <string name="QUANTITY_LIMIT">Assign quantity can\'t be grater then or less then of booking quantity.</string>
+    <string name="QUANTITY_SET_LIMIT">You can\'t set value beyond limit.</string>
+    <string name="USER_NEED_LOGIN">User need to login</string>
+    <string name="SELECT_DATE">Select order date</string>
+    <string name="SELECT_STATUS">Select order status</string>
+    <string name="SELECT_ORDER_ID">Select order ID</string>
+    <string name="SELECT_PRODUCT_NAME">Select product name</string>
+    <string name="SAME_DATE_TIME_VALIDATION">The time gap between start time and end time should be more then 1 hour for same date</string>
+    <string name="register_">Register</string>
+    <string name="login_">Login</string>
+    <string name="about_us">About Us</string>
+    <string name="about_app">About App</string>
+    <string name="my_addresses">My Addresses</string>
+    <string name="terms_of_services">Terms of Services</string>
+    <string name="help_amp_support"><![CDATA[Help & Support]]></string>
+    <string name="logout">Logout</string>
+
+</resources>
