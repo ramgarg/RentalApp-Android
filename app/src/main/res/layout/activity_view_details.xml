@@ -32,7 +32,7 @@
         <ImageView
                 android:id="@+id/pro_wish"
                 android:layout_width="@dimen/_35sdp"
-                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_alignParentEnd="true"
                 android:onClick="onWishIconClick"
                 android:layout_height="@dimen/_35sdp"/>

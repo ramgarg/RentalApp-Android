@@ -359,7 +359,7 @@
                     />
         </LinearLayout>
         <Button android:layout_width="match_parent"
-                android:text="Register"
+                android:text="@string/register_"
                 android:textColor="#fff"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/btn_register"
@@ -394,7 +394,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/AgentBoldTextCard"
-                    android:paddingLeft="@dimen/_3sdp"
+                    android:paddingStart="@dimen/_3sdp"
 
                     android:textSize="@dimen/_15sdp"
                     android:text="@string/login"

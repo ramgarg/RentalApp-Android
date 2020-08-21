@@ -71,7 +71,7 @@
         <TextView android:layout_width="@dimen/_140sdp"
                 android:text="@string/downtown_dubai"
                 android:id="@+id/tv_add_city"
-                android:layout_toRightOf="@+id/tv_add_line"
+                android:layout_toEndOf="@+id/tv_add_line"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/bree_serif"

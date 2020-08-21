@@ -34,7 +34,7 @@
     <TextView
             style="@style/DocumentTextView"
             android:text="@string/work_start_and"
-            android:layout_marginLeft="@dimen/_1sdp"
+            android:layout_marginStart="@dimen/_1sdp"
             >
 
     </TextView>

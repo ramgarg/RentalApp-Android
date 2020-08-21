@@ -8,31 +8,31 @@
         <item
                 android:id="@+id/merchant_nav_dashboard"
                 android:icon="@mipmap/dashboard"
-                android:title="Dashboard" />
+                android:title="@string/dashboard" />
 
         <item
                 android:id="@+id/merchant_nav_about"
                 android:icon="@mipmap/about"
-                android:title="About App" />
+                android:title="@string/about_app" />
 
         <item
                 android:icon="@mipmap/my_address"
                 android:id="@+id/merchant_nav_my_address"
-                android:title="My Addresses" />
+                android:title="@string/my_addresses" />
 
         <item
                 android:id="@+id/merchant_nav_tc"
                 android:icon="@mipmap/t_c"
-                android:title="Terms of Services" />
+                android:title="@string/terms_of_services" />
 
         <item
                 android:id="@+id/merchant_nav_help"
                 android:icon="@mipmap/help_support"
-                android:title="Help &amp; Support" />
+                android:title="@string/help_amp_support" />
         <item
                 android:id="@+id/merchant_nav_logout"
                 android:icon="@mipmap/logout"
-                android:title="Logout" />
+                android:title="@string/logout" />
     </group>
 
 </menu>

@@ -31,7 +31,7 @@
             <TextView
                     android:id="@+id/tv_user_name_profile"
                     style="@style/UserRole"
-                    android:layout_marginLeft="@dimen/_25sdp"
+                    android:layout_marginStart="@dimen/_25sdp"
                     android:layout_marginTop="@dimen/_35sdp"
 
                     android:layout_toEndOf="@+id/img_profile" />
@@ -380,7 +380,7 @@
                         android:layout_height="@dimen/_20sdp"
                         android:layout_below="@id/tv_select_location"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_toRightOf="@+id/tv_add_line"
+                        android:layout_toEndOf="@+id/tv_add_line"
                         android:fontFamily="@font/bree_serif"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />

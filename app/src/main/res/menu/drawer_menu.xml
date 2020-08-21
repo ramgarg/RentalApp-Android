@@ -9,12 +9,12 @@
         <item
                 android:icon="@mipmap/home_inactive"
                 android:id="@+id/nav_dashboard"
-                android:title="Home" />
+                android:title="@string/home" />
 
         <item
                 android:icon="@mipmap/about"
                 android:id="@+id/nav_about"
-                android:title="About Us" />
+                android:title="@string/about_us" />
 
         <!--only for customer and agent -->
         <item
@@ -28,40 +28,40 @@
         <item
                 android:icon="@mipmap/order_inactive"
                 android:id="@+id/nav_add_note"
-                android:title="Add a Note"
+                android:title="@string/add_a_note"
                 android:visible="false"
                 />
         <!--only for customer module-->
         <item
                 android:id="@+id/nav_payment"
                 android:icon="@mipmap/payment"
-                android:title="Payment History"
+                android:title="@string/payment_history"
                 android:visible="false"
                 />
         <!--only for customer and merchant module-->
         <item
                 android:id="@+id/nav_my_address"
                 android:icon="@mipmap/my_address"
-                android:title="My Addresses"
+                android:title="@string/my_addresses"
                 android:visible="false"
                 />
 
         <item
                 android:id="@+id/nav_tc"
                 android:icon="@mipmap/t_c"
-                android:title="Terms of Services" />
+                android:title="@string/terms_of_services" />
 
         <item
                 android:id="@+id/nav_help"
                 android:icon="@mipmap/help_support"
-                android:title="Help &amp; Support"
+                android:title="@string/help_amp_support"
                 android:visible="false"
                 />
 
         <item
                 android:id="@+id/nav_logout"
                 android:icon="@mipmap/logout"
-                android:title="Logout" />
+                android:title="@string/logout" />
     </group>
 
         </menu>

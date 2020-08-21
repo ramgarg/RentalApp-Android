@@ -465,5 +465,13 @@
     <string name="SELECT_ORDER_ID">Select order ID</string>
     <string name="SELECT_PRODUCT_NAME">Select product name</string>
     <string name="SAME_DATE_TIME_VALIDATION">The time gap between start time and end time should be more then 1 hour for same date</string>
+    <string name="register_">Register</string>
+    <string name="login_">Login</string>
+    <string name="about_us">About Us</string>
+    <string name="about_app">About App</string>
+    <string name="my_addresses">My Addresses</string>
+    <string name="terms_of_services">Terms of Services</string>
+    <string name="help_amp_support"><![CDATA[Help & Support]]></string>
+    <string name="logout">Logout</string>
 
 </resources>

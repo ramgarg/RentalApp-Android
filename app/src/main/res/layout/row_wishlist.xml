@@ -21,7 +21,7 @@
                     layout="@layout/template_product_main_view"
                     android:background="@drawable/button_order"
 
-                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
                     />
 
                 <!--booking review details-->
@@ -31,7 +31,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:paddingBottom="@dimen/_5sdp"
-                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_10sdp"
 
                         android:visibility="visible"
@@ -61,7 +61,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp"
                         android:text="@string/_14_days"
-                        android:paddingLeft="@dimen/_3sdp"
+                        android:paddingStart="@dimen/_3sdp"
 
                         />
                 </LinearLayout>

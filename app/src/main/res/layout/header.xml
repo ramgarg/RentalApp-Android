@@ -30,7 +30,7 @@
             />
     <TextView
             android:id="@+id/user_type_menu"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_below="@id/user_name_menu"
             style="@style/UserRole"
