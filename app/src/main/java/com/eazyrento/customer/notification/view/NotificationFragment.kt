@@ -124,7 +124,7 @@ class NotificationFragment : BaseFragment(),OprationNotification {
      AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
     if (data is JsonElement){
-        Common.showToast(requireContext(),ValidationMessage.REQUEST_SUCCESSED)
+        Common.showToast(requireContext(),R.string.REQUEST_SUCCESSED)
 
         // delete item from list
         if (mNotifcationID!=null && mNotificationList.isNullOrEmpty().not()){
@@ -153,7 +153,7 @@ class NotificationFragment : BaseFragment(),OprationNotification {
     }
     if (data is NotificationList) {
         if (data.isEmpty()) {
-            Common.showToast(requireContext(), ValidationMessage.NO_DATA_FOUND)
+            Common.showToast(requireContext(), R.string.NO_DATA_FOUND)
             return
         }
 

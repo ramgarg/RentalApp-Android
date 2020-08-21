@@ -2,6 +2,7 @@ package com.eazyrento.agent.view.activity
 
 import android.os.Bundle
 import android.view.View
+import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.customer.profile.UpdateProfileBase
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -20,8 +21,8 @@ class AgentProfileUpdateActivity:UpdateProfileBase() {
         if(super.isProfileValidationCorrect().not())
             return false
         when{
-            ed_dob.text.toString().isEmpty()-> showToast(ValidationMessage.DATE_OF_BIRTH)
-            ed_des.text.toString().isEmpty()->showToast(ValidationMessage.DESCRIPTON)
+            ed_dob.text.toString().isEmpty()-> showToast(R.string.DATE_OF_BIRTH)
+            ed_des.text.toString().isEmpty()->showToast(R.string.DESCRIPTON)
             else-> return true
         }
         return false

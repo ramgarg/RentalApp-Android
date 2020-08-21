@@ -94,7 +94,7 @@ class AgentAddUpdateNoteActivity : BaseActivity() {
         if (ed_agent_note_heading.text.toString().isEmpty() || ed_agent_note_desc.text.toString()
                 .isEmpty()
         ) {
-            showToast(ValidationMessage.ENTER_ALL_FIELDS)
+            showToast(R.string.ENTER_ALL_FIELDS)
             return false
         }
         return true

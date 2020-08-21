@@ -285,15 +285,15 @@ open class UpdateProfileBase : BaseActivity() {
     open protected fun isProfileValidationCorrect(): Boolean {
         when{
 
-            ed_full_name.text.toString().isEmpty() || ed_full_name.text.toString().length< resources.getInteger(R.integer.full_name_min_len)->showToast(ValidationMessage.VALID_USER_NAME)
-            ed_email.text.toString().isEmpty()||Validator.isEmailValid(ed_email.text.toString()).not() ->showToast(ValidationMessage.VALID_EMAIL_ID)
+            ed_full_name.text.toString().isEmpty() || ed_full_name.text.toString().length< resources.getInteger(R.integer.full_name_min_len)->showToast(R.string.VALID_USER_NAME)
+            ed_email.text.toString().isEmpty()||Validator.isEmailValid(ed_email.text.toString()).not() ->showToast(R.string.VALID_EMAIL_ID)
 
-            phoneNumberFormat.isValidCountryCode(ed_country.text.toString()).not()->ValidationMessage.COUNTRY_CODE
-            isValidPhoneNumber(""+parseMobileNumber(ed_phone.text.toString())?.nationalNumber,this).not()->showToast(ValidationMessage.PHONE_NUMBER)
+            phoneNumberFormat.isValidCountryCode(ed_country.text.toString()).not()->R.string.COUNTRY_CODE
+            isValidPhoneNumber(""+parseMobileNumber(ed_phone.text.toString())?.nationalNumber,this).not()->showToast(R.string.PHONE_NUMBER)
 
 //            ed_des.text.toString().isEmpty()->showToast(ValidationMessage.DESCRIPTON)
-            sp_gender.selectedItemPosition == 0->showToast(ValidationMessage.GENDER)
-            tv_add_line.text.isNullOrEmpty() -> showToast(ValidationMessage.SELECT_ADRESS)
+            sp_gender.selectedItemPosition == 0->showToast(R.string.GENDER)
+            tv_add_line.text.isNullOrEmpty() -> showToast(R.string.SELECT_ADRESS)
 
 //            isAgent.not() && ed_company_name.text.toString().isEmpty()->showToast(ValidationMessage.COMPANY)
 //            isCustomer.not() && ed_dob.text.toString().isEmpty()-> showToast(ValidationMessage.DATE_OF_BIRTH)
@@ -376,7 +376,7 @@ open class UpdateProfileBase : BaseActivity() {
         super.onSuccessApiResult(data)
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, data.toString())
-        showToast(ValidationMessage.PROFILE_UPDATE)
+        showToast(R.string.PROFILE_UPDATE)
         //first time user
         if (intent.getIntExtra(
                 Constant.KEY_FINISH_FIRST_TIME_USER,

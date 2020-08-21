@@ -50,7 +50,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
 
     override fun <T> onSuccessApiResult(data: T) {
         if(data==null){
-            showToast(ValidationMessage.NO_DATA_FOUND)
+            showToast(R.string.NO_DATA_FOUND)
             return
         }
 
@@ -85,7 +85,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
     fun setSpinnerAdapter(list: List<*>?, id: Int){
         if (list==null)
         {
-            showToast(ValidationMessage.NO_DATA_FOUND)
+            showToast(R.string.NO_DATA_FOUND)
             return
         }
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)

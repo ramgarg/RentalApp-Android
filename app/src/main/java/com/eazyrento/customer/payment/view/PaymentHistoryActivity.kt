@@ -93,7 +93,7 @@ class PaymentHistoryActivity : BaseActivity() {
     override fun <T> onSuccessApiResult(data: T) {
         if (data is JsonElement){
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
-            showToast(ValidationMessage.THANKYOU_FOR_CONFIRMING)
+            showToast(R.string.THANKYOU_FOR_CONFIRMING)
             if (intent.getStringExtra(Constant.KEY_PAYMENT_HISTORY_CUSTOMER)!=null){
                 MoveToAnotherComponent.moveToActivityNormal<CustomerOrderSummaryActivity>(this)
             }
@@ -107,7 +107,7 @@ class PaymentHistoryActivity : BaseActivity() {
         if (data is PaymentListResModel) {
 
             if (data.isEmpty()) {
-                showToast(ValidationMessage.NO_DATA_FOUND)
+                showToast(R.string.NO_DATA_FOUND)
                 return
             }
             rec_payment_history.adapter =

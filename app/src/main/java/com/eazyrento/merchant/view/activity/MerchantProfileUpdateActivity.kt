@@ -20,8 +20,8 @@ class MerchantProfileUpdateActivity : UpdateProfileBase() {
         if(super.isProfileValidationCorrect().not())
             return false
         when{
-          ed_company_name.text.toString().isEmpty()->showToast(ValidationMessage.BUSINESS)
-          sp_select_document.selectedItemPosition == 0 ->showToast(ValidationMessage.DOCUMENT)
+          ed_company_name.text.toString().isEmpty()->showToast(R.string.BUSINESS)
+          sp_select_document.selectedItemPosition == 0 ->showToast(R.string.DOCUMENT)
 
             else ->return true
         }

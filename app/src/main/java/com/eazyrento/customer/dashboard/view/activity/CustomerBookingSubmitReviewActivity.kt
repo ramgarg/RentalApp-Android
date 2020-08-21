@@ -54,7 +54,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
     override fun <T> onSuccessApiResult(data: T) {
         data?.let {
 
-            showToast(ValidationMessage.BOOKING_SUBMITTED)
+            showToast(R.string.BOOKING_SUBMITTED)
 
             if (objListBookingItem.size>0){
                 objListBookingItem.clear()
@@ -81,10 +81,10 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
     fun onSubmitButtonClick(view: View){
 
         if(objListBookingItem.size<=0){
-            showToast(ValidationMessage.ADD_PRODUCT_AT_LEAST_ONE)
+            showToast(R.string.ADD_PRODUCT_AT_LEAST_ONE)
             return
         }
-        showDialog(getString(R.string.payment),ValidationMessage.BOOKING_SUBMITTED,this,R.layout.thank_you_pop)
+        showDialog(R.string.payment,resources.getString(R.string.BOOKING_SUBMITTED),this,R.layout.thank_you_pop)
     }
 
     override fun setHolderOnView(holder: WishListAdapter.CardViewHolder, position: Int) {
@@ -126,7 +126,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
         holder.minus_quantity.setOnClickListener {
            if (objListBookingItem.get(position).quantity-1 <=0){
-               showToast(ValidationMessage.FILL_QUANTITY)
+               showToast(R.string.FILL_QUANTITY)
            }
             else item_quantity.text= (--item.quantity).toString()
         }

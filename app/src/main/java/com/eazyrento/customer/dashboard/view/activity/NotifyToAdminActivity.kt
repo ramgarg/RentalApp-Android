@@ -42,10 +42,10 @@ class NotifyToAdminActivity :BaseActivity(){
 
     private fun checkValidation(): Boolean {
         if (ed_product_name.text.toString().isEmpty()){
-            showToast(ValidationMessage.VALID_NAME)
+            showToast(R.string.VALID_NAME)
             return true
         }else if (ed_product_capacity.text.toString().isEmpty()) {
-            showToast(ValidationMessage.VALID_CAPACITY)
+            showToast(R.string.VALID_CAPACITY)
             return true
         }
         return false
@@ -69,7 +69,7 @@ class NotifyToAdminActivity :BaseActivity(){
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
-        showToast(ValidationMessage.REQUEST_SUCCESSED)
+        showToast(R.string.REQUEST_SUCCESSED)
         finishCurrentActivity(Activity.RESULT_OK)
     }
 }

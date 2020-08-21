@@ -81,10 +81,10 @@ open abstract class ShowAllBookingActivity :BaseActivity(),AcceptDecline {
 
             if (bookingDashboardResModel.bookings.isEmpty()) {
                 btn_home_view_all?.visibility = View.GONE
-                showToast(ValidationMessage.NO_DATA_FOUND)
+                showToast(R.string.NO_DATA_FOUND)
             }
 
-            showToast(ValidationMessage.REQUEST_SUCCESSED)
+            showToast(R.string.REQUEST_SUCCESSED)
             return
         }
     }

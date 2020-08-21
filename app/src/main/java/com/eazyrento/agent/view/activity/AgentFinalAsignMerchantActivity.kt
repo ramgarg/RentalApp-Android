@@ -60,7 +60,7 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
     override fun <T> onSuccessApiResult(data: T) {
         if (data is JsonElement){
             MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(this,Constant.INTENT_SUCCESS_ADDED_PRODUCT,1)
-            showToast(ValidationMessage.REQUEST_SUCCESSED)
+            showToast(R.string.REQUEST_SUCCESSED)
             return
         }
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
@@ -116,10 +116,10 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
     private fun isvalidationCorrect():Boolean{
         if (assignMerchantsReqModel.merchant_list.isEmpty())
         {
-            showToast(ValidationMessage.SELECT_MERCHANT)
+            showToast(R.string.SELECT_MERCHANT)
             return false
         }else if (isQuantitiyCorrect().not()){
-            showToast(ValidationMessage.QUANTITY_LIMIT)
+            showToast(R.string.QUANTITY_LIMIT)
               return false
         }else
            return true

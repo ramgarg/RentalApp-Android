@@ -386,4 +386,84 @@
 
     <!--Validation messages all here-->
 
+    <string name="ORDER_UPDATE_BUTTON_CLICK_CONFIRM">Before clicking update button please update any data.</string>
+    <string name="THANKYOU_FOR_CONFIRMING">Thank you for confirming!</string>
+    <string name="ENTER_AMOUNT_PAYMENT">Please enter valid amount!</string>
+    <string name="PAYMENT_MODE">Please choose the payment method.</string>
+    <string name="ENTER_AMOUNT_PAYMENT_LESS_THEN_TO">Entered amount can not be grater then of pending amount!</string>
+    <string name="ADD_PRODUCT_AT_LEAST_ONE">Product list is empty...</string>
+    <string name="PLAY_SERVICE_APK_NOT_FOUND">Please install the Google play service APK to get accurate location.</string>
+    <string name="CURRENT_LOCATION_NOT_GETTING">There are some issue to getting location.Please restart your device or launch the Google Map once to get the location.</string>
+    <string name="SOCIAL_FAILED">Auth failed.Please try after some time.</string>
+    <string name="CHECK_INTERNET">Please check internet connectivity</string>
+    <string name="VALID_PASSWORD_LENGTH">Password must be between 8 and 15 characters.</string>
+    <string name="REGISTRATION_SUCCESS">Registration successful. Please Login now to continue.</string>
+    <string name="VALID_EMAIL_ID">Please enter a valid email address.</string>
+    <string name="VALID_EMAIL_PHONE">Please enter a valid email address or mobile number.</string>
+    <string name="ENTER_ALL_FIELDS">Please enter all fields</string>
+    <string name="CHECK_TERMS_POLICY">Please agree to the terms and conditions.</string>
+    <string name="VALID_USER_NAME">Please enter valid user name.It should be between 4 and 50 characters.</string>
+    <string name="SELECT_USER_ROLE">Please select user role</string>
+    <string name="NO_DATA_FOUND">No Record Found...</string>
+    <string name="VALID_OTD">Please enter valid OTP</string>
+    <string name="FORGOT_PASSWORD">Password reset instruction has been sent to your email/mobile number.</string>
+    <string name="PROFILE_UPDATE">Profile updated successfully!</string>
+    <string name="DOC_IS_NOT_UPLOADED">Doc is not uploaded.Please try it again.</string>
+    <string name="SELECT_AT_LIST_ONE_DAYS">Please select at list one day.</string>
+
+    <string name="FILL_QUANTITY">Assign quantity can\'t be zero.</string>
+    <string name="FILL_BOOKING_PRICE">Please enter booking price.</string>
+    <string name="SELECT_FUEL_TYPE_SPINNER">Please select fuel type.</string>
+    <string name="SELECT_DOCUMENT">Please select document type.</string>
+    <string name="UPLOAD_DOCUMENT">Please upload document.</string>
+    <string name="ON_SUBMIT_BUTTON_CLICK">Do you want to submit the product info?</string>
+    <string name="SUBMIT_TITLE">Submit</string>
+    <string name="LOGOUT_MESSAGE">You have been logout successfully</string>
+    <string name="OPT_SUCCESSED">OTP has sent.Please check your email to verify.</string>
+    <string name="REQUEST_SUCCESSED">Request has been submitted successfully!</string>
+    <string name="PRODUCT_DELETE_SUCCESS">Product has been deleted successfully!</string>
+    <string name="START_DATE">Please add start date.</string>
+    <string name="START_TIME">Please add start time.</string>
+    <string name="END_DATE">Please add end date.</string>
+    <string name="END_TIME">Please add end time.</string>
+    <string name="DATE_VALIDATION">Please select valid start and end date time.</string>
+    <string name="PREVIOSE_TIME_BUT_SAME_DATE_TIME">Booking can not be accepted of same start date but time before the current time.</string>
+    <string name="SELECT_ADRESS">Please select your address.</string>
+    <string name="BOOKING_SUBMITTED">Thank you for submitting the order. Our agent will contact you shortly.</string>
+    <string name="VALID_DESC">Write description</string>
+    <string name="VALID_ADDRESS">Please enter your Address Line.</string>
+    <string name="VALID_ADDRESS_TYPE">Please select address as type</string>
+    <string name="ADDRESS_ADDED">Address has been saved successfully!</string>
+    <string name="ADRESS_SEPREATED_BYCOMMA">Please enter a valid address like apartment,city,state and country name,separated by comma.</string>
+
+    <string name="ITEM_IS_IN_LIST">The product is already in list.</string>
+    <string name="SELECT_MERCHANT">Please assign merchant.</string>
+    <string name="OTP_VALID_NUMBER">Please enter verification code.</string>
+    <string name="VALID_NAME">Please enter product name.</string>
+    <string name="VALID_POWER">Please enter product power.</string>
+    <string name="VALID_PRICE">Please enter product price.</string>
+    <string name="VALID_FUEL_TYPE">Please enter fuel type.</string>
+    <string name="VALID_CAPACITY">Please enter capacity.</string>
+    <string name="ADMIN_NOTIFY">Detail has been sent to admin successfully!</string>
+    <string name="VALID_RATING">Please add some rating.</string>
+    <string name="FEEDBACK_SENT">Thanks for rating. Your feedback is valuable for us!</string>
+    <string name="PHONE_NUMBER">Please enter a valid mobile number.</string>
+    <string name="COUNTRY_CODE">Please enter country code.</string>
+    <string name="DATE_OF_BIRTH">Please enter your date of birth.</string>
+    <string name="GENDER">Please select your gender.</string>
+    <string name="DOCUMENT">Please select document type.</string>
+    <string name="COMPANY">Enter Company </string>
+    <string name="BUSINESS">Enter Business</string>
+    <string name="DESCRIPTON">Enter Description</string>
+    <string name="COUNTRY_CODE_VALIDATION">Please enter a valid dailing code.</string>
+    <string name="NO_ADRESS_FOUND">No address found. Please add new address.</string>
+    <string name="QUANTITY_LIMIT">Assign quantity can\'t be grater then or less then of booking quantity.</string>
+    <string name="QUANTITY_SET_LIMIT">You can\'t set value beyond limit.</string>
+    <string name="USER_NEED_LOGIN">User need to login</string>
+    <string name="SELECT_DATE">Select order date</string>
+    <string name="SELECT_STATUS">Select order status</string>
+    <string name="SELECT_ORDER_ID">Select order ID</string>
+    <string name="SELECT_PRODUCT_NAME">Select product name</string>
+    <string name="SAME_DATE_TIME_VALIDATION">The time gap between start time and end time should be more then 1 hour for same date</string>
+
 </resources>

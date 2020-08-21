@@ -66,7 +66,7 @@ class AgentSubOrderActivity :BaseActivity() {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
         if (data is JsonElement){
-            showToast(ValidationMessage.REQUEST_SUCCESSED)
+            showToast(R.string.REQUEST_SUCCESSED)
             MoveToAnotherComponent.moveToActivityNormal<AgentOrderSummaryActivity>(this)
             return
         }
@@ -88,7 +88,7 @@ class AgentSubOrderActivity :BaseActivity() {
         minus_quantity.setOnClickListener{
 
             if (data.quantity-1 <=0){
-                Common.showToast(this, ValidationMessage.FILL_QUANTITY)
+                Common.showToast(this, R.string.FILL_QUANTITY)
             }
             else {
                 data.quantity = data.quantity-1
@@ -195,7 +195,7 @@ class AgentSubOrderActivity :BaseActivity() {
     }
 
     private fun isValidated():Boolean{
-        return if(mStatus== null) {showToast(ValidationMessage.SELECT_STATUS);false } else true
+        return if(mStatus== null) {showToast(R.string.SELECT_STATUS);false } else true
     }
 
 }

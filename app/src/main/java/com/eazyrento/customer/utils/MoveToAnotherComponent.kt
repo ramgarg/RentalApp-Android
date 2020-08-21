@@ -7,6 +7,7 @@ import android.os.Parcelable
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.eazyrento.EazyRantoApplication
+import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.customer.dashboard.view.activity.*
 import com.eazyrento.customer.webpages.TermsConditionActivity
@@ -91,7 +92,7 @@ class MoveToAnotherComponent {
 
         fun onLogout(context: Context, key: String,value: Int) {
 
-            Common.showToast(context,ValidationMessage.LOGOUT_MESSAGE)
+            Common.showToast(context,R.string.LOGOUT_MESSAGE)
 
             EazyRantoApplication.onLogoutUpdateSession()
 

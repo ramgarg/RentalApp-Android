@@ -69,7 +69,7 @@ class LoginUserActivity : AppBizLogin() {
         if (EazyRantoApplication.isUserLogin())
             sendUserReleventPanel(intent,Session.getInstance(EazyRantoApplication.context)?.getUserRole())
         else
-            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,ValidationMessage.USER_NEED_LOGIN)
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,Constant.USER_NEED_LOGIN)
     }
 
 
@@ -196,7 +196,7 @@ class LoginUserActivity : AppBizLogin() {
 
             return
         }
-        showToast(ValidationMessage.SOCIAL_FAILED)
+        showToast(R.string.SOCIAL_FAILED)
 
     }
 

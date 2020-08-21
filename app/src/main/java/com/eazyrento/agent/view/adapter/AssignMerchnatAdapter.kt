@@ -58,7 +58,7 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
             val value = convertToInt( holder.item_quantity.text.toString())
 
             if (value == convertToInt(holder.__quantity.text.removePrefix(context.resources.getString(R.string.truck_quantity)).toString())){
-                Common.showToast(context,ValidationMessage.QUANTITY_SET_LIMIT)
+                Common.showToast(context,R.string.QUANTITY_SET_LIMIT)
             }
             else {
                 holder.item_quantity.text = (value + 1).toString()
@@ -71,7 +71,7 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
             val value = convertToInt( holder.item_quantity.text.toString())
 
             if (value-1<1){
-                Common.showToast(context,ValidationMessage.FILL_QUANTITY)
+                Common.showToast(context,R.string.FILL_QUANTITY)
 
             }else {
 

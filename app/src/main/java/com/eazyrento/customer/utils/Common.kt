@@ -197,7 +197,11 @@ class Common {
             }
         }
 
-        fun showToast(context: Context,msg: String){
+        fun showToast(context: Context,msg: Int){
+            Toast.makeText(context,msg,Toast.LENGTH_LONG).show()
+        }
+
+        fun showToastString(context: Context,msg: String){
             Toast.makeText(context,msg,Toast.LENGTH_LONG).show()
         }
 

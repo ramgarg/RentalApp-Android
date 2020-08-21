@@ -79,10 +79,14 @@ open abstract class BaseActivity: AppCompatActivity(),
             dialogProgrss =null
         }
     }
-    protected fun showToast(msg: String){
+    protected fun showToast(msg: Int){
         Toast.makeText(this,msg, Toast.LENGTH_LONG).show()
     }
-    protected fun showDialog(title: String, msg:String, context: Activity, layout:Int):Dialog {
+
+    protected fun showToastString(msg: String){
+        Toast.makeText(this,msg, Toast.LENGTH_LONG).show()
+    }
+    protected fun showDialog(title: Int, msg:String, context: Activity, layout:Int):Dialog {
         val dialog = Dialog(context)
         dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
@@ -133,7 +137,7 @@ open abstract class BaseActivity: AppCompatActivity(),
             return LiveDataActivityClass(this)
         }
         else{
-            showToast(ValidationMessage.CHECK_INTERNET)
+            showToast(R.string.CHECK_INTERNET)
         }
         return null
     }

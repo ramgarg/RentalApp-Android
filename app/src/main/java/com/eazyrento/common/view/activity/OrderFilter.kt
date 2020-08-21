@@ -65,10 +65,10 @@ class OrderFilter : BaseActivity() {
 
                 val size = it.size+1
 
-                arrayStatus = Array(size) {ValidationMessage.SELECT_STATUS}
-                arrayOrderID = Array(size) {ValidationMessage.SELECT_ORDER_ID}
-                arrayProductName = Array(size) {ValidationMessage.SELECT_PRODUCT_NAME}
-                arrayDate = Array(size) {ValidationMessage.SELECT_DATE}
+                arrayStatus = Array(size) {resources.getString(R.string.SELECT_STATUS)}
+                arrayOrderID = Array(size) {resources.getString(R.string.SELECT_ORDER_ID)}
+                arrayProductName = Array(size) {resources.getString(R.string.SELECT_PRODUCT_NAME)}
+                arrayDate = Array(size) {resources.getString(R.string.SELECT_DATE)}
 
 
                 for (i in 0 until size-1) {

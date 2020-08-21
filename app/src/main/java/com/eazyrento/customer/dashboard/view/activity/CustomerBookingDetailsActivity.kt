@@ -97,7 +97,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
                 bookingDatePicker(tv_end_date_book,EnumDateType.BOOKING_END_DATE)
 
             }catch (e:java.lang.Exception){
-                showToast(ValidationMessage.START_DATE)
+                showToast(R.string.START_DATE)
                 e.printStackTrace()
             }
         }
@@ -123,7 +123,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
         minus_quantity.setOnClickListener {
 
             if (objBookingReqModelItem.quantity-1 <=0){
-                showToast(ValidationMessage.FILL_QUANTITY)
+                showToast(R.string.FILL_QUANTITY)
             }
             else item_quantity.text= ""+(--objBookingReqModelItem.quantity)
         }
@@ -137,31 +137,31 @@ class CustomerBookingDetailsActivity : BaseActivity() {
     fun isNotRequiredValidation():Boolean{
 
         when{
-            tv_st_date_book.tag.toString().isEmpty()->showToast(ValidationMessage.START_DATE)
-            tv_st_time_book.tag.toString().isEmpty()->showToast(ValidationMessage.START_TIME)
-            tv_end_date_book.tag.toString().isEmpty()->showToast(ValidationMessage.END_DATE)
-            tv_end_time_book.tag.toString().isEmpty()->showToast(ValidationMessage.END_TIME)
+            tv_st_date_book.tag.toString().isEmpty()->showToast(R.string.START_DATE)
+            tv_st_time_book.tag.toString().isEmpty()->showToast(R.string.START_TIME)
+            tv_end_date_book.tag.toString().isEmpty()->showToast(R.string.END_DATE)
+            tv_end_time_book.tag.toString().isEmpty()->showToast(R.string.END_TIME)
 
 
             // end date can not be less then start date and calclulate days
             commonDatePiker.calculateDatesDiffWithString(tv_st_date_book.tag.toString(),tv_end_date_book.tag.toString()).let { objBookingReqModelItem.booking_days=it
-                objBookingReqModelItem.booking_days}<0->{showToast(ValidationMessage.DATE_VALIDATION)}
+                objBookingReqModelItem.booking_days}<0->{showToast(R.string.DATE_VALIDATION)}
 
             //same time and end time diffrance calculation
             objBookingReqModelItem.booking_days==0L && mCommonTimePiker.
             isValidatedForXHour(tv_st_date_book.tag.toString(),tv_st_time_book.tag.toString(),
                 tv_end_date_book.tag.toString(),tv_end_time_book.tag.toString()).not()/*<TimeConstant.TIME_GAP_BETWEEN_SAME_DATE*/ ->{
-                showToast(ValidationMessage.SAME_DATE_TIME_VALIDATION)
+                showToastString(resources.getString(R.string.SAME_DATE_TIME_VALIDATION))
             }
 
             // booking not acceptal at prev time......
             commonDatePiker.diffranceBetweenCureentTimeAndPreviousTimeSameDate(tv_st_date_book.tag.toString(),tv_st_time_book.tag.toString())->{
-                showToast(ValidationMessage.PREVIOSE_TIME_BUT_SAME_DATE_TIME)
+                showToast(R.string.PREVIOSE_TIME_BUT_SAME_DATE_TIME)
             }
 
 
-            item_quantity.text.toString().toInt()<=0 ->showToast(ValidationMessage.FILL_QUANTITY)
-            tv_work_location.text.isEmpty() ->showToast(ValidationMessage.SELECT_ADRESS)
+            item_quantity.text.toString().toInt()<=0 ->showToast(R.string.FILL_QUANTITY)
+            tv_work_location.text.isEmpty() ->showToast(R.string.SELECT_ADRESS)
 
 
             else-> {
@@ -212,7 +212,7 @@ class CustomerBookingDetailsActivity : BaseActivity() {
         objBookingReqModelItem.with_driver = checkbox_with_driver.isChecked
 
         if (isSameProductHavingSameAdressContains()) {
-            showToast(ValidationMessage.ITEM_IS_IN_LIST)
+            showToast(R.string.ITEM_IS_IN_LIST)
         }
         else {
             objBookingReqModelItem.address_id = mAddressOBJ?.id

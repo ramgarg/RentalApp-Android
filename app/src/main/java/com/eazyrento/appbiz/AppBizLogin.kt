@@ -22,18 +22,18 @@ abstract class AppBizLogin: BaseActivity(){
         }
 
         if(user_role==null){
-            showToast(ValidationMessage.SELECT_USER_ROLE)
+            showToast(R.string.SELECT_USER_ROLE)
             return false
         }
 
         if (editTextUserName.text.toString().isEmpty()) {
-             showToast(ValidationMessage.VALID_USER_NAME)
+             showToast(R.string.VALID_USER_NAME)
         }
 
         else if (editTextUserName.text.toString().length< resources.getInteger(R.integer.full_name_min_len)) {
-             showToast(ValidationMessage.VALID_USER_NAME)
+             showToast(R.string.VALID_USER_NAME)
         } else if(!checkBoxTerms.isChecked){
-             showToast(ValidationMessage.CHECK_TERMS_POLICY)
+             showToast(R.string.CHECK_TERMS_POLICY)
         }else{
             return true
         }
@@ -47,12 +47,12 @@ abstract class AppBizLogin: BaseActivity(){
 
             email.text.toString().isEmpty()->{
                 email.requestFocus()
-                showToast(ValidationMessage.VALID_EMAIL_PHONE)
+                showToast(R.string.VALID_EMAIL_PHONE)
             }
 
             password.text.toString().isEmpty() || Validator.isPasswordValid(password.text.toString()).not()->{
                 password.requestFocus()
-                showToast(ValidationMessage.VALID_PASSWORD_LENGTH)
+                showToast(R.string.VALID_PASSWORD_LENGTH)
             }
 
             Validator.isEmailValid(email.text.toString()).not()->{
@@ -61,7 +61,7 @@ abstract class AppBizLogin: BaseActivity(){
 
                 if (isValidPhoneNumber(""+phoneNumberFormat.phoneNumber?.nationalNumber,this).not()){
 
-                    showToast(ValidationMessage.VALID_EMAIL_PHONE)
+                    showToast(R.string.VALID_EMAIL_PHONE)
                     email.requestFocus()
                 }
                 else{

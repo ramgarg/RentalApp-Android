@@ -72,7 +72,7 @@ abstract class DashboardBaseFragment:
 
             }
 
-            Common.showToast(requireContext(),ValidationMessage.REQUEST_SUCCESSED)
+            Common.showToast(requireContext(),R.string.REQUEST_SUCCESSED)
             return
         }
 

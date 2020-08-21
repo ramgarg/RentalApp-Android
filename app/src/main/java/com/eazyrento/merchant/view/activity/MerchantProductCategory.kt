@@ -107,10 +107,10 @@ class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
         if (data is JsonElement){
             listMerchantCatItem.removeAt(deletePosition)
             rec_all_pro_home.adapter?.notifyDataSetChanged()
-            showToast(ValidationMessage.PRODUCT_DELETE_SUCCESS)
+            showToast(R.string.PRODUCT_DELETE_SUCCESS)
 
             if (listMerchantCatItem.size==0){
-                showToast(ValidationMessage.NO_DATA_FOUND)
+                showToast(R.string.NO_DATA_FOUND)
             }
 
         }

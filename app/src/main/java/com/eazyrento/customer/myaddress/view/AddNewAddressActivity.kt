@@ -121,7 +121,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
                 // current locatioon varifying....
                 locationPermissionUser.verifingPermission(verifying)
             }
-            else -> showToast(ValidationMessage.PLAY_SERVICE_APK_NOT_FOUND)
+            else -> showToast(R.string.PLAY_SERVICE_APK_NOT_FOUND)
         }
     }
 
@@ -304,7 +304,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
                     setData(location.latitude, location.longitude)
                     return@addOnSuccessListener
                 }
-                showToast(ValidationMessage.CURRENT_LOCATION_NOT_GETTING)
+                showToast(R.string.CURRENT_LOCATION_NOT_GETTING)
             }
         }
     }
@@ -313,11 +313,11 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     private fun isValidationCorrect(): Boolean {
         if (ed_address.text.toString().isEmpty() ){
-            showToast(ValidationMessage.VALID_ADDRESS)
+            showToast(R.string.VALID_ADDRESS)
             return false
         }
         if (btn_home_active.visibility != View.VISIBLE && btn_other_active.visibility != View.VISIBLE && btn_work_active.visibility != View.VISIBLE){
-            showToast(ValidationMessage.VALID_ADDRESS_TYPE)
+            showToast(R.string.VALID_ADDRESS_TYPE)
             return false
         }
         return true
@@ -354,7 +354,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
                     it.country= list[3]
 
                 }catch (e:Exception){
-                    showToast(ValidationMessage.ADRESS_SEPREATED_BYCOMMA)
+                    showToast(R.string.ADRESS_SEPREATED_BYCOMMA)
                     e.printStackTrace()
                     return false
                 }
@@ -446,7 +446,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         data?.let {
 
-            showToast(ValidationMessage.ADDRESS_ADDED)
+            showToast(R.string.ADDRESS_ADDED)
             sendIntentToCallerAct(Constant.KEY_UPDATE_DELETE_CREATE_REQUEST,Constant.INTENT_UPDATE_DELETE_CREATE_REQUEST,false)
         }
     }

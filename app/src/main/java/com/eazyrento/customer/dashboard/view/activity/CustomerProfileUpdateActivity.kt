@@ -2,6 +2,7 @@ package com.eazyrento.customer.dashboard.view.activity
 
 import android.os.Bundle
 import android.view.View
+import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.customer.profile.UpdateProfileBase
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -19,8 +20,8 @@ class CustomerProfileUpdateActivity : UpdateProfileBase() {
         if(super.isProfileValidationCorrect().not())
             return false
         when{
-            ed_company_name.text.toString().isEmpty()->showToast(ValidationMessage.COMPANY)
-            ed_des.text.toString().isEmpty()->showToast(ValidationMessage.DESCRIPTON)
+            ed_company_name.text.toString().isEmpty()->showToast(R.string.COMPANY)
+            ed_des.text.toString().isEmpty()->showToast(R.string.DESCRIPTON)
             else -> return true
         }
         return false

@@ -50,7 +50,7 @@ abstract class MyBookingBaseFragment: BaseFragment(), BookingDataHolderBinder {
         if (listCustomerBooking.size<=0)
         {
             Common.showToast(requireContext(),
-                ValidationMessage.NO_DATA_FOUND)
+                R.string.NO_DATA_FOUND)
             return
         }
         rec_customer_bookings.layoutManager = LinearLayoutManager(requireActivity(),

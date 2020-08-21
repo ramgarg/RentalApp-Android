@@ -93,7 +93,7 @@ open class MyAddressListActivity : BaseActivity() {
 // no address found
 
         if(listOfAddress.size==0){
-            showToast(ValidationMessage.NO_ADRESS_FOUND)
+            showToast(R.string.NO_ADRESS_FOUND)
         }
 
         rec_my_address.adapter =

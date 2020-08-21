@@ -58,11 +58,11 @@ class AgentPaymentActivity : PaymentBaseActivity() {
 
       override fun checkValidation(): Boolean {
           if (ed_enter_amount_agent.text.isEmpty()) {
-              showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT)
+              showToast(R.string.ENTER_AMOUNT_PAYMENT)
               return false
           }
           else if (amountToPay.compareTo(removeDollarSign(ed_enter_amount_agent.text.toString()).toDouble())<0){
-              showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT_LESS_THEN_TO)
+              showToast(R.string.ENTER_AMOUNT_PAYMENT_LESS_THEN_TO)
               return false
           }
           return true

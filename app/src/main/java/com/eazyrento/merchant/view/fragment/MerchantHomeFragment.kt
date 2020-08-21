@@ -58,7 +58,7 @@ class MerchantHomeFragment : BaseFragment() {
 
                 isDeleteProject = false
 
-                Common.showToast(requireContext(),ValidationMessage.PRODUCT_DELETE_SUCCESS)
+                Common.showToast(requireContext(),R.string.PRODUCT_DELETE_SUCCESS)
 
                 (requireActivity() as MerchantMainActivity).setHomeFragMent()
 

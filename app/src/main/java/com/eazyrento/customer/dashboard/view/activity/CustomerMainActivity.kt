@@ -90,7 +90,7 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
     }
 
     override fun helpAndSupport() {
-        showToast(resources.getString(R.string.under_development))
+        showToast(R.string.under_development)
     }
 
     override fun addNotes() {

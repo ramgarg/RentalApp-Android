@@ -164,6 +164,8 @@ interface Constant{
         const val DEEPLINK_VALUE = "deep_link"
         const val REQUEST_CODE_PENDING_INTENT = 2011
 
+        const val USER_NEED_LOGIN = "User need to login"
+
 
     }
 }

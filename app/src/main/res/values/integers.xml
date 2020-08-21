@@ -5,6 +5,7 @@
 
     <integer name="phone_min_len">7</integer>
     <integer name="phone_max_len">13</integer>
+    <integer name="time_gap_between_same_date">1</integer>
 
     <integer name="payment_amount_max_len">13</integer>
 

@@ -84,7 +84,7 @@ class OTPActivity :BaseActivity(){
              passcode =ed_otp.text.toString().toInt()
         }
         catch (e:NumberFormatException){
-            showToast(ValidationMessage.OTP_VALID_NUMBER)
+            showToast(R.string.OTP_VALID_NUMBER)
             return
         }
 
@@ -108,7 +108,7 @@ class OTPActivity :BaseActivity(){
     private fun checkValidationFailed(userID: Int, passcode: Int):Boolean{
 
         if(userID==-1 || passcode<=0){
-            Toast.makeText(this,ValidationMessage.VALID_OTD,Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,R.string.VALID_OTD,Toast.LENGTH_SHORT).show()
             return true
         }
         return false
@@ -120,7 +120,7 @@ class OTPActivity :BaseActivity(){
 
         if (isResendOtpClcik){
             isResendOtpClcik = false
-            showToast(ValidationMessage.OPT_SUCCESSED)
+            showToast(R.string.OPT_SUCCESSED)
             visibleResendOTPButton()
             return
         }
@@ -128,7 +128,7 @@ class OTPActivity :BaseActivity(){
 
         if (data is OTPResponse){
 //             {"status":200}
-            showToast(ValidationMessage.REGISTRATION_SUCCESS)
+            showToast(R.string.REGISTRATION_SUCCESS)
             MoveToAnotherComponent.moveToActivityWithIntentValue<LoginUserActivity>(this,Constant.INTENT_OTP_TO_LOGIN,1)
 
         }

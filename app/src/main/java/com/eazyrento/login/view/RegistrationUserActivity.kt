@@ -68,7 +68,7 @@ class RegistrationUserActivity : AppBizLogin(){
 
         if (!(user_role.equals(UserInfoAPP.CUSTOMER)) && (selectBase64String==null || selectProfID==null))
         {
-            showToast(ValidationMessage.SELECT_DOCUMENT)
+            showToast(R.string.SELECT_DOCUMENT)
             return false
         }
         return true

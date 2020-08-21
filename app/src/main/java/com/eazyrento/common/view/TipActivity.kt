@@ -71,10 +71,10 @@ class TipActivity : PaymentBaseActivity(){
     override fun checkValidation(): Boolean {
 
         if (modeOfPayment.isEmpty()){
-            showToast(ValidationMessage.PAYMENT_MODE)
+            showToast(R.string.PAYMENT_MODE)
             return false
         }else if (ed_enter_amount.text.isEmpty()) {
-            showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT)
+            showToast(R.string.ENTER_AMOUNT_PAYMENT)
             return false
         }
         return true

@@ -10,10 +10,10 @@ class ErrorHandling<T>(val context: Context?){
     fun onError(dataWrapper: DataWrapper<T>) {
 
         if(dataWrapper.error!=null){
-            context?.let { Common.showToast(it,dataWrapper.error.message()+"-"+dataWrapper.error.errorBody()?.string()) }
+            context?.let { Common.showToastString(it,dataWrapper.error.message()+"-"+dataWrapper.error.errorBody()?.string()) }
         }
         else if(dataWrapper.apiException!=null){
-            context?.let { Common.showToast(it,dataWrapper.apiException.toString()) }
+            context?.let { Common.showToastString(it,dataWrapper.apiException.toString()) }
         }
     }
 

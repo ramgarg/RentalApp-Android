@@ -49,7 +49,7 @@ class WishListFragment : BaseFragment(), DeleteAndViewDetails {
 
             if (data.isEmpty())
             {
-                Common.showToast(requireContext(),ValidationMessage.NO_DATA_FOUND)
+                Common.showToast(requireContext(),R.string.NO_DATA_FOUND)
                 return
             }
 

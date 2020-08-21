@@ -77,7 +77,7 @@ open abstract class PaymentBaseActivity : BaseActivity() {
     fun onSubmitClick(view: View){
         if (checkValidation()){
             
-            showDialog(getString(R.string.payment),getString(R.string.thank_you),this,R.layout.thank_you_pop).let {dailog->
+            showDialog(R.string.payment,resources.getString(R.string.thank_you),this,R.layout.thank_you_pop).let {dailog->
                 dailog.btn_cancle.run {
                     visibility = View.VISIBLE
                     setOnClickListener {
@@ -91,11 +91,11 @@ open abstract class PaymentBaseActivity : BaseActivity() {
 
      open fun checkValidation(): Boolean {
             if (ed_enter_amount.text.isEmpty()) {
-                showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT)
+                showToast(R.string.ENTER_AMOUNT_PAYMENT)
                 return false
             }
         else if (amountToPay.compareTo(removeDollarSign(ed_enter_amount.text.toString()).toDouble())<0){
-                showToast(ValidationMessage.ENTER_AMOUNT_PAYMENT_LESS_THEN_TO)
+                showToast(R.string.ENTER_AMOUNT_PAYMENT_LESS_THEN_TO)
                 return false
             }
        return true

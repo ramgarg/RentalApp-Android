@@ -79,7 +79,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
       override fun checkValidation(): Boolean {
 
           if (modeOfPayment.isEmpty()){
-              showToast(ValidationMessage.PAYMENT_MODE)
+              showToast(R.string.PAYMENT_MODE)
               return false
           }
 
@@ -120,7 +120,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
     }
 
     fun paymentGetwayCallback(msg:String){
-        showToast(msg)
+        showToastString(msg)
         MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
     }
 

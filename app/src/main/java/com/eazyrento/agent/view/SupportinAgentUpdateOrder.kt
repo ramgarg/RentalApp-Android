@@ -1,6 +1,8 @@
 package com.eazyrento.agent.view
 
+import android.content.res.Resources
 import android.widget.TextView
+import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.model.modelclass.AgentUpdateOrderReqModel
 import com.eazyrento.agent.view.activity.AgentOrderSummaryActivity
@@ -57,7 +59,7 @@ class SupportinAgentUpdateOrder(val activity: AgentOrderSummaryActivity) {
                 bookingDatePicker(activity.tv_end_date_sel, EnumDateType.BOOKING_END_DATE)
 
             }catch (e:java.lang.Exception){
-                showToast(activity,ValidationMessage.START_DATE)
+                showToast(activity,R.string.START_DATE)
                 e.printStackTrace()
             }
         }
@@ -110,7 +112,7 @@ class SupportinAgentUpdateOrder(val activity: AgentOrderSummaryActivity) {
 
     fun onUpdateClick(updateOrder:UpdateOrderInterface){
         if (mIsClickedUpdateButton.not()){
-            showToast(activity,ValidationMessage.ORDER_UPDATE_BUTTON_CLICK_CONFIRM)
+            showToast(activity,R.string.ORDER_UPDATE_BUTTON_CLICK_CONFIRM)
             return
         }
         if (validationCorrect()) {
@@ -125,13 +127,13 @@ class SupportinAgentUpdateOrder(val activity: AgentOrderSummaryActivity) {
         var bookingDays = 0L;
         return(when {
 
-            activity.tv_st_date_sel.tag.toString().isEmpty()->{showToast(activity,ValidationMessage.START_DATE)
+            activity.tv_st_date_sel.tag.toString().isEmpty()->{showToast(activity,R.string.START_DATE)
                 false }
-            activity.tv_st_time_sel.tag.toString().isEmpty()->{ showToast(activity,ValidationMessage.START_TIME)
+            activity.tv_st_time_sel.tag.toString().isEmpty()->{ showToast(activity,R.string.START_TIME)
                 false }
-            activity.tv_end_date_sel.tag.toString().isEmpty()->{ showToast(activity,ValidationMessage.END_DATE)
+            activity.tv_end_date_sel.tag.toString().isEmpty()->{ showToast(activity,R.string.END_DATE)
                 false }
-            activity.tv_end_time_sel.tag.toString().isEmpty()->{ showToast(activity,ValidationMessage.END_TIME)
+            activity.tv_end_time_sel.tag.toString().isEmpty()->{ showToast(activity,R.string.END_TIME)
                 false }
 
             commonDatePiker.calculateDatesDiffWithString(
@@ -141,7 +143,7 @@ class SupportinAgentUpdateOrder(val activity: AgentOrderSummaryActivity) {
                 bookingDays = it
                 bookingDays
             } < 0L -> {
-                showToast(activity,ValidationMessage.DATE_VALIDATION)
+                showToast(activity,R.string.DATE_VALIDATION)
                 false
             }
 
@@ -150,7 +152,7 @@ class SupportinAgentUpdateOrder(val activity: AgentOrderSummaryActivity) {
                 activity.tv_st_date_sel.tag.toString(),activity.tv_st_time_sel.tag.toString(),
                 activity.tv_end_date_sel.tag.toString(),activity.tv_end_time_sel.tag.toString()
             ).not() -> {
-                showToast(activity,ValidationMessage.SAME_DATE_TIME_VALIDATION)
+               // showToast(activity,ValidationMessage.SAME_DATE_TIME_VALIDATION)
                 false
             }
             else ->true

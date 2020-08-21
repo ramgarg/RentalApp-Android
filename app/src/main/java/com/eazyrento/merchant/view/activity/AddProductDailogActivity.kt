@@ -134,7 +134,7 @@ class AddProductDailogActivity:BaseActivity() {
 
     fun onMinusClick(view: View){
         if (item_quantity.text.toString().toInt()-1 < 1){
-            showToast(ValidationMessage.FILL_QUANTITY)
+            showToast(R.string.FILL_QUANTITY)
         }else {
             merchantAddProductReqModel.quantity--
             item_quantity.text = merchantAddProductReqModel.quantity.toString()
@@ -157,7 +157,7 @@ class AddProductDailogActivity:BaseActivity() {
      if (isRequireValidationFailed(merchantAddProductReqModel)){
          return
      }
-     showDialog(ValidationMessage.SUBMIT_TITLE,ValidationMessage.ON_SUBMIT_BUTTON_CLICK,this,R.layout.thank_you_pop)
+     showDialog(R.string.SUBMIT_TITLE,resources.getString(R.string.ON_SUBMIT_BUTTON_CLICK),this,R.layout.thank_you_pop)
 
     }
    private fun submitCallAPI(){
@@ -195,29 +195,29 @@ class AddProductDailogActivity:BaseActivity() {
         if (!listOf<Int>(obj.availability_days.sun,obj.availability_days.mon,obj.availability_days.tue
             ,obj.availability_days.wed,obj.availability_days.thu,obj.availability_days.fri,obj.availability_days.sat).any(){it==1}) {
 
-            showToast(ValidationMessage.SELECT_AT_LIST_ONE_DAYS)
+            showToast(R.string.SELECT_AT_LIST_ONE_DAYS)
             return true
 
         }
         if (obj.quantity==0)
         {
-            showToast(ValidationMessage.FILL_QUANTITY)
+            showToast(R.string.FILL_QUANTITY)
             return true
         }
         if (ed_price.text.isEmpty() || ed_price.text.toString().toDouble()==0.0){
-            showToast(ValidationMessage.FILL_BOOKING_PRICE)
+            showToast(R.string.FILL_BOOKING_PRICE)
             return true
         }
         if (obj.variant.equals("")){
-            showToast(ValidationMessage.SELECT_FUEL_TYPE_SPINNER)
+            showToast(R.string.SELECT_FUEL_TYPE_SPINNER)
             return true
         }
         if (obj.document_name.equals("")){
-            showToast(ValidationMessage.SELECT_DOCUMENT)
+            showToast(R.string.SELECT_DOCUMENT)
             return true
         }
         if (obj.attach_document.equals("")){
-            showToast(ValidationMessage.UPLOAD_DOCUMENT)
+            showToast(R.string.UPLOAD_DOCUMENT)
             return true
         }
 
@@ -303,7 +303,7 @@ class AddProductDailogActivity:BaseActivity() {
                 merchantAddProductReqModel.attach_document = base64
 //                merchantAddProductReqModel.attach_document = ""
             }else{
-                showToast(ValidationMessage.DOC_IS_NOT_UPLOADED)
+                showToast(R.string.DOC_IS_NOT_UPLOADED)
             }
 
         }
@@ -321,7 +321,7 @@ class AddProductDailogActivity:BaseActivity() {
         if (data is JsonElement) {
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, data.toString())
 //            if (edit_product_ID ==DEFUALT_VALUE) {
-                showToast(ValidationMessage.REQUEST_SUCCESSED)
+                showToast(R.string.REQUEST_SUCCESSED)
 //        {"status":201}
                 MoveToAnotherComponent.moveToActivityWithIntentValue<MerchantMainActivity>(
                     this,

@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
@@ -114,7 +115,7 @@ class PhoneNumberFormat(val context: Context) {
 
     fun isValidCountryCode(code: String): Boolean {
         if (code.isEmpty() || code.length <= 1) {
-            Common.showToast(context, ValidationMessage.COUNTRY_CODE_VALIDATION)
+            Common.showToast(context, R.string.COUNTRY_CODE_VALIDATION)
             return false
         } else
             return true
@@ -157,7 +158,7 @@ class PhoneNumberFormat(val context: Context) {
             return phoneNumber
 
         } catch (e: NumberParseException) {
-            Common.showToast(context, e.toString())
+            Toast.makeText(context,e.toString(), Toast.LENGTH_LONG).show()
             return null
         }
 

@@ -62,7 +62,7 @@ class ForgotPasswordActivity :BaseActivity() {
 
         return when{
            email.isNotEmpty() && (Validator.isEmailValid(email) || isValidPhoneNumber(email,this)) -> false
-           else->{Toast.makeText(this,ValidationMessage.VALID_EMAIL_PHONE, Toast.LENGTH_SHORT).show()
+           else->{Toast.makeText(this,R.string.VALID_EMAIL_PHONE, Toast.LENGTH_SHORT).show()
                true}
         }
 
@@ -76,7 +76,7 @@ class ForgotPasswordActivity :BaseActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
 
-        Toast.makeText(this,ValidationMessage.FORGOT_PASSWORD,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,R.string.FORGOT_PASSWORD,Toast.LENGTH_SHORT).show()
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 

@@ -4,7 +4,7 @@ import com.eazyrento.supporting.TimeConstant
 
 interface ValidationMessage{
     companion object{
-        const val ORDER_UPDATE_BUTTON_CLICK_CONFIRM = "Before clicking update button please update any data."
+        /*const val ORDER_UPDATE_BUTTON_CLICK_CONFIRM = "Before clicking update button please update any data."
         const val THANKYOU_FOR_CONFIRMING = "Thank you for confirming!"
         const val ENTER_AMOUNT_PAYMENT = "Please enter valid amount!"
         const val PAYMENT_MODE = "Please choose the payment method."
@@ -60,9 +60,11 @@ interface ValidationMessage{
         const val END_DATE = "Please add end date."
         const val END_TIME = "Please add end time."
 
-        const val DATE_VALIDATION = "Please select valid start and end date time."
-        const val SAME_DATE_TIME_VALIDATION = "The time gap between start time and end time should be more then "+TimeConstant.TIME_GAP_BETWEEN_SAME_DATE+" hour for same date"
-        const val PREVIOSE_TIME_BUT_SAME_DATE_TIME = "Booking can not be accepted of same start date but time before the current time."
+        const val DATE_VALIDATION = "Please select valid start and end date time."*/
+
+       // const val SAME_DATE_TIME_VALIDATION = "The time gap between start time and end time should be more then "+TimeConstant.TIME_GAP_BETWEEN_SAME_DATE+" hour for same date"
+
+     /*   const val PREVIOSE_TIME_BUT_SAME_DATE_TIME = "Booking can not be accepted of same start date but time before the current time."
 
         const val SELECT_ADRESS = "Please select your address."
 
@@ -113,12 +115,15 @@ interface ValidationMessage{
 
         const val USER_NEED_LOGIN = "User need to login"
 
+
+
+
         // filter validation and message
         const val SELECT_DATE = "Select order date"
         const val SELECT_STATUS = "Select order status"
         const val SELECT_ORDER_ID = "Select order ID"
         const val SELECT_PRODUCT_NAME = "Select product name"
-
+*/
 
 
     }

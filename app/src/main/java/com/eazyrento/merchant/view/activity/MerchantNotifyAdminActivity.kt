@@ -37,12 +37,12 @@ class MerchantNotifyAdminActivity : BaseActivity() {
     private fun checkValidation(): Boolean {
 
         when {
-            ed_name.text.toString().isEmpty()->showToast(ValidationMessage.VALID_NAME)
-            ed_capacity.text.toString().isEmpty()->showToast(ValidationMessage.VALID_CAPACITY)
-            ed_fuel_type.text.toString().isEmpty()->showToast(ValidationMessage.VALID_FUEL_TYPE)
-            ed_power.text.toString().isEmpty()->showToast(ValidationMessage.VALID_POWER)
-            ed_price.text.toString().isEmpty()->showToast(ValidationMessage.VALID_PRICE)
-            ed_des.text.toString().isEmpty()->showToast(ValidationMessage.VALID_DESC)
+            ed_name.text.toString().isEmpty()->showToast(R.string.VALID_NAME)
+            ed_capacity.text.toString().isEmpty()->showToast(R.string.VALID_CAPACITY)
+            ed_fuel_type.text.toString().isEmpty()->showToast(R.string.VALID_FUEL_TYPE)
+            ed_power.text.toString().isEmpty()->showToast(R.string.VALID_POWER)
+            ed_price.text.toString().isEmpty()->showToast(R.string.VALID_PRICE)
+            ed_des.text.toString().isEmpty()->showToast(R.string.VALID_DESC)
 
             else-> {
                 return false
@@ -71,7 +71,7 @@ class MerchantNotifyAdminActivity : BaseActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
         data?.let {
-            showToast(ValidationMessage.ADMIN_NOTIFY)
+            showToast(R.string.ADMIN_NOTIFY)
             finishCurrentActivity(Activity.RESULT_OK)
 
                 //MoveToAnotherComponent.moveToListAddressActivity(this)

@@ -48,7 +48,7 @@ open abstract class BaseFragment:Fragment(), ApiResult,
             return LiveDataFragmentClass(this)
         }
         else{
-            Common.showToast(requireActivity(),ValidationMessage.CHECK_INTERNET)
+            Common.showToast(requireActivity(),R.string.CHECK_INTERNET)
         }
         return null
     }

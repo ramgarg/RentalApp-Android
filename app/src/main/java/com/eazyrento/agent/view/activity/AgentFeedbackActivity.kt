@@ -50,7 +50,7 @@ class AgentFeedbackActivity: BaseActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
         data?.let {
-            showToast(ValidationMessage.FEEDBACK_SENT)
+            showToast(R.string.FEEDBACK_SENT)
             finishCurrentActivity(Activity.RESULT_OK)
         }
     }
@@ -58,7 +58,7 @@ class AgentFeedbackActivity: BaseActivity() {
     private fun checkValidation(): Boolean {
 
         if (ed_rating.text.toString().isEmpty() || rating_bar.rating==0.0f){
-            showToast(ValidationMessage.VALID_RATING)
+            showToast(R.string.VALID_RATING)
             return true
         }
         return false

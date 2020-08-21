@@ -83,7 +83,7 @@ class ProfileData {
             )
         }
          else{
-            Common.showToast(activity,ValidationMessage.CHECK_INTERNET)
+            Common.showToast(activity,R.string.CHECK_INTERNET)
         }
     }
 
