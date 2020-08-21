@@ -44,6 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_15sdp"
+            android:layout_gravity="start"
+            android:textAlignment="viewStart"
             android:layout_marginStart="@dimen/_30sdp"
             android:fontFamily="@font/bree_serif"
             android:textColor="@color/black"

@@ -202,7 +202,8 @@
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 android:layout_height="wrap_content"
                 android:nextFocusDown="@id/email_phone_lyt"
-
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 >
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -212,6 +213,8 @@
                     android:inputType="textPersonName"
                     android:fontFamily="@font/bree_serif"
                     android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="start"
+                    android:textAlignment="viewStart"
                     android:maxLines="1"
                     android:imeOptions="actionNext"
                     android:maxLength="@integer/full_name_max_len"
@@ -224,6 +227,8 @@
                 android:layout_width="match_parent"
                 android:textColor="@color/black"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 android:layout_height="wrap_content"
 
@@ -235,6 +240,8 @@
                     android:inputType="textEmailAddress"
                     android:hint="@string/email_phonenumber"
                     android:textColor="@color/black"
+                    android:layout_gravity="start"
+                    android:textAlignment="viewStart"
                     android:fontFamily="@font/bree_serif"
                     android:layout_height="@dimen/_40sdp"
 
@@ -247,6 +254,8 @@
                 android:textColor="@color/black"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 app:passwordToggleEnabled="true"
                 >
 
@@ -257,6 +266,8 @@
                     android:textColor="@color/black"
                     android:hint="@string/password"
                     android:textStyle="bold"
+                    android:layout_gravity="start"
+                    android:textAlignment="viewStart"
                     android:fontFamily="@font/bree_serif"
                     android:layout_height="@dimen/_40sdp"/>
 

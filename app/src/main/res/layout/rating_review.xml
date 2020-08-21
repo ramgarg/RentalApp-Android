@@ -42,6 +42,8 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 android:textColorHint="@android:color/black"
                 android:layout_height="wrap_content">
@@ -50,6 +52,8 @@
                     android:layout_width="match_parent"
                     android:id="@+id/ed_email"
                     android:inputType="textMultiLine"
+                    android:layout_gravity="start"
+                    android:textAlignment="viewStart"
                     android:nextFocusDown="@id/ed_password"
                     android:fontFamily="@font/bree_serif"
                     android:layout_height="wrap_content"/>

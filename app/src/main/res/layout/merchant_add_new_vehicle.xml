@@ -62,6 +62,8 @@
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/merchant_add_truck_name"
                 android:hint="@string/volvo_fh_truck"
@@ -82,6 +84,8 @@
                 android:layout_width="match_parent"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:fontFamily="@font/bree_serif"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 android:id="@+id/merchant_add_truck_quantity"
                 android:hint="@string/na"
                 android:layout_height="wrap_content">
@@ -100,6 +104,8 @@
                 android:layout_width="match_parent"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:hint="@string/truck_power_kv"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/merchant_add_truck_power"
                 android:layout_height="wrap_content">
@@ -119,6 +125,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/booking_price"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/merchant_add_truck_price">
 
@@ -136,6 +144,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/petrol"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 android:fontFamily="@font/bree_serif"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:id="@+id/merchant_add_fuel_type">
@@ -154,6 +164,8 @@
                 android:layout_width="match_parent"
                 android:fontFamily="@font/bree_serif"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:layout_gravity="start"
+                android:textAlignment="viewStart"
                 android:hint="@string/write_any_other"
                 android:layout_height="100dp">
 
