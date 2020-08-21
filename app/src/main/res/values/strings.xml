@@ -353,6 +353,11 @@
         <item>cancelled</item>
     </string-array>
 
+    <string-array name="SelectLanguage">
+        <item>English</item>
+        <item>Arabic</item>
+    </string-array>
+
     <string-array name="RegistrationDocument">
         <item>Select Document</item>
         <item>Driving Licence</item>
@@ -473,5 +478,6 @@
     <string name="terms_of_services">Terms of Services</string>
     <string name="help_amp_support"><![CDATA[Help & Support]]></string>
     <string name="logout">Logout</string>
+    <string name="language">Language</string>
 
 </resources>
