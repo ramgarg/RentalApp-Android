@@ -3,6 +3,7 @@ package com.eazyrento
 import android.content.Context
 import android.content.SharedPreferences
 import com.eazyrento.BuildConfig
+import com.eazyrento.supporting.LocalManager
 
 class Session private constructor(context: Context?){
 

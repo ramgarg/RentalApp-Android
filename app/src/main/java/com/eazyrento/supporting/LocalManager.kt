@@ -23,7 +23,6 @@ fun updateResources(
     configuration.setLayoutDirection(locale)
     return context.createConfigurationContext(configuration)
 
-
 }
 
 }

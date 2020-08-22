@@ -12,10 +12,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.eazyrento.Constant
-import com.eazyrento.InternetNetworkConnection
-import com.eazyrento.R
-import com.eazyrento.ValidationMessage
+import com.eazyrento.*
 import com.eazyrento.supporting.LocalManager
 import kotlinx.android.synthetic.main.thank_you_pop.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -30,7 +27,14 @@ open abstract class BaseActivity: AppCompatActivity(),
     abstract fun <T>moveOnSelecetedItem(type:T)
 
     override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(LocalManager.updateResources(newBase!!, LocalManager.arebic_lang_code))
+
+        val language =  Session.getInstance(EazyRantoApplication.context)?.getLocalLanguage()
+
+        if (language!=null)
+            super.attachBaseContext(LocalManager.updateResources(newBase!!,language))
+        else
+            super.attachBaseContext(newBase)
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
 
