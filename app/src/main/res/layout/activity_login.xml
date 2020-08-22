@@ -31,13 +31,42 @@
             android:visibility="gone"
             />
     </RelativeLayout>
-    <ImageView
-            android:layout_marginStart="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:src="@mipmap/logo"
-            android:scaleType="fitXY"
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_60sdp"/>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:src="@mipmap/logo"
+                android:scaleType="fitXY"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_60sdp"/>
+
+
+        <TextView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_lang"
+                android:layout_alignParentEnd="true"
+                android:text="@string/language"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/bree_serif"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp">
+
+        </TextView>
+
+        <Spinner
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_below="@+id/tv_lang"
+                style="@style/mySpinnerItemStyle"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:id="@+id/sp_language"/>
+
+    </RelativeLayout>
 
     <TextView
             android:layout_marginTop="@dimen/_10sdp"

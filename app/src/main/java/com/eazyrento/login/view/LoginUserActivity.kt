@@ -6,6 +6,9 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import com.eazyrento.*
 import com.eazyrento.agent.view.activity.AgentMainActivity
 import com.eazyrento.appbiz.AppBizLogger
@@ -19,10 +22,7 @@ import com.eazyrento.login.model.modelclass.LoginUserReqModel
 import com.eazyrento.login.model.modelclass.LoginUserResModel
 import com.eazyrento.login.viewmodel.LoginUserViewModel
 import com.eazyrento.merchant.view.activity.MerchantMainActivity
-import com.eazyrento.supporting.MyJsonParser
-import com.eazyrento.supporting.PhoneNumberFormat
-import com.eazyrento.supporting.PhoneTextWatcher
-import com.eazyrento.supporting.isDeeplinkingFromNotification
+import com.eazyrento.supporting.*
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -54,6 +54,8 @@ class LoginUserActivity : AppBizLogin() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
+
+        languageSpinnerData()
 
         phoneNumberFormat = PhoneNumberFormat(this)
 
@@ -331,6 +333,31 @@ class LoginUserActivity : AppBizLogin() {
         }
 
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun languageSpinnerData() {
+        val appLanguage = resources.getStringArray(R.array.SelectLanguage)
+
+        val spinner = findViewById<Spinner>(R.id.sp_language)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, appLanguage)
+            spinner.adapter = adapter
+
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    if(position==0){
+
+                    }
+                    else{
+
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
+            }
+        }
     }
 }
 
