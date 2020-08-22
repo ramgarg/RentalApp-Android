@@ -14,8 +14,7 @@ import io.paperdb.Paper
 class EazyRantoApplication : Application() {
 
     override fun attachBaseContext(base: Context?) {
-
-        val language =  Session.getInstance(context)?.getLocalLanguage()
+        val language =  Session.getInstance(base)?.getLocalLanguage()
 
         if (language!=null)
           super.attachBaseContext(LocalManager.updateResources(base!!,language))

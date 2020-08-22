@@ -346,10 +346,10 @@ class LoginUserActivity : AppBizLogin() {
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                     if(position==0){
-
+                        Session.getInstance(this@LoginUserActivity)?.saveLocalLanguage(LocalManager.english_lang_code)
                     }
                     else{
-
+                        Session.getInstance(this@LoginUserActivity)?.saveLocalLanguage(LocalManager.arebic_lang_code)
                     }
                 }
 

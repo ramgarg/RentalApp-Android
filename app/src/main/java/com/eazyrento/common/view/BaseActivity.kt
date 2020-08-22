@@ -28,7 +28,7 @@ open abstract class BaseActivity: AppCompatActivity(),
 
     override fun attachBaseContext(newBase: Context?) {
 
-        val language =  Session.getInstance(EazyRantoApplication.context)?.getLocalLanguage()
+        val language =  Session.getInstance(newBase)?.getLocalLanguage()
 
         if (language!=null)
             super.attachBaseContext(LocalManager.updateResources(newBase!!,language))
