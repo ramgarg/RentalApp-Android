@@ -250,12 +250,13 @@
                               android:layout_alignParentEnd="true"
                               android:layout_height="wrap_content">
 
-                    <ImageView android:layout_width="@dimen/_25sdp"
-                               android:id="@+id/minus_quantity"
-                               android:src="@mipmap/minus"
-                               android:padding="@dimen/_7sdp"
-                               android:background="@drawable/button_minus"
-                               android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                            android:id="@+id/minus_quantity"
+                            android:layout_width="43dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:background="@drawable/button_add"
+                            android:padding="@dimen/_7sdp"
+                            android:src="@mipmap/minus" />
 
                     <TextView
                             android:id="@+id/item_quantity"
