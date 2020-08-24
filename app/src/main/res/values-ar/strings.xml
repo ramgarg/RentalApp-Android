@@ -474,5 +474,8 @@
     <string name="terms_of_services">Terms of Services</string>
     <string name="help_amp_support"><![CDATA[Help & Support]]></string>
     <string name="logout">Logout</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="language">Language</string>
 
 </resources>

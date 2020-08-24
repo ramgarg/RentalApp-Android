@@ -171,8 +171,8 @@
                     android:background="@drawable/itemquantity_bg"
                     android:fontFamily="@font/bree_serif"
                     android:gravity="center"
-                    android:paddingLeft="@dimen/_10sdp"
-                    android:paddingRight="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp"
                     android:text=""
                     android:textColor="@color/black" />
 

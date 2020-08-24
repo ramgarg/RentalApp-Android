@@ -1,9 +1,12 @@
 package com.eazyrento.agent.view
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
+import android.view.Window
+import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.eazyrento.*
@@ -21,6 +24,7 @@ import com.eazyrento.login.view.UserProfileActivity
 import com.eazyrento.supporting.DeeplinkEvents
 import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_DEEPLINK
 import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_ORDER_ID
+import com.eazyrento.supporting.LocalManager
 import com.eazyrento.supporting.isDeeplinkingFromNotification
 import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 import com.squareup.picasso.Picasso
@@ -235,6 +239,9 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
             R.id.nav_my_address->{
                 viewMyAddress()
             }
+            R.id.select_language->{
+                showLanguageDialog()
+            }
             R.id.nav_logout -> {
                 MoveToAnotherComponent.onLogout(this, Constant.INTENT_LOGOUT_KEY, Constant.LOGOUT_VALUE)
             }
@@ -244,9 +251,28 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         return true
     }
 
-   /* fun setVisibleToolbarHeader(visible: Int){
-        toolbar_header.visibility = visible
-    }*/
+    private fun showLanguageDialog() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.dialog_language)
+        val tv_english = dialog.findViewById(R.id.tv_english) as TextView
+        val tv_arabic = dialog.findViewById(R.id.tv_arabic) as TextView
+        tv_english.setText(R.string.english)
+        tv_arabic.setText(R.string.arabic)
+        tv_english.setOnClickListener {
+            Session.getInstance(this)?.saveLocalLanguage(LocalManager.english_lang_code)
+            dialog.dismiss()
+        }
+        tv_arabic.setOnClickListener {
+            Session.getInstance(this)?.saveLocalLanguage(LocalManager.arebic_lang_code)
+            dialog.dismiss() }
+        dialog.show()
+    }
+
+    /* fun setVisibleToolbarHeader(visible: Int){
+         toolbar_header.visibility = visible
+     }*/
 
     //common
      data class MenuData(val iconID:Int,val titleID: Int)

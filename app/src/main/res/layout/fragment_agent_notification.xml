@@ -31,8 +31,8 @@
                 android:layout_height="wrap_content"/>
 
         <TextView android:layout_width="wrap_content"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:gravity="center"
                 android:text="@string/at_vero_os"
                 android:textSize="@dimen/_12sdp"

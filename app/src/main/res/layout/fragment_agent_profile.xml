@@ -44,8 +44,8 @@
                 android:layout_height="wrap_content"/>
 
         <LinearLayout
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:id="@+id/agent_layout_email"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_below="@+id/agent_tv_user_type"
@@ -69,8 +69,8 @@
         <LinearLayout
                 android:id="@+id/agent_layout_phone"
                 android:layout_below="@+id/agent_layout_email"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
@@ -92,8 +92,8 @@
         </LinearLayout>
 
         <LinearLayout
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:id="@+id/agent_layout_company"
                 android:layout_below="@+id/agent_layout_phone"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -115,8 +115,8 @@
 
         </LinearLayout>
         <LinearLayout
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:id="@+id/agent_layout_address"
                 android:layout_below="@+id/agent_layout_company"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -139,10 +139,10 @@
         </LinearLayout>
         <TextView android:layout_width="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:gravity="center"
                 android:layout_below="@+id/agent_layout_address"
-                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:text="@string/we_denounce"
                 android:fontFamily="@font/bree_serif"
                 android:textSize="@dimen/_12sdp"

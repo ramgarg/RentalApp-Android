@@ -220,7 +220,7 @@
 
 
     </LinearLayout>
-    <TextView android:layout_width="match_parent"
+    <TextView android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:id="@+id/tv_work_title"
             android:text="@string/work_location"
@@ -228,7 +228,7 @@
             style="@style/name_heading"
             />
 
-    <TextView android:layout_width="match_parent"
+    <TextView android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:textSize="@dimen/_15sdp"
             android:id="@+id/tv_work_location"

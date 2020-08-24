@@ -80,8 +80,8 @@
             <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="35"
                     android:orientation="vertical"
                     android:background="@drawable/dash_ui_button">
@@ -107,8 +107,8 @@
             <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="35"
                     android:orientation="vertical"
                     android:background="@drawable/dash_ui_button2">
@@ -134,8 +134,8 @@
             <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="35"
                     android:orientation="vertical"
                     android:background="@drawable/dash_ui_button3">

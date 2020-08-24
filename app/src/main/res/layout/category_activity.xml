@@ -17,17 +17,17 @@
 
     <EditText
             android:layout_below="@+id/toolbar_header"
-            android:paddingLeft="@dimen/_10sdp"
+            android:paddingStart="@dimen/_10sdp"
             android:inputType="text"
             android:id="@+id/ed_search"
             android:layout_gravity="start"
             android:textAlignment="viewStart"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_width="match_parent"
 
-            android:paddingRight="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
             android:drawableEnd="@mipmap/search"
             android:background="@drawable/search"
             android:layout_height="@dimen/_40sdp"/>
@@ -36,8 +36,8 @@
     android:id="@+id/rec_veichle"
     android:layout_below="@+id/ed_search"
   android:layout_marginTop="@dimen/_10sdp"
-    android:layout_marginLeft="@dimen/_10sdp"
-    android:layout_marginRight="@dimen/_10sdp"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_10sdp"
     android:layout_width="match_parent"
     app:spanCount="3"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -49,8 +49,8 @@
                   android:orientation="vertical"
                   android:gravity="center"
                   android:visibility="gone"
-                  android:layout_marginLeft="@dimen/_15sdp"
-                  android:layout_marginRight="@dimen/_15sdp"
+                  android:layout_marginStart="@dimen/_15sdp"
+                  android:layout_marginEnd="@dimen/_15sdp"
                   android:id="@+id/layout_vehicle_not_found"
                   android:layout_below="@+id/ed_search"
                   android:layout_height="match_parent">

@@ -147,7 +147,7 @@
                         android:id="@+id/minus_quantity"
                         android:layout_width="@dimen/_22sdp"
                         android:layout_height="@dimen/_25sdp"
-                        android:background="@drawable/button_add"
+                        android:background="@drawable/button_minus"
                         android:padding="@dimen/_5sdp"
                         android:src="@mipmap/minus"
                         android:onClick="onMinusClick"
@@ -160,8 +160,8 @@
                         android:background="@drawable/itemquantity_bg"
                         android:fontFamily="@font/bree_serif"
                         android:gravity="center"
-                        android:paddingLeft="@dimen/_10sdp"
-                        android:paddingRight="@dimen/_10sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
                         android:text="1"
                         android:textColor="@color/black" />
 
@@ -245,6 +245,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         style="@style/mySpinnerItemStyle">
 
@@ -265,6 +266,7 @@
         <Spinner
                 android:id="@+id/sp_select_document"
                 android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 style="@style/mySpinnerItemStyle"
                 android:layout_height="wrap_content"

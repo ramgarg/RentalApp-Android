@@ -10,8 +10,8 @@
                 android:id="@+id/pro_image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_320sdp"
-                android:paddingLeft="@dimen/_20sdp"
-            android:paddingRight="@dimen/_20sdp"
+                android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
                 android:scaleType="centerCrop"
                android:layout_marginTop="@dimen/_25sdp"
                />
@@ -20,8 +20,8 @@
 
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="@dimen/_250sdp"
-                    android:paddingLeft="@dimen/_20sdp"
-                    android:paddingRight="@dimen/_20sdp"
+                    android:paddingStart="@dimen/_20sdp"
+                    android:paddingEnd="@dimen/_20sdp"
                     android:paddingTop="@dimen/_10sdp"
                     android:background="@drawable/shap_rectangle_agent_bottom_home"
                     android:gravity="center"

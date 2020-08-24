@@ -7,8 +7,8 @@
         android:id="@+id/merchant_dash_card"
         android:layout_below="@+id/merchant_dash_name"
         app:cardCornerRadius="25dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
         app:cardPreventCornerOverlap="true"
         android:layout_marginTop="10dp">
     <LinearLayout

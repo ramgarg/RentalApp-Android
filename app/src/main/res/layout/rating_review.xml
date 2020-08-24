@@ -13,8 +13,8 @@
 
     <LinearLayout
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:padding="@dimen/_10sdp"
             android:id="@+id/layout_rating"
             android:layout_width="match_parent"
@@ -70,8 +70,8 @@
 
     <Button android:layout_width="match_parent"
             android:text="@string/submit"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:id="@+id/btn_submit"
             android:textAllCaps="false"
             android:textSize="@dimen/_15sdp"

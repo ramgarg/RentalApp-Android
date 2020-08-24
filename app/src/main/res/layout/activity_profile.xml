@@ -20,7 +20,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_20sdp"
+                android:layout_margin="@dimen/_10sdp"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/_20sdp">
 
@@ -288,7 +288,7 @@
 
                 <TextView
                         android:id="@+id/tv_gender"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:fontFamily="@font/bree_serif"
@@ -303,9 +303,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_gender"
-                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:background="@drawable/spinner_dropdown"
+                        style="@style/mySpinnerItemStyle"
                         android:fontFamily="@font/bree_serif">
 
                 </Spinner>
@@ -321,7 +322,7 @@
 
                 <TextView
                         android:id="@+id/tv_select_document"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:fontFamily="@font/bree_serif"
@@ -335,9 +336,11 @@
                         android:id="@+id/sp_select_document"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_below="@+id/tv_select_document"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:background="@drawable/spinner_dropdown"
+                        style="@style/mySpinnerItemStyle"
                         android:fontFamily="@font/bree_serif">
 
                 </Spinner>
@@ -382,8 +385,8 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_toEndOf="@id/tv_select_location"
                         android:background="@drawable/payment_status"
-                        android:paddingLeft="@dimen/_10sdp"
-                        android:paddingRight="@dimen/_10sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
                         android:text="@string/change"
                         android:textAllCaps="false"
                         android:textColor="@color/white">

@@ -87,8 +87,8 @@
             android:layout_height="wrap_content"/>
 
     <LinearLayout
-            android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_50sdp"
             android:orientation="vertical"
             android:layout_width="match_parent"

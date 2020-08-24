@@ -26,10 +26,16 @@
                 android:icon="@mipmap/t_c"
                 android:title="@string/terms_of_services" />
 
+
         <item
                 android:id="@+id/agent_nav_help"
                 android:icon="@mipmap/help_support"
                 android:title="@string/help_amp_support" />
+
+        <item
+                android:id="@+id/select_language"
+                android:icon="@mipmap/t_c"
+                android:title="@string/language" />
 
         <item
                 android:id="@+id/agent_nav_logout"

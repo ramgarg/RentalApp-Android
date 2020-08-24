@@ -28,8 +28,8 @@
                     android:fontFamily="@font/bree_serif"
                     android:text="@string/are_you_sure"
                     android:textSize="@dimen/_22sdp"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
         <LinearLayout

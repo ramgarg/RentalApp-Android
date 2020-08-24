@@ -254,7 +254,7 @@
                                android:id="@+id/minus_quantity"
                                android:src="@mipmap/minus"
                                android:padding="@dimen/_7sdp"
-                               android:background="@drawable/button_add"
+                               android:background="@drawable/button_minus"
                                android:layout_height="@dimen/_30sdp"/>
 
                     <TextView
@@ -262,8 +262,8 @@
                             android:text="0"
                             android:textColor="@color/black"
                             android:fontFamily="@font/bree_serif"
-                            android:paddingLeft="@dimen/_10sdp"
-                            android:paddingRight="@dimen/_10sdp"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp"
                             android:layout_width="@dimen/_40sdp"
                             android:gravity="center"
                             android:background="@drawable/itemquantity_bg"
@@ -282,7 +282,7 @@
             </RelativeLayout>
 
 
-            <TextView android:layout_width="match_parent"
+            <TextView android:layout_width="wrap_content"
                       android:layout_below="@+id/layout_truck_quantity"
                       android:layout_marginTop="@dimen/_20sdp"
                       android:textSize="@dimen/_15sdp"
@@ -309,8 +309,8 @@
                       android:textSize="@dimen/_15sdp"
                       android:id="@+id/change_add"
                       android:textColor="@color/white"
-                      android:paddingLeft="@dimen/_10sdp"
-                      android:paddingRight="@dimen/_10sdp"
+                      android:paddingStart="@dimen/_10sdp"
+                      android:paddingEnd="@dimen/_10sdp"
                       android:layout_marginEnd="@dimen/_10sdp"
                       android:layout_alignParentEnd="true"
                       android:background="@drawable/payment_status"

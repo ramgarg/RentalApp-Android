@@ -59,6 +59,11 @@
                 />
 
         <item
+                android:id="@+id/select_language"
+                android:icon="@mipmap/t_c"
+                android:title="@string/language" />
+
+        <item
                 android:id="@+id/nav_logout"
                 android:icon="@mipmap/logout"
                 android:title="@string/logout" />
