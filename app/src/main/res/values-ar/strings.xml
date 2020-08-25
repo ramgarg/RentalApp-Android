@@ -461,8 +461,8 @@
     <string name="QUANTITY_LIMIT">Assign quantity can\'t be grater then or less then of booking quantity.</string>
     <string name="QUANTITY_SET_LIMIT">You can\'t set value beyond limit.</string>
     <string name="USER_NEED_LOGIN">User need to login</string>
-    <string name="SELECT_DATE">Select order date</string>
-    <string name="SELECT_STATUS">Select order status</string>
+    <string name="SELECT_DATE">Order date</string>
+    <string name="SELECT_STATUS">Order status</string>
     <string name="SELECT_ORDER_ID">Select order ID</string>
     <string name="SELECT_PRODUCT_NAME">Select product name</string>
     <string name="SAME_DATE_TIME_VALIDATION">The time gap between start time and end time should be more then 1 hour for same date</string>

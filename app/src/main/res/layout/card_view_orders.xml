@@ -66,6 +66,7 @@
                 android:id="@+id/tv__order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
                 android:text="@string/order"
                 style="@style/AgentBoldTextCard"
                 app:layout_constraintTop_toBottomOf="@+id/img__pic"

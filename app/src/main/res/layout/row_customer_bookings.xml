@@ -84,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/order"
                     style="@style/AgentBoldTextCard"
+                    android:textAlignment="viewStart"
                     app:layout_constraintTop_toBottomOf="@+id/img_booking__pic"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/_6sdp"

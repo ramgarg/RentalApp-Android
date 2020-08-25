@@ -47,6 +47,7 @@
     <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_below="@id/tv_order_name"
@@ -69,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
+            android:textAlignment="viewStart"
             android:layout_below="@+id/tv_order_id"
             android:layout_marginStart="@dimen/_10sdp"
             style="@style/mySpinnerItemStyle"
@@ -100,6 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:textAlignment="viewStart"
                     style="@style/mySpinnerItemStyle"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:id="@+id/sp_service_date"/>
@@ -123,6 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:textAlignment="viewStart"
                     style="@style/mySpinnerItemStyle"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:id="@+id/sp_status"/>

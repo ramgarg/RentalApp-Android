@@ -199,7 +199,7 @@
                     android:orientation="horizontal">
                 <ImageView android:layout_width="@dimen/_15sdp"
                         android:id="@+id/mer"
-                        android:src="@drawable/check"
+                        android:src="@mipmap/check"
                         android:layout_height="@dimen/_15sdp"/>
 
                 <TextView

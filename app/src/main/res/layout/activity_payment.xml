@@ -23,9 +23,12 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:id="@+id/tv_order_id"
-                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:text="@string/orderid"
+                    android:gravity="start"
                     android:textSize="@dimen/_16sdp"
+                    android:textAlignment="viewStart"
                     android:textStyle="bold"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:textColor="@color/black"
@@ -47,6 +50,7 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_weight="50"
+                    android:textAlignment="viewStart"
                     android:text="@string/totalPrice"
                     style="@style/PaymentTextView"
                     android:layout_height="wrap_content"
@@ -72,6 +76,7 @@
                     android:orientation="horizontal">
                 <TextView
                         android:layout_width="0dp"
+                        android:textAlignment="viewStart"
                         android:layout_weight="50"
                         android:layout_height="wrap_content"
                         android:text="@string/pendingAmount"
@@ -98,6 +103,7 @@
                 <TextView
                         android:layout_width="0dp"
                         android:layout_weight="50"
+                        android:textAlignment="viewStart"
                         android:layout_height="wrap_content"
                         android:text="@string/pending_approval"
                         android:id="@+id/approval_title"
@@ -301,7 +307,7 @@
                         android:layout_marginTop="@dimen/_20sdp"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_height="@dimen/_80sdp"
-                        app:srcCompat="@mipmap/cash_pay"
+                        app:srcCompat="@mipmap/cash"
                         android:id="@+id/img_cash"
                         />
                     <ImageView
@@ -340,7 +346,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_80sdp"
-                        app:srcCompat="@mipmap/paypal_pay"
+                        app:srcCompat="@mipmap/paypal"
                         android:id="@+id/img_paypal"
                 />
                     <ImageView

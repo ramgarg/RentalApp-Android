@@ -61,6 +61,7 @@
                     android:textSize="@dimen/_15sdp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/bree_serif"
+                    android:textAlignment="viewStart"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:text="@string/fathi_asfour_gmail"
                     android:layout_height="wrap_content"/>

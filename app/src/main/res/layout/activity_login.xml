@@ -57,10 +57,11 @@
         </TextView>
 
         <Spinner
-                android:layout_width="@dimen/_80sdp"
+                android:layout_width="@dimen/_90sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_below="@+id/tv_lang"
+                android:textAlignment="viewStart"
                 style="@style/mySpinnerItemStyle"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/_10sdp"

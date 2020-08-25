@@ -43,6 +43,7 @@
             android:fontFamily="@font/bree_serif"
             android:layout_marginTop="@dimen/_5sdp"
             android:textColor="@color/black"
+            android:textAlignment="viewStart"
             android:textSize="@dimen/_14sdp"
             android:text="@string/orderid"
             android:layout_width="match_parent"
