@@ -8,6 +8,8 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:id="@+id/tv_merchant_cat_name"
                 android:text="@string/vehicle"
+                android:gravity="start"
+                android:textAlignment="viewStart"
                 android:layout_gravity="center"
                 style="@style/DocumentTextView"
                 android:layout_height="wrap_content"/>
