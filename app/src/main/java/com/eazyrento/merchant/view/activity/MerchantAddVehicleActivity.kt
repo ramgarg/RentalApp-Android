@@ -67,7 +67,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
         }
         else if(data is ProductSubCategoriesResModel){
 
-             data.add(ProductSubCategoriesModelResItem("",-1,"",resources.getString(R.string.others)))
+             data.add(ProductSubCategoriesModelResItem("",-1,"",resources.getString(R.string.others),""))
 
             setSpinnerAdapter(data,R.id.sp_select_subcategory)
              //recycler in bottom add

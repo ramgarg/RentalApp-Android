@@ -251,22 +251,28 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         return true
     }
 
+
     private fun showLanguageDialog() {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
         dialog.setContentView(R.layout.dialog_language)
+
         val tv_english = dialog.findViewById(R.id.tv_english) as TextView
         val tv_arabic = dialog.findViewById(R.id.tv_arabic) as TextView
+
         tv_english.setText(R.string.english)
         tv_arabic.setText(R.string.arabic)
+
         tv_english.setOnClickListener {
-            Session.getInstance(this)?.saveLocalLanguage(LocalManager.english_lang_code)
+            LocalManager.onLocalLanguuage(this,LocalManager.english_lang_code)
             dialog.dismiss()
         }
         tv_arabic.setOnClickListener {
-            Session.getInstance(this)?.saveLocalLanguage(LocalManager.arebic_lang_code)
-            dialog.dismiss() }
+            LocalManager.onLocalLanguuage(this,LocalManager.arebic_lang_code)
+            dialog.dismiss()
+        }
+
         dialog.show()
     }
 

@@ -53,7 +53,7 @@ class ProductVehiclesAdapter<T>(val listProductCatg:List<T>, val context: Contex
         objProduct.let { if (it is ProductCateItem){itemName=it.display_name
                                     imageUrl =it.category_image_url}
                    else if (it is ProductSubCategoriesModelResItem)
-                                { itemName = it.subcategory_name
+                                { itemName = it.display_name
                                  imageUrl = it.subcategory_image_url}
 
                     else if (it is MerchantProductItem)

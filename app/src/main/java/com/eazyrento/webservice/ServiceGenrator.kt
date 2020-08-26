@@ -14,24 +14,14 @@ class ServiceGenrator {
 
        val client:Retrofit
        get() {
-           if (retrofit == null) {
-               val builder = Retrofit.Builder()
-                   .baseUrl(PathURL.BASE_URL)
+           val builder = Retrofit.Builder()
+           // extra params and create client
+           val client = OkHttpClient.Builder()
+
+         //  if (retrofit == null) {
+
+               builder.baseUrl(PathURL.BASE_URL)
                    .addConverterFactory(GsonConverterFactory.create())
-
-               // extra params and create client
-               val client = OkHttpClient.Builder()
-               val token = Session.getInstance(EazyRantoApplication.context)?.getAccessToken()
-
-               client.addInterceptor { chain ->
-
-                   val original = chain.request()
-                   val builderHeader = original.newBuilder()
-                   token?.let { builderHeader.addHeader(PrefKey.ACCESS_TOKEN,"Bearer "+it) }
-                   builderHeader.method(original.method,original.body)
-
-                   chain.proceed(builderHeader.build())
-               }
 
                //TIME OUT SET
                client.connectTimeout(Constant.API_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
@@ -45,11 +35,30 @@ class ServiceGenrator {
                    client.addInterceptor(loggingInterceptor)
                }
 
-               builder.client(client.build())
 
-               retrofit = builder.build()
+          // }
+
+           val tokenHeader = Session.getInstance(EazyRantoApplication.context)?.getAccessToken()
+           val  languageHeader= Session.getInstance(EazyRantoApplication.context)?.getLocalLanguage()
+
+           client.addInterceptor { chain ->
+
+               val original = chain.request()
+               val builderHeader = original.newBuilder()
+               tokenHeader?.let {
+                   builderHeader.addHeader(HeaderKey.ACCESS_TOKEN_HEADER,"Bearer "+it)
+               }
+               languageHeader?.let {
+                   builderHeader.addHeader(HeaderKey.LANGUAGE_HEADER,it)
+               }
+               builderHeader.method(original.method,original.body)
+
+               chain.proceed(builderHeader.build())
            }
 
+           builder.client(client.build())
+
+           retrofit = builder.build()
 
            return retrofit!!
        }

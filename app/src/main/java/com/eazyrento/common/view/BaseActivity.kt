@@ -187,6 +187,12 @@ open abstract class BaseActivity: AppCompatActivity(),
         finishCurrentActivity(code)
     }
 
+    fun restartCurrentActivity(){
+        finish()
+        startActivity(intent)
+
+    }
+
     override fun onBackPressed() {
         super.onBackPressed()
     }
@@ -231,6 +237,7 @@ open abstract class BaseActivity: AppCompatActivity(),
         finishCurrentActivity(flag)
     }
 }
+
 
 interface ClickDailogListener{
     fun onClickDailog(int: Int)

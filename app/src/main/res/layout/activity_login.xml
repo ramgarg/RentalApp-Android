@@ -43,7 +43,7 @@
                 android:layout_height="@dimen/_60sdp"/>
 
 
-        <TextView
+        <!--<TextView
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_lang"
@@ -54,18 +54,20 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp">
 
-        </TextView>
+        </TextView>-->
 
         <Spinner
-                android:layout_width="@dimen/_90sdp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:layout_below="@+id/tv_lang"
-                android:textAlignment="viewStart"
+                android:textAlignment="center"
                 style="@style/mySpinnerItemStyle"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:id="@+id/sp_language"/>
+                android:id="@+id/sp_language"
+
+
+                />
 
     </RelativeLayout>
 

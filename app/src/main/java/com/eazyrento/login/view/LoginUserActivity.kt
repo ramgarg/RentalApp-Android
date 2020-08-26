@@ -55,7 +55,7 @@ class LoginUserActivity : AppBizLogin() {
 
         setContentView(R.layout.activity_login)
 
-        languageSpinnerData()
+        LocalManager.languageSpinnerData(this)
 
         phoneNumberFormat = PhoneNumberFormat(this)
 
@@ -335,30 +335,7 @@ class LoginUserActivity : AppBizLogin() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    private fun languageSpinnerData() {
-        val appLanguage = resources.getStringArray(R.array.SelectLanguage)
 
-        val spinner = findViewById<Spinner>(R.id.sp_language)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, appLanguage)
-            spinner.adapter = adapter
-
-            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    if(position==0){
-                        Session.getInstance(this@LoginUserActivity)?.saveLocalLanguage(LocalManager.english_lang_code)
-                    }
-                    else{
-                        Session.getInstance(this@LoginUserActivity)?.saveLocalLanguage(LocalManager.arebic_lang_code)
-                    }
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
-        }
-    }
 }
 
 interface ChoseUserRole{
