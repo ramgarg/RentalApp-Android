@@ -1,274 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Eazyrento</string>
-    <string name="password_reset_instruction">Enter your registered Email/Phone Number below to receive password reset instruction.
+    <string name="password_reset_instruction">أدخل بريدك الإلكتروني المسجل / رقم هاتفك أدناه لتلقي تعليمات إعادة تعيين كلمة المرور.
     </string>
-    <string name="forgot_your_password">Forgot your Password?</string>
+    <string name="forgot_your_password">نسيت رقمك السري?</string>
 
-    <string name="i_agree">I agree to </string>
-    <string name="and">and </string>
-    <string name="t_and_c">Terms &amp; Conditions</string>
-    <string name="gdpr_rights">GDPR rights</string>
+    <string name="i_agree">أوافق على </string>
+    <string name="and">و </string>
+    <string name="t_and_c">البنود و الظروف</string>
+    <string name="gdpr_rights">حقوق اللائحة العامة لحماية البيانات</string>
 
-    <string name="send">Send</string>
-    <string name="enter_opt">Enter OTP</string>
-    <string name="password">Password</string>
-    <string name="forgot_password"><u>Forgot Password?</u></string>
-    <string name="login"><u>Login</u></string>
-    <string name="login_with">Login With:</string>
-    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="send">إرسال</string>
+    <string name="enter_opt">أدخل OTP</string>
+    <string name="password">كلمه السر</string>
+    <string name="forgot_password"><u>هل نسيت كلمة المرور?</u></string>
+    <string name="login"><u>تسجيل الدخول</u></string>
+    <string name="login_with">تسجيل الدخول مع:</string>
+    <string name="don_t_have_an_account">ليس لديك حساب?</string>
 
-    <string name="login_to_continue_as">Login to continue as</string>
-    <string name="otp_sent">We have sent OTP to the email address</string>
-    <string name="register"><u>Register</u></string>
-    <string name="agent">Agent</string>
-    <string name="opt_detail">We\'ve sent OTP the email address p@g.com.please enter it below to complete
-        verification
+    <string name="login_to_continue_as">تسجيل الدخول للمتابعة باسم</string>
+    <string name="otp_sent">لقد أرسلنا OTP إلى عنوان البريد الإلكتروني</string>
+    <string name="register"><u>تسجيل</u></string>
+    <string name="agent">وكيل</string>
+    <string name="opt_detail">لقد أرسلنا OTP عنوان البريد الإلكتروني ، يرجى إدخاله أدناه لإكماله
     </string>
-    <string name="conti">Continue</string>
-    <string name="already_have_an_account">Already have an account?</string>
-    <string name="full_name">Full Name</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="wishlist">WishList</string>
-    <string name="orders">Orders</string>
-    <string name="title_notification">Notification</string>
-    <string name="profile">Profile</string>
-    <string name="filter">Filter</string>
-    <string name="support">Support</string>
-    <string name="my_address">My Addresses</string>
-    <string name="booking_details">Booking Details</string>
-    <string name="thank_you">Do you want to submit the payment?</string>
-    <string name="vehicle_not_available">The vehicle you have searched is not available.You can notify admin to add this
-        vehicle.
+    <string name="conti">استمر</string>
+    <string name="already_have_an_account">هل لديك حساب?</string>
+    <string name="full_name">الاسم الكامل</string>
+    <string name="title_home">الصفحة الرئيسية</string>
+    <string name="title_dashboard">لوحة القيادة</string>
+    <string name="wishlist">قائمة الرغبات</string>
+    <string name="orders">طلب</string>
+    <string name="title_notification">تنبيه</string>
+    <string name="profile">الملف الشخصي</string>
+    <string name="filter">منقي</string>
+    <string name="support">الدعم</string>
+    <string name="my_address">عنواني</string>
+    <string name="booking_details">تفاصيل الحجز</string>
+    <string name="thank_you">هل تريد تقديم الدفع?</string>
+    <string name="vehicle_not_available">السيارة التي بحثت عنها غير متوفرة. يمكنك إخطار المسؤول لإضافة هذا
     </string>
-    <string name="order">Order</string>
-    <string name="profie">Profile</string>
-    <string name="help"><![CDATA[Help & Support]]></string>
-    <string name="select_category">Select Category</string>
-    <string name="under_development">Under Development</string>
-    <string name="vehicle">Vehicles</string>
-    <string name="add_product">"Add Product"</string>
-    <string name="product_list">"List of Product"</string>
-    <string name="others">"Others"</string>
-    <string name="view_product">"View Product"</string>
-    <string name="order_review">Order Review</string>
-    <string name="order_summary">Order Summary</string>
-    <string name="payment">Payment</string>
-    <string name="payment_history">Payment History</string>
-    <string name="payment_received">Are you sure? You have received the payment.</string>
-    <string name="delete_notification">Do you want to delete this notification?</string>
-    <string name="requestpayment">Request a Payment</string>
-    <string name="details">Details</string>
-    <string name="order_submit">Thank you for submitting your order.Our agent will call you shortly.</string>
+    <string name="order">طلب</string>
+    <string name="profie">الملف الشخصي</string>
+    <string name="help"><![CDATA[ساعد & لدعم]]></string>
+    <string name="select_category">اختر الفئة</string>
+    <string name="under_development">تحت التطوير</string>
+    <string name="vehicle">مركبات</string>
+    <string name="add_product">"أضف منتج"</string>
+    <string name="product_list">"قائمة المنتجات"</string>
+    <string name="others">"الآخرين"</string>
+    <string name="view_product">"عرض المنتج"</string>
+    <string name="order_review">مراجعة الطلب</string>
+    <string name="order_summary">ملخص الطلب</string>
+    <string name="payment">دفع</string>
+    <string name="payment_history">تاريخ الدفع</string>
+    <string name="payment_received">هل أنت متأكد من استلامك الدفعة</string>
+    <string name="delete_notification">هل تريد حذف هذا الإخطار</string>
+    <string name="requestpayment">طلب دفعة</string>
+    <string name="details">تفاصيل</string>
+    <string name="order_submit">شكرًا لك على تقديم طلبك وسيتصل بك وكيلنا قريبًا.</string>
 
 
     <!--agent value-->
-    <string name="accept">Accept</string>
-    <string name="decline">Decline</string>
-    <string name="agent_message">Let\'s get work done!</string>
-    <string name="view_all">View All</string>
-    <string name="no_booking_avil">No booking available</string>
-    <string name="total_booking">Total Bookings</string>
-    <string name="complete">Completed</string>
-    <string name="in_progress">In Progress</string>
-    <string name="rejected">Rejected</string>
+    <string name="accept">قبول</string>
+    <string name="decline">انخفاض</string>
+    <string name="agent_message">دعنا ننجز العمل!</string>
+    <string name="view_all">مشاهدة الكل</string>
+    <string name="no_booking_avil">لا يوجد حجز متاح</string>
+    <string name="total_booking">مجموع حجوزات</string>
+    <string name="complete">منجز</string>
+    <string name="in_progress">في تقدم</string>
+    <string name="rejected">مرفوض</string>
     <!---->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">مرحبا جزء فارغ</string>
 
     <!--customer value-->
-    <string name="sendbutton">Send</string>
+    <string name="sendbutton">إرسال</string>
     <string name="volvo_fh_truck"> </string>
-    <string name="totalprice">Total \n Price</string>
+    <string name="totalprice">السعر الكلي</string>
     <string name="booking_price">$</string>
-    <string name="hint_enter_booking_price">Enter booking price</string>
-    <string name="per_hour">Per Hour</string>
-    <string name="do_you_want_driver">Do you want vehicle with driver?</string>
-    <string name="select_work_start">Select work start time and date</string>
-    <string name="start_date">Start Date</string>
-    <string name="start_time">Start Time</string>
-    <string name="end_date">End Date</string>
-    <string name="end_time">End Time</string>
-    <string name="start_date_hint">01-Jan-2020</string>
+    <string name="hint_enter_booking_price">أدخل سعر الحجز</string>
+    <string name="per_hour">في الساعة</string>
+    <string name="do_you_want_driver">هل تريد مركبة مع سائق?</string>
+    <string name="select_work_start">حدد وقت بدء العمل والتاريخ</string>
+    <string name="start_date">تاريخ البدء</string>
+    <string name="start_time">وقت البدء</string>
+    <string name="end_date">تاريخ الانتهاء</string>
+    <string name="end_time">وقت النهاية</string>
+    <string name="start_date_hint">01-يناير -2020</string>
     <string name="start_time_hint">8:00 AM</string>
-    <string name="end_date_hint">01-Jan-2020</string>
+    <string name="end_date_hint">01-يناير -2020</string>
     <string name="end_time_hint">9:00 AM</string>
-    <string name="truck_quantity">Item Quantity-</string>
-    <string name="one">1</string>
-    <string name="work_location">Work Location</string>
-    <string name="change">Change</string>
-    <string name="select_address">Select</string>
-    <string name="add_another_product">Add Another Product</string>
-    <string name="next">Next</string>
-    <string name="no_notification">No Notification</string>
-    <string name="at_vero_os">At vero os et accusamus et iusto odio dignissimos ducimus</string>
-    <string name="truck_name">Truck Name</string>
-    <string name="truck_capacity">Truck Capacity</string>
-    <string name="na">NA</string>
-    <string name="submit">Submit</string>
-    <string name="sub_order">Sub Order</string>
-    <string name="sub_order_merchnat">Merchant</string>
-    <string name="authentication_required">Authentication Required</string>
-    <string name="orderid">OrderId - 356478484844848</string>
-    <string name="total_price">Total \n Price</string>
-    <string name="pending_amount">Pending Amount - </string>
-    <string name="totalPrice">Total Price</string>
-    <string name="pendingAmount">Pending Amount</string>
-    <string name="enter_amount">Enter Amount</string>
-    <string name="enter_promo_code">Enter Promo Code</string>
-    <string name="apply">Apply</string>
-    <string name="choose_payment_method">Choose Payment Method</string>
-    <string name="pay_via_cash">Pay Via Cash</string>
-    <string name="pay_via_paypal">Pay Via Paypal</string>
-    <string name="customer">Customer</string>
-    <string name="email">Email</string>
-    <string name="email_address">Email Address</string>
-    <string name="phone_number">Phone Number</string>
-    <string name="company_name">Company Name</string>
-    <string name="business_name">Your Business</string>
-    <string name="gender">Gender</string>
-    <string name="description">Description</string>
-    <string name="description_star">Description*</string>
-    <string name="save">Save</string>
-    <string name="skip">Skip</string>
-    <string name="welcome">Welcome</string>
-    <string name="register_to_continue">Register to continue as</string>
-    <string name="email_phonenumber">Email/Phone Number</string>
-    <string name="booking_n_price">Total\nPrice</string>
-    <string name="downtown_dubai">Downtown, Dubai,United Arab Emirates</string>
-    <string name="address_line1">Address Line</string>
-    <string name="address_hint">Apartment,city,state,country name</string>
-    <string name="save_as">Save As</string>
-    <string name="home">Home</string>
-    <string name="bookings">Bookings</string>
-    <string name="work">Work</string>
-    <string name="other">Other</string>
-    <string name="delete">Delete</string>
-    <string name="update">Update</string>
-    <string name="update_order">Update Order</string>
-    <string name="select_availability">Select Availability</string>
-    <string name="sun">Sun</string>
-    <string name="mon">Mon</string>
-    <string name="tue">Tue</string>
-    <string name="wed">Wed</string>
-    <string name="thu">Thu</string>
-    <string name="fri">Fri</string>
-    <string name="sat">Sat</string>
-    <string name="booking_price_text">Booking Price</string>
-    <string name="booking_price_">Booking\nPrice</string>
-    <string name="fuel_type">Fuel Type</string>
-    <string name="diesel">Diesel</string>
-    <string name="document">Document</string>
-    <string name="with_driver">With Driver</string>
-    <string name="upload">Upload</string>
-    <string name="search_vehicles">Search</string>
-    <string name="are_you_sure">Are you sure you want delete this Product</string>
-    <string name="no">No</string>
-    <string name="yes">Yes</string>
-    <string name="hello_this_is">Hello this is \n demo home page for merchant....\n Thank you!!</string>
-    <string name="open_orders">Open Orders</string>
-    <string name="fathi_asfour">Fathi Asfour</string>
+    <string name="truck_quantity">البند الكمية-</string>
+    <string name="one">واحد</string>
+    <string name="work_location">مكان العمل</string>
+    <string name="change">يتغيرون</string>
+    <string name="select_address">تحديد</string>
+    <string name="add_another_product">إضافة منتج آخر</string>
+    <string name="next">التالى</string>
+    <string name="no_notification">لا يوجد إشعارات</string>
+    <string name="at_vero_os">ولكن في الحقيقة نعتبره مستحقا بالفم والتهمة وكراهية الصالحين ،</string>
+    <string name="truck_name">اسم الشاحنة</string>
+    <string name="truck_capacity">سعة الشاحنة</string>
+    <string name="na">على</string>
+    <string name="submit">إرسال</string>
+    <string name="sub_order">ترتيب فرعي</string>
+    <string name="sub_order_merchnat">تاجر</string>
+    <string name="authentication_required">يستلزم التوثيق</string>
+    <string name="orderid">معرف الطلب - 356478484844848</string>
+    <string name="total_price">السعر الكلي</string>
+    <string name="pending_amount">المبلغ المعلق- </string>
+    <string name="totalPrice">السعر الكلي</string>
+    <string name="pendingAmount">المبلغ المعلق</string>
+    <string name="enter_amount">أدخل المبلغ</string>
+    <string name="enter_promo_code">إدخال الرمز الترويجي</string>
+    <string name="apply">تطبيق</string>
+    <string name="choose_payment_method">اختر وسيلة الدفع</string>
+    <string name="pay_via_cash">الدفع نقدا</string>
+    <string name="pay_via_paypal">الدفع عن طريق Paypal</string>
+    <string name="customer">الزبون</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="email_address">عنوان البريد الالكترونى</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="company_name">اسم الشركة</string>
+    <string name="business_name">عملك</string>
+    <string name="gender">جنس</string>
+    <string name="description">وصف</string>
+    <string name="description_star">وصف*</string>
+    <string name="save">حفظ</string>
+    <string name="skip">تخطى</string>
+    <string name="welcome">أهلا بك</string>
+    <string name="register_to_continue">سجل للمتابعة باسم</string>
+    <string name="email_phonenumber">رقم هاتف البريد الإلكتروني</string>
+    <string name="booking_n_price">السعر الكلي</string>
+    <string name="downtown_dubai">وسط مدينة دبي الإمارات العربية المتحدة</string>
+    <string name="address_line1">خط عنوان</string>
+    <string name="address_hint">شقة ، مدينة ، ولاية ، اسم البلد</string>
+    <string name="save_as">حفظ باسم</string>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="bookings">الحجوزات</string>
+    <string name="work">عمل</string>
+    <string name="other">آخر</string>
+    <string name="delete">حذف</string>
+    <string name="update">تحديث</string>
+    <string name="update_order">أجل التحديث</string>
+    <string name="select_availability">حدد التوفر</string>
+    <string name="sun">شمس</string>
+    <string name="mon">الإثنين</string>
+    <string name="tue">الثلاثاء</string>
+    <string name="wed">الأربعاء</string>
+    <string name="thu">خميس</string>
+    <string name="fri">الجمعة</string>
+    <string name="sat">جلس</string>
+    <string name="booking_price_text">سعر الحجز</string>
+    <string name="booking_price_">سعر الحجز</string>
+    <string name="fuel_type">نوع الوقود</string>
+    <string name="diesel">ديزل</string>
+    <string name="document">وثيقة</string>
+    <string name="with_driver">مع سائق</string>
+    <string name="upload">رفع</string>
+    <string name="search_vehicles">بحث</string>
+    <string name="are_you_sure">هل أنت متأكد أنك تريد حذف هذا المنتج</string>
+    <string name="no">لا</string>
+    <string name="yes">نعم</string>
+    <string name="hello_this_is">مرحبًا ، هذه الصفحة الرئيسية التجريبية للتاجر شكرًا لك</string>
+    <string name="open_orders">افتح الأوامر</string>
+    <string name="fathi_asfour">فتحي عصفور</string>
     <string name="fathi_asfour_gmail">fathi.asfour@gmail.com</string>
     <string name="phone_no">+966-000-000-0000</string>
-    <string name="rental_company">Rental Company</string>
-    <string name="we_denounce">We denounce with righteous indignation and dislike men who are so beguiled.</string>
-    <string name="bilad_al">Bilad Al</string>
-    <string name="merchant">Merchant</string>
-    <string name="select_location">Select Location</string>
-    <string name="select_sub_category">Select Sub Category</string>
-    <string name="truck_power_kv">125kw(170)@2500rpm</string>
-    <string name="price">Price</string>
-    <string name="petrol">Petrol</string>
-    <string name="write_any_other">Write any other details \n \n</string>
-    <string name="notify_admin">Notify Admin</string>
-    <string name="feedback">Feedback</string>
-    <string name="no_result_found">No Result Found</string>
-    <string name="add_new_address">Add New Address</string>
-    <string name="hi_ajeer">Hi,Ajeer</string>
-    <string name="_45">0</string>
-    <string name="tax_included">Tax Included</string>
-    <string name="rate_amp_review"><![CDATA[Rate & Review]]></string>
-    <string name="delivered_on">* Delivered on 12 Dec 2019</string>
-    <string name="ajeer_mohammed">Ajeer Mohammed</string>
-    <string name="view_history">View History</string>
-    <string name="pay_now">Pay Now</string>
-    <string name="_14_days">14 days</string>
-    <string name="_9995hh">9995hh</string>
-    <string name="for_maintenance">For Maintenance</string>
-    <string name="happy_with_the_service">Happy with the service?</string>
-    <string name="rating">Rating</string>
-    <string name="review">Review</string>
-    <string name="choose_to_login_as">Choose to login as,</string>
-    <string name="truck">Truck</string>
-    <string name="remove">Remove</string>
-    <string name="payment_pending">Payment Pending</string>
-    <string name="_02_feb_2020">02 Feb 2020</string>
-    <string name="default_address">Default Address</string>
+    <string name="rental_company">شركة تأجير</string>
+    <string name="we_denounce">نحن نستنكر بسخط صالح ونكره الرجال الذين خدعوا</string>
+    <string name="bilad_al">بالعد أل</string>
+    <string name="merchant">تاجر</string>
+    <string name="select_location">اختر موقعا</string>
+    <string name="select_sub_category">حدد الفئة الفرعية</string>
+    <string name="truck_power_kv">125 كيلو واط (170) @ 2500 دورة في الدقيقة</string>
+    <string name="price">السعر</string>
+    <string name="petrol">بنزين</string>
+    <string name="write_any_other">اكتب أي تفاصيل أخرى \n \n</string>
+    <string name="notify_admin">أبلغ المسؤول</string>
+    <string name="feedback">ردود الفعل</string>
+    <string name="no_result_found">لم يتم العثور على نتائج</string>
+    <string name="add_new_address">أضف عنوان جديد</string>
+    <string name="hi_ajeer">مرحباً أجير</string>
+    <string name="_45">صفر</string>
+    <string name="tax_included">شامل الضريبة</string>
+    <string name="rate_amp_review"><![CDATA[مراجعة & معدل]]></string>
+    <string name="delivered_on">* تم التسليم في 12 ديسمبر 2019</string>
+    <string name="ajeer_mohammed">عجير محمد |</string>
+    <string name="view_history">عرض السجل</string>
+    <string name="pay_now">ادفع الآن</string>
+    <string name="_14_days">14 يوما</string>
+    <string name="_9995hh">قصصخه</string>
+    <string name="for_maintenance">للصيانة</string>
+    <string name="happy_with_the_service">سعيد بالخدمة?</string>
+    <string name="rating">تقييم</string>
+    <string name="review">مراجعة</string>
+    <string name="choose_to_login_as">اختر تسجيل الدخول باسم</string>
+    <string name="truck">شاحنة</string>
+    <string name="remove">إزالة</string>
+    <string name="payment_pending">انتظار الدفع</string>
+    <string name="_02_feb_2020">02 فبراير 2020</string>
+    <string name="default_address">العنوان الافتراضي</string>
 
-    <string name="full_power">Full Power</string>
-    <string name="view_details">View Details</string>
-    <string name="ok">Ok</string>
-    <string name="cancel">Cancel</string>
-    <string name="title">Title</string>
-    <string name="add_your_notes_here">Add your notes here.</string>
-    <string name="heading">Heading</string>
-    <string name="note_added">Note Added</string>
-    <string name="mynotes">My Notes</string>
-    <string name="assign_merchant">Assign Merchant</string>
-    <string name="distance_3km">Distance, 3km</string>
-    <string name="dashboard">Dashboard</string>
-    <string name="select_type">Select Type</string>
+    <string name="full_power">القوة الكاملة</string>
+    <string name="view_details">عرض التفاصيل</string>
+    <string name="ok">حسنا</string>
+    <string name="cancel">إلغاء</string>
+    <string name="title">عنوان</string>
+    <string name="add_your_notes_here">أضف ملاحظاتك هنا.</string>
+    <string name="heading">عنوان</string>
+    <string name="note_added">تمت إضافة الملاحظة</string>
+    <string name="mynotes">ملاحظاتي</string>
+    <string name="assign_merchant">تعيين التاجر</string>
+    <string name="distance_3km">المسافة ، 3 كم</string>
+    <string name="dashboard">لوحة القيادة</string>
+    <string name="select_type">اختر صنف</string>
 
-    <string name="otp_timer">Resend code after</string>
+    <string name="otp_timer">إعادة إرسال الرمز بعد</string>
 
-    <string name="notif_clear_all">Clear All</string>
+    <string name="notif_clear_all">امسح الكل</string>
 
 
-    <string name="selected_item">Selected item:</string>
-    <string name="order_date">Order Date</string>
-    <string name="_24_jun_1212">24-jun-1212</string>
+    <string name="selected_item">العنصر المحدد:</string>
+    <string name="order_date">تاريخ الطلب</string>
+    <string name="_24_jun_1212">24 يونيو 1212</string>
 
-    <string name="day">Day</string>
-    <string name="closed_orders">Closed Orders</string>
-    <string name="please_wait">Please wait ...</string>
-    <string name="lorem_ipsum">Lorem Ipsum is simply too is and setting industry.</string>
-    <string name="submit_request">Submit Request</string>
-    <string name="work_start_and">Work Start And End Date</string>
-    <string name="request_a_payment">Request a Payment</string>
-    <string name="status">Status:</string>
-    <string name="quantity">Quantity - </string>
-    <string name="quantity_value">0</string>
+    <string name="day">يوم</string>
+    <string name="closed_orders">أوامر مغلقة</string>
+    <string name="please_wait">ارجوك انتظر</string>
+    <string name="lorem_ipsum">لوريم إيبسوم هو ببساطة أيضًا ويضع الصناعة</string>
+    <string name="submit_request">تقديم الطلب</string>
+    <string name="work_start_and">تاريخ بدء العمل وانتهائه</string>
+    <string name="request_a_payment">طلب دفعة</string>
+    <string name="status">الحالة:</string>
+    <string name="quantity">كمية - </string>
+    <string name="quantity_value">صفر</string>
 
-    <string name="req_quantity">Required Quantity - </string>
+    <string name="req_quantity">الكمية المطلوبة - </string>
 
     <string name="_80">$80</string>
-    <string name="test_merchant">Test Merchant</string>
-    <string name="select_document">Select Document</string>
-    <string name="view_all_"><![CDATA[View all->]]></string>
-    <string name="equipments">Equipments</string>
-    <string name="add">Add</string>
+    <string name="test_merchant">اختبار التاجر</string>
+    <string name="select_document">حدد المستند</string>
+    <string name="view_all_"><![CDATA[مشاهدة الكل->]]></string>
+    <string name="equipments">المعدات</string>
+    <string name="add">أضف</string>
     <string name="default_notification_channel_id">com.eazyrento</string>
     <string name="dob">DOB</string>
-    <string name="date_of_birth">Date of Birth</string>
-    <string name="user_name">User Name</string>
-    <string name="name">Name*</string>
-    <string name="code">Code</string>
-    <string name="select_location_">Select Location*</string>
-    <string name="select_gender">Select Gender</string>
-    <string name="booking_price_dollar">Booking Price($)</string>
-    <string name="add_a_note">Add a Note</string>
-    <string name="update_note">Update Note</string>
-    <string name="booking">Bookings</string>
+    <string name="date_of_birth">تاريخ الولادة</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="name">اسم*</string>
+    <string name="code">الشفرة</string>
+    <string name="select_location_">اختر موقعا*</string>
+    <string name="select_gender">حدد نوع الجنس</string>
+    <string name="booking_price_dollar">سعر الحجز($)</string>
+    <string name="add_a_note">أضف ملاحظة</string>
+    <string name="update_note">ملاحظة التحديث</string>
+    <string name="booking">الحجوزات</string>
 
-    <string name="assign">Assign</string>
+    <string name="assign">تعيين</string>
 
     <!--Activity and view title-->
-    <string name="title_forgot_pass">Forgot password</string>
+    <string name="title_forgot_pass">هل نسيت كلمة المرور</string>
     <string name="title_OTP">OTP</string>
-    <string name="capacity">Capacity</string>
-    <string name="capacity_">Capacity*</string>
-    <string name="power">Power</string>
-    <string name="resend_otp"><u>Resend OTP</u></string>
+    <string name="capacity">سعة</string>
+    <string name="capacity_">سعة*</string>
+    <string name="power">قوة</string>
+    <string name="resend_otp"><u>إعادة إرسال OTP</u></string>
 
     <!--Google Map and Place API key production -->
     <string name="google_credential_key">AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I</string>
@@ -295,187 +293,192 @@
     <!--Google gmail login production env-->
     <string name="G_client">1093222661773-ea0su3f12mls27rbt195qcok1b8n4ne8.apps.googleusercontent.com</string>
     <string name="G_secret">0HD7pDHrzHBMcbGX3fO3yl16</string>
-    <string name="rate">Rate</string>
-    <string name="pending_approval">Pending Approval</string>
-    <string name="amount_dollar">Amount($)</string>
+    <string name="rate">معدل</string>
+    <string name="pending_approval">ما زال يحتاج بتصدير</string>
+    <string name="amount_dollar">المبلغ ($)</string>
     <string name="dollar">$</string>
-    <string name="reset">Reset</string>
-    <string name="product_name">Product Name</string>
-    <string name="order_id">Order ID</string>
-    <string name="service_date">Service Date</string>
-    <string name="status_text">Status</string>
-    <string name="enter_product_name">Enter Product Name</string>
-    <string name="enter_product_capacity">Enter Product Capacity</string>
+    <string name="reset">إعادة تعيين</string>
+    <string name="product_name">اسم المنتج</string>
+    <string name="order_id">رقم التعريف الخاص بالطلب</string>
+    <string name="service_date">تاريخ الخدمة</string>
+    <string name="status_text">الحالة</string>
+    <string name="enter_product_name">أدخل اسم المنتج</string>
+    <string name="enter_product_capacity">أدخل سعة المنتج</string>
 
     <string name="defualt_phone_format">000-000-0000</string>
-    <string name="tip_amount">Tip Amount</string>
-    <string name="tip">Tip</string>
-    <string name="give_a_tip">Give a Tip</string>
+    <string name="tip_amount">مبلغ الإكرامية</string>
+    <string name="tip">تلميح</string>
+    <string name="give_a_tip">قدم نصيحة</string>
     <string name="price_in_dollar"> </string>
 
     <string-array name="SelectType">
-        <item>Select Type</item>
-        <item>Equipments</item>
-        <item>Vehicles</item>
-        <item>All</item>
+        <item>اختر صنف</item>
+        <item>المعدات</item>
+        <item>مركبات</item>
+        <item>الكل</item>
     </string-array>
     <string-array name="Gender">
-        <item>Select Gender</item>
-        <item>Male</item>
-        <item>Female</item>
+        <item>حدد نوع الجنس</item>
+        <item>الذكر</item>
+        <item>أنثى</item>
     </string-array>
     <string-array name="SelectCategory">
-        <item>Select Category</item>
-        <item>Big-Equipment</item>
-        <item>Small-Equipment</item>
-        <item>Other</item>
+        <item>اختر الفئة</item>
+        <item>معدات كبيرة</item>
+        <item>المعدات الصغيرة</item>
+        <item>آخر</item>
     </string-array>
     <string-array name="SelectSubCategory">
-        <item>Select Sub Category</item>
-        <item>Big-Equipment</item>
-        <item>Small-Equipment</item>
-        <item>Other</item>
+        <item>حدد الفئة الفرعية</item>
+        <item>معدات كبيرة</item>
+        <item>المعدات الصغيرة</item>
+        <item>آخر</item>
     </string-array>
     <string-array name="UpdateStatus">
-        <item>update status</item>
-        <item>pending</item>
-        <item>started</item>
-        <item>ongoing</item>
-        <item>completed</item>
-        <item>paid</item>
-        <item>cancelled</item>
+        <item>تحديث الحالة</item>
+        <item>قيد الانتظار</item>
+        <item>بدأت</item>
+        <item>جاري التنفيذ</item>
+        <item>منجز</item>
+        <item>دفع</item>
+        <item>ألغيت</item>
     </string-array>
 
     <string-array name="UpdateStatusAgent">
-        <item>update status</item>
-        <item>pending</item>
-        <item>started</item>
-        <item>completed</item>
-        <item>cancelled</item>
+        <item>تحديث الحالة</item>
+        <item>قيد الانتظار</item>
+        <item>بدأت</item>
+        <item>منجز</item>
+        <item>ألغيت</item>
+    </string-array>
+
+    <string-array name="SelectLanguage">
+        <item>الإنجليزية</item>
+        <item>عربى</item>
     </string-array>
 
     <string-array name="RegistrationDocument">
-        <item>Select Document</item>
-        <item>Driving Licence</item>
-        <item>ID</item>
-        <item>Other</item>
+        <item>حدد المستند</item>
+        <item>رخصة قيادة</item>
+        <item>هوية شخصية</item>
+        <item>آخر</item>
     </string-array>
     <string-array name="FuelType">
-        <item>Fuel Type</item>
-        <item>Petrol</item>
-        <item>Diesel</item>
-        <item>Gasoline</item>
+        <item>نوع الوقود</item>
+        <item>بنزين</item>
+        <item>ديزل</item>
+        <item>الغازولين</item>
     </string-array>
     <string-array name="OrderName">
-        <item>Select Order Name</item>
-        <item>Vehicle</item>
-        <item>Large Equipments</item>
-        <item>Small Equipments</item>
+        <item>حدد اسم الأمر</item>
+        <item>مركبة</item>
+        <item>معدات كبيرة</item>
+        <item>المعدات الصغيرة</item>
     </string-array>
     <string-array name="OrderId">
-        <item>Select Order ID</item>
-        <item>11</item>
-        <item>22</item>
-        <item>33</item>
+        <item>حدد معرف الطلب</item>
+        <item>إحدى عشر</item>
+        <item>إثنان و عشرون</item>
+        <item>ثلاثة و ثلاثون</item>
     </string-array>
     <string-array name="ServiceDate">
-        <item>Select Date</item>
-        <item>12 Jan 2020</item>
-        <item>14 May 2020</item>
-        <item>12 June 2020</item>
+        <item>حدد تاريخ</item>
+        <item>12 يناير 2020</item>
+        <item>14 مايو 2020</item>
+        <item>12 يونيو 2020</item>
     </string-array>
 
     <!--Validation messages all here-->
 
-    <string name="ORDER_UPDATE_BUTTON_CLICK_CONFIRM">Before clicking update button please update any data.</string>
-    <string name="THANKYOU_FOR_CONFIRMING">Thank you for confirming!</string>
-    <string name="ENTER_AMOUNT_PAYMENT">Please enter valid amount!</string>
-    <string name="PAYMENT_MODE">Please choose the payment method.</string>
-    <string name="ENTER_AMOUNT_PAYMENT_LESS_THEN_TO">Entered amount can not be grater then of pending amount!</string>
-    <string name="ADD_PRODUCT_AT_LEAST_ONE">Product list is empty...</string>
-    <string name="PLAY_SERVICE_APK_NOT_FOUND">Please install the Google play service APK to get accurate location.</string>
-    <string name="CURRENT_LOCATION_NOT_GETTING">There are some issue to getting location.Please restart your device or launch the Google Map once to get the location.</string>
-    <string name="SOCIAL_FAILED">Auth failed.Please try after some time.</string>
-    <string name="CHECK_INTERNET">Please check internet connectivity</string>
-    <string name="VALID_PASSWORD_LENGTH">Password must be between 8 and 15 characters.</string>
-    <string name="REGISTRATION_SUCCESS">Registration successful. Please Login now to continue.</string>
-    <string name="VALID_EMAIL_ID">Please enter a valid email address.</string>
-    <string name="VALID_EMAIL_PHONE">Please enter a valid email address or mobile number.</string>
-    <string name="ENTER_ALL_FIELDS">Please enter all fields</string>
-    <string name="CHECK_TERMS_POLICY">Please agree to the terms and conditions.</string>
-    <string name="VALID_USER_NAME">Please enter valid user name.It should be between 4 and 50 characters.</string>
-    <string name="SELECT_USER_ROLE">Please select user role</string>
-    <string name="NO_DATA_FOUND">No Record Found...</string>
-    <string name="VALID_OTD">Please enter valid OTP</string>
-    <string name="FORGOT_PASSWORD">Password reset instruction has been sent to your email/mobile number.</string>
-    <string name="PROFILE_UPDATE">Profile updated successfully!</string>
-    <string name="DOC_IS_NOT_UPLOADED">Doc is not uploaded.Please try it again.</string>
-    <string name="SELECT_AT_LIST_ONE_DAYS">Please select at list one day.</string>
+    <string name="ORDER_UPDATE_BUTTON_CLICK_CONFIRM">قبل النقر فوق زر التحديث يرجى تحديث أي بيانات</string>
+    <string name="THANKYOU_FOR_CONFIRMING">شكرا لك على التأكيد</string>
+    <string name="ENTER_AMOUNT_PAYMENT">الرجاء إدخال مبلغ صالح</string>
+    <string name="PAYMENT_MODE">الرجاء اختيار طريقة الدفع</string>
+    <string name="ENTER_AMOUNT_PAYMENT_LESS_THEN_TO">لا يمكن أن يكون المبلغ الذي تم إدخاله مبشرًا للمبلغ المعلق</string>
+    <string name="ADD_PRODUCT_AT_LEAST_ONE">قائمة المنتجات فارغة</string>
+    <string name="PLAY_SERVICE_APK_NOT_FOUND">يرجى تثبيت APK لخدمة Google play للحصول على موقع دقيق</string>
+    <string name="CURRENT_LOCATION_NOT_GETTING">هناك بعض المشكلات في الحصول على الموقع. الرجاء إعادة تشغيل جهازك أو تشغيل خريطة Google مرة واحدة للحصول على الموقع.</string>
+    <string name="SOCIAL_FAILED">فشل المصادقة. يرجى المحاولة بعد بعض الوقت.</string>
+    <string name="CHECK_INTERNET">يرجى التحقق من اتصال الإنترنت</string>
+    <string name="VALID_PASSWORD_LENGTH">يجب أن تكون كلمة المرور بين 8 و 15 حرفًا.</string>
+    <string name="REGISTRATION_SUCCESS">تم التسجيل بنجاح. الرجاء تسجيل الدخول الآن للمتابعة.</string>
+    <string name="VALID_EMAIL_ID">من فضلك أدخل بريد أليكترونى صحيح.</string>
+    <string name="VALID_EMAIL_PHONE">الرجاء إدخال عنوان بريد إلكتروني أو رقم هاتف محمول صالح.</string>
+    <string name="ENTER_ALL_FIELDS">الرجاء إدخال كافة الحقول</string>
+    <string name="CHECK_TERMS_POLICY">يرجى الموافقة على الشروط والأحكام.</string>
+    <string name="VALID_USER_NAME">الرجاء إدخال اسم مستخدم صالح ، ويجب أن يتراوح بين 4 و 50 حرفًا.</string>
+    <string name="SELECT_USER_ROLE">الرجاء تحديد دور المستخدم</string>
+    <string name="NO_DATA_FOUND">لا يوجد سجلات</string>
+    <string name="VALID_OTD">الرجاء إدخال OTP صالح</string>
+    <string name="FORGOT_PASSWORD">تم إرسال تعليمات إعادة تعيين كلمة المرور إلى رقم هاتفك المحمول عبر البريد الإلكتروني.</string>
+    <string name="PROFILE_UPDATE">تم تحديث الملف الشخصي بنجاح</string>
+    <string name="DOC_IS_NOT_UPLOADED">لم يتم تحميل المستند ، يرجى المحاولة مرة أخرى.</string>
+    <string name="SELECT_AT_LIST_ONE_DAYS">يرجى تحديد يوم واحد في القائمة.</string>
 
-    <string name="FILL_QUANTITY">Assign quantity can\'t be zero.</string>
-    <string name="FILL_BOOKING_PRICE">Please enter booking price.</string>
-    <string name="SELECT_FUEL_TYPE_SPINNER">Please select fuel type.</string>
-    <string name="SELECT_DOCUMENT">Please select document type.</string>
-    <string name="UPLOAD_DOCUMENT">Please upload document.</string>
-    <string name="ON_SUBMIT_BUTTON_CLICK">Do you want to submit the product info?</string>
-    <string name="SUBMIT_TITLE">Submit</string>
-    <string name="LOGOUT_MESSAGE">You have been logout successfully</string>
-    <string name="OPT_SUCCESSED">OTP has sent.Please check your email to verify.</string>
-    <string name="REQUEST_SUCCESSED">Request has been submitted successfully!</string>
-    <string name="PRODUCT_DELETE_SUCCESS">Product has been deleted successfully!</string>
-    <string name="START_DATE">Please add start date.</string>
-    <string name="START_TIME">Please add start time.</string>
-    <string name="END_DATE">Please add end date.</string>
-    <string name="END_TIME">Please add end time.</string>
-    <string name="DATE_VALIDATION">Please select valid start and end date time.</string>
-    <string name="PREVIOSE_TIME_BUT_SAME_DATE_TIME">Booking can not be accepted of same start date but time before the current time.</string>
-    <string name="SELECT_ADRESS">Please select your address.</string>
-    <string name="BOOKING_SUBMITTED">Thank you for submitting the order. Our agent will contact you shortly.</string>
-    <string name="VALID_DESC">Write description</string>
-    <string name="VALID_ADDRESS">Please enter your Address Line.</string>
-    <string name="VALID_ADDRESS_TYPE">Please select address as type</string>
-    <string name="ADDRESS_ADDED">Address has been saved successfully!</string>
-    <string name="ADRESS_SEPREATED_BYCOMMA">Please enter a valid address like apartment,city,state and country name,separated by comma.</string>
+    <string name="FILL_QUANTITY">لا يمكن أن يكون تعيين الكمية صفرًا.</string>
+    <string name="FILL_BOOKING_PRICE">الرجاء إدخال سعر الحجز.</string>
+    <string name="SELECT_FUEL_TYPE_SPINNER">الرجاء تحديد نوع الوقود.</string>
+    <string name="SELECT_DOCUMENT">الرجاء تحديد نوع الوثيقة.</string>
+    <string name="UPLOAD_DOCUMENT">الرجاء تحميل الوثيقة.</string>
+    <string name="ON_SUBMIT_BUTTON_CLICK">هل تريد تقديم معلومات المنتج</string>
+    <string name="SUBMIT_TITLE">إرسال</string>
+    <string name="LOGOUT_MESSAGE">لقد تم تسجيل الخروج بنجاح</string>
+    <string name="OPT_SUCCESSED">تم إرسال OTP. يرجى التحقق من بريدك الإلكتروني للتحقق.</string>
+    <string name="REQUEST_SUCCESSED">تم تقديم الطلب بنجاح</string>
+    <string name="PRODUCT_DELETE_SUCCESS">تم حذف المنتج بنجاح</string>
+    <string name="START_DATE">الرجاء إضافة تاريخ البدء.</string>
+    <string name="START_TIME">الرجاء إضافة وقت البدء.</string>
+    <string name="END_DATE">الرجاء إضافة تاريخ الانتهاء.</string>
+    <string name="END_TIME">الرجاء إضافة وقت الانتهاء.</string>
+    <string name="DATE_VALIDATION">الرجاء تحديد تاريخ بداية وتاريخ انتهاء صالحين.</string>
+    <string name="PREVIOSE_TIME_BUT_SAME_DATE_TIME">لا يمكن قبول الحجز من نفس تاريخ البدء ولكن الوقت قبل الوقت الحالي.</string>
+    <string name="SELECT_ADRESS">الرجاء تحديد عنوانك.</string>
+    <string name="BOOKING_SUBMITTED">شكرا لك على تقديم الطلب. وكيلنا سوف يتصل بك قريبا</string>
+    <string name="VALID_DESC">اكتب الوصف</string>
+    <string name="VALID_ADDRESS">الرجاء إدخال سطر العنوان الخاص بك.</string>
+    <string name="VALID_ADDRESS_TYPE">الرجاء تحديد العنوان كنوع</string>
+    <string name="ADDRESS_ADDED">تم حفظ العنوان بنجاح</string>
+    <string name="ADRESS_SEPREATED_BYCOMMA">الرجاء إدخال عنوان صالح مثل الشقة والمدينة والولاية واسم الدولة ، مفصولاً بفاصلة.</string>
 
-    <string name="ITEM_IS_IN_LIST">The product is already in list.</string>
-    <string name="SELECT_MERCHANT">Please assign merchant.</string>
-    <string name="OTP_VALID_NUMBER">Please enter verification code.</string>
-    <string name="VALID_NAME">Please enter product name.</string>
-    <string name="VALID_POWER">Please enter product power.</string>
-    <string name="VALID_PRICE">Please enter product price.</string>
-    <string name="VALID_FUEL_TYPE">Please enter fuel type.</string>
-    <string name="VALID_CAPACITY">Please enter capacity.</string>
-    <string name="ADMIN_NOTIFY">Detail has been sent to admin successfully!</string>
-    <string name="VALID_RATING">Please add some rating.</string>
-    <string name="FEEDBACK_SENT">Thanks for rating. Your feedback is valuable for us!</string>
-    <string name="PHONE_NUMBER">Please enter a valid mobile number.</string>
-    <string name="COUNTRY_CODE">Please enter country code.</string>
-    <string name="DATE_OF_BIRTH">Please enter your date of birth.</string>
-    <string name="GENDER">Please select your gender.</string>
-    <string name="DOCUMENT">Please select document type.</string>
-    <string name="COMPANY">Enter Company </string>
-    <string name="BUSINESS">Enter Business</string>
-    <string name="DESCRIPTON">Enter Description</string>
-    <string name="COUNTRY_CODE_VALIDATION">Please enter a valid dailing code.</string>
-    <string name="NO_ADRESS_FOUND">No address found. Please add new address.</string>
-    <string name="QUANTITY_LIMIT">Assign quantity can\'t be grater then or less then of booking quantity.</string>
-    <string name="QUANTITY_SET_LIMIT">You can\'t set value beyond limit.</string>
-    <string name="USER_NEED_LOGIN">User need to login</string>
-    <string name="SELECT_DATE">Order date</string>
-    <string name="SELECT_STATUS">Order status</string>
-    <string name="SELECT_ORDER_ID">Select order ID</string>
-    <string name="SELECT_PRODUCT_NAME">Select product name</string>
-    <string name="SAME_DATE_TIME_VALIDATION">The time gap between start time and end time should be more then 1 hour for same date</string>
-    <string name="register_">Register</string>
-    <string name="login_">Login</string>
-    <string name="about_us">About Us</string>
-    <string name="about_app">About App</string>
-    <string name="my_addresses">My Addresses</string>
-    <string name="terms_of_services">Terms of Services</string>
-    <string name="help_amp_support"><![CDATA[Help & Support]]></string>
-    <string name="logout">Logout</string>
-    <string name="english">English</string>
-    <string name="arabic">Arabic</string>
-    <string name="language">Language</string>
+    <string name="ITEM_IS_IN_LIST">المنتج موجود بالفعل في القائمة.</string>
+    <string name="SELECT_MERCHANT">الرجاء تعيين التاجر.</string>
+    <string name="OTP_VALID_NUMBER">الرجاء إدخال رمز التحقق.</string>
+    <string name="VALID_NAME">الرجاء إدخال اسم المنتج.</string>
+    <string name="VALID_POWER">الرجاء إدخال قوة المنتج.</string>
+    <string name="VALID_PRICE">الرجاء إدخال سعر المنتج.</string>
+    <string name="VALID_FUEL_TYPE">الرجاء إدخال نوع الوقود.</string>
+    <string name="VALID_CAPACITY">الرجاء إدخال السعة.</string>
+    <string name="ADMIN_NOTIFY">تم إرسال التفاصيل إلى المسؤول بنجاح</string>
+    <string name="VALID_RATING">الرجاء إضافة بعض التقييم.</string>
+    <string name="FEEDBACK_SENT">شكرا على التقييم. ملاحظاتك قيمة بالنسبة لنا</string>
+    <string name="PHONE_NUMBER">الرجاء إدخال رقم جوال صحيح.</string>
+    <string name="COUNTRY_CODE">الرجاء إدخال رمز الدولة.</string>
+    <string name="DATE_OF_BIRTH">الرجاء ادخال تاريخ ميلادك.</string>
+    <string name="GENDER">الرجاء تحديد جنسك.</string>
+    <string name="DOCUMENT">أدخل اسم الشركة</string>
+    <string name="COMPANY">أدخل اسم الشركة </string>
+    <string name="BUSINESS">أدخل العمل</string>
+    <string name="DESCRIPTON">أدخل الوصف</string>
+    <string name="COUNTRY_CODE_VALIDATION">الرجاء إدخال رمز يوم صالح.</string>
+    <string name="NO_ADRESS_FOUND">لم يتم العثور على عنوان. الرجاء إضافة عنوان جديد.</string>
+    <string name="QUANTITY_LIMIT">لا يمكن تعيين الكمية بعد ذلك أو أقل من كمية الحجز.</string>
+    <string name="QUANTITY_SET_LIMIT">لا يمكنك تعيين قيمة تتجاوز الحد.</string>
+    <string name="USER_NEED_LOGIN">يحتاج المستخدم إلى تسجيل الدخول</string>
+    <string name="SELECT_DATE">تاريخ الطلب</string>
+    <string name="SELECT_STATUS">حالة الطلب</string>
+    <string name="SELECT_ORDER_ID">حدد معرف الطلب</string>
+    <string name="SELECT_PRODUCT_NAME">حدد اسم المنتج</string>
+    <string name="SAME_DATE_TIME_VALIDATION">يجب أن تكون الفجوة الزمنية بين وقت البدء ووقت الانتهاء أكثر من ساعة واحدة لنفس التاريخ</string>
+    <string name="register_">تسجيل</string>
+    <string name="login_">تسجيل الدخول</string>
+    <string name="about_us">معلومات عنا</string>
+    <string name="about_app">حول التطبيق</string>
+    <string name="my_addresses">عناويني</string>
+    <string name="terms_of_services">شروط الخدمة</string>
+    <string name="help_amp_support"><![CDATA[ساعد & لدعم]]></string>
+    <string name="logout">تسجيل خروج</string>
+    <string name="english">الإنجليزية</string>
+    <string name="arabic">عربى</string>
+    <string name="language">لغة</string>
 
 </resources>
