@@ -127,7 +127,7 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
         setBottomNavigationListener()
         setLeftSliderNavigationListener()
 
-        topBarWithMenuIconListenerAndTitleMessage(resources.getString(R.string.title_home))
+        topBarWithMenuIconListenerAndTitleMessage(resources.getString(R.string.home))
 
         if (isDeeplinkingFromNotification(intent))
             pageNavigationAtDeeplink(DeeplinkEvents.mapPayLoadDataDeeplink)

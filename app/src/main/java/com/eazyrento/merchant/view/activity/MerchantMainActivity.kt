@@ -57,7 +57,7 @@ class MerchantMainActivity : BaseNavigationActivity() {
             R.id.navigation_home-> {
                 fragment =
                     MerchantHomeFragment()
-                toolbar_title.text=getString(R.string.title_home)
+                toolbar_title.text=getString(R.string.home)
             }
             R.id.navigation_common_fourth_pos-> {
                 fragment =
