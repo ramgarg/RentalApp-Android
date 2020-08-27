@@ -123,7 +123,7 @@ open abstract class PaymentBaseActivity : BaseActivity() {
     protected fun setDataOnUI(customerOrderDetailsResModel: OrderDetailsResModel) {
 
          customerOrderDetailsResModel.order_id.let {
-             tv_order_id.text =Constant.ORDER_ID.plus(it)
+             tv_order_id.text =resources.getString(R.string.orderid).plus(it)
              baseMakePaymentModel.order_id =it
          }
 

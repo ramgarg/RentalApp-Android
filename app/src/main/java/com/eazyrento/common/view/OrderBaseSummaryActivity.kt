@@ -75,12 +75,12 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
 
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
-        tv_order_id.text= Constant.ORDER_ID.plus(orderRes.order_id)
+        tv_order_id.text= resources.getString(R.string.orderid).plus(orderRes.order_id)
         tv_booking_price.text= Constant.DOLLAR.plus(orderRes.order_amount_with_commission)
 
         orderRes.product_detail?.let {
             tv_order_product_name.text=it.product_name?.capitalize()
-            order_product_quantity.text=Constant.QUANTITY.plus(it.quantity)
+            order_product_quantity.text=resources.getString(R.string.quantity).plus(it.quantity)
             checkbox_with_driver.isChecked=it.with_driver
 
             setDateTime(it)
@@ -214,7 +214,7 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
             }
             Constant.PENDING ->{
                 pending_amount.visibility=View.VISIBLE
-                pending_amount.text= Constant.PENDING_AMOUNT.plus(orderRes.amount_to_pay)
+                pending_amount.text= resources.getString(R.string.pending_).plus(orderRes.amount_to_pay)
             }
         }
 

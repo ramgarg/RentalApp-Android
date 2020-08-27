@@ -106,7 +106,7 @@
     <string name="sub_order">ترتيب فرعي</string>
     <string name="sub_order_merchnat">تاجر</string>
     <string name="authentication_required">يستلزم التوثيق</string>
-    <string name="orderid">معرف الطلب - 356478484844848</string>
+    <string name="orderid">معرف الطلب - </string>
     <string name="total_price">السعر الكلي</string>
     <string name="pending_amount">المبلغ المعلق- </string>
     <string name="totalPrice">السعر الكلي</string>
@@ -234,6 +234,8 @@
     <string name="request_a_payment">طلب دفعة</string>
     <string name="status">الحالة:</string>
     <string name="quantity">كمية - </string>
+    <string name="booking_id">معرف الحجز -</string>
+    <string name="pending_">المبلغ المعلق -</string>
     <string name="quantity_value">صفر</string>
 
     <string name="req_quantity">الكمية المطلوبة - </string>

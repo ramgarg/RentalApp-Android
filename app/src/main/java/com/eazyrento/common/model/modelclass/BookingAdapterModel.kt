@@ -47,7 +47,7 @@ fun bookingModelHolder(
         Common.phoneCallWithNumber(obj.mobile_number, context)
     }
 
-    modelBooking.tv_order_id.text = Constant.BOOKING_ID.plus(bookingListItem.order_id)
+    modelBooking.tv_order_id.text = context.resources.getString(R.string.booking_id).plus(bookingListItem.order_id)
 
     // product details
     bookingListItem.product_detail?.let{

@@ -107,7 +107,10 @@
     <string name="sub_order">Sub Order</string>
     <string name="sub_order_merchnat">Merchant</string>
     <string name="authentication_required">Authentication Required</string>
-    <string name="orderid">OrderId - 356478484844848</string>
+    <string name="orderid">Order ID - </string>
+    <string name="booking_id">Booking ID - </string>
+    <string name="pending_">Pending Amount - </string>
+
     <string name="total_price">Total \n Price</string>
     <string name="pending_amount">Pending Amount - </string>
     <string name="totalPrice">Total Price</string>

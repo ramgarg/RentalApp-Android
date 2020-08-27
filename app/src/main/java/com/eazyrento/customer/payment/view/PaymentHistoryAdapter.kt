@@ -55,7 +55,7 @@ class PaymentHistoryAdapter(val items:List<PaymentListResModelItem>, val context
         }*/
 
         holder.tvPayment?.text= Constant.DOLLAR.plus(item.amount_paid)
-        holder.tvOrderId?.text= Constant.ORDER_ID.plus(item.order_id)
+        holder.tvOrderId?.text= context.resources.getString(R.string.orderid).plus(item.order_id)
 
         holder.tvDate?.text=item.added_on
 

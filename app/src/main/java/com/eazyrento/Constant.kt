@@ -118,14 +118,14 @@ interface Constant{
         const val REJECTED = "rejected"
 
 
-        const val PENDING_AMOUNT="Pending Amount - "
+       // const val PENDING_AMOUNT="Pending Amount - "
         const val TOTAL_AMOUNT="Total Amount"
         const val BOOKING_PRICE="Booking Price"
 
         const val DOLLAR="$"
-        const val QUANTITY="Quantity - "
-        const val ORDER_ID="Order ID - "
-        const val BOOKING_ID="Booking ID - "
+       // const val QUANTITY="Quantity - "
+      //  const val ORDER_ID="Order ID - "
+       // const val BOOKING_ID="Booking ID - "
 
 
         const val MERCHANT="Merchant"

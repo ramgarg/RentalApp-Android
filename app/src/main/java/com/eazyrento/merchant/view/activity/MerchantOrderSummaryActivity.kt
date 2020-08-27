@@ -3,6 +3,7 @@ package com.eazyrento.merchant.view.activity
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
+import com.eazyrento.R
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
@@ -36,7 +37,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         orderRes.merchant_order_detail?.let {
             tv_booking_price.text= Constant.DOLLAR.plus(it.booking_price)
 
-            order_product_quantity.text=Constant.QUANTITY.plus(it.merchant_quantity)
+            order_product_quantity.text=resources.getString(R.string.quantity).plus(it.merchant_quantity)
 
             pending_amount.visibility=View.GONE
         }
