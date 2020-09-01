@@ -118,6 +118,7 @@
     <string name="pay_via_cash">الدفع نقدا</string>
     <string name="pay_via_paypal">الدفع عن طريق Paypal</string>
     <string name="customer">الزبون</string>
+
     <string name="email">البريد الإلكتروني</string>
     <string name="email_address">عنوان البريد الالكترونى</string>
     <string name="phone_number">رقم الهاتف</string>
@@ -482,5 +483,7 @@
     <string name="english">الإنجليزية</string>
     <string name="arabic">عربى</string>
     <string name="language">لغة</string>
+    <string name="defualt_error_message">لا يوجد لا تجد</string>
+
 
 </resources>

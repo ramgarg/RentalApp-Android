@@ -14,6 +14,7 @@ import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.myaddress.view.AddNewAddressActivity
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.Validator
 import com.eazyrento.login.model.modelclass.AddressInfo
@@ -137,7 +138,7 @@ open class UpdateProfileBase : BaseActivity() {
 
     private fun setProfileData(userProfile: UserProfile) {
 
-        tv_user_name_profile.text = Session.getInstance(this)?.getUserRole()?.capitalize()
+        tv_user_name_profile.text = Common.getUserType(this)
         ed_full_name.setText(userProfile.full_name)
         // ed_user_name.setText(userProfile?.full_name)
         if (userProfile.email.isNullOrEmpty())

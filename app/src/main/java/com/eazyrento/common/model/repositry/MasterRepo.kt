@@ -63,3 +63,14 @@ class ProductDetailsRepo : GenericRequestHandler<JsonElement>(){
         return doRequest(call)
     }
 }
+
+
+class LanguagChangeRepo : GenericRequestHandler<JsonElement>(){
+
+    fun setLanguage(langaugeChangeReqModel: LangaugeChangeReqModel ): LiveData<DataWrapper<JsonElement>> {
+//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+        val call = ServiceGenrator.client.create(
+            MasterAPI::class.java).langaugeChange(langaugeChangeReqModel)
+        return doRequest(call)
+    }
+}

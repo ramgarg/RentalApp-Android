@@ -58,3 +58,10 @@ class MyBookingViewModel : ViewModel() {
     }
 }
 
+class LanguageChangeViewModel : ViewModel() {
+
+    fun setLanguage(langaugeChangeReqModel: LangaugeChangeReqModel): LiveData<DataWrapper<JsonElement>> {
+        return LanguagChangeRepo().setLanguage(langaugeChangeReqModel)
+    }
+}
+

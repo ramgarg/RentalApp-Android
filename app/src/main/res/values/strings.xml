@@ -485,4 +485,6 @@
     <string name="arabic">Arabic</string>
     <string name="language">Language</string>
 
+    <string name="defualt_error_message">Not found</string>
+
 </resources>

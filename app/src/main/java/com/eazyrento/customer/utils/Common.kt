@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import com.eazyrento.R
+import com.eazyrento.Session
 import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.login.view.ChoseUserRole
 import kotlinx.android.synthetic.main.rating_review.img_close
@@ -209,6 +210,19 @@ class Common {
             val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse("tel:"+number)
             context.startActivity(intent)
+        }
+
+        fun getUserType(context: Context):String{
+            val type = Session.getInstance(context)?.getUserRole()
+           return when(type){
+               UserInfoAPP.CUSTOMER -> context.getString(R.string.customer)
+               UserInfoAPP.MERCHANT -> context.getString(R.string.merchant)
+               UserInfoAPP.AGENT -> context.getString(R.string.agent)
+               else->{
+                   ""
+               }
+           }
+
         }
 
     }

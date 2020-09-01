@@ -3,6 +3,8 @@ package com.eazyrento
 interface Constant{
     companion object
     {
+        val key_error_message = "detail"
+
         const val PLATFORM = "android"
         const val INTENT_PAYMENT_SUCSESS = "payment_sucess"
         const val KEY_ORDER_DETAILS_ID ="order_details_key"

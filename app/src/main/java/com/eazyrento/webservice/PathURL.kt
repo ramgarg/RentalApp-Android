@@ -111,5 +111,8 @@ class PathURL {
         const val ADDRESS_DETAIL = "user/address/get/{id}"
         const val ADDRESS_DELETE = "user/address/delete/{id}"
 
+        //language
+        const val  LANGUAGE_CHANGE= "user/set_device_language"
+
     }
 }

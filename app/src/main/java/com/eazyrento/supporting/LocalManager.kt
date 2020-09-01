@@ -31,6 +31,7 @@ fun updateResources(
 
 }
     fun onLocalLanguuage(activity: BaseActivity,language: String){
+        activity.onChangeLanguage(language)
 
         Session.getInstance(activity)?.saveLocalLanguage(language)
 

@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.notification.view.NotificationFragment
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.webpages.AboutActivity
 import com.eazyrento.login.model.modelclass.UserProfile
@@ -173,7 +174,7 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
 
     val header = navigation_view.getHeaderView(0)
     header.user_name_menu.text=user_profile?.full_name?.capitalize()
-    header.user_type_menu.text =Session.getInstance(this)?.getUserRole()?.capitalize()
+    header.user_type_menu.text = Common.getUserType(this)
 
     Picasso.with(this).load(user_profile?.profile_image).into(header.profile_img_menu)
 

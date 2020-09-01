@@ -26,7 +26,8 @@ class ProfileData {
 
         userProfile?.let { 
         context.findViewById<TextView>(R.id.tv_merchant_name).text =it.full_name.capitalize()
-            context.findViewById<TextView>(R.id.tv_user_type).text = Session.getInstance(context)?.getUserRole()?.capitalize()
+
+            context.findViewById<TextView>(R.id.tv_user_type).text = Common.getUserType(context)
             context.findViewById<TextView>(R.id.merchant_email).text=it.email
 
             val countryCode  = if(it.country_code==null) "" else it.country_code

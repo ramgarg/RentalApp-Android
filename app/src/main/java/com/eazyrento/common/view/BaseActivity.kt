@@ -13,6 +13,9 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.eazyrento.*
+import com.eazyrento.common.model.modelclass.LangaugeChangeReqModel
+import com.eazyrento.common.viewmodel.LanguageChangeViewModel
+import com.eazyrento.login.viewmodel.LoginUserViewModel
 import com.eazyrento.supporting.LocalManager
 import kotlinx.android.synthetic.main.thank_you_pop.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -154,6 +157,7 @@ open abstract class BaseActivity: AppCompatActivity(),
 
     override fun <T> onSuccessApiResult(data: T) {
 
+
     }
     override fun <T> statusCodeOfApi(data: T) {
     }
@@ -235,6 +239,18 @@ open abstract class BaseActivity: AppCompatActivity(),
         }
 
         finishCurrentActivity(flag)
+    }
+
+    fun onChangeLanguage(lang:String){
+        val userID = Session.getInstance(this)?.getUserID()
+        val langaugeChangeReqModel  = LangaugeChangeReqModel(userID!!,lang)
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<LanguageChangeViewModel>(this)
+                    .setLanguage(langaugeChangeReqModel)
+                , this, this
+            )
+        }
     }
 }
 
