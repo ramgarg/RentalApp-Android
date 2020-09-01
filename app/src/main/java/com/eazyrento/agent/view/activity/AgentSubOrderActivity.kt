@@ -137,7 +137,7 @@ class AgentSubOrderActivity :BaseActivity() {
 
 
         if (spinner != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, update_Status)
+            val adapter = ArrayAdapter(this, R.layout.spinner_item_style, update_Status)
             spinner.adapter = adapter
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

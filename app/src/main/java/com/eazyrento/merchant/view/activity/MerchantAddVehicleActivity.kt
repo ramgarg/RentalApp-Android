@@ -88,7 +88,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
             showToast(R.string.NO_DATA_FOUND)
             return
         }
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)
+        val adapter = ArrayAdapter(this, R.layout.spinner_item_style, list)
         val spinnerSelectType = findViewById<Spinner>(id)
         spinnerSelectType.adapter = adapter
         spinnerSelectType.onItemSelectedListener = this

@@ -98,7 +98,7 @@ class OrderFilter : BaseActivity() {
         val spinner = findViewById<Spinner>(spinerName)
 
         spinner?.let {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, data)
+            val adapter = ArrayAdapter(this, R.layout.spinner_item_style, data)
             it.adapter = adapter
 
             it.onItemSelectedListener = spinnerListnere

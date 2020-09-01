@@ -306,7 +306,10 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/spinner_dropdown"
                         style="@style/mySpinnerItemStyle"
+                        android:paddingEnd="@dimen/_26sdp"
+                        android:paddingStart="@dimen/_5sdp"
                         android:fontFamily="@font/bree_serif">
 
                 </Spinner>
@@ -341,7 +344,10 @@
                         android:textAlignment="viewStart"
                         android:layout_below="@+id/tv_select_document"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/spinner_dropdown"
                         style="@style/mySpinnerItemStyle"
+                        android:paddingEnd="@dimen/_26sdp"
+                        android:paddingStart="@dimen/_5sdp"
                         android:fontFamily="@font/bree_serif">
 
                 </Spinner>

@@ -74,6 +74,7 @@ class ForgotPasswordActivity :BaseActivity() {
         return false*/
     }
 
+
     override fun <T> onSuccessApiResult(data: T) {
 
         Toast.makeText(this,R.string.FORGOT_PASSWORD,Toast.LENGTH_SHORT).show()

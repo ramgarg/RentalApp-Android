@@ -51,7 +51,10 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_below="@id/tv_order_name"
+            android:background="@drawable/spinner_dropdown"
             style="@style/mySpinnerItemStyle"
+            android:paddingEnd="@dimen/_26sdp"
+            android:paddingStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:id="@+id/sp_product_name"/>
     <TextView
@@ -73,7 +76,10 @@
             android:textAlignment="viewStart"
             android:layout_below="@+id/tv_order_id"
             android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/spinner_dropdown"
             style="@style/mySpinnerItemStyle"
+            android:paddingEnd="@dimen/_26sdp"
+            android:paddingStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:id="@+id/sp_order_id"/>
 
@@ -103,7 +109,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:textAlignment="viewStart"
+                    android:background="@drawable/spinner_dropdown"
                     style="@style/mySpinnerItemStyle"
+                    android:paddingEnd="@dimen/_26sdp"
+                    android:paddingStart="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:id="@+id/sp_service_date"/>
 
@@ -127,7 +136,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:textAlignment="viewStart"
+                    android:background="@drawable/spinner_dropdown"
                     style="@style/mySpinnerItemStyle"
+                    android:paddingEnd="@dimen/_26sdp"
+                    android:paddingStart="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:id="@+id/sp_status"/>
 

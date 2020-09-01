@@ -42,7 +42,7 @@ fun updateResources(
 
         val spinner = activity.findViewById<Spinner>(R.id.sp_language)
         if (spinner != null) {
-            val adapter = ArrayAdapter(activity, android.R.layout.simple_spinner_dropdown_item, appLanguage)
+            val adapter = ArrayAdapter(activity, R.layout.spinner_item_style, appLanguage)
             spinner.adapter = adapter
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
