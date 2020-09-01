@@ -17,24 +17,25 @@ abstract class AppBizLogin: BaseActivity(){
     fun checkValidation(editTextUserName: EditText, email: EditText, password: EditText,
                         checkBoxTerms: CheckBox, user_role:String?): Boolean {
 
-        if(isValidCredintitial(email,password).not()){
-            return false
-        }
-
         if(user_role==null){
             showToast(R.string.SELECT_USER_ROLE)
             return false
         }
 
-        if (editTextUserName.text.toString().isEmpty()) {
+        else if (editTextUserName.text.toString().isEmpty()) {
              showToast(R.string.VALID_USER_NAME)
         }
 
         else if (editTextUserName.text.toString().length< resources.getInteger(R.integer.full_name_min_len)) {
              showToast(R.string.VALID_USER_NAME)
-        } else if(!checkBoxTerms.isChecked){
-             showToast(R.string.CHECK_TERMS_POLICY)
-        }else{
+        }
+        else if(isValidCredintitial(email,password).not()){
+            return false
+        }
+        else if(!checkBoxTerms.isChecked){
+            showToast(R.string.CHECK_TERMS_POLICY)
+        }
+        else{
             return true
         }
         return false
@@ -45,14 +46,9 @@ abstract class AppBizLogin: BaseActivity(){
 
         when{
 
-            email.text.toString().isEmpty()->{
+            email.text.toString().isEmpty() ->{
                 email.requestFocus()
                 showToast(R.string.VALID_EMAIL_PHONE)
-            }
-
-            password.text.toString().isEmpty() || Validator.isPasswordValid(password.text.toString()).not()->{
-                password.requestFocus()
-                showToast(R.string.VALID_PASSWORD_LENGTH)
             }
 
             Validator.isEmailValid(email.text.toString()).not()->{
@@ -68,6 +64,11 @@ abstract class AppBizLogin: BaseActivity(){
                     return true
                 }
 
+            }
+
+            password.text.toString().isEmpty() || Validator.isPasswordValid(password.text.toString()).not()->{
+                password.requestFocus()
+                showToast(R.string.VALID_PASSWORD_LENGTH)
             }
 
             else-> return true

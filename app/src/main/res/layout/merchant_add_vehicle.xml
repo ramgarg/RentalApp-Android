@@ -26,7 +26,10 @@
 
     <Spinner
             android:id="@+id/sp_select_type"
+            android:background="@drawable/spinner_dropdown"
             style="@style/mySpinnerItemStyle"
+            android:paddingEnd="@dimen/_26sdp"
+            android:paddingStart="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_5sdp"
@@ -43,12 +46,15 @@
 
     <Spinner
             android:id="@+id/sp_select_category"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/spinner_dropdown"
             style="@style/mySpinnerItemStyle"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_26sdp"
+            android:paddingStart="@dimen/_5sdp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp" />
 
     <TextView
             style="@style/DocumentTextView"
@@ -61,7 +67,10 @@
             android:id="@+id/sp_select_subcategory"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/spinner_dropdown"
             style="@style/mySpinnerItemStyle"
+            android:paddingEnd="@dimen/_26sdp"
+            android:paddingStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

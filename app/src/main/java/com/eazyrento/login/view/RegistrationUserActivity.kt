@@ -185,7 +185,7 @@ class RegistrationUserActivity : AppBizLogin(){
 
         val spinner = findViewById<Spinner>(R.id.sp_select_document)
         if (spinner != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, document)
+            val adapter = ArrayAdapter(this, R.layout.spinner_item_style, document)
             spinner.adapter = adapter
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
