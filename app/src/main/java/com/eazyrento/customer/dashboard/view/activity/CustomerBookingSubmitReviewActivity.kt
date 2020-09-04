@@ -144,11 +144,12 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
                 val days = hour / 24
                 hour %= 24
 
-                stringTimes=  stringTimes.plus(days).plus(" Days ").plus(hour).plus(" Hour ").plus(min).plus(" Minute")
+                stringTimes=  stringTimes.plus(days).plus(getString(R.string.days)).plus(hour).plus(getString(
+                                    R.string.hour)).plus(min).plus(getString(R.string.minute))
                 return stringTimes
             }
 
-            stringTimes=  stringTimes.plus(hour).plus(" Hour ").plus(min).plus(" Minute")
+            stringTimes=  stringTimes.plus(hour).plus(R.string.hour).plus(min).plus(R.string.minute)
 
             return stringTimes
 

@@ -114,7 +114,7 @@
                         android:lines="1"
                         android:layout_gravity="start"
                         android:textAlignment="viewStart"
-                        android:inputType="textEmailAddress"
+                        android:inputType="number"
                         android:nextFocusDown="@id/ed_password"
                         android:fontFamily="@font/bree_serif"
                         android:layout_height="@dimen/_40sdp"/>

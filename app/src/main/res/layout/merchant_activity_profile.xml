@@ -113,7 +113,7 @@
                         android:id="@+id/merchant_ed_phone"
                         android:maxLines="1"
                         android:lines="1"
-                        android:inputType="textEmailAddress"
+                        android:inputType="number"
                         android:layout_gravity="start"
                         android:textAlignment="viewStart"
                         android:nextFocusDown="@id/ed_password"

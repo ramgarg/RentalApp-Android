@@ -77,6 +77,6 @@ class Session private constructor(context: Context?){
     }
     /*get local language*/
     fun getLocalLanguage():String?{
-        return sSharedPreferences?.getString(PrefKey.LOCAL_LANGUAGE,null)
+        return sSharedPreferences?.getString(PrefKey.LOCAL_LANGUAGE,LocalManager.english_lang_code)
     }
 }

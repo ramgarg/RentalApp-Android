@@ -243,13 +243,17 @@ open abstract class BaseActivity: AppCompatActivity(),
 
     fun onChangeLanguage(lang:String){
         val userID = Session.getInstance(this)?.getUserID()
-        val langaugeChangeReqModel  = LangaugeChangeReqModel(userID!!,lang)
-        callAPI()?.let {
-            it.observeApiResult(
-                it.callAPIActivity<LanguageChangeViewModel>(this)
-                    .setLanguage(langaugeChangeReqModel)
-                , this, this
-            )
+        if (userID == -1){
+            return
+        }else {
+            val langaugeChangeReqModel = LangaugeChangeReqModel(userID!!, lang)
+            callAPI()?.let {
+                it.observeApiResult(
+                    it.callAPIActivity<LanguageChangeViewModel>(this)
+                        .setLanguage(langaugeChangeReqModel)
+                    , this, this
+                )
+            }
         }
     }
 }

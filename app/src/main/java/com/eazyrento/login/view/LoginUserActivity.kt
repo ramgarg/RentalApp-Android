@@ -298,6 +298,8 @@ class LoginUserActivity : AppBizLogin() {
 
         EazyRantoApplication.onLoginUpdateSession(loginUserResModel.user_info)
         sendUserReleventPanel(intent,loginUserResModel.user_info.user_role)
+        onChangeLanguage(Session.getInstance(this)?.getLocalLanguage()!!)
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

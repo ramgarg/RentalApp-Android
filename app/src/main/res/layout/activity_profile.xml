@@ -180,7 +180,7 @@
                         android:fontFamily="@font/bree_serif"
                         android:layout_gravity="start"
                         android:textAlignment="viewStart"
-                        android:inputType="phone"
+                        android:inputType="number"
                         android:nextFocusDown="@id/ed_dob"
                         android:maxLength="15"
                         />

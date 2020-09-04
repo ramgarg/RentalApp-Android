@@ -484,6 +484,9 @@
     <string name="arabic">عربى</string>
     <string name="language">لغة</string>
     <string name="defualt_error_message">لا يوجد لا تجد</string>
+    <string name="days">"أيام"</string>
+    <string name="hour">"ساعة"</string>
+    <string name="minute">"دقيقة"</string>
 
 
 </resources>

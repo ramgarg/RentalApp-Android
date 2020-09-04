@@ -17,10 +17,7 @@ import com.eazyrento.customer.webpages.TermsConditionActivity
 import com.eazyrento.login.model.modelclass.RegisterUserReqModel
 import com.eazyrento.login.model.modelclass.RegisterUserResModel
 import com.eazyrento.login.viewmodel.RegisterUserViewModel
-import com.eazyrento.supporting.OnPiclImageToBase64
-import com.eazyrento.supporting.PhoneNumberFormat
-import com.eazyrento.supporting.PhoneTextWatcher
-import com.eazyrento.supporting.UploadImageFromDevice
+import com.eazyrento.supporting.*
 import kotlinx.android.synthetic.main.activity_register_user.*
 import kotlinx.android.synthetic.main.activity_register_user.btn_agent_active
 import kotlinx.android.synthetic.main.activity_register_user.btn_agent_inactive
@@ -39,6 +36,7 @@ class RegistrationUserActivity : AppBizLogin(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_user)
+        LocalManager.languageSpinnerData(this)
 
         ed_full_name.filters = filterAs(FilterEnum.FULL_NAME)
 
@@ -144,6 +142,7 @@ class RegistrationUserActivity : AppBizLogin(){
 
         var countryCode = ""
         var emailOrPhoneNumber = ed_email_phone.text.toString()
+        var setLanguage = Session.getInstance(this)?.getLocalLanguage().toString()
 
        try {
            if (phoneNumberFormat.phoneNumber==null) {
@@ -165,6 +164,7 @@ class RegistrationUserActivity : AppBizLogin(){
             UserInfoAPP.REGISTRATIONS_SOURCE!!,
             user_role!!,
             emailOrPhoneNumber,
+            setLanguage,
             selectProfID,
             selectBase64String
         )

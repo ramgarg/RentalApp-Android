@@ -486,5 +486,8 @@
     <string name="language">Language</string>
 
     <string name="defualt_error_message">Not found</string>
+    <string name="days">" Days "</string>
+    <string name="hour">" Hour "</string>
+    <string name="minute">" Minute"</string>
 
 </resources>
