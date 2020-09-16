@@ -15,7 +15,7 @@ class TermsConditionActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_terms_cond)
-        topBarWithBackIconAndTitle("Terms & Conditions")
+        topBarWithBackIconAndTitle(getString(R.string.terms_of_services))
 
         MoveToAnotherComponent.openWebPage(webview,"file:///android_asset/privacy.html")
 

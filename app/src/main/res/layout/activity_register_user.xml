@@ -42,10 +42,10 @@
                 android:layout_height="wrap_content">
             <ImageView
                     android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:src="@mipmap/logo"
                     android:scaleType="fitXY"
-                    android:layout_width="@dimen/_90sdp"
+                    android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_60sdp"/>
 
 
@@ -309,7 +309,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/lyt_select_document"
-                android:visibility="invisible">
+                android:visibility="gone">
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -347,7 +347,7 @@
         </RelativeLayout>
         <LinearLayout android:layout_width="wrap_content"
                       android:orientation="horizontal"
-                      android:layout_marginTop="@dimen/_10sdp"
+                      android:layout_marginTop="@dimen/_15sdp"
                       android:layout_height="@dimen/_30sdp">
 
         <CheckBox android:layout_width="@dimen/_20sdp"
@@ -407,12 +407,12 @@
         </LinearLayout>
         <Button android:layout_width="match_parent"
                 android:text="@string/register_"
-                android:textColor="#fff"
+                android:textColor="@color/mdtp_white"
                 android:fontFamily="@font/bree_serif"
                 android:id="@+id/btn_register"
                 android:textAllCaps="false"
                 android:textSize="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/button_gradient"
                 android:layout_height="@dimen/_40sdp"
                 android:onClick="onRegisterButtonClick"

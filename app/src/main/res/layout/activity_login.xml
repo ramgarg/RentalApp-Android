@@ -35,11 +35,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <ImageView
-                android:layout_marginStart="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:src="@mipmap/logo"
                 android:scaleType="fitXY"
-                android:layout_width="@dimen/_90sdp"
+                android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_60sdp"/>
 
 
@@ -75,12 +75,12 @@
     </RelativeLayout>
 
     <TextView
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textColor="#000"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textColor="@color/black"
             android:fontFamily="@font/bree_serif"
             android:text="@string/welcome"
             android:textSize="@dimen/_20sdp"
-            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_20sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -88,21 +88,21 @@
             android:fontFamily="@font/bree_serif"
             android:text="@string/login_to_continue_as"
             android:textSize="@dimen/_15sdp"
-            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_20sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
     <LinearLayout
-            android:layout_marginStart="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_35sdp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:hint="@string/email_phonenumber"
-                android:textColor="@color/black"
                 android:layout_gravity="start"
                 android:textAlignment="viewStart"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
@@ -113,6 +113,7 @@
                     android:layout_width="match_parent"
                     android:id="@+id/ed_email"
                     android:maxLines="1"
+                    android:textColor="@color/black"
                     android:lines="1"
                     android:layout_gravity="start"
                     android:textAlignment="viewStart"
@@ -125,7 +126,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:hint="@string/password"
                 android:textColor="@color/black"
                 android:layout_gravity="start"
@@ -140,6 +141,7 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_gravity="start"
                 android:textAlignment="viewStart"
                 android:id="@+id/ed_password"
@@ -150,11 +152,11 @@
 
     <TextView android:layout_width="wrap_content"
               android:layout_gravity="end"
-              android:textColor="#000"
+              android:textColor="@color/black"
               android:id="@+id/tv_forgot_password"
               android:fontFamily="@font/bree_serif"
-              android:textSize="@dimen/_15sdp"
-              android:layout_marginTop="@dimen/_10sdp"
+              android:textSize="@dimen/_14sdp"
+              android:layout_marginTop="@dimen/_20sdp"
               android:text="@string/forgot_password"
               android:layout_height="wrap_content"
               android:onClick="onForgotPasswordClick"
@@ -163,12 +165,12 @@
     <Button android:layout_width="match_parent"
             android:text="@string/login_"
             android:id="@+id/btn_login"
-            android:textColor="#fff"
+            android:textColor="@color/mdtp_white"
             android:fontFamily="@font/bree_serif"
             android:textAllCaps="false"
             android:textSize="@dimen/_15sdp"
 
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_25sdp"
             android:background="@drawable/button_gradient"
             android:layout_height="@dimen/_40sdp"
             android:onClick="onLoginClick"
@@ -177,14 +179,14 @@
 
     <LinearLayout
             android:gravity="center"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         <TextView
                 android:fontFamily="@font/bree_serif"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_13sdp"
                 android:textColor="#000"
                 android:text="@string/login_with"
                 android:layout_width="wrap_content"
@@ -193,22 +195,22 @@
         <ImageView
                 android:layout_marginStart="@dimen/_10sdp"
                 android:src="@mipmap/facebook"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:onClick="onFBClick"
                 />
         <ImageView
                 android:layout_marginStart="@dimen/_10sdp"
                 android:src="@mipmap/gmail"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:onClick="onGmailClick"
                 />
 
     </LinearLayout>
 
         <LinearLayout
-                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_25sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -216,7 +218,6 @@
                 >
     <TextView
             android:layout_gravity="center"
-
             style="@style/AgentSmallTextCard"
             android:textSize="@dimen/_12sdp"
             android:text="@string/don_t_have_an_account"
@@ -232,7 +233,6 @@
                     android:text="@string/register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:onClick="onRegisterClick"
                     />
 

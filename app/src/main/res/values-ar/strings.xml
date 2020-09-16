@@ -13,7 +13,7 @@
     <string name="send">إرسال</string>
     <string name="enter_opt">أدخل OTP</string>
     <string name="password">كلمه السر</string>
-    <string name="forgot_password"><u>هل نسيت كلمة المرور?</u></string>
+    <string name="forgot_password">هل نسيت كلمة المرور?</string>
     <string name="login"><u>تسجيل الدخول</u></string>
     <string name="login_with">تسجيل الدخول مع:</string>
     <string name="don_t_have_an_account">ليس لديك حساب?</string>
@@ -356,7 +356,7 @@
 
     <string-array name="SelectLanguage">
         <item>تغيير اللغة</item>
-        <item>الإنجليزية</item>
+        <item>English</item>
         <item>عربى</item>
     </string-array>
 
@@ -480,7 +480,7 @@
     <string name="terms_of_services">شروط الخدمة</string>
     <string name="help_amp_support"><![CDATA[ساعد & لدعم]]></string>
     <string name="logout">تسجيل خروج</string>
-    <string name="english">الإنجليزية</string>
+    <string name="english">English</string>
     <string name="arabic">عربى</string>
     <string name="language">لغة</string>
     <string name="defualt_error_message">لا يوجد لا تجد</string>

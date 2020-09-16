@@ -395,7 +395,8 @@ open class UpdateProfileBase : BaseActivity() {
         if (requestCode == Constant.PICK_PHOTO_FOR_AVATAR && resultCode == Activity.RESULT_OK) {
             uploadImageFromDevice.onActivityResult(requestCode, resultCode, data)
             return
-        } else if (resultCode == Activity.RESULT_OK && requestCode == Constant.ADDRESS_REQUECT_CODE) {
+        }
+        else if (resultCode == Activity.RESULT_OK && requestCode == Constant.ADDRESS_REQUECT_CODE) {
 
             userProfile?.let {
 
@@ -407,8 +408,7 @@ open class UpdateProfileBase : BaseActivity() {
 
                     if (intent.getIntExtra(
                             Constant.KEY_FINISH_FIRST_TIME_USER,
-                            0
-                        ) == Constant.VALUE_FINISH_FIRST_TIME_USER
+                            0) == Constant.VALUE_FINISH_FIRST_TIME_USER
                     ) {
                         it.address_info.is_default = true
                     }
@@ -418,7 +418,8 @@ open class UpdateProfileBase : BaseActivity() {
 
             }
 
-        } else if (resultCode == Activity.RESULT_OK && requestCode == Constant.REQUEST_CODE_PROFILE_UPDATE) {
+        }
+        else if (resultCode == Activity.RESULT_OK && requestCode == Constant.REQUEST_CODE_PROFILE_UPDATE) {
 
             userProfile?.let {
 
@@ -426,6 +427,12 @@ open class UpdateProfileBase : BaseActivity() {
 
                 addressInfo?.let { inner ->
                     it.address_info = inner
+                    if (intent.getIntExtra(
+                            Constant.KEY_FINISH_FIRST_TIME_USER,
+                            0) == Constant.VALUE_FINISH_FIRST_TIME_USER
+                    ) {
+                        it.address_info.is_default = true
+                    }
                 }
 
                 setAddress()

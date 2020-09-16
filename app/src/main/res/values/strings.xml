@@ -12,7 +12,7 @@
     <string name="send">Send</string>
     <string name="enter_opt">Enter OTP</string>
     <string name="password">Password</string>
-    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="forgot_password">Forgot Password?</string>
     <string name="login"><u>Login</u></string>
     <string name="login_with">Login With:</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
@@ -358,7 +358,7 @@
     <string-array name="SelectLanguage">
         <item>Change language</item>
         <item>English</item>
-        <item>Arabic</item>
+        <item>عربى</item>
     </string-array>
 
     <string-array name="RegistrationDocument">
@@ -482,7 +482,7 @@
     <string name="help_amp_support"><![CDATA[Help & Support]]></string>
     <string name="logout">Logout</string>
     <string name="english">English</string>
-    <string name="arabic">Arabic</string>
+    <string name="arabic">عربى</string>
     <string name="language">Language</string>
 
     <string name="defualt_error_message">Not found</string>

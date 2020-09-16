@@ -61,21 +61,21 @@
                android:id="@+id/lyt_address"
                android:layout_below="@+id/img_delete">
 
-        <TextView android:layout_width="@dimen/_120sdp"
+        <TextView android:layout_width="match_parent"
                   android:text="@string/downtown_dubai"
                   android:id="@+id/tv_add_line"
                   android:textSize="@dimen/_12sdp"
                   android:layout_marginTop="@dimen/_10sdp"
                   android:fontFamily="@font/bree_serif"
                   android:layout_height="@dimen/_20sdp"/>
-        <TextView android:layout_width="@dimen/_140sdp"
+        <!--<TextView android:layout_width="@dimen/_140sdp"
                 android:text="@string/downtown_dubai"
                 android:id="@+id/tv_add_city"
                 android:layout_toEndOf="@+id/tv_add_line"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/bree_serif"
-                android:layout_height="@dimen/_20sdp"/>
+                android:layout_height="@dimen/_20sdp"/>-->
        </RelativeLayout>
         <TextView android:layout_width="match_parent"
                 android:text="@string/downtown_dubai"

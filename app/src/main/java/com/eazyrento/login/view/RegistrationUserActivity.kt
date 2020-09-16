@@ -81,7 +81,7 @@ class RegistrationUserActivity : AppBizLogin(){
         user_role = UserInfoAPP.CUSTOMER
         Common.showGroupViews(btn_customer_active,btn_merchant_inactive,btn_agent_inactive)
         Common.hideGroupViews(btn_agent_active,btn_merchant_active,btn_customer_inactive)
-        lyt_select_document.visibility=View.INVISIBLE
+        lyt_select_document.visibility=View.GONE
 
         documentSpinnerData()
 
@@ -110,7 +110,7 @@ class RegistrationUserActivity : AppBizLogin(){
 
                 Common.showGroupViews(btn_customer_active,btn_merchant_inactive,btn_agent_inactive)
                 Common.hideGroupViews(btn_agent_active,btn_merchant_active,btn_customer_inactive)
-                lyt_select_document.visibility=View.INVISIBLE
+                lyt_select_document.visibility=View.GONE
             }
             UserInfoAPP.AGENT->{
 

@@ -367,9 +367,6 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     fun onDeleteClick(){
 
-        isDeletingAddress = true
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,addressInfo.toString())
-
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<AddressDeleteViewModel>(this)
@@ -377,6 +374,8 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
                 , this, this
             )
         }
+        isDeletingAddress = true
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,addressInfo.toString())
     }
     fun onUpdateClick()
     {
@@ -495,10 +494,15 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
        try {
 
        addressInfo?.let {
-       it.appartment = address.subThoroughfare.plus(address.thoroughfare).plus(address.featureName)
-       it.city = address.subLocality.plus(address.locality)
-       it.state = address.subAdminArea.plus(address.adminArea)
-       it.country = address.countryName
+       //it.appartment = address.subThoroughfare.plus(address.thoroughfare).plus(address.featureName)
+       //it.city = address.subLocality.plus(address.locality)
+      // it.state = address.subAdminArea.plus(address.adminArea)
+
+           it.city = address.locality
+           it.state = address.adminArea
+           it.country = address.countryName
+           it.appartment = address.featureName
+
 
        }
        }catch (ex:Exception){

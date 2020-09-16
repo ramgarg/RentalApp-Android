@@ -294,7 +294,9 @@
         <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/chk_box_defalut_address"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:padding="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
 
                 android:text="@string/default_address"
