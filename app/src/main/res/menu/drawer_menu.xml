@@ -67,6 +67,11 @@
                 android:id="@+id/nav_logout"
                 android:icon="@mipmap/logout"
                 android:title="@string/logout" />
+
+        <item
+                android:id="@+id/nav_tracking"
+                android:icon="@drawable/ic_tracker"
+                android:title="@string/track_vehicle" />
     </group>
 
         </menu>

@@ -225,7 +225,7 @@
     <string name="notif_clear_all">Clear All</string>
 
 
-<string name="selected_item">Selected item:</string>
+    <string name="selected_item">Selected item:</string>
     <string name="order_date">Order Date</string>
     <string name="_24_jun_1212">24-jun-1212</string>
 
@@ -275,18 +275,16 @@
     <string name="google_credential_key">AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I</string>
 
     <string-array name="place_restriction_country_code">
-            <item>AE</item>
-            <item>SA</item>
+        <item>AE</item>
+        <item>SA</item>
     </string-array>
 
     <!--<string name="iso_phone_number">AE</string>-->
 
 
-
     <!--FB login production-->
-    <string name="facebook_app_id">216337653018960</string>
-    <string name="fb_login_protocol_scheme">fb216337653018960</string>
-
+    <string name="facebook_app_id" translatable="false">216337653018960</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb216337653018960</string>
 
 
     <!--Google gmail login QA env-->
@@ -315,11 +313,11 @@
     <string name="price_in_dollar"> </string>
 
     <string-array name="SelectType">
-    <item>Select Type</item>
-    <item>Equipments</item>
-    <item>Vehicles</item>
-    <item>All</item>
-</string-array>
+        <item>Select Type</item>
+        <item>Equipments</item>
+        <item>Vehicles</item>
+        <item>All</item>
+    </string-array>
     <string-array name="Gender">
         <item>Select Gender</item>
         <item>Male</item>
@@ -327,10 +325,10 @@
     </string-array>
     <string-array name="SelectCategory">
         <item>Select Category</item>
-    <item>Big-Equipment</item>
-    <item>Small-Equipment</item>
-    <item>Other</item>
-</string-array>
+        <item>Big-Equipment</item>
+        <item>Small-Equipment</item>
+        <item>Other</item>
+    </string-array>
     <string-array name="SelectSubCategory">
         <item>Select Sub Category</item>
         <item>Big-Equipment</item>
@@ -489,5 +487,10 @@
     <string name="days">" Days "</string>
     <string name="hour">" Hour "</string>
     <string name="minute">" Minute"</string>
+
+    <!--tracking module-->
+    <string name="tracking_name">Tracking, tap to cancel</string>
+    <string name="location_enable">Please enable location GPS</string>
+    <string name="track_vehicle">Track Vehicle</string>
 
 </resources>

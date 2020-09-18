@@ -27,6 +27,8 @@ import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_DEEPLINK
 import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_ORDER_ID
 import com.eazyrento.supporting.LocalManager
 import com.eazyrento.supporting.isDeeplinkingFromNotification
+import com.eazyrento.tracking.TrackerActivity
+import com.eazyrento.tracking.display.DisplayMapsActivity
 import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 import com.squareup.picasso.Picasso
 import initHippoWithUserData
@@ -245,6 +247,14 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
             }
             R.id.nav_logout -> {
                 MoveToAnotherComponent.onLogout(this, Constant.INTENT_LOGOUT_KEY, Constant.LOGOUT_VALUE)
+            }
+
+            R.id.nav_tracking -> {
+
+              //  MoveToAnotherComponent.moveToActivityNormal<TrackerActivity>(this)
+
+                // MAP TRACKING
+                MoveToAnotherComponent.moveToActivityNormal<DisplayMapsActivity>(this)
             }
         }
         menuItem.isChecked=false

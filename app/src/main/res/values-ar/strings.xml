@@ -488,5 +488,9 @@
     <string name="hour">"ساعة"</string>
     <string name="minute">"دقيقة"</string>
 
+    <!--tracking module-->
+    <string name="tracking_name">التتبع ، انقر للإلغاء</string>
+    <string name="location_enable">يرجى تمكين GPS الموقع</string>
+    <string name="track_vehicle">تتبع السيارة</string>
 
 </resources>
