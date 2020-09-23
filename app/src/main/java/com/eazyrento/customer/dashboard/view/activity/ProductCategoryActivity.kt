@@ -29,8 +29,9 @@ class ProductCategoryActivity : ProductBaseActitvity() {
                 Constant.MASTER_DATA_ITEM)
 
         selectedKey = masterResModelItem.name
+        val toolbarTitle = masterResModelItem.display_name
 
-        setData(selectedKey)
+        setData(toolbarTitle)
 
         callAPI()?.let {
             it.observeApiResult(

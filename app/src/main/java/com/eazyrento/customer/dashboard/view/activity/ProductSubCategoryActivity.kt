@@ -27,8 +27,9 @@ class ProductSubCategoryActivity :
             Constant.VEHICLES_DATA_ITEM)
 
         val selectedString = masterResModelItem.category_name
+        val toolbar_title = masterResModelItem.display_name
 
-        setData(selectedString)
+        setData(toolbar_title)
 
         callAPI()?.let {
             it.observeApiResult(
