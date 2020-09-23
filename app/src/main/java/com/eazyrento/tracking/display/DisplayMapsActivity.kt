@@ -101,11 +101,11 @@ class DisplayMapsActivity : AppCompatActivity(), OnMapReadyCallback {
    }
     private fun createNewMarker(title: String, location: LatLng): MarkerOptions {
 
-       val drawle =  ContextCompat.getDrawable(this@DisplayMapsActivity , R.drawable.ic_tracker)
+//       val drawle =  ContextCompat.getDrawable(this@DisplayMapsActivity , R.drawable.ic_tracker)
 
        return MarkerOptions().apply{
             setTitle(title)
-            icon(AppBizCustomBitmapDes.getBitmapFromDrawable(R.mipmap.category_vehicle))
+            icon(AppBizCustomBitmapDes.getBitmapFromDrawable(R.mipmap.vehicle_marker))
             position(location)
         }
     }
