@@ -114,5 +114,10 @@ class PathURL {
         //language
         const val  LANGUAGE_CHANGE= "user/set_device_language"
 
+        //Terms and Condition
+        const val TERMS_AND_CONDITION = "/terms-and-conditions/"
+        const val PRIVACY_POLICY = "/privacy-policy/"
+        const val ABOUT_US = "/web/static-content/about-us/"
+
     }
 }

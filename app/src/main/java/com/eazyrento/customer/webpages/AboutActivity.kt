@@ -18,7 +18,7 @@ class AboutActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_about)
-            MoveToAnotherComponent.openWebPage(webview, PathURL.BASE_URL)
+            MoveToAnotherComponent.openWebPage(webview, PathURL.BASE_URL + PathURL.ABOUT_US)
             topBarWithBackIconAndTitle(getString(R.string.about_us))
 
         }

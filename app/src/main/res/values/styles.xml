@@ -260,7 +260,7 @@
     </style>
 
     <style name="NavigationTheme" parent="AppTheme">
-        <item name="listPreferredItemHeightSmall">@dimen/_35sdp</item>
+        <item name="listPreferredItemHeightSmall">@dimen/_32sdp</item>
         <item name="fontFamily">@font/bree_serif</item><!-- menu item height- vary as u need -->
     </style>
     <style name="BottomNavigationTheme" parent="AppTheme">

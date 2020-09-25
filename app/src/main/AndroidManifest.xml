@@ -253,6 +253,10 @@
                 android:screenOrientation="unspecified"
                 />
         <activity
+                android:name=".customer.webpages.PrivacyPolicy"
+                android:screenOrientation="unspecified"
+                />
+        <activity
                 android:name="com.eazyrento.login.view.UserProfileActivity"
                 android:screenOrientation="unspecified"
                 />

@@ -18,6 +18,8 @@ import com.eazyrento.customer.notification.view.NotificationFragment
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.webpages.AboutActivity
+import com.eazyrento.customer.webpages.PrivacyPolicy
+import com.eazyrento.customer.webpages.TermsConditionActivity
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.view.ProfileData
 import com.eazyrento.login.view.ProfileDataAPILisetner
@@ -224,15 +226,15 @@ open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNa
                 MoveToAnotherComponent.moveToActivityNormal<UserProfileActivity>(this)
             }
 
-            R.id.nav_help -> {
-                helpAndSupport()
+            R.id.nav_privacy -> {
+               MoveToAnotherComponent.moveToActivityNormal<PrivacyPolicy>(this)
             }
             R.id.nav_add_note -> {
                addNotes()
             }
 
             R.id.nav_tc -> {
-                MoveToAnotherComponent.moveToTermsActivity(this)
+                MoveToAnotherComponent.moveToActivityNormal<TermsConditionActivity>(this)
             }
             R.id.nav_payment->{
                 viewPaymentHistory()
