@@ -107,7 +107,7 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
 //  update oder when user update any data of booking order
         if (data is JsonElement){
             showToast(R.string.REQUEST_SUCCESSED)
-            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(this,Constant.INTENT_UPDATE_ORDER_AGENT,1)
+            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentOrderSummaryActivity>(this,Constant.INTENT_UPDATE_ORDER_AGENT,1)
             return
         }
 

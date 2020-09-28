@@ -25,21 +25,27 @@ class PaymentHistoryAdapter(val items:List<PaymentListResModelItem>, val context
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
 
-        when(item.status){
-            Constant.PENDING -> {
-                holder.tvPaymentStatus?.text=item.status
-                holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_pending)
+        if(item.status != null) {
+            when (item.status) {
+                Constant.PENDING -> {
+                    holder.tvPaymentStatus?.text = item.status
+                    holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_pending)
 
-                // if module agent and payment is panding then agent can confirm if paymnet is recvied or not..
-                holder.itemView.setOnClickListener {
-                    (context as BaseActivity).moveOnSelecetedItem<PaymentListResModelItem>(item)
+                    // if module agent and payment is panding then agent can confirm if paymnet is recvied or not..
+                    holder.itemView.setOnClickListener {
+                        (context as BaseActivity).moveOnSelecetedItem<PaymentListResModelItem>(item)
+                    }
                 }
-            }
-            Constant.FAILED ->{holder.tvPaymentStatus?.text=item.status
-                holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_failed)}
-            else ->{holder.tvPaymentStatus?.text=item.status
-                holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_success)}
+                Constant.FAILED -> {
+                    holder.tvPaymentStatus?.text = item.status
+                    holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_failed)
+                }
+                else -> {
+                    holder.tvPaymentStatus?.text = item.status
+                    holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_success)
+                }
 
+            }
         }
 
       /*  if(items.get(position).status== Constant.PENDING){

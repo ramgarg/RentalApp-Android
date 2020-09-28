@@ -74,6 +74,7 @@ class RegistrationUserActivity : AppBizLogin(){
 
     private fun initialize() {
 
+        tv_terms.setOnClickListener { MoveToAnotherComponent.moveToActivityNormal<TermsConditionActivity>(this) }
         btn_merchant_inactive.setOnClickListener { assignRole(UserInfoAPP.MERCHANT) }
         btn_customer_inactive.setOnClickListener { assignRole(UserInfoAPP.CUSTOMER)  }
         btn_agent_inactive.setOnClickListener { assignRole(UserInfoAPP.AGENT) }
