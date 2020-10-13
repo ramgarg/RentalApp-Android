@@ -64,11 +64,11 @@
 
         <ImageView
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_17sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/tv_order_id"
                 android:id="@+id/img_payment_mode"
-                android:src="@mipmap/paypal"
+                android:src="@mipmap/online_payment"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"/>
 

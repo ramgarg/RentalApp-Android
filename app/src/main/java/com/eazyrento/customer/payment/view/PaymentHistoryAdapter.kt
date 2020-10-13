@@ -69,7 +69,7 @@ class PaymentHistoryAdapter(val items:List<PaymentListResModelItem>, val context
             holder.imgPaymentMode?.setImageResource(R.mipmap.cash)
         }
         else{
-            holder.imgPaymentMode?.setImageResource(R.mipmap.paypal)
+            holder.imgPaymentMode?.setImageResource(R.mipmap.online_payment)
         }
     }
 

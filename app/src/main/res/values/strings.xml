@@ -120,7 +120,7 @@
     <string name="apply">Apply</string>
     <string name="choose_payment_method">Choose Payment Method</string>
     <string name="pay_via_cash">Pay Via Cash</string>
-    <string name="pay_via_paypal">Pay Via Paypal</string>
+    <string name="pay_via_paypal">Pay Online</string>
     <string name="customer">Customer</string>
     <string name="email">Email</string>
     <string name="email_address">Email Address</string>

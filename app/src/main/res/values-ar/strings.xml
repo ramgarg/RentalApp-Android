@@ -116,7 +116,7 @@
     <string name="apply">تطبيق</string>
     <string name="choose_payment_method">اختر وسيلة الدفع</string>
     <string name="pay_via_cash">الدفع نقدا</string>
-    <string name="pay_via_paypal">الدفع عن طريق Paypal</string>
+    <string name="pay_via_paypal">ادفع عبر الإنترنت</string>
     <string name="customer">الزبون</string>
 
     <string name="email">البريد الإلكتروني</string>

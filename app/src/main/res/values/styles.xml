@@ -27,8 +27,9 @@
     </style>
 
     <style name="TextAppearance.App.TextInputLayout" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/cardview_shadow_start_color</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/_15sdp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 

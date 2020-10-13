@@ -346,7 +346,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_80sdp"
-                        app:srcCompat="@mipmap/paypal"
+                        app:srcCompat="@mipmap/online_payment"
                         android:id="@+id/img_paypal"
                 />
                     <ImageView
