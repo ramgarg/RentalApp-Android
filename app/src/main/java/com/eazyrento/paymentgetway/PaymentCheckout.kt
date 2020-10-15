@@ -6,11 +6,12 @@ import android.webkit.WebViewClient
 import com.eazyrento.Env
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.dashboard.view.activity.CustomerPaymentActivity
+import com.eazyrento.customer.payment.view.PaymentBaseActivity
 import com.eazyrento.webservice.PathURL
 import java.net.URLDecoder
 import java.net.URLEncoder
 
-class PaymentCheckout(obj:CustomerPaymentActivity,webView: WebView,url:String,order_id:Int){
+class PaymentCheckout(obj:PaymentBaseActivity,webView: WebView,url:String,order_id:Int){
 
       init{
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,url)

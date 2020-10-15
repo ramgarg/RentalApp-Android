@@ -32,6 +32,7 @@ class AgentPaymentActivity : PaymentBaseActivity() {
 //        setContentView(R.layout.activity_payment)
 
         topBarWithBackIconAndTitle(getString(R.string.requestpayment))
+        is_tip=0
 
         payment_method_choose.visibility = View.GONE
         lyt_approval.visibility=View.GONE

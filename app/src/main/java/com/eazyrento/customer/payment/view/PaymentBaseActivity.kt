@@ -3,17 +3,22 @@ package com.eazyrento.customer.payment.view
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
+import com.eazyrento.Env
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
+import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
 import com.eazyrento.customer.payment.model.modelclass.BaseMakePaymentModel
 import com.eazyrento.customer.payment.model.modelclass.CustomerMakePaymentReqModel
 import com.eazyrento.customer.payment.model.modelclass.PaymentGetwayCheckoutIDReqModel
 import com.eazyrento.customer.payment.model.modelclass.PaymentGetwayCheckoutIDResModel
 import com.eazyrento.customer.payment.viewmodel.MakePaymentViewModel
+import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.paymentgetway.PaymentCheckout
+import com.eazyrento.webservice.PathURL
 import kotlinx.android.synthetic.main.activity_payment.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
 
@@ -24,6 +29,7 @@ open abstract class PaymentBaseActivity : BaseActivity() {
     private lateinit var paymentGetwayCheckoutIDResModel: PaymentGetwayCheckoutIDResModel
     abstract fun getReqPaymentModel():BaseMakePaymentModel
     abstract fun requestPaymentObjectBuilder():BaseMakePaymentModel
+    protected var is_tip: Int = 0
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -57,7 +63,7 @@ open abstract class PaymentBaseActivity : BaseActivity() {
             it.observeApiResult(
                 it.callAPIActivity<MakePaymentViewModel>(this)
                     .paymentGetwayCheckOutID(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1),
-                        PaymentGetwayCheckoutIDReqModel(1.0)
+                        PaymentGetwayCheckoutIDReqModel(amountPaid,is_tip)
                     )
                 , this, this
             )
@@ -144,7 +150,20 @@ open abstract class PaymentBaseActivity : BaseActivity() {
         //return amount.removePrefix(Constant.DOLLAR)
     }
 
+    protected fun openPaymentGetWayPage(data: PaymentGetwayCheckoutIDResModel) {
+        //MoveToAnotherComponent.moveToActivityNormal<PaymentCheckout>(this)
+//        <user_id>/<checkout_id>/<order_id>
 
+        button_submit.visibility = View.GONE
+        PaymentCheckout(this,webview_payment_getway, Env.BASE_URL.plus(PathURL.PAYMENT_GETWAY_URL)
+            .plus(data.user_id).plus("/").plus(data.checkout_id).plus("/").plus(data.order_id).plus("/").plus(data.trnx_id).plus("/").plus(data.is_tip)
+            ,data.order_id)
+    }
+
+    fun paymentGetwayCallback(msg:String){
+        showToastString(msg)
+        MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
+    }
 
 
 }

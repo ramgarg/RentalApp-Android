@@ -21,6 +21,7 @@ class PaymentHistoryAdapter(val items:List<PaymentListResModelItem>, val context
         val tvOrderId=view.tv_order_id
         val tvDate=view.tv_date
         val imgPaymentMode=view.img_payment_mode
+        val imgTip=view.img_tip
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
@@ -70,6 +71,13 @@ class PaymentHistoryAdapter(val items:List<PaymentListResModelItem>, val context
         }
         else{
             holder.imgPaymentMode?.setImageResource(R.mipmap.online_payment)
+        }
+
+        if (item.is_tip){
+            holder.imgTip.visibility = View.VISIBLE
+        }
+        else{
+            holder.imgTip.visibility = View.GONE
         }
     }
 

@@ -7,5 +7,6 @@ data class PaymentListResModelItem(
     val mode_of_payment: String,
     val order_id: String,
     val transaction_id: String,
-    val status: String
+    val status: String,
+    val is_tip: Boolean
 )

@@ -64,13 +64,24 @@
 
         <ImageView
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_17sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/tv_order_id"
                 android:id="@+id/img_payment_mode"
                 android:src="@mipmap/online_payment"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"/>
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"/>
+
+        <ImageView
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_toStartOf="@+id/img_payment_mode"
+                android:layout_below="@+id/tv_order_id"
+                android:id="@+id/img_tip"
+                android:visibility="gone"
+                android:src="@mipmap/tip_icon"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"/>
 
 
     </RelativeLayout>

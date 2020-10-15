@@ -3,6 +3,7 @@ package com.eazyrento.common.view
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
+import com.eazyrento.Env
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
@@ -10,8 +11,11 @@ import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
 import com.eazyrento.customer.payment.model.modelclass.BaseMakePaymentModel
 import com.eazyrento.customer.payment.model.modelclass.CustomerMakePaymentReqModel
+import com.eazyrento.customer.payment.model.modelclass.PaymentGetwayCheckoutIDResModel
 import com.eazyrento.customer.payment.view.PaymentBaseActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.paymentgetway.PaymentCheckout
+import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_payment.*
 
@@ -23,7 +27,7 @@ class TipActivity : PaymentBaseActivity(){
         return customerMakePaymentReqModel
     }
 
-    private val customerMakePaymentReqModel = CustomerMakePaymentReqModel("",0.0,true,modeOfPayment,"","")
+    private val customerMakePaymentReqModel = CustomerMakePaymentReqModel("",0.0,is_tip,modeOfPayment,"","")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +35,7 @@ class TipActivity : PaymentBaseActivity(){
         //setContentView(R.layout.activity_payment)
 
         topBarWithBackIconAndTitle(getString(R.string.tip))
+        is_tip = 1
 
         lyt_pending.visibility=View.GONE
         lyt_approval.visibility=View.GONE
@@ -62,7 +67,7 @@ class TipActivity : PaymentBaseActivity(){
     override fun requestPaymentObjectBuilder(): BaseMakePaymentModel {
         customerMakePaymentReqModel.amount_paid = convertAmountIntoDoubleFromEditText()
         customerMakePaymentReqModel.mode_of_payment = modeOfPayment
-        customerMakePaymentReqModel.is_tip =true
+        customerMakePaymentReqModel.is_tip =is_tip
         customerMakePaymentReqModel.transaction_id=""
 
         return customerMakePaymentReqModel
@@ -87,10 +92,17 @@ class TipActivity : PaymentBaseActivity(){
             MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
             return
         }
+        if(data is PaymentGetwayCheckoutIDResModel){
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+            data.is_tip=1
+            openPaymentGetWayPage(data)
+            return
+        }
         val obj = data as OrderDetailsResModel
         super.setDataOnUI(obj)
         //customerMakePaymentReqModel.status = obj.order_status
         customerMakePaymentReqModel.status = null
     }
+
 
 }

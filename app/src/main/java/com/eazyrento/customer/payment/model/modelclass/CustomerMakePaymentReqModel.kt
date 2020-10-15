@@ -9,7 +9,7 @@ abstract class BaseMakePaymentModel {
 data class CustomerMakePaymentReqModel(
     override var order_id: String,
     var amount_paid: Double,
-    var is_tip: Boolean,
+    var is_tip: Int,
     var mode_of_payment: String,
 
     var status: String?,
@@ -23,7 +23,8 @@ data class AgentMakePaymentReqModel(
 
 // payment Getway
 data class PaymentGetwayCheckoutIDReqModel(
-    var amount_paid: Double
+    var amount_paid: Double,
+    var is_tip:Int
 )
 
 data class PaymentGetwayCheckoutIDResModel(
@@ -31,6 +32,7 @@ data class PaymentGetwayCheckoutIDResModel(
     val checkout_id:String,
     val order_id:Int,
     val user_id:Int,
-    val trnx_id:String
+    val trnx_id:String,
+    var is_tip: Int
 )
 

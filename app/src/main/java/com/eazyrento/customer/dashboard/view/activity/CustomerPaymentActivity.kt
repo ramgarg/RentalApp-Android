@@ -27,7 +27,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
         return customerMakePaymentReqModel
     }
 
-    private val customerMakePaymentReqModel = CustomerMakePaymentReqModel("",0.0,false,modeOfPayment,"","")
+    private val customerMakePaymentReqModel = CustomerMakePaymentReqModel("",0.0,0,modeOfPayment,"","")
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -38,6 +38,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
         //MoveToAnotherComponent.moveToActivityNormal<PaymentCheckout>(this)
 
         topBarWithBackIconAndTitle(getString(R.string.payment))
+        is_tip = 0
 
 
         img_cash.setOnClickListener {
@@ -68,7 +69,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
 
         customerMakePaymentReqModel.amount_paid = convertAmountIntoDoubleFromEditText()
         customerMakePaymentReqModel.mode_of_payment = modeOfPayment
-        customerMakePaymentReqModel.is_tip =false
+        customerMakePaymentReqModel.is_tip =0
         customerMakePaymentReqModel.transaction_id=""
 
         return customerMakePaymentReqModel
@@ -95,6 +96,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
 
         if (data is PaymentGetwayCheckoutIDResModel){
 //            paymentGetwayCheckoutIDResModel = data
+           // data.is_tip=0
 
             openPaymentGetWayPage(data)
             return
@@ -109,7 +111,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
         customerMakePaymentReqModel.status = obj.order_status
     }
 
-    private fun openPaymentGetWayPage(data: PaymentGetwayCheckoutIDResModel) {
+    /*private fun openPaymentGetWayPage(data: PaymentGetwayCheckoutIDResModel) {
         //MoveToAnotherComponent.moveToActivityNormal<PaymentCheckout>(this)
 //        <user_id>/<checkout_id>/<order_id>
 
@@ -117,11 +119,8 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
         PaymentCheckout(this,webview_payment_getway,Env.BASE_URL.plus(PathURL.PAYMENT_GETWAY_URL)
             .plus(data.user_id).plus("/").plus(data.checkout_id).plus("/").plus(data.order_id).plus("/").plus(data.trnx_id)
             ,data.order_id)
-    }
+    }*/
 
-    fun paymentGetwayCallback(msg:String){
-        showToastString(msg)
-        MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
-    }
+
 
 }
