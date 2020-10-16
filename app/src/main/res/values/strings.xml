@@ -491,6 +491,7 @@
     <string name="hour">" Hour "</string>
     <string name="minute">" Minute"</string>
     <string name="privacy_policy">Privacy Policy</string>
+
     <string name="track">Track</string>
     <string name="assign_to_driver">Assign to Driver</string>
     <string name="driver">Driver</string>

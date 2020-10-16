@@ -490,5 +490,11 @@
     <string name="privacy_policy">سياسة خاصة</string>
     <string name="near_by_driver">بالقرب من السائقين</string>
 
+    <string name="track">Track</string>
+    <string name="assign_to_driver">Assign to Driver</string>
+    <string name="driver">Driver</string>
+    <string name="done">Done</string>
+    <string name="tracking">Tracking</string>
+
 
 </resources>
