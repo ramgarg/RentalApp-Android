@@ -12,6 +12,11 @@
                 android:title="@string/home" />
 
         <item
+                android:icon="@mipmap/home_inactive"
+                android:id="@+id/nav_near_by_driver"
+                android:title="@string/near_by_driver" />
+
+        <item
                 android:icon="@mipmap/about"
                 android:id="@+id/nav_about"
                 android:title="@string/about_us" />

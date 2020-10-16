@@ -260,6 +260,12 @@
                 android:name="com.eazyrento.login.view.UserProfileActivity"
                 android:screenOrientation="unspecified"
                 />
+
+        <activity
+                android:name="com.eazyrento.tracking.googlemap.TrackingMapActivity"
+                android:screenOrientation="unspecified"
+                />
+
         <!--<activity
                 android:name="com.eazyrento.paymentgetway.PaymentCheckout"
                 android:screenOrientation="unspecified"

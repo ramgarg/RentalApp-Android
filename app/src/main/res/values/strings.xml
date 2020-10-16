@@ -141,6 +141,7 @@
     <string name="address_hint">Apartment,city,state,country name</string>
     <string name="save_as">Save As</string>
     <string name="home">Home</string>
+    <string name="near_by_driver">Near by Drivers</string>
     <string name="bookings">Bookings</string>
     <string name="work">Work</string>
     <string name="other">Other</string>
