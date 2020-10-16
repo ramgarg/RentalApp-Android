@@ -26,7 +26,6 @@ class DriverAvailabilityAdapter (val driverListing:Int,val mContext: Context) : 
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        TODO("Not yet implemented")
     }
 
     override fun getItemCount(): Int {

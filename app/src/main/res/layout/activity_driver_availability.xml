@@ -20,7 +20,6 @@
             android:text="@string/done"
             android:id="@+id/btn_select_driver"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
             android:layout_alignParentBottom="true"
             android:visibility="visible"
             android:paddingBottom="@dimen/_5sdp"
