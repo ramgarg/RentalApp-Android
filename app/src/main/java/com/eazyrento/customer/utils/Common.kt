@@ -10,6 +10,8 @@ import android.net.Uri
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -35,45 +37,14 @@ class Common {
 
     companion object {
 
-        //val c = Calendar.getInstance()
-
-        /*fun timeSelector(context: Context,txt:TextView){
-            val timePickerDialog = TimePickerDialog(
-                context,R.style.TimePickerTheme,
-                TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
-
-                    val tme = Time(hourOfDay, minute, 0) //seconds by default set to zero
-                    val formatter: Format
-                    //old format
-//                    formatter = SimpleDateFormat("h:mm a")
-                    //server format
-                    formatter = SimpleDateFormat("hh:mm:ss")
-
-                    txt.setText(formatter.format(tme)) },
-
-                c.get(Calendar.HOUR_OF_DAY),
-                c.get(Calendar.MINUTE),
-                false
-            )
-            timePickerDialog.show()
-        }*/
-
-       /* fun calculateDatesDiffWithString(startDate:String, endDate:String):Long{
-            val myFormat = SimpleDateFormat("yyyy-MM-dd")
-
-            try {
-                val date1 = myFormat.parse(startDate)
-                val date2 = myFormat.parse(endDate)
-                val diff = date2.time - date1.time
-
-                    return(TimeUnit.DAYS.convert(diff,TimeUnit.MILLISECONDS))
-
-            } catch (e: java.lang.Exception) {
-                e.printStackTrace()
-            }
-            return -1
-        }*/
-
+        fun openWebPage(webView: WebView, url:String){
+            webView.setWebViewClient(WebViewClient())
+            webView.getSettings().setJavaScriptEnabled(true)
+            webView.getSettings().setDomStorageEnabled(true)
+            webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER)
+//            webView.loadUrl("https://www.google.com")
+            webView.loadUrl(url)
+        }
 
         fun initDailog(context: Context,layout: Int):Dialog{
             val dialog = Dialog(context)

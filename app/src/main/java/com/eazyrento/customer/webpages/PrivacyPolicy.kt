@@ -3,6 +3,7 @@ package com.eazyrento.customer.webpages
 import android.os.Bundle
 import com.eazyrento.R
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.webservice.PathURL
 import kotlinx.android.synthetic.main.privacy_policy.*
@@ -17,7 +18,7 @@ class PrivacyPolicy : BaseActivity() {
         setContentView(R.layout.privacy_policy)
         topBarWithBackIconAndTitle(getString(R.string.privacy_policy))
 
-        MoveToAnotherComponent.openWebPage(webview, PathURL.BASE_URL + PathURL.PRIVACY_POLICY)
+        Common.openWebPage(webview, PathURL.BASE_URL + PathURL.PRIVACY_POLICY)
 
 
     }

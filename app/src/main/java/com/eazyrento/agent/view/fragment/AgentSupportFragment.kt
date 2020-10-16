@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.eazyrento.R
 import com.eazyrento.customer.dashboard.model.modelclass.Data
+import com.eazyrento.customer.dashboard.view.activity.ProductCategoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.RecyclerViewItemClick
 
@@ -31,7 +32,7 @@ class AgentSupportFragment : Fragment(),
     }
 
     override fun onItemClick(item: Data) {
-        MoveToAnotherComponent.moveToCategoryActivity(requireContext())
+        MoveToAnotherComponent.moveToActivityNormal<ProductCategoryActivity>(requireContext())
     }
 
 

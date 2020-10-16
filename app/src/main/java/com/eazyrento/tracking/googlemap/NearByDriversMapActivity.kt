@@ -1,13 +1,17 @@
 package com.eazyrento.tracking.googlemap
 
 
-import android.location.Location
 import android.os.Bundle
+import android.view.View
+import com.eazyrento.Constant
 
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
 
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
+import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.tracking.googlemap.model.modelclass.LatLong
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -20,12 +24,13 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
 
 
     private var mMap: GoogleMap? =null
-    private var mMarkerLocationUpdate:Marker?=null
+    private var mHashMapDriversLocation:HashMap<String,LatLong> = hashMapOf("d1" to LatLong(22.1,77.4),
+        "d2" to LatLong(23.1,78.4),"d3" to LatLong(24.1,79.4),"d4" to LatLong(25.1,86.4))
 
     private val mTAG = "NearByDriversMapActivity:-"
 
     companion object{
-        const val ZOOM_PREFERENCE= 12.0f
+        const val ZOOM_PREFERENCE= 5.0f
         const val ZOOM_LEVEL = 11
         const val DELAYS = 1000L
     }
@@ -74,11 +79,12 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
 
+         for (value in mHashMapDriversLocation.values){
+             setMarker(value)
+       }
+
 
     }
-
-
-
 
   /* private fun postDelayedMarker(){
        mHandler.postDelayed(mRunnable, DELAYS)
@@ -105,29 +111,37 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
     }
 
 
-   private fun setMarker(location:Location) {
+   private fun setMarker(location:LatLong) {
 
        mMap?.run {
 
-       AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"$mTAG setMarker")
+       AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"$mTAG setMarker-$location")
 
-       mMarkerLocationUpdate?.run {
+/*       mMarkerLocationUpdate?.run {
            remove()
-       }
-       mMarkerLocationUpdate = this.addMarker(createNewMarker(resources.getString(R.string.select_location),LatLng(location.latitude , location.longitude)))
+       }*/
+       val mMarkerLocationUpdate = this.addMarker(createNewMarker(resources.getString(R.string.select_location),LatLng(location.latitude , location.longitude)))
        // bounds marker
        val builder = LatLngBounds.builder()
+           builder.include(mMarkerLocationUpdate.position)
 
-       /*for (objMarker in mHashMapMarkers.values){
-           builder.include(objMarker.position)
-       }*/
-
+      /* for (objMarker in mHashMapDriversLocation.values){
+           builder.include()
+       }
+*/
        builder.include(mMarkerLocationUpdate!!.position)
+        animateMapCamera(builder)
 
-       // animate map
-       this.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), ZOOM_LEVEL))
        }
    }
 
+ private fun animateMapCamera(builder: LatLngBounds.Builder) {
+     // animate map
+     mMap?.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), ZOOM_LEVEL))
+ }
 
+    fun bookingButtonClick(view:View){
+        MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,
+            Constant.KEY_INTENT_NEAR_BY_DRIVER, Constant.VALUE_INTENT_NEAR_BY_DRIVER)
+    }
 }

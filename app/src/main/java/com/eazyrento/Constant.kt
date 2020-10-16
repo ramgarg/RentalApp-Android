@@ -52,6 +52,10 @@ interface Constant{
 
         const val BOOKING_PRODECT_DETAILS = "ID"
 
+        // near by driver
+        const val KEY_INTENT_NEAR_BY_DRIVER= "nearbydriver"
+        const val VALUE_INTENT_NEAR_BY_DRIVER = 10901
+
         //intent key,value
         const val KEY_INTENT_SUCCESS_ORDER_BOOKING = "success"
         const val VALUE_INTENT_SUCCESS_ORDER_BOOKING = 1

@@ -19,25 +19,6 @@ class MoveToAnotherComponent {
 
     companion object{
 
-        fun moveToTermsActivity(context: Context){
-            context.startActivity(Intent(context, TermsConditionActivity::class.java))
-        }
-
-
-        fun moveToCategoryActivity(context: Context){
-            context.startActivity(Intent(context, ProductCategoryActivity::class.java))
-        }
-
-
-        fun openWebPage(webView: WebView,url:String){
-            webView.setWebViewClient(WebViewClient())
-            webView.getSettings().setJavaScriptEnabled(true)
-            webView.getSettings().setDomStorageEnabled(true)
-            webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER)
-//            webView.loadUrl("https://www.google.com")
-            webView.loadUrl(url)
-        }
-
         // start activity for result
         //normal int value
 

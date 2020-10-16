@@ -39,7 +39,17 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "onNewIntent " + value)
             //booking
             setForthPosFragment()
+            return
         }
+
+        if (value ==Constant.VALUE_INTENT_NEAR_BY_DRIVER) {
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "onNewIntent " + value)
+            //booking
+            setHomeFragment()
+            return
+        }
+
+
     }
 
 
