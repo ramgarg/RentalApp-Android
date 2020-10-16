@@ -227,6 +227,10 @@
                 android:screenOrientation="unspecified"
 
                 />
+        <activity android:name="com.eazyrento.merchant.view.activity.DriverAvailabilityActivity"
+                android:screenOrientation="unspecified"
+
+                />
         <activity
                 android:theme="@style/ThemeDialog"
                 android:name="com.eazyrento.merchant.view.activity.AddProductDailogActivity"

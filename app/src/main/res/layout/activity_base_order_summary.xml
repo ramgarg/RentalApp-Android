@@ -110,6 +110,18 @@
                 android:layout_marginTop="@dimen/_10sdp">
 
             </include>
+
+            <Button
+                    android:text="@string/assign_to_driver"
+                    android:id="@+id/tv_assign_to_driver"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:visibility="gone"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:background="@drawable/button_gradient_full_width"
+                    style="@style/FullWidthButtonStyle"
+                    />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
