@@ -39,7 +39,7 @@ import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import showHippoConversation
 
-open abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+ abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }

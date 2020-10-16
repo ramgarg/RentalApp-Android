@@ -16,13 +16,13 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 
 
-class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
+class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
 
 
     private var mMap: GoogleMap? =null
     private var mMarkerLocationUpdate:Marker?=null
 
-    private val mTAG = "TrackingMapActivity:-"
+    private val mTAG = "NearByDriversMapActivity:-"
 
     companion object{
         const val ZOOM_PREFERENCE= 12.0f
@@ -37,9 +37,9 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_tracking_maps)
+        setContentView(R.layout.activity_nearby_drivers_maps)
 
-        topBarWithBackIconAndTitle(resources.getString(R.string.truck))
+        topBarWithBackIconAndTitle(resources.getString(R.string.near_by_driver))
 
         mapInit()
 
