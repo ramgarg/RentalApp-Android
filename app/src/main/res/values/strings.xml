@@ -495,5 +495,6 @@
     <string name="assign_to_driver">Assign to Driver</string>
     <string name="driver">Driver</string>
     <string name="done">Done</string>
+    <string name="tracking">Tracking</string>
 
 </resources>

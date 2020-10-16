@@ -39,7 +39,7 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
 
         setContentView(R.layout.activity_tracking_maps)
 
-        topBarWithBackIconAndTitle(resources.getString(R.string.truck))
+        topBarWithBackIconAndTitle(resources.getString(R.string.tracking))
 
         mapInit()
 
