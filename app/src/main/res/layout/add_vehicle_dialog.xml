@@ -298,11 +298,23 @@
 
         </Button>
         <!--drawable_left_image_check-->
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
         <CheckBox
                 android:id="@+id/chk_box_with_driver"
                 android:textStyle="bold"
                 style="@style/WithDriverCheckBox"
                 android:layout_marginBottom="@dimen/_10sdp" />
+            <TextView
+                    style="@style/DocumentTextView"
+                    android:id="@+id/tv_driver_price"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:text="@string/dollar">
+
+            </TextView>
+        </RelativeLayout>
 
         <TextView
                 android:id="@+id/merchant_upload_btn"

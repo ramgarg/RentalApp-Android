@@ -6,6 +6,8 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
+import com.eazyrento.customer.utils.MoveToAnotherComponent
+import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
@@ -20,6 +22,9 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         // order details
         setDataAndCallOrderDetailsAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
         customer_payment_button.visibility=View.INVISIBLE
+        tv_assign_to_driver.visibility=View.VISIBLE
+        tv_assign_to_driver.setOnClickListener {
+            MoveToAnotherComponent.moveToActivityNormal<DriverAvailabilityActivity>(this) }
 
         //clickListenerOnViews()
 

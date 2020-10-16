@@ -88,6 +88,9 @@
             android:layout_height="wrap_content"
             style="@style/pro_details_heading"
             />
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <TextView
             android:id="@+id/pending_amount"
             android:layout_marginTop="@dimen/_5sdp"
@@ -97,6 +100,22 @@
             android:layout_height="wrap_content"
             style="@style/pro_details_heading"
             />
+        <TextView
+                android:id="@+id/tv_track"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/payment_status"
+                android:fontFamily="@font/bree_serif"
+                android:visibility="gone"
+                android:paddingStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:text="@string/track"
+                android:textColor="@color/white" />
+
+    </RelativeLayout>
 
     <RelativeLayout
             android:layout_width="match_parent"

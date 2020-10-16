@@ -34,6 +34,7 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         mBookingID = intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!
         setDataAndCallOrderDetailsAPI(mBookingID)
+        tv_track.visibility=View.VISIBLE
 
         clickListenerOnViews()
     }
