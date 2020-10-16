@@ -99,8 +99,8 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
 
        return MarkerOptions().apply{
             setTitle(title)
-            icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
-           //icon(getBitmapFromDrawable(R.mipmap.ic_tracker))
+//            icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
+           icon(getBitmapFromDrawable(R.mipmap.mover_map_icon_))
             position(location)
         }
     }

@@ -22,6 +22,7 @@ import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.SubOrderReqResModel
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.tracking.googlemap.TrackingMapActivity
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.adapter_suborder_row.view.*
@@ -118,6 +119,15 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
             supportinAgentUpdateOrder?.init(orderRes)
         }
 
+        try {
+            val status=orderRes.order_status
+
+            if (status!=Constant.COMPLETED) {
+                tv_track.visibility = View.VISIBLE
+            }
+        }catch (e:Exception){
+
+        }
 //        before changes
 //        setMaintanceUserRoleAdapter(orderRes.customer_detail,null,orderRes.merchant_detail)
 
@@ -128,6 +138,10 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         orderRes.sub_orders?.let { recycle_sub_order.adapter = AdapterSubOrder(this,it) }
 
         }
+
+    fun trackingClickListener(view: View){
+        MoveToAnotherComponent.moveToActivityNormal<TrackingMapActivity>(this)
+    }
 }
 
 class AdapterSubOrder(val context: Context,val subOrderList:List<Int>):RecyclerView.Adapter<AdapterSubOrder.HolderSubOrder>(){
@@ -151,6 +165,8 @@ class AdapterSubOrder(val context: Context,val subOrderList:List<Int>):RecyclerV
              MoveToAnotherComponent.moveToActivityWithIntentValue<AgentSubOrderActivity>(context,Constant.INTENT_AGENT_SUB_ORDER,subOrderList[position])
         }
     }
+
+
 
 }
 

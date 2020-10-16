@@ -492,10 +492,12 @@
     <string name="minute">" Minute"</string>
     <string name="privacy_policy">Privacy Policy</string>
 
-    <string name="track">Track</string>
+    <string name="track_on_map">Track</string>
     <string name="assign_to_driver">Assign to Driver</string>
     <string name="driver">Driver</string>
     <string name="done">Done</string>
     <string name="tracking">Tracking</string>
+
+    <string name="book_nearby_driver">Book The Driver</string>
 
 </resources>

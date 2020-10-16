@@ -13,6 +13,8 @@ import com.eazyrento.common.view.TipActivity
 import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.tracking.googlemap.NearByDriversMapActivity
+import com.eazyrento.tracking.googlemap.TrackingMapActivity
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.maintance_layout.*
@@ -34,7 +36,6 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         mBookingID = intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!
         setDataAndCallOrderDetailsAPI(mBookingID)
-        tv_track.visibility=View.VISIBLE
 
         clickListenerOnViews()
     }
@@ -87,6 +88,9 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
                 )
             }
         }
+        else{
+            tv_track.visibility=View.VISIBLE
+        }
 
         //customer_maintance_view.visibility =View.GONE
 
@@ -98,87 +102,8 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 */
     }
 
-     /*private fun orderStatus(orderRes: OrderDetailsResModel) {
-
-         val merchantdetail=orderRes.merchant_detail
-         val agentdetail=orderRes.agent_detail
-
-        if(orderRes.order_status == Constant.COMPLETED)
-        {
-            if (agentdetail != null) {
-                users_view.visibility = View.VISIBLE
-                tv_users_name.text = agentdetail.full_name
-                tv_users_tag.text = Constant.AGENT
-                phone_view.visibility=View.GONE
-                user_rating.visibility=View.VISIBLE
-                user_rating.setOnClickListener {
-                    Common.phoneCallWithNumber(agentdetail.mobile_number, this)
-                }
-
-            }
-            if(merchantdetail != null) {
-                if (merchantdetail.isNotEmpty()) {
-                    rec_user_order_summary.visibility = View.VISIBLE
-                    phone_view.visibility = View.GONE
-                    user_rating.visibility=View.VISIBLE
-                    setUsersAdapter(orderRes)
-                } else {
-                    rec_user_order_summary.visibility = View.INVISIBLE
-                }
-            }
-
-        }
-        else if(orderRes.order_status!= Constant.COMPLETED) {
-            pending_amount.text= Constant.PENDING_AMOUNT+orderRes.pending_order_amount
-
-            if (agentdetail != null) {
-                users_view.visibility = View.VISIBLE
-                tv_users_name.text = agentdetail.full_name
-                tv_users_tag.text = Constant.AGENT
-                user_rating.visibility=View.INVISIBLE
-                phone_view.visibility=View.VISIBLE
-                phone_view.setOnClickListener {
-                    Common.phoneCallWithNumber(agentdetail.mobile_number, this) }
-
-            } else {
-                rec_user_order_summary.visibility = View.INVISIBLE
-            }
-            if (merchantdetail != null) {
-                if (orderRes.merchant_detail.isNotEmpty()) {
-                    rec_user_order_summary.visibility = View.VISIBLE
-                    phone_view.visibility=View.INVISIBLE
-                    setUsersAdapter(orderRes)
-                } else {
-                    rec_user_order_summary.visibility = View.INVISIBLE
-                }
-            }
-        }
-    }*/
-
-
-   /* private fun setUsersAdapter(customerOderDetailsResponse: OrderDetailsResModel) {
-        rec_user_order_summary.layoutManager = LinearLayoutManager(this,
-            LinearLayoutManager.VERTICAL, false
-        )
-        (rec_user_order_summary.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
-            1,
-            1
-        )
-
-        val recycleAdapterUsersHomeCard =
-            CustomerOrderSummaryUsersAdapter(
-                customerOderDetailsResponse.merchant_detail as MutableList<MerchantDetail>,this)
-
-        rec_user_order_summary.adapter = recycleAdapterUsersHomeCard
-    }*/
-
-    /*fun sendMerchantID(merchantId: Int) {
-       merchant_ID=merchantId
-
-    }*/
-    /*fun rateAndReview(customerfeedbackReqModel: CustomerFeedbackRequestModel){
-
-        MoveToAnotherComponent.openActivityWithParcelableParam<CustomerFeedbackActivity,CustomerFeedbackRequestModel>(this,Constant.INTENT_RATE_REVIEWS,customerfeedbackReqModel)
-    }*/
+    fun trackingClickListener(view: View){
+        MoveToAnotherComponent.moveToActivityNormal<TrackingMapActivity>(this)
+    }
 
 }

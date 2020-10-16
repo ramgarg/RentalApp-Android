@@ -112,8 +112,10 @@
                 android:paddingStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:paddingEnd="@dimen/_10sdp"
-                android:text="@string/track"
-                android:textColor="@color/white" />
+                android:text="@string/track_on_map"
+                android:textColor="@color/white"
+                android:onClick="trackingClickListener"
+                />
 
     </RelativeLayout>
 

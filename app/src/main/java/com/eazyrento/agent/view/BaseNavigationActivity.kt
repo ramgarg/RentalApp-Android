@@ -220,7 +220,9 @@ import showHippoConversation
             }
 
             R.id.nav_near_by_driver -> {
+
                 MoveToAnotherComponent.moveToActivityNormal<NearByDriversMapActivity>(this)
+
             }
 
             R.id.nav_about -> {

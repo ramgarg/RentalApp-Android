@@ -263,4 +263,5 @@ class MerchantMaintanceAdapter(val orderListing:List<BaseUserRoleDetail>, val co
         (context as OrderBaseSummaryActivity).setUserRoleDetailsForMaintance(holder.maintanceUserRoleView,order_listing_obj)
 
     }
+
 }

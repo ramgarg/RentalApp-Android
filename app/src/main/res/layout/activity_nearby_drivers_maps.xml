@@ -31,11 +31,12 @@
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/bookings"
+                android:text="@string/book_nearby_driver"
                 android:layout_alignParentBottom="true"
                 android:background="@color/green"
-                style="@style/AgentOrderStatusNum"
                 android:onClick="bookingButtonClick"
+                android:gravity="center"
+                style="@style/AgentOrderStatusNum"
                 />
 
     </RelativeLayout>
