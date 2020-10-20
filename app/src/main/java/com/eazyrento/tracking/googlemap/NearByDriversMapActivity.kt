@@ -11,7 +11,7 @@ import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.tracking.googlemap.model.modelclass.LatLong
+import com.eazyrento.tracking.data.model.LatLong
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap

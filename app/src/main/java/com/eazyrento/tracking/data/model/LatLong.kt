@@ -1,4 +1,4 @@
-package com.eazyrento.tracking.googlemap.model.modelclass
+package com.eazyrento.tracking.data.model
 
 
 import com.google.gson.annotations.SerializedName
