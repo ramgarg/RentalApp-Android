@@ -39,14 +39,14 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
     private  var next:Int = 0
 
     private lateinit var mCarmarker: Marker
-    private var polylineOptions: PolylineOptions? = null
-    private  var blackPolylineOptions:PolylineOptions? = null
+   // private var polylineOptions: PolylineOptions? = null
+    //private  var blackPolylineOptions:PolylineOptions? = null
 
-    private lateinit var blackPolyline: Polyline
-    private  lateinit var greyPolyLine:Polyline
+  //  private lateinit var blackPolyline: Polyline
+    //private  lateinit var greyPolyLine:Polyline
 
-    private var polyLineList: List<LatLng>? = null
-    private var mMap: GoogleMap? =null
+    private lateinit var polyLineLatLongList: List<LatLng>
+    private lateinit var mMap: GoogleMap
     private var mMarkerLocationUpdate:Marker?=null
 
     private val mTAG = "TrackingMapActivity:-"
@@ -104,12 +104,13 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
 
         val latitude = 22.1
         val longitude = 77.4
+        val origin = "Dolariya"
         val destination = "Seoni Malwa"
 
 
         GoogleApiCreation().getDirectionApi().getDirections(
             "driving", "less_driving",
-            latitude.toString() + "," + longitude, destination,
+            origin, destination,
             resources.getString(R.string.google_api_key)
         )?.subscribeOn(Schedulers.io())
             ?.observeOn(AndroidSchedulers.mainThread())
@@ -119,7 +120,7 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
                     val routeList: List<Route> = result.routes
                     for (route in routeList) {
                         val polyLine: String = route.overviewPolyline.points
-                        polyLineList = decodePoly(polyLine)
+                        polyLineLatLongList = decodePoly(polyLine)
                         drawPolyLineAndAnimateCar()
                     }
                 }
@@ -130,7 +131,7 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
             })
     }
 
-    private fun decodePoly(encoded: String): List<LatLng>? {
+    private fun decodePoly(encoded: String): List<LatLng> {
         val poly: MutableList<LatLng> = ArrayList()
         var index = 0
         val len = encoded.length
@@ -168,20 +169,30 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
     private fun newMarker(googleMap: GoogleMap) {
         // Add a marker in Home and move the camera
          sydney = LatLng(22.1, 77.4)
+
         mMap?.run {
-          addMarker(MarkerOptions().position(sydney).title("Marker in Home"))
+
+         // addMarker(MarkerOptions().position(sydney).title())
+          addMarker(createNewMarker("Marker in Home",sydney,R.mipmap.ic_car))
+
           moveCamera(CameraUpdateFactory.newLatLng(sydney))
           moveCamera(
               CameraUpdateFactory.newCameraPosition(
-                  CameraPosition.Builder()
-                      .target(googleMap.getCameraPosition().target)
-                      .zoom(17f)
-                      .bearing(30f)
-                      .tilt(45f)
-                      .build()
+                  cameraSetting(googleMap).build()
               )
           )
         }
+    }
+
+    private fun cameraSetting(googleMap: GoogleMap): CameraPosition.Builder {
+
+        return CameraPosition.Builder().apply {
+            target(googleMap.cameraPosition.target)
+            zoom(17f)
+            bearing(30f)
+            tilt(45f)
+        }
+
     }
 
     private fun mapSetting(){
@@ -198,135 +209,94 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
     }
 
 
-
-
-  /* private fun postDelayedMarker(){
-       mHandler.postDelayed(mRunnable, DELAYS)
-   }*/
-
-   /*private fun getMarkerByKey(key:String): Marker? {
-       return mHashMapMarkers[key]
-   }*/
-    private fun createNewMarker(title: String, location: LatLng): MarkerOptions {
-
-//       val drawle =  ContextCompat.getDrawable(this@DisplayMapsActivity , R.drawable.ic_tracker)
-
-       return MarkerOptions().apply{
-            setTitle(title)
-            icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
-           //icon(getBitmapFromDrawable(R.mipmap.ic_tracker))
-            position(location)
-        }
-    }
-
-     fun getBitmapFromDrawable(icon: Int): BitmapDescriptor? {
-
-        return BitmapDescriptorFactory.fromResource(icon)
-    }
-
-
-   private fun setMarker(location: Location) {
-
-       mMap?.run {
-
-       AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "$mTAG setMarker")
-
-       mMarkerLocationUpdate?.run {
-           remove()
-       }
-       mMarkerLocationUpdate = this.addMarker(
-           createNewMarker(
-               resources.getString(R.string.select_location), LatLng(
-                   location.latitude,
-                   location.longitude
-               )
-           )
-       )
-       // bounds marker
-       val builder = LatLngBounds.builder()
-
-       /*for (objMarker in mHashMapMarkers.values){
-           builder.include(objMarker.position)
-       }*/
-
-       builder.include(mMarkerLocationUpdate!!.position)
-
-       // animate map
-       this.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), ZOOM_LEVEL))
-       }
-   }
-
-
-    // poly line
-    private fun drawPolyLineAndAnimateCar() {
-        //Adjusting bounds
+    private fun adjustingBound(){
         val builder = LatLngBounds.Builder()
-        for (latLng in polyLineList!!) {
+        for (latLng in   polyLineLatLongList) {
             builder.include(latLng)
         }
         val bounds = builder.build()
         val mCameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 2)
-        mMap!!.animateCamera(mCameraUpdate)
-        polylineOptions = PolylineOptions()
-        polylineOptions?.run {
-            color(Color.GRAY)
+
+        mMap.animateCamera(mCameraUpdate)
+    }
+
+    private fun polyLineOptionsSetting(color: Int): PolylineOptions {
+       val polylineOptions = PolylineOptions()
+        polylineOptions.run {
+            color(color)
             width(5f)
             startCap(SquareCap())
             endCap(SquareCap())
             jointType(JointType.ROUND)
-            addAll(polyLineList)
+
         }
+        return polylineOptions
+    }
 
+    private fun addPolylineOnGoogleMap(polylineOptions: PolylineOptions): Polyline {
+        return mMap.addPolyline(polylineOptions)
+    }
+    // poly line
+    private fun drawPolyLineAndAnimateCar() {
+        //Adjusting bounds focus on lang and lat
+        adjustingBound()
 
-        greyPolyLine = mMap!!.addPolyline(polylineOptions)
+        val grayPolylineOptions = polyLineOptionsSetting(Color.GRAY).addAll(polyLineLatLongList)
 
-        blackPolylineOptions = PolylineOptions()
+        val greyPolyLine = addPolylineOnGoogleMap(grayPolylineOptions)
 
-        blackPolylineOptions?.run {
+        val  blackPolylineOptions = polyLineOptionsSetting(Color.BLACK)
+        val  blackPolyline =  addPolylineOnGoogleMap(blackPolylineOptions)
+
+       /*val  blackPolylineOptions = polyLineOptionsSetting(Color.BLACK)
+
+       *//* blackPolylineOptions?.run {
             width(5f)
             color(Color.BLACK)
             startCap(SquareCap())
             endCap(SquareCap())
            jointType(JointType.ROUND)
-        }
+        }*//*
 
+        blackPolyline =  mMap.addPolyline(blackPolylineOptions)*/
 
-        blackPolyline = mMap!!.addPolyline(blackPolylineOptions)
-
-        mMap!!.addMarker(
+        // destination
+         mMap.addMarker(
             MarkerOptions()
-                .position(polyLineList!![polyLineList!!.size - 1])
+                .position(polyLineLatLongList[polyLineLatLongList.size - 1])
         )
         val polylineAnimator = ValueAnimator.ofInt(0, 100)
         polylineAnimator.duration = 2000
         polylineAnimator.interpolator = LinearInterpolator()
         polylineAnimator.addUpdateListener { valueAnimator ->
-            val points: List<LatLng> = greyPolyLine.getPoints()
+            val points: List<LatLng> = greyPolyLine.points
             val percentValue = valueAnimator.animatedValue as Int
             val size = points.size
             val newPoints = (size * (percentValue / 100.0f)).toInt()
             val p = points.subList(0, newPoints)
-            blackPolyline.setPoints(p)
+            blackPolyline.points = p
         }
         polylineAnimator.start()
 
-        mCarmarker = mMap!!.addMarker(
+        // origin
+        mCarmarker =  mMap.addMarker(
             MarkerOptions().position(sydney)
                 .flat(true)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_car))
+                .icon(getBitmapFromDrawable(R.mipmap.ic_car))
+
         )
         handler = Handler()
         index = -1
         next = 1
         handler.postDelayed(object : Runnable {
             override fun run() {
-                if (index < polyLineList!!.size - 1) {
+                if (index <   polyLineLatLongList.size - 1) {
                     index++
                     next = index + 1
                 }
-                if (index < polyLineList!!.size - 1) {
-                    startPosition = polyLineList!![index]
-                    endPosition = polyLineList!![next]
+                if (index <   polyLineLatLongList.size - 1) {
+                    startPosition =   polyLineLatLongList[index]
+                    endPosition =   polyLineLatLongList[next]
                 }
                 if (index == 0) {
                     /*val beginJourneyEvent = BeginJourneyEvent()
@@ -335,12 +305,12 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
 
                     AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "Start journey")
                 }
-                if (index == polyLineList!!.size - 1) {
+                if (index ==   polyLineLatLongList.size - 1) {
                     /* val endJourneyEvent = EndJourneyEvent()
                     endJourneyEvent.setEndJourneyLatLng(
                         LatLng(
-                            polyLineList!![index].latitude,
-                            polyLineList!![index].longitude
+                              polyLineList[index].latitude,
+                              polyLineList[index].longitude
                         )
                     )
                     JourneyEventBus.getInstance().setOnJourneyEnd(endJourneyEvent)*/
@@ -361,22 +331,22 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
                     JourneyEventBus.getInstance().setOnJourneyUpdate(currentJourneyEvent)*/
                     AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "Current journey")
 
-                    mCarmarker.setPosition(newPos)
+                    mCarmarker.position = newPos
                     mCarmarker.setAnchor(0.5f, 0.5f)
                     mCarmarker.setRotation(getBearing(startPosition, newPos))
-                    mMap!!.animateCamera(
+                   /*  mMap.animateCamera(
                         CameraUpdateFactory.newCameraPosition(
                             CameraPosition.Builder().target(newPos)
                                 .zoom(15.5f).build()
                         )
-                    )
+                    )*/
                 }
                 valueAnimator.start()
-                if (index != polyLineList!!.size - 1) {
-                    handler.postDelayed(this, 3000)
+                if (index !=   polyLineLatLongList.size - 1) {
+                    handler.postDelayed(this, 100)
                 }
             }
-        }, 3000)
+        }, 100)
     }
 
     private fun getBearing(begin: LatLng, end: LatLng): Float {
@@ -393,6 +363,48 @@ class TrackingMapActivity : BaseActivity(),OnMapReadyCallback {
             Math.atan(lng / lat)
         ) + 270).toFloat()
         return (-1).toFloat()
+    }
+
+    private fun createNewMarker(title: String, location: LatLng,icon: Int): MarkerOptions {
+
+        return MarkerOptions().apply{
+            setTitle(title)
+            icon(getBitmapFromDrawable(icon))
+            position(location)
+        }
+    }
+
+    fun getBitmapFromDrawable(icon: Int): BitmapDescriptor? {
+
+        return BitmapDescriptorFactory.fromResource(icon)
+    }
+
+
+    private fun setMarker(location: Location) {
+
+        mMap?.run {
+
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "$mTAG setMarker")
+
+            mMarkerLocationUpdate?.run {
+                remove()
+            }
+            mMarkerLocationUpdate = this.addMarker(
+                createNewMarker(
+                    resources.getString(R.string.select_location), LatLng(
+                        location.latitude,
+                        location.longitude
+                    ),R.mipmap.ic_car
+                )
+            )
+            // bounds marker
+            val builder = LatLngBounds.builder()
+
+            builder.include(mMarkerLocationUpdate!!.position)
+
+            // animate map
+            this.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), ZOOM_LEVEL))
+        }
     }
 
 }
