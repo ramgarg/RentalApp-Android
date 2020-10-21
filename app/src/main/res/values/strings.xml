@@ -238,7 +238,7 @@
     <string name="work_start_and">Work Start And End Date</string>
     <string name="request_a_payment">Request a Payment</string>
     <string name="status">Status:</string>
-    <string name="quantity">Quantity - </string>
+    <string name="quantity">Quantity </string>
     <string name="quantity_value">0</string>
 
     <string name="req_quantity">Required Quantity - </string>
@@ -499,5 +499,10 @@
     <string name="tracking">Tracking</string>
 
     <string name="book_nearby_driver">Book The Driver</string>
+    <string name="enter_vehicle_equipment_price">Enter Vehicle/Equipment Price</string>
+    <string name="monthly_n_price">Monthly\nPrice</string>
+    <string name="daily_n_price">Daily\nPrice</string>
+    <string name="hourly_n_price">Hourly\nPrice</string>
+    <string name="per_day">Per day</string>
 
 </resources>

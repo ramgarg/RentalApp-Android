@@ -5,6 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:padding="10dp"
+        android:padding="5dp"
         android:textSize="@dimen/_12sdp"
         android:background="@drawable/spinner_item_divider" />

@@ -124,29 +124,31 @@
                 android:id="@+id/layout_truck_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal">
 
             <TextView
                     android:id="@+id/item_quantity_static_text"
                     style="@style/AgentBoldTextCard"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/truck_quantity"
+                    android:text="@string/quantity"
                     />
 
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_toEndOf="@id/item_quantity_static_text"
                     android:orientation="horizontal">
 
                 <ImageView
                         android:id="@+id/minus_quantity"
-                        android:layout_width="@dimen/_22sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
                         android:background="@drawable/button_add"
                         android:padding="@dimen/_5sdp"
                         android:src="@mipmap/minus"
@@ -156,7 +158,7 @@
                 <TextView
                         android:id="@+id/item_quantity"
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_height="@dimen/_20sdp"
                         android:background="@drawable/itemquantity_bg"
                         android:fontFamily="@font/bree_serif"
                         android:gravity="center"
@@ -167,8 +169,8 @@
 
                 <ImageView
                         android:id="@+id/add_quantity"
-                        android:layout_width="@dimen/_22sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
                         android:background="@drawable/button_minus"
                         android:padding="@dimen/_5sdp"
                         android:src="@mipmap/plus"
@@ -176,144 +178,197 @@
                         />
 
             </LinearLayout>
-
+            <Spinner
+                    android:id="@+id/spinner_fuel_type"
+                    android:layout_width="@dimen/_110sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textAlignment="viewStart"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:background="@drawable/spinner_dropdown"
+                    style="@style/mySpinnerItemStyle"
+                    android:paddingEnd="@dimen/_25sdp"
+                    android:paddingStart="@dimen/_1sdp"/>
 
         </RelativeLayout>
 
+        <TextView
+                style="@style/DocumentTextView"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/enter_vehicle_equipment_price"/>
+
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:weightSum="300"
+                android:gravity="center"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_weight="1"
                 android:orientation="horizontal">
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="95"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <TextView
+                        android:text="@string/hourly_n_price"
+                        style="@style/DocumentTextView"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"/>
+                <EditText
+                        android:id="@+id/ed_hourly_price"
+                        android:inputType="number"
+                        android:layout_gravity="start"
+                        android:drawableStart="@mipmap/dollar"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textAlignment="viewStart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_2sdp"
+                        android:paddingEnd="@dimen/_2sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:textSize="@dimen/_13sdp"/>
+            </LinearLayout>
+            <View
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@drawable/dotted_line_verticle"
+                    android:layerType="software" />
 
             <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_weight="95"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_weight=".5"
                     android:orientation="vertical">
-
                 <TextView
-                        style="@style/AgentBoldTextCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/booking_price_dollar">
-
-                </TextView>
-
+                        android:text="@string/daily_n_price"
+                        style="@style/DocumentTextView"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_gravity="center"/>
                 <EditText
                         android:id="@+id/ed_price"
                         android:inputType="number"
                         android:layout_gravity="start"
+                        android:paddingStart="@dimen/_2sdp"
+                        android:paddingEnd="@dimen/_2sdp"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:textAlignment="viewStart"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/bree_serif"
-                        android:hint="@string/hint_enter_booking_price"
-                        android:textSize="@dimen/_13sdp">
-
-                </EditText>
+                        android:drawableStart="@mipmap/dollar"
+                        android:textSize="@dimen/_13sdp"/>
             </LinearLayout>
-
-            <TextView
-                    android:id="@+id/view_div_2"
-                    android:layout_width="@dimen/_1sdp"
+            <View
+                    android:layout_width="@dimen/_3sdp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="@android:color/darker_gray" />
-
+                    android:background="@drawable/dotted_line_verticle"
+                    android:layerType="software" />
             <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_weight="95"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".5"
                     android:orientation="vertical">
-
                 <TextView
-                        style="@style/AgentBoldTextCard"
-                        android:layout_width="wrap_content"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/fuel_type">
-
-                </TextView>
-
-                <Spinner
-                        android:id="@+id/spinner_fuel_type"
+                        android:text="@string/monthly_n_price"
+                        style="@style/DocumentTextView"
+                        android:layout_gravity="center"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:textAlignment="center"/>
+                <EditText
+                        android:id="@+id/ed_monthly_price"
+                        android:inputType="number"
+                        android:layout_gravity="start"
+                        android:paddingStart="@dimen/_2sdp"
+                        android:paddingEnd="@dimen/_2sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textAlignment="viewStart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="viewStart"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:background="@drawable/spinner_dropdown"
-                        style="@style/mySpinnerItemStyle"
-                        android:paddingEnd="@dimen/_26sdp"
-                        android:paddingStart="@dimen/_5sdp">
-
-                </Spinner>
+                        android:fontFamily="@font/bree_serif"
+                        android:drawableStart="@mipmap/dollar"
+                        android:textSize="@dimen/_13sdp"/>
             </LinearLayout>
         </LinearLayout>
 
-
         <TextView
                 style="@style/DocumentTextView"
-                android:text="@string/document">
+                android:text="@string/document"/>
 
-        </TextView>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp">
 
         <Spinner
                 android:id="@+id/sp_select_document"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/_160sdp"
                 android:textAlignment="viewStart"
                 android:background="@drawable/spinner_dropdown"
                 style="@style/mySpinnerItemStyle"
                 android:paddingEnd="@dimen/_26sdp"
-                android:paddingStart="@dimen/_5sdp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"/>
+                android:paddingStart="@dimen/_1sdp"
+                android:layout_height="wrap_content" />
+            <Button
+                    style="@style/DocumentUploadButton"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_2sdp"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/payment_status"
+                    android:onClick="onUploadClick"/>
+        </RelativeLayout>
 
         <ImageView
                 android:id="@+id/img_doc"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:src="@mipmap/attachment"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 />
 
-        <Button
-                style="@style/DocumentUploadButton"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:paddingEnd="@dimen/_10sdp"
-                android:paddingStart="@dimen/_10sdp"
-                android:background="@drawable/payment_status"
-                android:onClick="onUploadClick"
-                >
-
-        </Button>
         <!--drawable_left_image_check-->
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
         <CheckBox
                 android:id="@+id/chk_box_with_driver"
-                android:textStyle="bold"
                 style="@style/WithDriverCheckBox"
                 android:layout_marginBottom="@dimen/_10sdp" />
+            <EditText
+                    android:id="@+id/ed_driver_price"
+                    android:inputType="number"
+                    android:layout_gravity="start"
+                    android:drawableStart="@mipmap/dollar"
+                    android:textAlignment="viewStart"
+                    android:layout_toStartOf="@+id/tv_per_day_static"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_2sdp"
+                    android:fontFamily="@font/bree_serif"
+                    android:textSize="@dimen/_13sdp"/>
             <TextView
-                    style="@style/DocumentTextView"
-                    android:id="@+id/tv_driver_price"
+                    style="@style/AgentSmallTextCard"
+                    android:id="@+id/tv_per_day_static"
+                    android:textColor="@color/dark_grey"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_5sdp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="@dimen/_15sdp"
-                    android:text="@string/dollar">
+                    android:text="@string/per_day"/>
 
-            </TextView>
         </RelativeLayout>
 
         <TextView

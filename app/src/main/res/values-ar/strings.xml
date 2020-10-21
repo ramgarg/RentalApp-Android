@@ -494,8 +494,14 @@
     <string name="driver">سائق</string>
     <string name="done">منجز</string>
     <string name="tracking">تتبع</string>
-    <string name="track_on_map">Track</string>
+    <string name="track_on_map">المسار</string>
     <string name="book_nearby_driver">احجز السائق</string>
+
+    <string name="enter_vehicle_equipment_price">أدخل سعر السيارة / المعدات</string>
+    <string name="monthly_n_price">سعر شهري</string>
+    <string name="daily_n_price">السعر اليومي</string>
+    <string name="hourly_n_price">السعر بالساعة</string>
+    <string name="per_day">في اليوم</string>
 
 
 </resources>

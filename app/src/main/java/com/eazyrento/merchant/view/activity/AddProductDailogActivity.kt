@@ -42,7 +42,7 @@ class AddProductDailogActivity:BaseActivity() {
         setContentView(R.layout.add_vehicle_dialog)
         this.setFinishOnTouchOutside(false)
 
-        item_quantity_static_text.text =getString(R.string.truck_quantity).plus("1")
+        item_quantity_static_text.text =getString(R.string.quantity)
         merchantAddProductReqModel.quantity =1
 
         //edit functionalty
@@ -138,14 +138,14 @@ class AddProductDailogActivity:BaseActivity() {
         }else {
             merchantAddProductReqModel.quantity--
             item_quantity.text = merchantAddProductReqModel.quantity.toString()
-            item_quantity_static_text.text =getString(R.string.truck_quantity).plus(merchantAddProductReqModel.quantity.toString())
+            item_quantity_static_text.text =getString(R.string.quantity)
         }
 
     }
     fun onPlusClick(view: View){
         merchantAddProductReqModel.quantity++
         item_quantity.text =merchantAddProductReqModel.quantity.toString()
-        item_quantity_static_text.text =getString(R.string.truck_quantity).plus(merchantAddProductReqModel.quantity.toString())
+        item_quantity_static_text.text =getString(R.string.quantity)
 
     }
     fun onUploadClick(view: View){
@@ -295,6 +295,7 @@ class AddProductDailogActivity:BaseActivity() {
 
     private fun setImageViewAndConvertIntoBase64(selectedImage: Bitmap?) {
         //set into Image view
+        //img_doc.visibility = View.VISIBLE
         selectedImage?.let {
             img_doc.setImageBitmap(selectedImage)
 
@@ -344,7 +345,7 @@ class AddProductDailogActivity:BaseActivity() {
         merchantAddProductReqModel.availability_days = productDetails.product_info.availability_days
         merchantAddProductReqModel.document_name =productDetails.product_info.document_name
         merchantAddProductReqModel.quantity = productDetails.product_info.quantity
-        item_quantity_static_text.text =getString(R.string.truck_quantity).plus( productDetails.product_info.quantity)
+        item_quantity_static_text.text =getString(R.string.quantity)
         merchantAddProductReqModel.price =productDetails.product_info.price
         merchantAddProductReqModel.variant = productDetails.product_info.product_details.fuel_type
         merchantAddProductReqModel.with_driver =productDetails.product_info.with_driver
