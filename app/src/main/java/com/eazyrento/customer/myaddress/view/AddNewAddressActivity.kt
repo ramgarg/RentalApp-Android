@@ -8,6 +8,7 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityCompat
+import com.eazyrento.AddressFilter
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
@@ -287,7 +288,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     fun setData(lat: Double,lng: Double){
 
-        getAddressByLocation(lat,lng)
+        AddressFilter(this,addressInfo).getAddressByLocation(lat,lng,1)
         setAddressOnUI()
     }
     private fun getLocation() {
@@ -464,7 +465,7 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
     }
 
-    private fun getAddressByLocation(lat:Double,lng:Double) {
+    /*private fun getAddressByLocation(lat:Double,lng:Double) {
 
             val geocoder = Geocoder(this)
 
@@ -508,5 +509,5 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
        }catch (ex:Exception){
            ex.printStackTrace()
        }
-    }
+    }*/
 }

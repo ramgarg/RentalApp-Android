@@ -502,6 +502,7 @@
     <string name="daily_n_price">السعر اليومي</string>
     <string name="hourly_n_price">السعر بالساعة</string>
     <string name="per_day">في اليوم</string>
+    <string name="current_location_on_map">الموقع الحالي</string>
 
 
 </resources>

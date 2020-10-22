@@ -3,15 +3,17 @@ package com.eazyrento.tracking.googlemap
 
 import android.os.Bundle
 import androidx.lifecycle.observe
+import com.eazyrento.AddressFilter
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.tracking.data.model.Route
 import com.eazyrento.tracking.googlemap.viewmodel.TrackingMapViewModel
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-
+import kotlinx.android.synthetic.main.view_map_top_location_card.*
 
 
 class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
@@ -47,6 +49,8 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
         topBarWithBackIconAndTitle(resources.getString(R.string.tracking))
 
         mapInit()
+
+        setCurrentAddressOnTopInMap()
 
     }
 
@@ -84,5 +88,15 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
             }
 
         }
+    }
+
+    private fun setCurrentAddressOnTopInMap(){
+        val addressInfo = AddressInfo("","","","","",
+            -1,false,0.0,0.0,"")
+
+        val addressFilter = AddressFilter(this,addressInfo)
+        addressFilter.getAddressByLocation(22.4,77.4,1)
+
+        tv_address_line_map.text = addressInfo.address_line
     }
 }
