@@ -19,6 +19,7 @@
                 android:layout_gravity="top"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 >
         <ImageView
                 android:id="@+id/img_pin_location"
@@ -46,9 +47,9 @@
                     android:id="@+id/tv_address_line_map"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/current_location_on_map"
                     app:layout_constraintStart_toStartOf="@+id/tv_current_location_map"
                     app:layout_constraintTop_toBottomOf="@+id/tv_current_location_map"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

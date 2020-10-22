@@ -34,9 +34,14 @@
                 android:layout_below="@+id/toolbar"
 
                 />
-       <!-- <include
-                layout="template_merchant_call"
-                />-->
+        <include
+                layout="@layout/template_cancle_call_map"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                />
 
     </RelativeLayout>
 

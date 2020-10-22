@@ -507,4 +507,6 @@
 
     <string name="current_location_on_map">Current Location</string>
 
+    <string name="enable_GPS_permission">Please enable GPS or location permission</string>
+
 </resources>

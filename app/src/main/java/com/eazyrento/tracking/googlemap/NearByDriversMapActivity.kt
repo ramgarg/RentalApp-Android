@@ -3,6 +3,8 @@ package com.eazyrento.tracking.googlemap
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import com.appbiz.location.LocationUtils.Companion.isGPSEnabled
 import com.eazyrento.Constant
 
 import com.eazyrento.R
@@ -10,18 +12,24 @@ import com.eazyrento.appbiz.AppBizLogger
 
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
+import com.eazyrento.customer.utils.Common.Companion.setCurrentAddressOnTopInMap
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.tracking.data.model.LatLong
+import com.eazyrento.tracking.googlemap.mylocation.AppBizLocationCallback
+import com.eazyrento.tracking.googlemap.mylocation.AppBizLocationProvider
+import com.google.android.gms.location.LocationResult
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import kotlinx.android.synthetic.main.view_map_top_location_card.*
 
 
 class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
 
+    private var appBizLocationProvider: AppBizLocationProvider?=null
 
     private var mMap: GoogleMap? =null
     private var mHashMapDriversLocation:HashMap<String,LatLong> = hashMapOf("d1" to LatLong(22.1,77.4),
@@ -58,6 +66,16 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        appBizLocationProvider?.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -68,6 +86,46 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
+
+        //location
+
+        appBizLocationProvider = AppBizLocationProvider(this)
+
+        appBizLocationProvider?.setLocationCallback(object : AppBizLocationCallback {
+            override fun canRequestLocation(canRequest: Boolean) {
+                if (canRequest)
+                    appBizLocationProvider?.requestLocationUpdate(this@NearByDriversMapActivity)
+                else
+                    Toast.makeText(this@NearByDriversMapActivity, resources.getString(R.string.enable_GPS_permission), Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onLocation(locationResult: LocationResult?) {
+                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"$mTAG location result $locationResult")
+                locationResult?.lastLocation?.run {
+                    tv_address_line_map.setCurrentAddressOnTopInMap(this@NearByDriversMapActivity,latitude,longitude)
+                }
+
+            }
+
+            override fun permissionGiven() {
+                if (isGPSEnabled())
+                    appBizLocationProvider?.requestLocationUpdate(this@NearByDriversMapActivity)
+                else {
+                    Toast.makeText(
+                        this@NearByDriversMapActivity,
+                        resources.getString(R.string.enable_GPS_permission),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
+                }
+
+            }
+
+        })?.start()
+
+
+
+
         mMap = googleMap
 
         mMap?.setMaxZoomPreference(ZOOM_PREFERENCE)

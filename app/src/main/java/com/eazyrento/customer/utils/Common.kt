@@ -17,13 +17,17 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import com.eazyrento.AddressFilter
 import com.eazyrento.R
 import com.eazyrento.Session
 import com.eazyrento.common.view.UserInfoAPP
+import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.view.ChoseUserRole
 import kotlinx.android.synthetic.main.rating_review.img_close
 import kotlinx.android.synthetic.main.rental_dialog.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
+import kotlinx.android.synthetic.main.view_map_top_location_card.*
+import kotlinx.android.synthetic.main.view_map_top_location_card.view.*
 import java.sql.Time
 import java.text.Format
 import java.text.SimpleDateFormat
@@ -196,9 +200,16 @@ class Common {
 
         }
 
+        fun View.setCurrentAddressOnTopInMap(context: Context,lat:Double,lang:Double){
+            val addressInfo = AddressInfo("","","","","",
+                -1,false,0.0,0.0,"")
+
+            val addressFilter = AddressFilter(context,addressInfo)
+            addressFilter.getAddressByLocation(lat,lang,1)
+
+            tv_address_line_map.text = addressInfo.address_line
+        }
+
     }
-
-
-
 
 }

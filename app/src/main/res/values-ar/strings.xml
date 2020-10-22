@@ -503,6 +503,7 @@
     <string name="hourly_n_price">السعر بالساعة</string>
     <string name="per_day">في اليوم</string>
     <string name="current_location_on_map">الموقع الحالي</string>
+    <string name="enable_GPS_permission">"يرجى تمكين GPS أو إذن الموقع "</string>
 
 
 </resources>
