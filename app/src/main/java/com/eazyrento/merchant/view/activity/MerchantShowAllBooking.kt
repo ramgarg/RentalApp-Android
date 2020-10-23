@@ -2,6 +2,7 @@ package com.eazyrento.merchant.view.activity
 
 import android.view.View
 import com.eazyrento.Constant
+import com.eazyrento.R
 import com.eazyrento.common.model.modelclass.Booking
 import com.eazyrento.common.model.modelclass.BookingAdapterModel
 import com.eazyrento.common.view.activity.ShowAllBookingActivity
@@ -21,7 +22,7 @@ class MerchantShowAllBooking:ShowAllBookingActivity() {
         val baseUserRoleDetail = order_listing_obj.agent_detail
 
         baseUserRoleDetail?.let {
-            it.userRole = Constant.AGENT
+            it.userRole = resources.getString(R.string.agent)
             setBaseDataHolder(position,it,modelBooking,list)
         }
 

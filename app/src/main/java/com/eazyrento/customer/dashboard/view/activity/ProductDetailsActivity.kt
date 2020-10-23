@@ -130,7 +130,13 @@ class ProductDetailsActivity : BaseActivity()
         setWishProductImage(dataProductDetails)
     }
     fun setWishProductImage(data: ProductDetailsResModel) {
-        pro_wish.setImageResource(if(data.is_wishlisted) R.mipmap.like else R.mipmap.unlike)
+        if (data.is_wishlisted){
+            pro_wish.setImageResource(R.mipmap.like)
+            showToast(R.string.wishlist_msg)
+        }else {
+            pro_wish.setImageResource( R.mipmap.unlike)
+            showToast(R.string.wishlist_msg_unlike)
+        }
     }
 
 

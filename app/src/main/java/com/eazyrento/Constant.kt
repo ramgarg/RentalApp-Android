@@ -154,9 +154,9 @@ interface Constant{
         const val DOLLAR_NOTATION = "$"
 
         //Address Type
-        const val Address_Home= "Home"
+        /*const val Address_Home= "Home"
         const val Address_Work= "Work"
-        const val Address_Other= "Other"
+        const val Address_Other= "Other"*/
 
         //logunt
         const val INTENT_LOGOUT_KEY = "logout"

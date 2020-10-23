@@ -167,15 +167,15 @@ open abstract class OrderBaseSummaryActivity : BaseActivity() {
         listBaseUserRoleDetail.clear()
 
         if (cus!=null) {
-            setBaseUserRoleDetails(cus,Constant.CUSTOMER,cus.id)
+            setBaseUserRoleDetails(cus,getString(R.string.customer),cus.id)
 
         }
         if (agent!=null){
-            setBaseUserRoleDetails(agent,Constant.AGENT,agent.id)
+            setBaseUserRoleDetails(agent,getString(R.string.agent),agent.id)
         }
         if (merchantDetail!=null && merchantDetail.isNotEmpty()){
             for (obj in merchantDetail){
-                setBaseUserRoleDetails(obj,Constant.MERCHANT,obj.merchant_id)
+                setBaseUserRoleDetails(obj,getString(R.string.merchant),obj.merchant_id)
             }
         }
 
