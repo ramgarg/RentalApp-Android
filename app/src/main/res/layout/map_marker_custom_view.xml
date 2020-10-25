@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/map_frame_layout"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_width="@dimen/_60sdp"
+
+            >
+
+    <TextView android:id="@+id/km_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="km"
+            android:layout_gravity="center|top"
+            style="@style/LargeTextViewStyle"
+            />
+        <ImageView
+                android:id="@+id/marker_map"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@mipmap/location"
+
+                android:layout_gravity="center|bottom"
+                />
+
+    </FrameLayout>

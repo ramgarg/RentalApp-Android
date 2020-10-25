@@ -1,14 +1,18 @@
 package com.eazyrento.tracking.googlemap
 
 
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import com.appbiz.location.LocationUtils.Companion.isGPSEnabled
 import com.eazyrento.Constant
 
 import com.eazyrento.R
+import com.eazyrento.appbiz.AppBizCustomBitmapDes
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.appbiz.CalculatingDistance
 
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
@@ -24,12 +28,15 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import kotlinx.android.synthetic.main.map_marker_custom_view.*
 import kotlinx.android.synthetic.main.view_map_top_location_card.*
 
 
 class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
 
     private var appBizLocationProvider: AppBizLocationProvider?=null
+
+    private lateinit var marker: Marker
 
     private var mMap: GoogleMap? =null
     private var mHashMapDriversLocation:HashMap<String,LatLong> = hashMapOf("d1" to LatLong(22.1,77.4),
@@ -66,6 +73,10 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
+    /*
+    * request for permission
+    *
+    * */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -74,19 +85,11 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
         appBizLocationProvider?.onRequestPermissionsResult(requestCode, permissions, grantResults)
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    override fun onMapReady(googleMap: GoogleMap) {
-
+/*
+*
+* requesting for location
+* */
+    private fun requestForLocation(){
         //location
 
         appBizLocationProvider = AppBizLocationProvider(this)
@@ -102,7 +105,11 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
             override fun onLocation(locationResult: LocationResult?) {
                 AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"$mTAG location result $locationResult")
                 locationResult?.lastLocation?.run {
+
                     tv_address_line_map.setCurrentAddressOnTopInMap(this@NearByDriversMapActivity,latitude,longitude)
+
+                    // marker update title
+                    updateMarkersData(latitude,longitude)
                 }
 
             }
@@ -122,11 +129,40 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
             }
 
         })?.start()
+    }
 
+  private fun updateMarkersData(currentLatitude: Double, currentLongitude: Double) {
+      val calculatingDistance = CalculatingDistance()
 
+     val values = mHashMapDriversLocation.values
 
+     for (value in values) {
+
+         val km = calculatingDistance.distance(
+             currentLatitude,
+             currentLongitude,
+             value.latitude,
+             value.longitude
+         )
+
+         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "$mTAG updateMarkersData : $km")
+     }
+
+  }
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
+    override fun onMapReady(googleMap: GoogleMap) {
 
         mMap = googleMap
+
+        requestForLocation()
 
         mMap?.setMaxZoomPreference(ZOOM_PREFERENCE)
 
@@ -141,6 +177,8 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
              setMarker(value)
        }
 
+        getBitMap()
+
 
     }
 
@@ -154,12 +192,20 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
     private fun createNewMarker(title: String, location: LatLng): MarkerOptions {
 
 //       val drawle =  ContextCompat.getDrawable(this@DisplayMapsActivity , R.drawable.ic_tracker)
+      /* val view = layoutInflater.inflate(R.layout.map_marker_custom_view,null)
+       val w = resources.getDimension(R.dimen._60sdp).toInt()
+       val bitmap = AppBizCustomBitmapDes.getBitmapFromView(view,w,w)
 
+       AppBizCustomBitmapDes.getBitmapFromView(view,this) {
+
+       }*/
        return MarkerOptions().apply{
-            setTitle(title)
 //            icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
-           icon(getBitmapFromDrawable(R.mipmap.mover_map_icon_))
-            position(location)
+//            icon(getBitmapFromDrawable(R.mipmap.mover_map_icon_))
+
+//              icon(getBitmapDescriptorFactoryFromBitmap(bitmap!!))
+              position(location)
+
         }
     }
 
@@ -168,6 +214,33 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
         return BitmapDescriptorFactory.fromResource(icon)
     }
 
+    fun getBitmapDescriptorFactoryFromBitmap(bitmap:Bitmap): BitmapDescriptor? {
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+   private fun getBitMap(){
+
+       val view = layoutInflater.inflate(R.layout.map_marker_custom_view,null)
+       //val view = map_frame_layout
+       val w = resources.getDimension(R.dimen._60sdp).toInt()
+       //val bitmap = AppBizCustomBitmapDes.getBitmapFromView(view,200,200)
+     //   val bitmap = AppBizCustomBitmapDes.getMarkerIconWithLabel("knnnn",0.0f,this)
+       //val bitmap = AppBizCustomBitmapDes.makeBitmap(this,"dfbfnd")
+
+       val bitmap = AppBizCustomBitmapDes.loadBitmapFromView(view)
+
+//       val bitmap = AppBizCustomBitmapDes.getBitmapFromView(view,200,200)
+
+       Handler().postDelayed({
+
+               marker.setIcon(getBitmapDescriptorFactoryFromBitmap(bitmap!!))
+
+
+
+         //  marker.setIcon(getBitmapDescriptorFactoryFromBitmap(bitmap!!))
+
+       },2000)
+
+   }
 
    private fun setMarker(location:LatLong) {
 
@@ -179,6 +252,8 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
            remove()
        }*/
        val mMarkerLocationUpdate = this.addMarker(createNewMarker(resources.getString(R.string.select_location),LatLng(location.latitude , location.longitude)))
+
+           marker = mMarkerLocationUpdate
        // bounds marker
        val builder = LatLngBounds.builder()
            builder.include(mMarkerLocationUpdate.position)
