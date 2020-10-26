@@ -13,7 +13,9 @@
             android:layout_height="wrap_content"
             android:text="km"
             android:layout_gravity="center|top"
-            style="@style/LargeTextViewStyle"
+            style="@style/SmallTextViewStyle"
+            android:background="@color/green"
+            android:textColor="@color/quantum_yellow"
             />
         <ImageView
                 android:id="@+id/marker_map"

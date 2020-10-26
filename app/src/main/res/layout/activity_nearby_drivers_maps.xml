@@ -47,5 +47,14 @@
                 />
 
     </RelativeLayout>
+    <include
+        layout="@layout/dialog_assign_user_marker"
+            android:id="@+id/assign_diver_from_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            style="@android:style/Animation.Translucent"
+            android:visibility="visible"
+            />
 </androidx.drawerlayout.widget.DrawerLayout>
 

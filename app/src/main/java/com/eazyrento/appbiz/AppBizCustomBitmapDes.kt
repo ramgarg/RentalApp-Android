@@ -42,7 +42,7 @@ interface AppBizCustomBitmapDes {
             return BitmapDescriptorFactory.fromResource(icon)
         }*/
 
-        fun getBitmapFromView(view: View, activity: Activity, callback: (Bitmap) -> Unit) {
+        /*fun getBitmapFromView(view: View, activity: Activity, callback: (Bitmap) -> Unit) {
             activity.window?.let { window ->
                 val bitmap = Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_8888)
                 val locationOfViewInWindow = IntArray(2)
@@ -66,7 +66,7 @@ interface AppBizCustomBitmapDes {
                     e.printStackTrace()
                 }
             }
-        }
+        }*/
 
         fun getBitmapFromView(view: View, defaultColor: Int): Bitmap? {
             val bitmap =
@@ -129,16 +129,7 @@ interface AppBizCustomBitmapDes {
             return bitmap
         }
 
-        fun loadBitmapFromView(v: View): Bitmap? {
-            /*val b = Bitmap.createBitmap(
-                v.layoutParams.width,
-                v.layoutParams.height,
-                Bitmap.Config.ARGB_8888
-            )
-            val c = Canvas(b)
-            v.layout(v.left, v.top, v.right, v.bottom)
-            v.draw(c)
-            return b*/
+        fun loadBitmapFromView(v: View,w: Int,h:Int): Bitmap? {
 
             if (v.measuredHeight <= 0) {
                 //v.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -146,9 +137,9 @@ interface AppBizCustomBitmapDes {
                 v.measure(specWidth, specWidth)
 
                 val b =
-                    Bitmap.createBitmap(216, 216, Bitmap.Config.ARGB_8888)
+                    Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
                 val c = Canvas(b)
-                v.layout(0, 0, 216, 216)
+                v.layout(0, 0, w, h)
                 v.draw(c)
                 return b
             }

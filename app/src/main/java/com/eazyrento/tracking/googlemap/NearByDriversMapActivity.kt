@@ -16,6 +16,7 @@ import com.eazyrento.appbiz.CalculatingDistance
 
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.Common.Companion.setCurrentAddressOnTopInMap
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.tracking.data.model.LatLong
@@ -28,25 +29,32 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import kotlinx.android.synthetic.main.map_marker_custom_view.*
+import kotlinx.android.synthetic.main.activity_nearby_drivers_maps.*
+import kotlinx.android.synthetic.main.dialog_assign_user_marker.*
+import kotlinx.android.synthetic.main.map_marker_custom_view.view.*
+import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.view_map_top_location_card.*
+import kotlin.math.roundToInt
 
 
-class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
+class NearByDriversMapActivity : BaseActivity(), OnMapReadyCallback {
 
-    private var appBizLocationProvider: AppBizLocationProvider?=null
+    private var appBizLocationProvider: AppBizLocationProvider? = null
 
-    private lateinit var marker: Marker
+    private var mMap: GoogleMap? = null
+    private var mHashMapDriversLocation: HashMap<String, LatLong> = hashMapOf(
+        "d1" to LatLong(22.1, 77.4),
+        "d2" to LatLong(23.1, 78.4), "d3" to LatLong(24.1, 79.4), "d4" to LatLong(25.1, 86.4)
+    )
+    private val mHasMapMarker = HashMap<String, Marker>()
 
-    private var mMap: GoogleMap? =null
-    private var mHashMapDriversLocation:HashMap<String,LatLong> = hashMapOf("d1" to LatLong(22.1,77.4),
-        "d2" to LatLong(23.1,78.4),"d3" to LatLong(24.1,79.4),"d4" to LatLong(25.1,86.4))
+    private var mCurrentLatLng: LatLong? = null
 
     private val mTAG = "NearByDriversMapActivity:-"
 
-    companion object{
-        const val ZOOM_PREFERENCE= 5.0f
-        const val ZOOM_LEVEL = 11
+    companion object {
+        const val ZOOM_PREFERENCE = 5.0f
+        const val ZOOM_LEVEL = 5
         const val DELAYS = 1000L
     }
 
@@ -66,7 +74,7 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
     }
 
     /* init map*/
-    private fun mapInit(){
+    private fun mapInit() {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -85,11 +93,12 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
         appBizLocationProvider?.onRequestPermissionsResult(requestCode, permissions, grantResults)
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
-/*
-*
-* requesting for location
-* */
-    private fun requestForLocation(){
+
+    /*
+    *
+    * requesting for location
+    * */
+    private fun requestForLocation() {
         //location
 
         appBizLocationProvider = AppBizLocationProvider(this)
@@ -99,17 +108,31 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
                 if (canRequest)
                     appBizLocationProvider?.requestLocationUpdate(this@NearByDriversMapActivity)
                 else
-                    Toast.makeText(this@NearByDriversMapActivity, resources.getString(R.string.enable_GPS_permission), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@NearByDriversMapActivity,
+                        resources.getString(R.string.enable_GPS_permission),
+                        Toast.LENGTH_SHORT
+                    ).show()
             }
 
             override fun onLocation(locationResult: LocationResult?) {
-                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"$mTAG location result $locationResult")
+                AppBizLogger.log(
+                    AppBizLogger.LoggingType.DEBUG,
+                    "$mTAG location result $locationResult"
+                )
+
                 locationResult?.lastLocation?.run {
 
-                    tv_address_line_map.setCurrentAddressOnTopInMap(this@NearByDriversMapActivity,latitude,longitude)
+                    tv_address_line_map.setCurrentAddressOnTopInMap(
+                        this@NearByDriversMapActivity,
+                        latitude,
+                        longitude
+                    )
 
-                    // marker update title
-                    updateMarkersData(latitude,longitude)
+                    mCurrentLatLng = LatLong(latitude, longitude)
+
+                    setBitMapOnMarker()
+
                 }
 
             }
@@ -131,24 +154,27 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
         })?.start()
     }
 
-  private fun updateMarkersData(currentLatitude: Double, currentLongitude: Double) {
-      val calculatingDistance = CalculatingDistance()
+    private fun updateDistanceOnMarker(marker: Marker): Double {
 
-     val values = mHashMapDriversLocation.values
+        val calculatingDistance = CalculatingDistance()
 
-     for (value in values) {
+        mCurrentLatLng?.run {
 
-         val km = calculatingDistance.distance(
-             currentLatitude,
-             currentLongitude,
-             value.latitude,
-             value.longitude
-         )
+            val km = calculatingDistance.distance(
+                latitude,
+                longitude,
+                marker.position.latitude,
+                marker.position.longitude
+            )
 
-         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "$mTAG updateMarkersData : $km")
-     }
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "$mTAG updateMarkersData : $km")
+            return km
 
-  }
+        }
+        return 0.0
+
+    }
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -162,119 +188,117 @@ class NearByDriversMapActivity : BaseActivity(),OnMapReadyCallback {
 
         mMap = googleMap
 
+        setMarkerClickLisetener()
+
         requestForLocation()
 
-        mMap?.setMaxZoomPreference(ZOOM_PREFERENCE)
+        // mMap?.setMaxZoomPreference(ZOOM_PREFERENCE)
 
-        //subscribeToUpdates()
+        for (key in mHashMapDriversLocation.keys) {
+            val marker = setMarker(mHashMapDriversLocation[key]!!)!!
+            marker.tag = key
+            mHasMapMarker[key] = marker
+        }
 
-        // Add a marker in Sydney and move the camera
-       /* val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
+        val builder = LatLngBounds.builder()
+        for (value in mHasMapMarker.values) {
+            builder.include(value.position)
+        }
 
-         for (value in mHashMapDriversLocation.values){
-             setMarker(value)
-       }
-
-        getBitMap()
-
+        val cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 0)
+        mMap?.moveCamera(cu)
 
     }
 
-  /* private fun postDelayedMarker(){
-       mHandler.postDelayed(mRunnable, DELAYS)
-   }*/
+    private fun setMarkerClickLisetener() {
 
-   /*private fun getMarkerByKey(key:String): Marker? {
-       return mHashMapMarkers[key]
-   }*/
+        mMap?.setOnMarkerClickListener {
+
+            val driver = mHashMapDriversLocation[it.tag]
+
+            driver?.run {
+
+                assign_diver_from_map.visibility = View.VISIBLE
+
+                phone_view.setOnClickListener{
+                    Common.phoneCallWithNumber("",this@NearByDriversMapActivity)
+                }
+                img_close_on_map.setOnClickListener{
+                    assign_diver_from_map.visibility = View.GONE
+                }
+
+                btn_assign_driver.setOnClickListener {
+
+                }
+
+            }
+            false
+        }
+    }
+
     private fun createNewMarker(title: String, location: LatLng): MarkerOptions {
 
-//       val drawle =  ContextCompat.getDrawable(this@DisplayMapsActivity , R.drawable.ic_tracker)
-      /* val view = layoutInflater.inflate(R.layout.map_marker_custom_view,null)
-       val w = resources.getDimension(R.dimen._60sdp).toInt()
-       val bitmap = AppBizCustomBitmapDes.getBitmapFromView(view,w,w)
-
-       AppBizCustomBitmapDes.getBitmapFromView(view,this) {
-
-       }*/
-       return MarkerOptions().apply{
-//            icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
-//            icon(getBitmapFromDrawable(R.mipmap.mover_map_icon_))
-
-//              icon(getBitmapDescriptorFactoryFromBitmap(bitmap!!))
-              position(location)
+        return MarkerOptions().apply {
+            position(location)
 
         }
     }
 
-     fun getBitmapFromDrawable(icon :Int): BitmapDescriptor? {
+    fun getBitmapFromDrawable(icon: Int): BitmapDescriptor? {
 
         return BitmapDescriptorFactory.fromResource(icon)
     }
 
-    fun getBitmapDescriptorFactoryFromBitmap(bitmap:Bitmap): BitmapDescriptor? {
+    fun getBitmapDescriptorFactoryFromBitmap(bitmap: Bitmap): BitmapDescriptor? {
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
-   private fun getBitMap(){
 
-       val view = layoutInflater.inflate(R.layout.map_marker_custom_view,null)
-       //val view = map_frame_layout
-       val w = resources.getDimension(R.dimen._60sdp).toInt()
-       //val bitmap = AppBizCustomBitmapDes.getBitmapFromView(view,200,200)
-     //   val bitmap = AppBizCustomBitmapDes.getMarkerIconWithLabel("knnnn",0.0f,this)
-       //val bitmap = AppBizCustomBitmapDes.makeBitmap(this,"dfbfnd")
+    private fun setBitMapOnMarker() {
 
-       val bitmap = AppBizCustomBitmapDes.loadBitmapFromView(view)
+        for (marker in mHasMapMarker.values) {
+            val view = layoutInflater.inflate(R.layout.map_marker_custom_view, null)
 
-//       val bitmap = AppBizCustomBitmapDes.getBitmapFromView(view,200,200)
+            // marker update title
+            val disInDouble = updateDistanceOnMarker(marker)
 
-       Handler().postDelayed({
+            view.km_map.text = " ".plus((disInDouble * 10.0).roundToInt() / 10.0).plus("km")
 
-               marker.setIcon(getBitmapDescriptorFactoryFromBitmap(bitmap!!))
+            val w = resources.getDimension(R.dimen._60sdp).toInt()
+            val h = resources.getDimension(R.dimen._60sdp).toInt()
 
+            val bitmap = AppBizCustomBitmapDes.loadBitmapFromView(view, w, h)
 
+            Handler().postDelayed({
 
-         //  marker.setIcon(getBitmapDescriptorFactoryFromBitmap(bitmap!!))
+                marker.setIcon(getBitmapDescriptorFactoryFromBitmap(bitmap!!))
 
-       },2000)
+            }, 500)
+        }
 
-   }
-
-   private fun setMarker(location:LatLong) {
-
-       mMap?.run {
-
-       AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"$mTAG setMarker-$location")
-
-/*       mMarkerLocationUpdate?.run {
-           remove()
-       }*/
-       val mMarkerLocationUpdate = this.addMarker(createNewMarker(resources.getString(R.string.select_location),LatLng(location.latitude , location.longitude)))
-
-           marker = mMarkerLocationUpdate
-       // bounds marker
-       val builder = LatLngBounds.builder()
-           builder.include(mMarkerLocationUpdate.position)
-
-      /* for (objMarker in mHashMapDriversLocation.values){
-           builder.include()
-       }
-*/
-       builder.include(mMarkerLocationUpdate!!.position)
-        animateMapCamera(builder)
-
-       }
-   }
-
- private fun animateMapCamera(builder: LatLngBounds.Builder) {
-     // animate map
-     mMap?.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), ZOOM_LEVEL))
- }
-
-    fun bookingButtonClick(view:View){
-        MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,
-            Constant.KEY_INTENT_NEAR_BY_DRIVER, Constant.VALUE_INTENT_NEAR_BY_DRIVER)
     }
+
+    private fun setMarker(location: LatLong): Marker? {
+
+        return mMap?.run {
+
+            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "$mTAG setMarker-$location")
+
+            val markerLocationUpdate = this.addMarker(
+                createNewMarker(
+                    resources.getString(R.string.select_location),
+                    LatLng(location.latitude, location.longitude)
+                )
+            )
+
+            markerLocationUpdate
+        }
+    }
+
+    fun bookingButtonClick(view: View) {
+        MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(
+            this,
+            Constant.KEY_INTENT_NEAR_BY_DRIVER, Constant.VALUE_INTENT_NEAR_BY_DRIVER
+        )
+    }
+
 }
