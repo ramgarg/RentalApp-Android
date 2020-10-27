@@ -3,34 +3,36 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-        android:layout_centerInParent="true"
         android:gravity="center"
-        android:background="@color/mdtp_transparent_black"
-        >
+        android:background="@color/mdtp_transparent_black">
 
 <LinearLayout
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/dialog_transparent"
-    android:layout_height="wrap_content"
-
-        >
+        android:layout_width="@dimen/_230sdp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:background="@drawable/dialog_transparent"
+    >
+    <ImageView
+            android:id="@+id/img_close_on_map"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_width="@dimen/_25sdp"
+            android:src="@mipmap/close"
+            android:layout_gravity="end"/>
 
     <include
         layout="@layout/phone_view"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_gravity="end"
         android:layout_marginEnd="@dimen/_30sdp"
-        android:src="@mipmap/logout_driver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
 
             android:id="@+id/customer_profile_pic"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            style="@style/profile_pic"
+            style="@style/profile_pic_small"
             />
    <!-- <include layout="@layout/template_profile_image"
         android:id="@+id/include_profile_img_menu"
@@ -50,10 +52,10 @@
             android:id="@+id/tv_user_name"
             android:text="Test"
             android:layout_gravity="center"
-            style="@style/LargeTextViewStyle"
+            style="@style/NormalBlackTextViewStyle"
             />
     <TextView
-        android:layout_width="@dimen/_150sdp"
+        android:layout_width="@dimen/_120sdp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/order_dotted_line"
@@ -61,22 +63,22 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_60sdp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:layout_gravity="center"
         android:orientation="horizontal">
 
         <TextView
             android:text="@string/price"
             android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_50sdp"
-            style="@style/NormalBlackTextViewStyle"/>
+            android:layout_height="@dimen/_40sdp"
+            style="@style/LargeTextViewStyle"/>
         <TextView
             android:id="@+id/tv_starting_price"
             android:text="@string/dollar"
             android:layout_width="@dimen/_80sdp"
             android:layout_marginTop="@dimen/_5sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_40sdp"
             android:textColor="@color/light_black"
             style="@style/ExtraLargeTextViewStyle"/>
 
@@ -84,8 +86,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:background="@color/light_grey"
         android:orientation="horizontal">
         <ImageView
@@ -93,44 +95,40 @@
             android:layout_width="@dimen/_30sdp"
             android:id="@+id/img_trip_icon"
             android:padding="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_5sdp"
             android:layout_height="@dimen/_30sdp"/>
 
         <TextView
             android:id="@+id/tv_distance"
             android:text="@string/distance_3km"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_2sdp"
             android:layout_toEndOf="@id/img_trip_icon"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
             style="@style/SmallBlackTextViewStyle"/>
         <TextView
             android:id="@+id/tv_quantity"
             android:text="@string/quantity"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_alignParentEnd="true"
             style="@style/SmallBlackTextViewStyle"/>
     </RelativeLayout>
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_45sdp"
             android:fontFamily="@font/bree_serif"
             android:textSize="@dimen/_14sdp"
             android:textAllCaps="false"
             android:id="@+id/btn_assign_driver"
             android:textColor="@color/white"
-            android:background="@drawable/button_gradient"
+            android:background="@drawable/button_assign"
             android:text="@string/assign">
 
         </Button>
+
 </LinearLayout>
 
-    <ImageView
-        android:id="@+id/img_close_on_map"
-        android:layout_width="@dimen/_25sdp"
-        android:src="@mipmap/close"
-        android:layout_alignParentEnd="true"
-        android:layout_height="@dimen/_25sdp"/>
+
 
 </RelativeLayout>
