@@ -10,11 +10,15 @@ import com.appbiz.location.LocationUtils.Companion.isGPSEnabled
 import com.eazyrento.Constant
 
 import com.eazyrento.R
+import com.eazyrento.Session
+import com.eazyrento.agent.model.modelclass.AssignMerchantsReqModel
+import com.eazyrento.agent.viewmodel.AgentAssignMerchantViewModel
 import com.eazyrento.appbiz.AppBizCustomBitmapDes
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.appbiz.CalculatingDistance
 
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.Common.Companion.setCurrentAddressOnTopInMap
@@ -121,6 +125,7 @@ class NearByDriversMapActivity : BaseActivity(), OnMapReadyCallback {
                     "$mTAG location result $locationResult"
                 )
 
+
                 locationResult?.lastLocation?.run {
 
                     tv_address_line_map.setCurrentAddressOnTopInMap(
@@ -212,6 +217,12 @@ class NearByDriversMapActivity : BaseActivity(), OnMapReadyCallback {
 
     private fun setMarkerClickLisetener() {
 
+        val userRole = Session.getInstance(this)?.getUserRole()
+
+        if (userRole.equals(UserInfoAPP.CUSTOMER)){
+            return
+        }
+
         mMap?.setOnMarkerClickListener {
 
             val driver = mHashMapDriversLocation[it.tag]
@@ -228,9 +239,9 @@ class NearByDriversMapActivity : BaseActivity(), OnMapReadyCallback {
                 }
 
                 btn_assign_driver.setOnClickListener {
-
+                    assignTheDriver(driver)
                 }
-
+                true
             }
             false
         }
@@ -299,6 +310,22 @@ class NearByDriversMapActivity : BaseActivity(), OnMapReadyCallback {
             this,
             Constant.KEY_INTENT_NEAR_BY_DRIVER, Constant.VALUE_INTENT_NEAR_BY_DRIVER
         )
+    }
+
+    private fun assignTheDriver(driver: LatLong) {
+
+       val  assignMerchantsReqModel = AssignMerchantsReqModel()
+
+        assignMerchantsReqModel.booking_id = 1
+        assignMerchantsReqModel.order_id  = ""
+
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<AgentAssignMerchantViewModel>(this)
+                    .assignMerchants(assignMerchantsReqModel)
+                , this, this
+            )
+        }
     }
 
 }

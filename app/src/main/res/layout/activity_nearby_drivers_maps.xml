@@ -54,7 +54,7 @@
             android:layout_height="match_parent"
 
             style="@android:style/Animation.Translucent"
-            android:visibility="visible"
+            android:visibility="gone"
             />
 </androidx.drawerlayout.widget.DrawerLayout>
 
