@@ -302,6 +302,16 @@
 
     </style>
 
+    <style name="profile_pic_small">
+        <item name="android:layout_width">@dimen/_40sdp</item>
+        <item name="android:layout_height">@dimen/_40sdp</item>
+        <item name="android:src">@mipmap/profile_pic</item>
+
+        <item name="civ_border_width">1dp</item>
+        <item name="civ_border_color">#D3D3D3</item>
+
+    </style>
+
     <style name="UserRole" parent="android:Widget.TextView">
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/text_green</item>
