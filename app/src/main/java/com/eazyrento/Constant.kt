@@ -117,11 +117,15 @@ interface Constant{
         const val PAYPAL ="paypal"
         const val CASH ="cash"
 
+        // order/booking status
         const val PENDING="pending"
         const val COMPLETED="completed"
         const val RECEIVED="received"
         const val FAILED="failed"
         const val REJECTED = "rejected"
+        const val ACCEPTED  = "accepted"
+        const val STARTED   = "started"
+        const val ONGOING   = "ongoing"
 
 
        // const val PENDING_AMOUNT="Pending Amount - "

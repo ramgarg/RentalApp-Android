@@ -34,7 +34,7 @@ import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_work_info.*
 
 
-open abstract class OrderBaseSummaryActivity : BaseActivity() {
+ abstract class OrderBaseSummaryActivity : BaseActivity() {
 
     lateinit var orderRes:OrderDetailsResModel
     var listBaseUserRoleDetail = ArrayList<BaseUserRoleDetail>()

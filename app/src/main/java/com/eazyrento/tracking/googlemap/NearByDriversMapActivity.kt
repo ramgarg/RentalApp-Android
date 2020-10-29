@@ -16,6 +16,7 @@ import com.eazyrento.agent.viewmodel.AgentAssignMerchantViewModel
 import com.eazyrento.appbiz.AppBizCustomBitmapDes
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.appbiz.CalculatingDistance
+import com.eazyrento.common.model.modelclass.BookingListItem
 
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.view.UserInfoAPP
@@ -44,6 +45,7 @@ import kotlin.math.roundToInt
 class NearByDriversMapActivity : BaseActivity(), OnMapReadyCallback {
 
     private var appBizLocationProvider: AppBizLocationProvider? = null
+    private var  bookingITem: BookingListItem?=null
 
     private var mMap: GoogleMap? = null
     private var mHashMapDriversLocation: HashMap<String, LatLong> = hashMapOf(
@@ -74,6 +76,8 @@ class NearByDriversMapActivity : BaseActivity(), OnMapReadyCallback {
         topBarWithBackIconAndTitle(resources.getString(R.string.near_by_driver))
 
         mapInit()
+
+        bookingITem = intent.getParcelableExtra<BookingListItem>(Constant.BOOKING_SUMMERY_KEY)
 
     }
 

@@ -123,7 +123,11 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
             val status=orderRes.order_status
 
             if (status!=Constant.COMPLETED) {
+                // tracking
                 tv_track.visibility = View.VISIBLE
+                // assign driver if the order quantitiy is one
+
+
             }
         }catch (e:Exception){
 

@@ -9,6 +9,7 @@ import com.eazyrento.common.model.modelclass.BookingListItem
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
+import com.eazyrento.tracking.googlemap.NearByDriversMapActivity
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -32,8 +33,17 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
 
         agent_asign_merchant_and_request_payment.setOnClickListener {
 
-            MoveToAnotherComponent.openActivityWithParcelableParam<AgentFinalAsignMerchantActivity,BookingListItem>(this,Constant.BOOKING_SUMMERY_KEY,bookingITem)
-        }
+            if (bookingITem.product_detail.quantity==1){
+                MoveToAnotherComponent.
+                openActivityWithParcelableParam<NearByDriversMapActivity,BookingListItem>(this,
+                    Constant.BOOKING_SUMMERY_KEY,bookingITem)
+            }else {
+                MoveToAnotherComponent.openActivityWithParcelableParam<AgentFinalAsignMerchantActivity, BookingListItem>(
+                    this,
+                    Constant.BOOKING_SUMMERY_KEY,
+                    bookingITem
+                )
+            } }
 
 
         //bookinjg details API call
@@ -56,22 +66,5 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
         tv_booking_price.text= Constant.DOLLAR.plus(orderRes.product_detail?.starting_price)
 
     }
-
-
-    /*private fun setUsersAdapter(customerOderDetailsResponse: OrderDetailsResModel) {
-        rec_user_order_summary.layoutManager = LinearLayoutManager(this,
-            LinearLayoutManager.VERTICAL, false
-        )
-        (rec_user_order_summary.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
-            1,
-            1
-        )
-
-        val recycleAdapterUsersHomeCard =
-            AgentOrderSummaryUsersAdapter(
-                customerOderDetailsResponse.merchant_detail as MutableList<MerchantDetail>,this)
-
-        rec_user_order_summary.adapter = recycleAdapterUsersHomeCard
-    }*/
 
 }
