@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.thank_you_pop.*
 open abstract class PaymentBaseActivity : BaseActivity() {
 
     protected var amountToPay:Double = 0.0
+    protected var paymentMessage: String = ""
     private lateinit var baseMakePaymentModel: BaseMakePaymentModel
     private lateinit var paymentGetwayCheckoutIDResModel: PaymentGetwayCheckoutIDResModel
     abstract fun getReqPaymentModel():BaseMakePaymentModel
@@ -83,7 +84,7 @@ open abstract class PaymentBaseActivity : BaseActivity() {
     fun onSubmitClick(view: View){
         if (checkValidation()){
             
-            showDialog(R.string.payment,resources.getString(R.string.thank_you),this,R.layout.thank_you_pop).let {dailog->
+            showDialog(R.string.payment,paymentMessage,this,R.layout.thank_you_pop).let {dailog->
                 dailog.btn_cancle.run {
                     visibility = View.VISIBLE
                     setOnClickListener {

@@ -36,6 +36,7 @@
                 />
         <!--Booking driver button-->
         <Button
+                android:id="@+id/booking_button_from_map"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/book_nearby_driver"

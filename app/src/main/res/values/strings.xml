@@ -180,6 +180,7 @@
     <string name="select_sub_category">Select Sub Category</string>
     <string name="truck_power_kv">125kw(170)@2500rpm</string>
     <string name="price">Price</string>
+
     <string name="petrol">Petrol</string>
     <string name="write_any_other">Write any other details \n \n</string>
     <string name="notify_admin">Notify Admin</string>
@@ -473,7 +474,7 @@
     <string name="SELECT_STATUS">Order status</string>
     <string name="SELECT_ORDER_ID">Select order ID</string>
     <string name="SELECT_PRODUCT_NAME">Select product name</string>
-    <string name="SAME_DATE_TIME_VALIDATION">The time gap between start time and end time should be more then 1 hour for same date</string>
+    <string name="SAME_DATE_TIME_VALIDATION">The time gap between start time and end time should be more than 1 hour for same date</string>
     <string name="register_">Register</string>
     <string name="login_">Login</string>
     <string name="about_us">About Us</string>
@@ -492,6 +493,16 @@
     <string name="minute">" Minute"</string>
     <string name="privacy_policy">Privacy Policy</string>
 
+    <string name="Address_Home">Home</string>
+    <string name="Address_Work">Work</string>
+    <string name="Address_Other">Other</string>
+
+    <string name="agent_payment_message">Thank You! Your Payment Request Has Been Sent.</string>
+    <string name="no_bookings">Currently There Are No Bookings Available.</string>
+    <string name="wishlist_msg">Product has been added to wishlist.</string>
+    <string name="wishlist_msg_unlike">Product has been removed from wishlist.</string>
+
+
     <string name="track_on_map">Track</string>
     <string name="assign_to_driver">Assign to Driver</string>
     <string name="driver">Driver</string>
@@ -508,5 +519,7 @@
     <string name="current_location_on_map">Current Location</string>
 
     <string name="enable_GPS_permission">Please enable GPS or location permission</string>
+
+    <string name="starting_price">Starting Price</string>
 
 </resources>

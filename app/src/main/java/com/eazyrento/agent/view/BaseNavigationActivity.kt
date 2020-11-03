@@ -14,6 +14,7 @@ import com.eazyrento.appbiz.AppBizLogger
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.dashboard.view.activity.CustomerNearByDriversMapActivity
 import com.eazyrento.customer.notification.view.NotificationFragment
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -29,8 +30,6 @@ import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_DEEPLINK
 import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_ORDER_ID
 import com.eazyrento.supporting.LocalManager
 import com.eazyrento.supporting.isDeeplinkingFromNotification
-import com.eazyrento.tracking.googlemap.NearByDriversMapActivity
-import com.eazyrento.tracking.googlemap.TrackingMapActivity
 import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 import com.squareup.picasso.Picasso
 import initHippoWithUserData
@@ -221,7 +220,7 @@ import showHippoConversation
 
             R.id.nav_near_by_driver -> {
 
-                MoveToAnotherComponent.moveToActivityNormal<NearByDriversMapActivity>(this)
+                MoveToAnotherComponent.moveToActivityNormal<CustomerNearByDriversMapActivity>(this)
 
             }
 

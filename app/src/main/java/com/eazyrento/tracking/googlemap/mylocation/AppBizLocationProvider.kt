@@ -15,11 +15,20 @@ import com.google.android.gms.location.*
 import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
 
 class AppBizLocationProvider(private val mActivity:Activity){
+
+    private val locationUpdateCallback = object : LocationCallback(){
+        override fun onLocationResult(locationResult: LocationResult?) {
+            mLocationCallback.onLocation(locationResult)
+        }
+    }
+
+    private var fusedLocationProviderClient:FusedLocationProviderClient?=null
+
     private val mTag = "AppBizLocationProvider"
     private lateinit var mLocationCallback: AppBizLocationCallback
     companion object{
-        const val INTERVAL = 5*60*1000L
-        const val FASTEST_INTERVAL = 3000L
+        const val INTERVAL = 45*60*1000L
+        const val FASTEST_INTERVAL = 45*60*1000L
     }
 
   fun setLocationCallback(mLocationCallback: AppBizLocationCallback): AppBizLocationProvider {
@@ -54,22 +63,21 @@ class AppBizLocationProvider(private val mActivity:Activity){
 
     }
 
+
+
     @SuppressLint("MissingPermission")
     fun requestLocationUpdate(context: Context){
 
-        val client = LocationServices.getFusedLocationProviderClient(context)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
+
 
         if (context.isPermissionGiven(Manifest.permission.ACCESS_FINE_LOCATION)){
 
-            client.requestLocationUpdates( LocationRequest().apply{
+            fusedLocationProviderClient?.requestLocationUpdates( LocationRequest().apply{
                 interval = INTERVAL
                 fastestInterval = FASTEST_INTERVAL
                 priority = PRIORITY_HIGH_ACCURACY
-            },object : LocationCallback(){
-                override fun onLocationResult(locationResult: LocationResult?) {
-                    mLocationCallback.onLocation(locationResult)
-                }
-            },null)
+            },locationUpdateCallback,null)
         }
         else{
 //            activity.requestPermission(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -78,7 +86,6 @@ class AppBizLocationProvider(private val mActivity:Activity){
 
 
     }
-
 
 
     fun onRequestPermissionsResult(
@@ -97,6 +104,10 @@ class AppBizLocationProvider(private val mActivity:Activity){
 
             mActivity.finish()
         }
+    }
+
+    fun removeLocationCallbacks(){
+        fusedLocationProviderClient?.removeLocationUpdates(locationUpdateCallback)
     }
 
 

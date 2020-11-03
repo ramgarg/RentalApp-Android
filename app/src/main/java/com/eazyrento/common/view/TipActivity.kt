@@ -33,6 +33,7 @@ class TipActivity : PaymentBaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_payment)
+        paymentMessage = resources.getString(R.string.thank_you)
 
         topBarWithBackIconAndTitle(getString(R.string.tip))
         is_tip = 1

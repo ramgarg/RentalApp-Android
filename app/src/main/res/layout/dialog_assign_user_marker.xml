@@ -50,7 +50,6 @@
 
     <TextView
             android:id="@+id/tv_user_name"
-            android:text="Test"
             android:layout_gravity="center"
             style="@style/NormalBlackTextViewStyle"
             />
@@ -63,15 +62,15 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_height="@dimen/_70sdp"
         android:layout_marginTop="@dimen/_15sdp"
         android:layout_gravity="center"
         android:orientation="horizontal">
 
         <TextView
-            android:text="@string/price"
+            android:text="@string/starting_price"
             android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="@dimen/_60sdp"
             style="@style/LargeTextViewStyle"/>
         <TextView
             android:id="@+id/tv_starting_price"
@@ -100,7 +99,6 @@
 
         <TextView
             android:id="@+id/tv_distance"
-            android:text="@string/distance_3km"
             android:layout_marginTop="@dimen/_2sdp"
             android:layout_toEndOf="@id/img_trip_icon"
             android:layout_marginStart="@dimen/_5sdp"

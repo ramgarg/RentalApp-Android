@@ -28,6 +28,7 @@ class AgentPaymentActivity : PaymentBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        paymentMessage = resources.getString(R.string.agent_payment_message)
 
 //        setContentView(R.layout.activity_payment)
 

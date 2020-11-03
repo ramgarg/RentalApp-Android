@@ -34,6 +34,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        paymentMessage = resources.getString(R.string.thank_you)
 
         //MoveToAnotherComponent.moveToActivityNormal<PaymentCheckout>(this)
 

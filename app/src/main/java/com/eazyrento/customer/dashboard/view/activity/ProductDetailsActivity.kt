@@ -115,6 +115,7 @@ class ProductDetailsActivity : BaseActivity()
                     , this, this
                 )
             }
+            showToast(R.string.wishlist_msg)
         }
         else {
             //delete wish
@@ -125,12 +126,17 @@ class ProductDetailsActivity : BaseActivity()
                     , this, this
                 )
             }
+            showToast(R.string.wishlist_msg_unlike)
         }
 
         setWishProductImage(dataProductDetails)
     }
     fun setWishProductImage(data: ProductDetailsResModel) {
-        pro_wish.setImageResource(if(data.is_wishlisted) R.mipmap.like else R.mipmap.unlike)
+        if (data.is_wishlisted){
+            pro_wish.setImageResource(R.mipmap.like)
+        }else if(!data.is_wishlisted){
+            pro_wish.setImageResource( R.mipmap.unlike)
+        }
     }
 
 

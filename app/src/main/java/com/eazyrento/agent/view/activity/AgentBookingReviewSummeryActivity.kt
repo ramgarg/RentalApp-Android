@@ -6,10 +6,8 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.viewmodel.AgentBookingDetailsViewModel
 import com.eazyrento.common.model.modelclass.BookingListItem
-import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.utils.ViewVisibility
-import com.eazyrento.tracking.googlemap.NearByDriversMapActivity
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -35,7 +33,7 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
 
             if (bookingITem.product_detail.quantity==1){
                 MoveToAnotherComponent.
-                openActivityWithParcelableParam<NearByDriversMapActivity,BookingListItem>(this,
+                openActivityWithParcelableParam<AgentNearByDriversMapActivity,BookingListItem>(this,
                     Constant.BOOKING_SUMMERY_KEY,bookingITem)
             }else {
                 MoveToAnotherComponent.openActivityWithParcelableParam<AgentFinalAsignMerchantActivity, BookingListItem>(

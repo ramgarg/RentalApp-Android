@@ -3,6 +3,7 @@ package com.eazyrento.agent.view.fragment
 import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
+import com.eazyrento.R
 import com.eazyrento.agent.view.activity.AgentShowAllBookingActivity
 import com.eazyrento.common.model.modelclass.Booking
 import com.eazyrento.common.model.modelclass.BookingAdapterModel
@@ -39,7 +40,7 @@ class AgentHomeFragment : DashboardBaseFragment() {
         val baseUserRoleDetail = order_listing_obj.customer_detail
 
         baseUserRoleDetail?.let {
-            it.userRole = Constant.CUSTOMER
+            it.userRole = resources.getString(R.string.customer)
             setBaseDataHolder(position,it,modelBooking)
         }
 

@@ -7,18 +7,12 @@ import android.widget.Toast
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.common.view.TipActivity
-import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.tracking.googlemap.NearByDriversMapActivity
 import com.eazyrento.tracking.googlemap.TrackingMapActivity
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
-import kotlinx.android.synthetic.main.adapter_users_order_summary.*
-import kotlinx.android.synthetic.main.maintance_layout.*
-import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_tip.*
 

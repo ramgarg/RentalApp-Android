@@ -19,6 +19,7 @@ import com.eazyrento.customer.utils.Common
 import com.eazyrento.supporting.convertToDisplayDate
 import com.eazyrento.supporting.splitDateServerFormat
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.booking_dashboard_adapter_view.*
 import kotlinx.android.synthetic.main.fragment_customer_bookings.*
 
 abstract class MyBookingBaseFragment: BaseFragment(), BookingDataHolderBinder {
@@ -49,6 +50,7 @@ abstract class MyBookingBaseFragment: BaseFragment(), BookingDataHolderBinder {
 
         if (listCustomerBooking.size<=0)
         {
+            tv_no_bookings.visibility = View.VISIBLE
             Common.showToast(requireContext(),
                 R.string.NO_DATA_FOUND)
             return

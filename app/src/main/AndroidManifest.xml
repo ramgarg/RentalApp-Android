@@ -270,10 +270,17 @@
                 android:screenOrientation="unspecified"
                 />
 
+
         <activity
-                android:name="com.eazyrento.tracking.googlemap.NearByDriversMapActivity"
+                android:name=".customer.dashboard.view.activity.CustomerNearByDriversMapActivity"
                 android:screenOrientation="unspecified"
                 />
+
+        <activity
+                android:name=".agent.view.activity.AgentNearByDriversMapActivity"
+                android:screenOrientation="unspecified"
+                />
+
 
         <!--<activity
                 android:name="com.eazyrento.paymentgetway.PaymentCheckout"

@@ -22,7 +22,7 @@ class AgentShowAllBookingActivity:ShowAllBookingActivity() {
         val baseUserRoleDetail = order_listing_obj.customer_detail
 
         baseUserRoleDetail?.let {
-            it.userRole = Constant.CUSTOMER
+            it.userRole = resources.getString(R.string.customer)
             setBaseDataHolder(position,it,modelBooking,list)
         }
 

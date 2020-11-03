@@ -505,5 +505,16 @@
     <string name="current_location_on_map">الموقع الحالي</string>
     <string name="enable_GPS_permission">"يرجى تمكين GPS أو إذن الموقع "</string>
 
+    <string name="Address_Home">الصفحة الرئيسية</string>
+    <string name="Address_Work">عمل</string>
+    <string name="Address_Other">آخر</string>
+
+    <string name="agent_payment_message">شكرا! تم إرسال طلب الدفع الخاص بك.</string>
+    <string name="no_bookings">حاليا لا توجد حجوزات متاحة.</string>
+    <string name="wishlist_msg">تمت إضافة المنتج إلى قائمة الرغبات.</string>
+    <string name="wishlist_msg_unlike">تمت إزالة المنتج من قائمة الرغبات.</string>
+
+    <string name="starting_price">السعر المبدئي</string>
+
 
 </resources>

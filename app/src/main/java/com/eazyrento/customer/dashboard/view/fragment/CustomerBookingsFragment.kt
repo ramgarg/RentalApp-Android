@@ -34,7 +34,7 @@ class CustomerBookingsFragment: MyBookingBaseFragment() {
 
     ) {
         setBaseDataHolder(holder,position,listCustomerBooking[position].agent_detail.let {
-            it.userRole = Constant.AGENT
+            it.userRole = resources.getString(R.string.agent)
             it
         },modelBooking)
 //        setBaseDataHolder(holder,position,listCustomerBooking[position].agent_detail)
