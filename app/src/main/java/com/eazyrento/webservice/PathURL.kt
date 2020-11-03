@@ -119,5 +119,21 @@ class PathURL {
         const val PRIVACY_POLICY = "/privacy-policy/"
         const val ABOUT_US = "/web/static-content/about-us/"
 
+        // assign driver list......
+
+        //  show near by driver to agent
+        const val AGENT_SHOW_NEAR_BY_DRIVERS = "agent/show_nearbuy_drivers/{booking_id}"
+
+        //  show near by driver to Customer
+        const val CUSTOMER_SHOW_NEAR_BY_DRIVERS = "customer/nearbuy_drivers?latitude={lati}& longitude={longi}"
+
+        //  show Drivers to merchants
+        const val MERCHANTS_DRIVER = "merchant/drivers?latitude={lati}& longitude={longi}"
+
+
+
+
+
+
     }
 }
