@@ -9,7 +9,7 @@ abstract class BaseMakePaymentModel {
 data class CustomerMakePaymentReqModel(
     override var order_id: String,
     var amount_paid: Double,
-    var is_tip: Boolean,
+    var is_tip: Int,
     var mode_of_payment: String,
 
     var status: String?,

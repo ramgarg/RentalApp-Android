@@ -58,7 +58,7 @@ open abstract class PaymentBaseActivity : BaseActivity() {
             it.observeApiResult(
                 it.callAPIActivity<MakePaymentViewModel>(this)
                     .paymentGetwayCheckOutID(intent.getIntExtra(Constant.KEY_ORDER_DETAILS_ID,-1),
-                        PaymentGetwayCheckoutIDReqModel(1.0)
+                        PaymentGetwayCheckoutIDReqModel(amountPaid)
                     )
                 , this, this
             )

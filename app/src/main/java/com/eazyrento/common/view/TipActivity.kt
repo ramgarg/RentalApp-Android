@@ -23,7 +23,7 @@ class TipActivity : PaymentBaseActivity(){
         return customerMakePaymentReqModel
     }
 
-    private val customerMakePaymentReqModel = CustomerMakePaymentReqModel("",0.0,true,modeOfPayment,"","")
+    private val customerMakePaymentReqModel = CustomerMakePaymentReqModel("",0.0,1,modeOfPayment,"","")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +63,7 @@ class TipActivity : PaymentBaseActivity(){
     override fun requestPaymentObjectBuilder(): BaseMakePaymentModel {
         customerMakePaymentReqModel.amount_paid = convertAmountIntoDoubleFromEditText()
         customerMakePaymentReqModel.mode_of_payment = modeOfPayment
-        customerMakePaymentReqModel.is_tip =true
+        customerMakePaymentReqModel.is_tip =1
         customerMakePaymentReqModel.transaction_id=""
 
         return customerMakePaymentReqModel

@@ -472,7 +472,7 @@
     <string name="SELECT_STATUS">Order status</string>
     <string name="SELECT_ORDER_ID">Select order ID</string>
     <string name="SELECT_PRODUCT_NAME">Select product name</string>
-    <string name="SAME_DATE_TIME_VALIDATION">The time gap between start time and end time should be more then 1 hour for same date</string>
+    <string name="SAME_DATE_TIME_VALIDATION">The time gap between start time and end time should be more than 1 hour for same date</string>
     <string name="register_">Register</string>
     <string name="login_">Login</string>
     <string name="about_us">About Us</string>

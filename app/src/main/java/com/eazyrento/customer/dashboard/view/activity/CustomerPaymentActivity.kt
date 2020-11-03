@@ -27,7 +27,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
         return customerMakePaymentReqModel
     }
 
-    private val customerMakePaymentReqModel = CustomerMakePaymentReqModel("",0.0,false,modeOfPayment,"","")
+    private val customerMakePaymentReqModel = CustomerMakePaymentReqModel("",0.0,0,modeOfPayment,"","")
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -69,7 +69,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
 
         customerMakePaymentReqModel.amount_paid = convertAmountIntoDoubleFromEditText()
         customerMakePaymentReqModel.mode_of_payment = modeOfPayment
-        customerMakePaymentReqModel.is_tip =false
+        customerMakePaymentReqModel.is_tip =0
         customerMakePaymentReqModel.transaction_id=""
 
         return customerMakePaymentReqModel
