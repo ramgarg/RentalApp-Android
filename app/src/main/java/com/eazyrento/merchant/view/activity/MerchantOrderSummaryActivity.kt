@@ -6,6 +6,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
@@ -21,10 +22,17 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         // order details
         setDataAndCallOrderDetailsAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
+
         customer_payment_button.visibility=View.INVISIBLE
         tv_assign_to_driver.visibility=View.VISIBLE
+
         tv_assign_to_driver.setOnClickListener {
-            MoveToAnotherComponent.moveToActivityNormal<DriverAvailabilityActivity>(this) }
+            // for testing
+            orderRes.status = ""
+
+            MoveToAnotherComponent.openActivityWithParcelableParam<DriverAvailabilityActivity, OrderDetailsResModel>(this,
+                Constant.DRIVER_ASSIGN_ORDER_KEY,orderRes)
+        }
 
         //clickListenerOnViews()
 
@@ -46,22 +54,6 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
             pending_amount.visibility=View.GONE
         }
-
-
-        /*setMaintaniceUserRoleVisiblity(maintanceLayoutInflater(R.layout.adapter_users_order_summary),orderRes.agent_detail.let {  it.userRole =Constant.AGENT
-        it
-        })
-
-        setMaintaniceUserRoleVisiblity(maintanceLayoutInflater(R.layout.adapter_users_order_summary_delete),orderRes.customer_detail.let {  it.userRole =Constant.CUSTOMER
-            it
-        })*/
-        //setMaintaniceUserRoleVisiblity(setUserRoleFlag(orderRes.customer_detail,Constant.CUSTOMER,customer_maintance_view))
-
-        /*setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.customer_detail.let { it.userRole =Constant.CUSTOMER
-            it})
-        setUserRoleDetailsForMaintance(MaintanceUserRoleView(img_user_pic,tv_user_name,tv_users_role,phone_view,user_rating),orderRes.agent_detail.let { it.userRole =Constant.AGENT
-            it})*/
-        //orderStatus(orderRes)
 
     }
 

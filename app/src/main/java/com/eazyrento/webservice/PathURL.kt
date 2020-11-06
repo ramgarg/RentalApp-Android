@@ -130,6 +130,9 @@ class PathURL {
         //  show Drivers to merchants
         const val MERCHANTS_DRIVER = "merchant/drivers"
 
+        //  show Drivers to merchants
+        const val MERCHANTS_ASSIGN_DRIVER = "merchant/assign_driver"
+
 
     }
 }

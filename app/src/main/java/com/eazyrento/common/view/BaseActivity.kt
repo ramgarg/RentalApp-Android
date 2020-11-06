@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.thank_you_pop.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
-open abstract class BaseActivity: AppCompatActivity(),
+ abstract class BaseActivity: AppCompatActivity(),
     ApiResult,
     ClickDailogListener {
 

@@ -1,17 +1,27 @@
 package com.eazyrento.merchant.view.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.DummeyJsonToObjectConvertor
 import com.eazyrento.appbiz.JsonDataResponse
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
+import com.eazyrento.common.model.modelclass.BookingListItem
 import com.eazyrento.common.model.modelclass.DriverList
+import com.eazyrento.common.model.modelclass.Drivers
+import com.eazyrento.common.model.modelclass.MerchantAssignDriver
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.view.LiveDataActivityClass
 import com.eazyrento.common.viewmodel.DriverListingViewModel
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
+import com.eazyrento.login.viewmodel.LoginUserViewModel
 import com.eazyrento.merchant.view.adapter.DriverAvailabilityAdapter
+import com.eazyrento.merchant.viewModel.MerchantAssignDriverViewModel
 import com.eazyrento.tracking.data.model.LatLong
 import com.eazyrento.tracking.googlemap.LocationActivity
 import kotlinx.android.synthetic.main.activity_driver_availability.*
@@ -19,6 +29,9 @@ import kotlinx.android.synthetic.main.activity_driver_availability.*
 class DriverAvailabilityActivity :LocationActivity() {
 
     private lateinit var driverList:DriverList
+    private  var selectedDrivers: Drivers? = null
+
+    private lateinit var orderDetailsResModel: OrderDetailsResModel
 
     override fun onCurrentLocation(currentLatLng: LatLong?) {
         currentLatLng?.run {
@@ -34,6 +47,8 @@ class DriverAvailabilityActivity :LocationActivity() {
     }
 
     override fun <T> moveOnSelecetedItem(type: T) {
+        selectedDrivers = type as Drivers
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +60,8 @@ class DriverAvailabilityActivity :LocationActivity() {
 
         requestForLocation()
 
+        orderDetailsResModel = intent.getParcelableExtra(Constant.DRIVER_ASSIGN_ORDER_KEY)
+
         //driverList = DummeyJsonToObjectConvertor.convertJsonToClass(JsonDataResponse.jsonDriverListData)
         //setDriverAvailabilityAdapter()
 
@@ -55,18 +72,51 @@ class DriverAvailabilityActivity :LocationActivity() {
 
         rec_driver_list.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.VERTICAL, false)
+
         val recycleAdapter = DriverAvailabilityAdapter(driverList.driversList, this)
+
         rec_driver_list.adapter = recycleAdapter
+
+        rec_driver_list.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
     }
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
-        driverList = data as DriverList
+        if (data is DriverList) {
+            driverList = data
 
-        driverList = DummeyJsonToObjectConvertor.convertJsonToClass(JsonDataResponse.jsonDriverListData)
+            driverList =
+                DummeyJsonToObjectConvertor.convertJsonToClass(JsonDataResponse.jsonDriverListData)
 
-        setDriverAvailabilityAdapter()
+            setDriverAvailabilityAdapter()
+        }else{
+            showToastString(resources.getString(R.string.REQUEST_SUCCESSED))
+        }
 
+    }
+
+    fun assignSelectedDriverByMerchant(view:View){
+
+        assginDriverApiCall()
+    }
+
+    private fun assginDriverApiCall() {
+
+        selectedDrivers?.run {
+            val merchantAssignDriver = MerchantAssignDriver(
+                orderDetailsResModel.order_id,
+                orderDetailsResModel.sub_orders?.get(0), details.driverId
+            )
+
+            callAPI()?.let {
+                it.observeApiResult(
+                    it.callAPIActivity<MerchantAssignDriverViewModel>(this@DriverAvailabilityActivity)
+                        .merchantAssignDrivers(merchantAssignDriver), this@DriverAvailabilityActivity, this@DriverAvailabilityActivity
+                )
+            }
+          return
+        }
+      showToast(R.string.select_driver)
     }
 }

@@ -10,7 +10,7 @@ open class OrderDetailsResModel(
     var id: Int,
     var order_id: String,
     var order_status: String?,
-    val status: String,
+    var status: String,
 
     var agent_detail: AgentDetail?,
     var customer_detail: CustomerDetailX?,

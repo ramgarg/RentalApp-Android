@@ -522,4 +522,6 @@
 
     <string name="starting_price">Starting Price</string>
 
+    <string name="select_driver">Please select a driver</string>
+
 </resources>

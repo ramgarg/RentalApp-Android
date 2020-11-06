@@ -515,6 +515,7 @@
     <string name="wishlist_msg_unlike">تمت إزالة المنتج من قائمة الرغبات.</string>
 
     <string name="starting_price">السعر المبدئي</string>
+    <string name="select_driver">الرجاء تحديد سائق</string>
 
 
 </resources>

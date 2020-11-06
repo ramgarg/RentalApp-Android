@@ -1,6 +1,5 @@
 package com.eazyrento.merchant.view.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.R
 import com.eazyrento.common.model.modelclass.Drivers
+import com.eazyrento.common.view.BaseActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_users_order_summary.view.*
 
-class DriverAvailabilityAdapter (private val mDriverListing:List<Drivers>,private val mContext: Context) : RecyclerView.Adapter<DriverAvailabilityAdapter.CardViewHolder>() {
+class DriverAvailabilityAdapter (private val mDriverListing:List<Drivers>,private val mBaseActivity: BaseActivity) : RecyclerView.Adapter<DriverAvailabilityAdapter.CardViewHolder>() {
 
     private var tvUnAssign:TextView?=null
 
@@ -30,7 +30,7 @@ class DriverAvailabilityAdapter (private val mDriverListing:List<Drivers>,privat
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val card_view =
             CardViewHolder(
-                LayoutInflater.from(mContext).inflate(
+                LayoutInflater.from(mBaseActivity).inflate(
                     R.layout.adapter_users_order_summary,
                     parent,
                     false
@@ -47,7 +47,7 @@ class DriverAvailabilityAdapter (private val mDriverListing:List<Drivers>,privat
 
         holder.tv_driver_status.text = driver.details.status
 
-        holder.tv_driver_assign.text = mContext.resources.getString(R.string.assign)
+        holder.tv_driver_assign.text = mBaseActivity.resources.getString(R.string.assign)
 
         holder.include_phone_view.visibility = View.GONE
 
@@ -59,9 +59,11 @@ class DriverAvailabilityAdapter (private val mDriverListing:List<Drivers>,privat
 
             tvUnAssign = holder.tv_driver_assign
 
+            mBaseActivity.moveOnSelecetedItem(driver)
+
         }
 
-        Picasso.with(mContext).load(driver.details.merchantDetails.profileImage).into(holder.img_user_pic)
+        Picasso.with(mBaseActivity).load(driver.details.merchantDetails.profileImage).into(holder.img_user_pic)
 
     }
 

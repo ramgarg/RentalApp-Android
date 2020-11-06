@@ -8,6 +8,7 @@ import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.common.model.modelclass.BookingDashboardResModel
 import com.eazyrento.common.model.modelclass.BookingListResModel
 import com.eazyrento.common.model.modelclass.DriverList
+import com.eazyrento.common.model.modelclass.MerchantAssignDriver
 import com.eazyrento.common.model.repositry.api.DriverApis
 import com.eazyrento.customer.dashboard.model.repositry.api.CustomerAPI
 import com.eazyrento.merchant.model.repository.api.MerchantAPI
@@ -50,3 +51,4 @@ class MerchantDriverListingRepo : GenericRequestHandler<DriverList>() {
 
     }
 }
+

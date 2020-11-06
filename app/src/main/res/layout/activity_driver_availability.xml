@@ -14,7 +14,9 @@
             android:id="@+id/rec_driver_list"
             android:layout_above="@id/btn_select_driver"
             android:padding="@dimen/_10sdp"
-            android:layout_below="@id/toolbar"/>
+            android:layout_below="@id/toolbar"
+
+            />
 
     <Button
             android:text="@string/done"
@@ -25,6 +27,7 @@
             android:paddingBottom="@dimen/_5sdp"
             android:background="@drawable/button_gradient_full_width"
             style="@style/FullWidthButtonStyle"
+            android:onClick="assignSelectedDriverByMerchant"
             />
 
 
