@@ -24,7 +24,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         setDataAndCallOrderDetailsAPI(intent.extras?.getInt(Constant.ORDER_SUMMERY_KEY)!!)
 
         customer_payment_button.visibility=View.INVISIBLE
-        tv_assign_to_driver.visibility=View.VISIBLE
+
 
         tv_assign_to_driver.setOnClickListener {
             // for testing
@@ -45,7 +45,15 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
+        if(orderRes.is_category_vehicle){
+            tv_assign_to_driver.visibility=View.VISIBLE
+        }else{
+            tv_assign_to_driver.visibility= View.GONE
+        }
+
         setMaintanceUserRoleAdapter(orderRes.customer_detail,orderRes.agent_detail,null)
+
+        //if()
 
         orderRes.merchant_order_detail?.let {
             tv_booking_price.text= Constant.DOLLAR.plus(it.booking_price)

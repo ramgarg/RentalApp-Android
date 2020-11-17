@@ -422,7 +422,10 @@
     <string name="SELECT_AT_LIST_ONE_DAYS">Please select at list one day.</string>
 
     <string name="FILL_QUANTITY">Assign quantity can\'t be zero.</string>
-    <string name="FILL_BOOKING_PRICE">Please enter booking price.</string>
+    <string name="FILL_BOOKING_PRICE">Please enter hourly booking price.</string>
+    <string name="FILL_DAILY_PRICE">Please enter daily booking price.</string>
+    <string name="FILL_MONTHLY_PRICE">Please enter monthly booking price.</string>
+    <string name="FILL_DRIVER_PRICE">Please enter driver price.</string>
     <string name="SELECT_FUEL_TYPE_SPINNER">Please select fuel type.</string>
     <string name="SELECT_DOCUMENT">Please select document type.</string>
     <string name="UPLOAD_DOCUMENT">Please upload document.</string>

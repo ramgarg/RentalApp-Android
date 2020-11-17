@@ -85,6 +85,8 @@ class AddProductDailogActivity:BaseActivity() {
         var day:Int
         findViewById<CheckBox>(R.id.chk_box_with_driver).setOnCheckedChangeListener { buttonView, isChecked ->
             merchantAddProductReqModel.with_driver =isChecked
+            ed_driver_price.visibility = View.VISIBLE
+            tv_per_day_static.visibility = View.VISIBLE
              }
         //days chk
         findViewById<CheckBox>(R.id.sun_chk).setOnCheckedChangeListener { buttonView, isChecked ->
@@ -162,6 +164,9 @@ class AddProductDailogActivity:BaseActivity() {
     }
    private fun submitCallAPI(){
         merchantAddProductReqModel.price = ed_price.text.toString().toDouble()
+       merchantAddProductReqModel.daily_price = ed_daily_price.text.toString().toDouble()
+       merchantAddProductReqModel.monthly_price = ed_monthly_price.text.toString().toDouble()
+
 
        var boolean_add:Boolean = false
        var id:Int = edit_product_ID
@@ -207,6 +212,22 @@ class AddProductDailogActivity:BaseActivity() {
         if (ed_price.text.isEmpty() || ed_price.text.toString().toDouble()==0.0){
             showToast(R.string.FILL_BOOKING_PRICE)
             return true
+        }
+        if (ed_daily_price.text.isEmpty() || ed_daily_price.text.toString().toDouble()==0.0){
+            showToast(R.string.FILL_DAILY_PRICE)
+            return true
+        }
+        if (ed_monthly_price.text.isEmpty() || ed_monthly_price.text.toString().toDouble()==0.0){
+            showToast(R.string.FILL_MONTHLY_PRICE)
+            return true
+        }
+        if(findViewById<CheckBox>(R.id.chk_box_with_driver).isChecked){
+        if (ed_driver_price.text.isEmpty() || ed_driver_price.text.toString().toDouble()==0.0){
+            showToast(R.string.FILL_DRIVER_PRICE)
+            return true
+        } else{
+            merchantAddProductReqModel.driver_cost_per_day = ed_driver_price.text.toString().toDouble()
+        }
         }
         if (obj.variant.equals("")){
             showToast(R.string.SELECT_FUEL_TYPE_SPINNER)
@@ -349,6 +370,10 @@ class AddProductDailogActivity:BaseActivity() {
         merchantAddProductReqModel.price =productDetails.product_info.price
         merchantAddProductReqModel.variant = productDetails.product_info.product_details.fuel_type
         merchantAddProductReqModel.with_driver =productDetails.product_info.with_driver
+        merchantAddProductReqModel.daily_price = productDetails.product_info.daily_price
+        merchantAddProductReqModel.monthly_price = productDetails.product_info.monthly_price
+        merchantAddProductReqModel.driver_cost_per_day = productDetails.product_info.driver_cost_per_day
+
 
         setAttachedDocOnImageView(productDetails.product_info.attached_document)
 
@@ -362,6 +387,9 @@ class AddProductDailogActivity:BaseActivity() {
         item_quantity.text = ""+merchantAddProductReqModel.quantity
 
         ed_price.setText(""+merchantAddProductReqModel.price)
+        ed_daily_price.setText(""+merchantAddProductReqModel.daily_price)
+        ed_monthly_price.setText(""+merchantAddProductReqModel.monthly_price)
+        ed_driver_price.setText(""+merchantAddProductReqModel.driver_cost_per_day)
 
         setSpinnerData(merchantAddProductReqModel)
 

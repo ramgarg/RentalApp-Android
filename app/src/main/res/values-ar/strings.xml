@@ -517,5 +517,9 @@
     <string name="starting_price">السعر المبدئي</string>
     <string name="select_driver">الرجاء تحديد سائق</string>
 
+    <string name="FILL_DAILY_PRICE">الرجاء إدخال سعر الحجز اليومي.</string>
+    <string name="FILL_MONTHLY_PRICE">الرجاء إدخال سعر الحجز الشهري.</string>
+    <string name="FILL_DRIVER_PRICE">الرجاء إدخال سعر السائق.</string>
+
 
 </resources>

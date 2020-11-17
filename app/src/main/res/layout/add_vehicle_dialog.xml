@@ -217,8 +217,8 @@
                         android:layout_gravity="center"
                         android:textAlignment="center"/>
                 <EditText
-                        android:id="@+id/ed_hourly_price"
-                        android:inputType="number"
+                        android:id="@+id/ed_price"
+                        android:inputType="numberDecimal"
                         android:layout_gravity="start"
                         android:drawableStart="@mipmap/dollar"
                         android:layout_marginTop="@dimen/_3sdp"
@@ -250,8 +250,8 @@
                         android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_gravity="center"/>
                 <EditText
-                        android:id="@+id/ed_price"
-                        android:inputType="number"
+                        android:id="@+id/ed_daily_price"
+                        android:inputType="numberDecimal"
                         android:layout_gravity="start"
                         android:paddingStart="@dimen/_2sdp"
                         android:paddingEnd="@dimen/_2sdp"
@@ -283,7 +283,7 @@
                         android:textAlignment="center"/>
                 <EditText
                         android:id="@+id/ed_monthly_price"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_gravity="start"
                         android:paddingStart="@dimen/_2sdp"
                         android:paddingEnd="@dimen/_2sdp"
@@ -347,8 +347,9 @@
                 android:layout_marginBottom="@dimen/_10sdp" />
             <EditText
                     android:id="@+id/ed_driver_price"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:layout_gravity="start"
+                    android:visibility="invisible"
                     android:drawableStart="@mipmap/dollar"
                     android:textAlignment="viewStart"
                     android:layout_toStartOf="@+id/tv_per_day_static"
@@ -362,6 +363,7 @@
                     style="@style/AgentSmallTextCard"
                     android:id="@+id/tv_per_day_static"
                     android:textColor="@color/dark_grey"
+                    android:visibility="invisible"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

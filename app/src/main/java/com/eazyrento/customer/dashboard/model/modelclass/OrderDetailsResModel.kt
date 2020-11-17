@@ -30,7 +30,8 @@ open class OrderDetailsResModel(
 
     var tip_amount: Double,
     var total_order_amount: Double,
-    var order_amount_paid: Double
+    var order_amount_paid: Double,
+    var is_category_vehicle: Boolean
 
 ) : Parcelable
 

@@ -9,7 +9,11 @@ data class MerchantAddProductReqModel(
     var with_driver: Boolean,
     var variant:String,
     var availability_days: AvailabilityDays,
-    var attach_document: String
+    var attach_document: String,
+    var monthly_price: Double,
+    var daily_price: Double,
+    var driver_cost_per_day: Double
+
 ){
-    constructor():this("", 0.0,-1,0,false,"",AvailabilityDays(),"")
+    constructor():this("", 0.0,-1,0,false,"",AvailabilityDays(),"",0.0,0.0,0.0)
 }
