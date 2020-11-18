@@ -31,7 +31,8 @@ open class OrderDetailsResModel(
     var tip_amount: Double,
     var total_order_amount: Double,
     var order_amount_paid: Double,
-    var is_category_vehicle: Boolean
+    var is_category_vehicle: Boolean,
+    var is_driver_assigned: Boolean
 
 ) : Parcelable
 
@@ -45,7 +46,8 @@ data class SubOrderReqResModel(
     var amount: Double,
     var quantity: Int,
     var price: Double,
-    var order_status: String
+    var order_status: String,
+    var is_driver_assigned: Boolean
 ) : Parcelable
 
 data class SubOrderUpdateReqModel(
