@@ -56,4 +56,8 @@ interface CustomerAPI {
 
     @POST(PathURL.CustomerProductUnavailable)
     fun notifyAdminProdUnavail(@Body notifyAdminProductUnavailble: NotifyAdminProductUnavailble): Call<JsonElement>
+
+    // Customer order traking
+    @GET(PathURL.CUSTOMER_ORDERS_TRACKING)
+    fun getCustomerOrderTracking(@Path ("order_id") order_id:String): Call<OrderTrackingList>
 }

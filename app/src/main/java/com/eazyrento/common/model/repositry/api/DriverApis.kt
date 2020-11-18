@@ -19,7 +19,7 @@ interface DriverApis {
     fun getNearByDriversToAgent(@Path ("booking_id") bookingID:Int): Call<DriverList>
 
 
-    // Customer near by drivers
+    // MERCHANT near by drivers
     @GET(PathURL.MERCHANTS_DRIVER)
     fun getMerchantDrivers(@Query ("latitude") lati:Double, @Query ("longitude") longi:Double): Call<DriverList>
 

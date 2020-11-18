@@ -19,5 +19,8 @@ data class Details(
     @SerializedName("full_name")
     val fullName: String,
     @SerializedName("mobile_number")
-    val mobileNumber: String
+    val mobileNumber: String,
+    @SerializedName("profile_image")
+    val profileImage: String
+
 )

@@ -7,7 +7,7 @@ data class MerchantAssignDriver(
     @SerializedName("order_id")
     val orderId: String,
     @SerializedName("sub_order_id")
-    val subOrderId: Int?,
+    val subOrderId: Int,
     @SerializedName("driver_id")
     val driverId: Int
 )

@@ -86,12 +86,13 @@ class DriverAvailabilityActivity :LocationActivity() {
         if (data is DriverList) {
             driverList = data
 
-            driverList =
-                DummeyJsonToObjectConvertor.convertJsonToClass(JsonDataResponse.jsonDriverListData)
+            /*driverList =
+                DummeyJsonToObjectConvertor.convertJsonToClass(JsonDataResponse.jsonDriverListData)*/
 
             setDriverAvailabilityAdapter()
         }else{
             showToastString(resources.getString(R.string.REQUEST_SUCCESSED))
+            finish()
         }
 
     }
@@ -106,7 +107,7 @@ class DriverAvailabilityActivity :LocationActivity() {
         selectedDrivers?.run {
             val merchantAssignDriver = MerchantAssignDriver(
                 orderDetailsResModel.order_id,
-                orderDetailsResModel.sub_orders?.get(0), details.driverId
+                orderDetailsResModel.id, details.driverId
             )
 
             callAPI()?.let {

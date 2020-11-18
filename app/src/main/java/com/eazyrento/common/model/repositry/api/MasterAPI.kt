@@ -1,7 +1,7 @@
 package com.eazyrento.common.model.repositry.api
 
 import com.eazyrento.common.model.modelclass.*
-import com.eazyrento.login.model.modelclass.LoginRequest
+import com.eazyrento.customer.dashboard.model.modelclass.OrderTrackingList
 import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement
 import retrofit2.Call
@@ -42,6 +42,9 @@ interface MasterAPI{
     fun langaugeChange(@Body langaugeChangeReqModel: LangaugeChangeReqModel): Call<JsonElement>
 
 
+    // Customer order traking
+    @GET(PathURL.ORDERS_TRACKING)
+    fun getOrderTracking(@Path ("order_id") order_id:String , @Path ("sub_order_id") sub_order_id:String): Call<OrderTrackingList>
 
 
 }

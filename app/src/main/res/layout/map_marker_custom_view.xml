@@ -21,7 +21,7 @@
                 android:id="@+id/marker_map"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:src="@mipmap/location"
+                android:src="@mipmap/driver_truck"
 
                 android:layout_gravity="center|bottom"
                 />

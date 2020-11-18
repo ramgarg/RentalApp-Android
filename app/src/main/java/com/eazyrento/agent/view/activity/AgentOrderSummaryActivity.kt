@@ -144,7 +144,9 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         }
 
     fun trackingClickListener(view: View){
-        MoveToAnotherComponent.moveToActivityNormal<TrackingMapActivity>(this)
+        //MoveToAnotherComponent.moveToActivityNormal<TrackingMapActivity>(this)
+
+        MoveToAnotherComponent.moveToActivityWithIntentValue<TrackingMapActivity>(this,Constant.KEY_ORDER_ORDER_ID,orderRes.order_id)
     }
 }
 

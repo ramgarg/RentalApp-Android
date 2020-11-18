@@ -204,6 +204,7 @@ class Common {
             val addressInfo = AddressInfo("","","","","",
                 -1,false,0.0,0.0,"")
 
+            // custom Address filter made by appbiz
             val addressFilter = AddressFilter(context,addressInfo)
             addressFilter.getAddressByLocation(lat,lang,1)
 

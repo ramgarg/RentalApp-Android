@@ -8,6 +8,9 @@ interface Constant{
         const val PLATFORM = "android"
         const val INTENT_PAYMENT_SUCSESS = "payment_sucess"
         const val KEY_ORDER_DETAILS_ID ="order_details_key"
+
+        const val KEY_ORDER_ORDER_ID ="order_id"
+
         const val REQUEST_CODE_FINISH_ORDER_DETAILS_ON_BACK = 7001
         const val INTENT_UPDATE_ORDER_AGENT ="agent_update_order"
 

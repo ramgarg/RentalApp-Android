@@ -127,6 +127,11 @@ class PathURL {
         //  show near by driver to Customer
         const val CUSTOMER_SHOW_NEAR_BY_DRIVERS = "customer/nearbuy_drivers"
 
+        //  Customer order tracking
+        const val CUSTOMER_ORDERS_TRACKING = "customer/track_order_drivers/{order_id}"
+
+        //  merchant and agent Order tracking
+        const val ORDERS_TRACKING = "order/tracking/{order_id}/{sub_order_id}"
         //  show Drivers to merchants
         const val MERCHANTS_DRIVER = "merchant/drivers"
 

@@ -33,16 +33,16 @@ class MapSetup(private val mContext: Context,private val mMap:GoogleMap) {
         }
     }
 
-     fun newMarker() {
+     fun newMarker(lat:Double , lang:Double) {
         // Add a marker in Home and move the camera
-        val sydney = LatLng(22.1, 77.4)
+        val latlang = LatLng(lat, lang)
 
         mMap.run {
 
             // addMarker(MarkerOptions().position(sydney).title())
-            addMarker(createNewMarker("Marker in Home",sydney, R.mipmap.ic_car))
+            addMarker(createNewMarker("Marker in Home",latlang, R.mipmap.ic_car))
 
-            moveCamera(CameraUpdateFactory.newLatLng(sydney))
+            moveCamera(CameraUpdateFactory.newLatLng(latlang))
             moveCamera(
                 CameraUpdateFactory.newCameraPosition(
                     cameraSetting().build()

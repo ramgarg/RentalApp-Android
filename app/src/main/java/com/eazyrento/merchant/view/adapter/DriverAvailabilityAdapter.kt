@@ -43,9 +43,11 @@ class DriverAvailabilityAdapter (private val mDriverListing:List<Drivers>,privat
 
         val driver = mDriverListing[position]
 
-        holder.tv_user_name.text = driver.details.fullName
+        driver.details.run {
 
-        holder.tv_driver_status.text = driver.details.status
+        holder.tv_user_name.text = fullName
+
+        holder.tv_driver_status.text = status
 
         holder.tv_driver_assign.text = mBaseActivity.resources.getString(R.string.assign)
 
@@ -63,8 +65,9 @@ class DriverAvailabilityAdapter (private val mDriverListing:List<Drivers>,privat
 
         }
 
-        Picasso.with(mBaseActivity).load(driver.details.merchantDetails.profileImage).into(holder.img_user_pic)
+        Picasso.with(mBaseActivity).load(profileImage).into(holder.img_user_pic)
 
+        }
     }
 
     override fun getItemCount(): Int {

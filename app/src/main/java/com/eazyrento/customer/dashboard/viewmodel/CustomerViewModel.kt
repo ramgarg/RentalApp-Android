@@ -7,8 +7,6 @@ import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.customer.dashboard.model.modelclass.*
 import com.eazyrento.customer.dashboard.model.repositry.*
-import com.eazyrento.merchant.model.modelclass.MerchantNotifyAdminReqModelItem
-import com.eazyrento.merchant.model.repository.MerchantNotifyAdminRepo
 
 class CustomerCreateBookingViewModel : ViewModel() {
 
@@ -41,6 +39,16 @@ class CustomerWishListViewModel : ViewModel() {
             .getCustomerWishList()
     }
 }
+
+class CustomerOrderTrackingViewModel : ViewModel() {
+
+    fun getCustomerOrderTrackingRepo(orderID:String): LiveData<DataWrapper<OrderTrackingList>> {
+        return CustomerOrderTrackingRepo()
+            .getCustomerOrderTracking(orderID)
+    }
+}
+
+
 
 class CustomerWishAddViewModel : ViewModel() {
 

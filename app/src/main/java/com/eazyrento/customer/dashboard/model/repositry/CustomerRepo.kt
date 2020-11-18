@@ -92,6 +92,22 @@ class CustomerOrderDetailsRepo :
 
 }
 
+//getCustomerOrderTracking
+
+class CustomerOrderTrackingRepo :
+    GenericRequestHandler<OrderTrackingList>() {
+
+    fun getCustomerOrderTracking(orderID: String): LiveData<DataWrapper<OrderTrackingList>> {
+
+        return doRequest(
+            ServiceGenrator.client.create(
+                CustomerAPI::class.java
+            ).getCustomerOrderTracking(orderID)
+        )
+
+    }
+}
+
 class CustomerWishListRepo :
     GenericRequestHandler<CustomerWishListResModel>(){
 

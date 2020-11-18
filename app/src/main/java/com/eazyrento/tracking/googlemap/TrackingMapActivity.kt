@@ -1,32 +1,46 @@
 package com.eazyrento.tracking.googlemap
 
 
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
 import androidx.lifecycle.observe
-import com.eazyrento.AddressFilter
+import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.appbiz.AppBizCustomBitmapDes
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.dashboard.model.modelclass.OrderTrackingList
+import com.eazyrento.customer.dashboard.model.modelclass.OrderTrackingListItem
+import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderTrackingViewModel
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.Common.Companion.setCurrentAddressOnTopInMap
-import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.tracking.data.model.Route
 import com.eazyrento.tracking.googlemap.viewmodel.TrackingMapViewModel
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.*
+import kotlinx.android.synthetic.main.map_marker_custom_view.view.*
 import kotlinx.android.synthetic.main.template_cancle_call_map.*
 import kotlinx.android.synthetic.main.view_map_top_location_card.*
 
 
 class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
+    private val mHasMapMarker = HashMap<Int, Marker>()
+
     private lateinit var mMapSetup: MapSetup
 
+    // private  lateinit var orderID:String
 
-    private lateinit var mMap: GoogleMap
+    private  var mMap: GoogleMap?=null
 
     private lateinit var trackingMapViewModel: TrackingMapViewModel
+
+    private lateinit var mCustomerOrderTrackingList:OrderTrackingList
 
     private val mTAG = "TrackingMapActivity:-"
 
@@ -53,9 +67,9 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
         mapInit()
 
-        tv_address_line_map.setCurrentAddressOnTopInMap(this,22.4,77.4)
+        val orderID = intent.getStringExtra(Constant.KEY_ORDER_ORDER_ID)!!
 
-        setDriverContactData()
+        callOrderTrackingApi(orderID)
 
     }
 
@@ -70,10 +84,18 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        mMapSetup = MapSetup(this, mMap)
+        setMarkerClickLisetener()
+
+        mMapSetup = MapSetup(this, mMap!!)
 
         mMapSetup.mapSetting()
 
+        // draw polyline and car animation
+        //drawPolyline()
+    }
+
+    // draw polyline and car animation
+    private fun drawPolyline(){
         val liveData = trackingMapViewModel.getDirectionApiResponse(
             MODE,
             ROUTING_PREFERENCE,
@@ -95,28 +117,142 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
-   /* private fun setCurrentAddressOnTopInMap(){
-        val addressInfo = AddressInfo("","","","","",
-            -1,false,0.0,0.0,"")
+    private fun callOrderTrackingApi(orderID: String) {
 
-        val addressFilter = AddressFilter(this,addressInfo)
-        addressFilter.getAddressByLocation(22.4,77.4,1)
-
-        tv_address_line_map.text = addressInfo.address_line
-    }*/
-
-    private fun setDriverContactData(){
-
-        tv_name_map.text = "Driver name"
-        tv_user_type.text = "Driver"
-
-        btn_call_map.setOnClickListener {
-            Common.phoneCallWithNumber("mobile_number", this)
-
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<CustomerOrderTrackingViewModel>(this)
+                    .getCustomerOrderTrackingRepo(orderID), this, this
+            )
         }
-        cancle_trip_map.setOnClickListener{
-            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,mTAG.plus("cancle button clicked"))
+    }
+
+    override fun <T> onSuccessApiResult(data: T) {
+        super.onSuccessApiResult(data)
+        if (data is OrderTrackingList) {
+            mCustomerOrderTrackingList = data
+            setDriverContactData(data[0])
+            setBitMapOnMarker(data)
         }
+    }
+
+    private fun setMarkerClickLisetener() {
+
+
+        mMap?.setOnMarkerClickListener {
+
+//            val driver = mHasMapMarker[it.tag]
+
+            mCustomerOrderTrackingList.run {
+
+                val index = it.tag as Int
+                val driver = mCustomerOrderTrackingList[index]
+                setDriverContactData(driver)
+
+                //assign_diver_from_map.visibility = View.VISIBLE
+                //driverPopUp(driver)
+
+                true
+            }
+            false
+        }
+    }
+
+
+    private fun setDriverContactData(customerOrderTrackingListItem: OrderTrackingListItem) {
+        customerOrderTrackingListItem.driverInfo.run {
+
+            tv_name_map.text = fullName
+            tv_user_type.text = resources.getString(R.string.driver)
+
+            cancle_trip_map.visibility = View.GONE
+
+            tv_address_line_map.setCurrentAddressOnTopInMap(this@TrackingMapActivity, latitude, longitude)
+
+            btn_call_map.setOnClickListener {
+                Common.phoneCallWithNumber(mobileNumber, this@TrackingMapActivity)
+
+            }
+            cancle_trip_map.setOnClickListener {
+                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, mTAG.plus("cancle button clicked"))
+            }
+        }
+    }
+
+    // custom driver markers
+
+    private fun setBitMapOnMarker(orderTrakingList: OrderTrackingList) {
+
+
+            var index = 0
+            while( index < orderTrakingList.size) {
+                val driver = orderTrakingList[index].driverInfo
+                val marker = setMarker(driver.latitude,driver.longitude)!!
+                marker.tag = index
+                mHasMapMarker[orderTrakingList[index].id] = marker
+                customMarkerDrivers(marker)
+                index++
+            }
+
+            val builder = LatLngBounds.builder()
+            for (value in mHasMapMarker.values) {
+                builder.include(value.position)
+            }
+
+
+            val cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 0)
+
+            mMap?.moveCamera(cu)
 
     }
+
+    private fun setMarker(lati:Double , longi:Double): Marker? {
+
+        return mMap?.run {
+
+            val markerLocationUpdate = this.addMarker(
+                createNewMarker(
+                    resources.getString(R.string.select_location),
+                    LatLng(lati, longi)
+                )
+            )
+
+            markerLocationUpdate
+        }
+    }
+
+    private fun createNewMarker(title: String, location: LatLng): MarkerOptions {
+
+        return MarkerOptions().apply {
+            position(location)
+
+        }
+    }
+
+    private fun customMarkerDrivers(marker: Marker,distance:Double=0.0){
+        val view = layoutInflater.inflate(R.layout.map_marker_custom_view, null)
+
+        // marker update title
+        //val disInDouble = updateDistanceOnMarker(marker)
+
+        view.km_map.visibility = View.GONE
+
+       // view.km_map.text = " ".plus((distance * 10.0).roundToInt() / 10.0).plus("km")
+
+        val w = resources.getDimension(R.dimen._60sdp).toInt()
+        val h = resources.getDimension(R.dimen._60sdp).toInt()
+
+        val bitmap = AppBizCustomBitmapDes.loadBitmapFromView(view, w, h)
+
+        Handler().postDelayed({
+
+            marker.setIcon(getBitmapDescriptorFactoryFromBitmap(bitmap!!))
+
+        }, 500)
+    }
+
+    fun getBitmapDescriptorFactoryFromBitmap(bitmap: Bitmap): BitmapDescriptor? {
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
 }
