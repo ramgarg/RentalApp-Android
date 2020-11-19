@@ -28,7 +28,8 @@ data class BookingListItem(
     val end_time: String,
     val start_date: String,
     val start_time: String,
-    val with_driver: Boolean
+    val with_driver: Boolean,
+    val is_category_vehicle:Boolean
 
 ) : Parcelable,BaseBooking()
 

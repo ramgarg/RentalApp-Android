@@ -50,7 +50,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
-        if(orderRes.is_category_vehicle){
+        if(orderRes.is_category_vehicle && orderRes.is_driver_assigned.not()){
             tv_assign_to_driver.visibility=View.VISIBLE
         }else{
             tv_assign_to_driver.visibility= View.GONE
@@ -59,12 +59,10 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         try {
             val status=orderRes.order_status
 
-            if (status!=Constant.COMPLETED) {
+            if (!status.equals(Constant.COMPLETED) && orderRes.is_driver_assigned ) {
                 // tracking
                 tv_track.visibility = View.VISIBLE
                 // assign driver if the order quantitiy is one
-
-
             }
         }catch (e:Exception){
 

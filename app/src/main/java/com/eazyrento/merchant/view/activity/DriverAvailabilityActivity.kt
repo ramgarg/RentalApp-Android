@@ -2,6 +2,7 @@ package com.eazyrento.merchant.view.activity
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -86,6 +87,11 @@ class DriverAvailabilityActivity :LocationActivity() {
         if (data is DriverList) {
             driverList = data
 
+            if (driverList.driversList.isEmpty()){
+                showToast(R.string.no_result_found)
+                finish()
+                return
+            }
             /*driverList =
                 DummeyJsonToObjectConvertor.convertJsonToClass(JsonDataResponse.jsonDriverListData)*/
 

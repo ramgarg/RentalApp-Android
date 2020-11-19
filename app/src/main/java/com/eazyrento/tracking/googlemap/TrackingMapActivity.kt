@@ -12,6 +12,7 @@ import com.eazyrento.R
 import com.eazyrento.Session
 import com.eazyrento.appbiz.AppBizCustomBitmapDes
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.common.viewmodel.OrderTrackingViewModel
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import kotlinx.android.synthetic.main.activity_agent_add_note.*
 import kotlinx.android.synthetic.main.map_marker_custom_view.view.*
 import kotlinx.android.synthetic.main.template_cancle_call_map.*
 import kotlinx.android.synthetic.main.view_map_top_location_card.*
@@ -155,7 +157,7 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
         if (data is OrderTrackingList) {
             mCustomerOrderTrackingList = data
 
-            setDriverContactData(mOrderTrackingListItem!!)
+            setDriverContactData(data[0])
             setBitMapOnMarker(data)
 
         }else if (data is OrderTrackingListItem){
@@ -164,7 +166,18 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
             setDriverContactData(data)
             setSingleBitMapMarker(data)
         }
+    }
 
+    override fun <T> statusCodeOfApi(data: T) {
+        super.statusCodeOfApi(data)
+
+        val data  = data as DataWrapper<T>
+
+        // not found
+        if (data.statusCode ==404 ) {
+            showToast(R.string.NO_DATA_FOUND)
+            finish()
+        }
 
     }
 

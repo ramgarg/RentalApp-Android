@@ -31,7 +31,7 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
 
         agent_asign_merchant_and_request_payment.setOnClickListener {
 
-            if (bookingITem.product_detail.quantity==1){
+            if (bookingITem.product_detail.quantity==1 && orderRes.is_category_vehicle){
                 MoveToAnotherComponent.
                 openActivityWithParcelableParam<AgentNearByDriversMapActivity,BookingListItem>(this,
                     Constant.BOOKING_SUMMERY_KEY,bookingITem)

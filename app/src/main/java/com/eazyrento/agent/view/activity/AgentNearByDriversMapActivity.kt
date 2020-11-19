@@ -24,6 +24,7 @@ import com.google.android.gms.maps.GoogleMap
 
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.Marker
+import com.google.gson.JsonElement
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_nearby_drivers_maps.*
 import kotlinx.android.synthetic.main.dialog_assign_user_marker.*
@@ -143,6 +144,12 @@ class AgentNearByDriversMapActivity : BaseNearByDriversMapActivity(), OnMapReady
         }
     }
 
-
+    override fun <T> onSuccessApiResult(data: T) {
+        super.onSuccessApiResult(data)
+        if (data is JsonElement){
+            showToast(R.string.submit_request)
+            finish()
+        }
+    }
 
 }

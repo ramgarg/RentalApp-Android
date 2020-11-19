@@ -75,6 +75,10 @@ abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
         listOrderItems = data as CustomerOrderListResModel
+
+        if (listOrderItems.isEmpty()){
+            Common.showToast(requireActivity(),R.string.no_result_found)
+        }
         filterListItems = listOrderItems.toMutableList()
 
         setAdapter(filterListItems)

@@ -264,17 +264,17 @@ abstract class BaseNearByDriversMapActivity : LocationActivity(), OnMapReadyCall
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
-        //driverList = DummeyJsonToObjectConvertor.convertJsonToClass(JsonDataResponse.jsonDriverListData)
 
-        driverList = data as DriverList
-        if (driverList!!.driversList.isEmpty())
-        {
+        //driverList = DummeyJsonToObjectConvertor.convertJsonToClass(JsonDataResponse.jsonDriverListData)
+        if (data is DriverList){
+            driverList = data
+        if (driverList!!.driversList.isEmpty()) {
             showToast(R.string.no_result_found)
             finish()
             return
         }
         setBitMapOnMarker()
-
     }
+  }
 
 }
