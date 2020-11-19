@@ -7,10 +7,15 @@ import android.os.Handler
 import android.view.View
 import androidx.lifecycle.observe
 import com.eazyrento.Constant
+import com.eazyrento.EazyRantoApplication
 import com.eazyrento.R
+import com.eazyrento.Session
 import com.eazyrento.appbiz.AppBizCustomBitmapDes
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.common.view.UserInfoAPP
+import com.eazyrento.common.viewmodel.OrderTrackingViewModel
+import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.model.modelclass.OrderTrackingList
 import com.eazyrento.customer.dashboard.model.modelclass.OrderTrackingListItem
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderTrackingViewModel
@@ -40,7 +45,11 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
     private lateinit var trackingMapViewModel: TrackingMapViewModel
 
-    private lateinit var mCustomerOrderTrackingList:OrderTrackingList
+    private  var mCustomerOrderTrackingList:OrderTrackingList? = null
+
+    private  var mOrderTrackingListItem:OrderTrackingListItem? = null
+
+
 
     private val mTAG = "TrackingMapActivity:-"
 
@@ -67,9 +76,11 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
         mapInit()
 
-        val orderID = intent.getStringExtra(Constant.KEY_ORDER_ORDER_ID)!!
+     //   val orderID = intent.getStringExtra(Constant.KEY_ORDER_ORDER_ID)!!
 
-        callOrderTrackingApi(orderID)
+       val orderResponse  =  intent.getParcelableExtra<OrderDetailsResModel>(Constant.DRIVER_ASSIGN_ORDER_KEY)
+
+        callOrderTrackingApi(orderResponse)
 
     }
 
@@ -117,13 +128,25 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun callOrderTrackingApi(orderID: String) {
-
+    private fun callOrderTrackingApi(orderResponse: OrderDetailsResModel?) {
+        if (Session.getInstance(EazyRantoApplication.context)?.getUserRole().equals(UserInfoAPP.CUSTOMER)){
+        orderResponse?.run {
         callAPI()?.let {
             it.observeApiResult(
-                it.callAPIActivity<CustomerOrderTrackingViewModel>(this)
-                    .getCustomerOrderTrackingRepo(orderID), this, this
+                it.callAPIActivity<CustomerOrderTrackingViewModel>(this@TrackingMapActivity)
+                    .getCustomerOrderTrackingRepo(order_id,id), this@TrackingMapActivity, this@TrackingMapActivity
             )
+        }
+        }
+    }else{
+            orderResponse?.run {
+                callAPI()?.let {
+                    it.observeApiResult(
+                        it.callAPIActivity<OrderTrackingViewModel>(this@TrackingMapActivity)
+                            .getOrderTrackingRepo(order_id,id), this@TrackingMapActivity, this@TrackingMapActivity
+                    )
+                }
+            }
         }
     }
 
@@ -131,9 +154,18 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
         super.onSuccessApiResult(data)
         if (data is OrderTrackingList) {
             mCustomerOrderTrackingList = data
-            setDriverContactData(data[0])
+
+            setDriverContactData(mOrderTrackingListItem!!)
             setBitMapOnMarker(data)
+
+        }else if (data is OrderTrackingListItem){
+            mOrderTrackingListItem = data
+
+            setDriverContactData(data)
+            setSingleBitMapMarker(data)
         }
+
+
     }
 
     private fun setMarkerClickLisetener() {
@@ -143,10 +175,10 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
 //            val driver = mHasMapMarker[it.tag]
 
-            mCustomerOrderTrackingList.run {
+            mCustomerOrderTrackingList?.run {
 
                 val index = it.tag as Int
-                val driver = mCustomerOrderTrackingList[index]
+                val driver = mCustomerOrderTrackingList!![index]
                 setDriverContactData(driver)
 
                 //assign_diver_from_map.visibility = View.VISIBLE
@@ -179,6 +211,26 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
+    private fun setSingleBitMapMarker(data: OrderTrackingListItem) {
+        data.run {
+
+            val driver = driverInfo
+            val marker = setMarker(driver.latitude,driver.longitude)!!
+
+            mHasMapMarker[id] = marker
+            customMarkerDrivers(marker)
+
+        val builder = LatLngBounds.builder()
+        for (value in mHasMapMarker.values) {
+            builder.include(value.position)
+        }
+
+
+        val cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 0)
+
+        mMap?.moveCamera(cu)
+    }
+    }
     // custom driver markers
 
     private fun setBitMapOnMarker(orderTrakingList: OrderTrackingList) {

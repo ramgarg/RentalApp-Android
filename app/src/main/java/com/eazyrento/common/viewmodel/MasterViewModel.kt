@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.model.modelclass.*
 import com.eazyrento.common.model.repositry.*
+import com.eazyrento.customer.dashboard.model.modelclass.OrderTrackingList
+import com.eazyrento.customer.dashboard.model.modelclass.OrderTrackingListItem
+import com.eazyrento.customer.dashboard.model.repositry.CustomerOrderTrackingRepo
 import com.google.gson.JsonElement
 
 class MasterDataViewModel : ViewModel() {
@@ -62,6 +65,14 @@ class LanguageChangeViewModel : ViewModel() {
 
     fun setLanguage(langaugeChangeReqModel: LangaugeChangeReqModel): LiveData<DataWrapper<JsonElement>> {
         return LanguagChangeRepo().setLanguage(langaugeChangeReqModel)
+    }
+}
+
+class OrderTrackingViewModel : ViewModel() {
+
+    fun getOrderTrackingRepo(orderID: String, suborder_id: Int): LiveData<DataWrapper<OrderTrackingListItem>> {
+        return OrderTrackingRepo()
+            .getOrderTracking(orderID,suborder_id)
     }
 }
 

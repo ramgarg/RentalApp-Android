@@ -18,9 +18,11 @@ import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
+import com.eazyrento.merchant.view.activity.DriverAvailabilityActivity
 import com.eazyrento.merchant.view.activity.MerchantOrderSummaryActivity
 import com.eazyrento.merchant.view.activity.RateAndReviewActivity
 import com.eazyrento.supporting.*
+import com.eazyrento.tracking.googlemap.TrackingMapActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.adapter_users_order_summary.view.*
@@ -226,6 +228,22 @@ import kotlinx.android.synthetic.main.template_work_info.*
             feedbackReqModel
         )
     }
+
+     protected fun sendParcelableOrderResponse(){
+         // for testing
+         orderRes.status = ""
+
+         MoveToAnotherComponent.openActivityWithParcelableParam<TrackingMapActivity, OrderDetailsResModel>(this,
+             Constant.DRIVER_ASSIGN_ORDER_KEY,orderRes)
+     }
+
+     fun trackingClickListener(view: View){
+         //MoveToAnotherComponent.moveToActivityNormal<TrackingMapActivity>(this)
+
+         //  MoveToAnotherComponent.moveToActivityWithIntentValue<TrackingMapActivity>(this,Constant.KEY_ORDER_ORDER_ID,orderRes.order_id)
+
+         sendParcelableOrderResponse()
+     }
 
 }
 

@@ -124,7 +124,7 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
 
             if (status!=Constant.COMPLETED) {
                 // tracking
-                tv_track.visibility = View.VISIBLE
+              //  tv_track.visibility = View.VISIBLE
                 // assign driver if the order quantitiy is one
 
 
@@ -143,11 +143,11 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
 
         }
 
-    fun trackingClickListener(view: View){
+    /*fun trackingClickListener(view: View){
         //MoveToAnotherComponent.moveToActivityNormal<TrackingMapActivity>(this)
 
         MoveToAnotherComponent.moveToActivityWithIntentValue<TrackingMapActivity>(this,Constant.KEY_ORDER_ORDER_ID,orderRes.order_id)
-    }
+    }*/
 }
 
 class AdapterSubOrder(val context: Context,val subOrderList:List<Int>):RecyclerView.Adapter<AdapterSubOrder.HolderSubOrder>(){

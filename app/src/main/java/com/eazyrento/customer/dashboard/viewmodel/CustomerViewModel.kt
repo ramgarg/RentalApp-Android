@@ -42,9 +42,9 @@ class CustomerWishListViewModel : ViewModel() {
 
 class CustomerOrderTrackingViewModel : ViewModel() {
 
-    fun getCustomerOrderTrackingRepo(orderID:String): LiveData<DataWrapper<OrderTrackingList>> {
+    fun getCustomerOrderTrackingRepo(orderID: String, suborder_id: Int): LiveData<DataWrapper<OrderTrackingList>> {
         return CustomerOrderTrackingRepo()
-            .getCustomerOrderTracking(orderID)
+            .getCustomerOrderTracking(orderID,suborder_id)
     }
 }
 

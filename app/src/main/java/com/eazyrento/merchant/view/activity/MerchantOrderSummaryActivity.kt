@@ -8,6 +8,7 @@ import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.tracking.googlemap.TrackingMapActivity
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
@@ -32,11 +33,15 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
 
             MoveToAnotherComponent.openActivityWithParcelableParam<DriverAvailabilityActivity, OrderDetailsResModel>(this,
                 Constant.DRIVER_ASSIGN_ORDER_KEY,orderRes)
+
+
         }
 
         //clickListenerOnViews()
 
     }
+
+
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -49,6 +54,20 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
             tv_assign_to_driver.visibility=View.VISIBLE
         }else{
             tv_assign_to_driver.visibility= View.GONE
+        }
+
+        try {
+            val status=orderRes.order_status
+
+            if (status!=Constant.COMPLETED) {
+                // tracking
+                tv_track.visibility = View.VISIBLE
+                // assign driver if the order quantitiy is one
+
+
+            }
+        }catch (e:Exception){
+
         }
 
         setMaintanceUserRoleAdapter(orderRes.customer_detail,orderRes.agent_detail,null)
@@ -64,6 +83,15 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         }
 
     }
+
+
+    /*fun trackingClickListener(view: View){
+        //MoveToAnotherComponent.moveToActivityNormal<TrackingMapActivity>(this)
+
+      //  MoveToAnotherComponent.moveToActivityWithIntentValue<TrackingMapActivity>(this,Constant.KEY_ORDER_ORDER_ID,orderRes.order_id)
+
+        sendParcelableOrderResponse()
+    }*/
 
 
     /*private fun orderStatus(orderRes: OrderDetailsResModel) {

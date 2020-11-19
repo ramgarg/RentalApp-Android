@@ -8,6 +8,7 @@ import com.google.gson.JsonElement
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.common.model.modelclass.ProductID
+import com.eazyrento.common.model.repositry.api.MasterAPI
 import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.customer.dashboard.model.modelclass.*
 import com.eazyrento.customer.dashboard.model.repositry.api.CustomerAPI
@@ -97,15 +98,18 @@ class CustomerOrderDetailsRepo :
 class CustomerOrderTrackingRepo :
     GenericRequestHandler<OrderTrackingList>() {
 
-    fun getCustomerOrderTracking(orderID: String): LiveData<DataWrapper<OrderTrackingList>> {
+    fun getCustomerOrderTracking(orderID: String,subOrderID:Int): LiveData<DataWrapper<OrderTrackingList>> {
 
-        return doRequest(
-            ServiceGenrator.client.create(
-                CustomerAPI::class.java
-            ).getCustomerOrderTracking(orderID)
-        )
+        lateinit var call: Call<OrderTrackingList>
 
-    }
+
+                val classType = CustomerAPI::class.java
+                call = ServiceGenrator.client.create(
+                    classType).getCustomerOrderTracking(orderID)
+
+        return doRequest(call)
+        }
+
 }
 
 class CustomerWishListRepo :

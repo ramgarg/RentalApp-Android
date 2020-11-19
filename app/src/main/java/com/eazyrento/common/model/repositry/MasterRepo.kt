@@ -1,12 +1,19 @@
 package com.eazyrento.common.model.repositry
 
 import androidx.lifecycle.LiveData
+import com.eazyrento.EazyRantoApplication
+import com.eazyrento.Session
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.common.model.modelclass.*
 import com.eazyrento.common.model.repositry.api.MasterAPI
+import com.eazyrento.common.view.UserInfoAPP
+import com.eazyrento.customer.dashboard.model.modelclass.OrderTrackingList
+import com.eazyrento.customer.dashboard.model.modelclass.OrderTrackingListItem
+import com.eazyrento.customer.dashboard.model.repositry.api.CustomerAPI
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
+import retrofit2.Call
 
 class MasterRepo : GenericRequestHandler<MasterResModel>(){
 
@@ -73,4 +80,20 @@ class LanguagChangeRepo : GenericRequestHandler<JsonElement>(){
             MasterAPI::class.java).langaugeChange(langaugeChangeReqModel)
         return doRequest(call)
     }
+}
+
+class OrderTrackingRepo :
+    GenericRequestHandler<OrderTrackingListItem>() {
+
+    fun getOrderTracking(orderID: String,subOrderID:Int): LiveData<DataWrapper<OrderTrackingListItem>> {
+
+        lateinit var call: Call<OrderTrackingListItem>
+
+            val classType = MasterAPI::class.java
+            call = ServiceGenrator.client.create(
+                classType).getOrderTracking(orderID ,subOrderID)
+
+        return doRequest(call)
+    }
+
 }

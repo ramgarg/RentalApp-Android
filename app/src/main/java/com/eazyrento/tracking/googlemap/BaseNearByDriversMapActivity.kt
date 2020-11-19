@@ -265,7 +265,14 @@ abstract class BaseNearByDriversMapActivity : LocationActivity(), OnMapReadyCall
         super.onSuccessApiResult(data)
 
         //driverList = DummeyJsonToObjectConvertor.convertJsonToClass(JsonDataResponse.jsonDriverListData)
+
         driverList = data as DriverList
+        if (driverList!!.driversList.isEmpty())
+        {
+            showToast(R.string.no_result_found)
+            finish()
+            return
+        }
         setBitMapOnMarker()
 
     }

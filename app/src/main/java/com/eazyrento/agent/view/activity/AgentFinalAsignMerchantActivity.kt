@@ -67,6 +67,11 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
         val data = data as AgentMerchantFindNearByResModel
         merchantListItem = data.merchants_list
 
+        if (merchantListItem.isEmpty()){
+            showToast(R.string.no_result_found)
+            finish()
+            return
+        }
         rec_agent_assign_merchant.adapter =AssignMerchnatAdapter(this,data.merchants_list,this)
 
         rec_agent_assign_merchant.layoutManager = GridLayoutManager(this,2)

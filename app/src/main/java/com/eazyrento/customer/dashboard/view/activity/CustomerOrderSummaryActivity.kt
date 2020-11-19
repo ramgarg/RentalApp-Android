@@ -96,8 +96,8 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
 */
     }
 
-    fun trackingClickListener(view: View){
+    /*fun trackingClickListener(view: View){
         MoveToAnotherComponent.moveToActivityWithIntentValue<TrackingMapActivity>(this,Constant.KEY_ORDER_ORDER_ID,orderRes.order_id)
-    }
+    }*/
 
 }
