@@ -17,6 +17,7 @@ import com.eazyrento.common.view.LiveDataActivityClass
 import com.eazyrento.common.viewmodel.DriverListingViewModel
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.Common.Companion.setCurrentAddressOnTopInMap
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.tracking.data.model.LatLong
 
 import com.eazyrento.tracking.googlemap.BaseNearByDriversMapActivity
@@ -147,8 +148,10 @@ class AgentNearByDriversMapActivity : BaseNearByDriversMapActivity(), OnMapReady
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
         if (data is JsonElement){
-            showToast(R.string.submit_request)
-            finish()
+
+            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(this,Constant.INTENT_AGENT_NEAR_BY_DRIVER_ASSIGNED,2)
+            showToast(R.string.REQUEST_SUCCESSED)
+            return
         }
     }
 

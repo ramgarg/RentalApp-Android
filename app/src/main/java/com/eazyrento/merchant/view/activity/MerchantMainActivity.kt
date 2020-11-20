@@ -85,8 +85,10 @@ class MerchantMainActivity : BaseNavigationActivity() {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        val value = intent?.getIntExtra(Constant.INTENT_SUCCESS_ADDED_PRODUCT,-1)
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onNewIntent "+value)
+
+//        val value = intent?.getIntExtra(Constant.INTENT_SUCCESS_ADDED_PRODUCT,-1)
+//        val value = intent?.getIntExtra(Constant.INTENT_DRIVER_ASSIGNED_BY_MERCHANT,-1)
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onNewIntent")
 
         // move to home fragemtn
         setHomeFragMent()

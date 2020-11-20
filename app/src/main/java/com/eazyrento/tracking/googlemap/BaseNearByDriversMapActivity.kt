@@ -1,6 +1,7 @@
 package com.eazyrento.tracking.googlemap
 
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
@@ -87,6 +88,7 @@ abstract class BaseNearByDriversMapActivity : LocationActivity(), OnMapReadyCall
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
 
         mMap = googleMap
@@ -94,75 +96,10 @@ abstract class BaseNearByDriversMapActivity : LocationActivity(), OnMapReadyCall
 
         requestForLocation()
 
-        // mMap?.setMaxZoomPreference(ZOOM_PREFERENCE)
+        mMap?.isMyLocationEnabled = true
+
     }
 
-
-
-
-/*
-    *//*
-    *
-    * requesting for location
-    * *//*
-    private fun requestForLocation() {
-        //location
-
-        appBizLocationProvider = AppBizLocationProvider(this)
-
-        appBizLocationProvider?.setLocationCallback(object : AppBizLocationCallback {
-            override fun canRequestLocation(canRequest: Boolean) {
-                if (canRequest)
-                    appBizLocationProvider?.requestLocationUpdate(this@BaseNearByDriversMapActivity)
-                else
-                    Toast.makeText(
-                        this@BaseNearByDriversMapActivity,
-                        resources.getString(R.string.enable_GPS_permission),
-                        Toast.LENGTH_SHORT
-                    ).show()
-            }
-
-            override fun onLocation(locationResult: LocationResult?) {
-                AppBizLogger.log(
-                    AppBizLogger.LoggingType.DEBUG,
-                    "$mTAG location result $locationResult"
-                )
-
-
-                locationResult?.lastLocation?.run {
-
-                    tv_address_line_map.setCurrentAddressOnTopInMap(
-                        this@BaseNearByDriversMapActivity,
-                        latitude,
-                        longitude
-                    )
-
-                    mCurrentLatLng = LatLong(latitude, longitude)
-
-                    onCurrentLocation(mCurrentLatLng)
-
-//                    setBitMapOnMarker()
-
-                }
-
-            }
-
-            override fun permissionGiven() {
-                if (isGPSEnabled())
-                    appBizLocationProvider?.requestLocationUpdate(this@BaseNearByDriversMapActivity)
-                else {
-                    Toast.makeText(
-                        this@BaseNearByDriversMapActivity,
-                        resources.getString(R.string.enable_GPS_permission),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    finish()
-                }
-
-            }
-
-        })?.start()
-    }*/
 
     private fun updateDistanceOnMarker(marker: Marker): Double {
 
@@ -217,10 +154,12 @@ abstract class BaseNearByDriversMapActivity : LocationActivity(), OnMapReadyCall
             builder.include(value.position)
         }
 
+        mMap?.setOnMapLoadedCallback {
+            val dim = resources.getDimension( R.dimen._100sdp).toInt()
+            val cu = CameraUpdateFactory.newLatLngBounds(builder.build(),dim,dim,0)
 
-        val cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 0)
-
-           mMap?.moveCamera(cu)
+            mMap?.moveCamera(cu)
+        }
 
        }
 

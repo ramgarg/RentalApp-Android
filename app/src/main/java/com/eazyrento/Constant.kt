@@ -70,6 +70,11 @@ interface Constant{
         const val INTENT_NOTE_EDIT = "edit"
         const val INTENT_NOTE_DELETE = "delete"
         const val INTENT_SUCCESS_ADDED_PRODUCT = "success"
+
+        const val INTENT_AGENT_NEAR_BY_DRIVER_ASSIGNED = "driver_assigned"
+
+        const val INTENT_DRIVER_ASSIGNED_BY_MERCHANT = "assigned"
+
         const val INTENT_NEW_ADDRESS_ADD = "add"
         const val INTENT_RESET_SUCCESSFULY ="reset"
         const val INTENT_NOTE_ADDED ="sucess"

@@ -211,6 +211,12 @@ class Common {
             tv_address_line_map.text = addressInfo.address_line
         }
 
+        fun roundOfDouble(number:Double?):Double{
+            return  String.format("%.3f", number).toDouble()
+        }
+
     }
+
+
 
 }

@@ -9,6 +9,7 @@ import com.eazyrento.R
 import com.eazyrento.common.view.adapter.OrderListBaseAdapter
 import com.eazyrento.common.view.fragment.OrderListFragment
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.activity.MerchantOrderSummaryActivity
 
@@ -42,7 +43,7 @@ class MerchantOrderListFragment : OrderListFragment() {
         val item = listOrderItems[position]
 
         holder.tvOrderProductName?.text=item.merchant_order_detail?.product_name
-        holder.tvBookingPrice?.text= Constant.DOLLAR.plus(item.merchant_order_detail?.booking_price)
+        holder.tvBookingPrice?.text= Constant.DOLLAR.plus(Common.roundOfDouble(item.merchant_order_detail?.booking_price))
         holder.tvOrderQuantity?.text=item.merchant_order_detail?.product_name.plus("-").plus(item.merchant_order_detail?.merchant_quantity)
         
     }

@@ -341,16 +341,15 @@ class AddProductDailogActivity:BaseActivity() {
     override fun <T> onSuccessApiResult(data: T) {
 
         if (data is JsonElement) {
+
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, data.toString())
-//            if (edit_product_ID ==DEFUALT_VALUE) {
+
                 showToast(R.string.REQUEST_SUCCESSED)
-//        {"status":201}
+
                 MoveToAnotherComponent.moveToActivityWithIntentValue<MerchantMainActivity>(
                     this,
                     Constant.INTENT_SUCCESS_ADDED_PRODUCT, 1
                 )
-//            }
-
         }
         else{
             editProductData(data as MerchantProductDetailsResModel)

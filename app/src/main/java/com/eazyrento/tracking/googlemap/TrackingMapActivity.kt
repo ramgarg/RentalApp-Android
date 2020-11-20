@@ -1,6 +1,7 @@
 package com.eazyrento.tracking.googlemap
 
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
@@ -22,14 +23,12 @@ import com.eazyrento.customer.dashboard.model.modelclass.OrderTrackingListItem
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderTrackingViewModel
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.Common.Companion.setCurrentAddressOnTopInMap
-import com.eazyrento.tracking.data.model.Route
 import com.eazyrento.tracking.googlemap.viewmodel.TrackingMapViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import kotlinx.android.synthetic.main.activity_agent_add_note.*
 import kotlinx.android.synthetic.main.map_marker_custom_view.view.*
 import kotlinx.android.synthetic.main.template_cancle_call_map.*
 import kotlinx.android.synthetic.main.view_map_top_location_card.*
@@ -39,18 +38,19 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
     private val mHasMapMarker = HashMap<Int, Marker>()
 
-    private lateinit var mMapSetup: MapSetup
+//    private val MAX_ZOOM_PREFERENCE = 13f
+
+//    private lateinit var mMapSetup: MapSetup
 
     // private  lateinit var orderID:String
 
-    private  var mMap: GoogleMap?=null
+    private var mMap: GoogleMap? = null
 
     private lateinit var trackingMapViewModel: TrackingMapViewModel
 
-    private  var mCustomerOrderTrackingList:OrderTrackingList? = null
+    private var mCustomerOrderTrackingList: OrderTrackingList? = null
 
-    private  var mOrderTrackingListItem:OrderTrackingListItem? = null
-
+    private var mOrderTrackingListItem: OrderTrackingListItem? = null
 
 
     private val mTAG = "TrackingMapActivity:-"
@@ -78,9 +78,10 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
         mapInit()
 
-     //   val orderID = intent.getStringExtra(Constant.KEY_ORDER_ORDER_ID)!!
+        //   val orderID = intent.getStringExtra(Constant.KEY_ORDER_ORDER_ID)!!
 
-       val orderResponse  =  intent.getParcelableExtra<OrderDetailsResModel>(Constant.DRIVER_ASSIGN_ORDER_KEY)
+        val orderResponse =
+            intent.getParcelableExtra<OrderDetailsResModel>(Constant.DRIVER_ASSIGN_ORDER_KEY)
 
         callOrderTrackingApi(orderResponse)
 
@@ -94,21 +95,24 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
         setMarkerClickLisetener()
 
-        mMapSetup = MapSetup(this, mMap!!)
+        mMap?.isMyLocationEnabled = true
 
-        mMapSetup.mapSetting()
+        //mMapSetup = MapSetup(this, mMap!!)
+
+        //mMapSetup.mapSetting()
 
         // draw polyline and car animation
         //drawPolyline()
     }
 
     // draw polyline and car animation
-    private fun drawPolyline(){
+    /*private fun drawPolyline() {
         val liveData = trackingMapViewModel.getDirectionApiResponse(
             MODE,
             ROUTING_PREFERENCE,
@@ -128,24 +132,30 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
             }
 
         }
-    }
+    }*/
 
     private fun callOrderTrackingApi(orderResponse: OrderDetailsResModel?) {
-        if (Session.getInstance(EazyRantoApplication.context)?.getUserRole().equals(UserInfoAPP.CUSTOMER)){
-        orderResponse?.run {
-        callAPI()?.let {
-            it.observeApiResult(
-                it.callAPIActivity<CustomerOrderTrackingViewModel>(this@TrackingMapActivity)
-                    .getCustomerOrderTrackingRepo(order_id,id), this@TrackingMapActivity, this@TrackingMapActivity
-            )
-        }
-        }
-    }else{
+        if (Session.getInstance(EazyRantoApplication.context)?.getUserRole()
+                .equals(UserInfoAPP.CUSTOMER)
+        ) {
+            orderResponse?.run {
+                callAPI()?.let {
+                    it.observeApiResult(
+                        it.callAPIActivity<CustomerOrderTrackingViewModel>(this@TrackingMapActivity)
+                            .getCustomerOrderTrackingRepo(order_id, id),
+                        this@TrackingMapActivity,
+                        this@TrackingMapActivity
+                    )
+                }
+            }
+        } else {
             orderResponse?.run {
                 callAPI()?.let {
                     it.observeApiResult(
                         it.callAPIActivity<OrderTrackingViewModel>(this@TrackingMapActivity)
-                            .getOrderTrackingRepo(order_id,id), this@TrackingMapActivity, this@TrackingMapActivity
+                            .getOrderTrackingRepo(order_id, id),
+                        this@TrackingMapActivity,
+                        this@TrackingMapActivity
                     )
                 }
             }
@@ -154,13 +164,16 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
+        // // custom driver markers
         if (data is OrderTrackingList) {
             mCustomerOrderTrackingList = data
 
             setDriverContactData(data[0])
             setBitMapOnMarker(data)
 
-        }else if (data is OrderTrackingListItem){
+        }
+        // custom  markers for merchant
+        else if (data is OrderTrackingListItem) {
             mOrderTrackingListItem = data
 
             setDriverContactData(data)
@@ -171,10 +184,10 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
     override fun <T> statusCodeOfApi(data: T) {
         super.statusCodeOfApi(data)
 
-        val data  = data as DataWrapper<T>
+        val data = data as DataWrapper<T>
 
         // not found
-        if (data.statusCode ==404 ) {
+        if (data.statusCode == 404) {
             showToast(R.string.NO_DATA_FOUND)
             finish()
         }
@@ -212,7 +225,11 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
             cancle_trip_map.visibility = View.GONE
 
-            tv_address_line_map.setCurrentAddressOnTopInMap(this@TrackingMapActivity, latitude, longitude)
+            tv_address_line_map.setCurrentAddressOnTopInMap(
+                this@TrackingMapActivity,
+                latitude,
+                longitude
+            )
 
             btn_call_map.setOnClickListener {
                 Common.phoneCallWithNumber(mobileNumber, this@TrackingMapActivity)
@@ -224,54 +241,75 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
+    // set camra on marker
+
+    private fun CamraMarkerSetting(position: LatLng) {
+
+        //val markerLoc = LatLng(companyDetail.getLatitude(), companyDetail.getLongitude())
+
+       /* val cameraPosition = CameraPosition.Builder()
+            .target(position) // Sets the center of the map to Mountain View
+            .zoom(MAX_ZOOM_PREFERENCE) // Sets the zoom
+            .bearing(90f) // Sets the orientation of the camera to east
+            .tilt(30f) // Sets the tilt of the camera to 30 degrees
+            .build() */
+
+//        mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(position,12f))
+    }
+
+    // custom marker for marchant
     private fun setSingleBitMapMarker(data: OrderTrackingListItem) {
         data.run {
 
             val driver = driverInfo
-            val marker = setMarker(driver.latitude,driver.longitude)!!
+            val marker = setMarker(driver.latitude, driver.longitude)!!
 
-            mHasMapMarker[id] = marker
+            //mHasMapMarker[id] = marker
             customMarkerDrivers(marker)
 
+            mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.position,12f))
+           // CamraMarkerSetting(marker.position)
+        }
+    }
+
+    // custom driver markers for customer in list
+
+    private fun setBitMapOnMarker(orderTrakingList: OrderTrackingList) {
+
+       // mMap?.setMaxZoomPreference(MAX_ZOOM_PREFERENCE)
+
+        var index = 0
+        while (index < orderTrakingList.size) {
+            val driver = orderTrakingList[index].driverInfo
+            val marker = setMarker(driver.latitude, driver.longitude)!!
+            marker.tag = index
+            mHasMapMarker[orderTrakingList[index].id] = marker
+            customMarkerDrivers(marker)
+            index++
+        }
+
         val builder = LatLngBounds.builder()
+
         for (value in mHasMapMarker.values) {
             builder.include(value.position)
         }
 
+        mMap?.setOnMapLoadedCallback {
 
-        val cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 0)
+            val dim = resources.getDimension( R.dimen._100sdp).toInt()
 
-        mMap?.moveCamera(cu)
-    }
-    }
-    // custom driver markers
-
-    private fun setBitMapOnMarker(orderTrakingList: OrderTrackingList) {
-
-
-            var index = 0
-            while( index < orderTrakingList.size) {
-                val driver = orderTrakingList[index].driverInfo
-                val marker = setMarker(driver.latitude,driver.longitude)!!
-                marker.tag = index
-                mHasMapMarker[orderTrakingList[index].id] = marker
-                customMarkerDrivers(marker)
-                index++
-            }
-
-            val builder = LatLngBounds.builder()
-            for (value in mHasMapMarker.values) {
-                builder.include(value.position)
-            }
-
-
-            val cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 0)
+            val cu = CameraUpdateFactory.newLatLngBounds(builder.build(),dim,dim,0)
 
             mMap?.moveCamera(cu)
+        }
+/*
+        val cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 50)
+
+        mMap?.moveCamera(cu)*/
 
     }
 
-    private fun setMarker(lati:Double , longi:Double): Marker? {
+    private fun setMarker(lati: Double, longi: Double): Marker? {
 
         return mMap?.run {
 
@@ -294,7 +332,7 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun customMarkerDrivers(marker: Marker,distance:Double=0.0){
+    private fun customMarkerDrivers(marker: Marker, distance: Double = 0.0) {
         val view = layoutInflater.inflate(R.layout.map_marker_custom_view, null)
 
         // marker update title
@@ -302,7 +340,7 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
         view.km_map.visibility = View.GONE
 
-       // view.km_map.text = " ".plus((distance * 10.0).roundToInt() / 10.0).plus("km")
+        // view.km_map.text = " ".plus((distance * 10.0).roundToInt() / 10.0).plus("km")
 
         val w = resources.getDimension(R.dimen._60sdp).toInt()
         val h = resources.getDimension(R.dimen._60sdp).toInt()

@@ -18,7 +18,6 @@ import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.FeedbackReqModel
-import com.eazyrento.merchant.view.activity.DriverAvailabilityActivity
 import com.eazyrento.merchant.view.activity.MerchantOrderSummaryActivity
 import com.eazyrento.merchant.view.activity.RateAndReviewActivity
 import com.eazyrento.supporting.*
@@ -78,7 +77,10 @@ import kotlinx.android.synthetic.main.template_work_info.*
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
         tv_order_id.text= resources.getString(R.string.orderid).plus(orderRes.order_id)
-        tv_booking_price.text= Constant.DOLLAR.plus(orderRes.order_amount_with_commission)
+
+        val numberRoundOf =Common.roundOfDouble(orderRes.order_amount_with_commission)
+
+        tv_booking_price.text= Constant.DOLLAR.plus(numberRoundOf)
 
         orderRes.product_detail?.let {
             tv_order_product_name.text=it.product_name?.capitalize()
@@ -216,7 +218,7 @@ import kotlinx.android.synthetic.main.template_work_info.*
             }
             Constant.PENDING ->{
                 pending_amount.visibility=View.VISIBLE
-                pending_amount.text= resources.getString(R.string.pending_).plus(orderRes.amount_to_pay)
+                pending_amount.text= resources.getString(R.string.pending_).plus(Common.roundOfDouble(orderRes.amount_to_pay))
             }
         }
 

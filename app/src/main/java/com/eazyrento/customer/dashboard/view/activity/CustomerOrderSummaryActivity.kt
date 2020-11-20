@@ -11,7 +11,6 @@ import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.common.view.TipActivity
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.tracking.googlemap.TrackingMapActivity
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_tip.*

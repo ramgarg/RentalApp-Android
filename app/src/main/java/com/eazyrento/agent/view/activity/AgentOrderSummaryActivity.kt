@@ -10,25 +10,18 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.ValidationMessage
-import com.eazyrento.agent.model.modelclass.AgentFeedbackReqModel
 import com.eazyrento.agent.model.modelclass.AgentUpdateOrderReqModel
 import com.eazyrento.agent.view.SupportinAgentUpdateOrder
 import com.eazyrento.agent.view.UpdateOrderInterface
 import com.eazyrento.agent.viewmodel.AgentUpdateOrderViewModel
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.common.view.MaintanceUserRoleView
 import com.eazyrento.common.view.OrderBaseSummaryActivity
-import com.eazyrento.customer.dashboard.model.modelclass.SubOrderReqResModel
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.tracking.googlemap.TrackingMapActivity
 import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
 import kotlinx.android.synthetic.main.adapter_suborder_row.view.*
-import kotlinx.android.synthetic.main.adapter_users_order_summary.*
 import kotlinx.android.synthetic.main.maintance_layout.*
-import kotlinx.android.synthetic.main.phone_view.*
 import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 
 open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {

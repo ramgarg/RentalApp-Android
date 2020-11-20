@@ -77,6 +77,23 @@ class MapSetup(private val mContext: Context,private val mMap:GoogleMap) {
     }
 
 
+    fun drawPolyLine(polyLineLatLongList: List<LatLng>){
+        //Adjusting bounds focus on lang and lat
+        adjustingBound(polyLineLatLongList)
+
+        val grayPolylineOptions = polyLineOptionsSetting(Color.GRAY).addAll(polyLineLatLongList)
+
+        val greyPolyLine = addPolylineOnGoogleMap(grayPolylineOptions)
+
+        val  blackPolylineOptions = polyLineOptionsSetting(Color.BLACK)
+        val  blackPolyline =  addPolylineOnGoogleMap(blackPolylineOptions)
+
+
+        // destination
+        mMap.addMarker(
+            createNewMarker("Destination" ,polyLineLatLongList[polyLineLatLongList.size - 1],R.mipmap.mover_map_icon_)
+        )
+    }
 
     /*animate car*/
     // poly line
@@ -96,6 +113,8 @@ class MapSetup(private val mContext: Context,private val mMap:GoogleMap) {
         mMap.addMarker(
             createNewMarker("Destination" ,polyLineLatLongList[polyLineLatLongList.size - 1],R.mipmap.mover_map_icon_)
         )
+
+        // car animation
 
         val polylineAnimator = ValueAnimator.ofInt(0, 100)
         polylineAnimator.duration = 2000

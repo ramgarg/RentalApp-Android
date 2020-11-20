@@ -20,6 +20,7 @@ import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.common.view.LiveDataActivityClass
 import com.eazyrento.common.viewmodel.DriverListingViewModel
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
+import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.login.viewmodel.LoginUserViewModel
 import com.eazyrento.merchant.view.adapter.DriverAvailabilityAdapter
 import com.eazyrento.merchant.viewModel.MerchantAssignDriverViewModel
@@ -97,7 +98,12 @@ class DriverAvailabilityActivity :LocationActivity() {
 
             setDriverAvailabilityAdapter()
         }else{
-            showToastString(resources.getString(R.string.REQUEST_SUCCESSED))
+            showToast(R.string.REQUEST_SUCCESSED)
+
+            MoveToAnotherComponent.moveToActivityWithIntentValue<MerchantMainActivity>(
+                this,
+                Constant.INTENT_DRIVER_ASSIGNED_BY_MERCHANT, 2
+            )
             finish()
         }
 
