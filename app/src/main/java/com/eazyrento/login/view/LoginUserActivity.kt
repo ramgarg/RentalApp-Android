@@ -149,11 +149,12 @@ class LoginUserActivity : AppBizLogin() {
        val request = GraphRequest.newMeRequest(
             AccessToken.getCurrentAccessToken()
         ) { `object`, response ->
-            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, `object`.toString())
-            AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, response.toString())
-
-            MyJsonParser.parseFBData(`object`, loginUserReqModel)
-           choseUserRole(loginUserReqModel)
+           // AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, `object`.toString())
+            //AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, response.toString())
+           if(`object`!=null) {
+               MyJsonParser.parseFBData(`object`, loginUserReqModel)
+               choseUserRole(loginUserReqModel)
+           }
 
         }
        val params = Bundle()

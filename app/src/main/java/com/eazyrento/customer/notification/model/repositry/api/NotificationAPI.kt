@@ -1,8 +1,7 @@
-package com.eazyrento.customer.notification.model.repositry.API
+package com.eazyrento.customer.notification.model.repositry.api
 
 import com.eazyrento.customer.notification.model.NotificationDeleteModel
 import com.eazyrento.customer.notification.model.NotificationList
-import com.eazyrento.customer.notification.model.NotificationModel
 import com.eazyrento.customer.notification.model.NotificationReadModel
 import com.eazyrento.webservice.PathURL
 import com.google.gson.JsonElement

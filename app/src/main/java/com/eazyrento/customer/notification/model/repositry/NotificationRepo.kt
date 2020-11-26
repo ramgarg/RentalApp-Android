@@ -5,9 +5,8 @@ import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
 import com.eazyrento.customer.notification.model.NotificationDeleteModel
 import com.eazyrento.customer.notification.model.NotificationList
-import com.eazyrento.customer.notification.model.NotificationModel
 import com.eazyrento.customer.notification.model.NotificationReadModel
-import com.eazyrento.customer.notification.model.repositry.API.NotificationAPI
+import com.eazyrento.customer.notification.model.repositry.api.NotificationAPI
 import com.eazyrento.webservice.ServiceGenrator
 import com.google.gson.JsonElement
 

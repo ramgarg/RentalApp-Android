@@ -473,7 +473,7 @@
     <string name="DESCRIPTON">Enter Description</string>
     <string name="COUNTRY_CODE_VALIDATION">Please enter a valid dailing code.</string>
     <string name="NO_ADRESS_FOUND">No address found. Please add new address.</string>
-    <string name="QUANTITY_LIMIT">Assign quantity can\'t be greater than grater then or less then of booking quantity.</string>
+    <string name="QUANTITY_LIMIT">Assign quantity can\'t be greater than or less than of booking quantity.</string>
     <string name="QUANTITY_SET_LIMIT">You can\'t set value beyond limit.</string>
     <string name="USER_NEED_LOGIN">User need to login</string>
     <string name="SELECT_DATE">Order date</string>

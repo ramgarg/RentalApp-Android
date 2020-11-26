@@ -25,6 +25,8 @@ class WishListAdapter<T> (val orderListing: MutableList<T>, val context: Context
         val add_quantity = view.add_quantity
         val minus_quantity = view.minus_quantity
 
+        val layout_remove = view.layout_remove
+
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {

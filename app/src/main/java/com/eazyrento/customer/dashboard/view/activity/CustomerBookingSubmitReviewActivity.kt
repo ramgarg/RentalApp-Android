@@ -109,7 +109,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
         holder.lyt_booking_details.visibility = View.VISIBLE
 
-        holder.tv_remove.setOnClickListener{
+        holder.layout_remove.setOnClickListener{
 
             removePosition = position
 

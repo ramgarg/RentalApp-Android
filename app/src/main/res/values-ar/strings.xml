@@ -87,9 +87,9 @@
     <string name="end_date">تاريخ الانتهاء</string>
     <string name="end_time">وقت النهاية</string>
     <string name="start_date_hint">01-يناير -2020</string>
-    <string name="start_time_hint">8:00 AM</string>
+    <string name="start_time_hint">8:00 صباحا</string>
     <string name="end_date_hint">01-يناير -2020</string>
-    <string name="end_time_hint">9:00 AM</string>
+    <string name="end_time_hint">9:00 صباحا</string>
     <string name="truck_quantity">البند الكمية-</string>
     <string name="one">واحد</string>
     <string name="work_location">مكان العمل</string>
