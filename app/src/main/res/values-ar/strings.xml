@@ -523,6 +523,7 @@
     <string name="FILL_DRIVER_PRICE">الرجاء إدخال سعر السائق.</string>
     <string name="VALID_PROMO_CODE">"الرجاء إدخال رمز ترويجي صالح "</string>
     <string name="check_near_driver">"تحقق من السائق "</string>
+    <string name="delete_product">هل تريد حذف هذا المنتج؟</string>
 
 
 </resources>

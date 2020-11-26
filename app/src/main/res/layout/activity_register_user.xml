@@ -403,7 +403,7 @@
                     android:textSize="@dimen/_15sdp"
                     android:text="@string/gdpr_rights"
                     android:textColor="@color/blue"
-                    android:onClick="onTermsAndConditionsClick"
+                    android:onClick="onGDPRClick"
                     />
         </LinearLayout>
         <Button android:layout_width="match_parent"

@@ -184,6 +184,7 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
                 , this, this
             )
         }
+    hideProgress()
     }
 /*
 * get product list by sub cat name
@@ -198,6 +199,8 @@ class MerchantAddVehicleActivity : BaseActivity(),AdapterView.OnItemSelectedList
                 , this, this
             )
         }
+
+        hideProgress()
     }
 
     /*

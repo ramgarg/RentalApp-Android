@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.ValidationMessage
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem
@@ -13,13 +12,13 @@ import com.eazyrento.customer.dashboard.view.adapter.DeleteAndViewDetails
 import com.eazyrento.customer.dashboard.view.adapter.WishListAdapter
 import com.eazyrento.customer.dashboard.viewmodel.CustomerCreateBookingViewModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.customer.utils.ViewVisibility
 import kotlinx.android.synthetic.main.activity_booking_details.*
 import kotlinx.android.synthetic.main.activity_order_review.*
-import kotlinx.android.synthetic.main.toolbar.*
 
 
 class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails {
+    private var removePosition:Int=0
+
     companion object BookingList {
         val objListBookingItem = CustomerCreateBookingReqModel()
 
@@ -76,6 +75,11 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
             }
         }
+        else if(ok==Constant.OK_REMOVE_PRODUCT)
+        {
+            objListBookingItem.removeAt(removePosition)
+            rec_order_review.adapter?.notifyDataSetChanged()
+        }
     }
 
     fun onSubmitButtonClick(view: View){
@@ -84,7 +88,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
             showToast(R.string.ADD_PRODUCT_AT_LEAST_ONE)
             return
         }
-        showDialog(R.string.payment,resources.getString(R.string.BOOKING_SUBMITTED),this,R.layout.thank_you_pop)
+        showDialog(R.string.payment,resources.getString(R.string.BOOKING_SUBMITTED),this,R.layout.thank_you_pop,Constant.OK)
     }
 
     override fun setHolderOnView(holder: WishListAdapter.CardViewHolder, position: Int) {
@@ -107,8 +111,12 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
 
         holder.tv_remove.setOnClickListener{
 
-            objListBookingItem.removeAt(position)
-            rec_order_review.adapter?.notifyDataSetChanged()
+            removePosition = position
+
+            showDialog(R.string.payment,resources.getString(R.string.delete_product),this,R.layout.thank_you_pop,Constant.OK_REMOVE_PRODUCT)
+
+            /*objListBookingItem.removeAt(position)
+            rec_order_review.adapter?.notifyDataSetChanged()*/
         }
 
         holder.tv_view_detail.setOnClickListener{

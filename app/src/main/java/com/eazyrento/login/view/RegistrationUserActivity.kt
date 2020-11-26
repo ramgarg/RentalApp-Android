@@ -13,6 +13,7 @@ import com.eazyrento.appbiz.AppBizLogin
 import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import com.eazyrento.customer.webpages.PrivacyPolicy
 import com.eazyrento.customer.webpages.TermsConditionActivity
 import com.eazyrento.login.model.modelclass.RegisterUserReqModel
 import com.eazyrento.login.model.modelclass.RegisterUserResModel
@@ -70,6 +71,10 @@ class RegistrationUserActivity : AppBizLogin(){
             return false
         }
         return true
+    }
+
+     fun onGDPRClick(view: View){
+        MoveToAnotherComponent.moveToActivityNormal<PrivacyPolicy>(this)
     }
 
     private fun initialize() {

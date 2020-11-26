@@ -158,6 +158,8 @@ interface Constant{
         const val OK = 1
         const val CANCEL =0
 
+        const val OK_REMOVE_PRODUCT = 6
+
         const val delete =0
         const val edit = 1
         const val add =2

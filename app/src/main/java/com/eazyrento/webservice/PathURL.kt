@@ -121,6 +121,8 @@ class PathURL {
         const val PRIVACY_POLICY = "/privacy-policy/"
         const val ABOUT_US = "/web/static-content/about-us/"
 
+        //https://qa.eazyrento.com/privacy-policy/
+
         // assign driver list......
 
         //  show near by driver to agent

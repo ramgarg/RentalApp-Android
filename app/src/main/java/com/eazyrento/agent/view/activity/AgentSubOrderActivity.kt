@@ -38,11 +38,15 @@ class AgentSubOrderActivity :BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_update_sub_order)
+
         topBarWithBackIconAndTitle(getString(R.string.sub_order))
 
         customer_payment_button.visibility = View.GONE
 
+        booking_price.text = getString(R.string.price)
+
         mId = intent.extras?.getInt(Constant.INTENT_AGENT_SUB_ORDER,0)!!
+
         callSubOrderAPIOrderList(mId)
     }
 

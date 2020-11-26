@@ -99,11 +99,11 @@ import kotlinx.android.synthetic.main.toolbar.*
     protected fun showToastString(msg: String){
         Toast.makeText(this,msg, Toast.LENGTH_LONG).show()
     }
-    protected fun showDialog(title: Int, msg:String, context: Activity, layout:Int):Dialog {
+    protected fun showDialog(title: Int=0, msg:String, context: Activity, layout:Int,clickValue:Int=Constant.OK):Dialog {
         val dialog = Dialog(context)
         dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
-        dialog .setCancelable(false)
+        dialog .setCancelable(true)
         dialog .setContentView(layout)
 
         //dialog.btn_cancel.visibility = View.VISIBLE
@@ -112,7 +112,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 
         dialog.btn_ok.setOnClickListener {
             dialog.cancel()
-            this.onClickDailog(Constant.OK)
+            this.onClickDailog(clickValue)
         }
 
         dialog .show()
