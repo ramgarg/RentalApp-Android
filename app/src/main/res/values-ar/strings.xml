@@ -271,7 +271,7 @@
     <string name="resend_otp"><u>إعادة إرسال OTP</u></string>
 
     <!--Google Map and Place API key production -->
-    <string name="google_credential_key">AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I</string>
+    <!--<string name="google_credential_key">AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I</string>-->
 
     <string-array name="place_restriction_country_code">
         <item>AE</item>
@@ -283,8 +283,8 @@
 
 
     <!--FB login production-->
-   <string name="facebook_app_id">216337653018960</string>
-    <string name="fb_login_protocol_scheme">fb216337653018960</string>
+   <!--<string name="facebook_app_id">216337653018960</string>
+    <string name="fb_login_protocol_scheme">fb216337653018960</string>-->
 
 
 
@@ -293,8 +293,9 @@
     <string name="G_secret">eIEedNI905ZSO6fo70o8XDpV</string>-->
 
     <!--Google gmail login production env-->
-    <string name="G_client">1093222661773-ea0su3f12mls27rbt195qcok1b8n4ne8.apps.googleusercontent.com</string>
-    <string name="G_secret">0HD7pDHrzHBMcbGX3fO3yl16</string>
+    <!--<string name="G_client">1093222661773-ea0su3f12mls27rbt195qcok1b8n4ne8.apps.googleusercontent.com</string>
+    <string name="G_secret">0HD7pDHrzHBMcbGX3fO3yl16</string>-->
+
     <string name="rate">معدل</string>
     <string name="pending_approval">ما زال يحتاج بتصدير</string>
     <string name="amount_dollar">المبلغ ($)</string>
@@ -520,6 +521,8 @@
     <string name="FILL_DAILY_PRICE">الرجاء إدخال سعر الحجز اليومي.</string>
     <string name="FILL_MONTHLY_PRICE">الرجاء إدخال سعر الحجز الشهري.</string>
     <string name="FILL_DRIVER_PRICE">الرجاء إدخال سعر السائق.</string>
+    <string name="VALID_PROMO_CODE">"الرجاء إدخال رمز ترويجي صالح "</string>
+    <string name="check_near_driver">"تحقق من السائق "</string>
 
 
 </resources>

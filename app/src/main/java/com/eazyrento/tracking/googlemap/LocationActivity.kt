@@ -1,5 +1,6 @@
 package com.eazyrento.tracking.googlemap
 
+import android.location.Location
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import com.appbiz.location.LocationUtils.Companion.isGPSEnabled
@@ -14,6 +15,9 @@ import com.eazyrento.tracking.data.model.LatLong
 import com.eazyrento.tracking.googlemap.mylocation.AppBizLocationCallback
 import com.eazyrento.tracking.googlemap.mylocation.AppBizLocationProvider
 import com.google.android.gms.location.LocationResult
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.view_map_top_location_card.*
 
 abstract class LocationActivity:BaseActivity()  {
@@ -62,11 +66,6 @@ abstract class LocationActivity:BaseActivity()  {
 
                 locationResult?.lastLocation?.run {
 
-                   /* tv_address_line_map.setCurrentAddressOnTopInMap(
-                        this@LocationActivity,
-                        latitude,
-                        longitude
-                    )*/
 
                         lati = latitude
                         longi = longitude
@@ -74,8 +73,6 @@ abstract class LocationActivity:BaseActivity()  {
                     mCurrentLatLng = LatLong(latitude, longitude)
 
                     onCurrentLocation(mCurrentLatLng)
-
-//                    setBitMapOnMarker()
 
                 }
 
@@ -144,4 +141,22 @@ abstract class LocationActivity:BaseActivity()  {
         super.onSuccessApiResult(data)
 
     }
+
+    fun moveCameraOnSpecificLocation(mMap:GoogleMap?,location: LatLong?){
+
+        mMap?.let {
+            location?.run {
+                it.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        LatLng(
+                            latitude,
+                            longitude
+                        ), 12f
+                    )
+                )
+            }
+
+        }
+    }
+
 }

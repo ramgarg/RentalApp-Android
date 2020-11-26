@@ -1,5 +1,7 @@
 package com.eazyrento.customer.dashboard.model.repositry.api
 
+import com.eazyrento.common.model.modelclass.ApplyPromoCodeReqModel
+import com.eazyrento.common.model.modelclass.ApplyPromoCodeResModel
 import com.google.gson.JsonElement
 import com.eazyrento.common.model.modelclass.BookingListResModel
 import com.eazyrento.common.model.modelclass.ProductID
@@ -16,6 +18,8 @@ interface CustomerAPI {
     @POST(PathURL.CreateBooking)
     fun createBooking(@Body customerCreateBookingReqModel: CustomerCreateBookingReqModel): Call<JsonElement>
 
+    @POST(PathURL.CUSTOMER_APPLY_PROMO)
+    fun applyPromo(@Body applyPromoCodeReqModel: ApplyPromoCodeReqModel): Call<ApplyPromoCodeResModel>
     /*
        * Add to wish list
        * */

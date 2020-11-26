@@ -3,8 +3,11 @@ package com.eazyrento.tracking.googlemap
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
+import android.location.Location
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import com.appbiz.location.LocationUtils.Companion.isGPSEnabled
@@ -28,8 +31,10 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import kotlinx.android.synthetic.main.activity_nearby_drivers_maps.*
 import kotlinx.android.synthetic.main.map_marker_custom_view.view.*
 import kotlinx.android.synthetic.main.view_map_top_location_card.*
+import java.lang.Exception
 import kotlin.math.roundToInt
 
 
@@ -88,15 +93,12 @@ abstract class BaseNearByDriversMapActivity : LocationActivity(), OnMapReadyCall
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
 
         mMap = googleMap
 
 
         requestForLocation()
-
-        mMap?.isMyLocationEnabled = true
 
     }
 
@@ -215,5 +217,38 @@ abstract class BaseNearByDriversMapActivity : LocationActivity(), OnMapReadyCall
         setBitMapOnMarker()
     }
   }
+
+    @SuppressLint("MissingPermission")
+    override fun onCurrentLocation(currentLatLng: LatLong?) {
+
+        mMap?.run {
+            if(isMyLocationEnabled.not()){
+                isMyLocationEnabled=true
+                moveCameraOnSpecificLocation(mMap,currentLatLng)
+                myCurrentButtonLocationPosition()
+            }
+        }
+    }
+
+    private fun myCurrentButtonLocationPosition(){
+        try {
+            val locationButton: View =
+                (map.findViewById<View>("1".toInt()).getParent() as View).findViewById("2".toInt())
+
+            val rlp = locationButton.getLayoutParams() as RelativeLayout.LayoutParams
+
+            rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0)
+            rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE)
+
+            rlp.setMargins(
+                0,
+                resources.getDimension(R.dimen._200sdp).toInt(),
+                resources.getDimension(R.dimen._200sdp).toInt(),
+                0
+            )
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
+    }
 
 }

@@ -40,6 +40,7 @@ class DriverAvailabilityActivity :LocationActivity() {
             lati = latitude
             longi = longitude
         }
+
         nearByDriverApi()
     }
 

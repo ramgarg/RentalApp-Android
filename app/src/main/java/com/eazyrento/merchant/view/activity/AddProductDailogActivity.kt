@@ -403,7 +403,7 @@ class AddProductDailogActivity:BaseActivity() {
     private fun getComparedPostion(spinnerDataByID: Array<String>, variant: String): Int {
 
         for (i in spinnerDataByID.indices){
-            if (spinnerDataByID[i] == variant)
+            if (spinnerDataByID[i].equals(variant,true))
                 return i
         }
         return 0

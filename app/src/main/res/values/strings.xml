@@ -274,7 +274,7 @@
     <string name="resend_otp"><u>Resend OTP</u></string>
 
     <!--Google Map and Place API key production -->
-    <string name="google_credential_key">AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I</string>
+    <string name="google_credential_key" translatable="false">AIzaSyAHaI3BcisJ6vIsiOBaQ41SgG1Rp1yaD0I</string>
 
     <string-array name="place_restriction_country_code">
             <item>AE</item>
@@ -286,8 +286,8 @@
 
 
     <!--FB login production-->
-    <string name="facebook_app_id">216337653018960</string>
-    <string name="fb_login_protocol_scheme">fb216337653018960</string>
+    <string name="facebook_app_id" translatable="false">216337653018960</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb216337653018960</string>
 
 
 
@@ -296,8 +296,10 @@
     <string name="G_secret">eIEedNI905ZSO6fo70o8XDpV</string>-->
 
     <!--Google gmail login production env-->
-    <string name="G_client">1093222661773-ea0su3f12mls27rbt195qcok1b8n4ne8.apps.googleusercontent.com</string>
-    <string name="G_secret">0HD7pDHrzHBMcbGX3fO3yl16</string>
+    <string name="G_client" translatable="false">1093222661773-ea0su3f12mls27rbt195qcok1b8n4ne8.apps.googleusercontent.com</string>
+    <string name="G_secret" translatable="false">0HD7pDHrzHBMcbGX3fO3yl16</string>
+
+
     <string name="rate">Rate</string>
     <string name="pending_approval">Pending Approval</string>
     <string name="amount_dollar">Amount($)</string>
@@ -400,7 +402,7 @@
     <string name="THANKYOU_FOR_CONFIRMING">Thank you for confirming!</string>
     <string name="ENTER_AMOUNT_PAYMENT">Please enter valid amount!</string>
     <string name="PAYMENT_MODE">Please choose the payment method.</string>
-    <string name="ENTER_AMOUNT_PAYMENT_LESS_THEN_TO">Entered amount can not be grater then of pending amount!</string>
+    <string name="ENTER_AMOUNT_PAYMENT_LESS_THEN_TO">Entered amount can not be greater than of pending amount!</string>
     <string name="ADD_PRODUCT_AT_LEAST_ONE">Product list is empty...</string>
     <string name="PLAY_SERVICE_APK_NOT_FOUND">Please install the Google play service APK to get accurate location.</string>
     <string name="CURRENT_LOCATION_NOT_GETTING">There are some issue to getting location.Please restart your device or launch the Google Map once to get the location.</string>
@@ -421,7 +423,7 @@
     <string name="DOC_IS_NOT_UPLOADED">Doc is not uploaded.Please try it again.</string>
     <string name="SELECT_AT_LIST_ONE_DAYS">Please select at list one day.</string>
 
-    <string name="FILL_QUANTITY">Assign quantity can\'t be zero.</string>
+    <string name="FILL_QUANTITY">Assign quantity should not be zero and less than zero.</string>
     <string name="FILL_BOOKING_PRICE">Please enter hourly booking price.</string>
     <string name="FILL_DAILY_PRICE">Please enter daily booking price.</string>
     <string name="FILL_MONTHLY_PRICE">Please enter monthly booking price.</string>
@@ -445,6 +447,7 @@
     <string name="BOOKING_SUBMITTED">Thank you for submitting the order. Our agent will contact you shortly.</string>
     <string name="VALID_DESC">Write description</string>
     <string name="VALID_ADDRESS">Please enter your Address Line.</string>
+
     <string name="VALID_ADDRESS_TYPE">Please select address as type</string>
     <string name="ADDRESS_ADDED">Address has been saved successfully!</string>
     <string name="ADRESS_SEPREATED_BYCOMMA">Please enter a valid address like apartment,city,state and country name,separated by comma.</string>
@@ -470,7 +473,7 @@
     <string name="DESCRIPTON">Enter Description</string>
     <string name="COUNTRY_CODE_VALIDATION">Please enter a valid dailing code.</string>
     <string name="NO_ADRESS_FOUND">No address found. Please add new address.</string>
-    <string name="QUANTITY_LIMIT">Assign quantity can\'t be grater then or less then of booking quantity.</string>
+    <string name="QUANTITY_LIMIT">Assign quantity can\'t be greater than grater then or less then of booking quantity.</string>
     <string name="QUANTITY_SET_LIMIT">You can\'t set value beyond limit.</string>
     <string name="USER_NEED_LOGIN">User need to login</string>
     <string name="SELECT_DATE">Order date</string>
@@ -526,5 +529,9 @@
     <string name="starting_price">Starting Price</string>
 
     <string name="select_driver">Please select a driver</string>
+
+    <string name="VALID_PROMO_CODE">Please enter valid promo code.</string>
+
+    <string name="check_near_driver">Check Driver</string>
 
 </resources>

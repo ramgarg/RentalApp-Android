@@ -20,10 +20,13 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
 
        val bookingITem = intent.getParcelableExtra<BookingListItem>(Constant.BOOKING_SUMMERY_KEY)
 
-        ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
-            toolbar_title,getString(R.string.booking_details))
+        /*ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
+            toolbar_title,getString(R.string.booking_details))*/
+
+        topBarWithBackIconAndTitle(getString(R.string.booking_details))
 
         agent_asign_merchant_and_request_payment.text = resources.getString(R.string.assign_merchant)
+
         customer_payment_button.visibility = View.INVISIBLE
         payment_view_history.visibility = View.INVISIBLE
         agent_update_order_btn.visibility=View.INVISIBLE
@@ -31,7 +34,7 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
 
         agent_asign_merchant_and_request_payment.setOnClickListener {
 
-            if (bookingITem.product_detail.quantity==1 && orderRes.is_category_vehicle){
+            if (isNearByDriverShow()){
                 MoveToAnotherComponent.
                 openActivityWithParcelableParam<AgentNearByDriversMapActivity,BookingListItem>(this,
                     Constant.BOOKING_SUMMERY_KEY,bookingITem)
@@ -58,10 +61,22 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
 
     }
 
+    private fun isNearByDriverShow():Boolean{
+        if (orderRes.product_detail?.quantity==1 && orderRes.is_category_vehicle){
+            return true
+        }
+        return false
+    }
+
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
         tv_booking_price.text= Constant.DOLLAR.plus(orderRes.product_detail?.starting_price)
+
+        if (isNearByDriverShow()){
+            agent_asign_merchant_and_request_payment.text = resources.getString(R.string.check_near_driver)
+        }
+
 
     }
 

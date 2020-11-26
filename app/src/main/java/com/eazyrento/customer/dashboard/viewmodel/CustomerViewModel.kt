@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.JsonElement
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
+import com.eazyrento.common.model.modelclass.ApplyPromoCodeReqModel
+import com.eazyrento.common.model.modelclass.ApplyPromoCodeResModel
 import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.customer.dashboard.model.modelclass.*
 import com.eazyrento.customer.dashboard.model.repositry.*
@@ -15,6 +17,16 @@ class CustomerCreateBookingViewModel : ViewModel() {
             .createBooking(customerCreateBookingReqModel)
     }
 }
+
+class ApplyPromoCodeViewModel : ViewModel() {
+
+    fun applyPromo(customerCreateBookingReqModel: ApplyPromoCodeReqModel): LiveData<DataWrapper<ApplyPromoCodeResModel>> {
+        return ApplyPromoCodeRepo()
+            .applyPromo(customerCreateBookingReqModel)
+    }
+}
+
+
 
 class CustomerOrderListViewModel : ViewModel() {
 

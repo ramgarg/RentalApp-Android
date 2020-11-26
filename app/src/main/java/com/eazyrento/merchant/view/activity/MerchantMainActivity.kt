@@ -10,6 +10,7 @@ import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.agent.view.activity.AgentProfileUpdateActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
+import com.eazyrento.customer.notification.view.NotificationFragment
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.view.fragment.*
 import kotlinx.android.synthetic.main.merchant_activity_main.bottom_navigation_view
@@ -17,6 +18,20 @@ import kotlinx.android.synthetic.main.merchant_activity_main.navigation_view
 import kotlinx.android.synthetic.main.toolbar.*
 
 class MerchantMainActivity : BaseNavigationActivity() {
+
+    override fun setNotificationFragment() {
+        /*fun setNavigationFragment(){
+            bottom_navigation_view.selectedItemId = R.id.navigation_common_first_pos
+        }
+        fun setNotificationFragment(){*/
+
+        toolbar_title.text=getString(R.string.title_notification)
+
+        moveToSelectedFragment(NotificationFragment())
+
+        // }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.merchant_activity_main)

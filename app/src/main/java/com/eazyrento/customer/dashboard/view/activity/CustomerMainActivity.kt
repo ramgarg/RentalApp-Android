@@ -11,13 +11,28 @@ import com.eazyrento.agent.view.activity.AgentProfileUpdateActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.customer.dashboard.view.fragment.*
 import com.eazyrento.customer.myaddress.view.MyAddressListActivity
+import com.eazyrento.customer.notification.view.NotificationFragment
 import com.eazyrento.customer.payment.view.PaymentHistoryActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
+import kotlinx.android.synthetic.main.activity_agent_home_.*
 import kotlinx.android.synthetic.main.activity_main.navigation_view
 import kotlinx.android.synthetic.main.toolbar.*
 
 
 class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigationItemSelectedListener{
+
+    override fun setNotificationFragment() {
+        /*fun setNavigationFragment(){
+            bottom_navigation_view.selectedItemId = R.id.navigation_common_first_pos
+        }
+        fun setNotificationFragment(){*/
+
+            toolbar_title.text=getString(R.string.title_notification)
+
+            moveToSelectedFragment(NotificationFragment())
+
+       // }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

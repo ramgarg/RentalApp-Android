@@ -8,7 +8,11 @@ import com.eazyrento.Env
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.common.model.modelclass.ApplyPromoCodeReqModel
+import com.eazyrento.common.model.modelclass.ApplyPromoCodeResModel
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
+import com.eazyrento.customer.dashboard.viewmodel.ApplyPromoCodeViewModel
+import com.eazyrento.customer.dashboard.viewmodel.CustomerCreateBookingViewModel
 import com.eazyrento.customer.payment.model.modelclass.BaseMakePaymentModel
 import com.eazyrento.customer.payment.model.modelclass.CustomerMakePaymentReqModel
 import com.eazyrento.customer.payment.model.modelclass.PaymentGetwayCheckoutIDResModel
@@ -54,6 +58,8 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
             modeOfPayment = Constant.PAYPAL
         }
 
+        setApplyPromoCodeAPIListener()
+
     }
 
     override fun onClickDailog(int: Int) {
@@ -93,7 +99,11 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
 
 
     override fun <T> onSuccessApiResult(data: T) {
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+
+        if (data is ApplyPromoCodeResModel){
+            amountDataRefrash(data.amountToPay,data.amountPendingForApproval)
+            return
+        }
 
         if (data is PaymentGetwayCheckoutIDResModel){
 //            paymentGetwayCheckoutIDResModel = data
@@ -110,6 +120,33 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
         val obj = data as OrderDetailsResModel
         super.onSuccessApiResult(obj)
         customerMakePaymentReqModel.status = obj.order_status
+
+        btn_apply_promo.isEnabled = true
+    }
+
+    private fun setApplyPromoCodeAPIListener(){
+
+
+
+        btn_apply_promo.setOnClickListener {
+
+            val cupon = ed_apply_copon.text.toString()
+            if (cupon.isEmpty()){
+                showToastString(resources.getString(R.string.VALID_PROMO_CODE))
+                return@setOnClickListener
+            }
+            callAPI()?.let {
+                it.observeApiResult(
+                    it.callAPIActivity<ApplyPromoCodeViewModel>(this)
+                        .applyPromo(ApplyPromoCodeReqModel(customerMakePaymentReqModel.order_id,cupon))
+                    , this, this
+                )
+
+            }
+
+
+        }
+
     }
 
     /*private fun openPaymentGetWayPage(data: PaymentGetwayCheckoutIDResModel) {

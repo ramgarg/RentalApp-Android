@@ -212,7 +212,12 @@ class Common {
         }
 
         fun roundOfDouble(number:Double?):Double{
-            return  String.format("%.3f", number).toDouble()
+            try {
+                return  String.format("%.3f", number).toDouble()
+            }catch (e:Exception){
+
+            }
+            return number!!
         }
 
     }

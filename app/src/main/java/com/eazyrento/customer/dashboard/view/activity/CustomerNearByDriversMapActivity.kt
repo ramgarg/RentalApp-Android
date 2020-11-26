@@ -1,6 +1,7 @@
 package com.eazyrento.customer.dashboard.view.activity
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.LiveData
@@ -29,13 +30,17 @@ class CustomerNearByDriversMapActivity : BaseNearByDriversMapActivity(), OnMapRe
             .getNearByDriversToCustomer(lati, longi)
     }
 
+
     override fun onCurrentLocation(currentLatLng: LatLong?) {
+
+        super.onCurrentLocation(currentLatLng)
 
         tv_address_line_map.setCurrentAddressOnTopInMap(
             this@CustomerNearByDriversMapActivity,
             lati,
             longi
         )
+
         nearByDriverApi()
     }
 

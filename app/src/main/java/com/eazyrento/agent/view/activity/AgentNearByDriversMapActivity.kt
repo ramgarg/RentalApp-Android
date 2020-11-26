@@ -1,6 +1,7 @@
 package com.eazyrento.agent.view.activity
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.LiveData
@@ -35,19 +36,24 @@ import kotlinx.android.synthetic.main.view_map_top_location_card.*
 
 class AgentNearByDriversMapActivity : BaseNearByDriversMapActivity(), OnMapReadyCallback {
 
-    private lateinit var  bookingITem: BookingListItem
+    private lateinit var bookingITem: BookingListItem
 
-    override fun nearByDriver(it:LiveDataActivityClass): LiveData<DataWrapper<DriverList>> {
+    override fun nearByDriver(it: LiveDataActivityClass): LiveData<DataWrapper<DriverList>> {
         return it.callAPIActivity<DriverListingViewModel>(this)
             .getNearByDriversToAgent(bookingITem.id)
     }
 
+    @SuppressLint("MissingPermission")
     override fun onCurrentLocation(currentLatLng: LatLong?) {
+
+        super.onCurrentLocation(currentLatLng)
+
         tv_address_line_map.setCurrentAddressOnTopInMap(
             this@AgentNearByDriversMapActivity,
             lati,
             longi
         )
+
         nearByDriverApi()
     }
 
@@ -73,21 +79,24 @@ class AgentNearByDriversMapActivity : BaseNearByDriversMapActivity(), OnMapReady
         //driverList?.run {
 
 
-        val merchant = Merchant(bookingITem.product_detail.starting_price,
-            driver.details.merchantDetails.id,bookingITem.product_detail.starting_price,1)
+        val merchant = Merchant(
+            bookingITem.product_detail.starting_price,
+            driver.details.merchantDetails.id, bookingITem.product_detail.starting_price, 1
+        )
 
-        val  assignMerchantsReqModel = AssignMerchantsReqModel()
+        val assignMerchantsReqModel = AssignMerchantsReqModel()
 
         assignMerchantsReqModel.booking_id = bookingITem.id
-        assignMerchantsReqModel.order_id  = bookingITem.order_id
+        assignMerchantsReqModel.order_id = bookingITem.order_id
         assignMerchantsReqModel.merchant_list = arrayListOf(merchant)
 
 
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<AgentAssignMerchantViewModel>(this@AgentNearByDriversMapActivity)
-                    .assignMerchants(assignMerchantsReqModel)
-                , this@AgentNearByDriversMapActivity, this@AgentNearByDriversMapActivity
+                    .assignMerchants(assignMerchantsReqModel),
+                this@AgentNearByDriversMapActivity,
+                this@AgentNearByDriversMapActivity
             )
         }
 
@@ -119,7 +128,7 @@ class AgentNearByDriversMapActivity : BaseNearByDriversMapActivity(), OnMapReady
         }
     }
 
-    private fun driverPopUp(driver: Drivers){
+    private fun driverPopUp(driver: Drivers) {
 
         val merchantDetails = driver.details.merchantDetails
 
@@ -128,15 +137,19 @@ class AgentNearByDriversMapActivity : BaseNearByDriversMapActivity(), OnMapReady
 
         tv_quantity.text = bookingITem.product_detail.quantity.toString()
 
-        tv_starting_price.text = resources.getString(R.string.dollar).plus( bookingITem.product_detail.starting_price)
+        tv_starting_price.text =
+            resources.getString(R.string.dollar).plus(bookingITem.product_detail.starting_price)
         tv_user_name.text = merchantDetails.fullName
         Picasso.with(this).load(merchantDetails.profileImage).into(customer_profile_pic)
 
         //listeners
-        phone_view.setOnClickListener{
-            Common.phoneCallWithNumber(merchantDetails.mobileNumber,this@AgentNearByDriversMapActivity)
+        phone_view.setOnClickListener {
+            Common.phoneCallWithNumber(
+                merchantDetails.mobileNumber,
+                this@AgentNearByDriversMapActivity
+            )
         }
-        img_close_on_map.setOnClickListener{
+        img_close_on_map.setOnClickListener {
             assign_diver_from_map.visibility = View.GONE
         }
 
@@ -147,9 +160,13 @@ class AgentNearByDriversMapActivity : BaseNearByDriversMapActivity(), OnMapReady
 
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
-        if (data is JsonElement){
+        if (data is JsonElement) {
 
-            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(this,Constant.INTENT_AGENT_NEAR_BY_DRIVER_ASSIGNED,2)
+            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(
+                this,
+                Constant.INTENT_AGENT_NEAR_BY_DRIVER_ASSIGNED,
+                2
+            )
             showToast(R.string.REQUEST_SUCCESSED)
             return
         }

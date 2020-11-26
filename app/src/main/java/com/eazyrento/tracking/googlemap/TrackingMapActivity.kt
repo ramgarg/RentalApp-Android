@@ -58,13 +58,6 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
-    companion object {
-        const val MODE = "driving"
-        const val ROUTING_PREFERENCE = "less_driving"
-        val ORIGIN = "Dolariya"
-        val DESTINATION = "Seoni Malwa"
-
-    }
 
     /* on create */
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,7 +94,7 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
 
         setMarkerClickLisetener()
 
-        mMap?.isMyLocationEnabled = true
+       // mMap?.isMyLocationEnabled = true
 
         //mMapSetup = MapSetup(this, mMap!!)
 

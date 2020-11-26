@@ -161,7 +161,7 @@
             <EditText
                     android:drawablePadding="@dimen/_10sdp"
                     android:layout_width="match_parent"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:hint="@string/enter_amount"
                     android:layout_gravity="start"
                     android:textAlignment="viewStart"
@@ -238,6 +238,8 @@
                     android:layout_below="@+id/layout_main"
                     android:id="@+id/lyt_promo">
                 <EditText
+                        android:id="@+id/ed_apply_copon"
+
                         android:layout_marginTop="@dimen/_15sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_40sdp"
@@ -249,9 +251,11 @@
                         android:background="@drawable/ed_coupon_bg"
                         android:hint="@string/enter_promo_code"
                         android:layout_marginStart="@dimen/_20sdp"
-                        android:id="@+id/ed_apply_copon"
+
                         />
-                <Button android:layout_width="match_parent"
+                <Button
+                        android:id="@+id/btn_apply_promo"
+                        android:layout_width="match_parent"
                         android:background="@drawable/apply"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_15sdp"
@@ -261,7 +265,9 @@
                         android:fontFamily="@font/bree_serif"
                         android:textSize="@dimen/_15sdp"
                         android:layout_toEndOf="@+id/ed_apply_copon"
-                        android:layout_height="@dimen/_40sdp"/>
+                        android:layout_height="@dimen/_40sdp"
+                        android:enabled="false"
+                        />
             </RelativeLayout>
 
 

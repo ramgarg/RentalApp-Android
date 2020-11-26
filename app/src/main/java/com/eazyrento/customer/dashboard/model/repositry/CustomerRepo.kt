@@ -7,6 +7,8 @@ import com.eazyrento.agent.model.repositry.api.AgentAPI
 import com.google.gson.JsonElement
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.appbiz.retrofitapi.GenericRequestHandler
+import com.eazyrento.common.model.modelclass.ApplyPromoCodeReqModel
+import com.eazyrento.common.model.modelclass.ApplyPromoCodeResModel
 import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.common.model.repositry.api.MasterAPI
 import com.eazyrento.common.view.UserInfoAPP
@@ -23,6 +25,19 @@ class CustomerCreateBookingRepo :
 //        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
         val call = ServiceGenrator.client.create(
             CustomerAPI::class.java).createBooking(customerCreateBookingReqModel)
+        return doRequest(call)
+    }
+
+
+}
+
+class ApplyPromoCodeRepo :
+    GenericRequestHandler<ApplyPromoCodeResModel>(){
+
+    fun applyPromo(applyPromoCodeReqModel: ApplyPromoCodeReqModel): LiveData<DataWrapper<ApplyPromoCodeResModel>> {
+//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+        val call = ServiceGenrator.client.create(
+            CustomerAPI::class.java).applyPromo(applyPromoCodeReqModel)
         return doRequest(call)
     }
 

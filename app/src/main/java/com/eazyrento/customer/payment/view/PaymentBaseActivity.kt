@@ -16,6 +16,7 @@ import com.eazyrento.customer.payment.model.modelclass.CustomerMakePaymentReqMod
 import com.eazyrento.customer.payment.model.modelclass.PaymentGetwayCheckoutIDReqModel
 import com.eazyrento.customer.payment.model.modelclass.PaymentGetwayCheckoutIDResModel
 import com.eazyrento.customer.payment.viewmodel.MakePaymentViewModel
+import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.paymentgetway.PaymentCheckout
 import com.eazyrento.webservice.PathURL
@@ -27,10 +28,11 @@ open abstract class PaymentBaseActivity : BaseActivity() {
     protected var amountToPay:Double = 0.0
     protected var paymentMessage: String = ""
     private lateinit var baseMakePaymentModel: BaseMakePaymentModel
-    private lateinit var paymentGetwayCheckoutIDResModel: PaymentGetwayCheckoutIDResModel
     abstract fun getReqPaymentModel():BaseMakePaymentModel
     abstract fun requestPaymentObjectBuilder():BaseMakePaymentModel
     protected var is_tip: Int = 0
+
+    protected var totalPrice:Double =0.0
 
     override fun <T> moveOnSelecetedItem(type: T) {
     }
@@ -134,13 +136,29 @@ open abstract class PaymentBaseActivity : BaseActivity() {
              baseMakePaymentModel.order_id =it
          }
 
-        tv_total_price.text =Constant.DOLLAR.plus(customerOrderDetailsResModel.order_amount_with_commission)
+        /*tv_total_price.text =Constant.DOLLAR.plus(customerOrderDetailsResModel.order_amount_with_commission)
         tv_pending_amount.text = Constant.DOLLAR.plus(customerOrderDetailsResModel.amount_to_pay)
 
         tv_pending_approval.text=Constant.DOLLAR.plus(customerOrderDetailsResModel.amount_pending_for_approval)
 
 
-        amountToPay = customerOrderDetailsResModel.amount_to_pay
+        amountToPay = customerOrderDetailsResModel.amount_to_pay*/
+
+        totalPrice = Common.roundOfDouble(customerOrderDetailsResModel.order_amount_with_commission)
+
+        amountDataRefrash(customerOrderDetailsResModel.amount_to_pay,
+            customerOrderDetailsResModel.amount_pending_for_approval)
+    }
+
+    protected fun amountDataRefrash(amount_to_pay:Double,amount_pending_for_approval:Double){
+
+        tv_total_price.text =Constant.DOLLAR.plus(totalPrice)
+        tv_pending_amount.text = Constant.DOLLAR.plus(Common.roundOfDouble(amount_to_pay))
+
+        tv_pending_approval.text=Constant.DOLLAR.plus(amount_pending_for_approval)
+
+
+        amountToPay = amount_to_pay
     }
 
     protected fun convertAmountIntoDoubleFromEditText():Double{

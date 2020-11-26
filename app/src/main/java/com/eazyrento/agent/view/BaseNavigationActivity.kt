@@ -41,6 +41,7 @@ import showHippoConversation
 
  abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+     abstract fun setNotificationFragment()
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
@@ -80,13 +81,7 @@ import showHippoConversation
     fun setOrderSummeryActivity(orderID:String){
         orderSummeryActivity(orderID)
     }
-    fun setNotification(){
 
-        toolbar_title.text=getString(R.string.title_notification)
-
-        moveToSelectedFragment(NotificationFragment())
-
-    }
 
     // dynamic title
     fun setNavigationIconAndTitle(hashMap:HashMap<Int, MenuData>){
@@ -109,7 +104,7 @@ import showHippoConversation
 
         img_notification.setOnClickListener {
             //MoveToAnotherComponent.moveToActivityNormal<NotificationFragment>(this)
-            setNotification()
+            setNotificationFragment()
         }
         img_menu.setOnClickListener {
             drawer_layout.openDrawer(GravityCompat.START)
