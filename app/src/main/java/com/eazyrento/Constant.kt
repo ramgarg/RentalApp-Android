@@ -71,6 +71,8 @@ interface Constant{
         const val INTENT_NOTE_DELETE = "delete"
         const val INTENT_SUCCESS_ADDED_PRODUCT = "success"
 
+        const val VIEW_ALL_BOOKINGS = "view_all"
+
         const val INTENT_AGENT_NEAR_BY_DRIVER_ASSIGNED = "driver_assigned"
 
         const val INTENT_DRIVER_ASSIGNED_BY_MERCHANT = "assigned"
@@ -88,6 +90,8 @@ interface Constant{
 
 
         const val INTENT_BOOKING_LIST = "booking_list"
+
+        const val AGENT_VIEW_ALL_REQUEST_CODE = 5434
 
         const val INTENT_ADD_ANOTHER = "booking"
 

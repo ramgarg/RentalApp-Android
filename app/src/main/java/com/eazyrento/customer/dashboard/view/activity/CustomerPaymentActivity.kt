@@ -101,6 +101,10 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
     override fun <T> onSuccessApiResult(data: T) {
 
         if (data is ApplyPromoCodeResModel){
+            //
+            //ed_apply_copon.setText("")
+            ed_enter_amount.setText("")
+
             amountDataRefrash(data.amountToPay,data.amountPendingForApproval)
             return
         }
@@ -126,11 +130,10 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
 
     private fun setApplyPromoCodeAPIListener(){
 
-
-
         btn_apply_promo.setOnClickListener {
 
             val cupon = ed_apply_copon.text.toString()
+
             if (cupon.isEmpty()){
                 showToastString(resources.getString(R.string.VALID_PROMO_CODE))
                 return@setOnClickListener

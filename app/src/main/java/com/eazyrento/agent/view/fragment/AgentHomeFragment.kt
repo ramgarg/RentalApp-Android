@@ -24,7 +24,10 @@ class AgentHomeFragment : DashboardBaseFragment() {
         callAPIDashboard(Constant.BOOKING_DASHBOARD_AGENT)
 
         btn_home_view_all.setOnClickListener {
+
             MoveToAnotherComponent.openActivityWithParcelableParam<AgentShowAllBookingActivity, BookingDashboardResModel>(requireContext(),Constant.INTENT_BOOKING_LIST,agentDashboardResponse)
+//            MoveToAnotherComponent.startActivityResultWithParcelable<AgentShowAllBookingActivity, BookingDashboardResModel>(requireActivity(),Constant.INTENT_BOOKING_LIST,agentDashboardResponse,Constant.AGENT_VIEW_ALL_REQUEST_CODE)
+
         }
 
     }
@@ -55,38 +58,6 @@ class AgentHomeFragment : DashboardBaseFragment() {
         }
 
     }
-
-    /*override fun setBookingHolder(
-        holder: DashboardBookingCardAdapter.CardViewHolder,
-        list: List<Booking>,
-        position: Int
-    ) {
-
-        val order_listing_obj = list.get(position)
-        if(order_listing_obj!=null) {
-
-            holder?.tv__name.text = order_listing_obj.customer_detail?.full_name
-            holder?.tv__type.text = Constant.CUSTOMER
-
-            // prodect details
-            holder?.tv__product_quantity.text =
-                order_listing_obj.product_detail?.product_name + "-" + order_listing_obj.product_detail?.quantity
-            holder.tv__date_show.text = order_listing_obj.product_detail?.start_date
-            holder.tv__order.text = order_listing_obj.order_id
-
-            Picasso.with(context).load(order_listing_obj.customer_detail?.profile_image)
-                .into(holder.img__pic)
-
-            *//*holder.btn__accept.setOnClickListener {
-                acceptBooking(order_listing_obj, position, Constant.AGENT_ACCEPTANCE)
-            }
-            holder.btn__decline.setOnClickListener {
-                declineBooking(order_listing_obj, position, Constant.AGENT_ACCEPTANCE)
-            }*//*
-
-        }
-    }*/
-
 
 }
 

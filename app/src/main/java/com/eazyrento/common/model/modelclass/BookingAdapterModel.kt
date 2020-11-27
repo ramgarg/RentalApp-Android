@@ -16,53 +16,59 @@ import com.squareup.picasso.Picasso
 
 data class BookingAdapterModel(
     //user details
-    val tv_user_name :TextView,
-    val tv_user_role :TextView,
-    val img_profile_pic:ImageView,
-    val img_phone_call:ImageView,
+    val tv_user_name: TextView,
+    val tv_user_role: TextView,
+    val img_profile_pic: ImageView,
+    val img_phone_call: ImageView,
     //product details
-    val tv_product_quantity:TextView,
-    val tv_date_show:TextView,
-    val tv_order_id:TextView,
+    val tv_product_quantity: TextView,
+    val tv_date_show: TextView,
+    val tv_order_id: TextView,
 
     //order status
-    val tv_status :TextView?,
-    val btn_accept_booking:Button,
-    val btn_decline_booking:Button
+    val tv_status: TextView?,
+    val btn_accept_booking: Button,
+    val btn_decline_booking: Button
 )
 
 fun bookingModelHolder(
     pos: Int,
     obj: BaseUserRoleDetail,
     modelBooking: BookingAdapterModel,
-    bookingListItem:BaseBooking,
+    bookingListItem: BaseBooking,
     context: Context
 ) {
     //val obj = listCustomerBooking.get(pos) as BaseUserRoleDetail
     //agent details
-    modelBooking.tv_user_name.text=obj.full_name.capitalize()
-    modelBooking.tv_user_role.text= obj.userRole
+    modelBooking.tv_user_name.text = obj.full_name.capitalize()
+    modelBooking.tv_user_role.text = obj.userRole
     Picasso.with(context).load(obj.profile_image).into(modelBooking.img_profile_pic)
     modelBooking.img_phone_call.setOnClickListener {
         Common.phoneCallWithNumber(obj.mobile_number, context)
     }
 
-    modelBooking.tv_order_id.text = context.resources.getString(R.string.booking_id).plus(bookingListItem.order_id)
+    modelBooking.tv_order_id.text =
+        context.resources.getString(R.string.booking_id).plus(bookingListItem.order_id)
 
     // product details
-    bookingListItem.product_detail?.let{
-    modelBooking.tv_date_show.text = convertToDisplayDate(splitDateServerFormat(it.start_date))
-    modelBooking.tv_product_quantity.text = context.resources.getString(R.string.quantity).plus(it.quantity)
+    if (bookingListItem.product_detail != null) {
+        modelBooking.tv_date_show.text =
+            convertToDisplayDate(splitDateServerFormat(bookingListItem.product_detail?.start_date))
+        modelBooking.tv_product_quantity.text = context.resources.getString(R.string.quantity)
+            .plus(bookingListItem.product_detail?.quantity)
+    } else if (bookingListItem.merchant_order_detail != null) {
+        modelBooking.tv_product_quantity.text = context.resources.getString(R.string.quantity)
+            .plus(bookingListItem.merchant_order_detail?.merchant_quantity)
     }
 
     modelBooking.tv_status?.let {
         it.visibility = View.VISIBLE
         it.text = bookingListItem.status
-        val bg = when(bookingListItem.status){
-            Constant.PENDING-> R.drawable.payment_pending
+        val bg = when (bookingListItem.status) {
+            Constant.PENDING -> R.drawable.payment_pending
             Constant.FAILED -> R.drawable.payment_failed
-            Constant.REJECTED-> R.drawable.payment_failed
-            else-> R.drawable.payment_success
+            Constant.REJECTED -> R.drawable.payment_failed
+            else -> R.drawable.payment_success
         }
         it.setBackgroundResource(bg)
     }

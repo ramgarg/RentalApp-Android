@@ -173,7 +173,7 @@
                     android:gravity="center"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_10sdp"
-                    android:text=""
+                    android:text="1"
                     android:textColor="@color/black" />
 
             <ImageView

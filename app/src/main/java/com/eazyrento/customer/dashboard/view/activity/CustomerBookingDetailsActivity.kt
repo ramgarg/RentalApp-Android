@@ -51,6 +51,10 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
         pro_booking_price.text = Constant.DOLLAR+prodDetailsObj.base_price
         pro_name.text = prodDetailsObj.name.capitalize()
+
+        if(prodDetailsObj.is_category_vehicle.not())
+            layout_driver.visibility = View.GONE
+
     }
 
     private fun bookingDatePicker(

@@ -49,7 +49,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
-        if(orderRes.is_category_vehicle && orderRes.is_driver_assigned.not()){
+        if(orderRes.is_category_vehicle && orderRes.is_driver_assigned.not() && orderRes.product_detail?.with_driver==true){
             tv_assign_to_driver.visibility=View.VISIBLE
         }else{
             tv_assign_to_driver.visibility= View.GONE

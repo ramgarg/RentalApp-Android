@@ -62,7 +62,7 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
     }
 
     private fun isNearByDriverShow():Boolean{
-        if (orderRes.product_detail?.quantity==1 && orderRes.is_category_vehicle){
+        if (orderRes.product_detail?.with_driver==true &&  orderRes.product_detail?.quantity==1 && orderRes.is_category_vehicle ){
             return true
         }
         return false

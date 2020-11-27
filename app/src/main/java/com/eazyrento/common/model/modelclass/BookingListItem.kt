@@ -10,6 +10,7 @@ abstract class BaseBooking{
     abstract val customer_detail: CustomerDetailX?
     abstract val product_detail: ProductDetail?
     abstract val agent_detail:AgentDetail?
+    abstract val merchant_order_detail: MerchantOrderDetail?
     abstract val id: Int
     abstract val order_id: String
     abstract val status: String
@@ -19,6 +20,7 @@ abstract class BaseBooking{
 data class BookingListItem(
    override val agent_detail: AgentDetail,
    override val customer_detail: CustomerDetailX,
+   override val merchant_order_detail: MerchantOrderDetail?,
    override val id: Int,
    override val order_id: String,
    override val product_detail: ProductDetail,
@@ -41,6 +43,6 @@ data class Booking(
     override val id: Int,
     override val order_id: String,
     override val status: String,
-    val merchant_order_detail: MerchantOrderDetail?,
+    override val merchant_order_detail: MerchantOrderDetail?,
     val start_date: String?
 ) : Parcelable,BaseBooking()

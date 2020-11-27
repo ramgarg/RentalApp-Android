@@ -8,6 +8,7 @@ data class ProductDetailsResModel(
     val base_price: Double,
     val id: Int,
     var is_wishlisted: Boolean,
+    var is_category_vehicle: Boolean,
     val name: String,
     val product_description: String,
 //    val product_details: ProductDetailsInner,
