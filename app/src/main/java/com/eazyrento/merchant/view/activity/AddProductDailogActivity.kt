@@ -15,7 +15,6 @@ import android.widget.Spinner
 import com.eazyrento.Constant
 import com.eazyrento.EazyRantoApplication.Companion.context
 import com.eazyrento.R
-import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -84,9 +83,16 @@ class AddProductDailogActivity:BaseActivity() {
     private fun setCheckBoxListener() {
         var day:Int
         findViewById<CheckBox>(R.id.chk_box_with_driver).setOnCheckedChangeListener { buttonView, isChecked ->
-            merchantAddProductReqModel.with_driver =isChecked
-            ed_driver_price.visibility = View.VISIBLE
-            tv_per_day_static.visibility = View.VISIBLE
+
+                merchantAddProductReqModel.with_driver =isChecked
+                if (isChecked) {
+                    ed_driver_price.visibility = View.VISIBLE
+                    tv_per_day_static.visibility = View.VISIBLE
+                }else{
+                    ed_driver_price.setText("")
+                    ed_driver_price.visibility = View.GONE
+                    tv_per_day_static.visibility = View.GONE
+                }
              }
         //days chk
         findViewById<CheckBox>(R.id.sun_chk).setOnCheckedChangeListener { buttonView, isChecked ->
@@ -167,6 +173,10 @@ class AddProductDailogActivity:BaseActivity() {
        merchantAddProductReqModel.daily_price = ed_daily_price.text.toString().toDouble()
        merchantAddProductReqModel.monthly_price = ed_monthly_price.text.toString().toDouble()
 
+       if (merchantAddProductReqModel.with_driver)
+            merchantAddProductReqModel.driver_cost_per_day = ed_driver_price.text.toString().toDouble()
+
+
 
        var boolean_add:Boolean = false
        var id:Int = edit_product_ID
@@ -225,9 +235,7 @@ class AddProductDailogActivity:BaseActivity() {
         if (ed_driver_price.text.isEmpty() || ed_driver_price.text.toString().toDouble()==0.0){
             showToast(R.string.FILL_DRIVER_PRICE)
             return true
-        } else{
-            merchantAddProductReqModel.driver_cost_per_day = ed_driver_price.text.toString().toDouble()
-        }
+         }
         }
         if (obj.variant.equals("")){
             showToast(R.string.SELECT_FUEL_TYPE_SPINNER)
@@ -237,7 +245,7 @@ class AddProductDailogActivity:BaseActivity() {
             showToast(R.string.SELECT_DOCUMENT)
             return true
         }
-        if (obj.attach_document.equals("")){
+        if (edit_product_ID== DEFUALT_VALUE && obj.attach_document.equals("")){
             showToast(R.string.UPLOAD_DOCUMENT)
             return true
         }

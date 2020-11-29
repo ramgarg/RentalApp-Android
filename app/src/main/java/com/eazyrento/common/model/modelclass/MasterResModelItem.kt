@@ -11,5 +11,5 @@ data class MasterResModelItem(
     val display_name: String
 ) : Parcelable
 {
-    override fun toString(): String = name
+    override fun toString(): String = display_name
 }
