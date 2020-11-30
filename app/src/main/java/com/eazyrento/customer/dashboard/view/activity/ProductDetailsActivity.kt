@@ -14,13 +14,11 @@ import com.eazyrento.customer.dashboard.view.adapter.AdapterProductDetails
 import com.eazyrento.customer.dashboard.viewmodel.CustomerWishAddViewModel
 import com.eazyrento.customer.dashboard.viewmodel.CustomerWishDeleteViewModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
-import com.eazyrento.customer.utils.ViewVisibility
 import com.eazyrento.supporting.MyJsonParser
 import com.google.gson.JsonElement
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_view_details.*
 import kotlinx.android.synthetic.main.template_product_main_view.*
-import kotlinx.android.synthetic.main.toolbar.*
 
 class ProductDetailsActivity : BaseActivity()
      {
@@ -79,7 +77,7 @@ class ProductDetailsActivity : BaseActivity()
 
     private fun onsetDataUI(data: ProductDetailsResModel) {
 
-            pro_booking_price.text =Constant.DOLLAR_NOTATION+data.base_price
+            pro_booking_price.text =Constant.CURRENCY_SIGN+data.base_price
             pro_name.text = data.name.capitalize()
             setWishProductImage(data)
 //            pro_wish.setImageResource(if(data.is_wishlisted) R.mipmap.like else R.mipmap.unlike)

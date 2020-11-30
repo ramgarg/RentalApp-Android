@@ -146,7 +146,7 @@ interface Constant{
         const val TOTAL_AMOUNT="Total Amount"
         const val BOOKING_PRICE="Booking Price"
 
-        const val DOLLAR="$"
+        const val CURRENCY_SIGN="SAR"
        // const val QUANTITY="Quantity - "
       //  const val ORDER_ID="Order ID - "
        // const val BOOKING_ID="Booking ID - "
@@ -173,9 +173,6 @@ interface Constant{
         // request code for activiity
         const val MERCHANT_HOME_FRAGMENT_REQUEST_CODE = 100
         const val ADDRESS_REQUECT_CODE =200
-
-        //Dollor
-        const val DOLLAR_NOTATION = "$"
 
         //Address Type
         /*const val Address_Home= "Home"

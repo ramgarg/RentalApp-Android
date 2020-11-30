@@ -1,7 +1,5 @@
 package com.eazyrento.agent.view.activity
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -9,7 +7,6 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.viewmodel.AgentSubOrderViewModel
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
@@ -108,7 +105,7 @@ class AgentSubOrderActivity :BaseActivity() {
     private fun setTopView(data: SubOrderReqResModel) {
 
         tv_order_id.text= resources.getString(R.string.orderid).plus(data.order_id)
-        tv_booking_price.text= Constant.DOLLAR.plus(data.price)
+        tv_booking_price.text= Constant.CURRENCY_SIGN.plus(data.price)
         order_product_quantity.text = resources.getString(R.string.quantity).plus(data.quantity)
 
 
@@ -184,7 +181,7 @@ class AgentSubOrderActivity :BaseActivity() {
 
         if(isValidated().not()) return
 
-        val subOrderUpdateReqModel = SubOrderUpdateReqModel(tv_booking_price.text.toString().removePrefix(Constant.DOLLAR)
+        val subOrderUpdateReqModel = SubOrderUpdateReqModel(tv_booking_price.text.toString().removePrefix(Constant.CURRENCY_SIGN)
             .toDouble(),item_quantity.text.toString().toInt(),mStatus!!)
 
             callAPI()?.let {

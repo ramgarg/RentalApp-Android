@@ -80,7 +80,7 @@ import kotlinx.android.synthetic.main.template_work_info.*
 
         val numberRoundOf =Common.roundOfDouble(orderRes.order_amount_with_commission)
 
-        tv_booking_price.text= Constant.DOLLAR.plus(numberRoundOf)
+        tv_booking_price.text= Constant.CURRENCY_SIGN.plus(numberRoundOf)
 
         orderRes.product_detail?.let {
             tv_order_product_name.text=it.product_name?.capitalize()

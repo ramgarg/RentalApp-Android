@@ -78,7 +78,7 @@
     <string name="sendbutton">Send</string>
     <string name="volvo_fh_truck"> </string>
     <string name="totalprice">Total \n Price</string>
-    <string name="booking_price">$</string>
+    <string name="booking_price">SAR</string>
     <string name="hint_enter_booking_price">Enter booking price</string>
     <string name="per_hour">Per Hour</string>
     <string name="do_you_want_driver">Do you want vehicle with driver?</string>
@@ -244,7 +244,7 @@
 
     <string name="req_quantity">Required Quantity - </string>
 
-    <string name="_80">$80</string>
+    <string name="_80">SAR80</string>
     <string name="test_merchant">Test Merchant</string>
     <string name="select_document">Select Document</string>
     <string name="view_all_"><![CDATA[View all->]]></string>
@@ -258,7 +258,7 @@
     <string name="code">Code</string>
     <string name="select_location_">Select Location*</string>
     <string name="select_gender">Select Gender</string>
-    <string name="booking_price_dollar">Booking Price($)</string>
+    <string name="booking_price_dollar">Booking Price(SAR)</string>
     <string name="add_a_note">Add a Note</string>
     <string name="update_note">Update Note</string>
     <string name="booking">Bookings</string>
@@ -302,8 +302,8 @@
 
     <string name="rate">Rate</string>
     <string name="pending_approval">Pending Approval</string>
-    <string name="amount_dollar">Amount($)</string>
-    <string name="dollar">$</string>
+    <string name="amount_dollar">Amount(SAR)</string>
+    <string name="dollar">SAR</string>
     <string name="reset">Reset</string>
     <string name="product_name">Product Name</string>
     <string name="order_id">Order ID</string>

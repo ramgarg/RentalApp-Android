@@ -61,7 +61,7 @@ class PaymentHistoryAdapter(val items:List<PaymentListResModelItem>, val context
             holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_success)
         }*/
 
-        holder.tvPayment?.text= Constant.DOLLAR.plus(item.amount_paid)
+        holder.tvPayment?.text= Constant.CURRENCY_SIGN.plus(item.amount_paid)
         holder.tvOrderId?.text= context.resources.getString(R.string.orderid).plus(item.order_id)
 
         holder.tvDate?.text=item.added_on

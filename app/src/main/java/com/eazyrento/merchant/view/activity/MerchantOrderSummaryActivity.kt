@@ -74,7 +74,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         orderRes.merchant_order_detail?.let {
 
 
-            tv_booking_price.text= Constant.DOLLAR.plus( Common.roundOfDouble(it.booking_price))
+            tv_booking_price.text= Constant.CURRENCY_SIGN.plus( Common.roundOfDouble(it.booking_price))
 
             order_product_quantity.text=resources.getString(R.string.quantity).plus(it.merchant_quantity)
 

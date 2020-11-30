@@ -100,7 +100,7 @@ abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
         val item = filterListItems[position]
 
         holder.tvOrderProductName?.text=item.product_detail?.product_name?.capitalize()
-        holder.tvBookingPrice?.text= Constant.DOLLAR.plus(Common.roundOfDouble(item.order_amount_with_commission))
+        holder.tvBookingPrice?.text= Constant.CURRENCY_SIGN.plus(Common.roundOfDouble(item.order_amount_with_commission))
         holder.tvOrderQuantity?.text=resources.getString(R.string.quantity).plus(item.product_detail?.quantity)
 
         holder.tvOrderId?.text= resources.getString(R.string.orderid).plus(item.order_id)
