@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.eazyrento.login.view.LoginUserActivity
+import com.eazyrento.login.view.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
             // This method will be executed once the timer is over
             // Start your app main activity
             fcmTokenByFirebaseInstanceId(this)
-            startActivity(Intent(this, LoginUserActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
 
             // close this activity
             finish()

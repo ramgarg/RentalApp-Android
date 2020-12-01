@@ -28,7 +28,7 @@
         </activity>
         <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
 
-        <activity android:name="com.eazyrento.login.view.LoginUserActivity"
+        <activity android:name="com.eazyrento.login.view.LoginActivity"
                 android:screenOrientation="unspecified"
                 android:launchMode="singleTask"
         />
@@ -37,7 +37,7 @@
                 android:required="false" />
 
 
-        <activity android:name="com.eazyrento.login.view.RegistrationUserActivity"
+        <activity android:name="com.eazyrento.login.view.RegistrationActivity"
                   android:screenOrientation="unspecified"
 
         />

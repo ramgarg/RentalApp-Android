@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.Toast
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.utils.MoveToAnotherComponent
@@ -16,9 +15,7 @@ import com.eazyrento.supporting.PhoneNumberFormat
 import com.eazyrento.supporting.PhoneTextWatcher
 import com.eazyrento.supporting.isValidPhoneNumber
 import com.google.gson.JsonElement
-import kotlinx.android.synthetic.main.activity_forgot_password.*
 import kotlinx.android.synthetic.main.activity_forgot_password.ed_email
-import kotlinx.android.synthetic.main.activity_login.*
 
 class ForgotPasswordActivity :BaseActivity() {
 
@@ -83,7 +80,7 @@ class ForgotPasswordActivity :BaseActivity() {
 
         if (data is JsonElement){
 
-            MoveToAnotherComponent.moveToActivityWithIntentValue<LoginUserActivity>(this,
+            MoveToAnotherComponent.moveToActivityWithIntentValue<LoginActivity>(this,
                 Constant.INTENT_RESET_SUCCESSFULY,1)
 
            // showToast(ValidationMessage.REQUEST_SUCCESSED)

@@ -1,38 +1,27 @@
 package com.eazyrento.customer.utils
 
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.app.Dialog
-import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.webkit.*
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import com.eazyrento.AddressFilter
-import com.eazyrento.R
-import com.eazyrento.Session
+import androidx.databinding.library.BuildConfig
+import com.eazyrento.*
 import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.view.ChoseUserRole
+import com.eazyrento.supporting.LocalManager
 import kotlinx.android.synthetic.main.rating_review.img_close
 import kotlinx.android.synthetic.main.rental_dialog.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
-import kotlinx.android.synthetic.main.view_map_top_location_card.*
 import kotlinx.android.synthetic.main.view_map_top_location_card.view.*
-import java.sql.Time
-import java.text.Format
-import java.text.SimpleDateFormat
+import okhttp3.internal.userAgent
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 
 class Common {
@@ -42,12 +31,36 @@ class Common {
     companion object {
 
         fun openWebPage(webView: WebView, url:String){
-            webView.setWebViewClient(WebViewClient())
+           // webView.setWebViewClient(WebViewClient())
             webView.getSettings().setJavaScriptEnabled(true)
             webView.getSettings().setDomStorageEnabled(true)
             webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER)
 //            webView.loadUrl("https://www.google.com")
-            webView.loadUrl(url)
+
+            webViewWitheader(webView,url)
+           // webView.loadUrl(url)
+        }
+
+        fun webViewWitheader(webView: WebView,url: String) {
+
+            val mapHeader = HashMap<String, String>()
+
+            val language = Session.getInstance(EazyRantoApplication.context)?.getLocalLanguage()
+
+            mapHeader[PrefKey.LOCAL_LANGUAGE] = language?: LocalManager.english_lang_code
+
+            webView.settings.userAgentString = String.format("%s [%s/%s]", webView.settings.userAgentString, "App Android", BuildConfig.VERSION_NAME)
+
+            WebView.setWebContentsDebuggingEnabled(true)
+
+            webView.webViewClient = object : WebViewClient() {
+                override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest): WebResourceResponse? {
+                    CookieManager.getInstance().removeAllCookies(null)
+                    return super.shouldInterceptRequest(view, request)
+                }
+            }
+
+            webView.loadUrl(url,mapHeader)
         }
 
         fun initDailog(context: Context,layout: Int):Dialog{

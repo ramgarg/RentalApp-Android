@@ -6,9 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import com.eazyrento.*
 import com.eazyrento.agent.view.activity.AgentMainActivity
 import com.eazyrento.appbiz.AppBizLogger
@@ -33,9 +30,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.ed_password
+import kotlinx.android.synthetic.main.activity_register_user.*
 
 
-class LoginUserActivity : AppBizLogin() {
+class LoginActivity : AppBizLogin() {
     //fb permittion
     private companion object {
         const val EMAIL = "email"
@@ -85,7 +83,7 @@ class LoginUserActivity : AppBizLogin() {
 
     // lisetner
     fun onRegisterClick(view: View) {
-        MoveToAnotherComponent.moveToActivityNormal<RegistrationUserActivity>(this)
+        MoveToAnotherComponent.moveToActivityNormal<RegistrationActivity>(this)
     }
 
     fun onForgotPasswordClick(view: View) {
@@ -98,11 +96,12 @@ class LoginUserActivity : AppBizLogin() {
             return
         }
 
+        val pair = parseCountryCodeFromText(phoneNumberFormat,ed_email)
 
         loginAPI(
             createLoginUserReqModel(
                 ed_password.text.toString(),
-                ed_email.text.toString(),
+                pair.second,
                 UserInfoAPP.BY_NORMAL
             )
         )

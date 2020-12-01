@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Toast
 import com.eazyrento.Constant
 import com.eazyrento.R
-import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.forgotpassword.model.modelClass.OTPRequest
@@ -129,7 +128,7 @@ class OTPActivity :BaseActivity(){
         if (data is OTPResponse){
 //             {"status":200}
             showToast(R.string.REGISTRATION_SUCCESS)
-            MoveToAnotherComponent.moveToActivityWithIntentValue<LoginUserActivity>(this,Constant.INTENT_OTP_TO_LOGIN,1)
+            MoveToAnotherComponent.moveToActivityWithIntentValue<LoginActivity>(this,Constant.INTENT_OTP_TO_LOGIN,1)
 
         }
 

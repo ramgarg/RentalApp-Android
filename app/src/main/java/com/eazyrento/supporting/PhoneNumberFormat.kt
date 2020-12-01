@@ -14,6 +14,7 @@ import com.eazyrento.customer.utils.Common
 import io.michaelrocks.libphonenumber.android.NumberParseException
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import io.michaelrocks.libphonenumber.android.Phonenumber
+import kotlinx.android.synthetic.main.activity_register_user.*
 import java.lang.Exception
 import java.util.regex.Pattern
 
@@ -36,7 +37,8 @@ class PhoneNumberFormat(val context: Context) {
     fun getCountryCodeForLocalRegion(): Int? {
 
         val code = util?.getCountryCodeForRegion(countryRegionCode)
-        return code
+
+        return if (code == 0) null else code
     }
 
     fun getRegionCodeForCountryCode(intCode: Int): String? {
@@ -191,7 +193,7 @@ fun isValidPhoneNumber(phone: String,context: Context): Boolean {
 }
 
 
-class PhoneTextWatcher(val phoneNumberFormat: PhoneNumberFormat, val editText: EditText) :
+class PhoneTextWatcher(val phoneNumberFormat: PhoneNumberFormat, val editTextUserNameField: EditText) :
     PhoneNumberFormattingTextWatcher() {
 
     private val pattern = "[0-9]+"
@@ -210,10 +212,11 @@ class PhoneTextWatcher(val phoneNumberFormat: PhoneNumberFormat, val editText: E
         super.afterTextChanged(s)
         try {
             if (Pattern.matches(pattern, s.toString())) {
-                editText.setText(
-                    "+".plus(phoneNumberFormat.getCountryCodeForLocalRegion()).plus(s.toString())
+                editTextUserNameField.setText(
+                    "+".plus(phoneNumberFormat.getCountryCodeForLocalRegion() ?: "")
+                        .plus(s.toString())
                 )
-                editText.setSelection(editText.text.toString().length)
+                editTextUserNameField.setSelection(editTextUserNameField.text.toString().length)
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -221,4 +224,26 @@ class PhoneTextWatcher(val phoneNumberFormat: PhoneNumberFormat, val editText: E
 
     }
 
+}
+
+fun parseCountryCodeFromText(phoneNumberFormat:PhoneNumberFormat,editTextUserNameField: EditText): Pair<String, String> {
+    var countryCode = ""
+    var emailOrPhoneNumber = editTextUserNameField.text.toString()
+
+    try {
+        if (phoneNumberFormat.phoneNumber==null) {
+
+            phoneNumberFormat.parseNumberWithoutCountryCode(editTextUserNameField.text.toString())
+        }
+        phoneNumberFormat.phoneNumber?.let {
+            countryCode = "+" +it.countryCode
+            emailOrPhoneNumber =""+it.nationalNumber
+        }
+        phoneNumberFormat.phoneNumber =null
+    }catch (e:Exception){
+        phoneNumberFormat.phoneNumber =null
+        e.printStackTrace()
+    }
+
+    return Pair(countryCode,emailOrPhoneNumber)
 }

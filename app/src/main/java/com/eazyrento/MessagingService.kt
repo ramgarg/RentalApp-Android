@@ -9,7 +9,7 @@ import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.eazyrento.appbiz.AppBizLogger
-import com.eazyrento.login.view.LoginUserActivity
+import com.eazyrento.login.view.LoginActivity
 import com.eazyrento.supporting.DeeplinkEvents.Companion.mapPayLoadDataDeeplink
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
@@ -39,7 +39,7 @@ class MessagingService : FirebaseMessagingService() {
     }
 
     private fun sendNotification(messageBody: String?) {
-        val intent = Intent(this, LoginUserActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.putExtra(Constant.DEEPLINK_VALUE,true)
 

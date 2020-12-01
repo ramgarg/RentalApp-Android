@@ -159,6 +159,9 @@
                         android:layout_height="wrap_content"/>
 
             <EditText
+
+                    android:id="@+id/ed_enter_amount"
+
                     android:drawablePadding="@dimen/_10sdp"
                     android:layout_width="match_parent"
                     android:inputType="numberDecimal"
@@ -168,7 +171,7 @@
                     android:text=""
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ed_enter_amount"
+
                     android:maxLength="@integer/payment_amount_max_len"
             />
             </LinearLayout>

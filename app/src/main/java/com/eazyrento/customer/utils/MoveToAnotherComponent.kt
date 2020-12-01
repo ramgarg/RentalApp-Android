@@ -4,14 +4,9 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Parcelable
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import com.eazyrento.EazyRantoApplication
 import com.eazyrento.R
-import com.eazyrento.ValidationMessage
-import com.eazyrento.customer.dashboard.view.activity.*
-import com.eazyrento.customer.webpages.TermsConditionActivity
-import com.eazyrento.login.view.LoginUserActivity
+import com.eazyrento.login.view.LoginActivity
 import java.util.ArrayList
 
 
@@ -77,7 +72,7 @@ class MoveToAnotherComponent {
 
             EazyRantoApplication.onLogoutUpdateSession()
 
-            val intent = Intent(context, LoginUserActivity::class.java)
+            val intent = Intent(context, LoginActivity::class.java)
 
             intent.putExtra(key,value)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

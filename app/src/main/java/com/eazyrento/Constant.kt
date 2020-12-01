@@ -146,7 +146,7 @@ interface Constant{
         const val TOTAL_AMOUNT="Total Amount"
         const val BOOKING_PRICE="Booking Price"
 
-        const val CURRENCY_SIGN="SAR"
+
        // const val QUANTITY="Quantity - "
       //  const val ORDER_ID="Order ID - "
        // const val BOOKING_ID="Booking ID - "

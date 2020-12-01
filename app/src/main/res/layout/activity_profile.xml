@@ -125,7 +125,7 @@
                         android:lines="1"
                         android:maxLines="1"
                         android:nextFocusDown="@id/ed_country"
-                        android:enabled="false"
+
                         />
 
             </com.google.android.material.textfield.TextInputLayout>

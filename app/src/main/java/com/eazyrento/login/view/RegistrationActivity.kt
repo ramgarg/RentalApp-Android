@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.activity_register_user.btn_customer_inacti
 import kotlinx.android.synthetic.main.activity_register_user.btn_merchant_active
 import kotlinx.android.synthetic.main.activity_register_user.btn_merchant_inactive
 
-class RegistrationUserActivity : AppBizLogin(){
+class RegistrationActivity : AppBizLogin(){
     private val uploadImageFromDevice = UploadImageFromDevice()
     private var selectProfID:String?=null
     private var selectBase64String:String?=null
@@ -144,33 +144,19 @@ class RegistrationUserActivity : AppBizLogin(){
             }
     }
 
+
     private fun createRegisterUserReqModel(): RegisterUserReqModel {
 
-        var countryCode = ""
-        var emailOrPhoneNumber = ed_email_phone.text.toString()
-        var setLanguage = Session.getInstance(this)?.getLocalLanguage().toString()
-
-       try {
-           if (phoneNumberFormat.phoneNumber==null) {
-
-               phoneNumberFormat.parseNumberWithoutCountryCode(ed_email_phone.text.toString())
-           }
-           phoneNumberFormat.phoneNumber?.let {
-               countryCode = "+" +it.countryCode
-               emailOrPhoneNumber =""+it.nationalNumber
-           }
-       }catch (e:Exception){
-                e.printStackTrace()
-       }
+        val pair = parseCountryCodeFromText(phoneNumberFormat,ed_email_phone)
 
         return RegisterUserReqModel(
-            countryCode,
+            pair.first,
             ed_full_name.text.toString(),
             ed_password.text.toString(),
             UserInfoAPP.REGISTRATIONS_SOURCE!!,
             user_role!!,
-            emailOrPhoneNumber,
-            setLanguage,
+            pair.second,
+            Session.getInstance(this)?.getLocalLanguage().toString(),
             selectProfID,
             selectBase64String
         )
@@ -201,10 +187,10 @@ class RegistrationUserActivity : AppBizLogin(){
                             selectProfID = null
                     }
                     else{
-                        uploadImageFromDevice.pickImage(this@RegistrationUserActivity,
+                        uploadImageFromDevice.pickImage(this@RegistrationActivity,
                             object : OnPiclImageToBase64 {
                                 override fun onBase64(image64: String?) {
-                                    selectProfID = this@RegistrationUserActivity.resources.getStringArray(R.array.RegistrationDocument)[position]
+                                    selectProfID = this@RegistrationActivity.resources.getStringArray(R.array.RegistrationDocument)[position]
                                     selectBase64String =image64
                                 }
 
