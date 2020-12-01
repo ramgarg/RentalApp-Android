@@ -252,7 +252,7 @@
 
                     <ImageView
                             android:id="@+id/minus_quantity"
-                            android:layout_width="43dp"
+                            android:layout_width="@dimen/_25sdp"
                             android:layout_height="@dimen/_30sdp"
                             android:background="@drawable/button_add"
                             android:padding="@dimen/_7sdp"
@@ -265,7 +265,7 @@
                             android:fontFamily="@font/bree_serif"
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"
-                            android:layout_width="@dimen/_40sdp"
+                            android:layout_width="@dimen/_30sdp"
                             android:gravity="center"
                             android:background="@drawable/itemquantity_bg"
                             android:layout_height="@dimen/_30sdp"/>

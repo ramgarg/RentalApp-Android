@@ -60,7 +60,7 @@
             <TextView android:layout_width="0dp"
                     android:layout_weight="50"
                     android:id="@+id/tv_total_price"
-                    android:text="@string/booking_price"
+                    android:text="@string/currency_name"
                     style="@style/PaymentTextView"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -87,7 +87,7 @@
                         android:layout_weight="50"
                         android:id="@+id/tv_pending_amount"
                         style="@style/PaymentTextView"
-                        android:text="@string/booking_price"
+                        android:text="@string/currency_name"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
 
@@ -148,32 +148,37 @@
                         android:src="@mipmap/payment">
                 </ImageView>
 
-                <TextView android:layout_width="wrap_content"
-                        android:textColor="@color/black"
-                        android:paddingBottom="@dimen/_5sdp"
-                        android:fontFamily="@font/bree_serif"
-                        android:textSize="@dimen/_20sdp"
-                        android:layout_gravity="center"
-                        android:text="@string/booking_price"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_height="wrap_content"/>
+                <!--amout to pay edit text-->
 
             <EditText
 
                     android:id="@+id/ed_enter_amount"
 
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+
+
                     android:drawablePadding="@dimen/_10sdp"
-                    android:layout_width="match_parent"
                     android:inputType="numberDecimal"
                     android:hint="@string/enter_amount"
                     android:layout_gravity="start"
                     android:textAlignment="viewStart"
-                    android:text=""
-                    android:layout_marginEnd="@dimen/_20sdp"
-                    android:layout_height="wrap_content"
 
                     android:maxLength="@integer/payment_amount_max_len"
             />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textColor="@color/black"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:fontFamily="@font/bree_serif"
+                        android:textSize="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:text="@string/currency_name"
+
+                        />
             </LinearLayout>
 
 
@@ -201,28 +206,15 @@
                         style="@style/PaymentTextView">
 
                 </TextView>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dollar"
-                        android:id="@+id/tv_dollar"
-                        android:fontFamily="@font/bree_serif"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_below="@+id/img_amount"
-                        android:textSize="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_10sdp">
 
-                </TextView>
                 <EditText
                         android:id="@+id/ed_enter_amount_agent"
-                        android:layout_width="match_parent"
+                        android:layout_width="@dimen/_200sdp"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:layout_gravity="start"
                         android:textAlignment="viewStart"
-                        android:layout_toEndOf="@+id/tv_dollar"
+
                         android:fontFamily="@font/bree_serif"
                         android:hint="@string/enter_amount"
                         android:textSize="@dimen/_16sdp"
@@ -232,6 +224,22 @@
                         >
 
                 </EditText>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/currency_name"
+                        android:id="@+id/tv_dollar"
+                        android:fontFamily="@font/bree_serif"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+
+                        android:layout_below="@+id/img_amount"
+                        android:textSize="@dimen/_20sdp"
+                        android:layout_toEndOf="@+id/ed_enter_amount_agent"
+                        android:layout_marginTop="@dimen/_10sdp">
+
+                </TextView>
 
             </RelativeLayout>
             </RelativeLayout>

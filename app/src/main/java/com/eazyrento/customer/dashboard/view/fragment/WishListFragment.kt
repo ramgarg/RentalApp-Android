@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerWishListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.WishListItem
@@ -105,7 +106,7 @@ class WishListFragment : BaseFragment(), DeleteAndViewDetails {
     override fun setHolderOnView(holder: WishListAdapter.CardViewHolder, position: Int) {
 
         holder.tv_pro_name?.text=listWish.get(position).product_name.capitalize()
-        holder.tv_booking_price?.text= Constant.CURRENCY_SIGN+listWish.get(position).price
+        holder.tv_booking_price?.text= context?.amountWithCurrencyName(listWish.get(position).price)
         holder.lyt_booking_details.visibility = View.GONE
 
         holder.tv_remove.setOnClickListener{

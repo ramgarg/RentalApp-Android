@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.customer.dashboard.model.modelclass.*
 import com.eazyrento.customer.dashboard.view.activity.CustomerOrderSummaryActivity
 import com.eazyrento.customer.dashboard.viewmodel.CustomerOrderDetailsViewModel
@@ -80,7 +81,7 @@ import kotlinx.android.synthetic.main.template_work_info.*
 
         val numberRoundOf =Common.roundOfDouble(orderRes.order_amount_with_commission)
 
-        tv_booking_price.text= Constant.CURRENCY_SIGN.plus(numberRoundOf)
+        tv_booking_price.text= amountWithCurrencyName(numberRoundOf)
 
         orderRes.product_detail?.let {
             tv_order_product_name.text=it.product_name?.capitalize()

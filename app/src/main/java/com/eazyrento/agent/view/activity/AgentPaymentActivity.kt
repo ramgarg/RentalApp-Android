@@ -6,6 +6,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.common.model.modelclass.ApplyPromoCodeResModel
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.payment.model.modelclass.AgentMakePaymentReqModel
 import com.eazyrento.customer.payment.model.modelclass.BaseMakePaymentModel
@@ -42,6 +43,9 @@ class AgentPaymentActivity : PaymentBaseActivity() {
 
         tv_choose_mtd.visibility = View.GONE
 
+        // promo code apply
+        lyt_promo.visibility = View.INVISIBLE
+
     }
 
     override fun onClickDailog(int: Int) {
@@ -74,6 +78,15 @@ class AgentPaymentActivity : PaymentBaseActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
         AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
+
+        /*if (data is ApplyPromoCodeResModel){
+            //
+            //ed_apply_copon.setText("")
+            ed_enter_amount_agent.setText("")
+
+            amountDataRefrash(data.amountToPay,data.amountPendingForApproval)
+            return
+        }*/
 
         if (data is JsonElement){
 //            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)

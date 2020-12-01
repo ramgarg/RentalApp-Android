@@ -43,7 +43,7 @@
                         android:textColor="@color/black"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:textSize="@dimen/_24sdp"
-                        android:text="@string/booking_price"
+                        android:text="@string/currency_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <TextView

@@ -123,7 +123,7 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/booking_price"
+                android:hint="@string/currency_name"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_gravity="start"
                 android:textAlignment="viewStart"

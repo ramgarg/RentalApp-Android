@@ -9,6 +9,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.model.modelclass.Merchants
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.customer.utils.Common
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.agent_assign_merchant.view.*
@@ -42,7 +43,7 @@ class AssignMerchnatAdapter (val assignMerchantDataHolderBinder:BookingDataHolde
         val itemMerchant = merchantListItem[position]
         
         holder.assign_merchant_name.text =itemMerchant.details.full_name
-        holder.booking_price.text = context.resources.getString(R.string.dollar).plus(itemMerchant.details.price)
+        holder.booking_price.text = context.amountWithCurrencyName(itemMerchant.details.price)
 //        holder.booking_total_prcie = merchantListItem
 //        holder.layout_truck_quantity.text =Constant.QUANTITY+itemMerchant.details.quantity_available
         holder.merchant_distance.text=itemMerchant.details.distance.toString().plus(Constant.KM)

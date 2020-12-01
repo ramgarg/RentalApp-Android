@@ -9,6 +9,7 @@ import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.viewmodel.AgentSubOrderViewModel
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.BaseUserRoleDetail
 import com.eazyrento.customer.dashboard.model.modelclass.SubOrderReqResModel
@@ -23,7 +24,7 @@ import kotlinx.android.synthetic.main.template_order_summery_top_view.*
 import kotlinx.android.synthetic.main.template_quantity_view.*
 
 class AgentSubOrderActivity :BaseActivity() {
-   // private var subOrderReqResModel: SubOrderReqResModel?=null
+    private var subOrderReqResModel: SubOrderReqResModel?=null
     private var mId: Int = 0
     private var mStatus:String?=null
 //    private var price:Double =0.0
@@ -73,7 +74,7 @@ class AgentSubOrderActivity :BaseActivity() {
         }
 
         if (data is SubOrderReqResModel) {
-//            subOrderReqResModel = data
+            subOrderReqResModel = data
             setTopView(data)
             setQunatity(data)
             data.merchant_detail?.let {  setMerchantView(it) }
@@ -105,7 +106,9 @@ class AgentSubOrderActivity :BaseActivity() {
     private fun setTopView(data: SubOrderReqResModel) {
 
         tv_order_id.text= resources.getString(R.string.orderid).plus(data.order_id)
-        tv_booking_price.text= Constant.CURRENCY_SIGN.plus(data.price)
+
+        tv_booking_price.text= amountWithCurrencyName(data.price)
+
         order_product_quantity.text = resources.getString(R.string.quantity).plus(data.quantity)
 
 
@@ -181,8 +184,7 @@ class AgentSubOrderActivity :BaseActivity() {
 
         if(isValidated().not()) return
 
-        val subOrderUpdateReqModel = SubOrderUpdateReqModel(tv_booking_price.text.toString().removePrefix(Constant.CURRENCY_SIGN)
-            .toDouble(),item_quantity.text.toString().toInt(),mStatus!!)
+        val subOrderUpdateReqModel = SubOrderUpdateReqModel(subOrderReqResModel?.price!!,item_quantity.text.toString().toInt(),mStatus!!)
 
             callAPI()?.let {
                 it.observeApiResult(

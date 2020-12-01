@@ -123,7 +123,7 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
         }
         val obj = data as OrderDetailsResModel
         super.onSuccessApiResult(obj)
-        customerMakePaymentReqModel.status = obj.order_status
+        customerMakePaymentReqModel.status = "successful"
 
         btn_apply_promo.isEnabled = true
     }

@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.eazyrento.Constant
 import com.eazyrento.EazyRantoApplication
 import com.eazyrento.R
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem
@@ -48,7 +49,8 @@ class CustomerBookingDetailsActivity : BaseActivity() {
 
     private fun setData(prodDetailsObj: ProductDetailsResModel) {
 
-        pro_booking_price.text = Constant.CURRENCY_SIGN+prodDetailsObj.base_price
+        pro_booking_price.text = amountWithCurrencyName(prodDetailsObj.base_price)
+
         pro_name.text = prodDetailsObj.name.capitalize()
 
         if(prodDetailsObj.is_category_vehicle.not())

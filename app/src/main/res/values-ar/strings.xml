@@ -77,7 +77,7 @@
     <string name="sendbutton">إرسال</string>
     <string name="volvo_fh_truck"> </string>
     <string name="totalprice">السعر الكلي</string>
-    <string name="booking_price">SAR</string>
+   <!-- <string name="booking_price">SAR</string>-->
     <string name="hint_enter_booking_price">أدخل سعر الحجز</string>
     <string name="per_hour">في الساعة</string>
     <string name="do_you_want_driver">هل تريد مركبة مع سائق?</string>
@@ -241,7 +241,7 @@
 
     <string name="req_quantity">الكمية المطلوبة - </string>
 
-    <string name="_80">SAR80</string>
+    <!--<string name="_80">SAR80</string>-->
     <string name="test_merchant">اختبار التاجر</string>
     <string name="select_document">حدد المستند</string>
     <string name="view_all_"><![CDATA[مشاهدة الكل->]]></string>
@@ -299,7 +299,7 @@
     <string name="rate">معدل</string>
     <string name="pending_approval">ما زال يحتاج بتصدير</string>
     <string name="amount_dollar">المبلغ (SAR)</string>
-    <string name="dollar">SAR</string>
+    <string name="currency_name">SAR</string>
     <string name="reset">إعادة تعيين</string>
     <string name="product_name">اسم المنتج</string>
     <string name="order_id">رقم التعريف الخاص بالطلب</string>

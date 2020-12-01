@@ -5,6 +5,7 @@ import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.agent.viewmodel.AgentBookingDetailsViewModel
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.model.modelclass.BookingListItem
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import kotlinx.android.synthetic.main.activity_base_order_summary.*
@@ -69,7 +70,7 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
     override fun <T> onSuccessApiResult(data: T) {
         super.onSuccessApiResult(data)
 
-        tv_booking_price.text= Constant.CURRENCY_SIGN.plus(orderRes.product_detail?.starting_price)
+        tv_booking_price.text= amountWithCurrencyName(orderRes.product_detail?.starting_price)
 
         if (isNearByDriverShow()){
             agent_asign_merchant_and_request_payment.text = resources.getString(R.string.check_near_driver)

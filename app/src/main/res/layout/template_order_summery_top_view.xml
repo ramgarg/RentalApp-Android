@@ -38,7 +38,7 @@
                 android:layout_weight="79"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:text="@string/booking_price"
+                android:text="@string/currency_name"
                 style="@style/booking_price"
                 />
 

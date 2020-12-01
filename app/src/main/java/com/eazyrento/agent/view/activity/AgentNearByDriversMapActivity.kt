@@ -10,6 +10,7 @@ import com.eazyrento.R
 import com.eazyrento.agent.model.modelclass.AssignMerchantsReqModel
 import com.eazyrento.agent.model.modelclass.Merchant
 import com.eazyrento.agent.viewmodel.AgentAssignMerchantViewModel
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.model.modelclass.BookingListItem
 import com.eazyrento.common.model.modelclass.DriverList
@@ -138,7 +139,7 @@ class AgentNearByDriversMapActivity : BaseNearByDriversMapActivity(), OnMapReady
         tv_quantity.text = bookingITem.product_detail.quantity.toString()
 
         tv_starting_price.text =
-            resources.getString(R.string.dollar).plus(bookingITem.product_detail.starting_price)
+            amountWithCurrencyName(bookingITem.product_detail.starting_price)
         tv_user_name.text = merchantDetails.fullName
         Picasso.with(this).load(merchantDetails.profileImage).into(customer_profile_pic)
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.utils.Common
@@ -74,7 +75,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         orderRes.merchant_order_detail?.let {
 
 
-            tv_booking_price.text= Constant.CURRENCY_SIGN.plus( Common.roundOfDouble(it.booking_price))
+            tv_booking_price.text= amountWithCurrencyName( Common.roundOfDouble(it.booking_price))
 
             order_product_quantity.text=resources.getString(R.string.quantity).plus(it.merchant_quantity)
 

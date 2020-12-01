@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModel
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerCreateBookingReqModelItem
@@ -94,7 +95,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
     override fun setHolderOnView(holder: WishListAdapter.CardViewHolder, position: Int) {
         val item = objListBookingItem[position]
         holder.tv_pro_name?.text=item.projectDetails?.name?.capitalize()
-        holder.tv_booking_price?.text= Constant.CURRENCY_SIGN.plus(item.projectDetails?.base_price)
+        holder.tv_booking_price?.text= amountWithCurrencyName(item.projectDetails?.base_price)
 
         holder.tv_quantity.text = item.quantity.toString()
 

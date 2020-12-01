@@ -5,6 +5,7 @@ import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.model.modelclass.DynamicKeyValue
 import com.eazyrento.common.model.modelclass.ProductDetailsResModel
 import com.eazyrento.common.model.modelclass.ProductID
@@ -77,7 +78,7 @@ class ProductDetailsActivity : BaseActivity()
 
     private fun onsetDataUI(data: ProductDetailsResModel) {
 
-            pro_booking_price.text =Constant.CURRENCY_SIGN+data.base_price
+            pro_booking_price.text =amountWithCurrencyName(data.base_price)
             pro_name.text = data.name.capitalize()
             setWishProductImage(data)
 //            pro_wish.setImageResource(if(data.is_wishlisted) R.mipmap.like else R.mipmap.unlike)

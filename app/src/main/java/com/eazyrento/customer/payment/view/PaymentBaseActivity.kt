@@ -5,6 +5,7 @@ import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.Env
 import com.eazyrento.R
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
@@ -150,10 +151,10 @@ open abstract class PaymentBaseActivity : BaseActivity() {
 
     protected fun amountDataRefrash(amount_to_pay:Double,amount_pending_for_approval:Double){
 
-        tv_total_price.text =Constant.CURRENCY_SIGN.plus(totalPrice)
-        tv_pending_amount.text = Constant.CURRENCY_SIGN.plus(Common.roundOfDouble(amount_to_pay))
+        tv_total_price.text =amountWithCurrencyName(totalPrice)
+        tv_pending_amount.text = amountWithCurrencyName(Common.roundOfDouble(amount_to_pay))
 
-        tv_pending_approval.text=Constant.CURRENCY_SIGN.plus(amount_pending_for_approval)
+        tv_pending_approval.text=amountWithCurrencyName(amount_pending_for_approval)
 
 
         amountToPay = amount_to_pay

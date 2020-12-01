@@ -41,7 +41,7 @@
                   android:textColor="@color/black"
                   android:fontFamily="@font/bree_serif"
                   android:textSize="@dimen/_20sdp"
-                  android:text="@string/booking_price"
+                  android:text="@string/currency_name"
                   android:layout_marginStart="@dimen/_5sdp"
                   android:layout_toEndOf="@+id/booking_title"
                   android:layout_below="@+id/vehicle_name"

@@ -7,6 +7,7 @@ import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.view.activity.FilterKeyValue.Companion.ORDER_ID
 import com.eazyrento.common.view.activity.FilterKeyValue.Companion.PRODUCT_NAME
 import com.eazyrento.common.view.activity.FilterKeyValue.Companion.START_DATE
@@ -100,7 +101,7 @@ abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
         val item = filterListItems[position]
 
         holder.tvOrderProductName?.text=item.product_detail?.product_name?.capitalize()
-        holder.tvBookingPrice?.text= Constant.CURRENCY_SIGN.plus(Common.roundOfDouble(item.order_amount_with_commission))
+        holder.tvBookingPrice?.text= context?.amountWithCurrencyName(Common.roundOfDouble(item.order_amount_with_commission))
         holder.tvOrderQuantity?.text=resources.getString(R.string.quantity).plus(item.product_detail?.quantity)
 
         holder.tvOrderId?.text= resources.getString(R.string.orderid).plus(item.order_id)

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.payment.model.modelclass.PaymentListResModelItem
 import kotlinx.android.synthetic.main.row_payment_history.view.*
@@ -61,7 +62,7 @@ class PaymentHistoryAdapter(val items:List<PaymentListResModelItem>, val context
             holder.tvPaymentStatus?.setBackgroundResource(R.drawable.payment_success)
         }*/
 
-        holder.tvPayment?.text= Constant.CURRENCY_SIGN.plus(item.amount_paid)
+        holder.tvPayment?.text= context.amountWithCurrencyName(item.amount_paid)
         holder.tvOrderId?.text= context.resources.getString(R.string.orderid).plus(item.order_id)
 
         holder.tvDate?.text=item.added_on

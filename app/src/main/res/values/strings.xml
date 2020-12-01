@@ -78,7 +78,7 @@
     <string name="sendbutton">Send</string>
     <string name="volvo_fh_truck"> </string>
     <string name="totalprice">Total \n Price</string>
-    <string name="booking_price">SAR</string>
+
     <string name="hint_enter_booking_price">Enter booking price</string>
     <string name="per_hour">Per Hour</string>
     <string name="do_you_want_driver">Do you want vehicle with driver?</string>
@@ -302,7 +302,7 @@
     <string name="rate">Rate</string>
     <string name="pending_approval">Pending Approval</string>
     <string name="amount_dollar">Amount(SAR)</string>
-    <string name="dollar">SAR</string>
+    <string name="currency_name">SAR</string>
     <string name="reset">Reset</string>
     <string name="product_name">Product Name</string>
     <string name="order_id">Order ID</string>
@@ -441,7 +441,7 @@
     <string name="END_DATE">Please add end date.</string>
     <string name="END_TIME">Please add end time.</string>
     <string name="DATE_VALIDATION">Please select valid start and end date time.</string>
-    <string name="PREVIOSE_TIME_BUT_SAME_DATE_TIME">Booking can not be accepted of same start date but time before the current time.</string>
+    <string name="PREVIOSE_TIME_BUT_SAME_DATE_TIME">Booking can be accepted for the same start date but time not before than current time.</string>
     <string name="SELECT_ADRESS">Please select your address.</string>
     <string name="BOOKING_SUBMITTED">Thank you for submitting the order. Our agent will contact you shortly.</string>
     <string name="VALID_DESC">Write description</string>
