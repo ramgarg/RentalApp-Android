@@ -11,10 +11,8 @@ import com.google.gson.JsonElement
 import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.Validator
-import com.eazyrento.login.model.modelclass.ProfileModelReqRes
-import com.eazyrento.login.model.modelclass.RegisterUserReqModel
-import com.eazyrento.login.model.modelclass.RegisterUserResModel
-import com.eazyrento.login.model.modelclass.UserProfile
+import com.eazyrento.login.model.modelclass.*
+import com.eazyrento.login.model.repositry.DashboardUserRepo
 import com.eazyrento.login.model.repositry.ProfileUserRepo
 import com.eazyrento.login.model.repositry.RegisterUserRepo
 import com.eazyrento.login.model.repositry.UpdateProfileUserRepo
@@ -37,3 +35,10 @@ class UpdateProfileUserViewModel:ViewModel() {
         return UpdateProfileUserRepo().updateProfile(userProfile)
     }
 }
+
+class DashboardUserViewModel:ViewModel() {
+    fun geUserDashboard(): LiveData<DataWrapper<DashboardModel>> {
+        return DashboardUserRepo().getDashboard()
+    }
+}
+

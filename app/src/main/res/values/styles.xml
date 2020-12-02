@@ -10,6 +10,17 @@
         <item name="colorControlActivated">#26c86c</item>
     </style>
 
+   <!--Material theme-->
+
+    <style name="MaterialTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#e7a403</item>
+        <item name="colorPrimaryDark">#e7a403</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@android:color/darker_gray</item>
+        <item name="colorControlActivated">#26c86c</item>
+    </style>
+
     <!--dailog activity-->
 
     <style name="ThemeDialog" parent="Theme.AppCompat.Light.Dialog">

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+    <!-- Menu Item Image -->
+    <ImageView
+            android:id="@+id/wish_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/_3sdp"
+
+            android:src="@mipmap/wishlist_inactive" />
+
+    <!-- Badge Count -->
+    <TextView
+            android:id="@+id/tv_wishlist_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignEnd="@+id/wish_icon"
+            android:paddingBottom="@dimen/_10sdp"
+            android:text="99"
+            android:textColor="@color/mdtp_red" />
+
+</RelativeLayout>

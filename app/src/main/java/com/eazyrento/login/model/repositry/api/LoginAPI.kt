@@ -43,4 +43,12 @@ interface LoginAPI {
     @PUT(PathURL.USER_PROFILE)
     fun updateUserProfile(@Body profileModelReqRes: UserProfile): Call<JsonElement>
 
+
+    /*
+    * get user DASHBOARD
+    * */
+    @GET(PathURL.USER_DASHBOARD)
+    fun getUserDASHBOARD(): Call<DashboardModel>
+
+
 }

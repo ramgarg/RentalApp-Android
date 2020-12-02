@@ -21,10 +21,13 @@ import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.customer.webpages.AboutActivity
 import com.eazyrento.customer.webpages.PrivacyPolicy
 import com.eazyrento.customer.webpages.TermsConditionActivity
+import com.eazyrento.login.model.modelclass.DashboardModel
 import com.eazyrento.login.model.modelclass.UserProfile
 import com.eazyrento.login.view.ProfileData
 import com.eazyrento.login.view.ProfileDataAPILisetner
 import com.eazyrento.login.view.UserProfileActivity
+import com.eazyrento.login.viewmodel.DashboardUserViewModel
+import com.eazyrento.login.viewmodel.UpdateProfileUserViewModel
 import com.eazyrento.supporting.DeeplinkEvents
 import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_DEEPLINK
 import com.eazyrento.supporting.DeeplinkEvents.Companion.KEY_ORDER_ID
@@ -45,9 +48,14 @@ import showHippoConversation
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
+     open fun badgeOnBottomNavigationView(count:Int){
+
+     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -60,6 +68,23 @@ import showHippoConversation
 
 
     }
+
+     private fun callDashboardAPI(){
+         callAPI()?.let {
+             it.observeApiResult(
+                 it.callAPIActivity<DashboardUserViewModel>(this)
+                     .geUserDashboard()
+                 , this, this
+             )
+         }
+     }
+
+     override fun <T> onSuccessApiResult(data: T) {
+         if (data is DashboardModel){
+             badgeOnBottomNavigationView(data.wishlistCount)
+         }
+
+     }
 
     fun setHomeFragment(){
         bottom_navigation_view.selectedItemId = R.id.navigation_home
@@ -120,6 +145,10 @@ import showHippoConversation
         //hippo chat
 
         initHippoWithUserData(this)
+
+        //dashboard api
+
+        callDashboardAPI()
 
         //set app version
         setAppVersion()

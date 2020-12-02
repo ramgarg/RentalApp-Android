@@ -35,6 +35,9 @@ class PathURL {
         const val DELETE_NOTIFICATION = "/user/notification/delete"
         const val READ_NOTIFICATION   = "/user/notification/read"
 
+        // user count wishlist and notification
+        const val USER_DASHBOARD = "/user/dashboard"
+
         // Common
         const val MasterCategory      = "/product/masters"
         const val ProductCategory     = "/product/{master_name}/categories"

@@ -161,4 +161,16 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
     }
 
 
+    override fun badgeOnBottomNavigationView(count:Int){
+//       val item = bottom_navigation_view.menu.findItem(R.id.navigation_common_first_pos)
+        val badge = bottom_navigation_view.getOrCreateBadge(R.id.navigation_common_first_pos)
+       if (count>0) {
+           badge.isVisible = true
+           badge.number = count
+       }else{
+           badge.isVisible = false
+           badge.clearNumber()
+       }
+    }
+
 }
