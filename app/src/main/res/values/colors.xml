@@ -22,6 +22,8 @@
     <color name="notifiction_read">#F3F4F5</color>
     <color name="notifiction_unread">#EAF4FE</color>
     <color name="light_black">#34495E</color>
+    <color name="red">#FF0000</color>
+
 
 
 </resources>

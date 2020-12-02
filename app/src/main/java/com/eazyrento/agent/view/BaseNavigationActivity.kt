@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
+import android.view.View
 import android.view.Window
 import android.widget.TextView
 import androidx.core.view.GravityCompat
@@ -52,6 +53,15 @@ import showHippoConversation
 
      }
 
+     fun setNotificationBadgeCount(count: Int){
+         if (count>0) {
+             tv_notification_count.visibility = View.VISIBLE
+             tv_notification_count.text = "$count"
+         }else{
+             tv_notification_count.visibility = View.GONE
+         }
+     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -66,6 +76,9 @@ import showHippoConversation
             }
         })
 
+
+        //dashboard api notification count and wish list count
+        callDashboardAPI()
 
     }
 
@@ -82,6 +95,7 @@ import showHippoConversation
      override fun <T> onSuccessApiResult(data: T) {
          if (data is DashboardModel){
              badgeOnBottomNavigationView(data.wishlistCount)
+             setNotificationBadgeCount(data.notificationCount)
          }
 
      }
@@ -145,10 +159,6 @@ import showHippoConversation
         //hippo chat
 
         initHippoWithUserData(this)
-
-        //dashboard api
-
-        callDashboardAPI()
 
         //set app version
         setAppVersion()

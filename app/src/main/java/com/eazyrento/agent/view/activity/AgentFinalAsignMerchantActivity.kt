@@ -33,8 +33,10 @@ class AgentFinalAsignMerchantActivity : BaseActivity(), BookingDataHolderBinder 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agent_assign_merchant)
 
-        ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
-            toolbar_title,"Assign merchants")
+        /*ViewVisibility.isVisibleOrNot(this,img_back,img_menu,img_notification,
+            toolbar_title,"Assign merchants")*/
+
+        topBarWithBackIconAndTitle("Assign merchants")
 
          bookingITem = intent.getParcelableExtra<BookingListItem>(Constant.BOOKING_SUMMERY_KEY)
 

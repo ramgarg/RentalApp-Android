@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eazyrento.Constant
 import com.eazyrento.R
+import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.view.fragment.BaseFragment
 import com.eazyrento.customer.dashboard.model.modelclass.CustomerWishListResModel
 import com.eazyrento.customer.dashboard.model.modelclass.WishListItem
+import com.eazyrento.customer.dashboard.view.activity.CustomerMainActivity
 import com.eazyrento.customer.dashboard.view.activity.ProductDetailsActivity
 import com.eazyrento.customer.dashboard.view.adapter.DeleteAndViewDetails
 import com.eazyrento.customer.dashboard.view.adapter.WishListAdapter
@@ -50,6 +52,7 @@ class WishListFragment : BaseFragment(), DeleteAndViewDetails {
             if (data.isEmpty())
             {
                 Common.showToast(requireContext(),R.string.NO_DATA_FOUND)
+
                 return
             }
 
@@ -70,8 +73,16 @@ class WishListFragment : BaseFragment(), DeleteAndViewDetails {
         }
         else{
             if (data is JsonElement){
-               listWish.removeAt(listPosition)
-               rec_wishlist.adapter?.notifyDataSetChanged()
+                if(listWish.size>0) {
+                    listWish.removeAt(listPosition)
+                    rec_wishlist.adapter?.notifyDataSetChanged()
+
+                    // count badge icon from wishlist
+                        if(activity is CustomerMainActivity){
+                            (activity as CustomerMainActivity).badgeOnBottomNavigationView(listWish.size)
+                        }
+
+                }
             }
         }
     }
