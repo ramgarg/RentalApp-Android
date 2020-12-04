@@ -152,9 +152,9 @@ interface Constant{
        // const val BOOKING_ID="Booking ID - "
 
 
-        const val MERCHANT="Merchant"
+     /*   const val MERCHANT="Merchant"
         const val AGENT="Agent"
-        const val CUSTOMER="Customer"
+        const val CUSTOMER="Customer"*/
         const val DISTANCE="Distance"
         const val KM="km"
 
@@ -163,6 +163,8 @@ interface Constant{
         const val CANCEL =0
 
         const val OK_REMOVE_PRODUCT = 6
+
+        const val OK_THANKYOU_PAYMENT_MSG =9
 
         const val delete =0
         const val edit = 1

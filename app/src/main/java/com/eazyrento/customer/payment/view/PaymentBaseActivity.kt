@@ -5,6 +5,7 @@ import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.Env
 import com.eazyrento.R
+import com.eazyrento.agent.view.activity.AgentOrderSummaryActivity
 import com.eazyrento.appbiz.amountWithCurrencyName
 import com.eazyrento.common.view.BaseActivity
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
@@ -95,6 +96,21 @@ open abstract class PaymentBaseActivity : BaseActivity() {
             }
 
         }
+    }
+
+    fun thankYouPopup(){
+        showDialog(R.string.payment,getString(R.string.thank_you_message),this,R.layout.thank_you_pop,Constant.OK_THANKYOU_PAYMENT_MSG).let {dailog->
+            /*dailog.btn_cancle.run {
+                visibility = View.VISIBLE
+                setOnClickListener {
+                    dailog.cancel()
+                }
+            }*/
+        }
+    }
+
+    inline fun <reified T>thankyouMessageConfirm(){
+        MoveToAnotherComponent.moveToActivityNormal<T>(this)
     }
 
      open fun checkValidation(): Boolean {

@@ -154,9 +154,9 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
     }
     fun setUserAddressTypeEditMode(){
         when(addressInfo?.address_type){
-            resources.getString(R.string.Address_Work) -> onWorkTypeClick(null)
-            resources.getString(R.string.Address_Home) ->onHomeTypeClick(null)
-            resources.getString(R.string.Address_Other) ->onOtherTypeClick(null)
+            resources.getString(R.string.work) -> onWorkTypeClick(null)
+            resources.getString(R.string.home) ->onHomeTypeClick(null)
+            resources.getString(R.string.other) ->onOtherTypeClick(null)
         }
     }
 
@@ -395,20 +395,20 @@ class AddNewAddressActivity : BaseActivity(), OnMapReadyCallback {
 
 
     fun onHomeTypeClick(view: View?){
-            addressInfo?.address_type = resources.getString(R.string.Address_Home)
+            addressInfo?.address_type = resources.getString(R.string.home)
             Common.hideGroupViews(btn_work_active, btn_other_active, btn_home_inactive)
             Common.showGroupViews(btn_home_active, btn_other_inactive, btn_work_inactive)
     }
 
     fun onWorkTypeClick(view: View?){
-            addressInfo?.address_type = resources.getString(R.string.Address_Work)
+            addressInfo?.address_type = resources.getString(R.string.work)
             Common.hideGroupViews(btn_home_active, btn_other_active, btn_work_inactive)
             Common.showGroupViews(btn_work_active, btn_other_inactive, btn_home_inactive)
 
     }
 
     fun onOtherTypeClick(view: View?){
-            addressInfo?.address_type = resources.getString(R.string.Address_Other)
+            addressInfo?.address_type = resources.getString(R.string.other)
             Common.hideGroupViews(btn_home_active, btn_work_active, btn_other_inactive)
             Common.showGroupViews(btn_other_active, btn_work_inactive, btn_home_inactive)
     }

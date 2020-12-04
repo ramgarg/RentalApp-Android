@@ -92,7 +92,7 @@ class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigati
                 fragment=
                     CustomerOrderListFragment()
 
-                toolbar_title.text=getString(R.string.order)
+                toolbar_title.text=getString(R.string.orders)
 
             }
 

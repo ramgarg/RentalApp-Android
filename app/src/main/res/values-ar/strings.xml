@@ -137,10 +137,14 @@
     <string name="address_line1">خط عنوان</string>
     <string name="address_hint">شقة ، مدينة ، ولاية ، اسم البلد</string>
     <string name="save_as">حفظ باسم</string>
-    <string name="home">الصفحة الرئيسية</string>
+
     <string name="bookings">الحجوزات</string>
+
+    <string name="home">الصفحة الرئيسية</string>
     <string name="work">عمل</string>
     <string name="other">آخر</string>
+
+
     <string name="delete">حذف</string>
     <string name="update">تحديث</string>
     <string name="update_order">أجل التحديث</string>
@@ -506,9 +510,9 @@
     <string name="current_location_on_map">الموقع الحالي</string>
     <string name="enable_GPS_permission">"يرجى تمكين GPS أو إذن الموقع "</string>
 
-    <string name="Address_Home">الصفحة الرئيسية</string>
+    <!--<string name="Address_Home">الصفحة الرئيسية</string>
     <string name="Address_Work">عمل</string>
-    <string name="Address_Other">آخر</string>
+    <string name="Address_Other">آخر</string>-->
 
     <string name="agent_payment_message">شكرا! تم إرسال طلب الدفع الخاص بك.</string>
     <string name="no_bookings">حاليا لا توجد حجوزات متاحة.</string>
@@ -524,6 +528,9 @@
     <string name="VALID_PROMO_CODE">"الرجاء إدخال رمز ترويجي صالح "</string>
     <string name="check_near_driver">"تحقق من السائق "</string>
     <string name="delete_product">هل تريد حذف هذا المنتج؟</string>
+    <string name="thank_you_message">"شكرا لك! تمت معالجة دفعتك. "</string>
+    <string name="SELECT_SUB_ORDER_STATUS">"تحديث الحالة "</string>
+    <string name="MIN_BOOKING_PRICE">"الحد الأدنى لسعر الحجز "</string>
 
 
 </resources>

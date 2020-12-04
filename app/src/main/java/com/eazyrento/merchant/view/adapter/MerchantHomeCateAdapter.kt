@@ -30,7 +30,7 @@ class MerchantHomeCateAdapter(val context: Context,val listItem:MutableList<Merc
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tv_merchant_cat_name.text = listItem.get(position).key
+        holder.tv_merchant_cat_name.text= listItem.get(position).key.capitalize()
 
         holder.tv_merchant_view_all.setOnClickListener {
             baseFragment.onViewClick(listItem.get(position),Constant.VIEW_ALL)

@@ -27,6 +27,9 @@ class AgentSubOrderActivity :BaseActivity() {
     private var subOrderReqResModel: SubOrderReqResModel?=null
     private var mId: Int = 0
     private var mStatus:String?=null
+
+    private val arrayUpdateStatus = arrayOf<String>("update status","pending","started","completed","cancelled")
+
 //    private var price:Double =0.0
 
     override fun <T> moveOnSelecetedItem(type: T) {
@@ -41,7 +44,7 @@ class AgentSubOrderActivity :BaseActivity() {
 
         customer_payment_button.visibility = View.GONE
 
-        booking_price.text = getString(R.string.price)
+        //booking_price.text = getString(R.string.price)
 
         mId = intent.extras?.getInt(Constant.INTENT_AGENT_SUB_ORDER,0)!!
 
@@ -121,7 +124,7 @@ class AgentSubOrderActivity :BaseActivity() {
 
         tv_user_name.text = base.full_name.capitalize()
 
-        tv_users_role.text = Constant.MERCHANT
+        tv_users_role.text = getString(R.string.merchant)//Constant.MERCHANT
 
         phone_view.setOnClickListener {
             Common.phoneCallWithNumber(base.mobile_number, this)
@@ -150,7 +153,8 @@ class AgentSubOrderActivity :BaseActivity() {
                         mStatus = null
                     }
                     else{
-                        mStatus = update_Status[position]
+                       // mStatus = update_Status[position]
+                        mStatus = arrayUpdateStatus[position]
                     }
                 }
 
@@ -198,7 +202,7 @@ class AgentSubOrderActivity :BaseActivity() {
     }
 
     private fun isValidated():Boolean{
-        return if(mStatus== null) {showToast(R.string.SELECT_STATUS);false } else true
+        return if(mStatus== null) {showToast(R.string.SELECT_SUB_ORDER_STATUS);false } else true
     }
 
 }

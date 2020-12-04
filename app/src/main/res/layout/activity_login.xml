@@ -140,7 +140,7 @@
                 android:layout_width="match_parent"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:textStyle="bold"
+
                 android:textColor="@color/black"
                 android:layout_gravity="start"
                 android:textAlignment="viewStart"

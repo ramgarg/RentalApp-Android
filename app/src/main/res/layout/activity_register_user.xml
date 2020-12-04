@@ -290,6 +290,7 @@
                 android:layout_gravity="start"
                 android:textAlignment="viewStart"
                 app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/quantum_yellow"
                 >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -432,7 +433,8 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/AgentSmallTextCard"
+
+                android:fontFamily="@font/bree_serif"
 
                 android:textSize="@dimen/_12sdp"
 

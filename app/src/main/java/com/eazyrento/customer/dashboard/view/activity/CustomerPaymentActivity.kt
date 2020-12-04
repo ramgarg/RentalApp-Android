@@ -7,6 +7,7 @@ import com.eazyrento.Constant
 import com.eazyrento.Env
 import com.eazyrento.R
 import com.eazyrento.ValidationMessage
+import com.eazyrento.agent.view.activity.AgentOrderSummaryActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.model.modelclass.ApplyPromoCodeReqModel
 import com.eazyrento.common.model.modelclass.ApplyPromoCodeResModel
@@ -69,6 +70,8 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
                 submitPayment()
             }
 
+            Constant.OK_THANKYOU_PAYMENT_MSG ->thankyouMessageConfirm<CustomerMainActivity>()
+
         }
     }
 
@@ -118,12 +121,14 @@ class CustomerPaymentActivity : PaymentBaseActivity() {
         }
 
         if (data is JsonElement){
-            MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
+//            MoveToAnotherComponent.moveToActivityWithIntentValue<CustomerMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
+                thankYouPopup()
             return
         }
         val obj = data as OrderDetailsResModel
         super.onSuccessApiResult(obj)
-        customerMakePaymentReqModel.status = "successful"
+//        customerMakePaymentReqModel.status = "successful"
+        customerMakePaymentReqModel.status = "pending"
 
         btn_apply_promo.isEnabled = true
     }

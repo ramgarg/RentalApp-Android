@@ -18,6 +18,10 @@ import kotlinx.android.synthetic.main.row_my_address.view.*
 class MyAddressAdapter(val items:List<AddressInfo>, val context: Activity):
     RecyclerView.Adapter<MyAddressAdapter.ViewHolder>() {
 
+    private val homeTypeString = "Home,الصفحة الرئيسية"
+    private val workTypeString = "Work,عمل"
+    private val otherTypeString = "Other,آخر"
+
 
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         val tvAddressType=view.tv_add_type
@@ -44,7 +48,26 @@ class MyAddressAdapter(val items:List<AddressInfo>, val context: Activity):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.tvAddressLine?.text= items[position].address_line
-        holder.tvAddressType?.text= items[position].address_type
+
+        // converting localization
+        val addessType = items[position].address_type
+
+        when(addessType){
+            context.getString(R.string.home) -> holder.tvAddressType?.text= context.getString(R.string.home)
+            context.getString(R.string.work) -> holder.tvAddressType?.text= context.getString(R.string.work)
+            context.getString(R.string.other) -> holder.tvAddressType?.text= context.getString(R.string.other)
+
+        }
+
+        /*if(addessType!!.contains(homeTypeString)){
+            holder.tvAddressType?.text= context.getString(R.string.home)
+        }else if(addessType.contains(workTypeString)){
+            holder.tvAddressType?.text= context.getString(R.string.work)
+        }else{
+            holder.tvAddressType?.text= context.getString(R.string.other)
+        }*/
+
+
         holder.tvCountry?.text= items[position].country
 
         if (items[position].is_default)

@@ -7,5 +7,6 @@ data class UserInfo(
     val refresh_token: String,
     val user_id: Int,
     val user_role: String,
-    val username: String
+    val username: String,
+    val is_address_available:Boolean?
 )

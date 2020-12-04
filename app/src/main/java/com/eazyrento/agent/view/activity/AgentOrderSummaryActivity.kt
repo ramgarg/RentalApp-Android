@@ -44,6 +44,7 @@ open class AgentOrderSummaryActivity : OrderBaseSummaryActivity() {
         // order details
         if (mBookingID != -1)
             setDataAndCallOrderDetailsAPI(mBookingID)
+
         clickListenerOnViews()
     }
 

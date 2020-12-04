@@ -52,6 +52,7 @@ class AgentPaymentActivity : PaymentBaseActivity() {
         when(int){
 
             Constant.OK ->submitPayment()
+            Constant.OK_THANKYOU_PAYMENT_MSG ->thankyouMessageConfirm<AgentOrderSummaryActivity>()
 
         }
     }
@@ -90,7 +91,8 @@ class AgentPaymentActivity : PaymentBaseActivity() {
 
         if (data is JsonElement){
 //            MoveToAnotherComponent.moveToActivityWithIntentValue<AgentMainActivity>(this,Constant.INTENT_PAYMENT_SUCSESS,1)
-            MoveToAnotherComponent.moveToActivityNormal<AgentOrderSummaryActivity>(this)
+//            MoveToAnotherComponent.moveToActivityNormal<AgentOrderSummaryActivity>(this)
+             thankYouPopup()
             return
         }
         val obj = data as OrderDetailsResModel

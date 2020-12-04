@@ -77,6 +77,7 @@
                     android:fontFamily="@font/bree_serif"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
 
                     />
 
@@ -91,11 +92,15 @@
                 android:orientation="horizontal"
                 android:layout_centerHorizontal="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                >
 
             <ImageView android:layout_width="@dimen/_25sdp"
                     android:src="@mipmap/call"
-                    android:layout_height="@dimen/_25sdp"/>
+                    android:layout_height="@dimen/_25sdp"
+
+                    />
 
             <TextView
                     android:id="@+id/merchant_phone"

@@ -5,6 +5,7 @@ import android.view.View
 import com.eazyrento.Constant
 import com.eazyrento.R
 import com.eazyrento.appbiz.amountWithCurrencyName
+import com.eazyrento.appbiz.retrofitapi.DataWrapper
 import com.eazyrento.common.view.OrderBaseSummaryActivity
 import com.eazyrento.customer.dashboard.model.modelclass.OrderDetailsResModel
 import com.eazyrento.customer.utils.Common
@@ -82,6 +83,15 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
             pending_amount.visibility=View.GONE
         }
 
+    }
+
+    override fun <T> statusCodeOfApi(data: T) {
+        super.statusCodeOfApi(data)
+        val data  = data as DataWrapper<T>
+        if (data.statusCode==404){
+            finish()
+
+        }
     }
 
 

@@ -66,16 +66,15 @@
 
             android:textColor="@color/white"
             android:fontFamily="@font/bree_serif"
-            android:textSize="@dimen/_14sdp"
+            android:textSize="@dimen/_10sdp"
             android:text="@string/rate"
 
             android:layout_height="wrap_content"
             android:layout_width="@dimen/_70sdp"
-            android:textAlignment="center"
-            android:paddingStart="@dimen/_10sdp"
-            android:paddingEnd="@dimen/_10sdp"
-            android:paddingTop="@dimen/_4sdp"
-            android:paddingBottom="@dimen/_4sdp"
+            android:gravity="center"
+            android:paddingBottom="@dimen/_2sdp"
+            android:paddingTop="@dimen/_2sdp"
+
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"

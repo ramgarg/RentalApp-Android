@@ -10,6 +10,7 @@ import com.eazyrento.R
 import com.eazyrento.ValidationMessage
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.fragment.BaseFragment
+import com.eazyrento.customer.notification.model.NotificationDeleteModel
 import com.eazyrento.customer.utils.Common
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.MerchantProductItem
@@ -24,6 +25,7 @@ import com.eazyrento.supporting.MyJsonParser
 import com.google.gson.JsonElement
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.fragment_merchant_home.*
+import kotlinx.android.synthetic.main.thank_you_pop.*
 
 class MerchantHomeFragment : BaseFragment() {
     private var isDeleteProject:Boolean = false
@@ -94,7 +96,43 @@ class MerchantHomeFragment : BaseFragment() {
     }
 
     private fun <T> deleteProduct(type: T) {
-        val obj = type as MerchantProductItem
+
+        val dialog = showDialogCustomDialog(requireActivity())
+        dialog.tv_msg.text = getString(R.string.delete_product)
+
+        dialog.btn_cancle.let {
+
+            it.visibility = View.VISIBLE
+            it.text = getString(R.string.no)
+            it.setOnClickListener {
+                dialog.cancel()
+            }
+        }
+        dialog.btn_ok.let {
+
+            it.text = getString(R.string.yes)
+
+            it.setOnClickListener {
+                dialog.cancel()
+                val obj = type as MerchantProductItem
+                callAPI()?.let {
+                    isDeleteProject = true
+                    it.observeApiResult(
+                        it.callAPIFragment<MerchantDeleteProductViewModel>(this)
+                            .deletePoductAPI(obj.id)
+                        , viewLifecycleOwner, requireContext()
+                    )
+
+
+                }
+            }
+
+
+        }
+        dialog.show()
+
+
+        /*val obj = type as MerchantProductItem
         callAPI()?.let {
             isDeleteProject = true
             it.observeApiResult(
@@ -104,7 +142,7 @@ class MerchantHomeFragment : BaseFragment() {
             )
 
 
-        }
+        }*/
     }
 
 }

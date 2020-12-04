@@ -281,6 +281,12 @@ class LoginActivity : AppBizLogin() {
 
             EazyRantoApplication.saveAccesesToken(loginUserResModel.user_info)
 
+            if (loginUserResModel.user_info.is_address_available==true) {
+                onLoginSucess()
+                return
+            }
+
+            // user is first time
             ProfileData().profileAPFromILogin(this, object : LoginUserStatus {
                 override fun onUser(user: LoginUserStatus.UserStatus) {
                         when(user){

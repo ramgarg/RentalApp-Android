@@ -87,7 +87,7 @@ class AgentMainActivity : BaseNavigationActivity(){
             R.id.navigation_order -> {
                 fragment =
                     AgentOrderListFragment()
-                toolbar_title.text=getString(R.string.order)
+                toolbar_title.text=getString(R.string.orders)
 
             }
 

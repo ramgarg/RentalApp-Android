@@ -375,7 +375,7 @@ class AddProductDailogActivity:BaseActivity() {
         merchantAddProductReqModel.quantity = productDetails.product_info.quantity
         item_quantity_static_text.text =getString(R.string.quantity)
         merchantAddProductReqModel.price =productDetails.product_info.price
-        merchantAddProductReqModel.variant = productDetails.product_info.product_details.fuel_type
+        merchantAddProductReqModel.variant = productDetails.product_info.variant
         merchantAddProductReqModel.with_driver =productDetails.product_info.with_driver
         merchantAddProductReqModel.daily_price = productDetails.product_info.daily_price
         merchantAddProductReqModel.monthly_price = productDetails.product_info.monthly_price

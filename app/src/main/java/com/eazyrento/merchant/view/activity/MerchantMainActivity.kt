@@ -67,7 +67,7 @@ class MerchantMainActivity : BaseNavigationActivity() {
             R.id.navigation_order-> {
                 fragment =
                     MerchantOrderListFragment()
-                toolbar_title.text=getString(R.string.order)
+                toolbar_title.text=getString(R.string.orders)
             }
             R.id.navigation_home-> {
                 fragment =
@@ -141,8 +141,14 @@ class MerchantMainActivity : BaseNavigationActivity() {
     }
 
     override fun orderSummeryActivity(orderID: String) {
-        MoveToAnotherComponent.moveToActivityWithIntentValue<MerchantOrderSummaryActivity>(this, Constant.ORDER_SUMMERY_KEY,
-            orderID)
+        try {
+            MoveToAnotherComponent.moveToActivityWithIntentValue<MerchantOrderSummaryActivity>(
+                this, Constant.ORDER_SUMMERY_KEY,
+                orderID.toInt()
+            )
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
     }
 
     override fun openUpdateProfileActivity() {

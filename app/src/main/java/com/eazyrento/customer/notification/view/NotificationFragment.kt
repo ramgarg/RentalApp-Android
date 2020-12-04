@@ -124,11 +124,12 @@ class NotificationFragment : BaseFragment(),OprationNotification {
      AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,data.toString())
 
     if (data is JsonElement){
-        Common.showToast(requireContext(),R.string.REQUEST_SUCCESSED)
 
         // delete item from list
         if (mNotifcationID!=null && mNotificationList.isNullOrEmpty().not()){
             try {
+
+                Common.showToast(requireContext(),R.string.REQUEST_SUCCESSED)
 
                 val notificationModel = mNotificationList?.single { notificationModel -> notificationModel.id==mNotifcationID }
                 mNotificationList?.remove(notificationModel)
@@ -142,6 +143,9 @@ class NotificationFragment : BaseFragment(),OprationNotification {
             }
         }
         else if (mIsDeleteAll && mNotificationList.isNullOrEmpty().not()){
+
+            Common.showToast(requireContext(),R.string.REQUEST_SUCCESSED)
+
             mNotificationList?.clear()
             rec_notification.adapter?.notifyDataSetChanged()
             mIsDeleteAll = false

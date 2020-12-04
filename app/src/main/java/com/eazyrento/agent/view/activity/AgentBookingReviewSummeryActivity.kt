@@ -26,6 +26,8 @@ class AgentBookingReviewSummeryActivity:AgentOrderSummaryActivity() {
 
         agent_asign_merchant_and_request_payment.text = resources.getString(R.string.assign_merchant)
 
+        booking_price.text = getString(R.string.MIN_BOOKING_PRICE)
+
         customer_payment_button.visibility = View.INVISIBLE
         payment_view_history.visibility = View.INVISIBLE
         agent_update_order_btn.visibility=View.INVISIBLE

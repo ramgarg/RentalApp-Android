@@ -11,7 +11,7 @@ data class ProductInfo(
     val product_id: Int,
     val product_name: String,
     val quantity: Int,
-    val variant: Any,
+    val variant: String,
     val with_driver: Boolean,
     var monthly_price: Double,
     var daily_price: Double,

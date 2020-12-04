@@ -30,7 +30,7 @@
                 android:id="@+id/booking_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/booking_n_price"
+                android:text="@string/booking_price_"
                 style="@style/pro_details_heading"
                 />
         <TextView

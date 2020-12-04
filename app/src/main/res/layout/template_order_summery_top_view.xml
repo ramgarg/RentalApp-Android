@@ -24,7 +24,7 @@
 
         <TextView
                 android:id="@+id/booking_price"
-                android:layout_weight="20"
+                android:layout_weight="26"
                 android:layout_width="0dp"
                 android:text="@string/booking_n_price"
                 android:layout_height="@dimen/_55sdp"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="79"
-                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_3sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:text="@string/currency_name"
                 style="@style/booking_price"
@@ -46,8 +46,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_weight="1">
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+
+                android:layout_marginTop="@dimen/_7sdp"
+                >
         <Button
                 android:id="@+id/customer_payment_button"
                 android:layout_width="wrap_content"
@@ -60,7 +64,9 @@
                 android:paddingEnd="@dimen/_7sdp"
                 android:background="@drawable/button_gradient"
                 android:textColor="@color/white"
-                android:text="@string/pay_now">
+                android:text="@string/pay_now"
+                android:visibility="visible"
+                >
 
         </Button>
             <Button
@@ -71,10 +77,13 @@
                     android:layout_height="@dimen/_25sdp"
                     android:layout_gravity="end"
                     android:textAllCaps="false"
-                    android:visibility="gone"
+
                     android:background="@drawable/button_gradient"
                     android:textColor="@color/white"
-                    android:text="@string/view_history">
+                    android:text="@string/view_history"
+
+                    android:visibility="gone"
+                    >
 
             </Button>
         </LinearLayout>
@@ -100,22 +109,7 @@
             android:layout_height="wrap_content"
             style="@style/pro_details_heading"
             />
-        <TextView
-                android:id="@+id/tv_track"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@drawable/payment_status"
-                android:fontFamily="@font/bree_serif"
-                android:visibility="gone"
-                android:paddingStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:paddingEnd="@dimen/_10sdp"
-                android:text="@string/track_on_map"
-                android:textColor="@color/white"
-                android:onClick="trackingClickListener"
-                />
+
 
     </RelativeLayout>
 
@@ -147,6 +141,24 @@
                 android:text="@string/rate_amp_review"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/tv_track"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/payment_status"
+                android:fontFamily="@font/bree_serif"
+
+                android:paddingStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:text="@string/track_on_map"
+                android:textColor="@color/white"
+                android:onClick="trackingClickListener"
+
+                android:visibility="gone"
+                />
 
     </RelativeLayout>
 
