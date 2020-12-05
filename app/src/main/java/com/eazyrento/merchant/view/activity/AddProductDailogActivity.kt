@@ -16,10 +16,15 @@ import com.eazyrento.Constant
 import com.eazyrento.EazyRantoApplication.Companion.context
 import com.eazyrento.R
 import com.eazyrento.appbiz.AppBizLogger
+import com.eazyrento.common.model.modelclass.ProductDetailsResModel
+import com.eazyrento.common.model.modelclass.ProductID
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.common.viewmodel.ProductDetailsForMerchantViewModel
+import com.eazyrento.common.viewmodel.ProductDetailsViewModel
 import com.eazyrento.customer.utils.MoveToAnotherComponent
 import com.eazyrento.merchant.model.modelclass.MerchantAddProductReqModel
 import com.eazyrento.merchant.model.modelclass.MerchantProductDetailsResModel
+import com.eazyrento.merchant.view.fragment.MerchantHomeFragment
 import com.eazyrento.merchant.viewModel.MerchantAddProductViewModel
 import com.eazyrento.merchant.viewModel.MerchantProductDetailViewModel
 import com.google.gson.JsonElement
@@ -31,6 +36,8 @@ import java.io.InputStream
 
 
 class AddProductDailogActivity:BaseActivity() {
+
+    private var isVehicle:Boolean=false
 
     private val merchantAddProductReqModel = MerchantAddProductReqModel()
     private  val DEFUALT_VALUE = -1
@@ -47,16 +54,26 @@ class AddProductDailogActivity:BaseActivity() {
         //edit functionalty
          edit_product_ID = intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_EDIT,DEFUALT_VALUE)
 
-        //
-        merchantAddProductReqModel.product_id =
-            if (edit_product_ID!=DEFUALT_VALUE)
+        // only for product detils api
+        val proID: Int
+
+        if (edit_product_ID!=DEFUALT_VALUE) {
                 //editing functioalty
+                merchantAddProductReqModel.product_id = edit_product_ID
                 editProductFuntionalty(edit_product_ID)
 
-            else
-            //Adding funtionalty
-               intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_ADD,DEFUALT_VALUE)
+                proID = MerchantHomeFragment.PRODUCT_ID
+            }
 
+            else {
+                //Adding funtionalty
+
+                 proID = intent.getIntExtra(Constant.INTENT_MERCHANT_PRODUCT_ADD, DEFUALT_VALUE)
+
+                 merchantAddProductReqModel.product_id = proID
+            }
+
+        productDetailsApiCall(proID)
 
         setSppinerData( R.array.RegistrationDocument,R.id.sp_select_document)
         setSppinerData( R.array.FuelType,R.id.spinner_fuel_type)
@@ -64,9 +81,21 @@ class AddProductDailogActivity:BaseActivity() {
         setCheckBoxListener()
 
 
+
     }
 
-    private fun editProductFuntionalty(editProductID:Int): Int {
+    private fun productDetailsApiCall(productID: Int){
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<ProductDetailsForMerchantViewModel>(this)
+                    .getProductDetailsForMarchant(productID)
+                , this, this
+            )
+        }
+
+    }
+
+    private fun editProductFuntionalty(editProductID:Int) {
 
         callAPI()?.let {
             it.observeApiResult(
@@ -77,7 +106,7 @@ class AddProductDailogActivity:BaseActivity() {
 
         }
 
-        return editProductID
+
     }
 
     private fun setCheckBoxListener() {
@@ -348,6 +377,15 @@ class AddProductDailogActivity:BaseActivity() {
 
     override fun <T> onSuccessApiResult(data: T) {
 
+        // product details
+        if (data is ProductDetailsResModel){
+
+
+            if (data.is_category_vehicle){
+                releative_with_driver.visibility = View.VISIBLE
+            }
+            return
+        }
         if (data is JsonElement) {
 
             AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, data.toString())

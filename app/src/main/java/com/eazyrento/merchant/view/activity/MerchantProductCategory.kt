@@ -30,9 +30,6 @@ class MerchantProductCategory :BaseActivity(), InfalterViewAdapter {
 
         topBarWithBackIconAndTitle(getString(R.string.view_product))
 
-        /*ViewVisibility.isVisibleOrNot(
-            this, img_back, img_menu, img_notification,
-            toolbar_title, getString(R.string.view_product))*/
 
         val merchantCatItem = intent.getParcelableExtra<MerchantCatItem>(
             Constant.INTENT_MERCHANT_PRODUCT_LIST

@@ -21,6 +21,11 @@ data class Details(
     @SerializedName("mobile_number")
     val mobileNumber: String,
     @SerializedName("profile_image")
-    val profileImage: String
+    val profileImage: String,
+
+    @SerializedName("is_already_booked")
+    val isAlreadyBooked: Boolean
+
+
 
 )

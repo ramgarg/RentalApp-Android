@@ -531,6 +531,7 @@
     <string name="thank_you_message">"شكرا لك! تمت معالجة دفعتك. "</string>
     <string name="SELECT_SUB_ORDER_STATUS">"تحديث الحالة "</string>
     <string name="MIN_BOOKING_PRICE">"الحد الأدنى لسعر الحجز "</string>
+    <string name="Driver_booking_reached">"وجه الفتاة! وصل السائق إلى الحد الأقصى وهو 3 حجوزات. يرجى تعيين أي سائق آخر أو المحاولة بعد بعض الوقت. "</string>
 
 
 </resources>

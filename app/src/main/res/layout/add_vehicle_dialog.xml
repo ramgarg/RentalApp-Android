@@ -339,8 +339,11 @@
 
         <!--drawable_left_image_check-->
         <RelativeLayout
+                android:id="@+id/releative_with_driver"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                >
         <CheckBox
                 android:id="@+id/chk_box_with_driver"
                 style="@style/WithDriverCheckBox"
@@ -375,6 +378,7 @@
 
         <TextView
                 android:id="@+id/merchant_upload_btn"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:textStyle="bold"
                 style="@style/AddVehicleSubmitDialog"
                 android:onClick="onSubmitClick"

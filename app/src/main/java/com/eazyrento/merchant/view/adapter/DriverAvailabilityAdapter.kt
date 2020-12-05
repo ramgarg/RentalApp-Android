@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eazyrento.R
 import com.eazyrento.common.model.modelclass.Drivers
 import com.eazyrento.common.view.BaseActivity
+import com.eazyrento.customer.utils.Common
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_users_order_summary.view.*
 
 class DriverAvailabilityAdapter (private val mDriverListing:List<Drivers>,private val mBaseActivity: BaseActivity) : RecyclerView.Adapter<DriverAvailabilityAdapter.CardViewHolder>() {
 
-    private var tvUnAssign:TextView?=null
+    private var tvUnAssignPrevious:TextView?=null
 
     class CardViewHolder(view: View): RecyclerView.ViewHolder(view){
 
@@ -55,11 +56,28 @@ class DriverAvailabilityAdapter (private val mDriverListing:List<Drivers>,privat
 
         holder.itemView.setOnClickListener {
 
-            holder.tv_driver_assign.visibility = View.VISIBLE
 
-            tvUnAssign?.visibility = View.GONE
+            holder.tv_driver_assign.let{
 
-            tvUnAssign = holder.tv_driver_assign
+                tvUnAssignPrevious?.visibility = View.GONE
+
+                it.visibility = View.VISIBLE
+
+                tvUnAssignPrevious = it
+
+                 if(isAlreadyBooked) {
+
+                    Common.showToastString(mBaseActivity,mBaseActivity.getString(R.string.Driver_booking_reached))
+
+                     it.background =mBaseActivity.getDrawable(R.drawable.button_gray)
+
+                    return@setOnClickListener
+                }
+                else {
+                     it.background =mBaseActivity.getDrawable(R.drawable.button_gradient)
+                }
+
+            }
 
             mBaseActivity.moveOnSelecetedItem(driver)
 

@@ -28,6 +28,9 @@ import kotlinx.android.synthetic.main.fragment_merchant_home.*
 import kotlinx.android.synthetic.main.thank_you_pop.*
 
 class MerchantHomeFragment : BaseFragment() {
+    companion object{
+         var PRODUCT_ID=0
+    }
     private var isDeleteProject:Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -88,8 +91,15 @@ class MerchantHomeFragment : BaseFragment() {
         when(where){
             Constant.VIEW_ALL->MoveToAnotherComponent.startActivityResultWithParcelable<MerchantProductCategory,T>(requireActivity(),
                 Constant.INTENT_MERCHANT_PRODUCT_LIST,type,Constant.MERCHANT_HOME_FRAGMENT_REQUEST_CODE)
-            Constant.edit ->MoveToAnotherComponent.moveToActivityWithIntentValue<AddProductDailogActivity>(requireContext(),
-                Constant.INTENT_MERCHANT_PRODUCT_EDIT,(type as MerchantProductItem).id)
+            Constant.edit ->
+            {
+                val item = type as MerchantProductItem
+                //only for product details api chck vehicles
+                PRODUCT_ID = item.product_id
+
+                MoveToAnotherComponent.moveToActivityWithIntentValue<AddProductDailogActivity>(requireContext(),
+                Constant.INTENT_MERCHANT_PRODUCT_EDIT,item.id)
+            }
             Constant.delete->deleteProduct(type)
         }
 

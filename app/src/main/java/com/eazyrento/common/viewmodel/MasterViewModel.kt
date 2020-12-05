@@ -39,11 +39,19 @@ class ProductListBySubCategViewModel : ViewModel() {
     }
 }
 
-
+// for dynamic key value
 class ProductDetailsViewModel : ViewModel() {
 
     fun getProductDetails(id: Int): LiveData<DataWrapper<JsonElement>> {
         return ProductDetailsRepo().getProductDeatils(id)
+    }
+}
+
+// for
+class ProductDetailsForMerchantViewModel : ViewModel() {
+
+    fun getProductDetailsForMarchant(id: Int): LiveData<DataWrapper<ProductDetailsResModel>> {
+        return ProductDetailsMerchantRepo().getProductDeatils(id)
     }
 }
 

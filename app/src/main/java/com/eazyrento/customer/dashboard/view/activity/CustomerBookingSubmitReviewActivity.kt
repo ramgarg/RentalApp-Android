@@ -158,7 +158,7 @@ class CustomerBookingSubmitReviewActivity : BaseActivity(),DeleteAndViewDetails 
                 return stringTimes
             }
 
-            stringTimes=  stringTimes.plus(hour).plus(R.string.hour).plus(min).plus(R.string.minute)
+            stringTimes=  stringTimes.plus(hour).plus(getString(R.string.hour)).plus(min).plus(getString(R.string.minute))
 
             return stringTimes
 

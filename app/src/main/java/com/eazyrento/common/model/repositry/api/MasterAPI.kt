@@ -34,9 +34,12 @@ interface MasterAPI{
     @GET(PathURL.Product)
     fun getProductListBySubCat(@Path("sub_category_name") cat_name: String): Call<ProductListBySubCategoriesResModel>
 
-    // sub categories lsit by product name
+    // product details dynamic key value lsit by product name
     @GET(PathURL.ProductDetail)
     fun getProductDetails(@Path("id") id: Int): Call<JsonElement>
+
+    @GET(PathURL.ProductDetail)
+    fun getProductDetailsForMerchant(@Path("id") id: Int): Call<ProductDetailsResModel>
 
 
     @POST(PathURL.LANGUAGE_CHANGE)

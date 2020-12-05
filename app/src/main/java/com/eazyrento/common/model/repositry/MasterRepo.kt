@@ -71,6 +71,16 @@ class ProductDetailsRepo : GenericRequestHandler<JsonElement>(){
     }
 }
 
+class ProductDetailsMerchantRepo : GenericRequestHandler<ProductDetailsResModel>(){
+
+    fun getProductDeatils(id:Int ): LiveData<DataWrapper<ProductDetailsResModel>> {
+//        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, Gson().toJson(loginUserReqModel))
+        val call = ServiceGenrator.client.create(
+            MasterAPI::class.java).getProductDetailsForMerchant(id)
+        return doRequest(call)
+    }
+}
+
 
 class LanguagChangeRepo : GenericRequestHandler<JsonElement>(){
 
