@@ -142,7 +142,7 @@ fun convertToDisplayTime(list: List<String>?):String{
         return ""
     try {
 
-        return getTimeByPattern(list[0].toInt(),list[1].toInt()-1,list[1].toInt(),TimeConstant.TIME_FORMAT_DISPLAY)
+        return getTimeByPattern(list[0].toInt(),list[1].toInt(),list[1].toInt(),TimeConstant.TIME_FORMAT_DISPLAY)
     }catch (e:Exception){
         e.printStackTrace()
     }

@@ -35,7 +35,7 @@
                 android:id="@+id/tv_booking_price"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:layout_weight="79"
+                android:layout_weight="75"
                 android:layout_marginStart="@dimen/_3sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:text="@string/currency_name"

@@ -44,7 +44,7 @@ class AgentSubOrderActivity :BaseActivity() {
 
         customer_payment_button.visibility = View.GONE
 
-        //booking_price.text = getString(R.string.price)
+        booking_price.text = getString(R.string.sub_order_price)
 
         mId = intent.extras?.getInt(Constant.INTENT_AGENT_SUB_ORDER,0)!!
 
@@ -110,7 +110,7 @@ class AgentSubOrderActivity :BaseActivity() {
 
         tv_order_id.text= resources.getString(R.string.orderid).plus(data.order_id)
 
-        tv_booking_price.text= amountWithCurrencyName(data.price)
+        tv_booking_price.text= amountWithCurrencyName(data.amount)
 
         order_product_quantity.text = resources.getString(R.string.quantity).plus(data.quantity)
 

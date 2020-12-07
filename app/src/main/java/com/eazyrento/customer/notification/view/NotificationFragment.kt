@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.eazyrento.R
-import com.eazyrento.ValidationMessage
 import com.eazyrento.agent.view.BaseNavigationActivity
 import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.fragment.BaseFragment
@@ -186,6 +184,7 @@ class NotificationAdapter(val activity: Activity,val listNotification:List<Notif
         val tv_notification_msg = view.tv_noti_msg
         val tv_notification_date = view.tv_noti_date
         val img_notification_icon = view.img_notification_icon
+        val arrow_right = view.arrow_right
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
@@ -200,6 +199,7 @@ class NotificationAdapter(val activity: Activity,val listNotification:List<Notif
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
 
         try {
+
         holder.tv_notification_msg.text = listNotification[position].sent_message
 
         // already readed
@@ -217,7 +217,7 @@ class NotificationAdapter(val activity: Activity,val listNotification:List<Notif
             )
             return@setOnLongClickListener true
         }
-        setNotificationIcon(listNotification[position],holder.img_notification_icon)
+        setNotificationIcon(listNotification[position],holder)
 
         val listFormat = splitDateServerFormat(listNotification[position].added_on)
         holder.tv_notification_date.text = convertToDisplayDate(listFormat)
@@ -229,13 +229,19 @@ class NotificationAdapter(val activity: Activity,val listNotification:List<Notif
     }
     private fun setNotificationIcon(
         noti: NotificationModel,
-        imgNotificationIcon: ImageView){
+        holder: NotificationViewHolder
+    ){
+        val icon = holder.img_notification_icon
+
         when(noti.deep_link){
-            DeeplinkEvents.BOOKINGS->{imgNotificationIcon.setImageResource(R.mipmap.booking_accepted)}
-            DeeplinkEvents.ORDER_SUMMARY->{imgNotificationIcon.setImageResource(R.mipmap.order_updated)}
-            DeeplinkEvents.ORDER_LISTING->{imgNotificationIcon.setImageResource(R.mipmap.order_updated)}
-            DeeplinkEvents.PAYMENT ->{imgNotificationIcon.setImageResource(R.mipmap.payment_noti)}
-            else->{imgNotificationIcon.setImageResource(R.drawable.alert)}
+            DeeplinkEvents.BOOKINGS->{icon.setImageResource(R.mipmap.booking_accepted)}
+            DeeplinkEvents.ORDER_SUMMARY->{icon.setImageResource(R.mipmap.order_updated)}
+            DeeplinkEvents.ORDER_LISTING->{icon.setImageResource(R.mipmap.order_updated)}
+            DeeplinkEvents.PAYMENT ->{icon.setImageResource(R.mipmap.payment_noti)}
+            else->{
+                icon.setImageResource(R.drawable.alert)
+                holder.arrow_right.visibility =View.GONE
+            }
 
         }
     }

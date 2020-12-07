@@ -149,28 +149,14 @@ open class UpdateProfileBase : BaseActivity() {
 
         try {
             if (userProfile.country_code.isNullOrEmpty())
-                ed_country.setText("+".plus(phoneNumberFormat.getCountryCodeForLocalRegion()))
+                ed_country.setText("+".plus(phoneNumberFormat.getCountryCodeForLocalRegion()?:""))
             else
                 ed_country.setText(userProfile.country_code)
 
             if (userProfile.mobile_number.isNullOrEmpty() || userProfile.mobile_number.equals("unknown")) {
                 AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"Mobile no is Empty")
             } else {
-                /*val code = phoneNumberFormat.getRegionCodeForCountryCode(
-                    phoneNumberFormat.removePlusChar(ed_country).toInt()
-                )
 
-                val parseNumber = if (code == null) {
-                    phoneNumberFormat.parseNumberWithoutCountryCode(
-                        userProfile.mobile_number
-                    )
-                } else {
-
-                    phoneNumberFormat.parseNumberWithCountryCode(
-                        userProfile.mobile_number,
-                        code
-                    )
-                }*/
                 val parseNumber = parseMobileNumber(userProfile.mobile_number)
 
                 if (parseNumber == null)
@@ -292,21 +278,14 @@ open class UpdateProfileBase : BaseActivity() {
             phoneNumberFormat.isValidCountryCode(ed_country.text.toString()).not()->R.string.COUNTRY_CODE
             isValidPhoneNumber(""+parseMobileNumber(ed_phone.text.toString())?.nationalNumber,this).not()->showToast(R.string.PHONE_NUMBER)
 
-//            ed_des.text.toString().isEmpty()->showToast(ValidationMessage.DESCRIPTON)
             sp_gender.selectedItemPosition == 0->showToast(R.string.GENDER)
             tv_add_line.text.isNullOrEmpty() -> showToast(R.string.SELECT_ADRESS)
-
-//            isAgent.not() && ed_company_name.text.toString().isEmpty()->showToast(ValidationMessage.COMPANY)
-//            isCustomer.not() && ed_dob.text.toString().isEmpty()-> showToast(ValidationMessage.DATE_OF_BIRTH)
-//            isCustomer.not() && isAgent.not() && sp_select_document.selectedItemPosition == 0 ->showToast(ValidationMessage.DOCUMENT)
 
             else ->return true
 
         }
         return false
-        /*else if (img_profile.drawable == null) {
-            showToast(ValidationMessage.VALID_IMAGE)
-        }*/
+
     }
 
     open protected fun updateProfileData() {
@@ -320,39 +299,14 @@ open class UpdateProfileBase : BaseActivity() {
             it.country_code = ed_country.text.toString()
             it.mobile_number = ed_phone.text.toString()
 
-
             it.buisness = "" + ed_company_name.text
-
 
             it.id_proof_title = "" + sp_select_document.selectedItem
 
             it.profile_image = "" + img_profile
 
-            // selectBase64StringProfilePic?.let {inner_base64->
             it.profile_image = selectBase64StringProfilePic
-            //}
 
-            // if not customer
-           /* if (isCustomer) {
-                it.dob = null
-                it.attached_document = null
-            }else */ /*if (isAgent){
-
-                it.dob = "" + ed_dob.tag
-
-                it.attached_document = null
-                it.buisness = null
-
-            }*/ /*else {
-                it.dob = "" + ed_dob.tag
-
-                it.attached_document = "" + selectBase64StringAttachedDoc
-
-                selectBase64StringAttachedDoc?.let { inner ->
-                    it.attached_document = inner
-                    it.id_proof_title = selectProfID!!
-                }
-            }*/
         }
     }
 
@@ -367,7 +321,6 @@ open class UpdateProfileBase : BaseActivity() {
                     .getProfileUser(userProfile)
                 , this, this
             )
-
 
         }
 
