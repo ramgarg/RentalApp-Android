@@ -23,14 +23,16 @@ import kotlinx.android.synthetic.main.fragment_order_list_tamplate.*
 import kotlinx.android.synthetic.main.fragment_order_list_tamplate.view.*
 
 abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
+
+    private val mTAG = " OrderListFragment"
+
     lateinit var listOrderItems : CustomerOrderListResModel
     lateinit var filterListItems:MutableList<OrderDetailsResModel>
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        callAPIOrderList(Constant.OPEN_ORDER)
-
+       // callAPIOrderList(Constant.OPEN_ORDER)
 
         img_filter.setOnClickListener {
 
@@ -53,23 +55,29 @@ abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
 
     protected fun viewVisibility(view: View){
 
-
        view.layout_open_inactive.setOnClickListener {
-
-           Common.showGroupViews(layout_open_active,layout_close_inactive)
-           Common.hideGroupViews(layout_open_inactive,layout_close_active)
-
-           callAPIOrderList(Constant.OPEN_ORDER)
-
+           openOrder()
         }
 
         view.layout_close_inactive.setOnClickListener {
-            Common.showGroupViews(layout_open_inactive,layout_close_active)
-            Common.hideGroupViews(layout_close_inactive,layout_open_active)
-
-            callAPIOrderList(Constant.CLOSE_ORDER)
-
+            closeOrder()
         }
+    }
+
+    private fun openOrder(){
+
+        Common.showGroupViews(layout_open_active,layout_close_inactive)
+        Common.hideGroupViews(layout_open_inactive,layout_close_active)
+
+        callAPIOrderList(Constant.OPEN_ORDER)
+    }
+
+    private fun closeOrder(){
+
+        Common.showGroupViews(layout_open_inactive,layout_close_active)
+        Common.hideGroupViews(layout_close_inactive,layout_open_active)
+
+        callAPIOrderList(Constant.CLOSE_ORDER)
     }
 
     override fun <T> onSuccessApiResult(data: T) {
@@ -181,4 +189,26 @@ abstract class OrderListFragment : BaseFragment(), ViewInflaterAndBinder {
       setAdapter(filterListItems)
 
   }
+
+    override fun onStart() {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onStart $mTAG")
+
+        openOrder()
+
+        super.onStart()
+    }
+    override fun onResume() {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onResume $mTAG")
+        super.onResume()
+    }
+
+    override fun onPause() {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onPause $mTAG")
+        super.onPause()
+    }
+
+    override fun onStop() {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"onStop $mTAG")
+        super.onStop()
+    }
 }

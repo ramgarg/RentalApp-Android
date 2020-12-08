@@ -22,16 +22,11 @@ import kotlinx.android.synthetic.main.toolbar.*
 class CustomerMainActivity : BaseNavigationActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     override fun setNotificationFragment() {
-        /*fun setNavigationFragment(){
-            bottom_navigation_view.selectedItemId = R.id.navigation_common_first_pos
-        }
-        fun setNotificationFragment(){*/
 
             toolbar_title.text=getString(R.string.title_notification)
 
             moveToSelectedFragment(NotificationFragment())
 
-       // }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
