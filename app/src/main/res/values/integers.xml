@@ -9,4 +9,7 @@
 
     <integer name="payment_amount_max_len">13</integer>
 
+
+    <integer name="price_per_hour">8</integer>
+
 </resources>
