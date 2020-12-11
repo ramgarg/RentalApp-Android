@@ -213,7 +213,7 @@ class TrackingMapActivity : BaseActivity(), OnMapReadyCallback {
     private fun setDriverContactData(customerOrderTrackingListItem: OrderTrackingListItem) {
         customerOrderTrackingListItem.driverInfo.run {
 
-            tv_name_map.text = fullName
+            tv_name_map.text = fullName.capitalize()
             tv_user_type.text = resources.getString(R.string.driver)
 
             cancle_trip_map.visibility = View.GONE
