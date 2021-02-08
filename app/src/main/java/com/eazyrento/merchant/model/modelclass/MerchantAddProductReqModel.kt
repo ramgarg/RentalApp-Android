@@ -12,7 +12,7 @@ data class MerchantAddProductReqModel(
     var attach_document: String?,
     var monthly_price: Double,
     var daily_price: Double,
-    var driver_cost_per_day: Double
+    var driver_cost_per_day: Double?
 
 ){
     constructor():this("", 0.0,-1,0,false,"",AvailabilityDays(),null,0.0,0.0,0.0)

@@ -423,7 +423,6 @@
                     android:inputType="numberDecimal"
                     android:layout_gravity="start"
                     android:visibility="invisible"
-                    android:drawableStart="@mipmap/dollar"
                     android:textAlignment="viewStart"
                     android:layout_toStartOf="@+id/tv_per_day_static"
                     android:layout_width="@dimen/_60sdp"
@@ -431,7 +430,10 @@
                     android:paddingStart="@dimen/_2sdp"
                     android:paddingEnd="@dimen/_2sdp"
                     android:fontFamily="@font/bree_serif"
-                    android:textSize="@dimen/_13sdp"/>
+                    android:textSize="@dimen/_13sdp"
+
+                    android:maxLength="@integer/price_per_hour"
+                    />
             <TextView
                     style="@style/AgentSmallTextCard"
                     android:id="@+id/tv_per_day_static"

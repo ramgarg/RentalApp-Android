@@ -213,6 +213,16 @@ import kotlinx.android.synthetic.main.template_work_info.*
 
                 // agent
                 payment_view_history.visibility=View.VISIBLE
+
+                agent_asign_merchant_and_request_payment.visibility = View.GONE
+                agent_update_order_btn.visibility=View.GONE
+
+            }
+            Constant.CANCELLED ->{
+                customer_payment_button.visibility=View.GONE
+
+                // agent
+                //payment_view_history.visibility=View.VISIBLE
                 agent_asign_merchant_and_request_payment.visibility = View.GONE
                 agent_update_order_btn.visibility=View.GONE
 

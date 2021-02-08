@@ -204,8 +204,8 @@ class AddProductDailogActivity:BaseActivity() {
 
        if (merchantAddProductReqModel.with_driver)
             merchantAddProductReqModel.driver_cost_per_day = ed_driver_price.text.toString().toDouble()
-
-
+       else
+           merchantAddProductReqModel.driver_cost_per_day =0.0
 
        var boolean_add:Boolean = false
        var id:Int = edit_product_ID

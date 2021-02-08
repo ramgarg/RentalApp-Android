@@ -82,7 +82,8 @@ class CustomerOrderSummaryActivity : OrderBaseSummaryActivity() {
             }
         }
         else{
-            tv_track.visibility=View.VISIBLE
+            if (status == Constant.PENDING)
+                tv_track.visibility=View.VISIBLE
         }
 
         //customer_maintance_view.visibility =View.GONE

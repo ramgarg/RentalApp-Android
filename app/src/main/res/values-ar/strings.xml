@@ -506,7 +506,7 @@
     <string name="monthly_n_price">سعر شهري</string>
     <string name="daily_n_price">السعر اليومي</string>
     <string name="hourly_n_price">السعر بالساعة</string>
-    <string name="per_day">في اليوم</string>
+    <string name="per_day">SAR في اليوم</string>
     <string name="current_location_on_map">الموقع الحالي</string>
     <string name="enable_GPS_permission">"يرجى تمكين GPS أو إذن الموقع "</string>
 

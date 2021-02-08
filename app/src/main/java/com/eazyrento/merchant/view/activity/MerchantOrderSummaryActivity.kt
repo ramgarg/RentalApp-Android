@@ -60,7 +60,7 @@ class MerchantOrderSummaryActivity : OrderBaseSummaryActivity() {
         try {
             val status=orderRes.order_status
 
-            if (!status.equals(Constant.COMPLETED) && orderRes.is_driver_assigned ) {
+            if (status.equals(Constant.PENDING) && orderRes.is_driver_assigned ) {
                 // tracking
                 tv_track.visibility = View.VISIBLE
                 // assign driver if the order quantitiy is one

@@ -140,6 +140,7 @@ interface Constant{
         const val ACCEPTED  = "accepted"
         const val STARTED   = "started"
         const val ONGOING   = "ongoing"
+        const val CANCELLED   = "cancelled"
 
 
        // const val PENDING_AMOUNT="Pending Amount - "

@@ -10,7 +10,7 @@
             android:layout_marginStart="@dimen/_15sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:layout_alignParentBottom="true"
-            android:src="@mipmap/logo">
+            android:src="@mipmap/logo_black">
     </ImageView>
     <TextView
             android:id="@+id/app_version"

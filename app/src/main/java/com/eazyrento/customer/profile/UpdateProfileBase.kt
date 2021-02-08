@@ -264,8 +264,6 @@ open class UpdateProfileBase : BaseActivity() {
                 updateProfileUserAPI(it)
             }
 
-
-
         }
     }
 
@@ -292,6 +290,7 @@ open class UpdateProfileBase : BaseActivity() {
 
         userProfile?.let { it ->
 
+            it.full_name =  ed_full_name.text.toString()
             it.gender = "" + sp_gender.selectedItem
             it.email = "" + ed_email.text
             it.description = "" + ed_des.text
@@ -303,7 +302,7 @@ open class UpdateProfileBase : BaseActivity() {
 
             it.id_proof_title = "" + sp_select_document.selectedItem
 
-            it.profile_image = "" + img_profile
+            //it.profile_image = "" + img_profile
 
             it.profile_image = selectBase64StringProfilePic
 
