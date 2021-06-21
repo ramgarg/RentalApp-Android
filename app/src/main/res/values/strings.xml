@@ -548,6 +548,7 @@
     <string name="Driver_booking_reached">Oops! The driver has reached the maximum limit of 3 bookings. Please assign any other driver or try after some time.</string>
 
     <string name="sub_order_price">Sub-order\nPrice</string>
+    <string name="user_does_not_exist" translatable="false">User doesn\'t exists</string>
 
 
 </resources>

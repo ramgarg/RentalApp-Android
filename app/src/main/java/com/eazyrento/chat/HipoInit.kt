@@ -4,6 +4,7 @@ import com.eazyrento.BuildConfig
 import com.eazyrento.EazyRantoApplication
 import com.eazyrento.Env
 import com.eazyrento.Session
+import com.eazyrento.appbiz.AppBizLogger
 import com.fugu.CaptureUserData
 import com.fugu.FuguConfig
 import java.lang.Exception
@@ -42,10 +43,12 @@ fun initHippoWithUserData(activity:Activity){
   * */
 fun showHippoConversation(activity: Activity){
     try {
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"this is called in the")
             FuguConfig.getInstance().showConversations(activity,Env.HIPPO_CHAT_TITLE)
 
     }catch (e:Exception){
         e.printStackTrace()
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,e.localizedMessage)
     }
 
 }

@@ -275,6 +275,10 @@ class LoginActivity : AppBizLogin() {
         if (data is LoginUserResModel) {
 
             loginUserResModel = data
+          /*  if ("driver".equals(loginUserResModel.user_info.user_role)){
+                showToastString(getString(R.string.user_does_not_exist))
+
+            }*/
 
             Session.getInstance(EazyRantoApplication.context)
                 ?.saveUserRole(loginUserResModel.user_info.user_role)

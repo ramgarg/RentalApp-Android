@@ -83,6 +83,7 @@ class MerchantMainActivity : BaseNavigationActivity() {
                 /*fragment =
                     MerchantSupportFragment()
                 toolbar_title.text=getString(R.string.support)*/
+                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"this is called")
                 showHippoSupport()
                 fragment = null
             }

@@ -533,6 +533,8 @@
     <string name="MIN_BOOKING_PRICE">"الحد الأدنى لسعر الحجز "</string>
     <string name="Driver_booking_reached">"وجه الفتاة! وصل السائق إلى الحد الأقصى وهو 3 حجوزات. يرجى تعيين أي سائق آخر أو المحاولة بعد بعض الوقت. "</string>
     <string name="sub_order_price">"طلب فرعي "</string>
+    <string name="user_does_not_exist" translatable="false">صارف موجود نہیں ہے</string>
+
 
 
 </resources>

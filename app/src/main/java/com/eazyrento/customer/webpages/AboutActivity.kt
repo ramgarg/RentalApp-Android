@@ -17,10 +17,12 @@ class AboutActivity : BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_about)
-            Common.openWebPage(webview, PathURL.BASE_URL + PathURL.ABOUT_US)
-            topBarWithBackIconAndTitle(getString(R.string.about_us))
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_about)
+        Common.openWebPage(webview, PathURL.BASE_URL + PathURL.ABOUT_US,this)
+        topBarWithBackIconAndTitle(getString(R.string.about_us))
+//            webview.loadUrl(PathURL.BASE_URL + PathURL.ABOUT_US)
 
-        }
+
+    }
 }

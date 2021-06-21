@@ -43,24 +43,25 @@ import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import showHippoConversation
 
- abstract class BaseNavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+abstract class BaseNavigationActivity : BaseActivity(),
+    NavigationView.OnNavigationItemSelectedListener {
 
-     abstract fun setNotificationFragment()
+    abstract fun setNotificationFragment()
     override fun <T> moveOnSelecetedItem(type: T) {
     }
 
-     open fun badgeOnBottomNavigationView(count:Int){
+    open fun badgeOnBottomNavigationView(count: Int) {
 
-     }
+    }
 
-     fun setNotificationBadgeCount(count: Int){
-         if (count>0) {
-             tv_notification_count.visibility = View.VISIBLE
-             tv_notification_count.text = "$count"
-         }else{
-             tv_notification_count.visibility = View.GONE
-         }
-     }
+    fun setNotificationBadgeCount(count: Int) {
+        if (count > 0) {
+            tv_notification_count.visibility = View.VISIBLE
+            tv_notification_count.text = "$count"
+        } else {
+            tv_notification_count.visibility = View.GONE
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,55 +83,57 @@ import showHippoConversation
 
     }
 
-     private fun callDashboardAPI(){
-         callAPI()?.let {
-             it.observeApiResult(
-                 it.callAPIActivity<DashboardUserViewModel>(this)
-                     .geUserDashboard()
-                 , this, this
-             )
-         }
-     }
+    private fun callDashboardAPI() {
+        callAPI()?.let {
+            it.observeApiResult(
+                it.callAPIActivity<DashboardUserViewModel>(this)
+                    .geUserDashboard(), this, this
+            )
+        }
+    }
 
-     override fun <T> onSuccessApiResult(data: T) {
-         if (data is DashboardModel){
-             badgeOnBottomNavigationView(data.wishlistCount)
-             setNotificationBadgeCount(data.notificationCount)
-         }
+    override fun <T> onSuccessApiResult(data: T) {
+        if (data is DashboardModel) {
+            badgeOnBottomNavigationView(data.wishlistCount)
+            setNotificationBadgeCount(data.notificationCount)
+        }
 
-     }
+    }
 
-    fun setHomeFragment(){
+    fun setHomeFragment() {
         bottom_navigation_view.selectedItemId = R.id.navigation_home
     }
 
-    fun setForthPosFragment(){
+    fun setForthPosFragment() {
         bottom_navigation_view.selectedItemId = R.id.navigation_common_fourth_pos
     }
 
-    fun setOrderListing(){
+    fun setOrderListing() {
         bottom_navigation_view.selectedItemId = R.id.navigation_order
     }
-    fun setBooking(){
+
+    fun setBooking() {
         setForthPosFragment()
     }
-    fun setPaymentActivity(orderID:String){
+
+    fun setPaymentActivity(orderID: String) {
         paymentActivity(orderID)
     }
-    fun setOrderSummeryActivity(orderID:String){
+
+    fun setOrderSummeryActivity(orderID: String) {
         orderSummeryActivity(orderID)
     }
 
 
     // dynamic title
-    fun setNavigationIconAndTitle(hashMap:HashMap<Int, MenuData>){
+    fun setNavigationIconAndTitle(hashMap: HashMap<Int, MenuData>) {
 
-       val keys = hashMap.keys
+        val keys = hashMap.keys
 
-        for (key in keys){
+        for (key in keys) {
             val item = bottom_navigation_view.menu.findItem(key)
 
-            item.icon =getDrawable(hashMap.get(key)!!.iconID)
+            item.icon = getDrawable(hashMap.get(key)!!.iconID)
 
             item.title = resources.getString(hashMap.get(key)!!.titleID)
 
@@ -138,7 +141,7 @@ import showHippoConversation
     }
 
     // top bar
-     private fun topBarWithMenuIconListenerAndTitleMessage(title:String){
+    private fun topBarWithMenuIconListenerAndTitleMessage(title: String) {
         super.topBarWithMenuIconAndNotificationWithTitleMessage(title)
 
         img_notification.setOnClickListener {
@@ -151,10 +154,11 @@ import showHippoConversation
 
     }
 
-    fun setVisiblity(vis:Int){
+    fun setVisiblity(vis: Int) {
         img_notification.visibility = vis
     }
-    protected fun setInitData(){
+
+    protected fun setInitData() {
 
         //hippo chat
 
@@ -172,48 +176,60 @@ import showHippoConversation
         else
             setHomeFragment()
     }
-    private fun setAppVersion(){
-        app_version.text = "V".plus(BuildConfig.VERSION_NAME).plus("-").plus(BuildConfig.VERSION_CODE)
+
+    private fun setAppVersion() {
+        app_version.text =
+            "V".plus(BuildConfig.VERSION_NAME).plus("-").plus(BuildConfig.VERSION_CODE)
     }
 
-     fun pageNavigationAtDeeplink(mapPayLoadDataDeeplink:Map<String,String>?){
+    fun pageNavigationAtDeeplink(mapPayLoadDataDeeplink: Map<String, String>?) {
 
         val value_deeplink = mapPayLoadDataDeeplink?.get(KEY_DEEPLINK)
         val value_order_id = mapPayLoadDataDeeplink?.get(KEY_ORDER_ID)
 
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"value deeplink: $value_deeplink")
-        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"value_order_id: $value_order_id")
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "value deeplink: $value_deeplink")
+        AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "value_order_id: $value_order_id")
 
-        when{
-            value_deeplink==DeeplinkEvents.BOOKINGS -> {setBooking()}
-            value_deeplink==DeeplinkEvents.ORDER_LISTING->{setOrderListing()}
-            value_deeplink==DeeplinkEvents.ORDER_SUMMARY && value_order_id!=null->{setOrderSummeryActivity(value_order_id)}
-            value_deeplink==DeeplinkEvents.PAYMENT && value_order_id!=null->{setPaymentActivity(value_order_id)}
-            else->setHomeFragment()
+        when {
+            value_deeplink == DeeplinkEvents.BOOKINGS -> {
+                setBooking()
+            }
+            value_deeplink == DeeplinkEvents.ORDER_LISTING -> {
+                setOrderListing()
+            }
+            value_deeplink == DeeplinkEvents.ORDER_SUMMARY && value_order_id != null -> {
+                setOrderSummeryActivity(value_order_id)
+            }
+            value_deeplink == DeeplinkEvents.PAYMENT && value_order_id != null -> {
+                setPaymentActivity(value_order_id)
+            }
+            else -> setHomeFragment()
         }
 
     }
 
-    protected fun setBottomNavigationListener(){
+    protected fun setBottomNavigationListener() {
         // Bottom set listener bottom navigation view
         bottom_navigation_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        bottom_navigation_view.labelVisibilityMode =LABEL_VISIBILITY_LABELED
+        bottom_navigation_view.labelVisibilityMode = LABEL_VISIBILITY_LABELED
 
 
     }
-    protected fun setLeftSliderNavigationListener(){
+
+    protected fun setLeftSliderNavigationListener() {
         // Left side set listener drawer
         navigation_view.setNavigationItemSelectedListener(this)
     }
-// profile view
-    private fun setTopHeaderData(user_profile:UserProfile?) {
-    //val user_profile = EazyRantoApplication.profileData
 
-    val header = navigation_view.getHeaderView(0)
-    header.user_name_menu.text=user_profile?.full_name?.capitalize()
-    header.user_type_menu.text = Common.getUserType(this)
+    // profile view
+    private fun setTopHeaderData(user_profile: UserProfile?) {
+        //val user_profile = EazyRantoApplication.profileData
 
-    Picasso.with(this).load(user_profile?.profile_image).into(header.profile_img_menu)
+        val header = navigation_view.getHeaderView(0)
+        header.user_name_menu.text = user_profile?.full_name?.capitalize()
+        header.user_type_menu.text = Common.getUserType(this)
+
+        Picasso.with(this).load(user_profile?.profile_image).into(header.profile_img_menu)
 
         header.edit_profile_menu.setOnClickListener {
             openUpdateProfileActivity()
@@ -222,7 +238,7 @@ import showHippoConversation
     }
 
     //bottom view navigation
-     val mOnNavigationItemSelectedListener =
+    val mOnNavigationItemSelectedListener =
 
         BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
 
@@ -269,29 +285,33 @@ import showHippoConversation
             }
 
             R.id.nav_privacy -> {
-               MoveToAnotherComponent.moveToActivityNormal<PrivacyPolicy>(this)
+                MoveToAnotherComponent.moveToActivityNormal<PrivacyPolicy>(this)
             }
             R.id.nav_add_note -> {
-               addNotes()
+                addNotes()
             }
 
             R.id.nav_tc -> {
                 MoveToAnotherComponent.moveToActivityNormal<TermsConditionActivity>(this)
             }
-            R.id.nav_payment->{
+            R.id.nav_payment -> {
                 viewPaymentHistory()
             }
-            R.id.nav_my_address->{
+            R.id.nav_my_address -> {
                 viewMyAddress()
             }
-            R.id.select_language->{
+            R.id.select_language -> {
                 showLanguageDialog()
             }
             R.id.nav_logout -> {
-                MoveToAnotherComponent.onLogout(this, Constant.INTENT_LOGOUT_KEY, Constant.LOGOUT_VALUE)
+                MoveToAnotherComponent.onLogout(
+                    this,
+                    Constant.INTENT_LOGOUT_KEY,
+                    Constant.LOGOUT_VALUE
+                )
             }
         }
-        menuItem.isChecked=false
+        menuItem.isChecked = false
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
@@ -310,11 +330,11 @@ import showHippoConversation
         tv_arabic.setText(R.string.arabic)
 
         tv_english.setOnClickListener {
-            LocalManager.onLocalLanguuage(this,LocalManager.english_lang_code)
+            LocalManager.onLocalLanguuage(this, LocalManager.english_lang_code)
             dialog.dismiss()
         }
         tv_arabic.setOnClickListener {
-            LocalManager.onLocalLanguuage(this,LocalManager.arebic_lang_code)
+            LocalManager.onLocalLanguuage(this, LocalManager.arebic_lang_code)
             dialog.dismiss()
         }
 
@@ -326,9 +346,11 @@ import showHippoConversation
      }*/
 
     //common
-     data class MenuData(val iconID:Int,val titleID: Int)
+    data class MenuData(val iconID: Int, val titleID: Int)
+
     // bottom navigation method
-    abstract fun bottomNavigationListener(menuItemID: Int):Fragment?
+    abstract fun bottomNavigationListener(menuItemID: Int): Fragment?
+
     // slider left menu
     abstract fun helpAndSupport()
     abstract fun addNotes()
@@ -343,11 +365,10 @@ import showHippoConversation
         super.onBackPressed()
     }
 
-    protected fun showHippoSupport(){
+    protected fun showHippoSupport() {
         showProgress()
         Handler().postDelayed(
-            {hideProgress()}
-            ,Env.HIPPO_LOADER_TIME)
+            { hideProgress() }, Env.HIPPO_LOADER_TIME)
 
         showHippoConversation(this)
     }

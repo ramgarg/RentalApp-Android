@@ -19,7 +19,7 @@ class TermsConditionActivity : BaseActivity() {
         setContentView(R.layout.activity_terms_cond)
         topBarWithBackIconAndTitle(getString(R.string.terms_of_services))
 
-        Common.openWebPage(webview,PathURL.BASE_URL + PathURL.TERMS_AND_CONDITION)
+        Common.openWebPage(webview,PathURL.BASE_URL + PathURL.TERMS_AND_CONDITION,this)
 
 
     }

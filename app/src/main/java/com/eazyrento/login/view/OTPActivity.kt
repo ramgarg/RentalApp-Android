@@ -166,6 +166,7 @@ class HandlerPostDelayed{
                 updateData.onFinish()
             }
         }
+
         timer.start()
     }
 }

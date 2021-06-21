@@ -46,11 +46,11 @@ open class UpdateProfileBase : BaseActivity() {
 
     private val commonDatePiker = CommonDatePiker(this)
 
-   /* private val isCustomer = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
-        .equals(UserInfoAPP.CUSTOMER)*/
+    /* private val isCustomer = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
+         .equals(UserInfoAPP.CUSTOMER)*/
 
-   /* private val isAgent = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
-        .equals(UserInfoAPP.AGENT)*/
+    /* private val isAgent = Session.getInstance(EazyRantoApplication.context)?.getUserRole()
+         .equals(UserInfoAPP.AGENT)*/
 
     override fun <T> moveOnSelecetedItem(type: T) {
 
@@ -62,7 +62,7 @@ open class UpdateProfileBase : BaseActivity() {
 
         ed_full_name.filters = filterAs(FilterEnum.FULL_NAME)
         ed_company_name.filters = filterAs(FilterEnum.ALPHANUMERIC)
-        ed_des.filters =  filterAs(FilterEnum.ALPHANUMERIC)
+        ed_des.filters = filterAs(FilterEnum.ALPHANUMERIC)
 
         topBarWithBackIconAndTitle(resources.getString(R.string.profile))
 
@@ -70,10 +70,10 @@ open class UpdateProfileBase : BaseActivity() {
             layout_dob.visibility = View.GONE
             lyt_select_document.visibility = View.GONE
         }*/
-       /* if (isAgent){
-            lyt_select_document.visibility = View.GONE
-            layout_company.visibility = View.GONE
-        }*/
+        /* if (isAgent){
+             lyt_select_document.visibility = View.GONE
+             layout_company.visibility = View.GONE
+         }*/
 
         phoneNumberFormat = PhoneNumberFormat(this)
 
@@ -148,13 +148,15 @@ open class UpdateProfileBase : BaseActivity() {
 
 
         try {
-            if (userProfile.country_code.isNullOrEmpty())
-                ed_country.setText("+".plus(phoneNumberFormat.getCountryCodeForLocalRegion()?:""))
-            else
+            if (userProfile.country_code.isNullOrEmpty()) {
+                ed_country.setText("+".plus(phoneNumberFormat.getCountryCodeForLocalRegion() ?: ""))
+            } else {
                 ed_country.setText(userProfile.country_code)
+            }
+            ed_country.setText("+966")
 
             if (userProfile.mobile_number.isNullOrEmpty() || userProfile.mobile_number.equals("unknown")) {
-                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG,"Mobile no is Empty")
+                AppBizLogger.log(AppBizLogger.LoggingType.DEBUG, "Mobile no is Empty")
             } else {
 
                 val parseNumber = parseMobileNumber(userProfile.mobile_number)
@@ -220,7 +222,7 @@ open class UpdateProfileBase : BaseActivity() {
 
     }
 
-    private fun parseMobileNumber(mobileNumber:String): Phonenumber.PhoneNumber? {
+    private fun parseMobileNumber(mobileNumber: String): Phonenumber.PhoneNumber? {
         val code = phoneNumberFormat.getRegionCodeForCountryCode(
             phoneNumberFormat.removePlusChar(ed_country).toInt()
         )
@@ -268,18 +270,26 @@ open class UpdateProfileBase : BaseActivity() {
     }
 
     open protected fun isProfileValidationCorrect(): Boolean {
-        when{
+        when {
 
-            ed_full_name.text.toString().isEmpty() || ed_full_name.text.toString().length< resources.getInteger(R.integer.full_name_min_len)->showToast(R.string.VALID_USER_NAME)
-            ed_email.text.toString().isEmpty()||Validator.isEmailValid(ed_email.text.toString()).not() ->showToast(R.string.VALID_EMAIL_ID)
+            ed_full_name.text.toString()
+                .isEmpty() || ed_full_name.text.toString().length < resources.getInteger(R.integer.full_name_min_len) -> showToast(
+                R.string.VALID_USER_NAME
+            )
+            ed_email.text.toString().isEmpty() || Validator.isEmailValid(ed_email.text.toString())
+                .not() -> showToast(R.string.VALID_EMAIL_ID)
 
-            phoneNumberFormat.isValidCountryCode(ed_country.text.toString()).not()->R.string.COUNTRY_CODE
-            isValidPhoneNumber(""+parseMobileNumber(ed_phone.text.toString())?.nationalNumber,this).not()->showToast(R.string.PHONE_NUMBER)
+            phoneNumberFormat.isValidCountryCode(ed_country.text.toString())
+                .not() -> R.string.COUNTRY_CODE
+            isValidPhoneNumber(
+                "" + parseMobileNumber(ed_phone.text.toString())?.nationalNumber,
+                this
+            ).not() -> showToast(R.string.PHONE_NUMBER)
 
-            sp_gender.selectedItemPosition == 0->showToast(R.string.GENDER)
+            sp_gender.selectedItemPosition == 0 -> showToast(R.string.GENDER)
             tv_add_line.text.isNullOrEmpty() -> showToast(R.string.SELECT_ADRESS)
 
-            else ->return true
+            else -> return true
 
         }
         return false
@@ -290,7 +300,7 @@ open class UpdateProfileBase : BaseActivity() {
 
         userProfile?.let { it ->
 
-            it.full_name =  ed_full_name.text.toString()
+            it.full_name = ed_full_name.text.toString()
             it.gender = "" + sp_gender.selectedItem
             it.email = "" + ed_email.text
             it.description = "" + ed_des.text
@@ -317,8 +327,7 @@ open class UpdateProfileBase : BaseActivity() {
         callAPI()?.let {
             it.observeApiResult(
                 it.callAPIActivity<UpdateProfileUserViewModel>(this)
-                    .getProfileUser(userProfile)
-                , this, this
+                    .getProfileUser(userProfile), this, this
             )
 
         }
@@ -347,8 +356,7 @@ open class UpdateProfileBase : BaseActivity() {
         if (requestCode == Constant.PICK_PHOTO_FOR_AVATAR && resultCode == Activity.RESULT_OK) {
             uploadImageFromDevice.onActivityResult(requestCode, resultCode, data)
             return
-        }
-        else if (resultCode == Activity.RESULT_OK && requestCode == Constant.ADDRESS_REQUECT_CODE) {
+        } else if (resultCode == Activity.RESULT_OK && requestCode == Constant.ADDRESS_REQUECT_CODE) {
 
             userProfile?.let {
 
@@ -360,7 +368,8 @@ open class UpdateProfileBase : BaseActivity() {
 
                     if (intent.getIntExtra(
                             Constant.KEY_FINISH_FIRST_TIME_USER,
-                            0) == Constant.VALUE_FINISH_FIRST_TIME_USER
+                            0
+                        ) == Constant.VALUE_FINISH_FIRST_TIME_USER
                     ) {
                         it.address_info.is_default = true
                     }
@@ -370,8 +379,7 @@ open class UpdateProfileBase : BaseActivity() {
 
             }
 
-        }
-        else if (resultCode == Activity.RESULT_OK && requestCode == Constant.REQUEST_CODE_PROFILE_UPDATE) {
+        } else if (resultCode == Activity.RESULT_OK && requestCode == Constant.REQUEST_CODE_PROFILE_UPDATE) {
 
             userProfile?.let {
 
@@ -381,7 +389,8 @@ open class UpdateProfileBase : BaseActivity() {
                     it.address_info = inner
                     if (intent.getIntExtra(
                             Constant.KEY_FINISH_FIRST_TIME_USER,
-                            0) == Constant.VALUE_FINISH_FIRST_TIME_USER
+                            0
+                        ) == Constant.VALUE_FINISH_FIRST_TIME_USER
                     ) {
                         it.address_info.is_default = true
                     }

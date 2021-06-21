@@ -18,7 +18,7 @@ class PrivacyPolicy : BaseActivity() {
         setContentView(R.layout.privacy_policy)
         topBarWithBackIconAndTitle(getString(R.string.privacy_policy))
 
-        Common.openWebPage(webview, PathURL.BASE_URL + PathURL.PRIVACY_POLICY)
+        Common.openWebPage(webview, PathURL.BASE_URL + PathURL.PRIVACY_POLICY,this)
 
 
     }

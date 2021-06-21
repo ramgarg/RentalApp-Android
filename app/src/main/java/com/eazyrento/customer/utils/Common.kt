@@ -4,14 +4,18 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.net.IpPrefix
+import android.net.MailTo
 import android.net.Uri
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.webkit.*
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.library.BuildConfig
 import com.eazyrento.*
+import com.eazyrento.appbiz.AppBizLogger
 import com.eazyrento.common.view.UserInfoAPP
 import com.eazyrento.login.model.modelclass.AddressInfo
 import com.eazyrento.login.view.ChoseUserRole
@@ -30,63 +34,129 @@ class Common {
 
     companion object {
 
-        fun openWebPage(webView: WebView, url:String){
-           // webView.setWebViewClient(WebViewClient())
+        fun openWebPage(webView: WebView, url: String, context: Context) {
+            // webView.setWebViewClient(WebViewClient())
             webView.getSettings().setJavaScriptEnabled(true)
             webView.getSettings().setDomStorageEnabled(true)
             webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER)
 //            webView.loadUrl("https://www.google.com")
 
-            webViewWitheader(webView,url)
-           // webView.loadUrl(url)
+            webViewWitheader(webView, url, context)
+            // webView.loadUrl(url)
         }
 
-        fun webViewWitheader(webView: WebView,url: String) {
+
+        private fun sendEmail(mail: MailTo?, context: Context) {
+
+            val mIntent = Intent(Intent.ACTION_SEND)
+            mIntent.data = Uri.parse("mailto:")
+            mIntent.type = "text/plain"
+            if (mail != null) {
+                mIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(mail.to))
+            }
+            if (mail != null) {
+                mIntent.putExtra(Intent.EXTRA_SUBJECT, mail.subject)
+            }
+            if (mail != null) {
+                mIntent.putExtra(Intent.EXTRA_TEXT, mail.body)
+            }
+
+
+            try {
+                context.startActivity(Intent.createChooser(mIntent, "Choose Email Client..."))
+            } catch (e: Exception) {
+                //if any thing goes wrong for example no email client application or any exception
+                //get and show exception message
+            }
+        }
+
+
+        fun webViewWitheader(webView: WebView, url: String, context: Context) {
 
             val mapHeader = HashMap<String, String>()
 
             val language = Session.getInstance(EazyRantoApplication.context)?.getLocalLanguage()
 
-            mapHeader[PrefKey.LOCAL_LANGUAGE] = language?: LocalManager.english_lang_code
+            mapHeader[PrefKey.LOCAL_LANGUAGE] = language ?: LocalManager.english_lang_code
 
-            webView.settings.userAgentString = String.format("%s [%s/%s]", webView.settings.userAgentString, "App Android", BuildConfig.VERSION_NAME)
+            webView.settings.userAgentString = String.format(
+                "%s [%s/%s]",
+                webView.settings.userAgentString,
+                "App Android",
+                BuildConfig.VERSION_NAME
+            )
 
             WebView.setWebContentsDebuggingEnabled(true)
 
             webView.webViewClient = object : WebViewClient() {
-                override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest): WebResourceResponse? {
-                    CookieManager.getInstance().removeAllCookies(null)
+                override fun shouldInterceptRequest(
+                    view: WebView?,
+                    request: WebResourceRequest
+                ): WebResourceResponse? {
+//                    CookieManager.getInstance().removeAllCookies(null)
+
+                    AppBizLogger.log(
+                        AppBizLogger.LoggingType.DEBUG,
+                        "this is web " + request.method + " url " + request.url
+                    )
+
                     return super.shouldInterceptRequest(view, request)
                 }
-            }
 
-            webView.loadUrl(url,mapHeader)
+                override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+
+                    if (url != null) {
+                        if (url.startsWith("http")) {
+                            return false
+                        } else if (url.startsWith("tel")) {
+                            val phoneCallUri = Uri.parse(url)
+                            val phoneCallIntent = Intent(Intent.ACTION_DIAL).also {
+                                it.setData(phoneCallUri)
+                            }
+                            context.startActivity(phoneCallIntent)
+                            return true
+
+                        } else if (url.startsWith("mailto")) {
+                            val mail = MailTo.parse(url)
+                            sendEmail(mail, context)
+                            return true
+
+                        }
+
+                    }
+                    return super.shouldOverrideUrlLoading(view, url)
+
+                }
+            }
+            webView.loadUrl(url, mapHeader)
         }
 
-        fun initDailog(context: Context,layout: Int):Dialog{
+
+        fun initDailog(context: Context, layout: Int): Dialog {
             val dialog = Dialog(context)
-            dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.getWindow()?.setBackgroundDrawableResource(android.R.color.transparent);
-            dialog .setCancelable(true)
-            dialog .setContentView(layout)
+            dialog.setCancelable(true)
+            dialog.setContentView(layout)
             return dialog
         }
-        fun showDialog(title: String,msg:String,context: Activity,layout:Int) {
 
-            val dialog = initDailog(context,layout)
+        fun showDialog(title: String, msg: String, context: Activity, layout: Int) {
 
-            if(title.equals("payment_noti"))
+            val dialog = initDailog(context, layout)
+
+            if (title.equals("payment_noti"))
                 thankYou(
                     dialog,
                     msg
                 )
-            else if(title.equals("UserType"))
+            else if (title.equals("UserType"))
                 userDialog(
                     context,
                     layout,
                     null
                 )
-            else if(title.equals("UserDay"))
+            else if (title.equals("UserDay"))
                 userDayDialog(
                     context,
                     dialog
@@ -94,19 +164,19 @@ class Common {
             else
                 rating(dialog)
 
-            dialog .show()
+            dialog.show()
 
         }
 
         private fun userDayDialog(context: Activity, dialog: Dialog) {
             //dialog.img_close.setOnClickListener { dialog.cancel() }
-           
+
 
         }
 
-         fun userDialog(context: Context,layout: Int,choseUserRole: ChoseUserRole?):Dialog{
+        fun userDialog(context: Context, layout: Int, choseUserRole: ChoseUserRole?): Dialog {
 
-             val dialog = initDailog(context,layout)
+            val dialog = initDailog(context, layout)
 
             dialog.img_close.setOnClickListener { dialog.cancel() }
 
@@ -117,9 +187,9 @@ class Common {
 
                 choseUserRole?.onChose(UserInfoAPP.AGENT)
 
-               /* MoveToAnotherComponent.moveToAgentHomeActivity(
-                    context
-                )*/
+                /* MoveToAnotherComponent.moveToAgentHomeActivity(
+                     context
+                 )*/
 
 
             }
@@ -129,9 +199,9 @@ class Common {
                 dialog.btn_agent_active.visibility = View.INVISIBLE
 
                 choseUserRole?.onChose(UserInfoAPP.CUSTOMER)
-               /* MoveToAnotherComponent.moveToHomeActivity(
-                    context
-                )*/
+                /* MoveToAnotherComponent.moveToHomeActivity(
+                     context
+                 )*/
             }
             dialog.btn_merchant_inactive.setOnClickListener {
                 dialog.btn_merchant_active.visibility = View.VISIBLE
@@ -140,27 +210,28 @@ class Common {
 
                 choseUserRole?.onChose(UserInfoAPP.MERCHANT)
 
-               /* MoveToAnotherComponent.moveToMerchantMainActivity(
-                    context
-                )*/
+                /* MoveToAnotherComponent.moveToMerchantMainActivity(
+                     context
+                 )*/
             }
-             return dialog
+            return dialog
         }
 
-        private fun rating(dialog: Dialog){
+        private fun rating(dialog: Dialog) {
             dialog.img_close.setOnClickListener { dialog.cancel() }
         }
 
-        private fun thankYou(dialog: Dialog,msg: String){
+        private fun thankYou(dialog: Dialog, msg: String) {
             dialog.btn_ok.setOnClickListener {
                 dialog.cancel()
             }
-            dialog.tv_msg.text=msg
+            dialog.tv_msg.text = msg
         }
 
         fun hideSoftKeyBoard(context: Context, view: View) {
             try {
-                val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm =
+                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm?.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
             } catch (e: Exception) {
                 // TODO: handle exception
@@ -168,73 +239,75 @@ class Common {
             }
 
         }
+
         fun hideGroupViews(vararg view: View) {
             view.forEach {
-                it.visibility=View.GONE
+                it.visibility = View.GONE
             }
         }
 
         fun invisibleGroupViews(vararg view: View) {
             view.forEach {
-                it.visibility=View.INVISIBLE
+                it.visibility = View.INVISIBLE
             }
         }
 
         fun showGroupViews(vararg view: View) {
             view.forEach {
-                it.visibility=View.VISIBLE
+                it.visibility = View.VISIBLE
             }
         }
 
-        fun showToast(context: Context,msg: Int){
-            Toast.makeText(context,msg,Toast.LENGTH_LONG).show()
+        fun showToast(context: Context, msg: Int) {
+            Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
         }
 
-        fun showToastString(context: Context,msg: String){
-            Toast.makeText(context,msg,Toast.LENGTH_LONG).show()
+        fun showToastString(context: Context, msg: String) {
+            Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
         }
 
-        fun phoneCallWithNumber(number:String?,context: Context){
+        fun phoneCallWithNumber(number: String?, context: Context) {
             val intent = Intent(Intent.ACTION_DIAL)
-            intent.data = Uri.parse("tel:"+number)
+            intent.data = Uri.parse("tel:" + number)
             context.startActivity(intent)
         }
 
-        fun getUserType(context: Context):String{
+        fun getUserType(context: Context): String {
             val type = Session.getInstance(context)?.getUserRole()
-           return when(type){
-               UserInfoAPP.CUSTOMER -> context.getString(R.string.customer)
-               UserInfoAPP.MERCHANT -> context.getString(R.string.merchant)
-               UserInfoAPP.AGENT -> context.getString(R.string.agent)
-               else->{
-                   ""
-               }
-           }
+            return when (type) {
+                UserInfoAPP.CUSTOMER -> context.getString(R.string.customer)
+                UserInfoAPP.MERCHANT -> context.getString(R.string.merchant)
+                UserInfoAPP.AGENT -> context.getString(R.string.agent)
+                else -> {
+                    ""
+                }
+            }
 
         }
 
-        fun View.setCurrentAddressOnTopInMap(context: Context,lat:Double,lang:Double){
-            val addressInfo = AddressInfo("","","","","",
-                -1,false,0.0,0.0,"")
+        fun View.setCurrentAddressOnTopInMap(context: Context, lat: Double, lang: Double) {
+            val addressInfo = AddressInfo(
+                "", "", "", "", "",
+                -1, false, 0.0, 0.0, ""
+            )
 
             // custom Address filter made by appbiz
-            val addressFilter = AddressFilter(context,addressInfo)
-            addressFilter.getAddressByLocation(lat,lang,1)
+            val addressFilter = AddressFilter(context, addressInfo)
+            addressFilter.getAddressByLocation(lat, lang, 1)
 
             tv_address_line_map.text = addressInfo.address_line
         }
 
-        fun roundOfDouble(number:Double?):Double{
+        fun roundOfDouble(number: Double?): Double {
             try {
-                return  String.format("%.3f", number).toDouble()
-            }catch (e:Exception){
+                return String.format("%.3f", number).toDouble()
+            } catch (e: Exception) {
 
             }
             return number!!
         }
 
     }
-
 
 
 }
